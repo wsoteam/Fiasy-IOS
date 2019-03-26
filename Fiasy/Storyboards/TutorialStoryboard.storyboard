@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LrJ-n0-fG9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="WTJ-z9-q7n">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="LrJ-n0-fG9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N6X-RA-U6d">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FSm-VQ-79v" kind="relationship" relationship="rootViewController" id="qkc-28-LcP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gub-va-dIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-641" y="108"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="vm2-5J-S7z">
+            <objects>
+                <viewController restorationIdentifier="TutorialViewController" storyboardIdentifier="TutorialViewController" id="FSm-VQ-79v" customClass="TutorialViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h53-m9-IIw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_onboard" translatesAutoresizingMaskIntoConstraints="NO" id="cu1-0k-SH7">
+                                <rect key="frame" x="-7" y="0.0" width="388" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giW-dz-KkE">
+                                <rect key="frame" x="101" y="45" width="173" height="83"/>
+                                <state key="normal" image="logo_merge_onboard"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добро пожаловать!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPb-LG-pQw">
+                                <rect key="frame" x="77" y="155" width="222" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Давайте знакомиться." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sad-UM-KhL">
+                                <rect key="frame" x="97" y="197" width="179" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Kre-mK-ahc">
+                                <rect key="frame" x="168" y="529" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tN2-sm-gDq">
+                                <rect key="frame" x="108" y="584" width="158" height="30"/>
+                                <state key="normal" title="Положение и условие">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showFirstVC:" destination="FSm-VQ-79v" eventType="touchUpInside" id="bj8-Zf-aCt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="trailing" secondItem="Mon-So-tWN" secondAttribute="trailing" constant="6" id="1G0-7m-OPb"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="RPb-LG-pQw" secondAttribute="trailing" constant="76" id="1lp-wl-HH6"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="-7" id="39H-Qp-71o"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" id="6Z3-UZ-PpZ"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="Kre-mK-ahc" secondAttribute="trailing" constant="168" id="6xw-kl-IzL"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="tN2-sm-gDq" secondAttribute="trailing" constant="109" id="97V-u0-McC"/>
+                            <constraint firstItem="sad-UM-KhL" firstAttribute="top" secondItem="RPb-LG-pQw" secondAttribute="bottom" constant="14" id="HGS-ja-d9l"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="trailing" secondItem="Mon-So-tWN" secondAttribute="trailing" constant="6" id="Icl-Ew-IwO"/>
+                            <constraint firstItem="sad-UM-KhL" firstAttribute="top" secondItem="RPb-LG-pQw" secondAttribute="bottom" constant="14" id="JKU-90-nQ4"/>
+                            <constraint firstItem="Kre-mK-ahc" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="168" id="JWs-8H-phb"/>
+                            <constraint firstItem="tN2-sm-gDq" firstAttribute="top" secondItem="Kre-mK-ahc" secondAttribute="bottom" constant="18" id="Mya-4L-bpe"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" id="OzD-z9-wxS"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="-7" id="Ppj-A8-PIr"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="bottom" secondItem="Kre-mK-ahc" secondAttribute="bottom" constant="101" id="S64-sj-KYb"/>
+                            <constraint firstItem="RPb-LG-pQw" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="77" id="SjG-2X-D9u"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="top" secondItem="h53-m9-IIw" secondAttribute="top" id="UvW-LS-ToO"/>
+                            <constraint firstItem="tN2-sm-gDq" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="108" id="VbJ-mk-b6Q"/>
+                            <constraint firstItem="RPb-LG-pQw" firstAttribute="top" secondItem="giW-dz-KkE" secondAttribute="bottom" constant="27" id="W3K-tV-qNf"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="bottom" secondItem="tN2-sm-gDq" secondAttribute="bottom" constant="53" id="WTM-Sc-BQv"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="giW-dz-KkE" secondAttribute="trailing" constant="101" id="gvW-oU-L5k"/>
+                            <constraint firstItem="sad-UM-KhL" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="97" id="l0n-4O-fd3"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="sad-UM-KhL" secondAttribute="trailing" constant="99" id="pi3-Ss-I8J"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="top" secondItem="h53-m9-IIw" secondAttribute="top" id="qAp-lE-8hB"/>
+                            <constraint firstItem="giW-dz-KkE" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="101" id="quz-m5-Py1"/>
+                            <constraint firstItem="giW-dz-KkE" firstAttribute="top" secondItem="Mon-So-tWN" secondAttribute="top" constant="25" id="xAD-JO-Son"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mon-So-tWN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1z8-Le-yAa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YGJ-gD-ykb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157.59999999999999" y="107.49625187406298"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back_onboard" width="368" height="755"/>
+        <image name="logo_merge_onboard" width="173.5" height="83"/>
+    </resources>
+</document>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="THa-p1-w5G">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="SHP-Pt-Rcc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IJF-7D-K8h">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="f8U-zg-xaG" kind="relationship" relationship="rootViewController" id="ybV-G2-9yc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h5c-i1-Rmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="138"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="wfV-Tf-MhL">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f8U-zg-xaG" customClass="LoginViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7IM-zn-AJD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_1х" translatesAutoresizingMaskIntoConstraints="NO" id="qHK-Fv-djf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Вход" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuA-Po-kkR">
+                                <rect key="frame" x="44" y="194" width="55" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.60606950521469116" green="0.55763810873031616" blue="0.48735606670379639" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t5o-ND-Qih">
+                                <rect key="frame" x="84" y="241" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMl-pG-cdT">
+                                <rect key="frame" x="84" y="290" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvw-QD-AzC">
+                                <rect key="frame" x="43" y="244" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon_login_1х"/>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQO-OY-5fg">
+                                <rect key="frame" x="45" y="290" width="20" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="lock_password_1х"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqk-jb-DrZ">
+                                <rect key="frame" x="105" y="406" width="164" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
+                                <state key="normal" title="Вход в Email" backgroundImage="button_registration-1х">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailLogin:" destination="f8U-zg-xaG" eventType="touchUpInside" id="Js4-UP-rDy"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_under_goog_faceb_1х" translatesAutoresizingMaskIntoConstraints="NO" id="w1G-QA-o1b">
+                                <rect key="frame" x="0.0" y="599" width="375" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Awx-zr-4nm"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line_under_goog_faceb_1х" translatesAutoresizingMaskIntoConstraints="NO" id="Lw4-j9-gGu">
+                                <rect key="frame" x="0.0" y="551" width="375" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Rzz-fT-xV2"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAK-1R-Ixm">
+                                <rect key="frame" x="39" y="551" width="211" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <state key="normal" title="       Вход через аккаунт Google" image="google_image_1х">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-Hn-BcU">
+                                <rect key="frame" x="32" y="599" width="239" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <state key="normal" title="       Вход через аккаунт Facebook" image="facebook_1х">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lw4-j9-gGu" firstAttribute="leading" secondItem="7IM-zn-AJD" secondAttribute="leading" id="2Bc-yH-4cL"/>
+                            <constraint firstItem="w1G-QA-o1b" firstAttribute="leading" secondItem="MLp-qX-Zgy" secondAttribute="leading" id="3VH-Qi-Ljy"/>
+                            <constraint firstItem="qHK-Fv-djf" firstAttribute="top" secondItem="7IM-zn-AJD" secondAttribute="top" id="8DW-a4-Ic0"/>
+                            <constraint firstItem="w1G-QA-o1b" firstAttribute="top" secondItem="Lw4-j9-gGu" secondAttribute="bottom" constant="20" id="G0B-9z-YlK"/>
+                            <constraint firstItem="MLp-qX-Zgy" firstAttribute="trailing" secondItem="Lw4-j9-gGu" secondAttribute="trailing" id="Lhm-ex-Tkc"/>
+                            <constraint firstItem="qHK-Fv-djf" firstAttribute="trailing" secondItem="MLp-qX-Zgy" secondAttribute="trailing" id="eOn-nA-G63"/>
+                            <constraint firstItem="MLp-qX-Zgy" firstAttribute="bottom" secondItem="w1G-QA-o1b" secondAttribute="bottom" constant="40" id="ivP-Dx-aHg"/>
+                            <constraint firstItem="qHK-Fv-djf" firstAttribute="leading" secondItem="MLp-qX-Zgy" secondAttribute="leading" id="kXc-4x-17N"/>
+                            <constraint firstItem="w1G-QA-o1b" firstAttribute="trailing" secondItem="MLp-qX-Zgy" secondAttribute="trailing" id="vT8-Fd-sa8"/>
+                            <constraint firstItem="qHK-Fv-djf" firstAttribute="bottom" secondItem="MLp-qX-Zgy" secondAttribute="bottom" id="xmK-4e-jbi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MLp-qX-Zgy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bc6-NT-ebO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ERo-CN-gxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back_1х" width="360" height="738"/>
+        <image name="button_registration-1х" width="164" height="66"/>
+        <image name="facebook_1х" width="28" height="28"/>
+        <image name="google_image_1х" width="28" height="28"/>
+        <image name="icon_login_1х" width="24" height="24"/>
+        <image name="line_under_goog_faceb_1х" width="360" height="28"/>
+        <image name="lock_password_1х" width="20" height="27"/>
+    </resources>
+</document>

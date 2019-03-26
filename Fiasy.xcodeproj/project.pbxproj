@@ -13,7 +13,28 @@
 		F0124F8D224261B9001B9793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0124F8B224261B9001B9793 /* Main.storyboard */; };
 		F0124F90224261B9001B9793 /* Fiasy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0124F8E224261B9001B9793 /* Fiasy.xcdatamodeld */; };
 		F0124F92224261BB001B9793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0124F91224261BB001B9793 /* Assets.xcassets */; };
-		F0124F95224261BB001B9793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0124F93224261BB001B9793 /* LaunchScreen.storyboard */; };
+		F01748A3224A156900E2E646 /* TutorialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748A2224A156900E2E646 /* TutorialStoryboard.storyboard */; };
+		F01748A6224A158A00E2E646 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748A5224A158A00E2E646 /* TutorialViewController.swift */; };
+		F01748A8224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748A7224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard */; };
+		F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748A9224A15C200E2E646 /* FirstViewController.swift */; };
+		F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748AB224A167600E2E646 /* RegestrationViewController.swift */; };
+		F01748AE224A169200E2E646 /* RegestrationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748AD224A169200E2E646 /* RegestrationStoryboard.storyboard */; };
+		F01748BC224A1ED000E2E646 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B0224A1ECF00E2E646 /* Roboto-BoldItalic.ttf */; };
+		F01748BD224A1ED000E2E646 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B1224A1ECF00E2E646 /* Roboto-Regular.ttf */; };
+		F01748BE224A1ED000E2E646 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B2224A1ECF00E2E646 /* Roboto-Italic.ttf */; };
+		F01748BF224A1ED000E2E646 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B3224A1ECF00E2E646 /* Roboto-Bold.ttf */; };
+		F01748C0224A1ED000E2E646 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B4224A1ECF00E2E646 /* Roboto-Medium.ttf */; };
+		F01748C1224A1ED000E2E646 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B5224A1ECF00E2E646 /* Roboto-Thin.ttf */; };
+		F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B6224A1ED000E2E646 /* Roboto-ThinItalic.ttf */; };
+		F01748C3224A1ED000E2E646 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B7224A1ED000E2E646 /* Roboto-Black.ttf */; };
+		F01748C4224A1ED000E2E646 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B8224A1ED000E2E646 /* Roboto-BlackItalic.ttf */; };
+		F01748C5224A1ED000E2E646 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748B9224A1ED000E2E646 /* Roboto-Light.ttf */; };
+		F01748C6224A1ED000E2E646 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748BA224A1ED000E2E646 /* Roboto-LightItalic.ttf */; };
+		F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F01748BB224A1ED000E2E646 /* Roboto-MediumItalic.ttf */; };
+		F01748C9224A222300E2E646 /* PremiumStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748C8224A222300E2E646 /* PremiumStoryBoard.storyboard */; };
+		F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748CA224A225200E2E646 /* PremiumViewController.swift */; };
+		F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748CD224A38FF00E2E646 /* LoginViewController.swift */; };
+		F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +49,28 @@
 		F0124F91224261BB001B9793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0124F94224261BB001B9793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0124F96224261BB001B9793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F01748A2224A156900E2E646 /* TutorialStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TutorialStoryboard.storyboard; sourceTree = "<group>"; };
+		F01748A5224A158A00E2E646 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		F01748A7224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstScreenStoryBoard.storyboard; sourceTree = "<group>"; };
+		F01748A9224A15C200E2E646 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		F01748AB224A167600E2E646 /* RegestrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegestrationViewController.swift; sourceTree = "<group>"; };
+		F01748AD224A169200E2E646 /* RegestrationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegestrationStoryboard.storyboard; sourceTree = "<group>"; };
+		F01748B0224A1ECF00E2E646 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		F01748B1224A1ECF00E2E646 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		F01748B2224A1ECF00E2E646 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		F01748B3224A1ECF00E2E646 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		F01748B4224A1ECF00E2E646 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		F01748B5224A1ECF00E2E646 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		F01748B6224A1ED000E2E646 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		F01748B7224A1ED000E2E646 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		F01748B8224A1ED000E2E646 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		F01748B9224A1ED000E2E646 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		F01748BA224A1ED000E2E646 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		F01748BB224A1ED000E2E646 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		F01748C8224A222300E2E646 /* PremiumStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PremiumStoryBoard.storyboard; sourceTree = "<group>"; };
+		F01748CA224A225200E2E646 /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
+		F01748CD224A38FF00E2E646 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +123,9 @@
 		F0124F86224261B9001B9793 /* Fiasy */ = {
 			isa = PBXGroup;
 			children = (
+				F01748AF224A1EB600E2E646 /* Fonts */,
+				F01748A4224A157000E2E646 /* ViewControllers */,
+				F01748A1224A14BE00E2E646 /* Storyboards */,
 				F0124F87224261B9001B9793 /* AppDelegate.swift */,
 				F0124F89224261B9001B9793 /* ViewController.swift */,
 				F0124F8B224261B9001B9793 /* Main.storyboard */,
@@ -89,6 +135,49 @@
 				F0124F8E224261B9001B9793 /* Fiasy.xcdatamodeld */,
 			);
 			path = Fiasy;
+			sourceTree = "<group>";
+		};
+		F01748A1224A14BE00E2E646 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F01748C8224A222300E2E646 /* PremiumStoryBoard.storyboard */,
+				F01748A2224A156900E2E646 /* TutorialStoryboard.storyboard */,
+				F01748A7224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard */,
+				F01748AD224A169200E2E646 /* RegestrationStoryboard.storyboard */,
+				F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F01748A4224A157000E2E646 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F01748A5224A158A00E2E646 /* TutorialViewController.swift */,
+				F01748A9224A15C200E2E646 /* FirstViewController.swift */,
+				F01748AB224A167600E2E646 /* RegestrationViewController.swift */,
+				F01748CA224A225200E2E646 /* PremiumViewController.swift */,
+				F01748CD224A38FF00E2E646 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F01748AF224A1EB600E2E646 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F01748B7224A1ED000E2E646 /* Roboto-Black.ttf */,
+				F01748B8224A1ED000E2E646 /* Roboto-BlackItalic.ttf */,
+				F01748B3224A1ECF00E2E646 /* Roboto-Bold.ttf */,
+				F01748B0224A1ECF00E2E646 /* Roboto-BoldItalic.ttf */,
+				F01748B2224A1ECF00E2E646 /* Roboto-Italic.ttf */,
+				F01748B9224A1ED000E2E646 /* Roboto-Light.ttf */,
+				F01748BA224A1ED000E2E646 /* Roboto-LightItalic.ttf */,
+				F01748B4224A1ECF00E2E646 /* Roboto-Medium.ttf */,
+				F01748BB224A1ED000E2E646 /* Roboto-MediumItalic.ttf */,
+				F01748B1224A1ECF00E2E646 /* Roboto-Regular.ttf */,
+				F01748B5224A1ECF00E2E646 /* Roboto-Thin.ttf */,
+				F01748B6224A1ED000E2E646 /* Roboto-ThinItalic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +240,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0124F95224261BB001B9793 /* LaunchScreen.storyboard in Resources */,
+				F01748A8224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard in Resources */,
+				F01748BE224A1ED000E2E646 /* Roboto-Italic.ttf in Resources */,
+				F01748BF224A1ED000E2E646 /* Roboto-Bold.ttf in Resources */,
+				F01748BD224A1ED000E2E646 /* Roboto-Regular.ttf in Resources */,
+				F01748C9224A222300E2E646 /* PremiumStoryBoard.storyboard in Resources */,
+				F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */,
+				F01748AE224A169200E2E646 /* RegestrationStoryboard.storyboard in Resources */,
+				F01748C5224A1ED000E2E646 /* Roboto-Light.ttf in Resources */,
+				F01748A3224A156900E2E646 /* TutorialStoryboard.storyboard in Resources */,
+				F01748C4224A1ED000E2E646 /* Roboto-BlackItalic.ttf in Resources */,
 				F0124F92224261BB001B9793 /* Assets.xcassets in Resources */,
+				F01748C1224A1ED000E2E646 /* Roboto-Thin.ttf in Resources */,
+				F01748C6224A1ED000E2E646 /* Roboto-LightItalic.ttf in Resources */,
+				F01748C0224A1ED000E2E646 /* Roboto-Medium.ttf in Resources */,
+				F01748BC224A1ED000E2E646 /* Roboto-BoldItalic.ttf in Resources */,
+				F01748C3224A1ED000E2E646 /* Roboto-Black.ttf in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
+				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
+				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +324,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */,
+				F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */,
 				F0124F8A224261B9001B9793 /* ViewController.swift in Sources */,
+				F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */,
+				F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */,
 				F0124F90224261B9001B9793 /* Fiasy.xcdatamodeld in Sources */,
+				F01748A6224A158A00E2E646 /* TutorialViewController.swift in Sources */,
 				F0124F88224261B9001B9793 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +478,7 @@
 			baseConfigurationReference = A8613612C78CE99AC4A2C0FA /* Pods-Fiasy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75385TCW2L;
 				INFOPLIST_FILE = Fiasy/Info.plist;
@@ -378,7 +489,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fiasy.fiasyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -387,6 +498,7 @@
 			baseConfigurationReference = 325C3BB198C8532B5226CEA6 /* Pods-Fiasy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75385TCW2L;
 				INFOPLIST_FILE = Fiasy/Info.plist;
@@ -397,7 +509,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fiasy.fiasyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
