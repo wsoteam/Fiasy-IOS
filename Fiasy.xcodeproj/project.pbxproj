@@ -35,6 +35,8 @@
 		F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748CA224A225200E2E646 /* PremiumViewController.swift */; };
 		F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748CD224A38FF00E2E646 /* LoginViewController.swift */; };
 		F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */; };
+		F0231C7C224E4B720051DFBA /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0231C7A224E4B710051DFBA /* Slide.xib */; };
+		F0231C7D224E4B720051DFBA /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0231C7B224E4B710051DFBA /* Slide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		F01748CA224A225200E2E646 /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		F01748CD224A38FF00E2E646 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		F0231C7A224E4B710051DFBA /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
+		F0231C7B224E4B710051DFBA /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 		F0124F86224261B9001B9793 /* Fiasy */ = {
 			isa = PBXGroup;
 			children = (
+				F0231C78224E4B280051DFBA /* Views */,
+				F0231C77224E4B070051DFBA /* Libs */,
 				F01748AF224A1EB600E2E646 /* Fonts */,
 				F01748A4224A157000E2E646 /* ViewControllers */,
 				F01748A1224A14BE00E2E646 /* Storyboards */,
@@ -178,6 +184,30 @@
 				F01748B6224A1ED000E2E646 /* Roboto-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F0231C77224E4B070051DFBA /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		F0231C78224E4B280051DFBA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F0231C79224E4B3B0051DFBA /* SlideView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F0231C79224E4B3B0051DFBA /* SlideView */ = {
+			isa = PBXGroup;
+			children = (
+				F0231C7B224E4B710051DFBA /* Slide.swift */,
+				F0231C7A224E4B710051DFBA /* Slide.xib */,
+			);
+			path = SlideView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +285,7 @@
 				F01748C6224A1ED000E2E646 /* Roboto-LightItalic.ttf in Resources */,
 				F01748C0224A1ED000E2E646 /* Roboto-Medium.ttf in Resources */,
 				F01748BC224A1ED000E2E646 /* Roboto-BoldItalic.ttf in Resources */,
+				F0231C7C224E4B720051DFBA /* Slide.xib in Resources */,
 				F01748C3224A1ED000E2E646 /* Roboto-Black.ttf in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
@@ -330,6 +361,7 @@
 				F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */,
 				F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */,
 				F0124F90224261B9001B9793 /* Fiasy.xcdatamodeld in Sources */,
+				F0231C7D224E4B720051DFBA /* Slide.swift in Sources */,
 				F01748A6224A158A00E2E646 /* TutorialViewController.swift in Sources */,
 				F0124F88224261B9001B9793 /* AppDelegate.swift in Sources */,
 			);
