@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LrJ-n0-fG9">
-    <device id="retina5_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LrJ-n0-fG9">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,40 +35,43 @@
             <objects>
                 <viewController restorationIdentifier="TutorialViewController" storyboardIdentifier="TutorialViewController" id="FSm-VQ-79v" customClass="TutorialViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h53-m9-IIw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_onboard" translatesAutoresizingMaskIntoConstraints="NO" id="cu1-0k-SH7">
-                                <rect key="frame" x="-7" y="0.0" width="427" height="756"/>
+                                <rect key="frame" x="-7" y="0.0" width="388" height="812"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3C-AN-l7z">
-                                <rect key="frame" x="0.0" y="223" width="414" height="513"/>
+                                <rect key="frame" x="0.0" y="270.33333333333326" width="375" height="510.66666666666674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="delegate" destination="FSm-VQ-79v" id="nWg-jR-zeB"/>
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giW-dz-KkE">
-                                <rect key="frame" x="101" y="30" width="212" height="82"/>
+                                <rect key="frame" x="101" y="54" width="173" height="83"/>
                                 <state key="normal" image="logo_merge_onboard"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добро пожаловать!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPb-LG-pQw">
-                                <rect key="frame" x="77" y="139" width="261" height="28"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="28"/>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Давайте знакомиться." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sad-UM-KhL">
-                                <rect key="frame" x="97" y="181" width="218" height="19"/>
+                                <rect key="frame" x="97" y="206" width="179" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Kre-mK-ahc">
-                                <rect key="frame" x="168" y="592" width="78" height="37"/>
+                                <rect key="frame" x="168" y="658" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="currentPageIndicatorTintColor" red="0.27468991279602051" green="0.31743073463439941" blue="0.329414963722229" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tN2-sm-gDq">
-                                <rect key="frame" x="108" y="653" width="197" height="30"/>
+                                <rect key="frame" x="108" y="711" width="158" height="30"/>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                 <state key="normal" title="Положение и условие">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -80,9 +83,9 @@
                         <color key="backgroundColor" red="0.28633838891983032" green="0.56461352109909058" blue="0.64364451169967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cu1-0k-SH7" firstAttribute="trailing" secondItem="Mon-So-tWN" secondAttribute="trailing" constant="6" id="1G0-7m-OPb"/>
-                            <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="RPb-LG-pQw" secondAttribute="trailing" constant="76" id="1lp-wl-HH6"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="RPb-LG-pQw" secondAttribute="trailing" id="1lp-wl-HH6"/>
                             <constraint firstItem="cu1-0k-SH7" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="-7" id="39H-Qp-71o"/>
-                            <constraint firstItem="cu1-0k-SH7" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" constant="20" id="6Z3-UZ-PpZ"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" constant="34" id="6Z3-UZ-PpZ"/>
                             <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="Kre-mK-ahc" secondAttribute="trailing" constant="168" id="6xw-kl-IzL"/>
                             <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="tN2-sm-gDq" secondAttribute="trailing" constant="109" id="97V-u0-McC"/>
                             <constraint firstItem="X3C-AN-l7z" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" id="E91-AC-tZ3"/>
@@ -91,18 +94,18 @@
                             <constraint firstItem="sad-UM-KhL" firstAttribute="top" secondItem="RPb-LG-pQw" secondAttribute="bottom" constant="14" id="JKU-90-nQ4"/>
                             <constraint firstItem="Kre-mK-ahc" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="168" id="JWs-8H-phb"/>
                             <constraint firstItem="X3C-AN-l7z" firstAttribute="trailing" secondItem="Mon-So-tWN" secondAttribute="trailing" id="Mvf-mM-dnJ"/>
-                            <constraint firstItem="tN2-sm-gDq" firstAttribute="top" secondItem="Kre-mK-ahc" secondAttribute="bottom" constant="24" id="Mya-4L-bpe"/>
-                            <constraint firstItem="cu1-0k-SH7" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" constant="20" id="OzD-z9-wxS"/>
+                            <constraint firstItem="tN2-sm-gDq" firstAttribute="top" secondItem="Kre-mK-ahc" secondAttribute="bottom" constant="16" id="Mya-4L-bpe"/>
+                            <constraint firstItem="cu1-0k-SH7" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" constant="34" id="OzD-z9-wxS"/>
                             <constraint firstItem="cu1-0k-SH7" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="-7" id="Ppj-A8-PIr"/>
-                            <constraint firstItem="Mon-So-tWN" firstAttribute="bottom" secondItem="Kre-mK-ahc" secondAttribute="bottom" constant="107" id="S64-sj-KYb"/>
-                            <constraint firstItem="RPb-LG-pQw" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="77" id="SjG-2X-D9u"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="bottom" secondItem="Kre-mK-ahc" secondAttribute="bottom" constant="83" id="S64-sj-KYb"/>
+                            <constraint firstItem="RPb-LG-pQw" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" id="SjG-2X-D9u"/>
                             <constraint firstItem="cu1-0k-SH7" firstAttribute="top" secondItem="h53-m9-IIw" secondAttribute="top" id="UvW-LS-ToO"/>
                             <constraint firstItem="tN2-sm-gDq" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="108" id="VbJ-mk-b6Q"/>
                             <constraint firstItem="RPb-LG-pQw" firstAttribute="top" secondItem="giW-dz-KkE" secondAttribute="bottom" constant="27" id="W3K-tV-qNf"/>
-                            <constraint firstItem="Mon-So-tWN" firstAttribute="bottom" secondItem="tN2-sm-gDq" secondAttribute="bottom" constant="53" id="WTM-Sc-BQv"/>
-                            <constraint firstItem="X3C-AN-l7z" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" id="bJM-iP-D3V"/>
+                            <constraint firstItem="Mon-So-tWN" firstAttribute="bottom" secondItem="tN2-sm-gDq" secondAttribute="bottom" constant="37" id="WTM-Sc-BQv"/>
+                            <constraint firstItem="X3C-AN-l7z" firstAttribute="top" secondItem="sad-UM-KhL" secondAttribute="bottom" constant="45.333333333333343" id="aNa-TO-1IW"/>
+                            <constraint firstItem="X3C-AN-l7z" firstAttribute="bottom" secondItem="Mon-So-tWN" secondAttribute="bottom" constant="3" id="bJM-iP-D3V"/>
                             <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="giW-dz-KkE" secondAttribute="trailing" constant="101" id="gvW-oU-L5k"/>
-                            <constraint firstItem="X3C-AN-l7z" firstAttribute="top" secondItem="h53-m9-IIw" secondAttribute="top" constant="223" id="hC5-LE-tzl"/>
                             <constraint firstItem="sad-UM-KhL" firstAttribute="leading" secondItem="Mon-So-tWN" secondAttribute="leading" constant="97" id="l0n-4O-fd3"/>
                             <constraint firstItem="Mon-So-tWN" firstAttribute="trailing" secondItem="sad-UM-KhL" secondAttribute="trailing" constant="99" id="pi3-Ss-I8J"/>
                             <constraint firstItem="cu1-0k-SH7" firstAttribute="top" secondItem="h53-m9-IIw" secondAttribute="top" id="qAp-lE-8hB"/>
@@ -119,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGJ-gD-ykb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="155.07246376811597" y="106.79347826086958"/>
+            <point key="canvasLocation" x="153.62318840579712" y="105.97826086956522"/>
         </scene>
     </scenes>
     <resources>

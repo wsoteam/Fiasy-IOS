@@ -23,10 +23,9 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
-        
-        pageControl.subviews.forEach {
-            $0.transform = CGAffineTransform(scaleX: 2, y: 2)
-        }
+        pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+
+       
 
     }
     

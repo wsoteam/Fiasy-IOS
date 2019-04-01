@@ -1,20 +1,20 @@
 //
-//  ViewController.swift
+//  RecipesViewController.swift
 //  Fiasy
 //
-//  Created by Eugen Lipatov on 3/20/19.
+//  Created by Eugen Lipatov on 4/1/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class RecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
 
 
 }
-

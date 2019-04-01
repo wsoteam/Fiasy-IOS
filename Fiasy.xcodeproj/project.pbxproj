@@ -8,8 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		7D627C4715984EDA7F270A59 /* Pods_Fiasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45FB72486053B12D2FD2F798 /* Pods_Fiasy.framework */; };
+		F00E04B12251903800A25126 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E04B02251903800A25126 /* MainViewController.swift */; };
+		F00E04B32251937300A25126 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E04B22251937300A25126 /* MainStoryboard.storyboard */; };
+		F00E6DCC2251E8620055179E /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E6DCB2251E8620055179E /* TabBarController.storyboard */; };
+		F00E6DCE2251E89F0055179E /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E6DCD2251E89F0055179E /* MainTabBarVC.swift */; };
+		F00E6DD02251ED860055179E /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E6DCF2251ED860055179E /* MyViewController.swift */; };
+		F00E6DD22251EDA50055179E /* TrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E6DD12251EDA50055179E /* TrainerViewController.swift */; };
+		F00E6DD42251EDCA0055179E /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E6DD32251EDCA0055179E /* ArticlesViewController.swift */; };
+		F00E6DD62251EE070055179E /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E6DD52251EE070055179E /* RecipesViewController.swift */; };
+		F00E6DD82251F0400055179E /* MyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E6DD72251F0400055179E /* MyViewController.storyboard */; };
+		F00E6DDA2251F0E80055179E /* TrainerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E6DD92251F0E80055179E /* TrainerStoryboard.storyboard */; };
+		F00E6DDC2251F2530055179E /* ArticlesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E6DDB2251F2530055179E /* ArticlesStoryboard.storyboard */; };
+		F00E6DDE2251F3160055179E /* RecipesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E6DDD2251F3160055179E /* RecipesStoryboard.storyboard */; };
 		F0124F88224261B9001B9793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0124F87224261B9001B9793 /* AppDelegate.swift */; };
-		F0124F8A224261B9001B9793 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0124F89224261B9001B9793 /* ViewController.swift */; };
 		F0124F8D224261B9001B9793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0124F8B224261B9001B9793 /* Main.storyboard */; };
 		F0124F90224261B9001B9793 /* Fiasy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0124F8E224261B9001B9793 /* Fiasy.xcdatamodeld */; };
 		F0124F92224261BB001B9793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0124F91224261BB001B9793 /* Assets.xcassets */; };
@@ -37,15 +48,28 @@
 		F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */; };
 		F0231C7C224E4B720051DFBA /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0231C7A224E4B710051DFBA /* Slide.xib */; };
 		F0231C7D224E4B720051DFBA /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0231C7B224E4B710051DFBA /* Slide.swift */; };
+		F03E24362251747B00F338CD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */; };
+		F03E2438225174A200F338CD /* ForgotPasswordStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03E2437225174A200F338CD /* ForgotPasswordStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		325C3BB198C8532B5226CEA6 /* Pods-Fiasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.release.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.release.xcconfig"; sourceTree = "<group>"; };
 		45FB72486053B12D2FD2F798 /* Pods_Fiasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8613612C78CE99AC4A2C0FA /* Pods-Fiasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.debug.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.debug.xcconfig"; sourceTree = "<group>"; };
+		F00E04B02251903800A25126 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F00E04B22251937300A25126 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		F00E6DCB2251E8620055179E /* TabBarController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBarController.storyboard; sourceTree = "<group>"; };
+		F00E6DCD2251E89F0055179E /* MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		F00E6DCF2251ED860055179E /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		F00E6DD12251EDA50055179E /* TrainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerViewController.swift; sourceTree = "<group>"; };
+		F00E6DD32251EDCA0055179E /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		F00E6DD52251EE070055179E /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
+		F00E6DD72251F0400055179E /* MyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyViewController.storyboard; sourceTree = "<group>"; };
+		F00E6DD92251F0E80055179E /* TrainerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrainerStoryboard.storyboard; sourceTree = "<group>"; };
+		F00E6DDB2251F2530055179E /* ArticlesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticlesStoryboard.storyboard; sourceTree = "<group>"; };
+		F00E6DDD2251F3160055179E /* RecipesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipesStoryboard.storyboard; sourceTree = "<group>"; };
 		F0124F84224261B9001B9793 /* Fiasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0124F87224261B9001B9793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0124F89224261B9001B9793 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F0124F8C224261B9001B9793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0124F8F224261B9001B9793 /* Fiasy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fiasy.xcdatamodel; sourceTree = "<group>"; };
 		F0124F91224261BB001B9793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +99,8 @@
 		F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		F0231C7A224E4B710051DFBA /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		F0231C7B224E4B710051DFBA /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		F03E2437225174A200F338CD /* ForgotPasswordStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPasswordStoryBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +159,6 @@
 				F01748A4224A157000E2E646 /* ViewControllers */,
 				F01748A1224A14BE00E2E646 /* Storyboards */,
 				F0124F87224261B9001B9793 /* AppDelegate.swift */,
-				F0124F89224261B9001B9793 /* ViewController.swift */,
 				F0124F8B224261B9001B9793 /* Main.storyboard */,
 				F0124F91224261BB001B9793 /* Assets.xcassets */,
 				F0124F93224261BB001B9793 /* LaunchScreen.storyboard */,
@@ -146,11 +171,18 @@
 		F01748A1224A14BE00E2E646 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				F00E6DCB2251E8620055179E /* TabBarController.storyboard */,
 				F01748C8224A222300E2E646 /* PremiumStoryBoard.storyboard */,
 				F01748A2224A156900E2E646 /* TutorialStoryboard.storyboard */,
 				F01748A7224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard */,
 				F01748AD224A169200E2E646 /* RegestrationStoryboard.storyboard */,
 				F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */,
+				F03E2437225174A200F338CD /* ForgotPasswordStoryBoard.storyboard */,
+				F00E04B22251937300A25126 /* MainStoryboard.storyboard */,
+				F00E6DD72251F0400055179E /* MyViewController.storyboard */,
+				F00E6DD92251F0E80055179E /* TrainerStoryboard.storyboard */,
+				F00E6DDB2251F2530055179E /* ArticlesStoryboard.storyboard */,
+				F00E6DDD2251F3160055179E /* RecipesStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -158,11 +190,18 @@
 		F01748A4224A157000E2E646 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F00E6DCD2251E89F0055179E /* MainTabBarVC.swift */,
 				F01748A5224A158A00E2E646 /* TutorialViewController.swift */,
 				F01748A9224A15C200E2E646 /* FirstViewController.swift */,
 				F01748AB224A167600E2E646 /* RegestrationViewController.swift */,
 				F01748CA224A225200E2E646 /* PremiumViewController.swift */,
 				F01748CD224A38FF00E2E646 /* LoginViewController.swift */,
+				F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */,
+				F00E04B02251903800A25126 /* MainViewController.swift */,
+				F00E6DCF2251ED860055179E /* MyViewController.swift */,
+				F00E6DD12251EDA50055179E /* TrainerViewController.swift */,
+				F00E6DD32251EDCA0055179E /* ArticlesViewController.swift */,
+				F00E6DD52251EE070055179E /* RecipesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -270,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00E6DCC2251E8620055179E /* TabBarController.storyboard in Resources */,
 				F01748A8224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard in Resources */,
 				F01748BE224A1ED000E2E646 /* Roboto-Italic.ttf in Resources */,
 				F01748BF224A1ED000E2E646 /* Roboto-Bold.ttf in Resources */,
@@ -277,19 +317,25 @@
 				F01748C9224A222300E2E646 /* PremiumStoryBoard.storyboard in Resources */,
 				F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */,
 				F01748AE224A169200E2E646 /* RegestrationStoryboard.storyboard in Resources */,
+				F00E6DDC2251F2530055179E /* ArticlesStoryboard.storyboard in Resources */,
 				F01748C5224A1ED000E2E646 /* Roboto-Light.ttf in Resources */,
 				F01748A3224A156900E2E646 /* TutorialStoryboard.storyboard in Resources */,
 				F01748C4224A1ED000E2E646 /* Roboto-BlackItalic.ttf in Resources */,
 				F0124F92224261BB001B9793 /* Assets.xcassets in Resources */,
 				F01748C1224A1ED000E2E646 /* Roboto-Thin.ttf in Resources */,
+				F00E04B32251937300A25126 /* MainStoryboard.storyboard in Resources */,
 				F01748C6224A1ED000E2E646 /* Roboto-LightItalic.ttf in Resources */,
 				F01748C0224A1ED000E2E646 /* Roboto-Medium.ttf in Resources */,
+				F00E6DDE2251F3160055179E /* RecipesStoryboard.storyboard in Resources */,
+				F03E2438225174A200F338CD /* ForgotPasswordStoryBoard.storyboard in Resources */,
 				F01748BC224A1ED000E2E646 /* Roboto-BoldItalic.ttf in Resources */,
 				F0231C7C224E4B720051DFBA /* Slide.xib in Resources */,
 				F01748C3224A1ED000E2E646 /* Roboto-Black.ttf in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
+				F00E6DD82251F0400055179E /* MyViewController.storyboard in Resources */,
+				F00E6DDA2251F0E80055179E /* TrainerStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,13 +403,19 @@
 			files = (
 				F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */,
 				F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */,
-				F0124F8A224261B9001B9793 /* ViewController.swift in Sources */,
 				F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */,
+				F00E6DD42251EDCA0055179E /* ArticlesViewController.swift in Sources */,
 				F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */,
 				F0124F90224261B9001B9793 /* Fiasy.xcdatamodeld in Sources */,
+				F03E24362251747B00F338CD /* ForgotPasswordViewController.swift in Sources */,
 				F0231C7D224E4B720051DFBA /* Slide.swift in Sources */,
 				F01748A6224A158A00E2E646 /* TutorialViewController.swift in Sources */,
+				F00E6DD22251EDA50055179E /* TrainerViewController.swift in Sources */,
+				F00E6DCE2251E89F0055179E /* MainTabBarVC.swift in Sources */,
 				F0124F88224261B9001B9793 /* AppDelegate.swift in Sources */,
+				F00E6DD02251ED860055179E /* MyViewController.swift in Sources */,
+				F00E6DD62251EE070055179E /* RecipesViewController.swift in Sources */,
+				F00E04B12251903800A25126 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 75385TCW2L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Fiasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -532,7 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 75385TCW2L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Fiasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
