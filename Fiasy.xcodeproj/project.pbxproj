@@ -48,6 +48,10 @@
 		F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */; };
 		F0231C7C224E4B720051DFBA /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0231C7A224E4B710051DFBA /* Slide.xib */; };
 		F0231C7D224E4B720051DFBA /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0231C7B224E4B710051DFBA /* Slide.swift */; };
+		F0293C9A2253436E00565FE4 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F0293C972253436E00565FE4 /* ObjectDetector.mlmodel */; };
+		F0293C9B2253436E00565FE4 /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0293C982253436E00565FE4 /* VisionObjectRecognitionViewController.swift */; };
+		F0293C9C2253436E00565FE4 /* Breakfast Finder Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F0293C992253436E00565FE4 /* Breakfast Finder Logo.png */; };
+		F0293C9E2253440C00565FE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0293C9D2253440B00565FE4 /* ViewController.swift */; };
 		F03E24362251747B00F338CD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */; };
 		F03E2438225174A200F338CD /* ForgotPasswordStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03E2437225174A200F338CD /* ForgotPasswordStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
@@ -99,6 +103,10 @@
 		F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
 		F0231C7A224E4B710051DFBA /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		F0231C7B224E4B710051DFBA /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		F0293C972253436E00565FE4 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectDetector.mlmodel; path = Fiasy/FoodRecognize/ObjectDetector.mlmodel; sourceTree = SOURCE_ROOT; };
+		F0293C982253436E00565FE4 /* VisionObjectRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VisionObjectRecognitionViewController.swift; path = Fiasy/FoodRecognize/VisionObjectRecognitionViewController.swift; sourceTree = SOURCE_ROOT; };
+		F0293C992253436E00565FE4 /* Breakfast Finder Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Breakfast Finder Logo.png"; path = "Fiasy/FoodRecognize/Breakfast Finder Logo.png"; sourceTree = SOURCE_ROOT; };
+		F0293C9D2253440B00565FE4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Fiasy/FoodRecognize/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F03E2437225174A200F338CD /* ForgotPasswordStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPasswordStoryBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +236,7 @@
 		F0231C77224E4B070051DFBA /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F0293C962253435600565FE4 /* AR */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -247,6 +256,17 @@
 				F0231C7A224E4B710051DFBA /* Slide.xib */,
 			);
 			path = SlideView;
+			sourceTree = "<group>";
+		};
+		F0293C962253435600565FE4 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				F0293C992253436E00565FE4 /* Breakfast Finder Logo.png */,
+				F0293C972253436E00565FE4 /* ObjectDetector.mlmodel */,
+				F0293C982253436E00565FE4 /* VisionObjectRecognitionViewController.swift */,
+				F0293C9D2253440B00565FE4 /* ViewController.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +337,7 @@
 				F01748C9224A222300E2E646 /* PremiumStoryBoard.storyboard in Resources */,
 				F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */,
 				F01748AE224A169200E2E646 /* RegestrationStoryboard.storyboard in Resources */,
+				F0293C9C2253436E00565FE4 /* Breakfast Finder Logo.png in Resources */,
 				F00E6DDC2251F2530055179E /* ArticlesStoryboard.storyboard in Resources */,
 				F01748C5224A1ED000E2E646 /* Roboto-Light.ttf in Resources */,
 				F01748A3224A156900E2E646 /* TutorialStoryboard.storyboard in Resources */,
@@ -402,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */,
+				F0293C9B2253436E00565FE4 /* VisionObjectRecognitionViewController.swift in Sources */,
 				F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */,
 				F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */,
 				F00E6DD42251EDCA0055179E /* ArticlesViewController.swift in Sources */,
@@ -412,10 +434,12 @@
 				F01748A6224A158A00E2E646 /* TutorialViewController.swift in Sources */,
 				F00E6DD22251EDA50055179E /* TrainerViewController.swift in Sources */,
 				F00E6DCE2251E89F0055179E /* MainTabBarVC.swift in Sources */,
+				F0293C9E2253440C00565FE4 /* ViewController.swift in Sources */,
 				F0124F88224261B9001B9793 /* AppDelegate.swift in Sources */,
 				F00E6DD02251ED860055179E /* MyViewController.swift in Sources */,
 				F00E6DD62251EE070055179E /* RecipesViewController.swift in Sources */,
 				F00E04B12251903800A25126 /* MainViewController.swift in Sources */,
+				F0293C9A2253436E00565FE4 /* ObjectDetector.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +588,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G79VQLR3P8;
 				INFOPLIST_FILE = Fiasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -584,7 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G79VQLR3P8;
 				INFOPLIST_FILE = Fiasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

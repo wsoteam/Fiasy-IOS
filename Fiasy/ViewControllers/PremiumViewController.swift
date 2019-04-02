@@ -92,7 +92,7 @@ class PremiumViewController: UIViewController {
         recipeVC.tabBarItem = recipeTabTab
         
         initialViewController.tabbarViewControllers = [myVC, trainerVC,checkInVc,articlesVc,recipeVC]
-
+initialViewController.navigationController?.navigationBar.isHidden = true
         let tabBarstoryboard = UIStoryboard(name: "TabBarController", bundle: nil)
         let navigationController = tabBarstoryboard.instantiateViewController(withIdentifier: "TabbarNavigationController") as! UINavigationController
         navigationController.isNavigationBarHidden = false
