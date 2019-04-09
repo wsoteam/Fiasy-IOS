@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D627C4715984EDA7F270A59 /* Pods_Fiasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45FB72486053B12D2FD2F798 /* Pods_Fiasy.framework */; };
+		72DA4F2403DA0E835D96D957 /* Pods_Fiasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBF4E95AB3377B64154ACC4 /* Pods_Fiasy.framework */; };
 		F00E04B12251903800A25126 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E04B02251903800A25126 /* MainViewController.swift */; };
 		F00E04B32251937300A25126 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E04B22251937300A25126 /* MainStoryboard.storyboard */; };
 		F00E6DCC2251E8620055179E /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E6DCB2251E8620055179E /* TabBarController.storyboard */; };
@@ -54,12 +54,44 @@
 		F0293C9E2253440C00565FE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0293C9D2253440B00565FE4 /* ViewController.swift */; };
 		F03E24362251747B00F338CD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */; };
 		F03E2438225174A200F338CD /* ForgotPasswordStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03E2437225174A200F338CD /* ForgotPasswordStoryBoard.storyboard */; };
+		F04EF0B3225BCC3800A13005 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04EF0B2225BCC3800A13005 /* PrivacyPolicyViewController.swift */; };
+		F04EF0B5225BCC6800A13005 /* PrivacyPolicyStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F04EF0B4225BCC6800A13005 /* PrivacyPolicyStoryBoard.storyboard */; };
+		F04EF0B7225BD12400A13005 /* RegistrationProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04EF0B6225BD12400A13005 /* RegistrationProfileViewController.swift */; };
+		F04EF0B9225BD14000A13005 /* RegistrationProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F04EF0B8225BD14000A13005 /* RegistrationProfileStoryboard.storyboard */; };
+		F06C3180225CEFF900FDDC34 /* CustomPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C317F225CEFF900FDDC34 /* CustomPagingView.swift */; };
+		F06C3186225CF05D00FDDC34 /* PagingMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F06C3184225CF05C00FDDC34 /* PagingMainView.xib */; };
+		F06C3187225CF05D00FDDC34 /* PagingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C3185225CF05D00FDDC34 /* PagingMainView.swift */; };
+		F06C318B225CF09B00FDDC34 /* SecondMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F06C3189225CF09B00FDDC34 /* SecondMainCell.xib */; };
+		F06C318C225CF09B00FDDC34 /* SecondMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C318A225CF09B00FDDC34 /* SecondMainCell.swift */; };
+		F06C3190225CF12700FDDC34 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C318E225CF12700FDDC34 /* CalendarItem.swift */; };
+		F06C3191225CF12700FDDC34 /* SecondMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C318F225CF12700FDDC34 /* SecondMainViewController.swift */; };
+		F06C3196225CF21100FDDC34 /* UIFont+AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C3195225CF21100FDDC34 /* UIFont+AppFont.swift */; };
+		F06C319B225CF25E00FDDC34 /* UIView+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C3199225CF25D00FDDC34 /* UIView+Attributes.swift */; };
+		F06C319C225CF25E00FDDC34 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C319A225CF25D00FDDC34 /* UIView+Nib.swift */; };
+		F06C319E225CF28000FDDC34 /* UITableView + Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C319D225CF28000FDDC34 /* UITableView + Scroll.swift */; };
+		F06C31A2225CF2D800FDDC34 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C319F225CF2D800FDDC34 /* UIView+constraints.swift */; };
+		F06C31A3225CF2D800FDDC34 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C31A0225CF2D800FDDC34 /* Display.swift */; };
+		F06C31A4225CF2D800FDDC34 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C31A1225CF2D800FDDC34 /* DateFormatters.swift */; };
+		F06FB400225C076100295A92 /* RadioCheckboxBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB3FE225C076100295A92 /* RadioCheckboxBaseButton.swift */; };
+		F06FB401225C076100295A92 /* RadioCheckboxBaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB3FF225C076100295A92 /* RadioCheckboxBaseContainer.swift */; };
+		F06FB407225C076B00295A92 /* CheckboxButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB402225C076A00295A92 /* CheckboxButtonContainerView.swift */; };
+		F06FB408225C076B00295A92 /* CheckBoxColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB403225C076A00295A92 /* CheckBoxColor.swift */; };
+		F06FB409225C076B00295A92 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB404225C076B00295A92 /* CheckboxButton.swift */; };
+		F06FB40A225C076B00295A92 /* CheckboxButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB405225C076B00295A92 /* CheckboxButtonContainer.swift */; };
+		F06FB40B225C076B00295A92 /* CheckboxLineStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB406225C076B00295A92 /* CheckboxLineStyle.swift */; };
+		F06FB411225C077400295A92 /* RadioButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB40C225C077200295A92 /* RadioButtonContainer.swift */; };
+		F06FB412225C077400295A92 /* RadioButtonCircleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB40D225C077200295A92 /* RadioButtonCircleStyle.swift */; };
+		F06FB413225C077400295A92 /* RadioButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB40E225C077300295A92 /* RadioButtonColor.swift */; };
+		F06FB414225C077400295A92 /* RadioButtonContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB40F225C077300295A92 /* RadioButtonContainerView.swift */; };
+		F06FB415225C077400295A92 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB410225C077400295A92 /* RadioButton.swift */; };
+		F06FB419225C7CFE00295A92 /* RouterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB418225C7CFE00295A92 /* RouterManager.swift */; };
+		F06FB41C225C7D6D00295A92 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB41B225C7D6D00295A92 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		325C3BB198C8532B5226CEA6 /* Pods-Fiasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.release.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.release.xcconfig"; sourceTree = "<group>"; };
-		45FB72486053B12D2FD2F798 /* Pods_Fiasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8613612C78CE99AC4A2C0FA /* Pods-Fiasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.debug.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.debug.xcconfig"; sourceTree = "<group>"; };
+		3E09325AEF0935BC223032BC /* Pods-Fiasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.debug.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.debug.xcconfig"; sourceTree = "<group>"; };
+		6DBF4E95AB3377B64154ACC4 /* Pods_Fiasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6767781632F4C67DE293619 /* Pods-Fiasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.release.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.release.xcconfig"; sourceTree = "<group>"; };
 		F00E04B02251903800A25126 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F00E04B22251937300A25126 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F00E6DCB2251E8620055179E /* TabBarController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBarController.storyboard; sourceTree = "<group>"; };
@@ -109,6 +141,38 @@
 		F0293C9D2253440B00565FE4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Fiasy/FoodRecognize/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F03E2437225174A200F338CD /* ForgotPasswordStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPasswordStoryBoard.storyboard; sourceTree = "<group>"; };
+		F04EF0B2225BCC3800A13005 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		F04EF0B4225BCC6800A13005 /* PrivacyPolicyStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivacyPolicyStoryBoard.storyboard; sourceTree = "<group>"; };
+		F04EF0B6225BD12400A13005 /* RegistrationProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationProfileViewController.swift; sourceTree = "<group>"; };
+		F04EF0B8225BD14000A13005 /* RegistrationProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationProfileStoryboard.storyboard; sourceTree = "<group>"; };
+		F06C317F225CEFF900FDDC34 /* CustomPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPagingView.swift; sourceTree = "<group>"; };
+		F06C3184225CF05C00FDDC34 /* PagingMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingMainView.xib; sourceTree = "<group>"; };
+		F06C3185225CF05D00FDDC34 /* PagingMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMainView.swift; sourceTree = "<group>"; };
+		F06C3189225CF09B00FDDC34 /* SecondMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondMainCell.xib; sourceTree = "<group>"; };
+		F06C318A225CF09B00FDDC34 /* SecondMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondMainCell.swift; sourceTree = "<group>"; };
+		F06C318E225CF12700FDDC34 /* CalendarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
+		F06C318F225CF12700FDDC34 /* SecondMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondMainViewController.swift; sourceTree = "<group>"; };
+		F06C3195225CF21100FDDC34 /* UIFont+AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+AppFont.swift"; sourceTree = "<group>"; };
+		F06C3199225CF25D00FDDC34 /* UIView+Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Attributes.swift"; sourceTree = "<group>"; };
+		F06C319A225CF25D00FDDC34 /* UIView+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
+		F06C319D225CF28000FDDC34 /* UITableView + Scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView + Scroll.swift"; sourceTree = "<group>"; };
+		F06C319F225CF2D800FDDC34 /* UIView+constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+constraints.swift"; path = "Fiasy/Helpers/UIView+constraints.swift"; sourceTree = SOURCE_ROOT; };
+		F06C31A0225CF2D800FDDC34 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Display.swift; path = Fiasy/Helpers/Display.swift; sourceTree = SOURCE_ROOT; };
+		F06C31A1225CF2D800FDDC34 /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateFormatters.swift; path = Fiasy/Helpers/DateFormatters.swift; sourceTree = SOURCE_ROOT; };
+		F06FB3FE225C076100295A92 /* RadioCheckboxBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioCheckboxBaseButton.swift; sourceTree = "<group>"; };
+		F06FB3FF225C076100295A92 /* RadioCheckboxBaseContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioCheckboxBaseContainer.swift; sourceTree = "<group>"; };
+		F06FB402225C076A00295A92 /* CheckboxButtonContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButtonContainerView.swift; sourceTree = "<group>"; };
+		F06FB403225C076A00295A92 /* CheckBoxColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxColor.swift; sourceTree = "<group>"; };
+		F06FB404225C076B00295A92 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		F06FB405225C076B00295A92 /* CheckboxButtonContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButtonContainer.swift; sourceTree = "<group>"; };
+		F06FB406225C076B00295A92 /* CheckboxLineStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxLineStyle.swift; sourceTree = "<group>"; };
+		F06FB40C225C077200295A92 /* RadioButtonContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonContainer.swift; sourceTree = "<group>"; };
+		F06FB40D225C077200295A92 /* RadioButtonCircleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonCircleStyle.swift; sourceTree = "<group>"; };
+		F06FB40E225C077300295A92 /* RadioButtonColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonColor.swift; sourceTree = "<group>"; };
+		F06FB40F225C077300295A92 /* RadioButtonContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonContainerView.swift; sourceTree = "<group>"; };
+		F06FB410225C077400295A92 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		F06FB418225C7CFE00295A92 /* RouterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterManager.swift; sourceTree = "<group>"; };
+		F06FB41B225C7D6D00295A92 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,28 +180,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D627C4715984EDA7F270A59 /* Pods_Fiasy.framework in Frameworks */,
+				72DA4F2403DA0E835D96D957 /* Pods_Fiasy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		531697BFD6EDE9BF38CECE99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DBF4E95AB3377B64154ACC4 /* Pods_Fiasy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		860D5CEF4359A95B9B3E8B75 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A8613612C78CE99AC4A2C0FA /* Pods-Fiasy.debug.xcconfig */,
-				325C3BB198C8532B5226CEA6 /* Pods-Fiasy.release.xcconfig */,
+				3E09325AEF0935BC223032BC /* Pods-Fiasy.debug.xcconfig */,
+				B6767781632F4C67DE293619 /* Pods-Fiasy.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		A9344C9DBF093F1DE482A10F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				45FB72486053B12D2FD2F798 /* Pods_Fiasy.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F0124F7B224261B9001B9793 = {
@@ -146,7 +210,7 @@
 				F0124F86224261B9001B9793 /* Fiasy */,
 				F0124F85224261B9001B9793 /* Products */,
 				860D5CEF4359A95B9B3E8B75 /* Pods */,
-				A9344C9DBF093F1DE482A10F /* Frameworks */,
+				531697BFD6EDE9BF38CECE99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +225,8 @@
 		F0124F86224261B9001B9793 /* Fiasy */ = {
 			isa = PBXGroup;
 			children = (
+				F06C3192225CF1CD00FDDC34 /* Helpers */,
+				F06FB416225C7CB900295A92 /* Managers */,
 				F0231C78224E4B280051DFBA /* Views */,
 				F0231C77224E4B070051DFBA /* Libs */,
 				F01748AF224A1EB600E2E646 /* Fonts */,
@@ -191,6 +257,8 @@
 				F00E6DD92251F0E80055179E /* TrainerStoryboard.storyboard */,
 				F00E6DDB2251F2530055179E /* ArticlesStoryboard.storyboard */,
 				F00E6DDD2251F3160055179E /* RecipesStoryboard.storyboard */,
+				F04EF0B4225BCC6800A13005 /* PrivacyPolicyStoryBoard.storyboard */,
+				F04EF0B8225BD14000A13005 /* RegistrationProfileStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -198,6 +266,8 @@
 		F01748A4224A157000E2E646 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F06C318D225CF11100FDDC34 /* MainViewController */,
+				F06FB41A225C7D5100295A92 /* BaseViewController */,
 				F00E6DCD2251E89F0055179E /* MainTabBarVC.swift */,
 				F01748A5224A158A00E2E646 /* TutorialViewController.swift */,
 				F01748A9224A15C200E2E646 /* FirstViewController.swift */,
@@ -210,6 +280,8 @@
 				F00E6DD12251EDA50055179E /* TrainerViewController.swift */,
 				F00E6DD32251EDCA0055179E /* ArticlesViewController.swift */,
 				F00E6DD52251EE070055179E /* RecipesViewController.swift */,
+				F04EF0B2225BCC3800A13005 /* PrivacyPolicyViewController.swift */,
+				F04EF0B6225BD12400A13005 /* RegistrationProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -236,6 +308,7 @@
 		F0231C77224E4B070051DFBA /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F06FB3FD225C06D100295A92 /* RadioButton */,
 				F0293C962253435600565FE4 /* AR */,
 			);
 			path = Libs;
@@ -244,6 +317,9 @@
 		F0231C78224E4B280051DFBA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F06C3182225CF03500FDDC34 /* Main */,
+				F06C3181225CF01800FDDC34 /* PagingMainView */,
+				F06C317E225CEFE100FDDC34 /* CustomPagingView */,
 				F0231C79224E4B3B0051DFBA /* SlideView */,
 			);
 			path = Views;
@@ -269,6 +345,147 @@
 			path = AR;
 			sourceTree = "<group>";
 		};
+		F06C317E225CEFE100FDDC34 /* CustomPagingView */ = {
+			isa = PBXGroup;
+			children = (
+				F06C317F225CEFF900FDDC34 /* CustomPagingView.swift */,
+			);
+			path = CustomPagingView;
+			sourceTree = "<group>";
+		};
+		F06C3181225CF01800FDDC34 /* PagingMainView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PagingMainView;
+			sourceTree = "<group>";
+		};
+		F06C3182225CF03500FDDC34 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F06C3188225CF07D00FDDC34 /* SecondMainCell */,
+				F06C3183225CF03F00FDDC34 /* MainCell */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F06C3183225CF03F00FDDC34 /* MainCell */ = {
+			isa = PBXGroup;
+			children = (
+				F06C3185225CF05D00FDDC34 /* PagingMainView.swift */,
+				F06C3184225CF05C00FDDC34 /* PagingMainView.xib */,
+			);
+			path = MainCell;
+			sourceTree = "<group>";
+		};
+		F06C3188225CF07D00FDDC34 /* SecondMainCell */ = {
+			isa = PBXGroup;
+			children = (
+				F06C318A225CF09B00FDDC34 /* SecondMainCell.swift */,
+				F06C3189225CF09B00FDDC34 /* SecondMainCell.xib */,
+			);
+			path = SecondMainCell;
+			sourceTree = "<group>";
+		};
+		F06C318D225CF11100FDDC34 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F06C318E225CF12700FDDC34 /* CalendarItem.swift */,
+				F06C318F225CF12700FDDC34 /* SecondMainViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		F06C3192225CF1CD00FDDC34 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F06C3193225CF1ED00FDDC34 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F06C3193225CF1ED00FDDC34 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F06C31A1225CF2D800FDDC34 /* DateFormatters.swift */,
+				F06C31A0225CF2D800FDDC34 /* Display.swift */,
+				F06C319F225CF2D800FDDC34 /* UIView+constraints.swift */,
+				F06C3198225CF24100FDDC34 /* UIView */,
+				F06C3197225CF22500FDDC34 /* UITableView */,
+				F06C3194225CF1F300FDDC34 /* UIFont */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F06C3194225CF1F300FDDC34 /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				F06C3195225CF21100FDDC34 /* UIFont+AppFont.swift */,
+			);
+			path = UIFont;
+			sourceTree = "<group>";
+		};
+		F06C3197225CF22500FDDC34 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				F06C319D225CF28000FDDC34 /* UITableView + Scroll.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		F06C3198225CF24100FDDC34 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				F06C3199225CF25D00FDDC34 /* UIView+Attributes.swift */,
+				F06C319A225CF25D00FDDC34 /* UIView+Nib.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		F06FB3FD225C06D100295A92 /* RadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				F06FB3FE225C076100295A92 /* RadioCheckboxBaseButton.swift */,
+				F06FB404225C076B00295A92 /* CheckboxButton.swift */,
+				F06FB405225C076B00295A92 /* CheckboxButtonContainer.swift */,
+				F06FB410225C077400295A92 /* RadioButton.swift */,
+				F06FB40D225C077200295A92 /* RadioButtonCircleStyle.swift */,
+				F06FB40E225C077300295A92 /* RadioButtonColor.swift */,
+				F06FB40C225C077200295A92 /* RadioButtonContainer.swift */,
+				F06FB40F225C077300295A92 /* RadioButtonContainerView.swift */,
+				F06FB402225C076A00295A92 /* CheckboxButtonContainerView.swift */,
+				F06FB403225C076A00295A92 /* CheckBoxColor.swift */,
+				F06FB406225C076B00295A92 /* CheckboxLineStyle.swift */,
+				F06FB3FF225C076100295A92 /* RadioCheckboxBaseContainer.swift */,
+			);
+			path = RadioButton;
+			sourceTree = "<group>";
+		};
+		F06FB416225C7CB900295A92 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F06FB417225C7CC700295A92 /* RouterManager */,
+			);
+			name = Managers;
+			path = Views/Managers;
+			sourceTree = "<group>";
+		};
+		F06FB417225C7CC700295A92 /* RouterManager */ = {
+			isa = PBXGroup;
+			children = (
+				F06FB418225C7CFE00295A92 /* RouterManager.swift */,
+			);
+			path = RouterManager;
+			sourceTree = "<group>";
+		};
+		F06FB41A225C7D5100295A92 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F06FB41B225C7D6D00295A92 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,11 +493,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0124F99224261BB001B9793 /* Build configuration list for PBXNativeTarget "Fiasy" */;
 			buildPhases = (
-				D21E1AF1C16F57BD50729C63 /* [CP] Check Pods Manifest.lock */,
+				70CB13640AA3E83198460BD0 /* [CP] Check Pods Manifest.lock */,
 				F0124F80224261B9001B9793 /* Sources */,
 				F0124F81224261B9001B9793 /* Frameworks */,
 				F0124F82224261B9001B9793 /* Resources */,
-				C56224B9911C9CBA714B313A /* [CP] Embed Pods Frameworks */,
+				39D2B100099211191B4346C5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,6 +550,7 @@
 				F01748A8224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard in Resources */,
 				F01748BE224A1ED000E2E646 /* Roboto-Italic.ttf in Resources */,
 				F01748BF224A1ED000E2E646 /* Roboto-Bold.ttf in Resources */,
+				F06C318B225CF09B00FDDC34 /* SecondMainCell.xib in Resources */,
 				F01748BD224A1ED000E2E646 /* Roboto-Regular.ttf in Resources */,
 				F01748C9224A222300E2E646 /* PremiumStoryBoard.storyboard in Resources */,
 				F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */,
@@ -342,7 +560,9 @@
 				F01748C5224A1ED000E2E646 /* Roboto-Light.ttf in Resources */,
 				F01748A3224A156900E2E646 /* TutorialStoryboard.storyboard in Resources */,
 				F01748C4224A1ED000E2E646 /* Roboto-BlackItalic.ttf in Resources */,
+				F06C3186225CF05D00FDDC34 /* PagingMainView.xib in Resources */,
 				F0124F92224261BB001B9793 /* Assets.xcassets in Resources */,
+				F04EF0B5225BCC6800A13005 /* PrivacyPolicyStoryBoard.storyboard in Resources */,
 				F01748C1224A1ED000E2E646 /* Roboto-Thin.ttf in Resources */,
 				F00E04B32251937300A25126 /* MainStoryboard.storyboard in Resources */,
 				F01748C6224A1ED000E2E646 /* Roboto-LightItalic.ttf in Resources */,
@@ -352,6 +572,7 @@
 				F01748BC224A1ED000E2E646 /* Roboto-BoldItalic.ttf in Resources */,
 				F0231C7C224E4B720051DFBA /* Slide.xib in Resources */,
 				F01748C3224A1ED000E2E646 /* Roboto-Black.ttf in Resources */,
+				F04EF0B9225BD14000A13005 /* RegistrationProfileStoryboard.storyboard in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
@@ -363,7 +584,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C56224B9911C9CBA714B313A /* [CP] Embed Pods Frameworks */ = {
+		39D2B100099211191B4346C5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,6 +596,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework",
+				"${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -385,6 +608,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBCircularProgressBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parchment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -393,7 +618,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fiasy/Pods-Fiasy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D21E1AF1C16F57BD50729C63 /* [CP] Check Pods Manifest.lock */ = {
+		70CB13640AA3E83198460BD0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -422,24 +647,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F06C319B225CF25E00FDDC34 /* UIView+Attributes.swift in Sources */,
 				F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */,
+				F06FB419225C7CFE00295A92 /* RouterManager.swift in Sources */,
 				F0293C9B2253436E00565FE4 /* VisionObjectRecognitionViewController.swift in Sources */,
 				F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */,
+				F06FB414225C077400295A92 /* RadioButtonContainerView.swift in Sources */,
+				F06FB411225C077400295A92 /* RadioButtonContainer.swift in Sources */,
+				F06FB407225C076B00295A92 /* CheckboxButtonContainerView.swift in Sources */,
+				F06FB41C225C7D6D00295A92 /* BaseViewController.swift in Sources */,
 				F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */,
 				F00E6DD42251EDCA0055179E /* ArticlesViewController.swift in Sources */,
+				F06C3190225CF12700FDDC34 /* CalendarItem.swift in Sources */,
+				F06FB40B225C076B00295A92 /* CheckboxLineStyle.swift in Sources */,
+				F04EF0B7225BD12400A13005 /* RegistrationProfileViewController.swift in Sources */,
+				F06C319E225CF28000FDDC34 /* UITableView + Scroll.swift in Sources */,
+				F06FB401225C076100295A92 /* RadioCheckboxBaseContainer.swift in Sources */,
+				F06FB412225C077400295A92 /* RadioButtonCircleStyle.swift in Sources */,
+				F06C318C225CF09B00FDDC34 /* SecondMainCell.swift in Sources */,
+				F06C3191225CF12700FDDC34 /* SecondMainViewController.swift in Sources */,
 				F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */,
+				F06C3180225CEFF900FDDC34 /* CustomPagingView.swift in Sources */,
+				F06C319C225CF25E00FDDC34 /* UIView+Nib.swift in Sources */,
 				F0124F90224261B9001B9793 /* Fiasy.xcdatamodeld in Sources */,
 				F03E24362251747B00F338CD /* ForgotPasswordViewController.swift in Sources */,
 				F0231C7D224E4B720051DFBA /* Slide.swift in Sources */,
+				F06FB408225C076B00295A92 /* CheckBoxColor.swift in Sources */,
 				F01748A6224A158A00E2E646 /* TutorialViewController.swift in Sources */,
 				F00E6DD22251EDA50055179E /* TrainerViewController.swift in Sources */,
 				F00E6DCE2251E89F0055179E /* MainTabBarVC.swift in Sources */,
 				F0293C9E2253440C00565FE4 /* ViewController.swift in Sources */,
+				F06C31A4225CF2D800FDDC34 /* DateFormatters.swift in Sources */,
 				F0124F88224261B9001B9793 /* AppDelegate.swift in Sources */,
+				F06C31A2225CF2D800FDDC34 /* UIView+constraints.swift in Sources */,
+				F04EF0B3225BCC3800A13005 /* PrivacyPolicyViewController.swift in Sources */,
+				F06FB415225C077400295A92 /* RadioButton.swift in Sources */,
+				F06FB400225C076100295A92 /* RadioCheckboxBaseButton.swift in Sources */,
+				F06FB409225C076B00295A92 /* CheckboxButton.swift in Sources */,
 				F00E6DD02251ED860055179E /* MyViewController.swift in Sources */,
 				F00E6DD62251EE070055179E /* RecipesViewController.swift in Sources */,
 				F00E04B12251903800A25126 /* MainViewController.swift in Sources */,
+				F06FB413225C077400295A92 /* RadioButtonColor.swift in Sources */,
+				F06C31A3225CF2D800FDDC34 /* Display.swift in Sources */,
+				F06C3187225CF05D00FDDC34 /* PagingMainView.swift in Sources */,
+				F06FB40A225C076B00295A92 /* CheckboxButtonContainer.swift in Sources */,
 				F0293C9A2253436E00565FE4 /* ObjectDetector.mlmodel in Sources */,
+				F06C3196225CF21100FDDC34 /* UIFont+AppFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +836,7 @@
 		};
 		F0124F9A224261BB001B9793 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8613612C78CE99AC4A2C0FA /* Pods-Fiasy.debug.xcconfig */;
+			baseConfigurationReference = 3E09325AEF0935BC223032BC /* Pods-Fiasy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -603,7 +856,7 @@
 		};
 		F0124F9B224261BB001B9793 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 325C3BB198C8532B5226CEA6 /* Pods-Fiasy.release.xcconfig */;
+			baseConfigurationReference = B6767781632F4C67DE293619 /* Pods-Fiasy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <view contentMode="scaleToFill" restorationIdentifier="PagingMainView" id="Cra-th-fbg" customClass="PagingMainView" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbJ-6a-xZ0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="UUH-zb-5B0">
+                            <rect key="frame" x="-4" y="0.0" width="383" height="350"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVL-p2-chb" customClass="MBCircularProgressBarView">
+                            <rect key="frame" x="103" y="20" width="169" height="169"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Калории" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giE-0l-568">
+                                    <rect key="frame" x="56" y="147.5" width="57" height="16.5"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="giE-0l-568" firstAttribute="centerX" secondItem="aVL-p2-chb" secondAttribute="centerX" id="0L8-O6-kGE"/>
+                                <constraint firstAttribute="width" secondItem="aVL-p2-chb" secondAttribute="height" multiplier="1:1" id="O6D-gJ-xR4"/>
+                                <constraint firstAttribute="bottom" secondItem="giE-0l-568" secondAttribute="bottom" constant="5" id="QRs-Dx-QT6"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="emptyLineColor">
+                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="emptyLineStrokeColor">
+                                    <color key="value" red="0.67521363499999998" green="0.46841257809999998" blue="0.21377798910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="countdown" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="showValueString" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                    <real key="value" value="80"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="emptyCapType">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                    <real key="value" value="50"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GLG-j9-IWs">
+                            <rect key="frame" x="10" y="209" width="355" height="111.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g54-Ka-YIk" customClass="MBCircularProgressBarView">
+                                    <rect key="frame" x="0.0" y="0.0" width="111.5" height="111.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жиры " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHC-9Y-cQh">
+                                            <rect key="frame" x="41.5" y="96.5" width="28.5" height="23.5"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="g54-Ka-YIk" secondAttribute="height" multiplier="1:1" id="1cA-UJ-EgD"/>
+                                        <constraint firstItem="VHC-9Y-cQh" firstAttribute="centerX" secondItem="g54-Ka-YIk" secondAttribute="centerX" id="FVK-x6-S4W"/>
+                                        <constraint firstItem="VHC-9Y-cQh" firstAttribute="top" secondItem="g54-Ka-YIk" secondAttribute="bottom" constant="-15" id="KVe-1k-5Om"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyLineColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyLineStrokeColor">
+                                            <color key="value" red="0.67521363499999998" green="0.46841257809999998" blue="0.21377798910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="countdown" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showValueString" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                            <real key="value" value="80"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="emptyCapType">
+                                            <integer key="value" value="0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                            <real key="value" value="30"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="unitFontName" value="Roboto-Regular"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="unitString" value=" г"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="valueFontName" value="Roboto-Regular"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="valueFontSize">
+                                            <real key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ku-ba-KuX" customClass="MBCircularProgressBarView">
+                                    <rect key="frame" x="121.5" y="0.0" width="112" height="111.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Углеводы" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbR-Bl-8IY">
+                                            <rect key="frame" x="33" y="96.5" width="46" height="12"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="8ku-ba-KuX" secondAttribute="height" multiplier="1:1" id="0OP-Gy-Xuc"/>
+                                        <constraint firstItem="zbR-Bl-8IY" firstAttribute="centerX" secondItem="8ku-ba-KuX" secondAttribute="centerX" id="5Ko-vk-eKV"/>
+                                        <constraint firstItem="zbR-Bl-8IY" firstAttribute="top" secondItem="8ku-ba-KuX" secondAttribute="bottom" constant="-15" id="em3-0L-Jlo"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                            <color key="value" red="0.87599176170000004" green="0.34247669580000001" blue="0.055362127720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyLineColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyLineStrokeColor">
+                                            <color key="value" red="0.67521363499999998" green="0.46841257809999998" blue="0.21377798910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="countdown" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showValueString" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                            <real key="value" value="80"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                            <real key="value" value="100"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="valueFontName" value="Roboto-Regular"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="valueFontSize">
+                                            <real key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="unitFontName" value="Roboto-Regular"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="unitString" value=" г"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19v-hq-c7a" customClass="MBCircularProgressBarView">
+                                    <rect key="frame" x="243.5" y="0.0" width="111.5" height="111.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8B-6u-IOC">
+                                            <rect key="frame" x="41" y="96.5" width="29" height="12"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="19v-hq-c7a" secondAttribute="height" multiplier="1:1" id="EB9-CK-7QP"/>
+                                        <constraint firstItem="f8B-6u-IOC" firstAttribute="centerX" secondItem="19v-hq-c7a" secondAttribute="centerX" id="h4h-Ya-QDX"/>
+                                        <constraint firstItem="f8B-6u-IOC" firstAttribute="top" secondItem="19v-hq-c7a" secondAttribute="bottom" constant="-15" id="ttT-2W-ggQ"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyLineColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyLineStrokeColor">
+                                            <color key="value" red="0.67521363499999998" green="0.46841257809999998" blue="0.21377798910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="countdown" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showValueString" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressRotationAngle">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                            <real key="value" value="80"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="emptyCapType">
+                                            <integer key="value" value="0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="progressLineWidth">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="valueFontName" value="Roboto-Regular"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="valueFontSize">
+                                            <real key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="unitFontName" value="Roboto-Regular"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="unitString" value=" г"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="decimalPlaces">
+                                            <integer key="value" value="0"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="19v-hq-c7a" firstAttribute="width" secondItem="19v-hq-c7a" secondAttribute="height" multiplier="1:1" id="8gF-Be-TVY"/>
+                                <constraint firstItem="8ku-ba-KuX" firstAttribute="width" secondItem="8ku-ba-KuX" secondAttribute="height" multiplier="1:1" id="W3H-xb-kds"/>
+                                <constraint firstItem="19v-hq-c7a" firstAttribute="width" secondItem="19v-hq-c7a" secondAttribute="height" multiplier="1:1" id="tEM-PL-xo3"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="UUH-zb-5B0" firstAttribute="leading" secondItem="PbJ-6a-xZ0" secondAttribute="leading" constant="-4" id="0TA-Gq-OKj"/>
+                        <constraint firstAttribute="trailing" secondItem="GLG-j9-IWs" secondAttribute="trailing" constant="10" id="8Gi-aU-Fgb"/>
+                        <constraint firstItem="aVL-p2-chb" firstAttribute="top" secondItem="UUH-zb-5B0" secondAttribute="top" constant="20" id="Gfb-Z4-qv2"/>
+                        <constraint firstItem="GLG-j9-IWs" firstAttribute="top" secondItem="aVL-p2-chb" secondAttribute="bottom" constant="20" id="IW9-KY-KV8"/>
+                        <constraint firstAttribute="bottom" secondItem="UUH-zb-5B0" secondAttribute="bottom" constant="10" id="SSt-Rm-HpL"/>
+                        <constraint firstItem="aVL-p2-chb" firstAttribute="centerX" secondItem="UUH-zb-5B0" secondAttribute="centerX" id="VSM-3x-rPg"/>
+                        <constraint firstAttribute="trailing" secondItem="UUH-zb-5B0" secondAttribute="trailing" constant="-4" id="ouT-i4-aTu"/>
+                        <constraint firstItem="GLG-j9-IWs" firstAttribute="leading" secondItem="PbJ-6a-xZ0" secondAttribute="leading" constant="10" id="qg2-It-azb"/>
+                        <constraint firstItem="UUH-zb-5B0" firstAttribute="top" secondItem="PbJ-6a-xZ0" secondAttribute="top" id="tr9-Yf-AyO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aVL-p2-chb" firstAttribute="width" secondItem="Cra-th-fbg" secondAttribute="width" multiplier="0.45" id="841-O7-hJS"/>
+                <constraint firstItem="1tm-4g-Jbo" firstAttribute="trailing" secondItem="PbJ-6a-xZ0" secondAttribute="trailing" id="TEY-xC-GYQ"/>
+                <constraint firstItem="PbJ-6a-xZ0" firstAttribute="top" secondItem="1tm-4g-Jbo" secondAttribute="top" id="dyd-ys-NDS"/>
+                <constraint firstItem="PbJ-6a-xZ0" firstAttribute="leading" secondItem="1tm-4g-Jbo" secondAttribute="leading" id="gXl-iH-vB9"/>
+                <constraint firstItem="1tm-4g-Jbo" firstAttribute="bottom" secondItem="PbJ-6a-xZ0" secondAttribute="bottom" id="lj2-c1-lOD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="1tm-4g-Jbo"/>
+            <connections>
+                <outlet property="caloriesLabel" destination="giE-0l-568" id="yXo-Py-Vf2"/>
+                <outlet property="caloriesProgress" destination="aVL-p2-chb" id="Idk-eq-Wym"/>
+                <outlet property="carbohydratesLabel" destination="zbR-Bl-8IY" id="hqX-8X-Eec"/>
+                <outlet property="fatsLabel" destination="VHC-9Y-cQh" id="ha6-2e-RWF"/>
+                <outlet property="squirrelsLabel" destination="f8B-6u-IOC" id="Mfc-f8-B0J"/>
+            </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="3.5982008995502253"/>
+        </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+    </objects>
+    <resources>
+        <image name="Rectangle" width="366" height="362"/>
+    </resources>
+</document>

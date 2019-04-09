@@ -8,9 +8,10 @@ target 'Fiasy' do
         pod 'Firebase/Core'
         pod 'Fabric', '~> 1.9.0'
         pod 'Crashlytics', '~> 3.12.0'
-	pod 'Firebase/Messaging', '4.0.4'
-	pod 'FirebaseInstanceID', '2.0.0'
-  	pod 'Alamofire'
-    	pod 'AlamofireImage'
-
-end
+        pod 'Firebase/Messaging', '4.0.4'
+        pod 'FirebaseInstanceID', '2.0.0'
+        pod 'Alamofire'
+        pod 'AlamofireImage'
+        pod 'Parchment'
+        pod 'MBCircularProgressBar'
+ end

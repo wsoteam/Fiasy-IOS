@@ -1,6 +1,6 @@
 PODS:
-  - Alamofire (4.8.1)
-  - AlamofireImage (3.5.0):
+  - Alamofire (4.8.2)
+  - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
@@ -31,11 +31,13 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.2.0)
   - "GoogleToolboxForMac/NSData+zlib (2.2.0)":
     - GoogleToolboxForMac/Defines (= 2.2.0)
+  - MBCircularProgressBar (0.3.5)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Parchment (1.6.0)
   - Protobuf (3.7.0)
 
 DEPENDENCIES:
@@ -46,6 +48,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging (= 4.0.4)
   - FirebaseInstanceID (= 2.0.0)
+  - MBCircularProgressBar
+  - Parchment
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -59,12 +63,14 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseMessaging
     - GoogleToolboxForMac
+    - MBCircularProgressBar
     - nanopb
+    - Parchment
     - Protobuf
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
@@ -73,9 +79,11 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: c02fbc198fe7421e0f351fe29826573c2cfa9aa4
+PODFILE CHECKSUM: 4c76e6230c8d4f81198d69d09fb99d610af59f0c
 
 COCOAPODS: 1.6.0.beta.2
