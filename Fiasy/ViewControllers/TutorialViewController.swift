@@ -163,8 +163,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func showFirstVC(_ sender: Any) {
         
         
-        if let viewController = UIStoryboard(name: "FirstScreenStoryBoard", bundle: nil).instantiateViewController(withIdentifier: "FirstViewController") as? FirstViewController {
-            
+        if let viewController = UIStoryboard(name: "PremiumStoryBoard", bundle: nil).instantiateViewController(withIdentifier: "PremiumViewController") as? PremiumViewController {
             
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)

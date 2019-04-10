@@ -59,6 +59,14 @@ class RegistrationProfileViewController: UIViewController {
     
     @IBAction func nextAction(_ sender: Any) {
         
+        if let viewController = UIStoryboard(name: "RegestrationStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RegestrationViewController") as? RegestrationViewController {
+            
+            
+            if let navigator = navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
+        }
+        
     }
     
     //Calls this function when the tap is recognized.

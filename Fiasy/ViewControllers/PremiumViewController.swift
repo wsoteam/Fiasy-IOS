@@ -91,7 +91,7 @@ class PremiumViewController: UIViewController {
         let recipeTabTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Subtract"), selectedImage: UIImage(named: "Subtract"))
         recipeVC.tabBarItem = recipeTabTab
         
-        initialViewController.tabbarViewControllers = [myVC, trainerVC,checkInVc,articlesVc,recipeVC]
+        initialViewController.tabbarViewControllers = [trainerVC, trainerVC,checkInVc,articlesVc,recipeVC]
 initialViewController.navigationController?.navigationBar.isHidden = true
         let tabBarstoryboard = UIStoryboard(name: "TabBarController", bundle: nil)
         let navigationController = tabBarstoryboard.instantiateViewController(withIdentifier: "TabbarNavigationController") as! UINavigationController

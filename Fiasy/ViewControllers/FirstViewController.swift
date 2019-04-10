@@ -13,7 +13,7 @@ class FirstViewController: UIViewController {
 
     @IBAction func regestration(_ sender: Any) {
         
-        if let viewController = UIStoryboard(name: "RegestrationStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RegestrationViewController") as? RegestrationViewController {
+        if let viewController = UIStoryboard(name: "RegistrationProfileStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RegistrationProfileViewController") as? RegistrationProfileViewController {
           
             
             if let navigator = navigationController {

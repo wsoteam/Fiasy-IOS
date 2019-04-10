@@ -20,4 +20,16 @@ class RegestrationViewController: UIViewController {
     }
     
 
+    @IBAction func regestrationAction(_ sender: Any) {
+        
+
+        
+        if let viewController = UIStoryboard(name: "TutorialStoryboard", bundle: nil).instantiateViewController(withIdentifier: "TutorialViewController") as? TutorialViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
+        }
+        
+    }
+    
 }
