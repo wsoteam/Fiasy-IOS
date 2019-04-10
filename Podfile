@@ -14,4 +14,8 @@ target 'Fiasy' do
         pod 'AlamofireImage'
         pod 'Parchment'
         pod 'MBCircularProgressBar'
+        pod 'FacebookCore'
+        pod 'FacebookLogin'
+        pod 'FacebookShare'
+        
  end
