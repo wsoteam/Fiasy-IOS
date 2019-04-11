@@ -2,6 +2,7 @@
 
 import UIKit
 import Firebase
+import FacebookLogin
 
 class RegestrationViewController: UIViewController {
 
@@ -59,6 +60,52 @@ class RegestrationViewController: UIViewController {
  
     
     func facebookRegistration(_ sender: Any) {
+        
+        if isConnectedToNetwork() == true {
+            
+            
+            FacebookManager.sharedInstance.login(viewController: self,
+                                                 success: { (result) in
+                                                    NetworkManager.sharedInstance.authWithFacebook(token:result as! String,
+                                                                                                   successBlock: { (response) in
+                                                                                                    if let jsonResult = response as? Dictionary<String, AnyObject> {
+                                                                                                        let isNewUser: Bool = (jsonResult["new-user"] as? Bool)!
+                                                                                                        UserDefaults.standard.set(jsonResult[authToken], forKey: authToken)
+                                                                                                        UserDefaults.standard.set(jsonResult[renewToken], forKey: renewToken)
+                                                                                                        UserDefaults.standard.synchronize()
+                                                                                                        
+                                                                                                        print("TOKEN: %@",UserDefaults.standard.set(jsonResult["auth-token"], forKey: "auth-token"))
+                                                                                                        
+                                                                                                        if isNewUser == true {
+                                                                                                            self.showChooseTeamVC()
+                                                                                                        } else {
+                                                                                                            ProfileManager.sharedInstance.setIsUserChooseTeam()
+                                                                                                            self.showHomeVC()
+                                                                                                        }
+                                                                                                    }
+                                                                                                    
+                                                                                                    NetworkManager.sharedInstance.registerDevice(successBlock: { (responce) in
+                                                                                                        print(responce)
+                                                                                                    },
+                                                                                                                                                 failureBlock: { (error) in
+                                                                                                                                                    print(error)
+                                                                                                    })
+                                                    },
+                                                                                                   failureBlock: { (error) in
+                                                                                                    AlertComponent.sharedInctance.showMessage(message: "Invalid email or password",
+                                                                                                                                              handler: { (action) in
+                                                                                                                                                
+                                                                                                    },
+                                                                                                                                              vc: self)
+                                                    })
+            }) { (error) in
+                
+                print(error)
+            }
+        } else {
+            showInternetError()
+        }
+        
     }
     
     func googleRegistration(_ sender: Any) {
