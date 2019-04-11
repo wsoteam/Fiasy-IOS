@@ -11,6 +11,7 @@ import CoreData
 import Crashlytics
 import Fabric
 import FacebookCore
+import Firebase
 
 
 @UIApplicationMain
@@ -24,7 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
         Fabric.with([Crashlytics.self()])
-        
+
+        // Use Firebase library to configure APIs
+
+        FirebaseApp.configure()
+
         
         return true
     }

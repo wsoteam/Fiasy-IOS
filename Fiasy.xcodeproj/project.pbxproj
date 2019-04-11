@@ -46,6 +46,7 @@
 		F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748CA224A225200E2E646 /* PremiumViewController.swift */; };
 		F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01748CD224A38FF00E2E646 /* LoginViewController.swift */; };
 		F01748D0224A391300E2E646 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */; };
+		F01DF1B1225E3D2200381A6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F01DF1B0225E3D2100381A6D /* GoogleService-Info.plist */; };
 		F0231C7C224E4B720051DFBA /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0231C7A224E4B710051DFBA /* Slide.xib */; };
 		F0231C7D224E4B720051DFBA /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0231C7B224E4B710051DFBA /* Slide.swift */; };
 		F0293C9A2253436E00565FE4 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F0293C972253436E00565FE4 /* ObjectDetector.mlmodel */; };
@@ -86,6 +87,7 @@
 		F06FB415225C077400295A92 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB410225C077400295A92 /* RadioButton.swift */; };
 		F06FB419225C7CFE00295A92 /* RouterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB418225C7CFE00295A92 /* RouterManager.swift */; };
 		F06FB41C225C7D6D00295A92 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06FB41B225C7D6D00295A92 /* BaseViewController.swift */; };
+		F0C7E4A1225F773C008F0442 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C7E4A0225F773C008F0442 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +135,7 @@
 		F01748CA224A225200E2E646 /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
 		F01748CD224A38FF00E2E646 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F01748CF224A391300E2E646 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		F01DF1B0225E3D2100381A6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0231C7A224E4B710051DFBA /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		F0231C7B224E4B710051DFBA /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		F0293C972253436E00565FE4 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectDetector.mlmodel; path = Fiasy/FoodRecognize/ObjectDetector.mlmodel; sourceTree = SOURCE_ROOT; };
@@ -173,6 +176,7 @@
 		F06FB410225C077400295A92 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		F06FB418225C7CFE00295A92 /* RouterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterManager.swift; sourceTree = "<group>"; };
 		F06FB41B225C7D6D00295A92 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F0C7E4A0225F773C008F0442 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +229,7 @@
 		F0124F86224261B9001B9793 /* Fiasy */ = {
 			isa = PBXGroup;
 			children = (
+				F0C7E49E225F76DF008F0442 /* Models */,
 				F06C3192225CF1CD00FDDC34 /* Helpers */,
 				F06FB416225C7CB900295A92 /* Managers */,
 				F0231C78224E4B280051DFBA /* Views */,
@@ -237,6 +242,7 @@
 				F0124F91224261BB001B9793 /* Assets.xcassets */,
 				F0124F93224261BB001B9793 /* LaunchScreen.storyboard */,
 				F0124F96224261BB001B9793 /* Info.plist */,
+				F01DF1B0225E3D2100381A6D /* GoogleService-Info.plist */,
 				F0124F8E224261B9001B9793 /* Fiasy.xcdatamodeld */,
 			);
 			path = Fiasy;
@@ -486,6 +492,22 @@
 			path = BaseViewController;
 			sourceTree = "<group>";
 		};
+		F0C7E49E225F76DF008F0442 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F0C7E49F225F76EE008F0442 /* User */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F0C7E49F225F76EE008F0442 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F0C7E4A0225F773C008F0442 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -577,6 +599,7 @@
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
 				F00E6DD82251F0400055179E /* MyViewController.storyboard in Resources */,
+				F01DF1B1225E3D2200381A6D /* GoogleService-Info.plist in Resources */,
 				F00E6DDA2251F0E80055179E /* TrainerStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,6 +625,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework",
@@ -621,6 +645,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBCircularProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parchment.framework",
@@ -663,6 +688,7 @@
 			files = (
 				F06C319B225CF25E00FDDC34 /* UIView+Attributes.swift in Sources */,
 				F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */,
+				F0C7E4A1225F773C008F0442 /* User.swift in Sources */,
 				F06FB419225C7CFE00295A92 /* RouterManager.swift in Sources */,
 				F0293C9B2253436E00565FE4 /* VisionObjectRecognitionViewController.swift in Sources */,
 				F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */,

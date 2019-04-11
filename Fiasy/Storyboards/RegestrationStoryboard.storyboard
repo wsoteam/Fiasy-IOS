@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1gg-Qh-kxg">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -104,6 +104,9 @@
                                 <state key="normal" title="       Регетрация через аккаунт Google" image="google_image_1х">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="googleRegistration:" destination="nfj-6m-rB7" eventType="touchUpInside" id="jKd-Ih-r86"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQb-MY-IPb">
                                 <rect key="frame" x="43" y="726" width="328" height="28"/>
@@ -111,6 +114,9 @@
                                 <state key="normal" title="       Регетрация через аккаунт Facebook" image="facebook_1х">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookRegistration:" destination="nfj-6m-rB7" eventType="touchUpInside" id="gh9-GK-BtB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMD-f8-yft">
                                 <rect key="frame" x="98" y="543" width="175" height="66"/>
@@ -183,6 +189,11 @@
                         <viewLayoutGuide key="safeArea" id="HE9-EL-v1e"/>
                     </view>
                     <navigationItem key="navigationItem" id="YLg-ju-Tdy"/>
+                    <connections>
+                        <outlet property="emailField" destination="34x-17-m68" id="Ajc-Ex-7aB"/>
+                        <outlet property="passwordField" destination="Fbc-6R-Ob0" id="ETe-jg-M4d"/>
+                        <outlet property="userNameField" destination="p0n-kc-Hd9" id="Xce-d5-uf7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1t8-Oc-cu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

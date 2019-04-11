@@ -30,6 +30,9 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.43.0):
     - FBSDKCoreKit
+  - Firebase/Auth (4.0.4):
+    - Firebase/Core
+    - FirebaseAuth (= 4.0.0)
   - Firebase/Core (4.0.4):
     - FirebaseAnalytics (= 4.0.2)
     - FirebaseCore (= 4.0.4)
@@ -40,6 +43,10 @@ PODS:
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseAuth (4.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.4):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
@@ -51,11 +58,19 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
   - GoogleToolboxForMac/Defines (2.2.0)
   - GoogleToolboxForMac/Logger (2.2.0):
     - GoogleToolboxForMac/Defines (= 2.2.0)
   - "GoogleToolboxForMac/NSData+zlib (2.2.0)":
     - GoogleToolboxForMac/Defines (= 2.2.0)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.0)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.0)
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
+  - GTMSessionFetcher/Core (1.2.1)
   - MBCircularProgressBar (0.3.5)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -73,6 +88,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging (= 4.0.4)
   - FirebaseInstanceID (= 2.0.0)
@@ -94,10 +110,12 @@ SPEC REPOS:
     - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAuth
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
     - GoogleToolboxForMac
+    - GTMSessionFetcher
     - MBCircularProgressBar
     - nanopb
     - Parchment
@@ -117,15 +135,17 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 5216050ba1406c3ad5fafdc07ee87afa6a8d2942
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
+  FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
   FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: 3c4a0b64d80f9f46d1992ef0966b902d49a23969
+PODFILE CHECKSUM: b8559a1fff60d447d5e152ac98006c97281b048e
 
 COCOAPODS: 1.6.0.beta.2

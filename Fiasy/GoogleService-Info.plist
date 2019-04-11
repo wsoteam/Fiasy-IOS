@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>588344798889-ucqhmdmq5m5isj591c2rl6ul6fuqp36a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.588344798889-ucqhmdmq5m5isj591c2rl6ul6fuqp36a</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>588344798889-3k3vjm7v0simuqsbquaiom4rp0tk5kpn.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBHrn0vnBmaV31YIEXS1KD9eqsmJEfvA64</string>
+	<key>GCM_SENDER_ID</key>
+	<string>588344798889</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fiasy.fiasyapp</string>
+	<key>PROJECT_ID</key>
+	<string>diet-for-test</string>
+	<key>STORAGE_BUCKET</key>
+	<string>diet-for-test.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:588344798889:ios:f0f73e9c5233cc60</string>
+	<key>DATABASE_URL</key>
+	<string>https://diet-for-test.firebaseio.com</string>
+</dict>
+</plist>
