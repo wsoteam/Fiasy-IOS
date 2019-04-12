@@ -2,10 +2,12 @@
 
 import UIKit
 import Foundation
-
+import NVActivityIndicatorView
 
 class BaseViewController: UIViewController {
-    
+   
+    var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x:  0, y: 0, width: 150, height: 150))
+    var isShowPlaceholder = false
     
 
     override func viewDidLoad() {
@@ -23,43 +25,46 @@ class BaseViewController: UIViewController {
     
     func showPreloader(isShow: Bool)
    {
-//
-//        if isShow == true && isShowPlaceholder == false
-//        {
-//            isShowPlaceholder = true
-//            self.view.isUserInteractionEnabled = false
-//            let frame = CGRect(x:  0, y: 0, width: 80, height: 80)
-//            activityIndicatorView = NVActivityIndicatorView(frame: frame,
-//                                                            type: NVActivityIndicatorType(rawValue: 32)!)
-//            activityIndicatorView.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2)
-//            activityIndicatorView.padding = 20
-//            activityIndicatorView.layer.zPosition = 11
-//            activityIndicatorView.backgroundColor = UIColor.darkBlueGrey
-//            activityIndicatorView.layer.cornerRadius = 10
-//
-//            if !activityIndicatorView.isAnimating
-//            {
-//                self.view.addSubview(activityIndicatorView)
-//                activityIndicatorView.startAnimating()
-//            }
-//        } else if isShow == false && isShowPlaceholder == true {
-//            isShowPlaceholder = false
-//
-//            for subview in self.view.subviews
-//            {
-//                if let item = subview as? NVActivityIndicatorView
-//                {
-//                    item.stopAnimating()
-//                    item.removeFromSuperview()
-//
-//                }
-//            }
-//
-//            self.view.isUserInteractionEnabled = true
-//            activityIndicatorView.stopAnimating()
-//            activityIndicatorView.removeFromSuperview()
-//
-//        }
+
+        if isShow == true && isShowPlaceholder == false
+        {
+            isShowPlaceholder = true
+            self.view.isUserInteractionEnabled = false
+            let frame = CGRect(x:  0, y: 0, width: 80, height: 80)
+
+            
+           let activityIndicatorView = NVActivityIndicatorView(frame: frame)
+         
+            activityIndicatorView.type = . ballScale // add your type
+            activityIndicatorView.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2)
+            activityIndicatorView.padding = 20
+            activityIndicatorView.layer.zPosition = 11
+            activityIndicatorView.backgroundColor = UIColor.lightGray
+            activityIndicatorView.layer.cornerRadius = 10
+
+            if !activityIndicatorView.isAnimating
+            {
+                self.view.addSubview(activityIndicatorView)
+                activityIndicatorView.startAnimating()
+            }
+        } else if isShow == false && isShowPlaceholder == true {
+            isShowPlaceholder = false
+
+            for subview in self.view.subviews
+            {
+                if let item = subview as? NVActivityIndicatorView
+                {
+                    item.stopAnimating()
+                    item.removeFromSuperview()
+
+                }
+            }
+
+            self.view.isUserInteractionEnabled = true
+            activityIndicatorView.stopAnimating()
+            activityIndicatorView.removeFromSuperview()
+
+        }
     
     }
     
@@ -99,35 +104,35 @@ class BaseViewController: UIViewController {
 
     
 //    // MARK: - Show AlertInternetError
-//    func showInternetError() {
-//        AlertComponent.sharedInctance.showInternetErrorAlert(vc: self) { (action) in
-//
-//        }
-//    }
-//
-//    func isConnectedToNetwork() -> Bool {
-//        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
-//        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
-//        zeroAddress.sin_family = sa_family_t(AF_INET)
-//
-//        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
-//            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
-//                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
-//            }
-//        }
-//
-//        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
-//        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
-//            print("")
-//        }
-//
-//        // Working for Cellular and WIFI
-//        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
-//        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
-//        _ = (isReachable && !needsConnection)
-//
-//        return isReachable
-//    }
+    func showInternetError() {
+        AlertComponent.sharedInctance.showInternetErrorAlert(vc: self) { (action) in
+
+        }
+    }
+
+    func isConnectedToNetwork() -> Bool {
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            print("")
+        }
+
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        _ = (isReachable && !needsConnection)
+
+        return isReachable
+    }
     
     // MARK: - Get Screen Shot
     func captureScreen() -> UIImage {

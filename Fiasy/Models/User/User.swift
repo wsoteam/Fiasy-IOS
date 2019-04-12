@@ -6,17 +6,17 @@
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
-import UIKit
-
-class User: NSObject {
-
-    
-    let email: String?
-    
-    init(jsonObject: [String: Any])
-    {
-        self.email = ""
-        
-    }
-
-}
+//import UIKit
+//
+//class User: NSObject {
+//
+//    
+//    let email: String?
+//    
+//    init(jsonObject: [String: Any])
+//    {
+//        self.email = ""
+//        
+//    }
+//
+//}

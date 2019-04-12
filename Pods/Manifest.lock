@@ -8,6 +8,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Bugsee (1.21.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
@@ -77,12 +78,16 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NVActivityIndicatorView (4.6.1):
+    - NVActivityIndicatorView/Presenter (= 4.6.1)
+  - NVActivityIndicatorView/Presenter (4.6.1)
   - Parchment (1.6.0)
   - Protobuf (3.7.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - Bugsee
   - Crashlytics (~> 3.12.0)
   - Fabric (~> 1.9.0)
   - FacebookCore
@@ -93,6 +98,7 @@ DEPENDENCIES:
   - Firebase/Messaging (= 4.0.4)
   - FirebaseInstanceID (= 2.0.0)
   - MBCircularProgressBar
+  - NVActivityIndicatorView
   - Parchment
 
 SPEC REPOS:
@@ -100,6 +106,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
+    - Bugsee
     - Crashlytics
     - Fabric
     - FacebookCore
@@ -118,6 +125,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - MBCircularProgressBar
     - nanopb
+    - NVActivityIndicatorView
     - Parchment
     - Protobuf
 
@@ -125,6 +133,7 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Bugsee: 2457bc45940860251161c2d77c8d8405aff1b890
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
@@ -143,9 +152,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: b8559a1fff60d447d5e152ac98006c97281b048e
+PODFILE CHECKSUM: 70579a6640a3e902b04677d6aaed9fbe2cfeafbc
 
 COCOAPODS: 1.6.0.beta.2

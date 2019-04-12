@@ -54,10 +54,7 @@ class RegestrationViewController: UIViewController {
             }
       }
     
-        
-
-        
- 
+    
     
     func facebookRegistration(_ sender: Any) {
         

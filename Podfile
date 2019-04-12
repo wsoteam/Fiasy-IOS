@@ -17,5 +17,7 @@ target 'Fiasy' do
         pod 'FacebookCore'
         pod 'FacebookLogin'
         pod 'FacebookShare'
-        
+        pod 'Bugsee'
+        pod 'NVActivityIndicatorView'
+
  end

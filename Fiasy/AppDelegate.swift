@@ -12,7 +12,7 @@ import Crashlytics
 import Fabric
 import FacebookCore
 import Firebase
-
+import Bugsee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
-        Fabric.with([Crashlytics.self()])
-
+      //  Fabric.with([Crashlytics.self()])
+        Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
         // Use Firebase library to configure APIs
 
         FirebaseApp.configure()
