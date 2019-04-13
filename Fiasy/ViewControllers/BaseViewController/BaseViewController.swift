@@ -3,7 +3,7 @@
 import UIKit
 import Foundation
 import NVActivityIndicatorView
-
+import SystemConfiguration
 class BaseViewController: UIViewController {
    
     var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x:  0, y: 0, width: 150, height: 150))

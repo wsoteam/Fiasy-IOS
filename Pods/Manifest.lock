@@ -8,28 +8,13 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Bugsee (1.21.1)
+  - Bugsee (1.21.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
-  - FacebookCore (0.5.0):
+  - FBSDKCoreKit (4.44.1):
     - Bolts (~> 1.9)
-    - FBSDKCoreKit (~> 4.37)
-  - FacebookLogin (0.5.0):
-    - Bolts (~> 1.9)
-    - FacebookCore (~> 0.5)
-    - FBSDKCoreKit (~> 4.37)
-    - FBSDKLoginKit (~> 4.37)
-  - FacebookShare (0.5.0):
-    - Bolts (~> 1.9)
-    - FacebookCore (~> 0.5)
-    - FBSDKCoreKit (~> 4.37)
-    - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.43.0):
-    - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.43.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.43.0):
+  - FBSDKLoginKit (4.44.1):
     - FBSDKCoreKit
   - Firebase/Auth (4.0.4):
     - Firebase/Core
@@ -59,6 +44,10 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleToolboxForMac/DebugUtils (2.2.0):
     - GoogleToolboxForMac/Defines (= 2.2.0)
   - GoogleToolboxForMac/Defines (2.2.0)
@@ -78,25 +67,26 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - NVActivityIndicatorView (4.6.1):
-    - NVActivityIndicatorView/Presenter (= 4.6.1)
-  - NVActivityIndicatorView/Presenter (4.6.1)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
   - Parchment (1.6.0)
   - Protobuf (3.7.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - Bolts
   - Bugsee
   - Crashlytics (~> 3.12.0)
   - Fabric (~> 1.9.0)
-  - FacebookCore
-  - FacebookLogin
-  - FacebookShare
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging (= 4.0.4)
   - FirebaseInstanceID (= 2.0.0)
+  - GoogleSignIn
   - MBCircularProgressBar
   - NVActivityIndicatorView
   - Parchment
@@ -109,18 +99,15 @@ SPEC REPOS:
     - Bugsee
     - Crashlytics
     - Fabric
-    - FacebookCore
-    - FacebookLogin
-    - FacebookShare
     - FBSDKCoreKit
     - FBSDKLoginKit
-    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
+    - GoogleSignIn
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - MBCircularProgressBar
@@ -133,29 +120,26 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Bugsee: 2457bc45940860251161c2d77c8d8405aff1b890
+  Bugsee: c11df931a79e3862d068a5ef423e8c03e497f354
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  FacebookCore: 74288d0add931d361b1596beae787ab72c438249
-  FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
-  FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: cf5ff942be81ce3a45fdcbc244a3bf6f02612bac
-  FBSDKLoginKit: bea6daf533375bfb6e2bb1eefda5ccbdb3ce45ae
-  FBSDKShareKit: 5216050ba1406c3ad5fafdc07ee87afa6a8d2942
+  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
+  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
   FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: 70579a6640a3e902b04677d6aaed9fbe2cfeafbc
+PODFILE CHECKSUM: 797338d892010a2a470e2ecc9c82f4639ba0e3ab
 
 COCOAPODS: 1.6.0.beta.2

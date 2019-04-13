@@ -64,7 +64,7 @@
 		<string>Roboto-Black.ttf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
-	<string>RegestrationStoryboard</string>
+	<string>LoginStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

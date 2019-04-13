@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TelephoneView" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhp-Ag-kBp">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rif-mF-6QO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-BN-Isw">
+                                <rect key="frame" x="14" y="245" width="385" height="214"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер для отправки смс с кодом" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0d9-f8-Lye">
+                                        <rect key="frame" x="0.0" y="15" width="385" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="385" id="Tsi-kS-zSx"/>
+                                            <constraint firstAttribute="height" constant="21" id="iIB-uQ-Zpd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="11"/>
+                                        <color key="textColor" red="0.66562587022781372" green="0.6661420464515686" blue="0.66570580005645752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S1z-2d-sUa">
+                                        <rect key="frame" x="52" y="53" width="281" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Код из смс" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JB4-54-HrW">
+                                        <rect key="frame" x="52" y="98" width="281" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ky1-HH-DrE">
+                                        <rect key="frame" x="52" y="147" width="97" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Отправить" backgroundImage="button_come_in_1х">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9c-cy-BFj">
+                                        <rect key="frame" x="230" y="147" width="102" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Отмена" backgroundImage="button_come_in_1х">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.99998801946640015" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="JB4-54-HrW" firstAttribute="top" secondItem="S1z-2d-sUa" secondAttribute="bottom" constant="28" id="4PJ-9E-lnY"/>
+                                    <constraint firstItem="0d9-f8-Lye" firstAttribute="top" secondItem="tbr-BN-Isw" secondAttribute="top" constant="15" id="8HU-5j-zUY"/>
+                                    <constraint firstItem="JB4-54-HrW" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" constant="52" id="MlL-Jx-SyU"/>
+                                    <constraint firstAttribute="width" constant="385" id="NTc-U6-4Zo"/>
+                                    <constraint firstItem="S1z-2d-sUa" firstAttribute="top" secondItem="0d9-f8-Lye" secondAttribute="bottom" constant="17" id="PcC-bz-6jh"/>
+                                    <constraint firstAttribute="height" constant="214" id="R1W-yF-Reg"/>
+                                    <constraint firstAttribute="trailing" secondItem="S1z-2d-sUa" secondAttribute="trailing" constant="52" id="S2n-NH-kwy"/>
+                                    <constraint firstAttribute="trailing" secondItem="0d9-f8-Lye" secondAttribute="trailing" id="W7t-5Y-osj"/>
+                                    <constraint firstItem="S1z-2d-sUa" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" constant="52" id="Z5O-J9-7wL"/>
+                                    <constraint firstItem="0d9-f8-Lye" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" id="mni-KF-qrZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="JB4-54-HrW" secondAttribute="trailing" constant="52" id="qeo-NL-4u8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="tbr-BN-Isw" firstAttribute="leading" secondItem="Rif-mF-6QO" secondAttribute="leading" constant="14" id="6JR-4p-BqM"/>
+                            <constraint firstItem="tbr-BN-Isw" firstAttribute="top" secondItem="Rif-mF-6QO" secondAttribute="top" constant="245" id="PJl-Jl-RbK"/>
+                            <constraint firstAttribute="trailing" secondItem="tbr-BN-Isw" secondAttribute="trailing" constant="15" id="cZT-Rm-hLT"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="bhp-Ag-kBp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KSm-fl-E57"/>
+                <constraint firstAttribute="bottom" secondItem="bhp-Ag-kBp" secondAttribute="bottom" id="Lgt-ep-NDR"/>
+                <constraint firstItem="bhp-Ag-kBp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lgG-dE-fkw"/>
+                <constraint firstItem="bhp-Ag-kBp" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rrq-Vn-XWe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="cancelButton" destination="T9c-cy-BFj" id="ZkF-Uq-LLR"/>
+                <outlet property="phoneNumberField" destination="S1z-2d-sUa" id="QJL-fO-scn"/>
+                <outlet property="sendButton" destination="ky1-HH-DrE" id="d3b-bj-ccu"/>
+                <outlet property="smsField" destination="JB4-54-HrW" id="AtO-ts-LDM"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="button_come_in_1х" width="126" height="56"/>
+    </resources>
+</document>

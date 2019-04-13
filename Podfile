@@ -14,9 +14,15 @@ target 'Fiasy' do
         pod 'AlamofireImage'
         pod 'Parchment'
         pod 'MBCircularProgressBar'
-        pod 'FacebookCore'
-        pod 'FacebookLogin'
-        pod 'FacebookShare'
+
+        pod 'Firebase/Core'
+        pod 'Firebase/Auth'
+        
+        pod 'GoogleSignIn'
+
+        pod 'Bolts'
+        pod 'FBSDKCoreKit'
+        pod 'FBSDKLoginKit'
         pod 'Bugsee'
         pod 'NVActivityIndicatorView'
 

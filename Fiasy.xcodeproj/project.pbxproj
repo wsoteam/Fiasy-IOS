@@ -49,6 +49,9 @@
 		F01DF1B1225E3D2200381A6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F01DF1B0225E3D2100381A6D /* GoogleService-Info.plist */; };
 		F0231C7C224E4B720051DFBA /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0231C7A224E4B710051DFBA /* Slide.xib */; };
 		F0231C7D224E4B720051DFBA /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0231C7B224E4B710051DFBA /* Slide.swift */; };
+		F02357E32261F91F00364832 /* AlertComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02357E22261F91F00364832 /* AlertComponent.swift */; };
+		F02357E622621FA600364832 /* TelephoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02357E522621FA600364832 /* TelephoneView.xib */; };
+		F02357E822621FC300364832 /* TelephoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02357E722621FC300364832 /* TelephoneView.swift */; };
 		F0293C9A2253436E00565FE4 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F0293C972253436E00565FE4 /* ObjectDetector.mlmodel */; };
 		F0293C9B2253436E00565FE4 /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0293C982253436E00565FE4 /* VisionObjectRecognitionViewController.swift */; };
 		F0293C9C2253436E00565FE4 /* Breakfast Finder Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F0293C992253436E00565FE4 /* Breakfast Finder Logo.png */; };
@@ -138,6 +141,9 @@
 		F01DF1B0225E3D2100381A6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0231C7A224E4B710051DFBA /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		F0231C7B224E4B710051DFBA /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		F02357E22261F91F00364832 /* AlertComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertComponent.swift; sourceTree = "<group>"; };
+		F02357E522621FA600364832 /* TelephoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TelephoneView.xib; sourceTree = "<group>"; };
+		F02357E722621FC300364832 /* TelephoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneView.swift; sourceTree = "<group>"; };
 		F0293C972253436E00565FE4 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectDetector.mlmodel; path = Fiasy/FoodRecognize/ObjectDetector.mlmodel; sourceTree = SOURCE_ROOT; };
 		F0293C982253436E00565FE4 /* VisionObjectRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VisionObjectRecognitionViewController.swift; path = Fiasy/FoodRecognize/VisionObjectRecognitionViewController.swift; sourceTree = SOURCE_ROOT; };
 		F0293C992253436E00565FE4 /* Breakfast Finder Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Breakfast Finder Logo.png"; path = "Fiasy/FoodRecognize/Breakfast Finder Logo.png"; sourceTree = SOURCE_ROOT; };
@@ -229,6 +235,7 @@
 		F0124F86224261B9001B9793 /* Fiasy */ = {
 			isa = PBXGroup;
 			children = (
+				F02357E02261F82D00364832 /* BasicComponents */,
 				F0C7E49E225F76DF008F0442 /* Models */,
 				F06C3192225CF1CD00FDDC34 /* Helpers */,
 				F06FB416225C7CB900295A92 /* Managers */,
@@ -323,6 +330,7 @@
 		F0231C78224E4B280051DFBA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F02357E422621F7F00364832 /* TelephoneView */,
 				F06C3182225CF03500FDDC34 /* Main */,
 				F06C3181225CF01800FDDC34 /* PagingMainView */,
 				F06C317E225CEFE100FDDC34 /* CustomPagingView */,
@@ -338,6 +346,31 @@
 				F0231C7A224E4B710051DFBA /* Slide.xib */,
 			);
 			path = SlideView;
+			sourceTree = "<group>";
+		};
+		F02357E02261F82D00364832 /* BasicComponents */ = {
+			isa = PBXGroup;
+			children = (
+				F02357E12261F90300364832 /* Alert */,
+			);
+			path = BasicComponents;
+			sourceTree = "<group>";
+		};
+		F02357E12261F90300364832 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F02357E22261F91F00364832 /* AlertComponent.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		F02357E422621F7F00364832 /* TelephoneView */ = {
+			isa = PBXGroup;
+			children = (
+				F02357E522621FA600364832 /* TelephoneView.xib */,
+				F02357E722621FC300364832 /* TelephoneView.swift */,
+			);
+			path = TelephoneView;
 			sourceTree = "<group>";
 		};
 		F0293C962253435600565FE4 /* AR */ = {
@@ -521,6 +554,7 @@
 				F0124F82224261B9001B9793 /* Resources */,
 				39D2B100099211191B4346C5 /* [CP] Embed Pods Frameworks */,
 				F01EF3D32260BBBF00D7FFF4 /* ShellScript */,
+				D559C86DBB370375CE6E658C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -596,6 +630,7 @@
 				F0231C7C224E4B720051DFBA /* Slide.xib in Resources */,
 				F01748C3224A1ED000E2E646 /* Roboto-Black.ttf in Resources */,
 				F04EF0B9225BD14000A13005 /* RegistrationProfileStoryboard.storyboard in Resources */,
+				F02357E622621FA600364832 /* TelephoneView.xib in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
@@ -622,10 +657,6 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework",
@@ -643,10 +674,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBCircularProgressBar.framework",
@@ -682,6 +709,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D559C86DBB370375CE6E658C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fiasy/Pods-Fiasy-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fiasy/Pods-Fiasy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F01EF3D32260BBBF00D7FFF4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -715,6 +764,7 @@
 				F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */,
 				F06FB414225C077400295A92 /* RadioButtonContainerView.swift in Sources */,
 				F06FB411225C077400295A92 /* RadioButtonContainer.swift in Sources */,
+				F02357E822621FC300364832 /* TelephoneView.swift in Sources */,
 				F06FB407225C076B00295A92 /* CheckboxButtonContainerView.swift in Sources */,
 				F06FB41C225C7D6D00295A92 /* BaseViewController.swift in Sources */,
 				F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */,
@@ -749,6 +799,7 @@
 				F00E6DD62251EE070055179E /* RecipesViewController.swift in Sources */,
 				F00E04B12251903800A25126 /* MainViewController.swift in Sources */,
 				F06FB413225C077400295A92 /* RadioButtonColor.swift in Sources */,
+				F02357E32261F91F00364832 /* AlertComponent.swift in Sources */,
 				F06C31A3225CF2D800FDDC34 /* Display.swift in Sources */,
 				F06C3187225CF05D00FDDC34 /* PagingMainView.swift in Sources */,
 				F06FB40A225C076B00295A92 /* CheckboxButtonContainer.swift in Sources */,

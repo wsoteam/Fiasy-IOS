@@ -1,18 +1,62 @@
 //
 
 
-import UIKit
 
-class LoginViewController: UIViewController {
+import UIKit
+import FBSDKLoginKit
+import Firebase
+import GoogleSignIn
+
+class LoginViewController: UIViewController ,GIDSignInUIDelegate{
     let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
 
+    private lazy var telephoneView: TelephoneView = {
+        let phoneView = UINib(nibName: "TelephoneView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TelephoneView
+        phoneView.clipsToBounds = true
+        return phoneView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Init Telephone view
+        
+        telephoneView.frame = view.frame
+        telephoneView.sendButton.addTarget(self, action: #selector(self.sendSMS(_:)), for: .touchUpInside)
+        telephoneView.cancelButton.addTarget(self, action: #selector(self.hidePhoneview(_:)), for: .touchUpInside)
+        view.addSubview(telephoneView)
+        let tapComments = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        
+        telephoneView.isUserInteractionEnabled = true
+        telephoneView.addGestureRecognizer(tapComments)
 
-        // Do any additional setup after loading the view.
+        /*
+         @IBOutlet weak var phoneNumberField: UITextField!
+         @IBOutlet weak var smsField: UITextField!
+         */
+
+
     }
+   @objc func hideKeyboard(){
     
+    self.view.endEditing(true)
 
+    }
+    @objc func sendSMS(_ sender: UIButton){
+        
+        print("\(sender)")
+        telephoneView.isHidden = true
+    }
+    @objc func hidePhoneview(_ sender: UIButton){
+        
+        print("\(sender)")
+        telephoneView.isHidden = true
+    }
+
+    func signFaceBook()
+    {
+        
+        
+    }
     @IBAction func emailLogin(_ sender: Any) {
   
        loadHomeTabbarViewController()
@@ -27,6 +71,48 @@ class LoginViewController: UIViewController {
         
     
     }
+    
+    @IBAction func facebookLogin(_ sender: Any) {
+        
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            // Perform login by calling Firebase APIs
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                }
+                loadHomeTabbarViewController()
+                
+            })
+            
+        }
+    }
+    @IBAction func googleLogin(_ sender: Any) {
+        
+    }
+    
+    @IBAction func messageLogin(_ sender: Any) {
+        
+    }
+    
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
 
