@@ -1,10 +1,3 @@
-//
-//  CalendarItem.swift
-//  Fiasy
-//
-//  Created by Eugen Lipatov on 4/8/19.
-//  Copyright © 2019 Eugen Lipatov. All rights reserved.
-//
 
 import UIKit
 import Parchment

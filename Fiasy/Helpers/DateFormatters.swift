@@ -12,10 +12,10 @@ struct DateFormatters {
     
     static var shortDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd.yyyy"
-        dateFormatter.timeZone = .current
-//        dateFormatter.timeStyle = .none
-//        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "MM.dd.YYYY"
+        //dateFormatter.timeZone = .current
+        //        dateFormatter.timeStyle = .none
+        //        dateFormatter.dateStyle = .short
         return dateFormatter
     }()
     
@@ -30,4 +30,27 @@ struct DateFormatters {
         dateFormatter.dateFormat = "EEE"
         return dateFormatter
     }()
+}
+
+extension Date {
+    
+    func yesterday() -> Date {
+        
+        var dateComponents = DateComponents()
+        dateComponents.setValue(-1, for: .day)
+        
+        let yesterday = Calendar.current.date(byAdding: dateComponents, to: self)
+        
+        return yesterday!
+    }
+    
+    func tomorrow() -> Date {
+        
+        var dateComponents = DateComponents()
+        dateComponents.setValue(1, for: .day)
+        
+        let tomorrow = Calendar.current.date(byAdding: dateComponents, to: self)
+        
+        return tomorrow!
+    }
 }
