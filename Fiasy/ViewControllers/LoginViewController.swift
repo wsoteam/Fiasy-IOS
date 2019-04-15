@@ -8,8 +8,30 @@ import Firebase
 import GoogleSignIn
 
 class LoginViewController: UIViewController ,GIDSignInUIDelegate{
+    
+    private func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+     //   myActivityIndicator.stopAnimating()
+    }
+    
+    // Present a view that prompts the user to sign in with Google
+    private func signIn(signIn: GIDSignIn!,
+                presentViewController viewController: UIViewController!) {
+        //self.presentViewController(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the "Sign in with Google" view
+    private func signIn(signIn: GIDSignIn!,
+                dismissViewController viewController: UIViewController!) {
+      //  self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+   // @IBOutlet weak var signInButton: GIDSignInButton!
 
+    @IBOutlet weak var signInButton: GIDSignInButton!
+
+    
     private lazy var telephoneView: TelephoneView = {
         let phoneView = UINib(nibName: "TelephoneView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TelephoneView
         phoneView.clipsToBounds = true
@@ -33,6 +55,7 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
          @IBOutlet weak var phoneNumberField: UITextField!
          @IBOutlet weak var smsField: UITextField!
          */
+        GIDSignIn.sharedInstance().uiDelegate = self
 
 
     }
@@ -99,7 +122,7 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
                     
                     return
                 }
-                loadHomeTabbarViewController()
+                self.loadHomeTabbarViewController()
                 
             })
             
@@ -129,6 +152,12 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
         }
     }
 
+    
+    @IBAction func googleSignIn(_ sender: Any) {
+        
+        GIDSignIn.sharedInstance().signIn()
+
+    }
     
     // MARK: - Load Home Tabbar
     func loadHomeTabbarViewController() {
