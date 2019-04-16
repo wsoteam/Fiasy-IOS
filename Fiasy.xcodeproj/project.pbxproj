@@ -12,6 +12,7 @@
 		F00481CF2265A3A100C720CA /* TestArStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00481CE2265A3A100C720CA /* TestArStoryboard.storyboard */; };
 		F00481D22265A3C700C720CA /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F00481D02265A3C700C720CA /* Food101.mlmodel */; };
 		F00481D32265A3C700C720CA /* UIImage+PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00481D12265A3C700C720CA /* UIImage+PixelBuffer.swift */; };
+		F00481D42265ADE300C720CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0124F93224261BB001B9793 /* LaunchScreen.storyboard */; };
 		F008CF4722656C8000F94685 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008CF4622656C8000F94685 /* SearchViewController.swift */; };
 		F008CF4922656CB900F94685 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F008CF4822656CB900F94685 /* Search.storyboard */; };
 		F008CF4B226575E500F94685 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008CF4A226575E500F94685 /* SearchCell.swift */; };
@@ -681,6 +682,7 @@
 				F02357E622621FA600364832 /* TelephoneView.xib in Resources */,
 				F00481CF2265A3A100C720CA /* TestArStoryboard.storyboard in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
+				F00481D42265ADE300C720CA /* LaunchScreen.storyboard in Resources */,
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
 				F00E6DD82251F0400055179E /* MyViewController.storyboard in Resources */,

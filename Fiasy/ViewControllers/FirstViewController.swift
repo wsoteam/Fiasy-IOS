@@ -7,7 +7,7 @@ class FirstViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.loadHomeTabbarViewController()
+      //  self.loadHomeTabbarViewController()
     }
     
 

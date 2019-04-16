@@ -24,7 +24,7 @@ class SearchViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     //    let cell:SearchCell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchCell!
         
         let cell : SearchCell = self.tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchCell
-        cell.selectionStyle = .none
+         cell.selectionStyle = .none
       
         
       

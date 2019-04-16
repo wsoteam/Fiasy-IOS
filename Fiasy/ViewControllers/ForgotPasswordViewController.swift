@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: BaseViewController {
 
     @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {

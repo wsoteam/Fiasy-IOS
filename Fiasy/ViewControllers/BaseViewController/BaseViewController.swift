@@ -17,6 +17,8 @@ class BaseViewController: UIViewController {
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 //        navigationController?.navigationBar.shadowImage = UIImage()
 //        navigationController?.navigationBar.isHidden = false
+        
+        setupDissmissTapGesture()
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,8 +119,8 @@ class BaseViewController: UIViewController {
         myVC.tabBarItem = myTab
         
         //  Trainer Tab
-        let trainerStoryBoard = UIStoryboard(name: "TrainerStoryboard", bundle: Bundle.main)
-        let trainerVC = trainerStoryBoard.instantiateViewController(withIdentifier: "TrainerViewController") as! TrainerViewController
+        let trainerStoryBoard = UIStoryboard(name: "PremiumStoryBoard", bundle: Bundle.main)
+        let trainerVC = trainerStoryBoard.instantiateViewController(withIdentifier: "PremiumViewController") as! PremiumViewController
         
         let trainerTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Vector2"), selectedImage: UIImage(named: "Vector2"))
         trainerVC.tabBarItem = trainerTab
@@ -205,6 +207,7 @@ extension BaseViewController: UIGestureRecognizerDelegate {
     func setupDissmissTapGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard))
         tap.delegate = self
+        view.isUserInteractionEnabled = true;
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }

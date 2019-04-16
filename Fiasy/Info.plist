@@ -62,6 +62,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Used to choose pictures of food for testing</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This sample uses the camera to capture images of breakfast items for object recognition.</string>
 	<key>UIAppFonts</key>

@@ -77,8 +77,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-ho-SbI">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-ho-SbI">
                                         <rect key="frame" x="348" y="50" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                         <state key="normal" title="AR">
                                             <color key="titleColor" red="1" green="0.99998801950000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -91,12 +92,9 @@
                                 <color key="backgroundColor" red="0.34189945459365845" green="0.52540707588195801" blue="0.52549523115158081" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="xVw-KN-8fr" firstAttribute="leading" secondItem="8NF-De-nGu" secondAttribute="leading" constant="28" id="5wA-mu-BHq"/>
-                                    <constraint firstAttribute="trailing" secondItem="hqZ-ho-SbI" secondAttribute="trailing" constant="36" id="6i2-dc-ady"/>
                                     <constraint firstAttribute="height" constant="150" id="9Y0-AU-Sr5"/>
-                                    <constraint firstItem="hqZ-ho-SbI" firstAttribute="top" secondItem="8NF-De-nGu" secondAttribute="top" constant="50" id="AGQ-ie-4c4"/>
                                     <constraint firstAttribute="width" constant="414" id="Pqg-35-thU"/>
                                     <constraint firstAttribute="trailing" secondItem="xVw-KN-8fr" secondAttribute="trailing" constant="28" id="QBT-ZL-QJ9"/>
-                                    <constraint firstItem="hqZ-ho-SbI" firstAttribute="leading" secondItem="8NF-De-nGu" secondAttribute="leading" constant="348" id="dd9-fc-7MT"/>
                                     <constraint firstItem="xVw-KN-8fr" firstAttribute="top" secondItem="8NF-De-nGu" secondAttribute="top" constant="109" id="fAW-XV-RuQ"/>
                                 </constraints>
                             </view>
