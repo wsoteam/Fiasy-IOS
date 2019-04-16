@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Test View Controller-->
+        <scene sceneID="zHC-1g-Z6j">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aKf-sI-33r" customClass="TestViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JmA-gl-jNv"/>
+                        <viewControllerLayoutGuide type="bottom" id="R0B-Qy-j4n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HZT-Hq-Kye">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4c4-Ue-iPY">
+                                <rect key="frame" x="42" y="208" width="330" height="480"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prediction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAU-cw-byF">
+                                <rect key="frame" x="20" y="695" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ7-gf-X4y">
+                                <rect key="frame" x="164.5" y="846" width="85" height="30"/>
+                                <state key="normal" title="FIASY AR v2"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="aKf-sI-33r" eventType="touchUpInside" id="AMo-5W-fpz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JAU-cw-byF" firstAttribute="centerX" secondItem="ZQ7-gf-X4y" secondAttribute="centerX" id="Itg-HW-ovx"/>
+                            <constraint firstItem="4c4-Ue-iPY" firstAttribute="top" secondItem="JmA-gl-jNv" secondAttribute="bottom" constant="164" id="Ja6-Vt-Rx3"/>
+                            <constraint firstAttribute="bottom" secondItem="ZQ7-gf-X4y" secondAttribute="bottom" constant="20" symbolic="YES" id="VvR-pY-M0i"/>
+                            <constraint firstItem="JAU-cw-byF" firstAttribute="trailing" secondItem="HZT-Hq-Kye" secondAttribute="trailingMargin" id="ZHv-jt-L5R"/>
+                            <constraint firstItem="JAU-cw-byF" firstAttribute="leading" secondItem="HZT-Hq-Kye" secondAttribute="leadingMargin" id="d2P-Bz-Bdy"/>
+                            <constraint firstItem="4c4-Ue-iPY" firstAttribute="centerX" secondItem="JAU-cw-byF" secondAttribute="centerX" id="hHG-v4-zoL"/>
+                            <constraint firstItem="4c4-Ue-iPY" firstAttribute="centerY" secondItem="HZT-Hq-Kye" secondAttribute="centerY" id="pNm-fK-j9U"/>
+                            <constraint firstItem="JAU-cw-byF" firstAttribute="top" secondItem="4c4-Ue-iPY" secondAttribute="bottom" constant="7" id="sgC-p5-dlK"/>
+                            <constraint firstItem="4c4-Ue-iPY" firstAttribute="leading" secondItem="HZT-Hq-Kye" secondAttribute="leadingMargin" constant="22" id="yhe-nK-QMH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8C9-Vs-JNh"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="4c4-Ue-iPY" id="Eei-pu-gBq"/>
+                        <outlet property="percentage" destination="JAU-cw-byF" id="6UQ-Ic-cFx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWn-jH-g7N" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+    </scenes>
+</document>

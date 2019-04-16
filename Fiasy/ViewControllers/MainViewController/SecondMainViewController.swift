@@ -2,7 +2,7 @@
 //  SecondMainViewController.swift
 //  Fiasy
 //
-//  Created by Eugen Lipatov on 4/8/19.
+//  Created by Yuriy Sokirko on 4/8/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
@@ -28,7 +28,7 @@ class SecondMainViewController: UIViewController {
         self.states = [Bool](repeating: false, count: fakeCells.count)
         setupTableView()
     }
-    
+   
     func fillDate(date: Date) {
         //dateLabel.text = DateFormatters.shortDateFormatter.string(from: date)
     }
@@ -44,12 +44,21 @@ extension SecondMainViewController: UITableViewDelegate, UITableViewDataSource {
         return fakeCells.count
     }
     
+  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: fakeCells[indexPath.row].className) else { fatalError() }
         
         if let cell = cell as? SecondMainCell {
             if states.indices.contains(indexPath.row) {
                 cell.fillCell(state: states[indexPath.row], indexCell: indexPath, delegate: self)
+               
+                let tapComments = UITapGestureRecognizer(target: self, action: #selector(actionWithParam))
+                
+                cell.plusBtn.isUserInteractionEnabled = true
+                cell.plusBtn.addGestureRecognizer(tapComments)
+                
+                
+                // cell.plusBtn.addTarget(self, action:#selector(actionWithParam, for: .touchUpInside)
             }
         }
         return cell
@@ -57,7 +66,14 @@ extension SecondMainViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SecondMainViewController: SecondMainManagerDelegate {
-    
+    @objc func actionWithParam(){
+        
+        let storyboard = UIStoryboard(name: "Search", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+        
+        }
     func showMoreDescription(state: Bool, indexPath: IndexPath) {
         states[indexPath.row] = !state
         self.tableView.reloadData()

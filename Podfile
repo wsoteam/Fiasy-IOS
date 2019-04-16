@@ -25,5 +25,6 @@ target 'Fiasy' do
         pod 'FBSDKLoginKit'
         pod 'Bugsee'
         pod 'NVActivityIndicatorView'
-
+        pod 'Firebase/Database'
+        
  end

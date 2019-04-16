@@ -43,11 +43,11 @@
                                         <color key="textColor" red="0.66562587022781372" green="0.6661420464515686" blue="0.66570580005645752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S1z-2d-sUa">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+380996602085" placeholder="Введите номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S1z-2d-sUa">
                                         <rect key="frame" x="52" y="53" width="281" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Код из смс" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JB4-54-HrW">
                                         <rect key="frame" x="52" y="98" width="281" height="17"/>
@@ -56,7 +56,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ky1-HH-DrE">
-                                        <rect key="frame" x="52" y="147" width="97" height="56"/>
+                                        <rect key="frame" x="47" y="147" width="97" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -75,20 +75,42 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-ih-kMq">
+                                        <rect key="frame" x="52" y="72" width="267" height="1"/>
+                                        <color key="backgroundColor" red="0.7445381284" green="0.64912962910000005" blue="0.49800789359999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="267" id="CaZ-Tn-j91"/>
+                                            <constraint firstAttribute="height" constant="1" id="e1u-ol-isu"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWQ-68-VTV">
+                                        <rect key="frame" x="52" y="116" width="267" height="1"/>
+                                        <color key="backgroundColor" red="0.7445381284" green="0.64912962910000005" blue="0.49800789359999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Nw1-Tm-I1l"/>
+                                            <constraint firstAttribute="width" constant="267" id="eVt-fh-R0A"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.99998801946640015" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="JB4-54-HrW" firstAttribute="top" secondItem="S1z-2d-sUa" secondAttribute="bottom" constant="28" id="4PJ-9E-lnY"/>
                                     <constraint firstItem="0d9-f8-Lye" firstAttribute="top" secondItem="tbr-BN-Isw" secondAttribute="top" constant="15" id="8HU-5j-zUY"/>
+                                    <constraint firstItem="TcY-ih-kMq" firstAttribute="top" secondItem="0d9-f8-Lye" secondAttribute="bottom" constant="36" id="HMT-aN-5pX"/>
+                                    <constraint firstItem="TcY-ih-kMq" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" constant="52" id="JxS-Z7-Ycu"/>
+                                    <constraint firstAttribute="trailing" secondItem="TcY-ih-kMq" secondAttribute="trailing" constant="66" id="M14-Cc-TLD"/>
                                     <constraint firstItem="JB4-54-HrW" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" constant="52" id="MlL-Jx-SyU"/>
                                     <constraint firstAttribute="width" constant="385" id="NTc-U6-4Zo"/>
                                     <constraint firstItem="S1z-2d-sUa" firstAttribute="top" secondItem="0d9-f8-Lye" secondAttribute="bottom" constant="17" id="PcC-bz-6jh"/>
+                                    <constraint firstAttribute="trailing" secondItem="xWQ-68-VTV" secondAttribute="trailing" constant="66" id="Qn7-Mu-dTX"/>
                                     <constraint firstAttribute="height" constant="214" id="R1W-yF-Reg"/>
                                     <constraint firstAttribute="trailing" secondItem="S1z-2d-sUa" secondAttribute="trailing" constant="52" id="S2n-NH-kwy"/>
                                     <constraint firstAttribute="trailing" secondItem="0d9-f8-Lye" secondAttribute="trailing" id="W7t-5Y-osj"/>
                                     <constraint firstItem="S1z-2d-sUa" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" constant="52" id="Z5O-J9-7wL"/>
+                                    <constraint firstItem="xWQ-68-VTV" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" constant="52" id="lIu-ct-uHu"/>
                                     <constraint firstItem="0d9-f8-Lye" firstAttribute="leading" secondItem="tbr-BN-Isw" secondAttribute="leading" id="mni-KF-qrZ"/>
                                     <constraint firstAttribute="trailing" secondItem="JB4-54-HrW" secondAttribute="trailing" constant="52" id="qeo-NL-4u8"/>
+                                    <constraint firstItem="xWQ-68-VTV" firstAttribute="top" secondItem="tbr-BN-Isw" secondAttribute="top" constant="116" id="ya3-U2-mQq"/>
                                 </constraints>
                             </view>
                         </subviews>

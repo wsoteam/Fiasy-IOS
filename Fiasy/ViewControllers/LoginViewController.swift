@@ -6,8 +6,16 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
+import FirebaseDatabase
 
-class LoginViewController: UIViewController ,GIDSignInUIDelegate{
+class LoginViewController: BaseViewController ,GIDSignInUIDelegate{
+    
+    
+    var ref: DatabaseReference!
+
+    
+    //
+
     
     private func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
      //   myActivityIndicator.stopAnimating()
@@ -26,11 +34,13 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
     }
     
     
-    let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
-   // @IBOutlet weak var signInButton: GIDSignInButton!
+    //let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
 
+    
     @IBOutlet weak var signInButton: GIDSignInButton!
 
+    @IBOutlet weak var loginField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     
     private lazy var telephoneView: TelephoneView = {
         let phoneView = UINib(nibName: "TelephoneView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TelephoneView
@@ -41,6 +51,8 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Init Telephone view
+        ref = Database.database().reference()
+        
         
         telephoneView.frame = view.frame
         telephoneView.sendButton.addTarget(self, action: #selector(self.sendSMS(_:)), for: .touchUpInside)
@@ -50,7 +62,7 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
         
         telephoneView.isUserInteractionEnabled = true
         telephoneView.addGestureRecognizer(tapComments)
-
+        telephoneView.isHidden = true
         /*
          @IBOutlet weak var phoneNumberField: UITextField!
          @IBOutlet weak var smsField: UITextField!
@@ -67,7 +79,55 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
     @objc func sendSMS(_ sender: UIButton){
         
         print("\(sender)")
-        telephoneView.isHidden = true
+    
+        
+        if (UserDefaults.standard.value(forKey: "firebase_verification") == nil ){
+        PhoneAuthProvider.provider().verifyPhoneNumber( telephoneView.phoneNumberField.text!) { (verificationID, error) in
+            if ((error) != nil) {
+                // Verification code not sent.
+                print("Login error: \(error!.localizedDescription)")
+            } else {
+                // Successful. User gets verification code
+                // Save verificationID in UserDefaults
+                UserDefaults.standard.set(verificationID, forKey: "firebase_verification")
+                UserDefaults.standard.synchronize()
+                //And show the Screen to enter the Code.
+            }
+            
+            }
+            
+        }
+            else
+        {
+            let verificationID = UserDefaults.standard.value(forKey: "firebase_verification")
+            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID! as! String, verificationCode:self.telephoneView.phoneNumberField.text!)
+            
+            Auth.auth().signIn(with: credential, completion: {(_ user: User, _ error: Error?) -> Void in
+                if error != nil {
+                    // Error
+                    
+                    if let error = error {
+                        print("Login error: \(error.localizedDescription)")
+                        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                        let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(okayAction)
+                        self.present(alertController, animated: true, completion: nil)
+                        
+                        return
+                    }
+                    
+                    
+                }else {
+                    print("Phone number: \(user.phoneNumber)")
+                    let userInfo: Any? = user.providerData[0]
+                    print(userInfo)
+                    
+                    self.telephoneView.isHidden = true
+                    self.loadHomeTabbarViewController()
+                }
+                } as! AuthResultCallback)
+            }
+            
     }
     @objc func hidePhoneview(_ sender: UIButton){
         
@@ -75,22 +135,31 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
         telephoneView.isHidden = true
     }
 
-    func signFaceBook()
-    {
-        
-        
-    }
+  
+    
     @IBAction func emailLogin(_ sender: Any) {
   
-       loadHomeTabbarViewController()
-//
-//        if let viewController = UIStoryboard(name: "PremiumStoryBoard", bundle: nil).instantiateViewController(withIdentifier: "PremiumViewController") as? PremiumViewController {
-//
-//
-//            if let navigator = navigationController {
-//                navigator.pushViewController(viewController, animated: true)
-//            }
-//        }
+        
+        
+        Auth.auth().signIn(withEmail: loginField.text!, password: passwordField.text!) { [weak self] user, error in
+        
+            if let error = error {
+                print("Login error: \(error.localizedDescription)")
+                let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okayAction)
+                self!.present(alertController, animated: true, completion: nil)
+                
+                return
+            }else
+            {
+                
+                self!.loadHomeTabbarViewController()
+            }
+        }
+        
+   
+
         
     
     }
@@ -128,12 +197,12 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
             
         }
     }
-    @IBAction func googleLogin(_ sender: Any) {
-        
-    }
+  
+    
     
     @IBAction func messageLogin(_ sender: Any) {
-        
+     
+        telephoneView.isHidden = false
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -159,56 +228,6 @@ class LoginViewController: UIViewController ,GIDSignInUIDelegate{
 
     }
     
-    // MARK: - Load Home Tabbar
-    func loadHomeTabbarViewController() {
-        self.appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "TabBarController", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-        
-        //  My ViewController screen
-        let myStoryboard = UIStoryboard(name: "MyViewController", bundle: Bundle.main)
-        let myVC = myStoryboard.instantiateViewController(withIdentifier: "MyViewController") as! MyViewController
-        
-        let myTab = UITabBarItem(title: "Я", image: UIImage(named: "Vector"), selectedImage: UIImage(named: "Vector"))
-        myVC.tabBarItem = myTab
-        
-        //  Trainer Tab
-        let trainerStoryBoard = UIStoryboard(name: "TrainerStoryboard", bundle: Bundle.main)
-        let trainerVC = trainerStoryBoard.instantiateViewController(withIdentifier: "TrainerViewController") as! TrainerViewController
-        
-        let trainerTab = UITabBarItem(title: "Тренер", image: UIImage(named: "Group 5"), selectedImage: UIImage(named: "Group 5"))
-        trainerVC.tabBarItem = trainerTab
-        
-        
-        //  CheckIn Tab
-        let checkInStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
-        let checkInVc = checkInStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        let checkInTab = UITabBarItem(title: "Дневник", image: UIImage(named: "Group 2-1"), selectedImage: UIImage(named: "Group 2-1"))
-        
-        checkInVc.tabBarItem = checkInTab
-        
-        // Articles Tab
-        let articlesStoryboard = UIStoryboard(name: "ArticlesStoryboard", bundle: Bundle.main)
-        let articlesVc = articlesStoryboard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
-        let articlesTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Group 2"), selectedImage: UIImage(named: "Group 2"))
-        articlesVc.tabBarItem = articlesTab
-        
-        // Recipe Tab
-        let recipeStoryBoard = UIStoryboard(name: "RecipesStoryboard", bundle: Bundle.main)
-        let recipeVC = recipeStoryBoard.instantiateViewController(withIdentifier: "RecipesViewController") as! RecipesViewController
-        let recipeTabTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Subtract"), selectedImage: UIImage(named: "Subtract"))
-        recipeVC.tabBarItem = recipeTabTab
-        
-        initialViewController.tabbarViewControllers = [trainerVC, trainerVC,checkInVc,articlesVc,recipeVC]
-        initialViewController.navigationController?.navigationBar.isHidden = true
-        let tabBarstoryboard = UIStoryboard(name: "TabBarController", bundle: nil)
-        let navigationController = tabBarstoryboard.instantiateViewController(withIdentifier: "TabbarNavigationController") as! UINavigationController
-        navigationController.isNavigationBarHidden = false
-        navigationController.viewControllers = [initialViewController]
-        
-        self.appDelegate.window?.rootViewController = navigationController
-        self.appDelegate.window?.makeKeyAndVisible()
-
-    }
+   
     
 }

@@ -71,6 +71,11 @@
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Black.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>FirstScreenStoryBoard</string>
 	<key>UIRequiredDeviceCapabilities</key>

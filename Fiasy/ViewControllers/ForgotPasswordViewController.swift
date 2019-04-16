@@ -7,28 +7,46 @@
 //
 
 import UIKit
+import Firebase
 
 class ForgotPasswordViewController: UIViewController {
 
+    @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
     }
     
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+   
+    @IBAction func forgotPasswordTapped(_ sender: Any) {
+      
+                    Auth.auth().sendPasswordReset(withEmail: passwordField.text!, completion: { (error) in
+                if error != nil{
+                 
+                    let alertController = UIAlertController(title: "Ошибка", message: error?.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                }else {
+                   
+                    
+                    let alertController = UIAlertController(title: "Письмо выслано", message: error?.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    
+                }
+            })
+      
+        
         
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

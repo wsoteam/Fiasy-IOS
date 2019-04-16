@@ -1,9 +1,3 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-Contains the view controller for the Breakfast Finder.
-*/
 
 import UIKit
 import AVFoundation

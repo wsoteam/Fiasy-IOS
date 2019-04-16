@@ -4,10 +4,12 @@ import UIKit
 
 class SecondMainCell: UITableViewCell {
     
+    @IBOutlet weak var plusBtn: UIButton!
     //MARK: - Outlets -
     @IBOutlet weak var insertStackView: UIStackView!
     @IBOutlet weak var arrowImageView: UIImageView!
     
+   
     //MARK: - Properties -
     private var delegate: SecondMainManagerDelegate?
     private var isArrowSelected: Bool = false

@@ -8,7 +8,8 @@ class BaseViewController: UIViewController {
    
     var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x:  0, y: 0, width: 150, height: 150))
     var isShowPlaceholder = false
-    
+    let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +103,60 @@ class BaseViewController: UIViewController {
         return dateString
     }
 
-    
+    // MARK: - Load Home Tabbar
+    func loadHomeTabbarViewController() {
+        self.appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "TabBarController", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
+        
+        //  My ViewController screen
+        let myStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
+        let myVC = myStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        
+        let myTab = UITabBarItem(title: "Дневник", image: UIImage(named: "Exclude1"), selectedImage: UIImage(named: "Exclude1"))
+        myVC.tabBarItem = myTab
+        
+        //  Trainer Tab
+        let trainerStoryBoard = UIStoryboard(name: "TrainerStoryboard", bundle: Bundle.main)
+        let trainerVC = trainerStoryBoard.instantiateViewController(withIdentifier: "TrainerViewController") as! TrainerViewController
+        
+        let trainerTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Vector2"), selectedImage: UIImage(named: "Vector2"))
+        trainerVC.tabBarItem = trainerTab
+        
+        
+        //  CheckIn Tab
+        let checkInStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
+        let checkInVc = checkInStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        let checkInTab = UITabBarItem(title: "Тренер", image: UIImage(named: "Group 2-1"), selectedImage: UIImage(named: "Group 2-1"))
+        
+        checkInVc.tabBarItem = checkInTab
+        
+        // Articles Tab
+        let articlesStoryboard = UIStoryboard(name: "ArticlesStoryboard", bundle: Bundle.main)
+        let articlesVc = articlesStoryboard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
+        let articlesTab = UITabBarItem(title: "Рецепты", image: UIImage(named: "Group 2"), selectedImage: UIImage(named: "Group 2"))
+        articlesVc.tabBarItem = articlesTab
+        
+        // Recipe Tab
+        let recipeStoryBoard = UIStoryboard(name: "RecipesStoryboard", bundle: Bundle.main)
+        let recipeVC = recipeStoryBoard.instantiateViewController(withIdentifier: "RecipesViewController") as! RecipesViewController
+        let recipeTabTab = UITabBarItem(title: "Профиль", image: UIImage(named: "Subtract"), selectedImage: UIImage(named: "Subtract"))
+        recipeVC.tabBarItem = recipeTabTab
+        
+        initialViewController.tabbarViewControllers = [myVC, trainerVC,checkInVc,articlesVc,recipeVC]
+        
+        
+        initialViewController.navigationController?.navigationBar.isHidden = true
+        
+        let tabBarstoryboard = UIStoryboard(name: "TabBarController", bundle: nil)
+        let navigationController = tabBarstoryboard.instantiateViewController(withIdentifier: "TabbarNavigationController") as! UINavigationController
+
+        navigationController.viewControllers = [initialViewController]
+        
+        self.appDelegate.window?.rootViewController = navigationController
+        self.appDelegate.window?.makeKeyAndVisible()
+        
+    }
 //    // MARK: - Show AlertInternetError
     func showInternetError() {
         AlertComponent.sharedInctance.showInternetErrorAlert(vc: self) { (action) in

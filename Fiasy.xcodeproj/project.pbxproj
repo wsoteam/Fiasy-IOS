@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		72DA4F2403DA0E835D96D957 /* Pods_Fiasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBF4E95AB3377B64154ACC4 /* Pods_Fiasy.framework */; };
+		F00481CD2265A39900C720CA /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00481CC2265A39900C720CA /* TestViewController.swift */; };
+		F00481CF2265A3A100C720CA /* TestArStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00481CE2265A3A100C720CA /* TestArStoryboard.storyboard */; };
+		F00481D22265A3C700C720CA /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F00481D02265A3C700C720CA /* Food101.mlmodel */; };
+		F00481D32265A3C700C720CA /* UIImage+PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00481D12265A3C700C720CA /* UIImage+PixelBuffer.swift */; };
+		F008CF4722656C8000F94685 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008CF4622656C8000F94685 /* SearchViewController.swift */; };
+		F008CF4922656CB900F94685 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F008CF4822656CB900F94685 /* Search.storyboard */; };
+		F008CF4B226575E500F94685 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008CF4A226575E500F94685 /* SearchCell.swift */; };
 		F00E04B12251903800A25126 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E04B02251903800A25126 /* MainViewController.swift */; };
 		F00E04B32251937300A25126 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E04B22251937300A25126 /* MainStoryboard.storyboard */; };
 		F00E6DCC2251E8620055179E /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00E6DCB2251E8620055179E /* TabBarController.storyboard */; };
@@ -97,6 +104,14 @@
 		3E09325AEF0935BC223032BC /* Pods-Fiasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.debug.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.debug.xcconfig"; sourceTree = "<group>"; };
 		6DBF4E95AB3377B64154ACC4 /* Pods_Fiasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6767781632F4C67DE293619 /* Pods-Fiasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.release.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.release.xcconfig"; sourceTree = "<group>"; };
+		F00481CC2265A39900C720CA /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		F00481CE2265A3A100C720CA /* TestArStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestArStoryboard.storyboard; sourceTree = "<group>"; };
+		F00481D02265A3C700C720CA /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
+		F00481D12265A3C700C720CA /* UIImage+PixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+PixelBuffer.swift"; sourceTree = "<group>"; };
+		F008CF442265441400F94685 /* Fiasy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fiasy.entitlements; sourceTree = "<group>"; };
+		F008CF4622656C8000F94685 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F008CF4822656CB900F94685 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		F008CF4A226575E500F94685 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		F00E04B02251903800A25126 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F00E04B22251937300A25126 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F00E6DCB2251E8620055179E /* TabBarController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBarController.storyboard; sourceTree = "<group>"; };
@@ -214,6 +229,26 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F00481C82265A0EF00C720CA /* ARV2 */ = {
+			isa = PBXGroup;
+			children = (
+				F00481D02265A3C700C720CA /* Food101.mlmodel */,
+				F00481D12265A3C700C720CA /* UIImage+PixelBuffer.swift */,
+				F00481CC2265A39900C720CA /* TestViewController.swift */,
+				F00481CE2265A3A100C720CA /* TestArStoryboard.storyboard */,
+			);
+			path = ARV2;
+			sourceTree = "<group>";
+		};
+		F008CF4522656C4300F94685 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F008CF4622656C8000F94685 /* SearchViewController.swift */,
+				F008CF4A226575E500F94685 /* SearchCell.swift */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
 		F0124F7B224261B9001B9793 = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +270,7 @@
 		F0124F86224261B9001B9793 /* Fiasy */ = {
 			isa = PBXGroup;
 			children = (
+				F008CF442265441400F94685 /* Fiasy.entitlements */,
 				F02357E02261F82D00364832 /* BasicComponents */,
 				F0C7E49E225F76DF008F0442 /* Models */,
 				F06C3192225CF1CD00FDDC34 /* Helpers */,
@@ -272,6 +308,7 @@
 				F00E6DDD2251F3160055179E /* RecipesStoryboard.storyboard */,
 				F04EF0B4225BCC6800A13005 /* PrivacyPolicyStoryBoard.storyboard */,
 				F04EF0B8225BD14000A13005 /* RegistrationProfileStoryboard.storyboard */,
+				F008CF4822656CB900F94685 /* Search.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -279,6 +316,7 @@
 		F01748A4224A157000E2E646 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F008CF4522656C4300F94685 /* SearchViewController */,
 				F06C318D225CF11100FDDC34 /* MainViewController */,
 				F06FB41A225C7D5100295A92 /* BaseViewController */,
 				F00E6DCD2251E89F0055179E /* MainTabBarVC.swift */,
@@ -321,6 +359,7 @@
 		F0231C77224E4B070051DFBA /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F00481C82265A0EF00C720CA /* ARV2 */,
 				F06FB3FD225C06D100295A92 /* RadioButton */,
 				F0293C962253435600565FE4 /* AR */,
 			);
@@ -577,6 +616,14 @@
 				TargetAttributes = {
 					F0124F83224261B9001B9793 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -607,6 +654,7 @@
 				F01748A8224A15AD00E2E646 /* FirstScreenStoryBoard.storyboard in Resources */,
 				F01748BE224A1ED000E2E646 /* Roboto-Italic.ttf in Resources */,
 				F01748BF224A1ED000E2E646 /* Roboto-Bold.ttf in Resources */,
+				F008CF4922656CB900F94685 /* Search.storyboard in Resources */,
 				F06C318B225CF09B00FDDC34 /* SecondMainCell.xib in Resources */,
 				F01748BD224A1ED000E2E646 /* Roboto-Regular.ttf in Resources */,
 				F01748C9224A222300E2E646 /* PremiumStoryBoard.storyboard in Resources */,
@@ -631,6 +679,7 @@
 				F01748C3224A1ED000E2E646 /* Roboto-Black.ttf in Resources */,
 				F04EF0B9225BD14000A13005 /* RegistrationProfileStoryboard.storyboard in Resources */,
 				F02357E622621FA600364832 /* TelephoneView.xib in Resources */,
+				F00481CF2265A3A100C720CA /* TestArStoryboard.storyboard in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
@@ -758,6 +807,7 @@
 			files = (
 				F06C319B225CF25E00FDDC34 /* UIView+Attributes.swift in Sources */,
 				F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */,
+				F00481D32265A3C700C720CA /* UIImage+PixelBuffer.swift in Sources */,
 				F0C7E4A1225F773C008F0442 /* User.swift in Sources */,
 				F06FB419225C7CFE00295A92 /* RouterManager.swift in Sources */,
 				F0293C9B2253436E00565FE4 /* VisionObjectRecognitionViewController.swift in Sources */,
@@ -774,6 +824,8 @@
 				F04EF0B7225BD12400A13005 /* RegistrationProfileViewController.swift in Sources */,
 				F06C319E225CF28000FDDC34 /* UITableView + Scroll.swift in Sources */,
 				F06FB401225C076100295A92 /* RadioCheckboxBaseContainer.swift in Sources */,
+				F00481CD2265A39900C720CA /* TestViewController.swift in Sources */,
+				F00481D22265A3C700C720CA /* Food101.mlmodel in Sources */,
 				F06FB412225C077400295A92 /* RadioButtonCircleStyle.swift in Sources */,
 				F06C318C225CF09B00FDDC34 /* SecondMainCell.swift in Sources */,
 				F06C3191225CF12700FDDC34 /* SecondMainViewController.swift in Sources */,
@@ -796,6 +848,7 @@
 				F06FB400225C076100295A92 /* RadioCheckboxBaseButton.swift in Sources */,
 				F06FB409225C076B00295A92 /* CheckboxButton.swift in Sources */,
 				F00E6DD02251ED860055179E /* MyViewController.swift in Sources */,
+				F008CF4722656C8000F94685 /* SearchViewController.swift in Sources */,
 				F00E6DD62251EE070055179E /* RecipesViewController.swift in Sources */,
 				F00E04B12251903800A25126 /* MainViewController.swift in Sources */,
 				F06FB413225C077400295A92 /* RadioButtonColor.swift in Sources */,
@@ -804,6 +857,7 @@
 				F06C3187225CF05D00FDDC34 /* PagingMainView.swift in Sources */,
 				F06FB40A225C076B00295A92 /* CheckboxButtonContainer.swift in Sources */,
 				F0293C9A2253436E00565FE4 /* ObjectDetector.mlmodel in Sources */,
+				F008CF4B226575E500F94685 /* SearchCell.swift in Sources */,
 				F06C3196225CF21100FDDC34 /* UIFont+AppFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -952,9 +1006,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fiasy/Fiasy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = G79VQLR3P8;
+				DEVELOPMENT_TEAM = 75385TCW2L;
 				INFOPLIST_FILE = Fiasy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -974,8 +1029,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fiasy/Fiasy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G79VQLR3P8;
+				DEVELOPMENT_TEAM = 75385TCW2L;
 				INFOPLIST_FILE = Fiasy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (

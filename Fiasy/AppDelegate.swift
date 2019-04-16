@@ -51,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+    
+        UITabBar.appearance().tintColor = UIColor(red: 211/255.0, green: 143/255.0, blue: 68/255.0, alpha: 1.0)
 
         
         return true
@@ -59,6 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
         return GIDSignIn.sharedInstance().handle(url as URL?,
                                                  sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let firebaseAuth = Auth.auth()
+        
+        if (firebaseAuth.canHandleNotification(userInfo)){
+            print(userInfo)
+            return
+        }
+    }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Pass device token to auth.
+        let firebaseAuth = Auth.auth()
+        
+        //At development time we use .sandbox
+        firebaseAuth.setAPNSToken(deviceToken, type: AuthAPNSTokenType.sandbox)
+        
+        //At time of production it will be set to .prod
     }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -142,53 +162,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
     
     // MARK: - Load Home Tabbar
     func loadHomeTabbarViewController() {
-        window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "TabBarController", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
         
         //  My ViewController screen
-        let myStoryboard = UIStoryboard(name: "MyViewController", bundle: Bundle.main)
-        let myVC = myStoryboard.instantiateViewController(withIdentifier: "MyViewController") as! MyViewController
+        let myStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
+        let myVC = myStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
         
-        let myTab = UITabBarItem(title: "Я", image: UIImage(named: "Vector"), selectedImage: UIImage(named: "Vector"))
+        let myTab = UITabBarItem(title: "Дневник", image: UIImage(named: "Exclude1"), selectedImage: UIImage(named: "Exclude1"))
         myVC.tabBarItem = myTab
         
         //  Trainer Tab
         let trainerStoryBoard = UIStoryboard(name: "TrainerStoryboard", bundle: Bundle.main)
         let trainerVC = trainerStoryBoard.instantiateViewController(withIdentifier: "TrainerViewController") as! TrainerViewController
         
-        let trainerTab = UITabBarItem(title: "Тренер", image: UIImage(named: "Group 5"), selectedImage: UIImage(named: "Group 5"))
+        let trainerTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Vector2"), selectedImage: UIImage(named: "Vector2"))
         trainerVC.tabBarItem = trainerTab
         
         
         //  CheckIn Tab
         let checkInStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
         let checkInVc = checkInStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        let checkInTab = UITabBarItem(title: "Дневник", image: UIImage(named: "Group 2-1"), selectedImage: UIImage(named: "Group 2-1"))
+        let checkInTab = UITabBarItem(title: "Тренер", image: UIImage(named: "Group 2-1"), selectedImage: UIImage(named: "Group 2-1"))
         
         checkInVc.tabBarItem = checkInTab
         
         // Articles Tab
         let articlesStoryboard = UIStoryboard(name: "ArticlesStoryboard", bundle: Bundle.main)
         let articlesVc = articlesStoryboard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
-        let articlesTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Group 2"), selectedImage: UIImage(named: "Group 2"))
+        let articlesTab = UITabBarItem(title: "Рецепты", image: UIImage(named: "Group 2"), selectedImage: UIImage(named: "Group 2"))
         articlesVc.tabBarItem = articlesTab
         
         // Recipe Tab
         let recipeStoryBoard = UIStoryboard(name: "RecipesStoryboard", bundle: Bundle.main)
         let recipeVC = recipeStoryBoard.instantiateViewController(withIdentifier: "RecipesViewController") as! RecipesViewController
-        let recipeTabTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Subtract"), selectedImage: UIImage(named: "Subtract"))
+        let recipeTabTab = UITabBarItem(title: "Профиль", image: UIImage(named: "Subtract"), selectedImage: UIImage(named: "Subtract"))
         recipeVC.tabBarItem = recipeTabTab
         
-        initialViewController.tabbarViewControllers = [trainerVC, trainerVC,checkInVc,articlesVc,recipeVC]
+        initialViewController.tabbarViewControllers = [myVC, trainerVC,checkInVc,articlesVc,recipeVC]
+        
+        
         initialViewController.navigationController?.navigationBar.isHidden = true
+        
         let tabBarstoryboard = UIStoryboard(name: "TabBarController", bundle: nil)
         let navigationController = tabBarstoryboard.instantiateViewController(withIdentifier: "TabbarNavigationController") as! UINavigationController
-        navigationController.isNavigationBarHidden = false
+        
         navigationController.viewControllers = [initialViewController]
         
-     window?.rootViewController = navigationController
-       window?.makeKeyAndVisible()
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
         
     }
     
