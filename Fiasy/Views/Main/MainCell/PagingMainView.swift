@@ -59,20 +59,12 @@ class PagingMainView: UIView {
         mutableAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, mutableAttrString.length))
         return mutableAttrString
     }
-    
-//    func getBalance() -> NSMutableAttributedString {
-//        if let wallet = UserPrefs.getUser()?.wallet {
-//            return wallet.amount.getFormattedBalance(by: wallet, wholeSize: 38.0, fractionalSize: 22.0, сurrencySize: 18.0, baselineOffset: 14.0)
-//        } else {
-//            return NSMutableAttributedString(string: "")
-//        }
-//    }
-    
+
     func getCaloriesTitle(count: String,  currency: String, wholeSize: CGFloat, сurrencySize: CGFloat, currencyOffset: CGFloat) -> NSMutableAttributedString {
         
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(NSAttributedString(string: count,
-                                                    attributes: setAttributes(size: wholeSize)))
+                                            attributes: setAttributes(size: wholeSize)))
         mutableAttrString.append(NSAttributedString(string: currency, attributes: [.font : UIFont.fontRobotoMedium(size: сurrencySize), .baselineOffset: currencyOffset]))
         
         return mutableAttrString

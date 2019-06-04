@@ -12,7 +12,7 @@ struct DateFormatters {
     
     static var shortDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd.YYYY"
+        dateFormatter.dateFormat = "dd.MM.YYYY"
         //dateFormatter.timeZone = .current
         //        dateFormatter.timeStyle = .none
         //        dateFormatter.dateStyle = .short

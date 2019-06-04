@@ -20,11 +20,20 @@ target 'Fiasy' do
         
         pod 'GoogleSignIn'
 
+        pod 'Intercom'
         pod 'Bolts'
         pod 'FBSDKCoreKit'
         pod 'FBSDKLoginKit'
         pod 'Bugsee'
         pod 'NVActivityIndicatorView'
         pod 'Firebase/Database'
+        pod 'MaterialControls'
+        pod 'SwiftyJSON'
+        pod 'DropDown'
+        pod 'BEMCheckBox'
+        pod 'Kingfisher'
+        pod 'Amplitude-iOS'
+        pod 'Adjust'
+        pod 'SQLite.swift'
         
  end

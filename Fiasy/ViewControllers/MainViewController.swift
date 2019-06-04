@@ -59,7 +59,7 @@ class MainViewController: UIViewController {
 extension MainViewController: PagingViewControllerInfiniteDataSource {
     
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, viewControllerForPagingItem pagingItem: T) -> UIViewController {
-        guard let viewController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "SecondMainViewController") as? SecondMainViewController else {
+        guard let viewController = UIStoryboard(name: "Diary", bundle: nil).instantiateViewController(withIdentifier: "SecondMainViewController") as? SecondMainViewController else {
             return UIViewController()
         }
         let _ = viewController.view
@@ -135,10 +135,10 @@ extension MainViewController: UITableViewDelegate {
             let isFilled = height <= 50.0
             let color: UIColor = (isFilled ? #colorLiteral(red: 0.926578939, green: 0.5977495313, blue: 0.2691291571, alpha: 1) : .clear)
             
-            UIView.animate(withDuration: 0.25) {
-                menuView.headerView.activeVIew.backgroundColor = color
-                menuView.headerView.titleLabel.alpha = isFilled ? 1 : 0
-            }
+//            UIView.animate(withDuration: 0.25) {
+//                menuView.headerView.activeVIew.backgroundColor = color
+//                menuView.headerView.titleLabel.alpha = isFilled ? 1 : 0
+//            }
         }
     }
 }

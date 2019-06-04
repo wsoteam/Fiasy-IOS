@@ -21,5 +21,9 @@ extension UIFont {
     static func fontRobotoBold(size: CGFloat) -> UIFont {
         return UIFont(name: "Roboto-Bold", size: size)!
     }
+    
+    static func fontRobotoLight(size: CGFloat) -> UIFont {
+        return UIFont(name: "Roboto-Light", size: size)!
+    }
 }
 

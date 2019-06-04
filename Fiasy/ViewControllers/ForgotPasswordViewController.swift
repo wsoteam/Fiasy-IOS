@@ -11,42 +11,38 @@ import Firebase
 
 class ForgotPasswordViewController: BaseViewController {
 
-    @IBOutlet weak var passwordField: UITextField!
+    //MARK: - Outlet -
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    // MARK: - Properties -
+    override internal var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+    //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
     
+    //MARK: - Actions -
     @IBAction func backAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
    
     @IBAction func forgotPasswordTapped(_ sender: Any) {
-      
-                    Auth.auth().sendPasswordReset(withEmail: passwordField.text!, completion: { (error) in
-                if error != nil{
-                 
-                    let alertController = UIAlertController(title: "Ошибка", message: error?.localizedDescription, preferredStyle: .alert)
-                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                }else {
-                   
-                    
-                    let alertController = UIAlertController(title: "Письмо выслано", message: error?.localizedDescription, preferredStyle: .alert)
-                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                    
-                }
-            })
-      
-        
-        
-        
+        guard let text = emailTextField.text, !text.isEmpty else { return }
+        guard text.isValidEmail() else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Проверьте введенный email!", vc: self)
+        }
+        Auth.auth().sendPasswordReset(withEmail: text, completion: { (error) in
+            if let _ = error {
+                self.showError(title: "Ошибка", message: "Данного пользователя не существует", complete: {})
+            } else {
+                self.showError(title: "Внимание", message: "Пароль отправлен на ваш email адресс", complete: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+        })
     }
-
 }

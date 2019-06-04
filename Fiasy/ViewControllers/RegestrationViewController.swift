@@ -1,219 +1,171 @@
-
-
 import UIKit
 import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
+import BEMCheckBox
+import Amplitude_iOS
 
-class RegestrationViewController: BaseViewController, GIDSignInUIDelegate{
-
-    private func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        //   myActivityIndicator.stopAnimating()
-    }
+class RegestrationViewController: BaseViewController {
     
-    // Present a view that prompts the user to sign in with Google
-    private func signIn(signIn: GIDSignIn!,
-                        presentViewController viewController: UIViewController!) {
-        //self.presentViewController(viewController, animated: true, completion: nil)
-    }
+    //MARK: - Outlet -
+    @IBOutlet weak var checkBox: BEMCheckBox!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
-    // Dismiss the "Sign in with Google" view
-    private func signIn(signIn: GIDSignIn!,
-                        dismissViewController viewController: UIViewController!) {
-        //  self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
-    @IBOutlet weak var userNameField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    private lazy var telephoneView: TelephoneView = {
-        let phoneView = UINib(nibName: "TelephoneView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TelephoneView
-        phoneView.clipsToBounds = true
-        return phoneView
-    }()
-    
-    override func viewWillDisappear(_ animated: Bool) {
-
-    }
-    
-   
-    
-    
+    //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Init Telephone view
-         telephoneView.isHidden = true
-        telephoneView.frame = view.frame
-        telephoneView.sendButton.addTarget(self, action: #selector(self.sendSMSM(_:)), for: .touchUpInside)
-        telephoneView.cancelButton.addTarget(self, action: #selector(self.hidePhoneview(_:)), for: .touchUpInside)
-        view.addSubview(telephoneView)
-        
-        
-        let tapComments = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        
-        telephoneView.isUserInteractionEnabled = true
-        telephoneView.addGestureRecognizer(tapComments)
-         GIDSignIn.sharedInstance().uiDelegate = self
-        /*
-         @IBOutlet weak var phoneNumberField: UITextField!
-         @IBOutlet weak var smsField: UITextField!
-         */
+        setupInitialState()
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        Amplitude.instance().logEvent("start_registration")
     }
-
-    @objc func hideKeyboard(){
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.view.endEditing(true)
-        
+        hideKeyboardWhenTappedAround()
     }
   
-    
-    @objc func hidePhoneview(_ sender: UIButton){
-        
-        print("\(sender)")
-        telephoneView.isHidden = true
-    }
-
+    //MARK: - Action -
     @IBAction func backAction(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: true)
-        
+        navigationController?.popViewController(animated: true)
     }
     
-    
-    @IBAction func messageLogin(_ sender: Any) {
+    @IBAction func signUpClicked(_ sender: Any) {
+        guard checkBox.on else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Для регистрации нужно согласия с условиями политики конфиденциальности", vc: self)
+        }
+        guard isConnectedToNetwork() else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
+        }
+        if let email = emailTextField.text, let password = passwordTextField.text, email.isEmpty || password.isEmpty {
+            let text = (emailTextField.text ?? "").isEmpty ? "Введите email" : "Введите пароль"
+            return AlertComponent.sharedInctance.showAlertMessage(message: text, vc: self)
+        }
+        guard (emailTextField.text ?? "").isValidEmail() else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Проверьте введенный email!", vc: self)
+        }
+        guard (passwordTextField.text ?? "").count >= 6 else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Пароль слишком простой", vc: self)
+        }
         
-        telephoneView.isHidden = false
-    }
-    
-    @IBAction func regestrationAction(_ sender: Any) {
-        if isConnectedToNetwork() == true {
-            
-        
-            Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!){ (user, error) in
-                if error == nil {
-                    
-                    print(user)
-                    
-                            if let viewController = UIStoryboard(name: "TutorialStoryboard", bundle: nil).instantiateViewController(withIdentifier: "TutorialViewController") as? TutorialViewController {
-                                self.navigationController?.pushViewController(viewController, animated: true)
-                                
-                            }                }
-                    
-                else{
-                    let alertController = UIAlertController(title: "Такой пользователь уже существует", message: error?.localizedDescription, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                   alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
+        Auth.auth().createUser(withEmail: (emailTextField.text ?? ""), password: (passwordTextField.text ?? "")) { [weak self] (user, error) in
+            guard let strongSelf = self else { return }
+            guard let _ = error else {
+                var first = "default"
+                var last = "default"
+                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
+                if let array = fullNameArr, array.indices.contains(0) {
+                    first = array[0]
                 }
+                if let array = fullNameArr, array.indices.contains(1) {
+                    last = array[1]
+                }
+                
+                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
+                FirebaseDBManager.checkFilledProfile()
+                return strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
             }
-      }
+            AlertComponent.sharedInctance.showAlertMessage(message: "Такой пользователь уже существует",
+                                                          vc: strongSelf)
+        }
     }
     
-    @IBAction func facebookRegistration(_ sender: Any)
-    {
-        if isConnectedToNetwork() == true {
-            
-            let fbLoginManager = FBSDKLoginManager()
-            fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+    @IBAction func googleClicked(_ sender: Any) {
+        GIDSignIn.sharedInstance().signOut()
+        guard isConnectedToNetwork() else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
+        }
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @IBAction func phoneClicked(_ sender: Any) {
+        performSegue(withIdentifier: "sequePhoneScreen", sender: nil)
+    }
+    
+    @IBAction func facebookClicked(_ sender: Any) {
+        guard isConnectedToNetwork() else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
+        }
+        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
+            guard result?.isCancelled != true else { return }
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            Auth.auth().signIn(with: FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString), completion: { (user, error) in
                 if let error = error {
-                    print("Failed to login: \(error.localizedDescription)")
-                    return
-                }
-                
-                guard let accessToken = FBSDKAccessToken.current() else {
-                    print("Failed to get access token")
-                    return
-                }
-                
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-                
-                // Perform login by calling Firebase APIs
-                Auth.auth().signIn(with: credential, completion: { (user, error) in
-                    if let error = error {
-                        print("Login error: \(error.localizedDescription)")
-                        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                        let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(okayAction)
-                        self.present(alertController, animated: true, completion: nil)
-                        
-                        return
+                    if let strongSelf = self {
+                        return AlertComponent.sharedInctance.showAlertMessage(title: "Login Error",
+                                    message: error.localizedDescription, vc: strongSelf)
                     }
-                    self.loadHomeTabbarViewController()
-                    
-                })
+                }
                 
-            }
+                var first = ""
+                var last = ""
+                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
+                if let array = fullNameArr, array.indices.contains(0) {
+                    first = array[0]
+                }
+                if let array = fullNameArr, array.indices.contains(1) {
+                    last = array[1]
+                }
+                
+                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
+                FirebaseDBManager.checkFilledProfile()
+                self?.performSegue(withIdentifier: "segueToMenu", sender: nil)
+            })
         }
     }
     
-    
-   
-    
-    
-    
-    @IBAction func googleRegistration(_ sender: Any)
-    {
-        if isConnectedToNetwork() == true {
-            
-            GIDSignIn.sharedInstance().signIn()
-            
-        }
-    }
- 
-    @objc func sendSMSM(_ sender: UIButton){
-        
-        print("\(sender)")
-        
-        
-        if (UserDefaults.standard.value(forKey: "firebase_verification") == nil ){
-            PhoneAuthProvider.provider().verifyPhoneNumber( telephoneView.phoneNumberField.text!) { (verificationID, error) in
-                if ((error) != nil) {
-                    // Verification code not sent.
-                    print("Login error: \(error!.localizedDescription)")
-                } else {
-                    // Successful. User gets verification code
-                    // Save verificationID in UserDefaults
-                    UserDefaults.standard.set(verificationID, forKey: "firebase_verification")
-                    UserDefaults.standard.synchronize()
-                    //And show the Screen to enter the Code.
-                }
-                
-            }
-            
-        }
-        else
-        {
-            let verificationID = UserDefaults.standard.value(forKey: "firebase_verification")
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID! as! String, verificationCode:self.telephoneView.phoneNumberField.text!)
-            
-            Auth.auth().signIn(with: credential, completion: {(_ user: User, _ error: Error?) -> Void in
-                if error != nil {
-                    // Error
-                    
-                    if let error = error {
-                        print("Login error: \(error.localizedDescription)")
-                        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                        let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(okayAction)
-                        self.present(alertController, animated: true, completion: nil)
-                        
-                        return
-                    }
-                    
-                    
-                }else {
-                    print("Phone number: \(user.phoneNumber)")
-                    let userInfo: Any? = user.providerData[0]
-                    print(userInfo)
-                    
-                    self.telephoneView.isHidden = true
-                    self.loadHomeTabbarViewController()
-                }
-                } as! AuthResultCallback)
-        }
-        
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        return newString.count <= 320
     }
 
+    //MARK: - Private -
+    private func setupInitialState() {
+        checkBox.boxType = .square
+        checkBox.onFillColor = .clear
+        checkBox.onCheckColor = #colorLiteral(red: 0.2745942175, green: 0.2475363314, blue: 0.2095298767, alpha: 1)
+        checkBox.onTintColor = #colorLiteral(red: 0.2745942175, green: 0.2475363314, blue: 0.2095298767, alpha: 1)
+    }
+}
+
+extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            guard error.localizedDescription != "The user canceled the sign-in flow." else {
+                return
+            }
+        }
+        let first = user.profile.givenName ?? ""
+        let last = user.profile.familyName ?? ""
+        if let error = error {
+            return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
+                                            message: error.localizedDescription, vc: self)
+        } else {
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credential, completion: { [unowned self] (user, error) in
+                if let error = error {
+                    return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
+                                         message: error.localizedDescription, vc: self)
+                } else {
+                    FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
+                    FirebaseDBManager.checkFilledProfile()
+                    self.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                }
+            })
+        }
+    }
 }

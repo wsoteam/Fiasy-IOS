@@ -7,60 +7,165 @@
 //
 
 import UIKit
+import DropDown
+import Amplitude_iOS
 
-class SearchViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource  {
-    // number of rows in table view
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 22
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 400.0;//Choose your custom row height
-    }
-    // create a cell for each table view row
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // create a new cell if needed or reuse an old one
-    //    let cell:SearchCell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchCell!
-        
-        let cell : SearchCell = self.tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchCell
-         cell.selectionStyle = .none
-      
-        
-      
-        return cell
-    }
+class SearchViewController: UIViewController, UITextFieldDelegate {
     
+    //MARK: - Outlets -
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var bottomTableConstraint: NSLayoutConstraint!
+    @IBOutlet weak var foodIntakeTypeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    // method to run when table view cell is tapped
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+    
+    //MARK: - Properties -
+    private var dropDown = DropDown()
+    private let backgroundQueue = DispatchQueue(label: "com.app.queue", qos: .background)
+    private var filteredProducts: [Product] = []
+    override internal var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
-
+    //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(SearchCell.self, forCellReuseIdentifier: "SearchCell")
-        tableView.delegate = self
+        
+        fillDropDown()
+        filteredProducts = UserInfo.sharedInstance.allProducts
+        tableView.register(type: SearchCell.self)
         tableView.dataSource = self
-
+        tableView.delegate = self
     }
     
-    @IBAction func showAr(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if let viewController = UIStoryboard(name: "TestArStoryboard", bundle: nil).instantiateViewController(withIdentifier: "TestViewController") as? TestViewController {
-            
-            
-            if let navigator = navigationController {
-                navigator.pushViewController(viewController, animated: true)
-            }
+        configurationKeyboardNotification()
+        hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeObserver()
+    }
+    
+    //MARK: - Private -
+    private func fillDropDown() {
+        DropDown.appearance().textFont = UIFont.fontRobotoLight(size: 12)
+        dropDown.dataSource.append("Завтрак")
+        dropDown.dataSource.append("Обед")
+        dropDown.dataSource.append("Ужин")
+        dropDown.dataSource.append("Перекус")
+        for (index,item) in dropDown.dataSource.enumerated() where index == UserInfo.sharedInstance.selectedMealtimeIndex {
+            foodIntakeTypeButton.setTitle("\(item)   ", for: .normal)
+            UserInfo.sharedInstance.selectedMealtimeTitle = item
+        }
+        
+        dropDown.anchorView = foodIntakeTypeButton
+        dropDown.selectionBackgroundColor = .clear
+        dropDown.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height ?? 0) + 5)
+        
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.foodIntakeTypeButton.setTitle("\(item)   ", for: .normal)
+            UserInfo.sharedInstance.selectedMealtimeTitle = item
         }
     }
     
+    private func isContains(pattern: String, in text: String?) -> Bool {
+        guard let text = text else { return false }
+        let lowcasePattern = pattern.lowercased()
+        let lowcaseText = text.lowercased()
+        
+        let fullNameArr = lowcasePattern.characters.split{$0 == " "}.map(String.init)
+        var states: [Bool] = []
+        for item in fullNameArr {
+            states.append(lowcaseText.contains(item))
+        }
+        return !states.contains(false)
+    }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let _ = touch.view as? UITableViewCell {
+            return false
+        }
+        return true
+    }
+    
+    //MARK: - Action -
     @IBAction func backAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func dropDownClicked(_ sender: Any) {
+        dropDown.show()
+    }
+    
+    @IBAction func searchProduct(_ sender: UITextField) {
+        guard let text = sender.text, !text.isEmpty else {
+            self.filteredProducts = UserInfo.sharedInstance.allProducts
+            return self.tableView.reloadData()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else {
+            return false
+        }
+        var firstItems: [Product] = []
+        for item in UserInfo.sharedInstance.allProducts where self.isContains(pattern: text, in: "\(item.name ?? "") (\(item.brend ?? ""))") {
+            firstItems.append(item)
+            
+            if firstItems.count == 20 {
+                if self.searchTextField.text == text {
+                    self.filteredProducts = firstItems
+                    self.tableView.reloadData()
+                }
+                break
+            }
+        }
+        
+        var items: [Product] = []
+        DispatchQueue.global(qos: .background).async {
+            for item in UserInfo.sharedInstance.allProducts where self.isContains(pattern: text, in: "\(item.name ?? "") (\(item.brend ?? ""))") {
+                items.append(item)
+            }
+            
+            DispatchQueue.main.async {
+                Amplitude.instance().logEvent("view_search_food")
+                if text == self.searchTextField.text {
+                    self.filteredProducts = items
+                    Amplitude.instance().logEvent("view_search_food")
+                    self.tableView.reloadData()
+                }
+            }
+        }
         
         
+        return true
+    }
+}
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredProducts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as? SearchCell else { fatalError() }
+        
+        if filteredProducts.indices.contains(indexPath.row) {
+            cell.fillCell(info: filteredProducts[indexPath.row])
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if filteredProducts.indices.contains(indexPath.row) {
+            UserInfo.sharedInstance.selectedProduct = filteredProducts[indexPath.row]
+            performSegue(withIdentifier: "sequeProductDetails", sender: nil)
+        }
     }
 }

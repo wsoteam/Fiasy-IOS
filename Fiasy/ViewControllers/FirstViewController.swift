@@ -1,35 +1,27 @@
-
-
 import UIKit
 
 class FirstViewController: BaseViewController {
+    
+    // MARK: - Properties -
+    override internal var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      //  self.loadHomeTabbarViewController()
-    }
-    
-
-    @IBAction func regestration(_ sender: Any) {
         
-        if let viewController = UIStoryboard(name: "RegistrationProfileStoryboard", bundle: nil).instantiateViewController(withIdentifier: "RegistrationProfileViewController") as? RegistrationProfileViewController {
-          
-            
-            if let navigator = navigationController {
-                navigator.pushViewController(viewController, animated: true)
-            }
-        }
+        checkFirstLoad()
     }
     
-    @IBAction func showLoginScreen(_ sender: Any) {
-        if let viewController = UIStoryboard(name: "LoginStoryboard", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-
-            if let navigator = navigationController {
-                navigator.pushViewController(viewController, animated: true)
-            }
-        }
-        
+    // MARK: - Private -
+    private func checkFirstLoad() {
+//        guard let _ = UserDefaults.standard.value(forKey: "firstLoadComplete") else {
+//            return performSegue(withIdentifier: "segueSecondUserInfoScreen", sender: nil)
+//        }
     }
     
+    // MARK: - Action's -
+    @IBAction func signUpClicked(_ sender: Any) {
+        performSegue(withIdentifier: "segueUserInfoScreen", sender: nil)
+    }
 }

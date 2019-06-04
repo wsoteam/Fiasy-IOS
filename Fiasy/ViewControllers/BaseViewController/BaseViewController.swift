@@ -8,7 +8,7 @@ class BaseViewController: UIViewController {
    
     var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x:  0, y: 0, width: 150, height: 150))
     var isShowPlaceholder = false
-    let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+    //let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
 
 
     override func viewDidLoad() {
@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
 //        navigationController?.navigationBar.shadowImage = UIImage()
 //        navigationController?.navigationBar.isHidden = false
         
-        setupDissmissTapGesture()
+     //   setupDissmissTapGesture()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,9 +72,9 @@ class BaseViewController: UIViewController {
     }
     
     // MARK: - DismissKeyboard
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
     
     // MARK: - DiviceModel
     func diviceModel() -> String {
@@ -105,60 +105,6 @@ class BaseViewController: UIViewController {
         return dateString
     }
 
-    // MARK: - Load Home Tabbar
-    func loadHomeTabbarViewController() {
-        self.appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "TabBarController", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-        
-        //  My ViewController screen
-        let myStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
-        let myVC = myStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        
-        let myTab = UITabBarItem(title: "Дневник", image: UIImage(named: "Exclude1"), selectedImage: UIImage(named: "Exclude1"))
-        myVC.tabBarItem = myTab
-        
-        //  Trainer Tab
-        let trainerStoryBoard = UIStoryboard(name: "PremiumStoryBoard", bundle: Bundle.main)
-        let trainerVC = trainerStoryBoard.instantiateViewController(withIdentifier: "PremiumViewController") as! PremiumViewController
-        
-        let trainerTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Vector2"), selectedImage: UIImage(named: "Vector2"))
-        trainerVC.tabBarItem = trainerTab
-        
-        
-        //  CheckIn Tab
-        let checkInStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
-        let checkInVc = checkInStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        let checkInTab = UITabBarItem(title: "Тренер", image: UIImage(named: "Group 2-1"), selectedImage: UIImage(named: "Group 2-1"))
-        
-        checkInVc.tabBarItem = checkInTab
-        
-        // Articles Tab
-        let articlesStoryboard = UIStoryboard(name: "ArticlesStoryboard", bundle: Bundle.main)
-        let articlesVc = articlesStoryboard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
-        let articlesTab = UITabBarItem(title: "Рецепты", image: UIImage(named: "Group 2"), selectedImage: UIImage(named: "Group 2"))
-        articlesVc.tabBarItem = articlesTab
-        
-        // Recipe Tab
-        let recipeStoryBoard = UIStoryboard(name: "RecipesStoryboard", bundle: Bundle.main)
-        let recipeVC = recipeStoryBoard.instantiateViewController(withIdentifier: "RecipesViewController") as! RecipesViewController
-        let recipeTabTab = UITabBarItem(title: "Профиль", image: UIImage(named: "Subtract"), selectedImage: UIImage(named: "Subtract"))
-        recipeVC.tabBarItem = recipeTabTab
-        
-        initialViewController.tabbarViewControllers = [myVC, trainerVC,checkInVc,articlesVc,recipeVC]
-        
-        
-        initialViewController.navigationController?.navigationBar.isHidden = true
-        
-        let tabBarstoryboard = UIStoryboard(name: "TabBarController", bundle: nil)
-        let navigationController = tabBarstoryboard.instantiateViewController(withIdentifier: "TabbarNavigationController") as! UINavigationController
-
-        navigationController.viewControllers = [initialViewController]
-        
-        self.appDelegate.window?.rootViewController = navigationController
-        self.appDelegate.window?.makeKeyAndVisible()
-        
-    }
 //    // MARK: - Show AlertInternetError
     func showInternetError() {
         AlertComponent.sharedInctance.showInternetErrorAlert(vc: self) { (action) in
@@ -202,16 +148,16 @@ class BaseViewController: UIViewController {
     }
 }
 
-extension BaseViewController: UIGestureRecognizerDelegate {
-    // MARK: - DismissKeyboard
-    func setupDissmissTapGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard))
-        tap.delegate = self
-        view.isUserInteractionEnabled = true;
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-}
+//extension BaseViewController: UIGestureRecognizerDelegate {
+//    // MARK: - DismissKeyboard
+//    func setupDissmissTapGesture() {
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard))
+//        tap.delegate = self
+//        view.isUserInteractionEnabled = true;
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//}
 
 extension BaseViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

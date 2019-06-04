@@ -1,55 +1,50 @@
-
-
 import UIKit
+import Amplitude_iOS
 
-class PremiumViewController: BaseViewController {
+class PremiumViewController: UIViewController {
 
-    @IBOutlet weak var treeMontsBtn: UIButton!
-    @IBOutlet weak var nwelveMonth: UIButton!
-    @IBOutlet weak var oneMonth: UIButton!
+    //MARK: - Outlet -
     
-   // let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
+
+    // MARK: - Properties -
+    override internal var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        Amplitude.instance()?.logEvent("view_prem")
     }
     
-    @IBAction func backAction(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.navigationController?.popViewController(animated: true)
-        
-    }
-    @IBAction func oneMonth(_ sender: Any) {
-        
-        self.oneMonth.layer.borderWidth = 4.0
-        self.oneMonth.layer.borderColor = UIColor(red:253/255, green:91/255, blue:28/255, alpha: 1).cgColor
-
-        self.oneMonth.layer.masksToBounds = true
-        self.nwelveMonth.layer.borderColor =  UIColor.white.cgColor
-        self.treeMontsBtn.layer.borderColor =  UIColor.white.cgColor
-        
-    }
-    @IBAction func threeMonth(_ sender: Any) {
-        loadHomeTabbarViewController()
-        self.treeMontsBtn.layer.borderWidth = 4.0
-        self.treeMontsBtn.layer.borderColor = UIColor(red:253/255, green:91/255, blue:28/255, alpha: 1).cgColor
-        self.treeMontsBtn.layer.masksToBounds = true
-        
-        self.nwelveMonth.layer.borderColor =  UIColor.white.cgColor
-        self.oneMonth.layer.borderColor =  UIColor.white.cgColor
+        addObserver(for: self, #selector(paymentComplete), Constant.PAYMENT_COMPLETE)
     }
     
-    @IBAction func twelveMonth(_ sender: Any) {
-
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        self.nwelveMonth.layer.borderWidth = 4.0
-        self.nwelveMonth.layer.borderColor =  UIColor(red:253/255, green:91/255, blue:28/255, alpha: 1).cgColor
-         self.nwelveMonth.layer.masksToBounds = true
-      
-        self.oneMonth.layer.borderColor =  UIColor.white.cgColor
-        self.treeMontsBtn.layer.borderColor =  UIColor.white.cgColor
+        removeObserver()
     }
-     
-
+    
+    @objc func paymentComplete() {
+        UserInfo.sharedInstance.paymentComplete = true
+        DispatchQueue.global().async {
+            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        }
+        dismiss(animated: true)
+    }
+    
+    //MARK: - Action's -
+    @IBAction func closeClicled(_ sender: Any) {
+        Amplitude.instance()?.logEvent("close_premium")
+        dismiss(animated: true)
+    }
+    
+    @IBAction func purchedClicked(_ sender: Any) {
+        Amplitude.instance()?.logEvent("click_on_buy")
+        SubscriptionService.shared.purchase()
+    }
 }

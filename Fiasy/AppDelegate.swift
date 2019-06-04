@@ -14,99 +14,68 @@ import FBSDKCoreKit
 import Firebase
 import Bugsee
 import GoogleSignIn
-
-
+import FirebaseDatabase
+import Amplitude_iOS
+import Adjust
+import Intercom
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print("\(error.localizedDescription)")
-        } else {
-            // Perform any operations on signed in user here.
-//            _ = user.userID                  // For client-side use only!
-//            _ = user.authentication.idToken // Safe to send to the server
-//            _ = user.profile.name
-//            _ = user.profile.givenName
-//            _ = user.profile.familyName
-//            _ = user.profile.email
-            // ...
-            self.loadHomeTabbarViewController()
-        }
-    }
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
-
-
+    let screensController = ScreensController()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
       //  Fabric.with([Crashlytics.self()])
-        Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
-       // GIDSignIn.sharedInstance().clientID = "588344798889-ucqhmdmq5m5isj591c2rl6ul6fuqp36a.apps.googleusercontent.com"
-        //GIDSignIn.sharedInstance().delegate = self
-
+        //Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
         
         FirebaseApp.configure()
+        SQLDatabase.shared.fetchProducts()
+        FirebaseDBManager.checkFilledProfile()
+        SwiftGoogleTranslate.shared.start(with: "AIzaSyB5dv1L0W_85lcFrEcyqZ0KyGZeRn6wOTE")
+        Amplitude.instance()?.trackingSessionEvents = true
+        Amplitude.instance()?.minTimeBetweenSessionsMillis = 5000
+        Amplitude.instance()?.initializeApiKey("115a722e4336d141626d680fc1cca21c")
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
-    
-        UITabBar.appearance().tintColor = UIColor(red: 211/255.0, green: 143/255.0, blue: 68/255.0, alpha: 1.0)
-
+        
+        UserInfo.sharedInstance.getAllRecipes()
+        screensController.showScreens()
+        SubscriptionService.shared.getProducts()
+        Intercom.setApiKey("221925e0d17a40eb824938ad4c2a9857e2320b6f", forAppId: "dr8zfmz4")
+        
+        Amplitude.instance().logEvent("session_launch")
+        Adjust.appDidLaunch(ADJConfig(appToken: "8qzg30s9d3wg", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
         
         return true
     }
+    
     private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url as URL?,
-                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let firebaseAuth = Auth.auth()
-        
-        if (firebaseAuth.canHandleNotification(userInfo)){
-            print(userInfo)
-            return
+        if (Auth.auth().canHandleNotification(userInfo)) {
+            return print(userInfo)
         }
     }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // Pass device token to auth.
-        let firebaseAuth = Auth.auth()
-        
-        //At development time we use .sandbox
-        firebaseAuth.setAPNSToken(deviceToken, type: AuthAPNSTokenType.sandbox)
-        
-        //At time of production it will be set to .prod
+        Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.prod)
     }
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: sourceApplication,
-                                                 annotation: annotation)
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication,
+                                                        annotation: annotation)
     }
     
     
@@ -159,61 +128,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
             }
         }
     }
-    
-    // MARK: - Load Home Tabbar
-    func loadHomeTabbarViewController() {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "TabBarController", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-        
-        //  My ViewController screen
-        let myStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
-        let myVC = myStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        
-        let myTab = UITabBarItem(title: "Дневник", image: UIImage(named: "Exclude1"), selectedImage: UIImage(named: "Exclude1"))
-        myVC.tabBarItem = myTab
-        
-        //  Trainer Tab
-        let trainerStoryBoard = UIStoryboard(name: "TrainerStoryboard", bundle: Bundle.main)
-        let trainerVC = trainerStoryBoard.instantiateViewController(withIdentifier: "TrainerViewController") as! TrainerViewController
-        
-        let trainerTab = UITabBarItem(title: "Статьи", image: UIImage(named: "Vector2"), selectedImage: UIImage(named: "Vector2"))
-        trainerVC.tabBarItem = trainerTab
-        
-        
-        //  CheckIn Tab
-        let checkInStoryboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle.main)
-        let checkInVc = checkInStoryboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        let checkInTab = UITabBarItem(title: "Тренер", image: UIImage(named: "Group 2-1"), selectedImage: UIImage(named: "Group 2-1"))
-        
-        checkInVc.tabBarItem = checkInTab
-        
-        // Articles Tab
-        let articlesStoryboard = UIStoryboard(name: "ArticlesStoryboard", bundle: Bundle.main)
-        let articlesVc = articlesStoryboard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
-        let articlesTab = UITabBarItem(title: "Рецепты", image: UIImage(named: "Group 2"), selectedImage: UIImage(named: "Group 2"))
-        articlesVc.tabBarItem = articlesTab
-        
-        // Recipe Tab
-        let recipeStoryBoard = UIStoryboard(name: "RecipesStoryboard", bundle: Bundle.main)
-        let recipeVC = recipeStoryBoard.instantiateViewController(withIdentifier: "RecipesViewController") as! RecipesViewController
-        let recipeTabTab = UITabBarItem(title: "Профиль", image: UIImage(named: "Subtract"), selectedImage: UIImage(named: "Subtract"))
-        recipeVC.tabBarItem = recipeTabTab
-        
-        initialViewController.tabbarViewControllers = [myVC, trainerVC,checkInVc,articlesVc,recipeVC]
-        
-        
-        initialViewController.navigationController?.navigationBar.isHidden = true
-        
-        let tabBarstoryboard = UIStoryboard(name: "TabBarController", bundle: nil)
-        let navigationController = tabBarstoryboard.instantiateViewController(withIdentifier: "TabbarNavigationController") as! UINavigationController
-        
-        navigationController.viewControllers = [initialViewController]
-        
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
-        
-    }
-    
 }
 

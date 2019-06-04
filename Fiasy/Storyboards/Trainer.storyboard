@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cXc-pg-JyS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="IAa-sS-2b0">
+            <objects>
+                <viewController id="kdz-PE-1Sf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U9u-Z4-ljH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZFd-MB-00j">
+                                <rect key="frame" x="20" y="0.0" width="335" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="unZ-Mv-qZ9" firstAttribute="trailing" secondItem="ZFd-MB-00j" secondAttribute="trailing" constant="20" id="VVD-nO-XcR"/>
+                            <constraint firstItem="ZFd-MB-00j" firstAttribute="leading" secondItem="unZ-Mv-qZ9" secondAttribute="leading" constant="20" id="dtN-UP-Ur4"/>
+                            <constraint firstAttribute="bottom" secondItem="ZFd-MB-00j" secondAttribute="bottom" id="nV2-C4-lzD"/>
+                            <constraint firstItem="ZFd-MB-00j" firstAttribute="top" secondItem="U9u-Z4-ljH" secondAttribute="top" id="xPz-jS-5dE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="unZ-Mv-qZ9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t3b-IQ-voO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nah-DY-yGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1324" y="-224.4377811094453"/>
+        </scene>
+        <!--Тренер-->
+        <scene sceneID="vk5-84-vhx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="cXc-pg-JyS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Тренер" id="rRi-aF-zRz" customClass="MenuTabBarItem" customModule="Fiasy" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="imageItem" value="Vector (5)"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9yP-KJ-bkf">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kdz-PE-1Sf" kind="relationship" relationship="rootViewController" id="pGV-7y-ngp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aWf-1y-DNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="462" y="-224"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Group 2" width="23.5" height="25"/>
+    </resources>
+</document>

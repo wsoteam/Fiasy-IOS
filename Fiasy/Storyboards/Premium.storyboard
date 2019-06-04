@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XBD-fM-5iV">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Premium View Controller-->
+        <scene sceneID="DaB-Bo-lEm">
+            <objects>
+                <viewController id="XBD-fM-5iV" customClass="PremiumViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MAl-Jx-rVr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbB-WJ-F31" userLabel="space">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" red="0.45467138290405273" green="0.48957324028015137" blue="0.22956326603889465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hes-TZ-XHQ">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiasy Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvs-1B-i2g">
+                                        <rect key="frame" x="100.5" y="11.5" width="119" height="21"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuQ-88-vMi">
+                                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.45467138289999998" green="0.48957324029999999" blue="0.22956326599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Qzd-M2-mDd"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hrw-Mf-ZkJ">
+                                        <rect key="frame" x="266" y="0.0" width="44" height="44"/>
+                                        <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="closeClicled:" destination="XBD-fM-5iV" eventType="touchUpInside" id="hSV-GY-hac"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.56829726696014404" green="0.62011438608169556" blue="0.25058466196060181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Hrw-Mf-ZkJ" secondAttribute="bottom" id="6BQ-aV-aBW"/>
+                                    <constraint firstItem="IuQ-88-vMi" firstAttribute="leading" secondItem="hes-TZ-XHQ" secondAttribute="leading" id="Hy6-EU-XPn"/>
+                                    <constraint firstAttribute="trailing" secondItem="IuQ-88-vMi" secondAttribute="trailing" id="Utg-jM-QBY"/>
+                                    <constraint firstItem="rvs-1B-i2g" firstAttribute="centerX" secondItem="hes-TZ-XHQ" secondAttribute="centerX" id="Wjp-ur-bCE"/>
+                                    <constraint firstAttribute="height" constant="44" id="gw9-Fb-mDL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hrw-Mf-ZkJ" secondAttribute="trailing" constant="10" id="jji-aa-bcG"/>
+                                    <constraint firstAttribute="bottom" secondItem="IuQ-88-vMi" secondAttribute="bottom" id="sTl-E6-td2"/>
+                                    <constraint firstItem="rvs-1B-i2g" firstAttribute="centerY" secondItem="hes-TZ-XHQ" secondAttribute="centerY" id="wfh-3S-80n"/>
+                                    <constraint firstItem="Hrw-Mf-ZkJ" firstAttribute="width" secondItem="hes-TZ-XHQ" secondAttribute="height" multiplier="1:1" id="xeE-Hk-3Dh"/>
+                                    <constraint firstItem="Hrw-Mf-ZkJ" firstAttribute="top" secondItem="hes-TZ-XHQ" secondAttribute="top" id="y8s-hE-IO7"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diamond" translatesAutoresizingMaskIntoConstraints="NO" id="0mR-38-tns">
+                                <rect key="frame" x="115" y="79" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0mR-38-tns" secondAttribute="height" multiplier="1:1" id="jE0-XE-Qtm"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group (4)" translatesAutoresizingMaskIntoConstraints="NO" id="i3U-1W-Yh8">
+                                <rect key="frame" x="152" y="174" width="16" height="120"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9r-T1-3Bg">
+                                <rect key="frame" x="150" y="294" width="20" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="O9r-T1-3Bg" secondAttribute="height" multiplier="1:1" id="bmT-nu-LQQ"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Попробуйте весь функционал с бесплатной подпиской н" translatesAutoresizingMaskIntoConstraints="NO" id="Ch6-3Z-eb7">
+                                <rect key="frame" x="152" y="314" width="16" height="30"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Ci8-T6-BX5">
+                                <rect key="frame" x="0.0" y="357.5" width="320" height="87"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Попробовать 3 дня бесплатно" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drw-ib-7Lf">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="14"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                        <color key="textColor" red="0.93862622976303101" green="0.49060922861099243" blue="0.0019256151281297207" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4z-kH-IaH">
+                                        <rect key="frame" x="0.0" y="21" width="320" height="46"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbF-tk-TBw">
+                                                <rect key="frame" x="45" y="0.0" width="230" height="46"/>
+                                                <color key="backgroundColor" red="0.56829726696014404" green="0.62011438608169556" blue="0.25058466196060181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46" id="a1A-b7-iud"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                                <state key="normal" title="ПРОДОЛЖИТЬ">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="IBshadowRadius">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="IBshadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="IBshadowOffset">
+                                                        <size key="value" width="3" height="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
+                                                        <color key="value" white="0.0" alpha="0.29919226694915252" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="purchedClicked:" destination="XBD-fM-5iV" eventType="touchUpInside" id="jNK-Aa-e4h"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="MbF-tk-TBw" firstAttribute="leading" secondItem="Q4z-kH-IaH" secondAttribute="leading" constant="45" id="3U3-G5-MEh"/>
+                                            <constraint firstItem="MbF-tk-TBw" firstAttribute="top" secondItem="Q4z-kH-IaH" secondAttribute="top" id="Bo9-ej-86Z"/>
+                                            <constraint firstAttribute="trailing" secondItem="MbF-tk-TBw" secondAttribute="trailing" constant="45" id="eVT-Do-843"/>
+                                            <constraint firstAttribute="bottom" secondItem="MbF-tk-TBw" secondAttribute="bottom" id="uTR-0y-TF7"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75 р  в месяц после окончания бесплатного периода" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfG-6x-ICV">
+                                        <rect key="frame" x="0.0" y="74" width="320" height="13"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="11"/>
+                                        <color key="textColor" red="0.61561745405197144" green="0.61572599411010742" blue="0.61561065912246704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCk-SG-oz2">
+                                <rect key="frame" x="150" y="444.5" width="20" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qCk-SG-oz2" secondAttribute="height" multiplier="1:1" id="0BM-By-T7h"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFL-df-hNI">
+                                <rect key="frame" x="103" y="509.5" width="114" height="28.5"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Положения">
+                                            <attributes>
+                                                <color key="NSColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="11" name="LucidaGrande"/>
+                                                <real key="NSKern" value="0.0"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="14" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                    <tabStops/>
+                                                </paragraphStyle>
+                                                <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <real key="NSStrokeWidth" value="0.0"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="11" name="STIXVariants-Regular"/>
+                                                <real key="NSKern" value="0.0"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="14" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                    <tabStops/>
+                                                </paragraphStyle>
+                                                <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <real key="NSStrokeWidth" value="0.0"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="и">
+                                            <attributes>
+                                                <color key="NSColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="11" name="LucidaGrande"/>
+                                                <real key="NSKern" value="0.0"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="14" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                    <tabStops/>
+                                                </paragraphStyle>
+                                                <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <real key="NSStrokeWidth" value="0.0"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="11" name="STIXVariants-Regular"/>
+                                                <real key="NSKern" value="0.0"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="14" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                    <tabStops/>
+                                                </paragraphStyle>
+                                                <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <real key="NSStrokeWidth" value="0.0"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="условия">
+                                            <attributes>
+                                                <color key="NSColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="11" name="LucidaGrande"/>
+                                                <real key="NSKern" value="0.0"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="14" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                    <tabStops/>
+                                                </paragraphStyle>
+                                                <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <real key="NSStrokeWidth" value="0.0"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="RG3-Mn-5cc" kind="presentation" identifier="" id="Z6f-eg-6qg"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 3" translatesAutoresizingMaskIntoConstraints="NO" id="XCO-Mm-445">
+                                <rect key="frame" x="152" y="464.5" width="16" height="35"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ch6-3Z-eb7" firstAttribute="centerX" secondItem="frF-Vi-wLv" secondAttribute="centerX" id="0aX-Eg-ybv"/>
+                            <constraint firstItem="XCO-Mm-445" firstAttribute="bottom" secondItem="SFL-df-hNI" secondAttribute="top" constant="-10" id="4N4-5M-b6y"/>
+                            <constraint firstItem="qCk-SG-oz2" firstAttribute="width" secondItem="MAl-Jx-rVr" secondAttribute="width" multiplier="0.0625" id="5Kn-B0-3XM"/>
+                            <constraint firstItem="frF-Vi-wLv" firstAttribute="trailing" secondItem="Ci8-T6-BX5" secondAttribute="trailing" id="7C3-f3-fM0"/>
+                            <constraint firstItem="frF-Vi-wLv" firstAttribute="trailing" secondItem="XbB-WJ-F31" secondAttribute="trailing" id="7kH-fj-qbU"/>
+                            <constraint firstItem="qCk-SG-oz2" firstAttribute="top" secondItem="Ci8-T6-BX5" secondAttribute="bottom" id="8lp-OV-lcm"/>
+                            <constraint firstItem="XCO-Mm-445" firstAttribute="height" secondItem="MAl-Jx-rVr" secondAttribute="height" multiplier="0.0616197" id="8p9-3n-Ous"/>
+                            <constraint firstItem="frF-Vi-wLv" firstAttribute="trailing" secondItem="hes-TZ-XHQ" secondAttribute="trailing" id="DoN-0V-fIO"/>
+                            <constraint firstItem="XbB-WJ-F31" firstAttribute="top" secondItem="MAl-Jx-rVr" secondAttribute="top" id="ISr-19-Kja"/>
+                            <constraint firstItem="SFL-df-hNI" firstAttribute="centerX" secondItem="frF-Vi-wLv" secondAttribute="centerX" id="IyD-e6-BaM"/>
+                            <constraint firstItem="frF-Vi-wLv" firstAttribute="top" secondItem="hes-TZ-XHQ" secondAttribute="top" id="Jv2-Gr-0BP"/>
+                            <constraint firstItem="0mR-38-tns" firstAttribute="width" secondItem="MAl-Jx-rVr" secondAttribute="width" multiplier="0.28125" id="Jvv-iM-Ptd"/>
+                            <constraint firstItem="i3U-1W-Yh8" firstAttribute="height" secondItem="MAl-Jx-rVr" secondAttribute="height" multiplier="0.211268" id="KWD-e4-eBL"/>
+                            <constraint firstItem="0mR-38-tns" firstAttribute="top" secondItem="hes-TZ-XHQ" secondAttribute="bottom" constant="15" id="N4q-0a-dzS"/>
+                            <constraint firstItem="XCO-Mm-445" firstAttribute="top" secondItem="qCk-SG-oz2" secondAttribute="bottom" id="P7P-bn-CsW"/>
+                            <constraint firstItem="hes-TZ-XHQ" firstAttribute="leading" secondItem="frF-Vi-wLv" secondAttribute="leading" id="QAB-WV-Vnh"/>
+                            <constraint firstItem="O9r-T1-3Bg" firstAttribute="centerX" secondItem="frF-Vi-wLv" secondAttribute="centerX" id="TdB-Aw-sMQ"/>
+                            <constraint firstItem="0mR-38-tns" firstAttribute="centerX" secondItem="frF-Vi-wLv" secondAttribute="centerX" id="XFN-BU-p0V"/>
+                            <constraint firstItem="XbB-WJ-F31" firstAttribute="bottom" secondItem="hes-TZ-XHQ" secondAttribute="top" id="aIh-aM-VDn"/>
+                            <constraint firstItem="i3U-1W-Yh8" firstAttribute="top" secondItem="0mR-38-tns" secondAttribute="bottom" constant="5" id="c1k-rD-kj3"/>
+                            <constraint firstItem="Ch6-3Z-eb7" firstAttribute="top" secondItem="O9r-T1-3Bg" secondAttribute="bottom" id="cuz-9E-YNH"/>
+                            <constraint firstItem="Ci8-T6-BX5" firstAttribute="leading" secondItem="frF-Vi-wLv" secondAttribute="leading" id="dco-1n-rPb"/>
+                            <constraint firstItem="O9r-T1-3Bg" firstAttribute="width" secondItem="MAl-Jx-rVr" secondAttribute="width" multiplier="0.0625" id="fHl-1U-EAo"/>
+                            <constraint firstItem="XCO-Mm-445" firstAttribute="centerX" secondItem="frF-Vi-wLv" secondAttribute="centerX" id="jYr-kR-a1v"/>
+                            <constraint firstItem="i3U-1W-Yh8" firstAttribute="centerX" secondItem="frF-Vi-wLv" secondAttribute="centerX" id="mBr-a3-ClK"/>
+                            <constraint firstItem="qCk-SG-oz2" firstAttribute="centerX" secondItem="Ci8-T6-BX5" secondAttribute="centerX" id="rIa-xo-LYL"/>
+                            <constraint firstItem="Ch6-3Z-eb7" firstAttribute="height" secondItem="MAl-Jx-rVr" secondAttribute="height" multiplier="0.0528169" id="sVw-Yr-uYN"/>
+                            <constraint firstItem="frF-Vi-wLv" firstAttribute="bottom" secondItem="SFL-df-hNI" secondAttribute="bottom" constant="30" id="uwg-a6-Zxe"/>
+                            <constraint firstItem="O9r-T1-3Bg" firstAttribute="top" secondItem="i3U-1W-Yh8" secondAttribute="bottom" id="yPB-82-lVO"/>
+                            <constraint firstItem="XbB-WJ-F31" firstAttribute="leading" secondItem="frF-Vi-wLv" secondAttribute="leading" id="ye5-O0-eex"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="frF-Vi-wLv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kuN-GM-krA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-775" y="502"/>
+        </scene>
+        <!--PrivacyPolicyViewController-->
+        <scene sceneID="wWS-ZR-o2C">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorization" referencedIdentifier="PrivacyPolicyViewController" id="RG3-Mn-5cc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qjs-dt-WlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-775" y="952"/>
+        </scene>
+        <!--Premium View Controller-->
+        <scene sceneID="eA8-jE-dNP">
+            <objects>
+                <viewController restorationIdentifier="PremiumViewController" storyboardIdentifier="PremiumViewController" id="Q2R-LJ-sct" customClass="PremiumViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2gr-fL-tG1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fa3-QR-vgG">
+                                <rect key="frame" x="80" y="51" width="161" height="161"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="dish_icon_for_premium"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Pm-uS-s2l">
+                                <rect key="frame" x="67" y="252" width="240" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Вы сможете просматривать калорийность своего блюда в режиме реального времени
+
+</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="2yv-Os-fxs">
+                                <rect key="frame" x="168" y="346" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выберите подходящий для вас вариант" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lin-Jo-w8z">
+                                <rect key="frame" x="60" y="424" width="247" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                <color key="textColor" red="0.97210127115249634" green="0.70388501882553101" blue="0.031861748546361923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tqe-FU-WUd">
+                                <rect key="frame" x="16" y="494" width="102" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 руб." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJ1-sn-aqQ">
+                                        <rect key="frame" x="32" y="45" width="46" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="В МЕСЯЦ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBC-E0-F4i">
+                                        <rect key="frame" x="26" y="82" width="61" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3 мес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szk-uI-iEE">
+                                        <rect key="frame" x="34" y="16" width="44" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EK2-HA-C8m">
+                                <rect key="frame" x="137" y="494" width="102" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 руб." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN0-Er-edI">
+                                        <rect key="frame" x="32" y="45" width="53" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="В МЕСЯЦ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCJ-2V-cgT">
+                                        <rect key="frame" x="26" y="82" width="68" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12 мес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECm-Ej-tLL">
+                                        <rect key="frame" x="34" y="16" width="38" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FP-jE-Gv9">
+                                <rect key="frame" x="258" y="494" width="102" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 руб." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXE-n4-R1n">
+                                        <rect key="frame" x="32" y="45" width="55" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="В МЕСЯЦ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PF-in-dIk">
+                                        <rect key="frame" x="26" y="82" width="61" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 мес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPI-8W-17A">
+                                        <rect key="frame" x="34" y="16" width="44" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Kq-Yps">
+                                <rect key="frame" x="16" y="494" width="102" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="threeMonth:" destination="Q2R-LJ-sct" eventType="touchUpInside" id="I26-YV-VvT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddt-Fn-9ep">
+                                <rect key="frame" x="137" y="494" width="102" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="twelveMonth:" destination="Q2R-LJ-sct" eventType="touchUpInside" id="GCn-QN-3r6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3h-ob-5ab">
+                                <rect key="frame" x="258" y="494" width="102" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="oneMonth:" destination="Q2R-LJ-sct" eventType="touchUpInside" id="2uu-Rs-082"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Автоматическое списание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFz-Ry-6l9">
+                                <rect key="frame" x="16" y="640" width="162" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Подписки оплачиваемые одним платежем" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mev-nt-UEp">
+                                <rect key="frame" x="212" y="629" width="147" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-kd-UlT">
+                                <rect key="frame" x="186" y="618" width="3" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcS-rF-Gpv">
+                                <rect key="frame" x="119" y="702" width="140" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                <state key="normal" title="Положения и условия">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyg-pM-EOg">
+                                <rect key="frame" x="270" y="34" width="30" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="Q2R-LJ-sct" eventType="touchUpInside" id="mNG-On-6Aw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.26860266923904419" green="0.33720698952674866" blue="0.42791652679443359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="C8s-uP-1ZH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jk0-aU-mNS"/>
+                    <connections>
+                        <outlet property="nwelveMonth" destination="ddt-Fn-9ep" id="dXt-jN-kY9"/>
+                        <outlet property="oneMonth" destination="i3h-ob-5ab" id="dIA-2Y-uUg"/>
+                        <outlet property="treeMontsBtn" destination="8iX-Kq-Yps" id="jQF-UT-maa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="773-2W-Zft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="149.59999999999999" y="-223.15270935960592"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Group (4)" width="268" height="143"/>
+        <image name="Group 3" width="302" height="42"/>
+        <image name="close" width="20" height="20"/>
+        <image name="diamond" width="146" height="146"/>
+        <image name="dish_icon_for_premium" width="161" height="161"/>
+        <image name="Попробуйте весь функционал с бесплатной подпиской н" width="252" height="34"/>
+    </resources>
+</document>
