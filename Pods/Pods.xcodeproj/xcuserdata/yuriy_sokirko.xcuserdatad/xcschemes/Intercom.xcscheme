@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7C9E70B6E7934F4AF3D5E3F28124889C"
+               BlueprintIdentifier = "5563F7D95AD712211C69747B8DCD2168"
                BuildableName = "Intercom"
                BlueprintName = "Intercom"
                ReferencedContainer = "container:Pods.xcodeproj">

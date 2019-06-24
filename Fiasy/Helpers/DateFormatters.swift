@@ -43,14 +43,52 @@ extension Date {
         
         return yesterday!
     }
+//    
+//    func tomorrow() -> Date {
+//
+//        var dateComponents = DateComponents()
+//        dateComponents.setValue(1, for: .day)
+//        
+//        let tomorrow = Calendar.current.date(byAdding: dateComponents, to: self)
+//
+//        return tomorrow!
+//    }
+}
+
+extension Date {
     
-    func tomorrow() -> Date {
-        
-        var dateComponents = DateComponents()
-        dateComponents.setValue(1, for: .day)
-        
-        let tomorrow = Calendar.current.date(byAdding: dateComponents, to: self)
-        
-        return tomorrow!
+    func dayNumberOfWeek() -> Int? {
+        return Calendar.current.dateComponents([.day], from: self).day
+    }
+    
+    func getWeekDates() -> [Date] {
+        var arrThisWeek: [Date] = []
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.ReferenceType.default
+        for i in 0..<7 {
+            arrThisWeek.append(calendar.date(byAdding: .day, value: i, to: startOfWeek)!)
+        }
+        return arrThisWeek
+    }
+    
+    var tomorrow: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    
+    var startOfWeek: Date {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.ReferenceType.default
+        let sunday = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
+        return calendar.date(byAdding: .day, value: 0, to: sunday!)!
+    }
+    
+    func toDate(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
     }
 }
+

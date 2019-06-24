@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,17 +20,24 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTh-7B-0nC">
+                    <rect key="frame" x="-30" y="0.0" width="435" height="1"/>
+                    <color key="backgroundColor" red="0.9410741925239563" green="0.94123548269271851" blue="0.94106411933898926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Ion-PW-Gwe"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pON-RF-kj1">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                    <rect key="frame" x="0.0" y="11" width="375" height="59"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExG-us-QSA">
-                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="59"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO1-Un-GbM">
-                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="70"/>
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="59"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -41,16 +47,20 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="pON-RF-kj1" secondAttribute="top" id="4Cp-LM-AU1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="WTh-7B-0nC" secondAttribute="top" id="di0-9O-rsQ"/>
+                <constraint firstItem="WTh-7B-0nC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="-30" id="guJ-zk-UrB"/>
                 <constraint firstItem="pON-RF-kj1" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jW4-l9-x0B"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pON-RF-kj1" secondAttribute="trailing" id="jh1-ZM-KZC"/>
+                <constraint firstItem="pON-RF-kj1" firstAttribute="top" secondItem="WTh-7B-0nC" secondAttribute="bottom" constant="10" id="pLQ-5I-xJR"/>
                 <constraint firstItem="pON-RF-kj1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pZ6-n6-2cY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WTh-7B-0nC" secondAttribute="trailing" constant="-30" id="y1R-Dq-Inv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="leftSideLabel" destination="ExG-us-QSA" id="1nw-qh-5XI"/>
                 <outlet property="rightSideLabel" destination="oO1-Un-GbM" id="ecH-QH-pkp"/>
+                <outlet property="topSeparatorView" destination="WTh-7B-0nC" id="4ns-ZZ-JMt"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="-126.83658170914543"/>
         </view>

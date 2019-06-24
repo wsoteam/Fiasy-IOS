@@ -14,7 +14,7 @@ class InstructionInsertView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     
     //MARK: - Interface -
-    func fillView(title: String) {
-        titleLabel.text = title
+    func fillView(index: Int, title: String) {
+        titleLabel.text = "\(index + 1). \(title)"
     }
 }

@@ -35,5 +35,12 @@ target 'Fiasy' do
         pod 'Amplitude-iOS'
         pod 'Adjust'
         pod 'SQLite.swift'
+        pod 'GradientProgressBar'
+        pod 'DynamicBlurView'
+        pod 'Firebase/Storage'
+        pod 'ReachabilitySwift'
+        pod 'TagListView'
+        pod 'XLPagerTabStrip'
+        pod 'AMDots'
         
  end

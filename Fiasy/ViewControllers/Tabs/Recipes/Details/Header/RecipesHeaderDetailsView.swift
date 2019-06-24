@@ -16,7 +16,7 @@ class RecipesHeaderDetailsView: UITableViewHeaderFooterView {
     @IBOutlet weak var recipeImageView: UIImageView!
     
     //MARK: - Properties -
-    static let headerHeight: CGFloat = 250.0
+    static let headerHeight: CGFloat = 260.0
 
     //MARK: - Interface -
     func fillHeader(imageUrl: String?) {

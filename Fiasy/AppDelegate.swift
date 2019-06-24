@@ -40,13 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Amplitude.instance()?.initializeApiKey("115a722e4336d141626d680fc1cca21c")
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
-        UserInfo.sharedInstance.getAllRecipes()
         screensController.showScreens()
         SubscriptionService.shared.getProducts()
         Intercom.setApiKey("221925e0d17a40eb824938ad4c2a9857e2320b6f", forAppId: "dr8zfmz4")
         
         Amplitude.instance().logEvent("session_launch")
-        Adjust.appDidLaunch(ADJConfig(appToken: "8qzg30s9d3wg", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
+        Adjust.appDidLaunch(ADJConfig(appToken: "9gsjine9aqyo", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
         
         return true
     }
@@ -76,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication,
                                                         annotation: annotation)
-    }
+    }   
     
     
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

@@ -15,6 +15,13 @@ public func instancetype<T>(object: Any?) -> T? {
 
 extension UIView {
     
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
     func setupFromNib() {
         let view = loadFromNib()
         addSubview(view)
@@ -54,6 +61,73 @@ extension UIView {
     
     class func fromXib(_ name: String? = nil) -> Self? {
         return instancetype(object: Bundle.main.loadNibNamed(name ?? self.className, owner: nil, options: nil)?.last)
+    }
+}
+
+extension UIView {
+    
+    func fadeIn(secondView: UIView) {
+        self.alpha = 0
+        secondView.alpha = 0
+        self.isHidden = false
+        secondView.isHidden = false
+        UIView.animate(withDuration: 0.0,
+                       animations: {
+                        self.alpha = 1
+                        secondView.alpha = 1
+        },
+                       completion: { (value: Bool) in
+                        //
+        }
+        )
+    }
+    
+    func fadeOut(secondView: UIView) {
+        UIView.animate(withDuration: 0.0,
+                       animations: {
+                        self.alpha = 0
+                        secondView.alpha = 0
+        },
+                       completion: { (value: Bool) in
+                        self.isHidden = true
+                        secondView.isHidden = true
+                        //
+        }
+        )
+    }
+    
+    func hideAnimated(in stackView: UIStackView) {
+        if !self.isHidden {
+            UIView.animate(
+                withDuration: 0.35,
+                delay: 0,
+                usingSpringWithDamping: 0.9,
+                initialSpringVelocity: 1,
+                options: [],
+                animations: {
+                    self.isHidden = true
+                    stackView.layoutIfNeeded()
+            },
+                completion: nil
+            )
+        }
+    }
+    
+    func showAnimated(in stackView: UIStackView) {
+        if self.isHidden {
+            UIView.animate(
+                withDuration: 0.35,
+                delay: 0,
+                usingSpringWithDamping: 0.9,
+                initialSpringVelocity: 1,
+                options: [],
+                animations: {
+                    self.isHidden = false
+                    stackView.layoutIfNeeded()
+            },
+                completion: nil
+            )
+        }
     }
 }
 

@@ -12,7 +12,7 @@ import SQLite
 class Product: NSObject {
     
     var id: Int?
-    var name: String?
+    var name: String!
     var brend: String?
     var portion: Double?
     var isLiquid: Bool?

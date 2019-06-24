@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED6CF4DCB400C30A05456D0898322865"
+               BlueprintIdentifier = "7111F362EA0D14BECD8B96EA1EAA5F79"
                BuildableName = "Adjust.framework"
                BlueprintName = "Adjust"
                ReferencedContainer = "container:Pods.xcodeproj">

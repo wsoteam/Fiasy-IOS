@@ -23,6 +23,7 @@ class Mealtime {
     var calories: Int?
     var fat: Int?
     var carbohydrates: Int?
+    var presentDay: Bool = false
 
     init(parentKey: String, generalKey: String, dictionary: [String : AnyObject]) {
         self.parentKey = parentKey
@@ -35,10 +36,9 @@ class Mealtime {
         urlOfImages = dictionary["urlOfImages"] as? String
         weight = dictionary["weight"] as? Int
         protein = dictionary["protein"] as? Int
-        if let count = dictionary["calories"] as? String {
-            calories = Int(count)
-        }
+        calories = dictionary["calories"] as? Int
         fat = dictionary["fat"] as? Int
         carbohydrates = dictionary["carbohydrates"] as? Int
+        presentDay = dictionary["presentDay"] as? Bool ?? false
     }
 }

@@ -58,41 +58,11 @@ class FirebaseDBManager {
         }
     }
     
-    static func removeItem(indexStack: Int, indexCell: IndexPath, handler: @escaping (() -> ()))  {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        switch indexCell.row {
-        case 0:
-            if !UserInfo.sharedInstance.breakfasts.isEmpty && UserInfo.sharedInstance.breakfasts.indices.contains(indexStack) {
-                if let generalKey = UserInfo.sharedInstance.breakfasts[indexStack].generalKey, let parentKey = UserInfo.sharedInstance.breakfasts[indexStack].parentKey {
-                    Database.database().reference().child("USER_LIST").child(uid).child(parentKey).child(generalKey).removeValue()
-                    handler()
-                }
-            }
-        case 1:
-            if !UserInfo.sharedInstance.lunches.isEmpty && UserInfo.sharedInstance.lunches.indices.contains(indexStack) {
-                if let generalKey = UserInfo.sharedInstance.lunches[indexStack].generalKey, let parentKey = UserInfo.sharedInstance.lunches[indexStack].parentKey {
-                    Database.database().reference().child("USER_LIST").child(uid).child(parentKey).child(generalKey).removeValue()
-                    handler()
-                }
-            }
-        case 2:
-            if !UserInfo.sharedInstance.dinners.isEmpty && UserInfo.sharedInstance.dinners.indices.contains(indexStack) {
-                if let generalKey = UserInfo.sharedInstance.dinners[indexStack].generalKey, let parentKey = UserInfo.sharedInstance.dinners[indexStack].parentKey {
-                    Database.database().reference().child("USER_LIST").child(uid).child(parentKey).child(generalKey).removeValue()
-                    handler()
-                }
-            }
-        case 3:
-            if !UserInfo.sharedInstance.snacks.isEmpty && UserInfo.sharedInstance.snacks.indices.contains(indexStack) {
-                if let generalKey = UserInfo.sharedInstance.snacks[indexStack].generalKey, let parentKey = UserInfo.sharedInstance.snacks[indexStack].parentKey {
-                    Database.database().reference().child("USER_LIST").child(uid).child(parentKey).child(generalKey).removeValue()
-                    handler()
-                }
-            }
-        default:
-            break
-        }
+    static func removeItem(mealtime: Mealtime, handler: @escaping (() -> ()))  {
+        guard let uid = Auth.auth().currentUser?.uid, let parentKey = mealtime.parentKey, let generalKey =  mealtime.generalKey else { return }
+        let ref = Database.database().reference()
+        ref.child("USER_LIST").child(uid).child(parentKey).child(generalKey).removeValue()
+        handler()
     }
     
     //MARK: - Registration -
@@ -162,32 +132,7 @@ class FirebaseDBManager {
     }
     
     static func fetchEditMealtime() -> Mealtime? {
-        if let index = UserInfo.sharedInstance.indexInStack, let indexCell = UserInfo.sharedInstance.indexPath {
-            UserInfo.sharedInstance.indexPath = nil
-            UserInfo.sharedInstance.indexInStack = nil
-            
-            switch indexCell.row {
-            case 0:
-                if !UserInfo.sharedInstance.breakfasts.isEmpty && UserInfo.sharedInstance.breakfasts.indices.contains(index) {
-                    return UserInfo.sharedInstance.breakfasts[index]
-                }
-            case 1:
-                if !UserInfo.sharedInstance.lunches.isEmpty && UserInfo.sharedInstance.lunches.indices.contains(index) {
-                    return UserInfo.sharedInstance.lunches[index]
-                }
-            case 2:
-                if !UserInfo.sharedInstance.dinners.isEmpty && UserInfo.sharedInstance.dinners.indices.contains(index) {
-                    return UserInfo.sharedInstance.dinners[index]
-                }
-            case 3:
-                if !UserInfo.sharedInstance.snacks.isEmpty && UserInfo.sharedInstance.snacks.indices.contains(index) {
-                    return UserInfo.sharedInstance.snacks[index]
-                }
-            default:
-                return nil
-            }
-        }
-        return nil
+        return UserInfo.sharedInstance.editMealtime
     }
     
     static func getTarget(spk: Double, complexity: String) -> Double {

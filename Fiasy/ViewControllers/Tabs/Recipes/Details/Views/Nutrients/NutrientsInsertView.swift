@@ -11,15 +11,19 @@ import UIKit
 class NutrientsInsertView: UIView {
     
     //MARK: - Outlet -
+    @IBOutlet weak var topSeparatorView: UIView!
     @IBOutlet weak var leftSideLabel: UILabel!
     @IBOutlet weak var rightSideLabel: UILabel!
 
     //MARK: - Interface -
     func fillView(leftName: String, rightName: String, isTitle: Bool) {
-        leftSideLabel.text = leftName
-        rightSideLabel.text = rightName
         
-        leftSideLabel.font = isTitle ? UIFont.fontRobotoRegular(size: 14) : UIFont.fontRobotoLight(size: 12)
-        rightSideLabel.font = isTitle ? UIFont.fontRobotoRegular(size: 14) : UIFont.fontRobotoLight(size: 12)
+        topSeparatorView.isHidden = !isTitle
+        
+        leftSideLabel.text = isTitle ? leftName : "   \(leftName)"
+        rightSideLabel.text = isTitle ? rightName : "   \(rightName)"
+        
+        leftSideLabel.font = isTitle ? UIFont.fontRobotoMedium(size: 13) : UIFont.fontRobotoRegular(size: 13)
+        rightSideLabel.font = isTitle ? UIFont.fontRobotoMedium(size: 13) : UIFont.fontRobotoRegular(size: 13)
     }
 }

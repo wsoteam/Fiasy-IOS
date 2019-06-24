@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,28 +21,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxy-hx-GIf">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ti9-Od-VDA">
-                    <rect key="frame" x="0.0" y="95" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.87833553552627563" green="0.87848657369613647" blue="0.87832605838775635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="GFj-oI-aP9"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Bxy-hx-GIf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1Nb-kK-4xl"/>
-                <constraint firstItem="ti9-Od-VDA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1Qd-uV-pty"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Bxy-hx-GIf" secondAttribute="bottom" constant="5" id="4De-gL-yet"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Bxy-hx-GIf" secondAttribute="trailing" id="GxT-Xg-FYV"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ti9-Od-VDA" secondAttribute="trailing" id="RX1-Bx-d8g"/>
                 <constraint firstItem="Bxy-hx-GIf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="qIP-Wg-SdR"/>
-                <constraint firstItem="ti9-Od-VDA" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="zCa-7t-TSk"/>
-                <constraint firstItem="ti9-Od-VDA" firstAttribute="top" secondItem="Bxy-hx-GIf" secondAttribute="bottom" constant="2" id="zgE-m1-3vd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

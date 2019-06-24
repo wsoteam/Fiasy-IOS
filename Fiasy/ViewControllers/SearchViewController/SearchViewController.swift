@@ -20,7 +20,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties -
     private var dropDown = DropDown()
-    private let backgroundQueue = DispatchQueue(label: "com.app.queue", qos: .background)
     private var filteredProducts: [Product] = []
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -78,7 +77,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         let lowcasePattern = pattern.lowercased()
         let lowcaseText = text.lowercased()
         
-        let fullNameArr = lowcasePattern.characters.split{$0 == " "}.map(String.init)
+        let fullNameArr = lowcasePattern.split{$0 == " "}.map(String.init)
         var states: [Bool] = []
         for item in fullNameArr {
             states.append(lowcaseText.contains(item))
@@ -113,36 +112,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         guard let text = textField.text else {
             return false
         }
-        var firstItems: [Product] = []
-        for item in UserInfo.sharedInstance.allProducts where self.isContains(pattern: text, in: "\(item.name ?? "") (\(item.brend ?? ""))") {
-            firstItems.append(item)
-            
-            if firstItems.count == 20 {
-                if self.searchTextField.text == text {
-                    self.filteredProducts = firstItems
-                    self.tableView.reloadData()
-                }
-                break
-            }
-        }
-        
-        var items: [Product] = []
-        DispatchQueue.global(qos: .background).async {
-            for item in UserInfo.sharedInstance.allProducts where self.isContains(pattern: text, in: "\(item.name ?? "") (\(item.brend ?? ""))") {
-                items.append(item)
-            }
-            
-            DispatchQueue.main.async {
-                Amplitude.instance().logEvent("view_search_food")
-                if text == self.searchTextField.text {
-                    self.filteredProducts = items
-                    Amplitude.instance().logEvent("view_search_food")
-                    self.tableView.reloadData()
-                }
-            }
-        }
-        
-        
+        self.filteredProducts = SQLDatabase.shared.filter(text: text)
+        self.tableView.reloadData()
         return true
     }
 }

@@ -22,7 +22,6 @@
                         <segue destination="XJd-jJ-0QA" kind="show" identifier="segueToAuth" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="d6q-Cw-vDl"/>
                         <segue destination="maY-OD-ZGo" kind="relationship" relationship="viewControllers" id="jDR-ov-naw"/>
                         <segue destination="lUe-Bp-AnC" kind="relationship" relationship="viewControllers" id="iB3-Ds-dYd"/>
-                        <segue destination="PWR-qQ-zdn" kind="relationship" relationship="viewControllers" id="DFK-RR-qgr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asZ-6i-mrz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -48,16 +47,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38x-yv-2OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="166" y="-367"/>
-        </scene>
-        <!--Articles-->
-        <scene sceneID="tlm-HK-f5V">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Articles" id="PWR-qQ-zdn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="vJK-bh-Vzg"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nMG-iQ-nUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="212" y="-575"/>
         </scene>
         <!--Recipes-->
         <scene sceneID="kkT-xl-pTa">

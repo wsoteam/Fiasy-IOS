@@ -20,7 +20,6 @@ class RecipesRow : UITableViewCell {
     //MARK: - Interface -
     func fillRow(by recipes: [Listrecipe]) {
         self.recipes = recipes
-        
         setupCollectionView()
     }
     
@@ -51,11 +50,11 @@ extension RecipesRow: UICollectionViewDataSource {
         if let vc = UIApplication.getTopMostViewController() {
             UserInfo.sharedInstance.selectedRecipes = recipes[indexPath.row]
             
-            if UserInfo.sharedInstance.purchaseIsValid {
+   //         if UserInfo.sharedInstance.purchaseIsValid {
                 vc.performSegue(withIdentifier: "sequeRecipeDetails", sender: nil)
-            } else {
-                vc.performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
-            }
+//            } else {
+//                vc.performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
+//            }
         }
     }
 }

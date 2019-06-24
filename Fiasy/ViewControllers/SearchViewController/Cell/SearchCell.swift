@@ -14,19 +14,13 @@ class SearchCell: UITableViewCell {
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productWeightLabel: UILabel!
-    @IBOutlet weak var squirrelsLabel: UILabel!
-    @IBOutlet weak var fatsLabel: UILabel!
-    @IBOutlet weak var carbohydratesLabel: UILabel!
     
     //MARK: - Properties -
     
     //MARK: - Interface -
     func fillCell(info: Product) {
-        productNameLabel.text = "\(info.name ?? "") (\(info.brend ?? ""))"
-        
-        fatsLabel.text = "Ж. \(String(Double((info.fats ?? 0.0) * 100).rounded(toPlaces: 2)))"
-        squirrelsLabel.text = "Б. \(String(Double((info.proteins ?? 0.0) * 100).rounded(toPlaces: 2)))"
-        carbohydratesLabel.text = "У. \(String(Double((info.carbohydrates ?? 0.0) * 100).rounded(toPlaces: 2)))"
-        caloriesLabel.text = "Ккал \(String(Double((info.calories ?? 0.0) * 100).rounded(toPlaces: 2)))"
+        productNameLabel.text = "\(info.name ?? "")"
+        productWeightLabel.text = "\(info.brend ?? "") • \(info.portion ?? 100) г.".replacingOccurrences(of: ".0", with: "")
+        caloriesLabel.text = "\(String(Double((info.calories ?? 0.0) * 100).rounded(toPlaces: 2))) Ккал".replacingOccurrences(of: ".0", with: "")
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreML
 
 enum Gender: Int {
     case man = 0
@@ -43,8 +44,10 @@ enum TargetType: String {
 class UserInfo {
     
     static var sharedInstance = UserInfo()
+    internal var complition: (() -> Void)?
     
-    //MARK: - Current User -
+    // MARK: - Current User -
+    var productModel: MLModel?
     var currentUser: User?
     
     var userTarget: TargetType = .easy
@@ -58,7 +61,7 @@ class UserInfo {
     var selectedDate: Date?
     var isReload: Bool = false
     
-    //MARK: - User fields -
+    // MARK: - User fields -
     var paymentComplete: Bool = false
     var purchaseIsValid: Bool = false
     var name: String = ""
@@ -72,7 +75,9 @@ class UserInfo {
     var allRecipes: [Listrecipe] = []
     var selectedRecipes: Listrecipe?
     
-    //MARK: - RegistrationUserInfo -
+    var dayCount: [Date] = []
+    
+    // MARK: - RegistrationUserInfo -
     var registrationLoadСomplexity: String = TargetType.easy.rawValue
     var registrationPhysicalActivity: String = "Минимальная нагрузка"
     
@@ -81,7 +86,7 @@ class UserInfo {
     var registrationAge: String = ""
     var registrationGender: Gender?
     
-    //MARK: - Mealtime Data -
+    // MARK: - Mealtime Data -
     var allMealtime: [Mealtime] = []
     var breakfasts: [Mealtime] = []
     var lunches: [Mealtime] = []
@@ -99,6 +104,9 @@ class UserInfo {
     
     var indexInStack: Int?
     var indexPath: IndexPath?
+    var editMealtime: Mealtime?
+    
+    var searchProductText: String = ""
     
     func fillAllFields(fields: [UITextField], female: Bool) {
         let name = fields.indices.contains(0) ? (fields[0].text ?? "") : ""
@@ -174,29 +182,40 @@ class UserInfo {
         }
     }
     
-    func getAllProducts() {
-//        var allProducts: [ListOfFoodItem] = []
-//        if let path = Bundle.main.path(forResource: "food_list", ofType: "json") {
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-//                let products = try? JSONDecoder().decode(Product.self, from: data)
-//            
-//                if let list = products?.listOfGroupsOfFood, !list.isEmpty {
-//                    for item in list {
-//                        if let secondList = item.listOfFoodItems, !secondList.isEmpty {
-//                            for secondItem in secondList {
-//                                allProducts.append(secondItem)
-//                            }
-//                        }
-//                    }
-//                }
-//            } catch let error {
-//                print("parse error: \(error.localizedDescription)")
-//            }
-//        } else {
-//            print("Invalid filename/path.")
-//        }
-//        self.allProducts = allProducts
+    static func sortMealTime(mealtimes: [Mealtime]) -> [[Mealtime]] {
+        var breakfasts: [Mealtime] = []
+        var lunches: [Mealtime] = []
+        var dinners: [Mealtime] = []
+        var snacks: [Mealtime] = []
+        
+        for item in mealtimes {
+            switch item.parentKey {
+            case "breakfasts":
+                breakfasts.append(item)
+            case "lunches":
+                lunches.append(item)
+            case "dinners":
+                dinners.append(item)
+            case "snacks":
+                snacks.append(item)
+            default:
+                break
+            }
+        }
+        var sectionArray: [[Mealtime]] = []
+        if !breakfasts.isEmpty {
+            sectionArray.append(breakfasts)
+        }
+        if !lunches.isEmpty {
+            sectionArray.append(lunches)
+        }
+        if !dinners.isEmpty {
+            sectionArray.append(dinners)
+        }
+        if !snacks.isEmpty {
+            sectionArray.append(snacks)
+        }
+        return sectionArray
     }
     
     func getAllRecipes() {
@@ -205,7 +224,7 @@ class UserInfo {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
                 let recipe = try? JSONDecoder().decode(Recipe.self, from: data)
-
+                
                 if let list = recipe?.listrecipes, !list.isEmpty {
                     allRecipes = list
                 }
@@ -219,25 +238,66 @@ class UserInfo {
     }
     
     func getTitleMealtimeForFirebase() -> String {
-        switch selectedMealtimeTitle {
-        case "Завтрак":
+        switch selectedMealtimeIndex {
+        case 0:
             return "breakfasts"
-        case "Обед":
+        case 1:
             return "lunches"
-        case "Ужин":
+        case 2:
             return "dinners"
-        case "Перекус":
+        case 3:
             return "snacks"
         default:
             return ""
         }
     }
     
-    static func setMealtimeLimits() {
-        //
+    func getTitleMealtime(text: String) -> String {
+        switch text {
+        case "breakfasts":
+            return "Завтрак"
+        case "lunches":
+            return "Обед"
+        case "dinners":
+            return "Ужин"
+        case "snacks":
+            return "Перекус"
+        default:
+            return ""
+        }
     }
     
     func removeRegistrationFields() {
         UserInfo.sharedInstance = UserInfo()
+    }
+    
+    func getDateCount(completion: @escaping (Int) -> ()) {
+        dayCount.removeAll()
+        complition = { [weak self] in
+            guard let strongSelf = self else { return }
+            completion(strongSelf.dayCount.count)
+        }
+        searchDate(date: Date())
+    }
+    
+    private func searchDate(date: Date) {
+        let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
+        let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
+        let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
+        
+        var isContains: Bool = false
+        for item in UserInfo.sharedInstance.allMealtime where item.presentDay == true && item.day == day && item.month == month && item.year == year {
+            isContains = true
+            dayCount.append(date)
+            break
+        }
+        
+        if !isContains {
+            complition?()
+        } else {
+            if let last = dayCount.last {
+                searchDate(date: last.yesterday())
+            }
+        }
     }
 }

@@ -8,8 +8,12 @@
 
 import UIKit
 import CoreML
+import AMDots
 import Vision
 import AVFoundation
+import Firebase
+import FirebaseStorage
+import Reachability
 
 class ARViewController: UIViewController, FrameExtractorDelegate {
     
@@ -26,8 +30,21 @@ class ARViewController: UIViewController, FrameExtractorDelegate {
     @IBOutlet weak var carbohydrates: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     
+    //MARK: - Download Outles -
+    @IBOutlet weak var loadButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var downloadImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dotView: AMDots!
+    @IBOutlet weak var dotContainerVIew: UIView!
+    
     //MARK: - Properties -
+    private var task: StorageDownloadTask?
+    private let handlerModel = MLModelHandler()
     private var finishScan: Bool = false
+    private var arModel = UserInfo.sharedInstance.productModel
     var frameExtractor: FrameExtractor!
     var settingImage = false
     
@@ -41,8 +58,21 @@ class ARViewController: UIViewController, FrameExtractorDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkIfFileAvailable()
         frameExtractor = FrameExtractor()
         frameExtractor.delegate = self
+        
+        dotView.colors = [#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1),#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1),#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1),#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1),#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1),#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1),#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1),#colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)]
+        dotView.backgroundColor = UIColor.white
+        dotView.animationType = .scale
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        removeObserver()
+        task?.cancel()
     }
     
     func captured(image: UIImage) {
@@ -57,36 +87,9 @@ class ARViewController: UIViewController, FrameExtractorDelegate {
         }
     }
     
-    func addEmoji(id: String) -> String {
-        switch id {
-        case "pizza":
-            return "🍕"
-        case "hot dog":
-            return "🌭"
-        case "chicken wings":
-            return "🍗"
-        case "french fries":
-            return "🍟"
-        case "sushi":
-            return "🍣"
-        case "chocolate cake":
-            return "🍫🍰"
-        case "donut":
-            return "🍩"
-        case "spaghetti bolognese":
-            return "🍝"
-        case "caesar salad":
-            return "🥗"
-        case "macaroni and cheese":
-            return "🧀"
-        default:
-            return ""
-        }
-    }
-    
     func detectScene(image: CIImage) {
-        guard !self.finishScan else { return }
-        guard let model = try? VNCoreMLModel(for: Food101().model) else {
+        guard let loadModel = self.arModel, !self.finishScan else { return }
+        guard let model = try? VNCoreMLModel(for: loadModel) else {
             fatalError()
         }
         // Create a Vision request with completion handler
@@ -139,6 +142,43 @@ class ARViewController: UIViewController, FrameExtractorDelegate {
         self.fatLabel.text = "\(fat) г"
     }
     
+    private func checkIfFileAvailable() {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        if let pathComponent = NSURL(fileURLWithPath: path).appendingPathComponent("Food101.mlmodel") {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath) {
+                guard let model = self.arModel else {
+                    titleLabel.text = "Подождите немного..."
+                    descriptionLabel.text = "Идет настройка базы продуктов"
+                    dotContainerVIew.isHidden = false
+                    progressLabel.isHidden = true
+                    loadButton.isHidden = true
+                    dotView.start()
+                    DispatchQueue.global(qos: .background).async {
+                        let compiledUrl = self.handlerModel.compileModel(path: pathComponent)
+                        if let url = self.handlerModel.compileModel(path: pathComponent) {
+                            DispatchQueue.main.async {
+                                self.arModel = try? MLModel(contentsOf: url)
+                                UserInfo.sharedInstance.productModel = try? MLModel(contentsOf: url)
+                                if let _ = self.arModel {
+                                    self.backgroundView.isHidden = true
+                                }
+                            }
+                        }
+                    }
+                    return
+                }
+                backgroundView.isHidden = true
+                print("FILE AVAILABLE")
+            } else {
+                print("FILE NOT AVAILABLE")
+            }
+        } else {
+            print("FILE PATH NOT AVAILABLE")
+        }
+    }
+    
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -172,6 +212,67 @@ class ARViewController: UIViewController, FrameExtractorDelegate {
         if let image = UIApplication.shared.screenShot {
             let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
             present(vc, animated: true)
+        }
+    }
+    
+    @IBAction func loadClicked(_ sender: UIButton) {
+        
+        if checkWiFi() {
+            self.loadClicked()
+        } else {
+            if let viewController = UIStoryboard(name: "Diary", bundle: nil).instantiateViewController(withIdentifier: "AlertPopUpViewController") as? AlertPopUpViewController {
+                
+                viewController.modalPresentationStyle = .overCurrentContext
+                viewController.modalTransitionStyle = .crossDissolve
+                
+                viewController.completion = { [weak self] in
+                    self?.loadClicked()
+                }
+                present(viewController, animated: true)
+            }
+        }
+    }
+    
+    private func loadClicked() {
+        loadButton.isHidden = true
+        downloadImageView.image = #imageLiteral(resourceName: "load_icon")
+        titleLabel.text = "Подождите немного..."
+        descriptionLabel.text = "Идет загрузка"
+        dotContainerVIew.isHidden = false
+        progressLabel.isHidden = false
+        dotView.start()
+        
+        let store = Storage.storage()
+        let referenceForURL = store.reference(forURL: "gs://diet-for-test.appspot.com/ARModel/Food101.mlmodel")
+        
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let localURL = documentsURL.appendingPathComponent("Food101.mlmodel")
+        task = referenceForURL.write(toFile: localURL)
+        
+        let downloadTask = task?.observe(.progress) { snapshot in
+            if snapshot.progress!.completedUnitCount <= 0 { return }
+            let percentComplete = 100 * Int(snapshot.progress!.completedUnitCount)
+                / Int(snapshot.progress!.totalUnitCount)
+            self.progressLabel.text = "\(percentComplete) %"
+        }
+        
+        let success = task?.observe(.success) { snapshot in
+            self.checkIfFileAvailable()
+        }
+    }
+    
+    private func checkWiFi() -> Bool {
+        
+        let networkStatus = Reachability().connectionStatus()
+        switch networkStatus {
+        case .Unknown, .Offline:
+            return false
+        case .Online(.WWAN):
+            print("Connected via WWAN")
+            return false
+        case .Online(.WiFi):
+            print("Connected via WiFi")
+            return true
         }
     }
 }

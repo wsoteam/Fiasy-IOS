@@ -84,7 +84,7 @@ extension MainViewController: PagingViewControllerInfiniteDataSource {
     
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, pagingItemAfterPagingItem pagingItem: T) -> T? {
         let calendarItem = pagingItem as! CalendarItem
-        return CalendarItem(date: calendarItem.date.tomorrow()) as? T
+        return CalendarItem(date: calendarItem.date) as? T
     }
 }
 

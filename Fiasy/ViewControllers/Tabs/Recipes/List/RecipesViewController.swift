@@ -8,6 +8,8 @@
 
 import UIKit
 import Amplitude_iOS
+import DynamicBlurView
+import TagListView
 
 protocol RecipesDelegate {
     func showMoreClicked(title: String)
@@ -16,27 +18,40 @@ protocol RecipesDelegate {
 class RecipesViewController: UIViewController {
     
     //MARK: - Outlet -
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var filterStackView: UIStackView!
+    @IBOutlet weak var tagContainerView: UIView!
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var tagList: TagListView!
+    @IBOutlet weak var blur: DynamicBlurView!
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: - Properties -
-    private let allRecipes: [Listrecipe] = UserInfo.sharedInstance.allRecipes
     private var breakfasts: [Listrecipe] = []
     private var lunches: [Listrecipe] = []
     private var dinners: [Listrecipe] = []
     private var snacks: [Listrecipe] = []
     
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
     //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchRecipes()
-        setupTableView()
+        showActivity()
+        DispatchQueue.background(background: {
+            UserInfo.sharedInstance.getAllRecipes()
+            self.fetchRecipes(recipes: UserInfo.sharedInstance.allRecipes)
+        }, completion: {
+            self.setupTableView()
+            self.setupInitialState()
+            self.hideActivity()
+        })
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -46,6 +61,7 @@ class RecipesViewController: UIViewController {
                 performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)
             }
         }
+
         DispatchQueue.global().async {
             UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
         }
@@ -55,7 +71,26 @@ class RecipesViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+    }
+    
+    //MARK: - Action -
+    @IBAction func filterClicked(_ sender: Any) {
+        if blur.isHidden {
+            blur.fadeIn(secondView: filterView)
+        } else {
+            blur.fadeOut(secondView: filterView)
+        }
+    }
+    
+    @IBAction func filterContainerClicked(_ sender: UIButton) {
+        if tagContainerView.isHidden {
+            sender.setImage(#imageLiteral(resourceName: "Arrow"), for: .normal)
+            tagContainerView.showAnimated(in: filterStackView)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "Arrow_down"), for: .normal)
+            tagContainerView.hideAnimated(in: filterStackView)
+        }
     }
     
     //MARK: - Privates -
@@ -63,10 +98,23 @@ class RecipesViewController: UIViewController {
         tableView.register(RecipesHeaderView.nib, forHeaderFooterViewReuseIdentifier: RecipesHeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.reloadData()
     }
     
-    private func fetchRecipes() {
-        for item in allRecipes {
+    private func setupInitialState() {
+        blur.blurRadius = 3
+        blur.quality = .high
+        blur.blurRadius = 10
+        blur.trackingMode = .common
+        
+        tagList.textColor = .white
+        tagList.textFont = UIFont.fontRobotoRegular(size: 12)
+        tagList.addTags(["ЗАВТРАК", "ОБЕД", "УЖИН", "ВЫСОКОБЕЛКОВЫЙ", "НИЗКОУГЛЕВОДНЫЙ"])
+        tagList.delegate = self
+    }
+    
+    private func fetchRecipes(recipes: [Listrecipe]) {
+        for item in recipes {
             if let arrays = item.eating {
                 for secondItem in arrays {
                     switch secondItem {
@@ -82,6 +130,16 @@ class RecipesViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func showActivity() {
+        progressView.isHidden = false
+        activity.startAnimating()
+    }
+    
+    private func hideActivity() {
+        progressView.isHidden = true
+        activity.stopAnimating()
     }
 }
 
@@ -159,5 +217,12 @@ extension RecipesViewController: RecipesDelegate {
             break
         }
         performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)
+    }
+}
+
+extension RecipesViewController: TagListViewDelegate {
+    
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        tagView.isSelected = !tagView.isSelected
     }
 }

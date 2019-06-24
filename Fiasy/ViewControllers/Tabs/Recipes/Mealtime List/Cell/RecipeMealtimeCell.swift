@@ -47,6 +47,7 @@ class RecipeMealtimeCell: UITableViewCell {
         }
         
         if recipes.indices.contains(index + 1) {
+            rightView.alpha = 1
             recipeNameLabels[1].text = recipes[index + 1].name
             caloriesLabels[1].text = "\(recipes[index + 1].calories ?? 0) Ккал"
             if let path = recipes[index + 1].url, let url = try? path.asURL() {
@@ -55,6 +56,8 @@ class RecipeMealtimeCell: UITableViewCell {
                 recipeImages[1].kf.setImage(with: resource)
             }
             rightView.isUserInteractionEnabled = true
+        } else {
+            rightView.alpha = 0
         }
     }
     
