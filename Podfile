@@ -42,5 +42,8 @@ target 'Fiasy' do
         pod 'TagListView'
         pod 'XLPagerTabStrip'
         pod 'AMDots'
+        pod 'VisualEffectView'
+        pod 'NextGrowingTextView'
+        pod 'BarcodeScanner'
         
  end

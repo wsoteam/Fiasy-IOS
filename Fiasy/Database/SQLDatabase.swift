@@ -44,8 +44,8 @@ class SQLDatabase {
                     products.append(Product(row: item))
                 }
             }
-            
-            let sorted = allProducts.sorted(by: { $0.name.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\"", with: "").lowercased() < $1.name.replacingOccurrences(of: "\"", with: "").lowercased() })
+
+            let sorted = products.sorted(by: { $0.name.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\"", with: "").lowercased() < $1.name.replacingOccurrences(of: "\"", with: "").lowercased() })
             DispatchQueue.main.async {
                 UserInfo.sharedInstance.allProducts = sorted
             }
@@ -57,21 +57,21 @@ class SQLDatabase {
             var allProducts: [Product] = []
             
             let fullNameArr = text.split{$0 == " "}.map(String.init)
-            var search = ""
-            if fullNameArr.count > 1 {
-                for item in fullNameArr where !item.isEmpty {
-                    search += search.isEmpty ? item.capitalizeFirst : " \(item.capitalizeFirst)"
+            for item in fullNameArr where !item.isEmpty {
+                let fiterCondition = Expression<String>("NAME").lowercaseString.like("%\(item.lowercased().capitalizeFirst)%")
+                if let foods = try connection?.prepare(Table("C_FOOD").filter(fiterCondition)) {
+                    for item in foods {
+                        allProducts.append(Product(row: item))
+                    }
                 }
-            } else {
-                search = "\(text.capitalizeFirst)"
             }
-
-            // SELECT * FROM "C_FOOD" WHERE ("NAME" LIKE "search")
-            let fiterCondition = Expression<String>("NAME").lowercaseString.like("%\(search)%")
-            if let foods = try connection?.prepare(Table("C_FOOD").filter(fiterCondition)) {
-                for item in foods {
-                    allProducts.append(Product(row: item))
+            
+            if fullNameArr.count > 1 {
+                for (index,item) in allProducts.enumerated() where item.name.lowercased().contains(fullNameArr[0].lowercased()) && item.name.lowercased().contains(fullNameArr[1].lowercased()) {
+                    allProducts.remove(at: index)
+                    allProducts.insert(item, at: 0)
                 }
+                return allProducts
             }
             return allProducts
         } catch {

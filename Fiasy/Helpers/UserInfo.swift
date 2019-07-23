@@ -86,6 +86,9 @@ class UserInfo {
     var registrationAge: String = ""
     var registrationGender: Gender?
     
+    // MARK: - Template -
+    var allTemplate: [Template] = []
+    
     // MARK: - Mealtime Data -
     var allMealtime: [Mealtime] = []
     var breakfasts: [Mealtime] = []
@@ -94,8 +97,6 @@ class UserInfo {
     var snacks: [Mealtime] = []
     
     var selectedMealtimeTitle: String = ""
-    
-    var updateOfIndicator: Bool = false
     
     let maxFat: Int = 50
     let maxCarbohydrates: Int = 300
@@ -107,6 +108,15 @@ class UserInfo {
     var editMealtime: Mealtime?
     
     var searchProductText: String = ""
+    
+    var templateArray: [[String]] = []
+    var reloadTemplate: Bool = false
+    
+    // MARK: - Product Flow -
+    var productFlow = AddProductFlow()
+    var reloadFavoriteScreen: Bool = false
+    
+    // MARK: - Recipe Flow -
     
     func fillAllFields(fields: [UITextField], female: Bool) {
         let name = fields.indices.contains(0) ? (fields[0].text ?? "") : ""
@@ -263,7 +273,7 @@ class UserInfo {
         case "snacks":
             return "Перекус"
         default:
-            return ""
+            return "Завтрак"
         }
     }
     

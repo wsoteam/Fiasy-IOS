@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="93" id="dMp-Ie-a2L" customClass="AddTemplateListCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dMp-Ie-a2L" id="Cri-kv-n4A">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="92.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCW-MJ-ykp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                        <color key="backgroundColor" red="0.96460109949111938" green="0.96476620435714722" blue="0.96459084749221802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="4cH-yk-MkU"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KG0-Jh-2MC">
+                        <rect key="frame" x="15" y="10" width="349" height="72.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le8-g8-txc">
+                                <rect key="frame" x="0.0" y="0.0" width="349" height="55.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di3-Wb-GAJ">
+                                <rect key="frame" x="0.0" y="59.5" width="349" height="13"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                <color key="textColor" red="0.4666130542755127" green="0.46669745445251465" blue="0.46660774946212769" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHe-gx-PUT">
+                        <rect key="frame" x="331.5" y="10" width="72.5" height="72.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="EHe-gx-PUT" secondAttribute="height" multiplier="1:1" id="tVs-kS-GkC"/>
+                        </constraints>
+                        <state key="normal" image="Group (11)"/>
+                        <connections>
+                            <action selector="removeClicked:" destination="dMp-Ie-a2L" eventType="touchUpInside" id="AXS-84-YMZ"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="KG0-Jh-2MC" secondAttribute="bottom" constant="10" id="8TH-Wc-WOF"/>
+                    <constraint firstAttribute="trailing" secondItem="eCW-MJ-ykp" secondAttribute="trailing" id="CNq-rx-Ux4"/>
+                    <constraint firstItem="eCW-MJ-ykp" firstAttribute="top" secondItem="Cri-kv-n4A" secondAttribute="top" id="VkC-dg-1zZ"/>
+                    <constraint firstItem="KG0-Jh-2MC" firstAttribute="leading" secondItem="Cri-kv-n4A" secondAttribute="leading" constant="15" id="kNL-0s-DJ7"/>
+                    <constraint firstItem="EHe-gx-PUT" firstAttribute="top" secondItem="Cri-kv-n4A" secondAttribute="top" constant="10" id="rJ5-gg-P8a"/>
+                    <constraint firstAttribute="trailing" secondItem="EHe-gx-PUT" secondAttribute="trailing" constant="10" id="sZn-4P-bbc"/>
+                    <constraint firstAttribute="trailing" secondItem="KG0-Jh-2MC" secondAttribute="trailing" constant="50" id="vg8-Wx-5g1"/>
+                    <constraint firstItem="eCW-MJ-ykp" firstAttribute="leading" secondItem="Cri-kv-n4A" secondAttribute="leading" id="wnK-MB-oPt"/>
+                    <constraint firstItem="KG0-Jh-2MC" firstAttribute="top" secondItem="Cri-kv-n4A" secondAttribute="top" constant="10" id="yjS-rz-5G0"/>
+                    <constraint firstAttribute="bottom" secondItem="EHe-gx-PUT" secondAttribute="bottom" constant="10" id="zbb-AV-aKQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameTitleLabel" destination="le8-g8-txc" id="Are-b9-g6W"/>
+                <outlet property="sizeLabel" destination="Di3-Wb-GAJ" id="yRz-U1-1Jc"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="49.888392857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Group (11)" width="23" height="23"/>
+    </resources>
+</document>

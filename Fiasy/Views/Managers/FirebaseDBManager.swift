@@ -74,7 +74,7 @@ class FirebaseDBManager {
             let female = UserInfo.sharedInstance.registrationGender == .girl
             let height = Int(UserInfo.sharedInstance.registrationGrowth) ?? 0
             let weight = Int(UserInfo.sharedInstance.registrationWeight) ?? 0
-            let state = UserInfo.sharedInstance.updateOfIndicator
+            //let state = UserInfo.sharedInstance.updateOfIndicator
         
             var boo: Double = 0.0
             var waterCount: Int = 0
@@ -97,7 +97,7 @@ class FirebaseDBManager {
             let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
             let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
             
-            let userData = ["age": age, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": maxFat, "maxKcal": maxKcal, "maxProt": maxProt, "maxCarbo" : maxCarbo, "updateOfIndicator" : state] as [String : Any]
+            let userData = ["age": age, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": maxFat, "maxKcal": maxKcal, "maxProt": maxProt, "maxCarbo" : maxCarbo, "updateOfIndicator" : true] as [String : Any]
             Database.database().reference().child("USER_LIST").child(uid).child("profile").setValue(userData)
             Amplitude.instance().logEvent("create_acount")
         }
@@ -127,7 +127,7 @@ class FirebaseDBManager {
         UserInfo.sharedInstance.registrationGender = .man
         UserInfo.sharedInstance.registrationGrowth = "0"
         UserInfo.sharedInstance.registrationWeight = "0"
-        UserInfo.sharedInstance.updateOfIndicator = false
+        //UserInfo.sharedInstance.updateOfIndicator = false
         saveUserInDataBase(firstName: "", lastName: "")
     }
     
@@ -166,6 +166,55 @@ class FirebaseDBManager {
             return 1.9
         default:
             return 1.2
+        }
+    }
+    
+    static func saveTemplate(titleName: String) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref: DatabaseReference = Database.database().reference()
+            
+            var finishText = ""
+            for (index, item) in UserInfo.sharedInstance.templateArray.enumerated() {
+                finishText = finishText + "\(item[0]) \(item[1]) \(item[2])\(UserInfo.sharedInstance.templateArray.indices.contains(index + 1) ? "," : "")"
+            }
+            UserInfo.sharedInstance.templateArray.removeAll()
+            UserInfo.sharedInstance.reloadTemplate = true
+            let userData = ["name": titleName, "fields": finishText] as [String : Any]
+            ref.child("USER_LIST").child(uid).child("template").childByAutoId().setValue(userData)
+        }
+    }
+    
+    static func fetchTemplateInDataBase(handler: @escaping ((String?) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("template").observeSingleEvent(of: .value, with: { (snapshot) in
+                UserInfo.sharedInstance.allTemplate.removeAll()
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue {
+                        let item = Template(generalKey: key, dictionary: items)
+                        UserInfo.sharedInstance.allTemplate.append(item)
+                    }
+                }
+                handler(nil)
+            }) { (error) in
+                handler(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func fetchFavoriteInDataBase(handler: @escaping (([Favorite]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("customFoods").observeSingleEvent(of: .value, with: { (snapshot) in
+                var allFavorites: [Favorite] = []
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (_, items) in snapshotValue {
+                        let item = Favorite(dictionary: items)
+                        allFavorites.append(item)
+                    }
+                }
+                handler(allFavorites)
+            }) { (error) in
+                handler([])
+            }
         }
     }
 }

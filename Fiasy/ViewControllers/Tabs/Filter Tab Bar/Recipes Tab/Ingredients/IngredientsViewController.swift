@@ -14,7 +14,7 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
-    //
+
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
@@ -27,7 +27,6 @@ class IngredientsViewController: UIViewController {
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-    
     
     // MARK: - Private -
     private func setupTableView() {

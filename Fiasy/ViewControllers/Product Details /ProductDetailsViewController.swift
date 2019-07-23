@@ -11,6 +11,7 @@ import Amplitude_iOS
 
 protocol ProductDetailsDelegate {
     func showAlert(message: String)
+    func showSendError()
     func showEmptyTextAlert()
     func showZeroAlert()
 }
@@ -120,6 +121,10 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension ProductDetailsViewController: ProductDetailsDelegate {
+    
+    func showSendError() {
+        performSegue(withIdentifier: "sequeSendErrorScreen", sender: nil)
+    }
     
     func showAlert(message: String) {
         self.showAlert(title: "Внимание", message: message)

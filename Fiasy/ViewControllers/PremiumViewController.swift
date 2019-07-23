@@ -4,11 +4,11 @@ import Amplitude_iOS
 class PremiumViewController: UIViewController {
 
     //MARK: - Outlet -
-    
+    @IBOutlet weak var scrollView: UIScrollView!
 
     // MARK: - Properties -
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 
     override func viewDidLoad() {
@@ -41,6 +41,10 @@ class PremiumViewController: UIViewController {
     @IBAction func closeClicled(_ sender: Any) {
         Amplitude.instance()?.logEvent("close_premium")
         dismiss(animated: true)
+    }
+    
+    @IBAction func backClicked(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func purchedClicked(_ sender: Any) {

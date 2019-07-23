@@ -514,7 +514,7 @@
                                                                         <color key="textColor" red="0.95407694578170776" green="0.60971808433532715" blue="0.23191481828689575" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="созжено" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMb-bh-eVq">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="сожжено" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMb-bh-eVq">
                                                                         <rect key="frame" x="0.0" y="23.5" width="67" height="16.5"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                                         <color key="textColor" red="0.45882391929626465" green="0.44724524021148682" blue="0.43453961610794067" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -853,22 +853,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Pgv-F4-isI">
-                                        <rect key="frame" x="63" y="158" width="194" height="252"/>
+                                        <rect key="frame" x="63" y="157.5" width="194" height="253"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="kvY-Sz-a1N">
-                                                <rect key="frame" x="0.0" y="0.0" width="194" height="106"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194" height="106.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lsM-yC-a8A">
-                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="106"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="106.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Завтрак" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="q5K-CR-MBY">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="breakfast_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Q1U-Zi-mce">
-                                                                <rect key="frame" x="0.0" y="29" width="77" height="77"/>
+                                                                <rect key="frame" x="0.0" y="29.5" width="77" height="77"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Q1U-Zi-mce" secondAttribute="height" multiplier="1:1" id="l0R-Y4-C6s"/>
                                                                 </constraints>
@@ -876,16 +876,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VN9-Qd-Gem">
-                                                        <rect key="frame" x="117" y="0.0" width="77" height="106"/>
+                                                        <rect key="frame" x="117" y="0.0" width="77" height="106.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Обед" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="ZvE-hj-wIU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="82"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="82.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="diner_icon" translatesAutoresizingMaskIntoConstraints="NO" id="MST-tb-mMO">
-                                                                <rect key="frame" x="0.0" y="90" width="77" height="16"/>
+                                                                <rect key="frame" x="0.0" y="90.5" width="77" height="16"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -895,19 +895,19 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="aaH-KY-Y47">
-                                                <rect key="frame" x="0.0" y="146" width="194" height="106"/>
+                                                <rect key="frame" x="0.0" y="146.5" width="194" height="106.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H3h-cU-khs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="106"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="106.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ужин" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="0dK-xg-7nO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fish_icon" translatesAutoresizingMaskIntoConstraints="NO" id="PkQ-lJ-Cgo">
-                                                                <rect key="frame" x="0.0" y="29" width="77" height="77"/>
+                                                                <rect key="frame" x="0.0" y="29.5" width="77" height="77"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="PkQ-lJ-Cgo" secondAttribute="height" multiplier="1:1" id="WyQ-Va-IS4"/>
                                                                 </constraints>
@@ -915,16 +915,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ccN-KW-BGY">
-                                                        <rect key="frame" x="117" y="0.0" width="77" height="106"/>
+                                                        <rect key="frame" x="117" y="0.0" width="77" height="106.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Перекус" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="gzh-GA-pUv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="21.5"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lanch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="sje-XC-fwB">
-                                                                <rect key="frame" x="0.0" y="29" width="77" height="77"/>
+                                                                <rect key="frame" x="0.0" y="29.5" width="77" height="77"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="sje-XC-fwB" secondAttribute="height" multiplier="1:1" id="YCv-St-pcm"/>
                                                                 </constraints>
@@ -949,25 +949,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQE-sY-yCP">
-                                <rect key="frame" x="63" y="158" width="77" height="106"/>
+                                <rect key="frame" x="63" y="157.5" width="77" height="106.5"/>
                                 <connections>
                                     <action selector="mealtimeClicked:" destination="eBK-4Z-PVU" eventType="touchUpInside" id="8wG-Bw-ri3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1W-wO-iWs">
-                                <rect key="frame" x="180" y="158" width="77" height="106"/>
+                                <rect key="frame" x="180" y="157.5" width="77" height="106.5"/>
                                 <connections>
                                     <action selector="mealtimeClicked:" destination="eBK-4Z-PVU" eventType="touchUpInside" id="IyW-jG-Mwk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAP-c4-frB">
-                                <rect key="frame" x="180" y="304" width="77" height="106"/>
+                                <rect key="frame" x="180" y="304" width="77" height="106.5"/>
                                 <connections>
                                     <action selector="mealtimeClicked:" destination="eBK-4Z-PVU" eventType="touchUpInside" id="Cz1-b5-kjn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gh-gs-d8k">
-                                <rect key="frame" x="63" y="304" width="77" height="106"/>
+                                <rect key="frame" x="63" y="304" width="77" height="106.5"/>
                                 <connections>
                                     <action selector="mealtimeClicked:" destination="eBK-4Z-PVU" eventType="touchUpInside" id="PFg-CG-jgI"/>
                                 </connections>
@@ -1138,11 +1138,20 @@
                         <outlet property="mealTimeTitleLabel" destination="xzC-lq-6QU" id="ut1-H7-VSk"/>
                         <outlet property="productNameLabel" destination="e9V-sm-JSz" id="Yw0-tz-sDU"/>
                         <outlet property="tableView" destination="fnR-lM-XQL" id="sw8-Sq-TKl"/>
+                        <segue destination="h2I-0u-hjh" kind="presentation" identifier="sequeSendErrorScreen" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="cmC-jY-HUf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ni-38-26u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2606" y="543"/>
+        </scene>
+        <!--Error-->
+        <scene sceneID="852-Yp-fBb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Error" id="h2I-0u-hjh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hcP-7V-hTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3247" y="543"/>
         </scene>
         <!--Second Main View Controller-->
         <scene sceneID="dTb-lz-lVI">
@@ -1205,7 +1214,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мотивация" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBT-Gv-Blh">
-                                        <rect key="frame" x="115" y="12" width="90.5" height="20"/>
+                                        <rect key="frame" x="115.5" y="12" width="89" height="20"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1281,7 +1290,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ql9-hI-c8d">
-                                        <rect key="frame" x="75" y="14" width="92" height="22"/>
+                                        <rect key="frame" x="75" y="14" width="98" height="22"/>
                                         <state key="normal" title="Завтрак   " image="Shape-2">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>

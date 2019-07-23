@@ -13,6 +13,7 @@ class User {
     var age: Int?
     var firstName: String?
     var lastName: String?
+    var email: String?
     var difficultyLevel: String?
     var exerciseStress: String?
     var female: Bool?
@@ -25,10 +26,12 @@ class User {
     var maxKcal: Int?
     var maxProt: Int?
     var maxCarbo: Int?
+    var temporaryPicture: UIImage?
     var updateOfIndicator: Bool?
     
     init(dictionary: [String : AnyObject]) {
         age = dictionary["age"] as? Int
+        email = dictionary["email"] as? String
         firstName = dictionary["firstName"] as? String
         lastName = dictionary["lastName"] as? String
         difficultyLevel = dictionary["difficultyLevel"] as? String

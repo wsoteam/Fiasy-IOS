@@ -63,23 +63,23 @@ class RecipesDetailsViewController: UIViewController {
     }
     
     private func setupInitialState() {
-     //0   if UserInfo.sharedInstance.purchaseIsValid {
+        if UserInfo.sharedInstance.purchaseIsValid {
             premiumView.isHidden = true
-//        } else {
-//            premiumView.isHidden = false
-//            if let path = selectedRecipe?.url, let url = try? path.asURL() {
-//                premiumImageView.kf.indicatorType = .activity
-//                let resource = ImageResource(downloadURL: url)
-//                premiumImageView.kf.setImage(with: resource)
-//            }
-//
-//            let mutableAttrString = NSMutableAttributedString()
-//            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoLight(size: 32.0),
-//                                                         color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "Получите доступ\n"))
-//            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 32.0),
-//                                                         color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "к сотням полезных\nрецептов"))
-//            premiumTitleLabel.attributedText = mutableAttrString
-//        }
+        } else {
+            premiumView.isHidden = false
+            if let path = selectedRecipe?.url, let url = try? path.asURL() {
+                premiumImageView.kf.indicatorType = .activity
+                let resource = ImageResource(downloadURL: url)
+                premiumImageView.kf.setImage(with: resource)
+            }
+
+            let mutableAttrString = NSMutableAttributedString()
+            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoLight(size: 32.0),
+                                                         color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "Получите доступ\n"))
+            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 32.0),
+                                                         color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "к сотням полезных\nрецептов"))
+            premiumTitleLabel.attributedText = mutableAttrString
+        }
     }
     
     private func configureAttrString(by font: UIFont, color: UIColor, text: String) -> NSAttributedString {

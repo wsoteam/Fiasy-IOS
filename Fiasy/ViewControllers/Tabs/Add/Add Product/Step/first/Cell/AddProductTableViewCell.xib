@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+        <array key="SFProText-Medium.ttf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="363" id="1Sb-uU-ehh" customClass="AddProductTableViewCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Sb-uU-ehh" id="bLT-yZ-kbc">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ykx-pB-tyR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCq-vh-T4Y" userLabel="top Container">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название рецепта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gd9-oz-UmS">
+                                        <rect key="frame" x="15" y="25" width="130" height="296.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                        <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1tb-Jh-MzB">
+                                        <rect key="frame" x="15" y="326.5" width="384" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="84Z-nM-PQZ"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <action selector="textChange:" destination="1Sb-uU-ehh" eventType="editingChanged" id="cKM-9D-kUn"/>
+                                            <outlet property="delegate" destination="1Sb-uU-ehh" id="0lT-Qv-L1b"/>
+                                        </connections>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="price-scan-scanner-bar-barcode-code-2" translatesAutoresizingMaskIntoConstraints="NO" id="y1O-q1-ZI6">
+                                        <rect key="frame" x="360" y="326.5" width="24" height="30"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rE7-2I-Als">
+                                        <rect key="frame" x="354" y="326.5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rE7-2I-Als" secondAttribute="height" multiplier="1:1" id="bBZ-2G-vie"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="nameClicked:" destination="1Sb-uU-ehh" eventType="touchUpInside" id="lB3-06-WK8"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nr-e0-sFb">
+                                        <rect key="frame" x="15" y="361.5" width="384" height="1"/>
+                                        <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="dw5-kT-s0L"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="1nr-e0-sFb" firstAttribute="top" secondItem="1tb-Jh-MzB" secondAttribute="bottom" constant="5" id="31O-Vx-Uxs"/>
+                                    <constraint firstItem="1tb-Jh-MzB" firstAttribute="top" secondItem="gd9-oz-UmS" secondAttribute="bottom" constant="5" id="5Xh-ez-H7C"/>
+                                    <constraint firstItem="rE7-2I-Als" firstAttribute="top" secondItem="1tb-Jh-MzB" secondAttribute="top" id="8o1-Wg-5EB"/>
+                                    <constraint firstItem="rE7-2I-Als" firstAttribute="bottom" secondItem="1tb-Jh-MzB" secondAttribute="bottom" id="At2-NI-wv9"/>
+                                    <constraint firstAttribute="trailing" secondItem="1tb-Jh-MzB" secondAttribute="trailing" constant="15" id="BZX-df-auU"/>
+                                    <constraint firstItem="rE7-2I-Als" firstAttribute="trailing" secondItem="1tb-Jh-MzB" secondAttribute="trailing" constant="-15" id="Frm-9v-CxQ"/>
+                                    <constraint firstItem="y1O-q1-ZI6" firstAttribute="top" secondItem="1tb-Jh-MzB" secondAttribute="top" id="Hhe-hH-0v5"/>
+                                    <constraint firstItem="y1O-q1-ZI6" firstAttribute="trailing" secondItem="1tb-Jh-MzB" secondAttribute="trailing" constant="-15" id="OTp-ro-iRl"/>
+                                    <constraint firstItem="1tb-Jh-MzB" firstAttribute="leading" secondItem="dCq-vh-T4Y" secondAttribute="leading" constant="15" id="PpF-g6-aEH"/>
+                                    <constraint firstItem="gd9-oz-UmS" firstAttribute="leading" secondItem="dCq-vh-T4Y" secondAttribute="leading" constant="15" id="QLc-DU-UqD"/>
+                                    <constraint firstAttribute="bottom" secondItem="1nr-e0-sFb" secondAttribute="bottom" id="YeE-Cr-VZa"/>
+                                    <constraint firstItem="1nr-e0-sFb" firstAttribute="trailing" secondItem="1tb-Jh-MzB" secondAttribute="trailing" id="aoJ-Mr-tkK"/>
+                                    <constraint firstItem="y1O-q1-ZI6" firstAttribute="bottom" secondItem="1tb-Jh-MzB" secondAttribute="bottom" id="cUD-th-EOl"/>
+                                    <constraint firstItem="gd9-oz-UmS" firstAttribute="top" secondItem="dCq-vh-T4Y" secondAttribute="top" constant="25" id="e32-kH-NpC"/>
+                                    <constraint firstItem="1nr-e0-sFb" firstAttribute="leading" secondItem="1tb-Jh-MzB" secondAttribute="leading" id="rw5-R3-fYc"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5do-6p-93A" userLabel="bottom Container">
+                                <rect key="frame" x="0.0" y="362.5" width="414" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Могут видеть все пользователи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mne-Hh-odi">
+                                        <rect key="frame" x="15" y="40" width="240" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tSL-yD-gm6">
+                                        <rect key="frame" x="350" y="40" width="51" height="0.0"/>
+                                        <color key="onTintColor" red="0.93862622979999999" green="0.4906092286" blue="0.001925615128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="switchChangeClicked:" destination="1Sb-uU-ehh" eventType="valueChanged" id="sGp-SB-32m"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAd-PO-d6U">
+                                        <rect key="frame" x="5" y="55" width="404" height="0.0"/>
+                                        <string key="text">Созданные вами и введенные в базу рецепты или продукты могут быть доступны для других пользователей. Пожалуйста, постарайтесь заполнить приведенную выше форму максимально точно и полно.</string>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                        <color key="textColor" red="0.71364659070000003" green="0.71377104520000001" blue="0.71363884209999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mne-Hh-odi" firstAttribute="leading" secondItem="5do-6p-93A" secondAttribute="leading" constant="15" id="36M-2u-Z8H"/>
+                                    <constraint firstItem="lAd-PO-d6U" firstAttribute="leading" secondItem="5do-6p-93A" secondAttribute="leading" constant="5" id="Els-9y-Anw"/>
+                                    <constraint firstItem="mne-Hh-odi" firstAttribute="top" secondItem="5do-6p-93A" secondAttribute="top" constant="40" id="GCq-6I-xhj"/>
+                                    <constraint firstItem="tSL-yD-gm6" firstAttribute="centerY" secondItem="mne-Hh-odi" secondAttribute="centerY" id="KzC-bm-NYB"/>
+                                    <constraint firstItem="lAd-PO-d6U" firstAttribute="top" secondItem="tSL-yD-gm6" secondAttribute="bottom" constant="15" id="ReP-Qo-vDI"/>
+                                    <constraint firstAttribute="bottom" secondItem="lAd-PO-d6U" secondAttribute="bottom" id="hXj-LL-DLa"/>
+                                    <constraint firstAttribute="trailing" secondItem="tSL-yD-gm6" secondAttribute="trailing" constant="15" id="k6W-WD-hpP"/>
+                                    <constraint firstAttribute="trailing" secondItem="lAd-PO-d6U" secondAttribute="trailing" constant="5" id="ubS-NQ-bm6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ykx-pB-tyR" secondAttribute="trailing" id="1c4-yp-oBd"/>
+                    <constraint firstItem="ykx-pB-tyR" firstAttribute="leading" secondItem="bLT-yZ-kbc" secondAttribute="leading" id="e3C-lA-4Bs"/>
+                    <constraint firstItem="ykx-pB-tyR" firstAttribute="top" secondItem="bLT-yZ-kbc" secondAttribute="top" id="gmr-pF-VpN"/>
+                    <constraint firstAttribute="bottom" secondItem="ykx-pB-tyR" secondAttribute="bottom" id="q6n-5h-Yrc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bottomContainerView" destination="5do-6p-93A" id="6zz-FD-X6I"/>
+                <outlet property="cameraIconImageView" destination="y1O-q1-ZI6" id="ohD-4C-Jnn"/>
+                <outlet property="descriptionLabel" destination="lAd-PO-d6U" id="8aC-Wc-Oxe"/>
+                <outlet property="nameButton" destination="rE7-2I-Als" id="GJb-0w-mDv"/>
+                <outlet property="nameTextField" destination="1tb-Jh-MzB" id="dZq-cK-stD"/>
+                <outlet property="separatorView" destination="1nr-e0-sFb" id="eaH-9d-DoL"/>
+                <outlet property="titleLabel" destination="gd9-oz-UmS" id="Slk-ai-8yp"/>
+            </connections>
+            <point key="canvasLocation" x="27.536231884057973" y="134.26339285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="price-scan-scanner-bar-barcode-code-2" width="24" height="18"/>
+    </resources>
+</document>

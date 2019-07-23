@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
       //  Fabric.with([Crashlytics.self()])
-        //Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
+        Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
         
         FirebaseApp.configure()
         SQLDatabase.shared.fetchProducts()
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication,
                                                         annotation: annotation)
-    }   
+    }
     
     
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

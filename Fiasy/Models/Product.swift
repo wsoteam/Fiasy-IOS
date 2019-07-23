@@ -33,8 +33,9 @@ class Product: NSObject {
     var percentCarbohydrates: Int?
     var percentFats: Int?
     var percentProteins: Int?
-
-    init(row: Row) {
+    
+    required convenience init(row: Row) {
+        self.init()
         
         id = row[Expression<Int>("ID")]
         name = row[Expression<String>("NAME")]
@@ -59,6 +60,25 @@ class Product: NSObject {
         percentCarbohydrates = row[Expression<Int>("PERCENT_CARBOHYDRATES")]
         percentProteins = row[Expression<Int>("PERCENT_PROTEINS")]
         percentFats = row[Expression<Int>("PERCENT_FATS")]
+    }
+    
+    required convenience init(favorite: Favorite) {
+        self.init()
+        
+        name = favorite.name
+        brend = favorite.brand
+        calories = favorite.calories
+        proteins = favorite.proteins
+        carbohydrates = favorite.carbohydrates
+        sugar = favorite.sugar
+        fats = favorite.fats
+        saturatedFats = favorite.saturatedFats
+        monoUnSaturatedFats = favorite.monoUnSaturatedFats
+        polyUnSaturatedFats = favorite.polyUnSaturatedFats
+        cholesterol = favorite.cholesterol
+        cellulose = favorite.cellulose
+        sodium = favorite.sodium
+        pottassium = favorite.pottassium
     }
 }
 

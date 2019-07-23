@@ -123,16 +123,16 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aBM-4H-YGE">
-                                                                        <rect key="frame" x="5" y="125" width="99" height="48"/>
+                                                                        <rect key="frame" x="5" y="125" width="99" height="47"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тыквенный суп с брокколи на кокосовом..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBM-5n-Ge6">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="99" height="28.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="99" height="28"/>
                                                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="403 кк" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMh-Om-UMt">
-                                                                                <rect key="frame" x="0.0" y="33.5" width="99" height="14.5"/>
+                                                                                <rect key="frame" x="0.0" y="33" width="99" height="14"/>
                                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -176,13 +176,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQt-H3-iRQ" customClass="DynamicBlurView" customModule="DynamicBlurView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eo-vO-2Kn">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7B5-gd-1Vy" customClass="VisualEffectView" customModule="VisualEffectView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="03b-x6-O38">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa5-db-CWz">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <connections>
@@ -476,11 +480,15 @@
                                 <constraints>
                                     <constraint firstItem="8dG-ja-ez5" firstAttribute="leading" secondItem="3eo-vO-2Kn" secondAttribute="leading" constant="50" id="FUH-uf-2cR"/>
                                     <constraint firstAttribute="trailing" secondItem="wa5-db-CWz" secondAttribute="trailing" id="HEd-Q2-iVn"/>
+                                    <constraint firstItem="7B5-gd-1Vy" firstAttribute="leading" secondItem="3eo-vO-2Kn" secondAttribute="leading" id="PtJ-cO-MbV"/>
+                                    <constraint firstItem="7B5-gd-1Vy" firstAttribute="top" secondItem="3eo-vO-2Kn" secondAttribute="top" id="QeX-9a-2H3"/>
                                     <constraint firstAttribute="trailing" secondItem="8dG-ja-ez5" secondAttribute="trailing" constant="15" id="QuG-kL-juK"/>
                                     <constraint firstItem="wa5-db-CWz" firstAttribute="top" secondItem="3eo-vO-2Kn" secondAttribute="top" id="VDu-9K-3GN"/>
                                     <constraint firstItem="8dG-ja-ez5" firstAttribute="top" secondItem="3eo-vO-2Kn" secondAttribute="top" constant="10" id="WJV-Us-1aC"/>
                                     <constraint firstAttribute="bottom" secondItem="wa5-db-CWz" secondAttribute="bottom" id="hk1-Ef-YJg"/>
                                     <constraint firstItem="wa5-db-CWz" firstAttribute="leading" secondItem="3eo-vO-2Kn" secondAttribute="leading" id="kkQ-6d-oEu"/>
+                                    <constraint firstAttribute="bottom" secondItem="7B5-gd-1Vy" secondAttribute="bottom" id="vTU-eo-eEJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="7B5-gd-1Vy" secondAttribute="trailing" id="yG3-43-hql"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaU-af-AGw">
@@ -508,21 +516,17 @@
                             <constraint firstItem="UUL-UV-uBw" firstAttribute="trailing" secondItem="lp6-WF-vkN" secondAttribute="leading" id="552-3e-MUB"/>
                             <constraint firstItem="lp6-WF-vkN" firstAttribute="trailing" secondItem="aTs-ro-Nda" secondAttribute="trailing" constant="-5" id="9lU-u4-Eu2"/>
                             <constraint firstItem="qGK-rE-TDC" firstAttribute="trailing" secondItem="LgP-4u-Z51" secondAttribute="trailing" id="AhB-19-zpa"/>
-                            <constraint firstItem="OQt-H3-iRQ" firstAttribute="top" secondItem="3eo-vO-2Kn" secondAttribute="top" id="B6e-3q-UW1"/>
                             <constraint firstItem="3eo-vO-2Kn" firstAttribute="top" secondItem="LgP-4u-Z51" secondAttribute="top" id="BGh-gu-tMM"/>
                             <constraint firstItem="Nce-9N-onk" firstAttribute="bottom" secondItem="aTs-ro-Nda" secondAttribute="bottom" id="C3l-Iq-6bD"/>
                             <constraint firstItem="qGK-rE-TDC" firstAttribute="trailing" secondItem="3eo-vO-2Kn" secondAttribute="trailing" id="DU9-PP-eoV"/>
-                            <constraint firstItem="OQt-H3-iRQ" firstAttribute="leading" secondItem="3eo-vO-2Kn" secondAttribute="leading" id="DUh-ok-wRw"/>
                             <constraint firstItem="3eo-vO-2Kn" firstAttribute="leading" secondItem="qGK-rE-TDC" secondAttribute="leading" id="G2c-2f-U2v"/>
                             <constraint firstItem="aTs-ro-Nda" firstAttribute="leading" secondItem="qGK-rE-TDC" secondAttribute="leading" id="Gz4-EZ-GDr"/>
                             <constraint firstItem="qGK-rE-TDC" firstAttribute="trailing" secondItem="aTs-ro-Nda" secondAttribute="trailing" id="H2b-tS-29Q"/>
                             <constraint firstItem="aTs-ro-Nda" firstAttribute="top" secondItem="qGK-rE-TDC" secondAttribute="top" id="Jbl-pw-N1z"/>
                             <constraint firstItem="Nce-9N-onk" firstAttribute="top" secondItem="1CR-7i-sjE" secondAttribute="top" id="PG0-Gg-6dR"/>
                             <constraint firstItem="UUL-UV-uBw" firstAttribute="bottom" secondItem="aTs-ro-Nda" secondAttribute="bottom" id="VAi-9T-vIL"/>
-                            <constraint firstItem="OQt-H3-iRQ" firstAttribute="bottom" secondItem="3eo-vO-2Kn" secondAttribute="bottom" id="Y38-QC-35N"/>
                             <constraint firstItem="AG6-OC-OPz" firstAttribute="bottom" secondItem="aTs-ro-Nda" secondAttribute="bottom" id="YiM-mG-fF4"/>
                             <constraint firstItem="AG6-OC-OPz" firstAttribute="top" secondItem="aTs-ro-Nda" secondAttribute="top" id="eDF-OH-u2P"/>
-                            <constraint firstItem="OQt-H3-iRQ" firstAttribute="trailing" secondItem="3eo-vO-2Kn" secondAttribute="trailing" id="fFy-rV-nlJ"/>
                             <constraint firstItem="qGK-rE-TDC" firstAttribute="trailing" secondItem="zaU-af-AGw" secondAttribute="trailing" id="fVd-NC-g3S"/>
                             <constraint firstItem="qGK-rE-TDC" firstAttribute="trailing" secondItem="Nce-9N-onk" secondAttribute="trailing" id="fd4-So-Khi"/>
                             <constraint firstItem="lp6-WF-vkN" firstAttribute="bottom" secondItem="aTs-ro-Nda" secondAttribute="bottom" id="j2W-FY-J9h"/>
@@ -542,9 +546,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activity" destination="XAh-Dl-iwF" id="Lml-Bo-SMU"/>
-                        <outlet property="blur" destination="OQt-H3-iRQ" id="SO5-OL-pdJ"/>
+                        <outlet property="blurView" destination="7B5-gd-1Vy" id="uEN-Tz-wEe"/>
                         <outlet property="filterStackView" destination="AFR-dh-es9" id="q1Y-3T-3wU"/>
-                        <outlet property="filterView" destination="3eo-vO-2Kn" id="9Iw-cV-abH"/>
+                        <outlet property="filterView" destination="3eo-vO-2Kn" id="g1T-pM-afX"/>
                         <outlet property="progressView" destination="zaU-af-AGw" id="RqE-qp-QeF"/>
                         <outlet property="tableView" destination="LgP-4u-Z51" id="eGO-yK-oxa"/>
                         <outlet property="tagContainerView" destination="uRz-Di-Swr" id="Hg3-WU-ZbW"/>
@@ -717,7 +721,7 @@
                         <outlet property="tableView" destination="wlS-HY-V14" id="7hW-ZQ-vUJ"/>
                         <segue destination="FTC-gS-4Os" kind="show" identifier="sequeRecipeMealtime" id="fM8-5F-uPH"/>
                         <segue destination="0Sb-mQ-eii" kind="presentation" identifier="sequePremiumScreen" id="rEc-PK-7hg"/>
-                        <segue destination="31t-6E-gd0" kind="presentation" identifier="sequeGeneralPremiumScreen" id="q6f-yx-70M"/>
+                        <segue destination="31t-6E-gd0" kind="show" identifier="sequeGeneralPremiumScreen" id="q6f-yx-70M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbe-re-c4i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -935,7 +939,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFI-td-LfX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xFI-td-LfX">
                                         <rect key="frame" x="20" y="167" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -1051,7 +1055,7 @@
                         <outlet property="premiumView" destination="Thw-un-EV8" id="qVd-u8-IO2"/>
                         <outlet property="statusBarView" destination="u8q-Rv-eL1" id="Dh1-qY-tCt"/>
                         <outlet property="tableView" destination="5FX-hu-bYY" id="IOa-Ck-WsA"/>
-                        <segue destination="NBP-j1-LqM" kind="presentation" identifier="sequelPremiumScreen" id="tSz-Gk-46H"/>
+                        <segue destination="NBP-j1-LqM" kind="show" identifier="sequelPremiumScreen" id="tSz-Gk-46H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wND-Bb-H8W" userLabel="First Responder" sceneMemberID="firstResponder"/>

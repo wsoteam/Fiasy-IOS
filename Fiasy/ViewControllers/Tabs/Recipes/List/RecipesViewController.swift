@@ -10,6 +10,7 @@ import UIKit
 import Amplitude_iOS
 import DynamicBlurView
 import TagListView
+import VisualEffectView
 
 protocol RecipesDelegate {
     func showMoreClicked(title: String)
@@ -24,7 +25,7 @@ class RecipesViewController: UIViewController {
     @IBOutlet weak var tagContainerView: UIView!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var tagList: TagListView!
-    @IBOutlet weak var blur: DynamicBlurView!
+    @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: - Properties -
@@ -76,11 +77,13 @@ class RecipesViewController: UIViewController {
     
     //MARK: - Action -
     @IBAction func filterClicked(_ sender: Any) {
-        if blur.isHidden {
-            blur.fadeIn(secondView: filterView)
-        } else {
-            blur.fadeOut(secondView: filterView)
-        }
+//        if blur.isHidden {
+//            blur.fadeIn(secondView: filterView)
+//        } else {
+//            blur.fadeOut(secondView: filterView)
+//
+//        }
+        filterView.isHidden = !filterView.isHidden
     }
     
     @IBAction func filterContainerClicked(_ sender: UIButton) {
@@ -102,10 +105,11 @@ class RecipesViewController: UIViewController {
     }
     
     private func setupInitialState() {
-        blur.blurRadius = 3
-        blur.quality = .high
-        blur.blurRadius = 10
-        blur.trackingMode = .common
+
+        blurView.colorTint = .gray
+        blurView.colorTintAlpha = 0.1
+        blurView.blurRadius = 5
+        blurView.scale = 1
         
         tagList.textColor = .white
         tagList.textFont = UIFont.fontRobotoRegular(size: 12)

@@ -35,6 +35,11 @@ class SearchTabViewController: UIViewController {
         configurationKeyboardNotification()
         hideKeyboardWhenTappedAround()
         addObserver(for: self, #selector(searchByText), "searchClicked")
+        
+        if !UserInfo.sharedInstance.allProducts.isEmpty && UserInfo.sharedInstance.allProducts.count != filteredProducts.count {
+            filteredProducts = UserInfo.sharedInstance.allProducts
+            tableView.reloadData()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

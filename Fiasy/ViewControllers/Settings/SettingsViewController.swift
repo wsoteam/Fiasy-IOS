@@ -16,8 +16,23 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: - Properties -
+    lazy var picker: SettingClickedPicker = {
+        let picker = SettingClickedPicker()
+        picker.targetVC = self
+        picker.signOut = { [weak self] in
+            guard let `self` = self else { return }
+            UserInfo.sharedInstance.removeRegistrationFields()
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                print("Error while signing out!")
+            }
+            self.post(Constant.LOG_OUT)
+        }
+        return picker
+    }()
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
     //MARK: - Life Cicle -
@@ -38,7 +53,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,18 +63,17 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            if let url = URL(string: "http://fiasy.com/PrivacyPolice.html") {
-                UIApplication.shared.open(url, options: [:])
-            }
-        } else if indexPath.row == 2 {
-            UserInfo.sharedInstance.removeRegistrationFields()
-            do {
-                try Auth.auth().signOut()
-            } catch {
-                print("Error while signing out!")
-            }
-            post(Constant.LOG_OUT)
+        switch indexPath.row {
+        case 0:
+            performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
+        case 2:
+            performSegue(withIdentifier: "sequeEditProfile", sender: nil)
+        case 3:
+            performSegue(withIdentifier: "sequeNotificationsScreen", sender: nil)
+        case 6:
+            picker.showPicker()
+        default:
+            break
         }
     }
 }

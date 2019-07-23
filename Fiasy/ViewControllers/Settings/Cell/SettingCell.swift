@@ -7,44 +7,48 @@
 //
 
 import UIKit
-import Firebase
-import MaterialControls
 
 class SettingCell: UITableViewCell {
     
-    //MARK: - Outlet -
-    @IBOutlet weak var mdSwitch: MDSwitch!
+    // MARK: - Outlet -
+    @IBOutlet weak var arrowIconImageView: UIImageView!
+    @IBOutlet weak var typeIconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bottomContainer: UIView!
-    
-    //MARK: - Interface -
+
+    // MARK: - Interface -
     func fillCell(indexPath: IndexPath) {
-        mdSwitch.isOn = UserInfo.sharedInstance.currentUser?.updateOfIndicator ?? false
-        bottomContainer.isHidden = true
+        titleLabel.textColor = #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
+        arrowIconImageView.image = #imageLiteral(resourceName: "gray_arrow")
+        arrowIconImageView.isHidden = false
+        
         switch indexPath.row {
         case 0:
-            titleLabel.text = "Политика конфидециальности"
-//        case 1:
-//            titleLabel.text = "Оцените нас"
-//        case 2:
-//            titleLabel.text = "Поделиться с друзьями"
-//        case 3:
-//            titleLabel.text = "Настроить оповещения"
+            titleLabel.text = "Premium аккаунт"
+            typeIconImageView.image = #imageLiteral(resourceName: "diamond")
+            titleLabel.textColor = #colorLiteral(red: 0.950156033, green: 0.605353117, blue: 0.2954440117, alpha: 1)
+            arrowIconImageView.image = #imageLiteral(resourceName: "arrow_premium")
         case 1:
-            titleLabel.text = "Обновление основных показателей"
-            bottomContainer.isHidden = false
+            titleLabel.text = "Еда и аллергия"
+            typeIconImageView.image = #imageLiteral(resourceName: "knife-fork-2")
         case 2:
-            titleLabel.text = "Выйти"
+            titleLabel.text = "Личные данные"
+            typeIconImageView.image = #imageLiteral(resourceName: "Glyph")
+        case 3:
+            titleLabel.text = "Уведомления"
+            typeIconImageView.image = #imageLiteral(resourceName: "ic-notifications-active-24px")
+        case 4:
+            titleLabel.text = "Цель"
+            typeIconImageView.image = #imageLiteral(resourceName: "ic-directions-run-24px")
+        case 5:
+            titleLabel.text = "Помощь"
+            typeIconImageView.image = #imageLiteral(resourceName: "ic-help-24px")
+        case 6:
+            titleLabel.text = "Выход"
+            titleLabel.textColor = #colorLiteral(red: 0.9231601357, green: 0.3388705254, blue: 0.3422900438, alpha: 1)
+            typeIconImageView.image = #imageLiteral(resourceName: "ic-exit-to-app-48px")
+            arrowIconImageView.isHidden = true
         default:
             break
-        }
-    }
-    
-    @IBAction func switchClicked(_ sender: Any) {
-        let ref = Database.database().reference()
-        if let uid = Auth.auth().currentUser?.uid {
-            UserInfo.sharedInstance.currentUser?.updateOfIndicator = mdSwitch.isOn
-            ref.child("USER_LIST").child(uid).child("profile").child("updateOfIndicator").setValue(mdSwitch.isOn)
         }
     }
 }

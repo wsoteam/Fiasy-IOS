@@ -23,21 +23,29 @@ class ImagePickerService: NSObject, UIImagePickerControllerDelegate,
         let refreshAlert = UIAlertController(title: nil,
                                         message: nil,
                                  preferredStyle: .actionSheet)
+
+        let image = UIAlertAction(title: "Галерея",
+                                style: .default,
+                              handler: { [weak self] _ in
+                                guard let `self` = self else { return }
+                                self.openSingleChoiceInGalleryPicker()
+        })
+        image.setValue(#colorLiteral(red: 0.9501459002, green: 0.6092506051, blue: 0.3090541661, alpha: 1), forKey: "titleTextColor")
         
-        refreshAlert.addAction(UIAlertAction(title: "Галерея",
-                                          style: .default,
-                                        handler: { [weak self] _ in
-                                                guard let `self` = self else { return }
-                                                self.openSingleChoiceInGalleryPicker()
-        }))
-        refreshAlert.addAction(UIAlertAction(title: "Сделать фото",
-                                           style: .default,
-                                         handler: { [weak self] _ in
-                                                guard let `self` = self else { return }
-                                                self.openCameraPicker()
-        }))
+        let photo = UIAlertAction(title: "Фото",
+                                style: .default,
+                              handler: { [weak self] _ in
+                                guard let `self` = self else { return }
+                                self.openCameraPicker()
+        })
         
-        refreshAlert.addAction(UIAlertAction(title: "Отменить", style: .cancel))
+        photo.setValue(#colorLiteral(red: 0.9501459002, green: 0.6092506051, blue: 0.3090541661, alpha: 1), forKey: "titleTextColor")
+        refreshAlert.addAction(image)
+        refreshAlert.addAction(photo)
+        
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        cancel.setValue(#colorLiteral(red: 0.6156174541, green: 0.6157259941, blue: 0.6156106591, alpha: 1), forKey: "titleTextColor")
+        refreshAlert.addAction(cancel)
     
         target.present(refreshAlert, animated: true)
     }

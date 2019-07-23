@@ -87,12 +87,12 @@ class ProductDetailsCell: UITableViewCell {
             carbohydrates = carbohydrates <= 0.0 ? 0.0 : carbohydrates
             insertViewInStackView(stackView: carbohydrateStackView, left: "Углеводы", right: "\(Double(carbohydrates * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: true)
         }
-        if var cellulose = product.cellulose {
+        if var cellulose = product.cellulose, cellulose != -1.0 && cellulose != 0.0 {
             cellulose = cellulose <= 0.0 ? 0.0 : cellulose
             insertViewInStackView(stackView: carbohydrateStackView, left: "Клетчатка", right: "\(Double(cellulose * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: false)
         }
         
-        if var sugar = product.sugar {
+        if var sugar = product.sugar, sugar != -1.0 && sugar != 0.0 {
             sugar = sugar <= 0.0 ? 0.0 : sugar
             insertViewInStackView(stackView: carbohydrateStackView, left: "Сахар", right: "\(Double(sugar * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: false)
         }
@@ -104,11 +104,11 @@ class ProductDetailsCell: UITableViewCell {
             fats = fats <= 0.0 ? 0.0 : fats
             insertViewInStackView(stackView: fatStackView, left: "Жиры", right: "\(Double(fats * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: true)
         }
-        if var saturatedFats = product.saturatedFats {
+        if var saturatedFats = product.saturatedFats, saturatedFats != -1.0 && saturatedFats != 0.0 {
             saturatedFats = saturatedFats <= 0.0 ? 0.0 : saturatedFats
             insertViewInStackView(stackView: fatStackView, left: "Насыщенные", right: "\(Double(saturatedFats * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: false)
         }
-        if var unSaturatedFats = product.polyUnSaturatedFats {
+        if var unSaturatedFats = product.polyUnSaturatedFats, unSaturatedFats != -1.0 && unSaturatedFats != 0.0 {
             unSaturatedFats = unSaturatedFats <= 0.0 ? 0.0 : unSaturatedFats
             insertViewInStackView(stackView: fatStackView, left: "Ненасыщенные", right: "\(Double(unSaturatedFats * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: false)
         }
@@ -120,15 +120,15 @@ class ProductDetailsCell: UITableViewCell {
             proteins = proteins <= 0.0 ? 0.0 : proteins
             insertViewInStackView(stackView: proteinStackView, left: "Белки", right: "\(Double(proteins * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: true)
         }
-        if var cholesterol = product.cholesterol {
+        if var cholesterol = product.cholesterol, cholesterol != -1.0 && cholesterol != 0.0 {
             cholesterol = cholesterol <= 0.0 ? 0.0 : cholesterol
             insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: false)
         }
-        if var sodium = product.sodium {
+        if var sodium = product.sodium, sodium != -1.0 && sodium != 0.0 {
             sodium = sodium <= 0.0 ? 0.0 : sodium
             insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: false)
         }
-        if var potassium = product.pottassium {
+        if var potassium = product.pottassium, potassium != -1.0 && potassium != 0.0 {
             potassium = potassium <= 0.0 ? 0.0 : potassium
             insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * Double(servingCount).rounded(toPlaces: 1)).rounded(toPlaces: 1)) г", isTitle: false)
         }
@@ -137,7 +137,7 @@ class ProductDetailsCell: UITableViewCell {
     private func saveProductInDataBase(weight: Int) {
         guard let product = self.product, let title = self.saveButton.titleLabel?.text else { return }
         if title.isEmpty { return }
-        if title == "ИЗМЕНЕНО" || title == "ДОБАВЛЕННО" {
+        if title == "ИЗМЕНЕНО" || title == "ДОБАВЛЕНО" {
             let message = isEditState ? "Выбранный продукт уже изменен" : "Вы уже добавили продукт в дневник"
             self.delegate?.showAlert(message: message)
             return
@@ -188,7 +188,7 @@ class ProductDetailsCell: UITableViewCell {
                     FirebaseDBManager.reloadItems()
                     delayWithSeconds(1) {
                         self.saveButton.hideLoading()
-                        self.saveButton.setTitle("ДОБАВЛЕННО", for: .normal)
+                        self.saveButton.setTitle("ДОБАВЛЕНО", for: .normal)
                         self.saveButton.setImage(#imageLiteral(resourceName: "Shape (2)"), for: .normal)
                     }
             }
@@ -229,6 +229,10 @@ class ProductDetailsCell: UITableViewCell {
         } else {
             saveProductInDataBase(weight: count)
         }
+    }
+    
+    @IBAction func showErrorClicked(_ sender: Any) {
+        self.delegate?.showSendError()
     }
 }
 

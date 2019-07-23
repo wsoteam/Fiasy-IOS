@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import VisualEffectView
 
 protocol GeneralTabBarDelegate {
     func searchByText(text: String)
@@ -16,6 +17,8 @@ protocol GeneralTabBarDelegate {
 class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var blurView: VisualEffectView!
+    @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var searchTextField: DesignableUITextField!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -40,6 +43,7 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
             oldCell?.label.textColor = #colorLiteral(red: 0.1293928325, green: 0.1294226646, blue: 0.129390955, alpha: 1)
             newCell?.label.textColor = #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)
         }
+        setupInitialState()
         super.viewDidLoad()
     }
     
@@ -87,8 +91,39 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
     
     @IBAction func searchProduct(_ sender: UITextField) {
         guard let text = sender.text, !text.isEmpty else {
+            UserInfo.sharedInstance.searchProductText = ""
             return post("searchClicked")
         }
+    }
+    
+    @IBAction func blurFilterClicked(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            performSegue(withIdentifier: "sequeAddProductScreen", sender: nil)
+        case 2:
+            showTemplatesScreen()
+        default:
+            break
+        }
+        
+        blurView.fadeOut(secondView: filterView)
+    }
+    
+    @IBAction func filterClicked(_ sender: Any) {
+        if filterView.isHidden {
+            blurView.fadeIn(secondView: filterView)
+        } else {
+            blurView.fadeOut(secondView: filterView)
+            
+        }
+    }
+    
+    // MARK: - Private -
+    private func setupInitialState() {
+        blurView.colorTint = .gray
+        blurView.colorTintAlpha = 0.1
+        blurView.blurRadius = 5
+        blurView.scale = 1
     }
 }
 

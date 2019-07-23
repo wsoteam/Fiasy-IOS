@@ -43,6 +43,12 @@
                         <constraint firstAttribute="height" constant="1" id="msX-ew-51A"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHe-3G-3jl">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                    <connections>
+                        <action selector="addIngreientClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="GuZ-u6-Fue"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -52,13 +58,20 @@
                 <constraint firstItem="oJL-uh-3UM" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="852-H8-yRD"/>
                 <constraint firstItem="gHS-p6-G9I" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="G0u-VI-Ej5"/>
                 <constraint firstItem="xlD-Ew-gRK" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-25" id="Kdd-BZ-1vi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jHe-3G-3jl" secondAttribute="trailing" id="Tvu-S5-3Ti"/>
                 <constraint firstItem="oJL-uh-3UM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="V23-r1-8au"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jHe-3G-3jl" secondAttribute="bottom" id="b3a-KZ-3Dm"/>
+                <constraint firstItem="jHe-3G-3jl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="qc1-Bj-eID"/>
                 <constraint firstItem="c0P-fg-2dC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uRl-Wh-UVt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gHS-p6-G9I" secondAttribute="trailing" id="vGL-p8-XMB"/>
                 <constraint firstItem="c0P-fg-2dC" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="yDa-H7-4Wq"/>
+                <constraint firstItem="jHe-3G-3jl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zFL-2F-JVD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="titleLabel" destination="oJL-uh-3UM" id="blt-CQ-pqb"/>
+            </connections>
             <point key="canvasLocation" x="137.59999999999999" y="-192.05397301349328"/>
         </view>
     </objects>

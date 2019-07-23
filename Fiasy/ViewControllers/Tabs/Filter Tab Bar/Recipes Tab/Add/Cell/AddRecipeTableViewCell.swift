@@ -36,7 +36,7 @@ class AddRecipeTableViewCell: UITableViewCell {
         switch indexCell.row {
             case 0:
                 titleLabel.text = "Название рецепта"
-                nameTextField.attributedPlaceholder = NSAttributedString(string: "Завтрак",
+                nameTextField.attributedPlaceholder = NSAttributedString(string: "",
                                     attributes: [.foregroundColor: UIColor.black])
             case 1:
                 titleLabel.text = "Изображение блюда"
