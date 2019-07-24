@@ -24,10 +24,9 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
     private var delegate: AddProductDelegate?
     
     // MARK: - Interface -
-    func fillCell(indexCell: IndexPath, delegate: AddProductDelegate, barCode: String?) {
+    func fillCell(indexCell: IndexPath, delegate: AddProductDelegate, barCode: String?, _ selectedFavorite: Favorite?) {
         self.indexCell = indexCell
         self.delegate = delegate
-        bottomContainerView.isHidden = true
         
         nameTextField.tag = indexCell.row
         switch indexCell.row {
@@ -36,18 +35,30 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
             nameButton.isHidden = true
             cameraIconImageView.isHidden = true
             nameTextField.keyboardType = .default
+            if let selected = selectedFavorite {
+                nameTextField.text = selected.brand
+            }
         case 1:
-            titleLabel.text = "Название продукта"
+            fillNecessarilyField(label: titleLabel, text: "Название продукта")
             nameButton.isHidden = true
             cameraIconImageView.isHidden = true
             nameTextField.keyboardType = .default
+            if let selected = selectedFavorite {
+                nameTextField.text = selected.name
+            }
         case 2:
             titleLabel.text = "Штрих-код"
             nameButton.isHidden = false
             cameraIconImageView.isHidden = false
             nameTextField.keyboardType = .numberPad
-            bottomContainerView.isHidden = false
-            
+            if let _ = selectedFavorite {
+                bottomContainerView.isHidden = true
+            } else {
+                bottomContainerView.isHidden = false
+            }
+            if let selected = selectedFavorite {
+                nameTextField.text = selected.barcode
+            }
             guard let code = barCode else { return }
             nameTextField.text = code
         default:
@@ -63,6 +74,21 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 20
+    }
+    
+    // MARK: - Private -
+    private func fillNecessarilyField(label: UILabel, text: String) {
+        let mutableAttrString = NSMutableAttributedString()
+        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 15.0),
+                                              color: #colorLiteral(red: 0.6548290849, green: 0.654943943, blue: 0.6548218727, alpha: 1), text: text))
+        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 15.0),
+                                                     color: #colorLiteral(red: 0.8957664371, green: 0.2344577312, blue: 0.1905975044, alpha: 1), text: " *"))
+        
+        label.attributedText = mutableAttrString
+    }
+    
+    private func configureAttrString(by font: UIFont, color: UIColor, text: String) -> NSAttributedString {
+        return NSAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])
     }
     
     //MARK: - Action -

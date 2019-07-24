@@ -14,9 +14,6 @@ class AddProductThirdViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
-    // MARK: - Properties -
-    private var flow = UserInfo.sharedInstance.productFlow
-    
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +44,16 @@ class AddProductThirdViewController: UIViewController {
         tableView.register(type: AddProductSecondStepCell.self)
         tableView.register(AddProductFooterTableView.nib, forHeaderFooterViewReuseIdentifier: AddProductFooterTableView.reuseIdentifier)
     }
+    
+    private func checkCorrectFields(array: [String]) -> Int? {
+        for (index, item) in array.enumerated() where !item.isEmpty {
+            //item.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "0", with: "")
+            if item.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: ",", with: "").isEmpty {
+                return index
+            }
+        }
+        return nil
+    }
 }
 
 extension AddProductThirdViewController: UITableViewDelegate, UITableViewDataSource {
@@ -57,7 +64,7 @@ extension AddProductThirdViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddProductSecondStepCell") as? AddProductSecondStepCell else { fatalError() }
-        cell.fillSecondCell(indexPath: indexPath, delegate: self)
+        cell.fillSecondCell(indexPath: indexPath, delegate: self, UserInfo.sharedInstance.productFlow)
         return cell
     }
     
@@ -83,28 +90,34 @@ extension AddProductThirdViewController: AddProductDelegate {
     func switchChangeValue(state: Bool) {}
     
     func nextStepClicked() {
-        UserInfo.sharedInstance.productFlow = self.flow
-        performSegue(withIdentifier: "sequeAddProductLastStep", sender: nil)
+        if let index = checkCorrectFields(array: UserInfo.sharedInstance.productFlow.getFields()) {
+            if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? AddProductSecondStepCell {
+                cell.nameTextField.resignFirstResponder()
+            }
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Пожалуйста, проверьте правильность введенных данных", vc: self)
+        } else {
+            performSegue(withIdentifier: "sequeAddProductLastStep", sender: nil)
+        }
     }
     
     func textChange(tag: Int, text: String?) {
         switch tag {
         case 0:
-            flow.cellulose = text
+            UserInfo.sharedInstance.productFlow.cellulose = text
         case 1:
-            flow.sugar = text
+            UserInfo.sharedInstance.productFlow.sugar = text
         case 2:
-            flow.saturatedFats = text
+            UserInfo.sharedInstance.productFlow.saturatedFats = text
         case 3:
-            flow.monounsaturatedFats = text
+            UserInfo.sharedInstance.productFlow.monounsaturatedFats = text
         case 4:
-            flow.polyunsaturatedFats = text
+            UserInfo.sharedInstance.productFlow.polyunsaturatedFats = text
         case 5:
-            flow.cholesterol = text
+            UserInfo.sharedInstance.productFlow.cholesterol = text
         case 6:
-            flow.sodium = text
+            UserInfo.sharedInstance.productFlow.sodium = text
         case 7:
-            flow.potassium = text
+            UserInfo.sharedInstance.productFlow.potassium = text
         default:
             break
         }

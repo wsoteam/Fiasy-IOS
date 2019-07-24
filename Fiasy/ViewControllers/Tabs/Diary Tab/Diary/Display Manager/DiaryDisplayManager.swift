@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DynamicBlurView
 
 protocol DiaryDisplayManagerDelegate {
     func headerClicked(section: Int)
@@ -17,12 +18,16 @@ class DiaryDisplayManager: NSObject {
     // MARK: - Properties -
     private let tableView: UITableView
     private let delegate: DiaryViewDelegate
+    private let emptyBlurView: DynamicBlurView
+    private let addProductButton: UIButton
     private var mealTime: [[Mealtime]] = []
     private var removeIndex: IndexPath?
     private var states = Array<Bool>()
     
     // MARK: - Interface -
-    init(tableView: UITableView, delegate: DiaryViewDelegate) {
+    init(tableView: UITableView, delegate: DiaryViewDelegate, _ emptyBlurView: DynamicBlurView, _ addProductButton: UIButton) {
+        self.emptyBlurView = emptyBlurView
+        self.addProductButton = addProductButton
         self.tableView = tableView
         self.delegate = delegate
         super.init()
@@ -47,8 +52,19 @@ class DiaryDisplayManager: NSObject {
         if self.mealTime.indices.contains(indexPath.section) {
             if self.mealTime[indexPath.section].indices.contains(indexPath.row) {
                 let mealTime = self.mealTime[indexPath.section][indexPath.row]
+                for (index,item) in UserInfo.sharedInstance.allMealtime.enumerated() where item.generalKey == mealTime.generalKey {
+                    UserInfo.sharedInstance.allMealtime.remove(at: index)
+                }
+                
                 FirebaseDBManager.removeItem(mealtime: mealTime, handler: {
                     self.mealTime[indexPath.section].remove(at: indexPath.row)
+                    if self.mealTime[indexPath.section].isEmpty {
+                        self.mealTime.remove(at: indexPath.section)
+                    }
+                    if self.mealTime.isEmpty {
+                        self.emptyBlurView.isHidden = false
+                        self.addProductButton.isHidden = false
+                    }
                     self.tableView.reloadData()
                 })
             }
@@ -197,8 +213,12 @@ extension DiaryViewController {
         addProductButton.isHidden = isContains
         
         if let user = UserInfo.sharedInstance.currentUser {
+            let currentCalories = ((user.maxKcal ?? 0) - calories)
             fatCountLabel.text = "\(fat) из \(user.maxFat ?? 0) г"
-            caloriesCountLabel.text = ((user.maxKcal ?? 0) - calories) <= 0 ? "0" : "\((user.maxKcal ?? 0) - calories)"
+            endedLabel.textColor = (user.maxKcal ?? 0) >= calories ? #colorLiteral(red: 0.1960704327, green: 0.1922241747, blue: 0.1879767179, alpha: 1) : #colorLiteral(red: 0.9624324441, green: 0.3595569134, blue: 0.2823967934, alpha: 1)
+            endedLabel.text = (user.maxKcal ?? 0) >= calories ? "осталось" : "сверх нормы"
+            caloriesCountLabel.text = (user.maxKcal ?? 0) >= calories ? "\(currentCalories)" : "+\(calories - (user.maxKcal ?? 0))"
+            caloriesCountLabel.textColor = (user.maxKcal ?? 0) >= calories ? #colorLiteral(red: 0.1960704327, green: 0.1922241747, blue: 0.1879767179, alpha: 1) : #colorLiteral(red: 0.9624324441, green: 0.3595569134, blue: 0.2823967934, alpha: 1)
             carbohydratesCountLabel.text = "\(carbohydrates) из \(user.maxCarbo ?? 0) г"
             proteinLabel.text = "\(protein) из \(user.maxProt ?? 0) г"
             
@@ -209,9 +229,9 @@ extension DiaryViewController {
             
             eatenLabel.text = "\(calories)"
             targetLabel.text = "\((user.maxKcal ?? 0))"
-            scorchedLabel.text = "0"
+            scorchedLabel.text = ""
         }
-
+        
         activityView.isHidden = true
         self.activity.stopAnimating()
         self.tableView.reloadData()

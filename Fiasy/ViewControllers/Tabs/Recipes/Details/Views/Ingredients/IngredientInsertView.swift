@@ -30,6 +30,17 @@ class IngredientInsertView: UIView {
         titleLabel.attributedText = mutableAttrString
     }
     
+    func fillOwnRecipeView(product: Product, count: Int) {
+        let mutableAttrString = NSMutableAttributedString()
+        mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoMedium(size: 15.0),
+                                                     color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), text: product.name))
+        if let productWeight = product.productWeightByAdd {
+            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoMedium(size: 15.0),
+                                                         color: #colorLiteral(red: 0.4666130543, green: 0.4666974545, blue: 0.4666077495, alpha: 1), text: " (\(count * productWeight) г)"))
+        }
+        titleLabel.attributedText = mutableAttrString
+    }
+    
     private func configureAttrString(by font: UIFont, color: UIColor, text: String) -> NSAttributedString {
         return NSAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])
     }

@@ -123,16 +123,16 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aBM-4H-YGE">
-                                                                        <rect key="frame" x="5" y="125" width="99" height="47"/>
+                                                                        <rect key="frame" x="5" y="125" width="99" height="48"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тыквенный суп с брокколи на кокосовом..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBM-5n-Ge6">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="99" height="28"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="99" height="28.5"/>
                                                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="403 кк" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMh-Om-UMt">
-                                                                                <rect key="frame" x="0.0" y="33" width="99" height="14"/>
+                                                                                <rect key="frame" x="0.0" y="33.5" width="99" height="14.5"/>
                                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -827,7 +827,7 @@
         <!--Recipes Details View Controller-->
         <scene sceneID="qz3-5Q-cdg">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FTC-gS-4Os" customClass="RecipesDetailsViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipesDetailsViewController" automaticallyAdjustsScrollViewInsets="NO" id="FTC-gS-4Os" customClass="RecipesDetailsViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4du-8h-zPN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

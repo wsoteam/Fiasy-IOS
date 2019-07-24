@@ -28,6 +28,7 @@ class RecipesDetailsViewController: UIViewController {
     @IBOutlet weak var premiumImageView: UIImageView!
     
     //MARK: - Properties -
+    private var ownRecipe: Bool = false
     private let selectedRecipe = UserInfo.sharedInstance.selectedRecipes
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -38,6 +39,7 @@ class RecipesDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        ownRecipe = ((backViewController() as? GeneralTabBarViewController) != nil)
         Amplitude.instance().logEvent("view_detail_food")
         Amplitude.instance().logEvent("view_recipe")
     }
@@ -63,22 +65,26 @@ class RecipesDetailsViewController: UIViewController {
     }
     
     private func setupInitialState() {
-        if UserInfo.sharedInstance.purchaseIsValid {
+        if ownRecipe {
             premiumView.isHidden = true
         } else {
-            premiumView.isHidden = false
-            if let path = selectedRecipe?.url, let url = try? path.asURL() {
-                premiumImageView.kf.indicatorType = .activity
-                let resource = ImageResource(downloadURL: url)
-                premiumImageView.kf.setImage(with: resource)
+            if UserInfo.sharedInstance.purchaseIsValid {
+                premiumView.isHidden = true
+            } else {
+                premiumView.isHidden = false
+                if let path = selectedRecipe?.url, let url = try? path.asURL() {
+                    premiumImageView.kf.indicatorType = .activity
+                    let resource = ImageResource(downloadURL: url)
+                    premiumImageView.kf.setImage(with: resource)
+                }
+                
+                let mutableAttrString = NSMutableAttributedString()
+                mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoLight(size: 32.0),
+                                                             color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "Получите доступ\n"))
+                mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 32.0),
+                                                             color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "к сотням полезных\nрецептов"))
+                premiumTitleLabel.attributedText = mutableAttrString
             }
-
-            let mutableAttrString = NSMutableAttributedString()
-            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoLight(size: 32.0),
-                                                         color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "Получите доступ\n"))
-            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 32.0),
-                                                         color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "к сотням полезных\nрецептов"))
-            premiumTitleLabel.attributedText = mutableAttrString
         }
     }
     

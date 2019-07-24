@@ -70,6 +70,8 @@
 	<string>Отправка фотографий, чтобы помочь решить проблемы приложения</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SFProText-Bold.ttf</string>
+		<string>SFProText-Regular.ttf</string>
 		<string>SFProText-Medium.ttf</string>
 		<string>SFProDisplay-Medium.ttf</string>
 		<string>SF-Pro-Text-Semibold.ttf</string>

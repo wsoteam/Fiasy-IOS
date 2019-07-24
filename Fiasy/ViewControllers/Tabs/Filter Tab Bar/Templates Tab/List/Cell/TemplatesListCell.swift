@@ -14,10 +14,19 @@ class TemplatesListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     
+    // MARK: - Properties -
+    private var item: Template?
+    
     // MARK: - Interface -
     func fillCell(_ item: Template) {
+        self.item = item
+        
         titleLabel.text = item.name
         countLabel.text = "\(item.fields.count) \(getNameCount(item.fields.count))"
+    }
+    
+    func fetchTemplate() -> Template? {
+        return item
     }
     
     // MARK: - Private -

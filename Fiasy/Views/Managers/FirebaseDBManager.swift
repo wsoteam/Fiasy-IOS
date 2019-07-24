@@ -65,6 +65,27 @@ class FirebaseDBManager {
         handler()
     }
     
+    static func removeTemplate(key: String, handler: @escaping (() -> ())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("USER_LIST").child(uid).child("template").child(key).removeValue()
+        handler()
+    }
+    
+    static func removeFavorite(key: String, handler: @escaping (() -> ())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("USER_LIST").child(uid).child("customFoods").child(key).removeValue()
+        handler()
+    }
+    
+    static func removeOwnRecipe(key: String, handler: @escaping (() -> ())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("USER_LIST").child(uid).child("customRecipes").child(key).removeValue()
+        handler()
+    }
+    
     //MARK: - Registration -
     static func saveUserInDataBase(_ photoURL: String = "", firstName: String, lastName: String) {
         if let uid = Auth.auth().currentUser?.uid {
@@ -169,34 +190,35 @@ class FirebaseDBManager {
         }
     }
     
-    static func saveTemplate(titleName: String) {
+    static func saveTemplate(titleName: String, generalKey: String?) {
         if let uid = Auth.auth().currentUser?.uid {
             let ref: DatabaseReference = Database.database().reference()
-            
-            var finishText = ""
-            for (index, item) in UserInfo.sharedInstance.templateArray.enumerated() {
-                finishText = finishText + "\(item[0]) \(item[1]) \(item[2])\(UserInfo.sharedInstance.templateArray.indices.contains(index + 1) ? "," : "")"
+            if let key = generalKey {
+                let userData = ["name": titleName, "fields": UserInfo.sharedInstance.templateArray] as [String : Any]
+                ref.child("USER_LIST").child(uid).child("template").child(key).setValue(userData)
+            } else {
+                let userData = ["name": titleName, "fields": UserInfo.sharedInstance.templateArray] as [String : Any]
+                ref.child("USER_LIST").child(uid).child("template").childByAutoId().setValue(userData)
             }
             UserInfo.sharedInstance.templateArray.removeAll()
             UserInfo.sharedInstance.reloadTemplate = true
-            let userData = ["name": titleName, "fields": finishText] as [String : Any]
-            ref.child("USER_LIST").child(uid).child("template").childByAutoId().setValue(userData)
         }
     }
     
-    static func fetchTemplateInDataBase(handler: @escaping ((String?) -> ())) {
+    static func fetchTemplateInDataBase(handler: @escaping (([Template]) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).child("template").observeSingleEvent(of: .value, with: { (snapshot) in
-                UserInfo.sharedInstance.allTemplate.removeAll()
+                
+                var allTemplate: [Template] = []
                 if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
                     for (key, items) in snapshotValue {
                         let item = Template(generalKey: key, dictionary: items)
-                        UserInfo.sharedInstance.allTemplate.append(item)
+                        allTemplate.append(item)
                     }
                 }
-                handler(nil)
+                handler(allTemplate)
             }) { (error) in
-                handler(error.localizedDescription)
+                handler([])
             }
         }
     }
@@ -206,12 +228,46 @@ class FirebaseDBManager {
             Database.database().reference().child("USER_LIST").child(uid).child("customFoods").observeSingleEvent(of: .value, with: { (snapshot) in
                 var allFavorites: [Favorite] = []
                 if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
-                    for (_, items) in snapshotValue {
-                        let item = Favorite(dictionary: items)
+                    for (key, items) in snapshotValue {
+                        let item = Favorite(dictionary: items, generalKey: key)
                         allFavorites.append(item)
                     }
                 }
                 handler(allFavorites)
+            }) { (error) in
+                handler([])
+            }
+        }
+    }
+    
+    static func fetchUndeletableCustomFoodsInDataBase(handler: @escaping (([Favorite]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("undeletableCustomFoods").observeSingleEvent(of: .value, with: { (snapshot) in
+                var allFavorites: [Favorite] = []
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue {
+                        let item = Favorite(dictionary: items, generalKey: key)
+                        allFavorites.append(item)
+                    }
+                }
+                handler(allFavorites)
+            }) { (error) in
+                handler([])
+            }
+        }
+    }
+    
+    static func fetchRecipesInDataBase(handler: @escaping (([Listrecipe]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("customRecipes").observeSingleEvent(of: .value, with: { (snapshot) in
+                var allRecipes: [Listrecipe] = []
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue {
+                        let item = Listrecipe(generalKey: key, dictionary: items)
+                        allRecipes.append(item)
+                    }
+                }
+                handler(allRecipes)
             }) { (error) in
                 handler([])
             }

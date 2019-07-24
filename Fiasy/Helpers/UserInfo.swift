@@ -86,9 +86,6 @@ class UserInfo {
     var registrationAge: String = ""
     var registrationGender: Gender?
     
-    // MARK: - Template -
-    var allTemplate: [Template] = []
-    
     // MARK: - Mealtime Data -
     var allMealtime: [Mealtime] = []
     var breakfasts: [Mealtime] = []
@@ -117,6 +114,8 @@ class UserInfo {
     var reloadFavoriteScreen: Bool = false
     
     // MARK: - Recipe Flow -
+    var recipeFlow = AddRecipeFlow()
+    var reloadRecipesScreen: Bool = false
     
     func fillAllFields(fields: [UITextField], female: Bool) {
         let name = fields.indices.contains(0) ? (fields[0].text ?? "") : ""

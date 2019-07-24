@@ -23,6 +23,8 @@ class AddTemplateViewController: UIViewController {
     
     // MARK: - Properties -
     private var name: String = ""
+    private var generalKey: String?
+    private var selectedTemplate: Template?
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
@@ -45,6 +47,13 @@ class AddTemplateViewController: UIViewController {
         removeObserver()
     }
     
+    func fillTemplate(template: Template) {
+        self.selectedTemplate = template
+        name = template.name ?? ""
+        self.generalKey = template.generalKey
+        UserInfo.sharedInstance.templateArray = template.fields
+    }
+    
     // MARK: - Action -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -56,13 +65,15 @@ class AddTemplateViewController: UIViewController {
                                                          message: "Назовите свой прием пищи",
                                                               vc: self)
         }
+        if name.replacingOccurrences(of: " ", with: "").isEmpty {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Имя не может состоять только из пробелов", vc: self)
+        }
         guard !UserInfo.sharedInstance.templateArray.isEmpty else {
             return AlertComponent.sharedInctance.showAlertMessage(title: "Внимание",
                                                          message: "Добавьте порцию",
                                                               vc: self)
         }
-        
-        FirebaseDBManager.saveTemplate(titleName: name)
+        FirebaseDBManager.saveTemplate(titleName: name, generalKey: self.generalKey)
         navigationController?.popViewController(animated: true)
     }
     
@@ -83,7 +94,7 @@ extension AddTemplateViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddTemplateHeaderCell") as? AddTemplateHeaderCell else { fatalError() }
-            cell.fillCell(by: self)
+            cell.fillCell(by: self, selectedTemplate: selectedTemplate, name: name)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddTemplateListCell") as? AddTemplateListCell else { fatalError() }

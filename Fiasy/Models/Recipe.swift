@@ -41,6 +41,10 @@ class Listrecipe: Codable {
     let time: Int?
     let unSaturatedFats: Double?
     let url: String?
+    var key: String?
+    var ingredientsList: [String]?
+    var complexity: String?
+    var selectedProduct: [Product] = []
     
     enum CodingKeys: String, CodingKey {
         case calories, carbohydrates, cellulose, cholesterol
@@ -48,7 +52,7 @@ class Listrecipe: Codable {
         case diet, eating, fats, ingredients, weight, units, instruction, name, percentCarbohydrates, percentFats, percentProteins, portions, potassium, proteins, saturatedFats, sodium, sugar, time, unSaturatedFats, url
     }
     
-    init(calories: Int?, carbohydrates: Double?, cellulose: Double?, cholesterol: Int?, listrecipeDescription: String?, diet: [Diet]?, eating: [Eating]?, fats: Double?, ingredients: [[Ingredient]]?, weight: Double?, units: Units?, instruction: [String]?, name: String?, percentCarbohydrates: Int?, percentFats: Int?, percentProteins: Int?, portions: Int?, potassium: Int?, proteins: Double?, saturatedFats: Double?, sodium: Int?, sugar: Double?, time: Int?, unSaturatedFats: Double?, url: String?) {
+    required init(calories: Int?, carbohydrates: Double?, cellulose: Double?, cholesterol: Int?, listrecipeDescription: String?, diet: [Diet]?, eating: [Eating]?, fats: Double?, ingredients: [[Ingredient]]?, weight: Double?, units: Units?, instruction: [String]?, name: String?, percentCarbohydrates: Int?, percentFats: Int?, percentProteins: Int?, portions: Int?, potassium: Int?, proteins: Double?, saturatedFats: Double?, sodium: Int?, sugar: Double?, time: Int?, unSaturatedFats: Double?, url: String?) {
         self.calories = calories
         self.carbohydrates = carbohydrates
         self.cellulose = cellulose
@@ -74,6 +78,19 @@ class Listrecipe: Codable {
         self.time = time
         self.unSaturatedFats = unSaturatedFats
         self.url = url
+    }
+    
+    required convenience init (generalKey: String, dictionary: [String : AnyObject]) {
+
+        self.init(calories: dictionary["calories"] as? Int, carbohydrates: dictionary["carbohydrates"] as? Double, cellulose: dictionary["cellulose"] as? Double, cholesterol: dictionary["cholesterol"] as? Int, listrecipeDescription: "", diet: [], eating: [Eating(rawValue: "dinner")!], fats: 0.0, ingredients: [], weight: dictionary["weight"] as? Double, units: Units(rawValue: "г"), instruction: dictionary["instruction"] as? [String], name: dictionary["name"] as? String, percentCarbohydrates: nil, percentFats: nil, percentProteins: nil, portions: 1, potassium: dictionary["potassium"] as? Int, proteins: dictionary["proteins"] as? Double, saturatedFats: dictionary["saturatedFats"] as? Double, sodium: dictionary["sodium"] as? Int, sugar: dictionary["sugar"] as? Double, time: dictionary["time"] as? Int, unSaturatedFats: 0.0, url: dictionary["url"] as? String)
+        
+        self.key = generalKey
+        self.complexity = dictionary["complexity"] as? String
+        if let array = dictionary["selectedProducts"] as? NSArray {
+            for item in array where ((item as? [String : AnyObject]) != nil) {
+                selectedProduct.append(Product(dictionary: item as! [String : AnyObject]))
+            }
+        }
     }
 }
 

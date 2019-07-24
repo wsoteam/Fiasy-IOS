@@ -10,6 +10,7 @@ import UIKit
 import BarcodeScanner
 
 protocol AddProductDelegate {
+    
     func nextStepClicked()
     func showCodeReading()
     func switchChangeValue(state: Bool)
@@ -23,7 +24,7 @@ class AddProductViewController: UIViewController {
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties -
-    private var flow = AddProductFlow()
+    private var selectedFavorite: Favorite?
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
@@ -45,9 +46,62 @@ class AddProductViewController: UIViewController {
         removeObserver()
     }
     
+    func fillEditProductFavorite(favorite: Favorite) {
+        UserInfo.sharedInstance.productFlow = AddProductFlow()
+        self.selectedFavorite = favorite
+        
+        UserInfo.sharedInstance.productFlow.selectedFavorite = favorite
+        UserInfo.sharedInstance.productFlow.name = favorite.name
+        UserInfo.sharedInstance.productFlow.brend = favorite.brand
+        UserInfo.sharedInstance.productFlow.barCode = favorite.barcode
+        
+        if favorite.fats != -1 {
+            UserInfo.sharedInstance.productFlow.fat = "\(((favorite.fats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.proteins != -1 {
+            UserInfo.sharedInstance.productFlow.protein = "\(((favorite.proteins ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.carbohydrates != -1 {
+            UserInfo.sharedInstance.productFlow.carbohydrates = "\(((favorite.carbohydrates ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.calories != -1 {
+            UserInfo.sharedInstance.productFlow.calories = "\(((favorite.calories ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.cellulose != -1 {
+            UserInfo.sharedInstance.productFlow.cellulose = "\(((favorite.cellulose ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.sugar != -1 {
+            UserInfo.sharedInstance.productFlow.sugar = "\(((favorite.sugar ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.saturatedFats != -1 {
+            UserInfo.sharedInstance.productFlow.saturatedFats = "\(((favorite.saturatedFats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.monoUnSaturatedFats != -1 {
+            UserInfo.sharedInstance.productFlow.monounsaturatedFats = "\(((favorite.monoUnSaturatedFats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.polyUnSaturatedFats != -1 {
+            UserInfo.sharedInstance.productFlow.polyunsaturatedFats = "\(((favorite.polyUnSaturatedFats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.cholesterol != -1 {
+            UserInfo.sharedInstance.productFlow.cholesterol = "\(((favorite.cholesterol ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.sodium != -1 {
+            UserInfo.sharedInstance.productFlow.sodium = "\(((favorite.sodium ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+        if favorite.pottassium != -1 {
+            UserInfo.sharedInstance.productFlow.potassium = "\(((favorite.pottassium ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+        }
+    }
+    
     // MARK: - Action -
     @IBAction func backClicked(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        let refreshAlert = UIAlertController(title: "Хотите выйти без сохранения?", message: "", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard let strongSelf = self else { return }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        present(refreshAlert, animated: true)
     }
     
     // MARK: - Private -
@@ -69,7 +123,7 @@ extension AddProductViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddProductTableViewCell") as? AddProductTableViewCell else { fatalError() }
-        cell.fillCell(indexCell: indexPath, delegate: self, barCode: flow.barCode)
+        cell.fillCell(indexCell: indexPath, delegate: self, barCode: UserInfo.sharedInstance.productFlow.barCode, selectedFavorite)
         return cell
     }
     
@@ -93,27 +147,42 @@ extension AddProductViewController: UITableViewDelegate, UITableViewDataSource {
 extension AddProductViewController: AddProductDelegate, BarcodeScannerCodeDelegate, BarcodeScannerDismissalDelegate {
     
     func switchChangeValue(state: Bool) {
-        flow.showAll = state
+        UserInfo.sharedInstance.productFlow.showAll = state
     }
     
     func textChange(tag: Int, text: String?) {
         switch tag {
         case 0:
-            flow.brend = text
+            UserInfo.sharedInstance.productFlow.brend = text
         case 1:
-            flow.name = text
+            UserInfo.sharedInstance.productFlow.name = text
         case 2:
-            flow.barCode = text
+            UserInfo.sharedInstance.productFlow.barCode = text
         default:
             break
         }
     }
     
     func nextStepClicked() {
-        guard let _ = flow.name else {
+        guard let name = UserInfo.sharedInstance.productFlow.name, !name.isEmpty else {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddProductTableViewCell {
+                cell.nameTextField.becomeFirstResponder()
+            }
             return AlertComponent.sharedInctance.showAlertMessage(message: "Введите название продукта", vc: self)
         }
-        UserInfo.sharedInstance.productFlow = self.flow
+        if name.replacingOccurrences(of: " ", with: "").isEmpty {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Имя не может состоять только из пробелов", vc: self)
+        }
+        if let brand = UserInfo.sharedInstance.productFlow.brend {
+            if !brand.isEmpty {
+                if brand.replacingOccurrences(of: " ", with: "").isEmpty {
+                    return AlertComponent.sharedInctance.showAlertMessage(message: "'Марка/Производитель' не может состоять только из пробелов", vc: self)
+                }
+            } else {
+                UserInfo.sharedInstance.productFlow.brend = nil
+            }
+        }
+
         performSegue(withIdentifier: "sequeAddProductSecondStep", sender: nil)
     }
     
@@ -127,7 +196,8 @@ extension AddProductViewController: AddProductDelegate, BarcodeScannerCodeDelega
     }
     
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-        flow.barCode = code
+        UserInfo.sharedInstance.productFlow.barCode = code
+        fillBarCode(code: code)
         controller.dismiss(animated: true)
     }
     

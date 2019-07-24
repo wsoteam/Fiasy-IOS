@@ -10,6 +10,7 @@ import UIKit
 import Amplitude_iOS
 
 protocol ProductDetailsDelegate {
+    func closeModule()
     func showAlert(message: String)
     func showSendError()
     func showEmptyTextAlert()
@@ -27,6 +28,8 @@ class ProductDetailsViewController: UIViewController {
     
     // MARK: - Properties -
     private let isIphone5 = Display.typeIsLike == .iphone5
+    private var isMakeRecipe: Bool = false
+    private var isOwnRecipe: Bool = false
     private var selectedProduct = UserInfo.sharedInstance.selectedProduct
     private var editProduct: Mealtime?
     private var isEditState: Bool = false
@@ -34,12 +37,27 @@ class ProductDetailsViewController: UIViewController {
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                  
+        isMakeRecipe = ((backViewController() as? ProductSearchListViewController) != nil)
         if let editMealTime = FirebaseDBManager.fetchEditMealtime() {
             self.editProduct = editMealTime
             self.isEditState = true
             UserInfo.sharedInstance.editMealtime = nil
-            selectedProduct = SQLDatabase.shared.getEditProduct(by: editMealTime)
+            if let selected = SQLDatabase.shared.getEditProduct(by: editMealTime) {
+                selectedProduct = selected
+            } else {
+                tableView.alpha = 0
+                FirebaseDBManager.fetchUndeletableCustomFoodsInDataBase { [weak self] (allFavorites) in
+                    guard let `self` = self else { return }
+                    for item in allFavorites where item.name?.lowercased() == editMealTime.name?.lowercased() {
+                        self.selectedProduct = Product(favorite: item)
+                        self.setupInitialState()
+                        self.tableView.alpha = 1
+                        self.tableView.reloadData()
+                        break
+                    }
+                }
+            }
         }
         setupInitialState()
         setupTableView()
@@ -56,6 +74,10 @@ class ProductDetailsViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         removeObserver()
+    }
+    
+    func fillOwnRecipe() {
+        isOwnRecipe = true
     }
     
     // MARK: - Private -
@@ -115,12 +137,16 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailsCell") as? ProductDetailsCell else { fatalError() }
-        cell.fillCell(product: selectedProduct, delegate: self, editProduct: editProduct, isEditState)
+        cell.fillCell(product: selectedProduct, delegate: self, editProduct: editProduct, isEditState, isMakeRecipe, isOwnRecipe: isOwnRecipe)
         return cell
     }
 }
 
 extension ProductDetailsViewController: ProductDetailsDelegate {
+    
+    func closeModule() {
+        navigationController?.popViewController(animated: true)
+    }
     
     func showSendError() {
         performSegue(withIdentifier: "sequeSendErrorScreen", sender: nil)

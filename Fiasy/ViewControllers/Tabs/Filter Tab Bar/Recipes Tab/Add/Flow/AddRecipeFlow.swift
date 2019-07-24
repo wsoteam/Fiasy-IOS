@@ -14,23 +14,16 @@ struct AddRecipeFlow {
     var recipeName: String?
     var recipeImage: UIImage?
     var time: String?
-    //var 
-    var showAll: Bool = true
+    var complexity: String?
+    var showAll: Bool = false
     
     // MARK: - Second Step -
-//    var calories: String?
-//    var fat: String?
-//    var carbohydrates: String?
-//    var protein: String?
-//
-//    // MARK: - Third Step -
-//    var cellulose: String?
-//    var sugar: String?
-//    var saturatedFats: String?
-//    var monounsaturatedFats: String?
-//    var polyunsaturatedFats: String?
-//    var cholesterol: String?
-//    var sodium: String?
-//    var potassium: String?
+    var allProduct: [Product] = []
+
+    // MARK: - Third Step -
+    var instructionsList: [String] = []
     
+    // MARK: - Edit Flow -
+    var recipe: Listrecipe?
+
 }

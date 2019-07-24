@@ -20,13 +20,13 @@ class LoadingButton: UIButton {
         if (activityIndicator == nil) {
             activityIndicator = createActivityIndicator()
         }
-        
         showSpinning()
     }
     
     func hideLoading() {
+        guard let activity = activityIndicator else { return }
         self.setTitle(originalButtonText, for: UIControl.State.normal)
-        activityIndicator.stopAnimating()
+        activity.stopAnimating()
     }
     
     private func createActivityIndicator() -> UIActivityIndicatorView {

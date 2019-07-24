@@ -41,6 +41,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <action selector="valueChange:" destination="m6u-dr-dhn" eventType="editingChanged" id="qX7-zW-qVv"/>
+                                    <outlet property="delegate" destination="m6u-dr-dhn" id="m9w-fl-xfT"/>
                                 </connections>
                             </textField>
                         </subviews>

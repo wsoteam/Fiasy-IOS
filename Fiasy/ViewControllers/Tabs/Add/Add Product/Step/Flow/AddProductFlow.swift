@@ -14,7 +14,8 @@ struct AddProductFlow {
     var brend: String?
     var name: String?
     var barCode: String?
-    var showAll: Bool = true
+    var showAll: Bool = false
+    var selectedFavorite: Favorite?
     
     // MARK: - Second Step -
     var calories: String?
@@ -31,5 +32,9 @@ struct AddProductFlow {
     var cholesterol: String?
     var sodium: String?
     var potassium: String?
+    
+    func getFields() -> [String] {
+        return [cellulose ?? "", sugar ?? "", saturatedFats ?? "", monounsaturatedFats ?? "", polyunsaturatedFats ?? "", cholesterol ?? "", sodium ?? "", potassium ?? ""]
+    }
     
 }

@@ -44,11 +44,16 @@ class DishDescriptionCell: UITableViewCell {
         }
         
         var diffical: String = ""
-        if time <= 20 {
-            diffical = "легко"
+        if let complexity = recipe.complexity {
+            diffical = complexity
         } else {
-            diffical = "сложно"
+            if time <= 20 {
+                diffical = "легко"
+            } else {
+                diffical = "сложно"
+            }
         }
+        
         timeCookingButton.setTitle("  \(time) мин", for: .normal)
         cookingDifficultyLabel.text = "Сложность: \(diffical)  •  "
     }
@@ -74,49 +79,49 @@ class DishDescriptionCell: UITableViewCell {
     private func fillProtein(_ recipe: Listrecipe) {
         proteinStackView.subviews.forEach { $0.removeFromSuperview() }
         if let proteins = recipe.proteins {
-            insertViewInStackView(stackView: proteinStackView, left: "Белки", right: "\(proteins * Double(servingCount).rounded(toPlaces: 1)) г", isTitle: true)
+            insertViewInStackView(stackView: proteinStackView, left: "Белки", right: "\((proteins * Double(servingCount)).displayOnly(count: 2)) г", isTitle: true)
         }
         if let cholesterol = recipe.cholesterol {
-            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(cholesterol * servingCount) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * servingCount).displayOnly(count: 2)) г", isTitle: false)
         }
         if let sodium = recipe.sodium {
-            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(sodium * servingCount) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * servingCount).displayOnly(count: 2)) г", isTitle: false)
         }
         if let potassium = recipe.potassium {
-            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(potassium * servingCount) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * servingCount).displayOnly(count: 2)) г", isTitle: false)
         }
     }
 
     private func fillFats(_ recipe: Listrecipe) {
         fatStackView.subviews.forEach { $0.removeFromSuperview() }
         if let fats = recipe.fats {
-            insertViewInStackView(stackView: fatStackView, left: "Жиры", right: "\(fats * Double(servingCount).rounded(toPlaces: 1)) г", isTitle: true)
+            insertViewInStackView(stackView: fatStackView, left: "Жиры", right: "\((fats * Double(servingCount)).displayOnly(count: 2)) г", isTitle: true)
         }
         if let saturatedFats = recipe.saturatedFats {
-            insertViewInStackView(stackView: fatStackView, left: "Насыщенные", right: "\(saturatedFats * Double(servingCount).rounded(toPlaces: 1)) г", isTitle: false)
+            insertViewInStackView(stackView: fatStackView, left: "Насыщенные", right: "\((saturatedFats * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
         }
         if let unSaturatedFats = recipe.unSaturatedFats {
-            insertViewInStackView(stackView: fatStackView, left: "Ненасыщенные", right: "\(unSaturatedFats * Double(servingCount).rounded(toPlaces: 1)) г", isTitle: false)
+            insertViewInStackView(stackView: fatStackView, left: "Ненасыщенные", right: "\((unSaturatedFats * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
         }
     }
 
     private func fillCarbohydrates(_ recipe: Listrecipe) {
         carbohydrateStackView.subviews.forEach { $0.removeFromSuperview() }
         if let carbohydrates = recipe.carbohydrates {
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Углеводы", right: "\(carbohydrates * Double(servingCount).rounded(toPlaces: 1)) г", isTitle: true)
+            insertViewInStackView(stackView: carbohydrateStackView, left: "Углеводы", right: "\((carbohydrates * Double(servingCount)).displayOnly(count: 2)) г", isTitle: true)
         }
         if let cellulose = recipe.cellulose {
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Клетчатка", right: "\(cellulose * Double(servingCount).rounded(toPlaces: 1)) г", isTitle: false)
+            insertViewInStackView(stackView: carbohydrateStackView, left: "Клетчатка", right: "\((cellulose * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
         }
 
         if let sugar = recipe.sugar {
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Сахар", right: "\(sugar * Double(servingCount).rounded(toPlaces: 1)) г", isTitle: false)
+            insertViewInStackView(stackView: carbohydrateStackView, left: "Сахар", right: "\((sugar * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
         }
     }
 
     private func insertViewInStackView(stackView: UIStackView, left: String, right: String, isTitle: Bool) {
         guard let view = NutrientsInsertView.fromXib() else { return }
-        view.fillView(leftName: left, rightName: right, isTitle: isTitle)
+        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: false)
         stackView.addArrangedSubview(view)
     }
 
@@ -132,11 +137,19 @@ class DishDescriptionCell: UITableViewCell {
 
     private func fillIngredient(_ recipe: Listrecipe) {
         ingredientsStackView.subviews.forEach { $0.removeFromSuperview() }
-        if let items = recipe.ingredients {
-            for item in items {
+        if !recipe.selectedProduct.isEmpty {
+            for item in recipe.selectedProduct {
                 guard let view = IngredientInsertView.fromXib() else { return }
-                view.fillView(item, count: servingCount)
+                view.fillOwnRecipeView(product: item, count: servingCount)
                 ingredientsStackView.addArrangedSubview(view)
+            }
+        } else {
+            if let items = recipe.ingredients {
+                for item in items {
+                    guard let view = IngredientInsertView.fromXib() else { return }
+                    view.fillView(item, count: servingCount)
+                    ingredientsStackView.addArrangedSubview(view)
+                }
             }
         }
     }

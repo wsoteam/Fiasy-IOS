@@ -29,6 +29,8 @@ class Product: NSObject {
     var cellulose: Double?
     var sodium: Double?
     var pottassium: Double?
+    
+    var productWeightByAdd: Int?
 
     var percentCarbohydrates: Int?
     var percentFats: Int?
@@ -38,7 +40,7 @@ class Product: NSObject {
         self.init()
         
         id = row[Expression<Int>("ID")]
-        name = row[Expression<String>("NAME")]
+        name = row[Expression<String>("NAME")].replacingOccurrences(of: "\"", with: "")
         brend = row[Expression<String>("BREND")]
         portion = row[Expression<Double>("PORTION")]
         isLiquid = row[Expression<Bool>("IS_LIQUID")]
@@ -79,6 +81,15 @@ class Product: NSObject {
         cellulose = favorite.cellulose
         sodium = favorite.sodium
         pottassium = favorite.pottassium
+    }
+    
+    required convenience init(dictionary: [String : AnyObject]) {
+        self.init()
+        
+        name = dictionary["name"] as? String
+        brend = dictionary["brend"] as? String
+        calories = dictionary["calories"] as? Double
+        productWeightByAdd = dictionary["productWeightByAdd"] as? Int
     }
 }
 

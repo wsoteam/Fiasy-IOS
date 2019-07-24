@@ -34,8 +34,8 @@ class SQLDatabase {
                 allProducts.append(Product(row: item))
             }
         }
-        UserInfo.sharedInstance.allProducts = allProducts.sorted(by: { $0.name.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\"", with: "").lowercased() < $1.name.replacingOccurrences(of: "\"", with: "").lowercased() })
-        
+        UserInfo.sharedInstance.allProducts = allProducts
+
         DispatchQueue.global(qos: .background).async {
             var products: [Product] = []
             if let second = try? self.connection?.prepare(Table("C_FOOD")) {
@@ -44,24 +44,44 @@ class SQLDatabase {
                     products.append(Product(row: item))
                 }
             }
-
-            let sorted = products.sorted(by: { $0.name.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\"", with: "").lowercased() < $1.name.replacingOccurrences(of: "\"", with: "").lowercased() })
             DispatchQueue.main.async {
-                UserInfo.sharedInstance.allProducts = sorted
+                UserInfo.sharedInstance.allProducts = products
             }
         }
     }
-    
+
     func filter(text: String) -> [Product] {
         do {
             var allProducts: [Product] = []
-            
-            let fullNameArr = text.split{$0 == " "}.map(String.init)
+            var searchText = text
+            if text.contains("-") {
+                for item in text.indexes(of: "-") {
+                    searchText = capitalizeFirst(allText: text, index: item)
+                }
+            }
+            var fullNameArr = searchText.split{$0 == " "}.map(String.init)
+            for item in fullNameArr where item.lowercased().hasPrefix("е") || item.lowercased().hasPrefix("ё") {
+                if item.lowercased().hasPrefix("е") {
+                    fullNameArr.append(item.replacingOccurrences(of: "е", with: "ё"))
+                } else {
+                    fullNameArr.append(item.replacingOccurrences(of: "ё", with: "e"))
+                }
+                break
+            }
             for item in fullNameArr where !item.isEmpty {
-                let fiterCondition = Expression<String>("NAME").lowercaseString.like("%\(item.lowercased().capitalizeFirst)%")
-                if let foods = try connection?.prepare(Table("C_FOOD").filter(fiterCondition)) {
-                    for item in foods {
-                        allProducts.append(Product(row: item))
+                if item.contains("-") {
+                    let fiterCondition = Expression<String>("NAME").lowercaseString.like("%\(item.capitalizeFirst)%")
+                    if let foods = try connection?.prepare(Table("C_FOOD").filter(fiterCondition)) {
+                        for item in foods {
+                            allProducts.append(Product(row: item))
+                        }
+                    }
+                } else {
+                    let fiterCondition = Expression<String>("NAME").lowercaseString.like("%\(item.lowercased().capitalizeFirst)%")
+                    if let foods = try connection?.prepare(Table("C_FOOD").filter(fiterCondition)) {
+                        for item in foods {
+                            allProducts.append(Product(row: item))
+                        }
                     }
                 }
             }
@@ -82,8 +102,9 @@ class SQLDatabase {
     }
     
     func getEditProduct(by mealTime: Mealtime) -> Product? {
+        
         do {
-            let fiterCondition = Expression<String>("NAME").lowercaseString.like("%\(mealTime.name ?? "")%")
+            let fiterCondition = Expression<String>("NAME").lowercaseString.like(mealTime.name ?? "")
             if let foods = try connection?.prepare(Table("C_FOOD").filter(fiterCondition)) {
                 for item in foods {
                     return Product(row: item)
@@ -96,5 +117,15 @@ class SQLDatabase {
             return nil
         }
         return nil
+    }
+    
+    private func capitalizeFirst(allText: String, index: String.Index) -> String {
+        let firstIndex = allText.index(index, offsetBy: 1)
+        if allText.endIndex != firstIndex {
+            let s = allText.index(after: firstIndex)
+            return allText.replacingOccurrences(of: String(allText[..<s]), with: String(allText[..<s]).capitalized)
+        } else {
+            return allText
+        }
     }
 }

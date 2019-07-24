@@ -4,13 +4,13 @@ class FirstViewController: BaseViewController {
     
     // MARK: - Properties -
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkFirstLoad()
+        
     }
     
     // MARK: - Private -

@@ -13,13 +13,14 @@ class Template {
     var generalKey: String?
     
     var name: String?
-    var fields: [String] = []
+    var fields: [[String]] = []
     
     init(generalKey: String, dictionary: [String : AnyObject]) {
-        name = dictionary["name"] as? String
+        self.generalKey = generalKey
+        self.name = dictionary["name"] as? String
         
-        if let item = dictionary["fields"] as? String {
-            fields = item.split{$0 == ","}.map(String.init)
+        if let item = dictionary["fields"] as? [[String]] {
+            fields = item
         }
     }
 }

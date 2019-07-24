@@ -10,6 +10,7 @@ import UIKit
 
 class Favorite {
     
+    var key: String?
     var name: String?
     var brand: String?
     var calories: Double?
@@ -24,8 +25,12 @@ class Favorite {
     var cellulose: Double?
     var sodium: Double?
     var pottassium: Double?
+    var barcode: String?
 
-    init(dictionary: [String : AnyObject]) {
+    init(dictionary: [String : AnyObject], generalKey: String) {
+        
+        key = generalKey
+        barcode = dictionary["barcode"] as? String
         name = dictionary["name"] as? String
         brand = dictionary["brand"] as? String
         calories = dictionary["calories"] as? Double

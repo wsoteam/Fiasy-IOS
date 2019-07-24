@@ -14,9 +14,6 @@ class AddProductSecondStepViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
-    // MARK: - Properties -
-    private var flow = UserInfo.sharedInstance.productFlow
-    
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +54,7 @@ extension AddProductSecondStepViewController: UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddProductSecondStepCell") as? AddProductSecondStepCell else { fatalError() }
-        cell.fillCell(indexPath: indexPath, delegate: self)
+        cell.fillCell(indexPath: indexPath, delegate: self, flow: UserInfo.sharedInstance.productFlow)
         return cell
     }
     
@@ -83,32 +80,43 @@ extension AddProductSecondStepViewController: AddProductDelegate {
     func switchChangeValue(state: Bool) {}
     
     func nextStepClicked() {
-        guard let calories = flow.calories, !calories.replacingOccurrences(of: ".", with: "").isEmpty else {
+        guard let calories = UserInfo.sharedInstance.productFlow.calories, !calories.replacingOccurrences(of: ".", with: "").isEmpty else {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddProductSecondStepCell {
+                cell.nameTextField.becomeFirstResponder()
+            }
             return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество калорий в продукте", vc: self)
         }
-        guard let fat = flow.fat, !fat.replacingOccurrences(of: ".", with: "").isEmpty else {
+        guard let fat = UserInfo.sharedInstance.productFlow.fat, !fat.replacingOccurrences(of: ".", with: "").isEmpty else {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddProductSecondStepCell {
+                cell.nameTextField.becomeFirstResponder()
+            }
             return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество жиров в продукте", vc: self)
         }
-        guard let carbohydrates = flow.carbohydrates, !carbohydrates.replacingOccurrences(of: ".", with: "").isEmpty else {
+        guard let carbohydrates = UserInfo.sharedInstance.productFlow.carbohydrates, !carbohydrates.replacingOccurrences(of: ".", with: "").isEmpty else {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AddProductSecondStepCell {
+                cell.nameTextField.becomeFirstResponder()
+            }
             return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество углеводов в продукте", vc: self)
         }
-        guard let protein = flow.protein, !protein.replacingOccurrences(of: ".", with: "").isEmpty else {
+        guard let protein = UserInfo.sharedInstance.productFlow.protein, !protein.replacingOccurrences(of: ".", with: "").isEmpty else {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AddProductSecondStepCell {
+                cell.nameTextField.becomeFirstResponder()
+            }
             return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество белков в продукте", vc: self)
         }
-        UserInfo.sharedInstance.productFlow = self.flow
         performSegue(withIdentifier: "sequeAddProductThirdStep", sender: nil)
     }
     
     func textChange(tag: Int, text: String?) {
         switch tag {
         case 0:
-            flow.calories = text
+            UserInfo.sharedInstance.productFlow.calories = text
         case 1:
-            flow.fat = text
+            UserInfo.sharedInstance.productFlow.fat = text
         case 2:
-            flow.carbohydrates = text
+            UserInfo.sharedInstance.productFlow.carbohydrates = text
         case 3:
-            flow.protein = text
+            UserInfo.sharedInstance.productFlow.protein = text
         default:
             break
         }

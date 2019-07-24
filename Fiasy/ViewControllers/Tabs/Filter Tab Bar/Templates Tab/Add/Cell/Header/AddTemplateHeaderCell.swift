@@ -11,11 +11,18 @@ import UIKit
 class AddTemplateHeaderCell: UITableViewCell {
     
     // MARK: - Properties -
+    @IBOutlet weak var nameTextField: UITextField!
     private var delegate: AddTemplateDelegate?
     
     // MARK: - Interface -
-    func fillCell(by delegate: AddTemplateDelegate) {
+    func fillCell(by delegate: AddTemplateDelegate, selectedTemplate: Template?, name: String) {
         self.delegate = delegate
+        
+        if !name.isEmpty {
+            nameTextField.text = name
+        } else {
+            nameTextField.text = selectedTemplate?.name
+        }
     }
     
     // MARK: - Action -

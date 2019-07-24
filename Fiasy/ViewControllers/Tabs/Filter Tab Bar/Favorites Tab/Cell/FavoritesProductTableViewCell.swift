@@ -25,17 +25,52 @@ class FavoritesProductTableViewCell: UITableViewCell {
         self.favorite = favorite
         
         productNameLabel.text = favorite.name
-        if let calor = favorite.calories {
-            caloriesLabel.text = "\(calor * 100) Ккал"
+        if let calor = favorite.calories, calor != -1.0 {
+            let count = calor * 100
+            if "\(count.displayOnly(count: 2))".contains("0.0") {
+                caloriesLabel.text = "\(count.displayOnly(count: 2)) Ккал"
+            } else {
+                caloriesLabel.text = "\(count.displayOnly(count: 2)) Ккал".replacingOccurrences(of: ".0", with: "")
+            }
+        } else {
+            caloriesLabel.text = "0 Ккал"
         }
-        if let proteins = favorite.proteins {
-            proteinLabel.text = "Б. \(proteins * 100)"
+        
+        if let proteins = favorite.proteins, proteins != -1.0 {
+            let count = proteins * 100
+            if "\(count.displayOnly(count: 2))".contains("0.0") {
+                proteinLabel.text = "Б. \(count.displayOnly(count: 2))"
+            } else {
+                proteinLabel.text = "Б. \(count.displayOnly(count: 2))".replacingOccurrences(of: ".0", with: "")
+            }
+        } else {
+            proteinLabel.text = "0 Ккал"
         }
-        if let fats = favorite.fats {
-            fatLabel.text = "Ж. \(fats * 100)"
+        
+        if let fats = favorite.fats, fats != -1.0 {
+            let count = fats * 100
+            if "\(count.displayOnly(count: 2))".contains("0.0") {
+                fatLabel.text = "Ж. \(count.displayOnly(count: 2))"
+            } else {
+                fatLabel.text = "Ж. \(count.displayOnly(count: 2))".replacingOccurrences(of: ".0", with: "")
+            }
+        } else {
+            fatLabel.text = "0 Ккал"
         }
-        if let carbohydrates = favorite.carbohydrates {
-            carbohydratesLabel.text = "У. \(carbohydrates * 100)"
+        
+        if let carbohydrates = favorite.carbohydrates, carbohydrates != -1.0 {
+            let count = carbohydrates * 100
+            if "\(count.displayOnly(count: 2))".contains("0.0") {
+                carbohydratesLabel.text = "У. \(count.displayOnly(count: 2))"
+            } else {
+                carbohydratesLabel.text = "У. \(count.displayOnly(count: 2))".replacingOccurrences(of: ".0", with: "")
+            }
+        } else {
+            carbohydratesLabel.text = "0 Ккал"
         }
+    }
+    
+    func fetchFavorite() -> Favorite? {
+        return self.favorite
     }
 }

@@ -50,17 +50,12 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        addObserver(for: self, #selector(showTemplatesScreen), "AddTemplatesScreen")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         removeObserver()
-    }
-    
-    @objc func showTemplatesScreen() {
-        performSegue(withIdentifier: "sequeTemplateScreen", sender: nil)
     }
     
     // MARK: - PagerTabStripDataSource -
@@ -99,9 +94,14 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
     @IBAction func blurFilterClicked(_ sender: UIButton) {
         switch sender.tag {
         case 1:
+            UserInfo.sharedInstance.productFlow = AddProductFlow()
             performSegue(withIdentifier: "sequeAddProductScreen", sender: nil)
         case 2:
-            showTemplatesScreen()
+            UserInfo.sharedInstance.templateArray.removeAll()
+            performSegue(withIdentifier: "sequeTemplateScreen", sender: nil)
+        case 4:
+            UserInfo.sharedInstance.recipeFlow = AddRecipeFlow()
+            performSegue(withIdentifier: "sequeAddRecipe", sender: nil)
         default:
             break
         }

@@ -24,6 +24,21 @@ class Mealtime {
     var fat: Int?
     var carbohydrates: Int?
     var presentDay: Bool = false
+    
+    // MARK: - Second -
+    var fats: Double?
+    var secondCarbohydrates: Double?
+    var cholesterol: Double?
+    var polyUnSaturatedFats: Double?
+    var sodium: Double?
+    var cellulose: Double?
+    var proteins: Double?
+    var brand: String?
+    var saturatedFats: Double?
+    var monoUnSaturatedFats: Double?
+    var pottassium: Double?
+    var sugar: Double?
+    var secondCalories: Double?
 
     init(parentKey: String, generalKey: String, dictionary: [String : AnyObject]) {
         self.parentKey = parentKey
@@ -40,5 +55,19 @@ class Mealtime {
         fat = dictionary["fat"] as? Int
         carbohydrates = dictionary["carbohydrates"] as? Int
         presentDay = dictionary["presentDay"] as? Bool ?? false
+        
+        fats = dictionary["fats"] as? Double
+        secondCarbohydrates = dictionary["carbohydrates"] as? Double
+        cholesterol = dictionary["cholesterol"] as? Double
+        polyUnSaturatedFats = dictionary["polyUnSaturatedFats"] as? Double
+        sodium = dictionary["sodium"] as? Double
+        cellulose = dictionary["cellulose"] as? Double
+        proteins = dictionary["proteins"] as? Double
+        brand = dictionary["brand"] as? String
+        saturatedFats = dictionary["saturatedFats"] as? Double
+        monoUnSaturatedFats = dictionary["saturatedFats"] as? Double
+        pottassium = dictionary["pottassium"] as? Double
+        sugar = dictionary["sugar"] as? Double
+        secondCalories = dictionary["calories"] as? Double
     }
 }

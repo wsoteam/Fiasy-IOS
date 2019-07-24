@@ -71,6 +71,7 @@ class ErrorViewController: UIViewController {
         UIView.animate(withDuration: 0.2) { [weak self] in
             self?.containerView.alpha = 1.0
             self?.containerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self?.sendTextView.textView.becomeFirstResponder()
         }
     }
     
@@ -103,7 +104,13 @@ extension ErrorViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         guard let message = textView.text else { return }
-        sendButton.isEnabled = !message.isEmpty
-        sendButton.alpha = message.isEmpty ? 0.5 : 1
+        
+        if message.replacingOccurrences(of: " ", with: "").count >= 10 {
+            sendButton.isEnabled = true
+            sendButton.alpha = 1
+        } else {
+            sendButton.isEnabled = false
+            sendButton.alpha = 0.5
+        }
     }
 }

@@ -25,5 +25,12 @@ extension UIFont {
     static func fontRobotoLight(size: CGFloat) -> UIFont {
         return UIFont(name: "Roboto-Light", size: size)!
     }
+    
+    static func sfProTextMedium(size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Medium", size: size)!
+    }
+    
+    static func sfProTextBold(size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Bold", size: size)!
+    }
 }
-

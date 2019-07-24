@@ -101,7 +101,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tSL-yD-gm6">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tSL-yD-gm6">
                                         <rect key="frame" x="350" y="40" width="51" height="0.0"/>
                                         <color key="onTintColor" red="0.93862622979999999" green="0.4906092286" blue="0.001925615128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>

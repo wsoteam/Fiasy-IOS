@@ -54,12 +54,22 @@ class AddPortionViewController: UIViewController {
                                                          message: "Введите 'Наименование порции'",
                                                               vc: self)
         }
+        if name.replacingOccurrences(of: " ", with: "").isEmpty {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Наименование порции не может состоять только из пробелов", vc: self)
+        }
         guard !size.isEmpty else {
             return AlertComponent.sharedInctance.showAlertMessage(title: "Внимание",
                                                          message: "Введите 'Размер порции'",
                                                               vc: self)
         }
-        UserInfo.sharedInstance.templateArray.append([name,"Грамм", size])
+        
+        var nameText: String = ""
+        let fullNameArr = name.split{$0 == " "}.map(String.init)
+        for item in fullNameArr where !item.isEmpty {
+            nameText = nameText.isEmpty ? item : nameText + " \(item)"
+        }
+        
+        UserInfo.sharedInstance.templateArray.append([nameText, size])
         navigationController?.popViewController(animated: true)
     }
     

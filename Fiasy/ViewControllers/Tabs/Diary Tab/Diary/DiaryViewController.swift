@@ -20,6 +20,8 @@ protocol DiaryViewDelegate {
 class DiaryViewController: BaseViewController {
     
     //MARK: - Outlets -
+    @IBOutlet weak var endedLabel: UILabel!
+    @IBOutlet weak var eatenCaloriesLabel: UILabel!
     @IBOutlet weak var daysCountLabel: UILabel!
     @IBOutlet weak var addProductButton: UIButton!
     @IBOutlet weak var caloriesProgress: GradientProgressBar!
@@ -66,7 +68,7 @@ class DiaryViewController: BaseViewController {
     }()
     
     lazy var displayManager: DiaryDisplayManager = {
-        return DiaryDisplayManager(tableView: tableView, delegate: self)
+        return DiaryDisplayManager(tableView: tableView, delegate: self, emptyBlurView, addProductButton)
     }()
     
     //MARK: - Life Cicle -
@@ -160,6 +162,7 @@ extension DiaryViewController: DiaryViewDelegate {
         let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить продукт?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
             self.displayManager.removeMealTime()
+            self.getItemsInDataBase()
         }))
         alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
         present(alert, animated: true)

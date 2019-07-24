@@ -17,7 +17,7 @@ class NutrientsInsertView: UIView {
     @IBOutlet weak var rightSideLabel: UILabel!
 
     //MARK: - Interface -
-    func fillView(leftName: String, rightName: String, isTitle: Bool) {
+    func fillView(leftName: String, rightName: String, isTitle: Bool, isOwn: Bool) {
         
         topSeparatorView.isHidden = !isTitle
         
@@ -30,7 +30,11 @@ class NutrientsInsertView: UIView {
         if isTitle {
             premiumViewContainer.isHidden = true
         } else {
-            premiumViewContainer.isHidden = UserInfo.sharedInstance.purchaseIsValid
+            if isOwn {
+                premiumViewContainer.isHidden = true
+            } else {
+                premiumViewContainer.isHidden = UserInfo.sharedInstance.purchaseIsValid
+            }
         }
     }
 }
