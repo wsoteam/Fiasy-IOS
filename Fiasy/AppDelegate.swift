@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       //  Fabric.with([Crashlytics.self()])
         Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
-        
+         
         FirebaseApp.configure()
         SQLDatabase.shared.fetchProducts()
         FirebaseDBManager.checkFilledProfile()
