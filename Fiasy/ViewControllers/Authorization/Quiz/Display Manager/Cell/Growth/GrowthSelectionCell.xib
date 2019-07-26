@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Bold.ttf">
+            <string>SFProText-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Vf-wa-87s" customClass="GrowthSelectionCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkt-9F-gbQ" customClass="RKMultiUnitRuler" customModule="Fiasy" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="128" height="468"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector (10)" translatesAutoresizingMaskIntoConstraints="NO" id="kO2-WM-h3B">
+                        <rect key="frame" x="0.0" y="240" width="129" height="20"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIT-hg-pnx">
+                        <rect key="frame" x="128" y="150" width="192" height="200"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="154 см" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QT-6L-amz">
+                                <rect key="frame" x="11.5" y="71.5" width="169.5" height="57.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="48"/>
+                                <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9QT-6L-amz" firstAttribute="centerX" secondItem="nIT-hg-pnx" secondAttribute="centerX" id="5Jz-DU-iQp"/>
+                            <constraint firstAttribute="height" constant="200" id="Uth-Jf-mQo"/>
+                            <constraint firstItem="9QT-6L-amz" firstAttribute="centerY" secondItem="nIT-hg-pnx" secondAttribute="centerY" id="Yxo-S0-5t0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Hkt-9F-gbQ" firstAttribute="leading" secondItem="9Vf-wa-87s" secondAttribute="leading" id="6Qw-Ay-vFc"/>
+                <constraint firstAttribute="bottom" secondItem="Hkt-9F-gbQ" secondAttribute="bottom" id="6pu-na-uiY"/>
+                <constraint firstItem="kO2-WM-h3B" firstAttribute="centerY" secondItem="Hkt-9F-gbQ" secondAttribute="centerY" constant="16" id="AEj-fM-tzm"/>
+                <constraint firstItem="Hkt-9F-gbQ" firstAttribute="width" secondItem="9Vf-wa-87s" secondAttribute="width" multiplier="0.4" id="CD8-9u-g2d"/>
+                <constraint firstItem="nIT-hg-pnx" firstAttribute="centerY" secondItem="kO2-WM-h3B" secondAttribute="centerY" id="CSf-Op-WCG"/>
+                <constraint firstItem="kO2-WM-h3B" firstAttribute="leading" secondItem="9Vf-wa-87s" secondAttribute="leading" id="KgK-nL-8cT"/>
+                <constraint firstItem="Hkt-9F-gbQ" firstAttribute="top" secondItem="9Vf-wa-87s" secondAttribute="top" id="gn7-Tb-JVq"/>
+                <constraint firstAttribute="trailing" secondItem="nIT-hg-pnx" secondAttribute="trailing" id="nAb-MM-1hf"/>
+                <constraint firstItem="nIT-hg-pnx" firstAttribute="leading" secondItem="Hkt-9F-gbQ" secondAttribute="trailing" id="wxt-rd-lfH"/>
+            </constraints>
+            <size key="customSize" width="410" height="468"/>
+            <connections>
+                <outlet property="arrowImageView" destination="kO2-WM-h3B" id="bJ9-Sv-bh3"/>
+                <outlet property="growthLabel" destination="9QT-6L-amz" id="1za-k4-MDd"/>
+                <outlet property="ruler" destination="Hkt-9F-gbQ" id="vtd-a7-dQh"/>
+            </connections>
+            <point key="canvasLocation" x="27" y="1025"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Vector (10)" width="129" height="20"/>
+    </resources>
+</document>
