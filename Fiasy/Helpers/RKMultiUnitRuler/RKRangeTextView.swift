@@ -159,6 +159,4 @@ class RKRangeTextView: UIControl, UITextFieldDelegate {
         }
         return super.resignFirstResponder()
     }
-
-
 }

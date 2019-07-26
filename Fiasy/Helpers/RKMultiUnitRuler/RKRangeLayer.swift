@@ -36,13 +36,15 @@ public class RKRangeMarkerType: NSObject, NSCopying {
     open var name: String?
     open var scale: Float = 1
     open var image: UIImage?
+    open var unit: String = ""
     open var labelVisible: Bool = false
-    open var size: CGSize = CGSize(width: 2.0, height: 10.0)
+    open var size: CGSize = CGSize(width: 2.0, height: 1.0)
     open var color: UIColor = UIColor.white
     open var font: UIFont = kDefaultMarkerTypeFont
 
-    public convenience init(color: UIColor, size: CGSize, scale: Float) {
+    public convenience init(color: UIColor, size: CGSize, scale: Float, unit: String) {
         self.init()
+        self.unit = unit
         self.color = color
         self.size = size
         self.scale = scale
@@ -130,6 +132,7 @@ class RKRangeLayer: CALayer {
         didSet {
             if (oldValue != self.frame) {
                 self.markers = self.initializeMarkers()
+                
                 self.setNeedsDisplay()
             }
         }
@@ -153,10 +156,12 @@ class RKRangeLayer: CALayer {
                 $0.scale < $1.scale
             }
             for markerType in sortedMarkerTypes {
+                
                 var location = rangeStart
                 while location <= rangeEnd {
                     let marker = RKRangeMarker()
-                    marker.text = String(location)
+                    let stri = String(location).replacingOccurrences(of: ".0", with: "")
+                    marker.text = "\(stri) \(markerType.unit)"
                     marker.value = location
                     marker.type = markerType
                     valueToMarkerMap[location] = marker
@@ -292,7 +297,7 @@ class RKRangeLayer: CALayer {
 
         switch (marker.textAlignment) {
         case .bottom:
-            textXPos = textSize.width + marker.type.size.height
+            textXPos = marker.type.size.height + 5
         case .center:
             textXPos = textSize.width + (marker.type.size.height) / 2
         case .top:

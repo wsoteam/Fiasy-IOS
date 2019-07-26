@@ -7,13 +7,14 @@ import QuartzCore
 
 class RKRangeScrollView: UIControl, UIScrollViewDelegate {
 
+    open var completionHandler: ((UIScrollView) -> Void)?
     open var sideOffset: CGFloat = kDefaultScrollViewSideOffset
     open var direction: RKLayerDirection = .horizontal
     open var colorOverrides: Dictionary<RKRange<Float>, UIColor>?
     open var range: RKRange<Float> = RKRange<Float>(location: 0, length: 0) {
         didSet {
             setupScrollView()
-            currentValue = ceilf((range.location + range.length) / 2.0)
+            currentValue = ceilf((range.location + range.length) / 10.0)
         }
     }
     var markerTypes: Array<RKRangeMarkerType>? {
@@ -24,14 +25,14 @@ class RKRangeScrollView: UIControl, UIScrollViewDelegate {
 
     var automaticallyUpdatingScroll: Bool = false
     public var currentValue: Float = 0
-    var scrollView: UIScrollView = UIScrollView()
+    public var scrollView: UIScrollView = UIScrollView()
     var rangeLayer: RKRangeLayer = RKRangeLayer()
 
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupScrollView()
-
+        backgroundColor = .clear
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +73,7 @@ class RKRangeScrollView: UIControl, UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (!automaticallyUpdatingScroll) {
+            completionHandler?(scrollView)
             let oldValue = currentValue
             let minScale = RKRangeMarkerType.minScale(types: self.markerTypes)
             let rawValue = self.valueForContentOffset(contentOffset: self.scrollView.contentOffset)
@@ -161,6 +163,10 @@ class RKRangeScrollView: UIControl, UIScrollViewDelegate {
                 completion: { completed in
                     self.automaticallyUpdatingScroll = false
                 })
+    }
+    
+    func updateScrollContentInset(_ scrollView: UIScrollView) {
+        self.scrollView.setContentOffset(scrollView.contentOffset, animated: false)
     }
 
     func valueForContentOffset(contentOffset: CGPoint) -> Float {

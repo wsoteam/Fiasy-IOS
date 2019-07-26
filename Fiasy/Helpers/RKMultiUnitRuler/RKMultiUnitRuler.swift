@@ -62,7 +62,7 @@ public class RKSegmentUnit: NSObject, NSCopying {
 public class RKSegmentUnitControlStyle: NSObject {
     public var textFieldBackgroundColor: UIColor = UIColor.clear
     public var textFieldFont: UIFont = kDefaultTextFieldFont
-    public var textFieldTextColor: UIColor = UIColor.white
+    public var textFieldTextColor: UIColor = .clear
     public var scrollViewBackgroundColor: UIColor = UIColor.clear
     public var colorOverrides: Dictionary<RKRange<Float>, UIColor>?
 }
@@ -70,7 +70,7 @@ public class RKSegmentUnitControlStyle: NSObject {
 
 public protocol RKMultiUnitRulerDataSource {
 
-    func unitForSegmentAtIndex(index: Int) -> RKSegmentUnit
+    func unitForSegmentAtIndex(index: Int, viewTag: Int) -> RKSegmentUnit
 
     func rangeForUnit(_ unit: Dimension) -> RKRange<Float>
 
@@ -100,6 +100,7 @@ public class RKMultiUnitRuler: UIView {
     private var scrollViews: Array<RKRangeScrollView>?
     private var textViews: Array<RKRangeTextView>?
     public var direction: RKLayerDirection = .horizontal
+    public var completionHandler: ((UIScrollView) -> Void)?
 
     public required override init(frame: CGRect) {
         super.init(frame: frame)
@@ -123,10 +124,10 @@ public class RKMultiUnitRuler: UIView {
         if let _ = self.dataSource {
             self.subviews.forEach({ $0.removeFromSuperview() })
             let segmentControl = setupSegmentControl()
-            let (segmentedViews, scrollViews, textViews, pointerViews) = setupSegmentViews()
+            let (segmentedViews, scrollViews, pointerViews) = setupSegmentViews()
             self.segmentedViews = segmentedViews
             self.scrollViews = scrollViews
-            self.textViews = textViews
+            //self.textViews = textViews
             self.pointerViews = pointerViews
             var constraints = Array<NSLayoutConstraint>()
             switch (self.direction) {
@@ -182,15 +183,15 @@ public class RKMultiUnitRuler: UIView {
             self.segmentControl.translatesAutoresizingMaskIntoConstraints = false
             for index in 0 ... dataSource.numberOfSegments - 1 {
                 self.segmentControl.insertSegment(withTitle: dataSource.unitForSegmentAtIndex(
-                        index: index).name,
+                    index: index, viewTag: self.tag).name,
                         at: index, animated: true)
             }
 
             if (dataSource.numberOfSegments > 0) {
                 self.segmentControl.selectedSegmentIndex = 0
-                if let unit = dataSource.unitForSegmentAtIndex(index: 0).unit {
+                if let unit = dataSource.unitForSegmentAtIndex(index: 0, viewTag: self.tag).unit {
                     let style = dataSource.styleForUnit(unit)
-                    self.segmentControl.tintColor = UIColor.yellow
+                    self.segmentControl.tintColor = .clear
                     self.segmentControl.setTitleTextAttributes(
                         [NSAttributedString.Key.foregroundColor: style.textFieldTextColor,
                          NSAttributedString.Key.font: kDefaultSegmentControlTitleFont], for: .normal)
@@ -198,7 +199,7 @@ public class RKMultiUnitRuler: UIView {
             }
             self.addSubview(self.segmentControl)
             if let tintColor = self.tintColor {
-                self.segmentControl.tintColor = tintColor
+                self.segmentControl.tintColor = .clear
             }
         }
         return self.segmentControl
@@ -216,7 +217,7 @@ public class RKMultiUnitRuler: UIView {
             }
         }
         if let dataSource = self.dataSource, let scrollViews = self.scrollViews {
-            let segmentUnit = dataSource.unitForSegmentAtIndex(index: segmentControl.selectedSegmentIndex)
+            let segmentUnit = dataSource.unitForSegmentAtIndex(index: segmentControl.selectedSegmentIndex, viewTag: self.tag)
             if let measurement = self.measurement, let unit = segmentUnit.unit {
                 var value = Float(measurement.converting(to: unit).value)
                 let minScale = RKRangeMarkerType.minScale(types: segmentUnit.markerTypes)
@@ -235,13 +236,13 @@ public class RKMultiUnitRuler: UIView {
     @objc func scrollViewCurrentValueChanged(_ sender: RKRangeScrollView) {
         if let dataSource = self.dataSource {
             let activeSegmentUnit = dataSource.unitForSegmentAtIndex(
-                    index: segmentControl.selectedSegmentIndex)
+                    index: segmentControl.selectedSegmentIndex, viewTag: self.tag)
             if let unit = activeSegmentUnit.unit,
                let scrollViewOfSelectedSegment = self.scrollViews?[segmentControl.selectedSegmentIndex] {
                 self.measurement = NSMeasurement(doubleValue: Double(scrollViewOfSelectedSegment.currentValue),
                         unit: unit)
                 self.delegate?.valueChanged(measurement: self.measurement!)
-                updateTextFields()
+                //updateTextFields()
             }
         }
     }
@@ -249,7 +250,7 @@ public class RKMultiUnitRuler: UIView {
     @objc func textViewValueChanged(_ sender: RKRangeTextView) {
         if let dataSource = self.dataSource {
             let activeSegmentUnit = dataSource.unitForSegmentAtIndex(
-                    index: segmentControl.selectedSegmentIndex)
+                index: segmentControl.selectedSegmentIndex, viewTag: self.tag)
             if let textViews = self.textViews, let unit = activeSegmentUnit.unit {
                 self.measurement = NSMeasurement(doubleValue: Double(textViews[segmentControl.selectedSegmentIndex].currentValue),
                         unit: unit)
@@ -263,7 +264,7 @@ public class RKMultiUnitRuler: UIView {
         if let dataSource = self.dataSource {
             if let scrollViews = self.scrollViews {
                 for index in 0 ... scrollViews.count - 1 {
-                    let segmentUnit = dataSource.unitForSegmentAtIndex(index: index)
+                    let segmentUnit = dataSource.unitForSegmentAtIndex(index: index, viewTag: self.tag)
                     if let measurement = self.measurement, let unit = segmentUnit.unit {
                         let value = Float(measurement.converting(to: unit).value)
                         scrollViews[index].currentValue = value
@@ -275,12 +276,29 @@ public class RKMultiUnitRuler: UIView {
             }
         }
     }
+    
+    func updateScrollContentInset(_ scrollView: UIScrollView) {
+        if let dataSource = self.dataSource {
+            if let scrollViews = self.scrollViews {
+                for index in 0 ... scrollViews.count - 1 {
+                    let segmentUnit = dataSource.unitForSegmentAtIndex(index: index, viewTag: self.tag)
+                    if let measurement = self.measurement, let unit = segmentUnit.unit {
+                        let value = Float(measurement.converting(to: unit).value)
+                        scrollViews[index].currentValue = value
+                    }
+                    if index == segmentControl.selectedSegmentIndex {
+                        scrollViews[index].updateScrollContentInset(scrollView)
+                    }
+                }
+            }
+        }
+    }
 
     func updateTextFields() {
         if let dataSource = self.dataSource {
             if let scrollViews = self.scrollViews {
                 for index in 0 ... scrollViews.count - 1 {
-                    let segmentUnit = dataSource.unitForSegmentAtIndex(index: index)
+                    let segmentUnit = dataSource.unitForSegmentAtIndex(index: index, viewTag: self.tag)
                     if let measurement = self.measurement, let unit = segmentUnit.unit {
                         var value = Float(measurement.converting(to: unit).value)
                         let minScale = RKRangeMarkerType.minScale(types: segmentUnit.markerTypes)
@@ -300,7 +318,7 @@ public class RKMultiUnitRuler: UIView {
     }
 
 
-    private func setupSegmentViews() -> (Array<UIView>, Array<RKRangeScrollView>, Array<RKRangeTextView>, Array<RKRangePointerView>) {
+    private func setupSegmentViews() -> (Array<UIView>, Array<RKRangeScrollView>, Array<RKRangePointerView>) {
         var segmentViews: [UIView] = []
         var pointerViews: [RKRangePointerView] = []
         var scrollViews: [RKRangeScrollView] = []
@@ -309,8 +327,9 @@ public class RKMultiUnitRuler: UIView {
             var names = Array<String>()
             for index in 0 ... dataSource.numberOfSegments - 1 {
                 let segmentView: UIView = UIView(frame: CGRect.zero)
+                segmentView.backgroundColor = .clear
                 segmentView.translatesAutoresizingMaskIntoConstraints = false
-                let segmentUnit = dataSource.unitForSegmentAtIndex(index: index)
+                let segmentUnit = dataSource.unitForSegmentAtIndex(index: index, viewTag: self.tag)
                 if let unit = segmentUnit.unit {
                     let style = dataSource.styleForUnit(unit)
                     let range = dataSource.rangeForUnit(unit)
@@ -331,46 +350,46 @@ public class RKMultiUnitRuler: UIView {
                     var constraints = Array<NSLayoutConstraint>()
                     switch (self.direction) {
                     case .vertical:
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[scrollView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[scrollView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[pointerView(10)]-0-[scrollView]-5-[textView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[pointerView(0)]-0-[scrollView]-0-[textView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[pointerView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[pointerView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[pointerView(10)]-0-[scrollView]-5-[underlineView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[pointerView(0)]-0-[scrollView]-0-[underlineView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
                         constraints += NSLayoutConstraint.constraints(
-                                withVisualFormat: "V:|-10-[textView(25)]-1-[underlineView(2)]",
+                                withVisualFormat: "V:|-00-[textView(0)]-0-[underlineView(0)]",
                                 options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
                                 metrics: nil,
                                 views: segmentSubViews)
                     case .horizontal:
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[scrollView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[scrollView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[textView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[textView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[pointerView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[pointerView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
-                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[underlineView]-5-|",
+                        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[underlineView]-0-|",
                                                                       options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
                         constraints += NSLayoutConstraint.constraints(
-                                withVisualFormat: "V:|-5-[pointerView(10)]-0-[scrollView]-5-[textView(25)]-1-[underlineView(2)]-5-|",
+                                withVisualFormat: "V:|-0-[pointerView(0)]-0-[scrollView]-0-[textView(0)]-0-[underlineView(0)]-0-|",
                                 options: NSLayoutConstraint.FormatOptions.directionLeadingToTrailing,
                                 metrics: nil,
                                 views: segmentSubViews)
@@ -380,13 +399,13 @@ public class RKMultiUnitRuler: UIView {
                     segmentView.backgroundColor = style.scrollViewBackgroundColor
                     segmentViews.append(segmentView)
                     scrollViews.append(scrollView)
-                    textViews.append(textView)
-                    pointerViews.append(pointerView)
+                    //textViews.append(textView)
+                    //pointerViews.append(pointerView)
                     self.addSubview(segmentView)
                 }
             }
         }
-        return (segmentViews, scrollViews, textViews, pointerViews)
+        return (segmentViews, scrollViews, pointerViews)
     }
 
     private func setupPointerView(inSegmentView parent: UIView,
@@ -408,6 +427,9 @@ public class RKMultiUnitRuler: UIView {
         scrollView.markerTypes = segmentUnit.markerTypes
         scrollView.backgroundColor = style.scrollViewBackgroundColor
         scrollView.range = floatRange
+        scrollView.completionHandler = { [weak self] scroll in
+            self?.completionHandler?(scroll)
+        }
         scrollView.colorOverrides = style.colorOverrides
         scrollView.direction = self.direction
         scrollView.translatesAutoresizingMaskIntoConstraints = false
