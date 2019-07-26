@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="PZe-r5-2ZP"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы выбрали мужчину" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxW-az-pHw">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы выбрали мужчину" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxW-az-pHw">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="0.0"/>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" red="0.37642624974250793" green="0.3764960765838623" blue="0.37642186880111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

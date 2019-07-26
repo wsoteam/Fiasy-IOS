@@ -38,6 +38,8 @@
 		3B23025C22C20F840034EC34 /* Error.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B23025B22C20F840034EC34 /* Error.storyboard */; };
 		3B23025F22C20FE50034EC34 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B23025E22C20FE50034EC34 /* ErrorViewController.swift */; };
 		3B23FB7A22A3D5170077EE19 /* SQLDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B23FB7922A3D5170077EE19 /* SQLDatabase.swift */; };
+		3B29B96722E9FF2600CBD64D /* DateOfBirthSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29B96622E9FF2600CBD64D /* DateOfBirthSelectionCell.swift */; };
+		3B29B96922E9FF2F00CBD64D /* DateOfBirthSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B29B96822E9FF2F00CBD64D /* DateOfBirthSelectionCell.xib */; };
 		3B2D31AA22B6B1DA005A59D6 /* RecipesSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D31A922B6B1DA005A59D6 /* RecipesSearchViewController.swift */; };
 		3B325EE8226A13BB00D1A54E /* ProfileDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B325EE7226A13BB00D1A54E /* ProfileDisplayManager.swift */; };
 		3B325EEC226A151B00D1A54E /* UITableView+ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B325EEB226A151B00D1A54E /* UITableView+ReusableCell.swift */; };
@@ -99,8 +101,17 @@
 		3B961E80226BC8930028E8A7 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B961E7F226BC8930028E8A7 /* SettingCell.xib */; };
 		3B96DCE122DE92C7000DD321 /* InstructionListVC+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B96DCE022DE92C7000DD321 /* InstructionListVC+KeyboardExtension.swift */; };
 		3B96DCE422DE9634000DD321 /* AddRecipeCheckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B96DCE322DE9634000DD321 /* AddRecipeCheckInfoViewController.swift */; };
+		3B96E02A22E996C5003D9D98 /* WeightSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B96E02922E996C5003D9D98 /* WeightSelectionCell.swift */; };
+		3B96E02C22E996D0003D9D98 /* WeightSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B96E02B22E996D0003D9D98 /* WeightSelectionCell.xib */; };
 		3B993BAD22DEA47F00642C00 /* RecipeCheckTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B993BAC22DEA47F00642C00 /* RecipeCheckTableVIewCell.swift */; };
 		3B993BAF22DEA4A400642C00 /* RecipeCheckTableVIewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B993BAE22DEA4A400642C00 /* RecipeCheckTableVIewCell.xib */; };
+		3B9DFBD122EA027200DCCDC2 /* SelectActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD022EA027200DCCDC2 /* SelectActivityTableViewCell.swift */; };
+		3B9DFBD322EA027B00DCCDC2 /* SelectActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD222EA027B00DCCDC2 /* SelectActivityTableViewCell.xib */; };
+		3B9DFBD822EA072700DCCDC2 /* TGPCamelLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD522EA072700DCCDC2 /* TGPCamelLabels.swift */; };
+		3B9DFBD922EA072700DCCDC2 /* TGPDiscreteSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD622EA072700DCCDC2 /* TGPDiscreteSlider.swift */; };
+		3B9DFBDA22EA072700DCCDC2 /* TGPControlsTicksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD722EA072700DCCDC2 /* TGPControlsTicksProtocol.swift */; };
+		3B9DFBDD22EA21BB00DCCDC2 /* TargetSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DFBDC22EA21BB00DCCDC2 /* TargetSelectedCell.swift */; };
+		3B9DFBDF22EA21E600DCCDC2 /* TargetSelectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9DFBDE22EA21E600DCCDC2 /* TargetSelectedCell.xib */; };
 		3BA17CF2226DE55C008B66EC /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA17CF1226DE55C008B66EC /* DesignableUITextField.swift */; };
 		3BA17CF5226E0207008B66EC /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA17CF4226E0207008B66EC /* SearchCell.xib */; };
 		3BA17CF9226E0438008B66EC /* food_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BA17CF8226E0437008B66EC /* food_list.json */; };
@@ -183,6 +194,7 @@
 		3BD85F542270454000109AF4 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD85F532270454000109AF4 /* ProductDetailsViewController.swift */; };
 		3BD85F572270592100109AF4 /* MealtimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD85F562270592100109AF4 /* MealtimeViewController.swift */; };
 		3BD85F5A22705BBF00109AF4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD85F5922705BBF00109AF4 /* Constant.swift */; };
+		3BDA202722EA41C10017158C /* QuizFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDA202622EA41C10017158C /* QuizFinishViewController.swift */; };
 		3BDA6FE322DB2C510002D264 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BDA6FE222DB2C510002D264 /* SFProDisplay-Medium.ttf */; };
 		3BDD4D3D22DCE3ED0039CFE2 /* AddProductSecondStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD4D3C22DCE3ED0039CFE2 /* AddProductSecondStepViewController.swift */; };
 		3BDD4D4022DCE7C70039CFE2 /* AddProductSecondStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD4D3F22DCE7C70039CFE2 /* AddProductSecondStepCell.swift */; };
@@ -226,6 +238,8 @@
 		3BE9014722E894D50094EE38 /* RKMultiUnitRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014122E894D40094EE38 /* RKMultiUnitRuler.swift */; };
 		3BE9014822E894D50094EE38 /* RKRangeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014222E894D40094EE38 /* RKRangeTextView.swift */; };
 		3BE9014A22E894D50094EE38 /* RKRangePointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014422E894D50094EE38 /* RKRangePointerView.swift */; };
+		3BE9014F22E896D60094EE38 /* GrowthSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014E22E896D60094EE38 /* GrowthSelectionCell.swift */; };
+		3BE9015122E896E00094EE38 /* GrowthSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9015022E896E00094EE38 /* GrowthSelectionCell.xib */; };
 		3BEA1C6122DCC47600824098 /* AddProductVC+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEA1C6022DCC47600824098 /* AddProductVC+KeyboardExtension.swift */; };
 		3BEDAF3D22C0458700F65D4A /* AddTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDAF3C22C0458700F65D4A /* AddTemplateViewController.swift */; };
 		3BEEBD6422DDF1BD00721BE4 /* SettingClickedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEEBD6322DDF1BD00721BE4 /* SettingClickedPicker.swift */; };
@@ -352,6 +366,8 @@
 		3B23025B22C20F840034EC34 /* Error.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Error.storyboard; sourceTree = "<group>"; };
 		3B23025E22C20FE50034EC34 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		3B23FB7922A3D5170077EE19 /* SQLDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLDatabase.swift; sourceTree = "<group>"; };
+		3B29B96622E9FF2600CBD64D /* DateOfBirthSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthSelectionCell.swift; sourceTree = "<group>"; };
+		3B29B96822E9FF2F00CBD64D /* DateOfBirthSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateOfBirthSelectionCell.xib; sourceTree = "<group>"; };
 		3B2D31A922B6B1DA005A59D6 /* RecipesSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSearchViewController.swift; sourceTree = "<group>"; };
 		3B325EE7226A13BB00D1A54E /* ProfileDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDisplayManager.swift; sourceTree = "<group>"; };
 		3B325EEB226A151B00D1A54E /* UITableView+ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableCell.swift"; sourceTree = "<group>"; };
@@ -413,8 +429,17 @@
 		3B961E7F226BC8930028E8A7 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
 		3B96DCE022DE92C7000DD321 /* InstructionListVC+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InstructionListVC+KeyboardExtension.swift"; sourceTree = "<group>"; };
 		3B96DCE322DE9634000DD321 /* AddRecipeCheckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeCheckInfoViewController.swift; sourceTree = "<group>"; };
+		3B96E02922E996C5003D9D98 /* WeightSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSelectionCell.swift; sourceTree = "<group>"; };
+		3B96E02B22E996D0003D9D98 /* WeightSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightSelectionCell.xib; sourceTree = "<group>"; };
 		3B993BAC22DEA47F00642C00 /* RecipeCheckTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCheckTableVIewCell.swift; sourceTree = "<group>"; };
 		3B993BAE22DEA4A400642C00 /* RecipeCheckTableVIewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCheckTableVIewCell.xib; sourceTree = "<group>"; };
+		3B9DFBD022EA027200DCCDC2 /* SelectActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectActivityTableViewCell.swift; sourceTree = "<group>"; };
+		3B9DFBD222EA027B00DCCDC2 /* SelectActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectActivityTableViewCell.xib; sourceTree = "<group>"; };
+		3B9DFBD522EA072700DCCDC2 /* TGPCamelLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGPCamelLabels.swift; sourceTree = "<group>"; };
+		3B9DFBD622EA072700DCCDC2 /* TGPDiscreteSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGPDiscreteSlider.swift; sourceTree = "<group>"; };
+		3B9DFBD722EA072700DCCDC2 /* TGPControlsTicksProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGPControlsTicksProtocol.swift; sourceTree = "<group>"; };
+		3B9DFBDC22EA21BB00DCCDC2 /* TargetSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSelectedCell.swift; sourceTree = "<group>"; };
+		3B9DFBDE22EA21E600DCCDC2 /* TargetSelectedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TargetSelectedCell.xib; sourceTree = "<group>"; };
 		3BA17CF1226DE55C008B66EC /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
 		3BA17CF4226E0207008B66EC /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		3BA17CF8226E0437008B66EC /* food_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food_list.json; sourceTree = "<group>"; };
@@ -497,6 +522,7 @@
 		3BD85F532270454000109AF4 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		3BD85F562270592100109AF4 /* MealtimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealtimeViewController.swift; sourceTree = "<group>"; };
 		3BD85F5922705BBF00109AF4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		3BDA202622EA41C10017158C /* QuizFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFinishViewController.swift; sourceTree = "<group>"; };
 		3BDA6FE222DB2C510002D264 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		3BDD4D3C22DCE3ED0039CFE2 /* AddProductSecondStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductSecondStepViewController.swift; sourceTree = "<group>"; };
 		3BDD4D3F22DCE7C70039CFE2 /* AddProductSecondStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductSecondStepCell.swift; sourceTree = "<group>"; };
@@ -540,6 +566,8 @@
 		3BE9014122E894D40094EE38 /* RKMultiUnitRuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMultiUnitRuler.swift; sourceTree = "<group>"; };
 		3BE9014222E894D40094EE38 /* RKRangeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRangeTextView.swift; sourceTree = "<group>"; };
 		3BE9014422E894D50094EE38 /* RKRangePointerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRangePointerView.swift; sourceTree = "<group>"; };
+		3BE9014E22E896D60094EE38 /* GrowthSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthSelectionCell.swift; sourceTree = "<group>"; };
+		3BE9015022E896E00094EE38 /* GrowthSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthSelectionCell.xib; sourceTree = "<group>"; };
 		3BEA1C6022DCC47600824098 /* AddProductVC+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddProductVC+KeyboardExtension.swift"; sourceTree = "<group>"; };
 		3BEDAF3C22C0458700F65D4A /* AddTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTemplateViewController.swift; sourceTree = "<group>"; };
 		3BEEBD6322DDF1BD00721BE4 /* SettingClickedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingClickedPicker.swift; sourceTree = "<group>"; };
@@ -835,6 +863,15 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		3B29B96522E9FF0600CBD64D /* DateOfBirth  */ = {
+			isa = PBXGroup;
+			children = (
+				3B29B96622E9FF2600CBD64D /* DateOfBirthSelectionCell.swift */,
+				3B29B96822E9FF2F00CBD64D /* DateOfBirthSelectionCell.xib */,
+			);
+			path = "DateOfBirth ";
+			sourceTree = "<group>";
+		};
 		3B2D31A822B6B1BE005A59D6 /* Recipes Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,6 +1165,43 @@
 				3B993BAE22DEA4A400642C00 /* RecipeCheckTableVIewCell.xib */,
 			);
 			path = "Recipe Check";
+			sourceTree = "<group>";
+		};
+		3B96E02822E996AC003D9D98 /* Weight */ = {
+			isa = PBXGroup;
+			children = (
+				3B96E02922E996C5003D9D98 /* WeightSelectionCell.swift */,
+				3B96E02B22E996D0003D9D98 /* WeightSelectionCell.xib */,
+			);
+			path = Weight;
+			sourceTree = "<group>";
+		};
+		3B9DFBCF22EA025300DCCDC2 /* Select Activity  */ = {
+			isa = PBXGroup;
+			children = (
+				3B9DFBD022EA027200DCCDC2 /* SelectActivityTableViewCell.swift */,
+				3B9DFBD222EA027B00DCCDC2 /* SelectActivityTableViewCell.xib */,
+			);
+			path = "Select Activity ";
+			sourceTree = "<group>";
+		};
+		3B9DFBD422EA070500DCCDC2 /* TGPControls */ = {
+			isa = PBXGroup;
+			children = (
+				3B9DFBD522EA072700DCCDC2 /* TGPCamelLabels.swift */,
+				3B9DFBD722EA072700DCCDC2 /* TGPControlsTicksProtocol.swift */,
+				3B9DFBD622EA072700DCCDC2 /* TGPDiscreteSlider.swift */,
+			);
+			path = TGPControls;
+			sourceTree = "<group>";
+		};
+		3B9DFBDB22EA21A000DCCDC2 /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				3B9DFBDC22EA21BB00DCCDC2 /* TargetSelectedCell.swift */,
+				3B9DFBDE22EA21E600DCCDC2 /* TargetSelectedCell.xib */,
+			);
+			path = Target;
 			sourceTree = "<group>";
 		};
 		3BA17CF3226E01F6008B66EC /* Cell */ = {
@@ -1461,6 +1535,7 @@
 		3BD1794B227B55C8009AB320 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				3BDA202522EA41890017158C /* Quiz Finish */,
 				3BDE69FF22E865CA0078E461 /* Quiz */,
 				3B1FBF2022E78FE700243D0C /* Unboarding */,
 				3B509F0922849383009DCCCD /* Phone */,
@@ -1501,6 +1576,14 @@
 				3BD85F5922705BBF00109AF4 /* Constant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		3BDA202522EA41890017158C /* Quiz Finish */ = {
+			isa = PBXGroup;
+			children = (
+				3BDA202622EA41C10017158C /* QuizFinishViewController.swift */,
+			);
+			path = "Quiz Finish";
 			sourceTree = "<group>";
 		};
 		3BDD4D3922DCE3B10039CFE2 /* Step */ = {
@@ -1602,6 +1685,11 @@
 		3BDE6A0522E866810078E461 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				3B9DFBDB22EA21A000DCCDC2 /* Target */,
+				3B9DFBCF22EA025300DCCDC2 /* Select Activity  */,
+				3B29B96522E9FF0600CBD64D /* DateOfBirth  */,
+				3B96E02822E996AC003D9D98 /* Weight */,
+				3BE9014B22E8968F0094EE38 /* Growth */,
 				3BDE6A0A22E866F80078E461 /* Gender */,
 			);
 			path = Cell;
@@ -1704,6 +1792,15 @@
 				3BE9014222E894D40094EE38 /* RKRangeTextView.swift */,
 			);
 			path = RKMultiUnitRuler;
+			sourceTree = "<group>";
+		};
+		3BE9014B22E8968F0094EE38 /* Growth */ = {
+			isa = PBXGroup;
+			children = (
+				3BE9014E22E896D60094EE38 /* GrowthSelectionCell.swift */,
+				3BE9015022E896E00094EE38 /* GrowthSelectionCell.xib */,
+			);
+			path = Growth;
 			sourceTree = "<group>";
 		};
 		3BEDAF3A22C0454200F65D4A /* List */ = {
@@ -2050,6 +2147,7 @@
 		F06C3192225CF1CD00FDDC34 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3B9DFBD422EA070500DCCDC2 /* TGPControls */,
 				3BE9013E22E8949B0094EE38 /* RKMultiUnitRuler */,
 				3BF74C7222BE6EED00802238 /* UIButton */,
 				3BBBC0B322ABB99A00456DEA /* Swipe Cell */,
@@ -2281,6 +2379,7 @@
 				F01748C9224A222300E2E646 /* Premium.storyboard in Resources */,
 				3B0F5215227EEC4700EBBE0F /* diet-for-test.json in Resources */,
 				3BDE6A0922E866C70078E461 /* QuizGenderCell.xib in Resources */,
+				3B9DFBD322EA027B00DCCDC2 /* SelectActivityTableViewCell.xib in Resources */,
 				3BA17CF5226E0207008B66EC /* SearchCell.xib in Resources */,
 				3B325EF4226A44EF00D1A54E /* ProfileIndicatorCell.xib in Resources */,
 				3B77172722BBEEF60089C4BA /* IngredientsFooterView.xib in Resources */,
@@ -2296,12 +2395,14 @@
 				F06C3186225CF05D00FDDC34 /* PagingMainView.xib in Resources */,
 				F0124F92224261BB001B9793 /* Assets.xcassets in Resources */,
 				3BCAC56622B79370009AF529 /* RecipesSearchHeaderView.xib in Resources */,
+				3B9DFBDF22EA21E600DCCDC2 /* TargetSelectedCell.xib in Resources */,
 				3B0F5220227F5F6800EBBE0F /* InstructionInsertView.xib in Resources */,
 				F01748C1224A1ED000E2E646 /* Roboto-Thin.ttf in Resources */,
 				3BDF6B0C22CC901000412D82 /* SF-Pro-Text-Semibold.ttf in Resources */,
 				3BE14EB4228022DA007D9C25 /* MealtimeListHeaderView.xib in Resources */,
 				3B3FF9E822AB944D002AEF7A /* DiaryHeaderView.xib in Resources */,
 				3B6CBB42227305600011E689 /* Menu.storyboard in Resources */,
+				3B29B96922E9FF2F00CBD64D /* DateOfBirthSelectionCell.xib in Resources */,
 				F02DACA92268CA8C0068F764 /* Profile.storyboard in Resources */,
 				3BBA077622C0C3DE004BEF3B /* AddPortionTableViewCell.xib in Resources */,
 				3B4A33082271BC6F0086F4F1 /* InsertDiaryView.xib in Resources */,
@@ -2309,6 +2410,7 @@
 				F01748C6224A1ED000E2E646 /* Roboto-LightItalic.ttf in Resources */,
 				F01748C0224A1ED000E2E646 /* Roboto-Medium.ttf in Resources */,
 				3B961E80226BC8930028E8A7 /* SettingCell.xib in Resources */,
+				3BE9015122E896E00094EE38 /* GrowthSelectionCell.xib in Resources */,
 				3B23025C22C20F840034EC34 /* Error.storyboard in Resources */,
 				3BCB31ED22C1145E0067A11B /* AddTemplateListCell.xib in Resources */,
 				3BDD4D5822DD574E0039CFE2 /* FavoritesProductTableViewCell.xib in Resources */,
@@ -2338,6 +2440,7 @@
 				3BCB31F822C14BE40067A11B /* FoodDB.db in Resources */,
 				3B8AD40022DE6BEC0098ABD4 /* SFProText-Regular.ttf in Resources */,
 				3B00EAC222DFBE7900A2B21C /* RecipeTabTableViewCell.xib in Resources */,
+				3B96E02C22E996D0003D9D98 /* WeightSelectionCell.xib in Resources */,
 				3BC0497522ACF60300BD5D30 /* MotivationBottomCell.xib in Resources */,
 				3BC8D05F227C3E4E00633AF0 /* RecipesHeaderView.xib in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
@@ -2465,6 +2568,7 @@
 				3BBBC0DA22ABB9D400456DEA /* Extensions.swift in Sources */,
 				3B961E7E226BC87E0028E8A7 /* SettingCell.swift in Sources */,
 				3BCB31EB22C1144E0067A11B /* AddTemplateListCell.swift in Sources */,
+				3B9DFBD922EA072700DCCDC2 /* TGPDiscreteSlider.swift in Sources */,
 				3BF85CC422DB3D9A009B473D /* EditProfileHeaderView.swift in Sources */,
 				3B21BDA722B81E9C005ADBA8 /* TemplatesTabViewController.swift in Sources */,
 				3BBBC0D822ABB9D400456DEA /* SwipeActionsView.swift in Sources */,
@@ -2522,6 +2626,7 @@
 				3BF996672293EA9200782501 /* DiaryClickedPicker.swift in Sources */,
 				3B182AC522AA40F1009EB0F2 /* UIAlertController+Extensions.swift in Sources */,
 				3BA17CF2226DE55C008B66EC /* DesignableUITextField.swift in Sources */,
+				3B9DFBDD22EA21BB00DCCDC2 /* TargetSelectedCell.swift in Sources */,
 				3B3913262285DACD0027659E /* UITextField+Attribute.swift in Sources */,
 				3BC9378322B51CF4002C2704 /* Double+Round.swift in Sources */,
 				3BF74C7422BE6F0100802238 /* UIButton+Activity.swift in Sources */,
@@ -2539,6 +2644,7 @@
 				3BDF6B1022CC970A00412D82 /* PremiumSlideView.swift in Sources */,
 				3BDFD3C122AFEFCE00178885 /* MLModelHandler.swift in Sources */,
 				3B4A33032271924F0086F4F1 /* String+RandomKey.swift in Sources */,
+				3BDA202722EA41C10017158C /* QuizFinishViewController.swift in Sources */,
 				3B6CBB48227309CA0011E689 /* MenuTabBarItem.swift in Sources */,
 				3B46625C226C71DD0031FD40 /* ComplexityViewController.swift in Sources */,
 				3B6CBB4E22730DE30011E689 /* MenuViewController.swift in Sources */,
@@ -2546,6 +2652,7 @@
 				3BE440BD228C927E00F2BD6A /* RecipesPremiumViewController.swift in Sources */,
 				3BBBC0CF22ABB9D400456DEA /* SwipeTableViewCellDelegate.swift in Sources */,
 				3BBBC0CC22ABB9D400456DEA /* SwipeActionTransitioning.swift in Sources */,
+				3BE9014F22E896D60094EE38 /* GrowthSelectionCell.swift in Sources */,
 				3BE9014822E894D50094EE38 /* RKRangeTextView.swift in Sources */,
 				3B0F5223227F98A700EBBE0F /* NutrientsInsertView.swift in Sources */,
 				F06C318C225CF09B00FDDC34 /* SecondMainCell.swift in Sources */,
@@ -2555,7 +2662,9 @@
 				F06C3191225CF12700FDDC34 /* SecondMainViewController.swift in Sources */,
 				3BF85CBF22DB3ADB009B473D /* EditProfileTableViewCell.swift in Sources */,
 				3BE9014722E894D50094EE38 /* RKMultiUnitRuler.swift in Sources */,
+				3B29B96722E9FF2600CBD64D /* DateOfBirthSelectionCell.swift in Sources */,
 				F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */,
+				3B9DFBD122EA027200DCCDC2 /* SelectActivityTableViewCell.swift in Sources */,
 				3BA4CD0D22A5818900DB7B7D /* SearchVC+KeyboardExtension.swift in Sources */,
 				3B3FF9EC22AB9D6B002AEF7A /* DiaryTableViewCell.swift in Sources */,
 				F06C3180225CEFF900FDDC34 /* CustomPagingView.swift in Sources */,
@@ -2590,6 +2699,7 @@
 				3B1FBF2222E7900200243D0C /* UnboardingViewController.swift in Sources */,
 				3BBA077422C0C3C2004BEF3B /* AddPortionTableViewCell.swift in Sources */,
 				3BC8D06E227CB58100633AF0 /* DishDescriptionCell.swift in Sources */,
+				3B9DFBDA22EA072700DCCDC2 /* TGPControlsTicksProtocol.swift in Sources */,
 				3BE14EB722803725007D9C25 /* RecipeMealtimeCell.swift in Sources */,
 				3B1FBF2522E790C200243D0C /* UnboardingSlideView.swift in Sources */,
 				3B1FBF2E22E79AF100243D0C /* SwiftyOnboardPage.swift in Sources */,
@@ -2619,6 +2729,7 @@
 				F008CF4722656C8000F94685 /* SearchViewController.swift in Sources */,
 				3BDD4D5622DD57460039CFE2 /* FavoritesProductTableViewCell.swift in Sources */,
 				3B77172522BBEEDB0089C4BA /* IngredientsFooterView.swift in Sources */,
+				3B96E02A22E996C5003D9D98 /* WeightSelectionCell.swift in Sources */,
 				3B6228792276F2A000865374 /* UIApplication+ScreenShot.swift in Sources */,
 				F00E6DD62251EE070055179E /* ProfileViewController.swift in Sources */,
 				3BDD4D3D22DCE3ED0039CFE2 /* AddProductSecondStepViewController.swift in Sources */,
@@ -2640,6 +2751,7 @@
 				3B961E73226BBAE00028E8A7 /* PhysicalActivityViewController.swift in Sources */,
 				3BBBC0DC22ABB9D400456DEA /* Swipeable.swift in Sources */,
 				3B3FF9E422AB9407002AEF7A /* DiaryHeaderView.swift in Sources */,
+				3B9DFBD822EA072700DCCDC2 /* TGPCamelLabels.swift in Sources */,
 				3BBBC0CD22ABB9D400456DEA /* SwipeCollectionViewCell.swift in Sources */,
 				3BD85F572270592100109AF4 /* MealtimeViewController.swift in Sources */,
 				3BEEBD7022DE4A5700721BE4 /* InstructionListViewController.swift in Sources */,
