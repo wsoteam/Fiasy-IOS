@@ -23,7 +23,7 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var bottomContainerView: UIView!
     
     //MARK: - Properties -
-    private var dropDown = DropDown()
+    var dropDown = DropDown()
     private var delegate: AddRecipeDelegate?
     private var defaultUrl = "https://firebasestorage.googleapis.com/v0/b/diet-for-test.appspot.com/o/default_recipe.png?alt=media&token=1fcf855f-fa9d-4831-9ff2-af204a612707"
     
@@ -37,7 +37,7 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
         nameTextField.tag = indexCell.row
         switch indexCell.row {
             case 0:
-                fillNecessarilyField(label: titleLabel, text: "Название продукта")
+                fillNecessarilyField(label: titleLabel, text: "Название рецепта")
                 nameTextField.attributedPlaceholder = NSAttributedString(string: "",
                                     attributes: [.foregroundColor: UIColor.black])
             nameTextField.keyboardType = .default
@@ -48,15 +48,16 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
                 titleLabel.text = "Изображение блюда"
                 
                 if let url = selectedRecipe?.url, url != defaultUrl {
-                    nameTextField.attributedPlaceholder = NSAttributedString(string: "Загруженно",
+                    nameTextField.attributedPlaceholder = NSAttributedString(string: "Загружено",
                                                                              attributes: [.foregroundColor: #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)])
                     nameButton.isHidden = true
                     cameraIconImageView.isHidden = true
                     selectedStackView.isHidden = false
                     selectedImageView.setImage(with: url)
+                    UserInfo.sharedInstance.recipeFlow.recipeImage = selectedImageView.image
                 } else  {
                     if let image = selectedImage {
-                        nameTextField.attributedPlaceholder = NSAttributedString(string: "Загруженно",
+                        nameTextField.attributedPlaceholder = NSAttributedString(string: "Загружено",
                                                                                  attributes: [.foregroundColor: #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)])
                         nameButton.isHidden = true
                         cameraIconImageView.isHidden = true
@@ -111,7 +112,7 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func fillSelectedImage(_ image: UIImage) {
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Загруженно",
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Загружено",
                                                       attributes: [.foregroundColor: #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)])
         nameButton.isHidden = true
         cameraIconImageView.isHidden = true
@@ -194,6 +195,6 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
-        return  textField.tag == 2 ? count <= 5 : count <= 40
+        return  textField.tag == 2 ? count <= 5 : count <= 100
     }
 }

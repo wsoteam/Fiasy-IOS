@@ -29,6 +29,18 @@ class AlertComponent {
         vc.present(alertController, animated: true)
     }
     
+    func showSecondAlertMessage(message: String?, vc: UIViewController, completion: @escaping () -> Void) {
+        let alertController = UIAlertController(title: message,
+                                                message: "",
+                                                preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { (alert) in
+            completion()
+        }
+        alertController.addAction(okAction)
+        vc.present(alertController, animated: true)
+    }
+    
     func showMessage(message: String?, handler: ((UIAlertAction) -> Void)?, vc: UIViewController) {
         let alertController = UIAlertController(title: message,
                                                 message: "",

@@ -2,30 +2,37 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
-import BEMCheckBox
 import Amplitude_iOS
 
-class RegestrationViewController: BaseViewController {
+class RegestrationViewController: UIViewController {
     
     //MARK: - Outlet -
-    @IBOutlet weak var checkBox: BEMCheckBox!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet var allSeparatorViews: [UIView]!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet var allTextFields: [UITextField]!
+    @IBOutlet var passwordButtons: [UIButton]!
+    @IBOutlet var allErrorLabels: [UILabel]!
     
     //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupInitialState()
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
         Amplitude.instance().logEvent("start_registration")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        removeObserver()
     }
   
     //MARK: - Action -
@@ -33,40 +40,75 @@ class RegestrationViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func signUpClicked(_ sender: Any) {
-        guard checkBox.on else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Для регистрации нужно согласия с условиями политики конфиденциальности", vc: self)
+
+    @IBAction func fillPasswordField(_ sender: UITextField) {
+        if (sender.tag - 1) == 0 {
+            guard let text = sender.text, !text.isEmpty else {
+                return passwordButtons[0].isHidden = true
+            }
+            passwordButtons[0].isHidden = false
+        } else {
+            guard let text = sender.text, !text.isEmpty else {
+                return passwordButtons[1].isHidden = true
+            }
+            passwordButtons[1].isHidden = false
         }
+    }
+    
+    @IBAction func showPasswordClicked(_ sender: UIButton) {
+        let textField: UITextField = allTextFields[sender.tag]
+        if sender.isSelected == true {
+            textField.isSecureTextEntry = true
+            sender.isSelected = false
+        } else {
+            textField.isSecureTextEntry = false
+            sender.isSelected = true
+        }
+    }
+    
+    @IBAction func signUpClicked(_ sender: Any) {
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
         }
-        if let email = emailTextField.text, let password = passwordTextField.text, email.isEmpty || password.isEmpty {
-            let text = (emailTextField.text ?? "").isEmpty ? "Введите email" : "Введите пароль"
-            return AlertComponent.sharedInctance.showAlertMessage(message: text, vc: self)
+        guard (allTextFields[0].text ?? "").isValidEmail() else {
+            allErrorLabels[0].text = "Неверный формат почты"
+            allSeparatorViews[0].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
+            allErrorLabels[0].isHidden = false
+            animateView()
+            return
         }
-        guard (emailTextField.text ?? "").isValidEmail() else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Проверьте введенный email!", vc: self)
-        }
-        guard (passwordTextField.text ?? "").count >= 6 else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Пароль слишком простой", vc: self)
+        guard (allTextFields[1].text ?? "").count >= 6 else {
+            allErrorLabels[1].text = "Пароль слишком простой"
+            allSeparatorViews[1].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
+            allErrorLabels[1].isHidden = false
+            animateView()
+            return
         }
         
-        Auth.auth().createUser(withEmail: (emailTextField.text ?? ""), password: (passwordTextField.text ?? "")) { [weak self] (user, error) in
+        guard (allTextFields[1].text ?? "") == (allTextFields[2].text ?? "") else {
+            allErrorLabels[1].text = "Не совпадают пароли"
+            allSeparatorViews[1].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
+            allSeparatorViews[2].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
+            allErrorLabels[1].isHidden = false
+            animateView()
+            return
+        }
+
+        Auth.auth().createUser(withEmail: (allTextFields[0].text ?? ""), password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
             guard let strongSelf = self else { return }
             guard let _ = error else {
-                var first = "default"
-                var last = "default"
-                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
-                if let array = fullNameArr, array.indices.contains(0) {
-                    first = array[0]
-                }
-                if let array = fullNameArr, array.indices.contains(1) {
-                    last = array[1]
-                }
-                
-                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
-                FirebaseDBManager.checkFilledProfile()
-                return strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
+//                var first = "default"
+//                var last = "default"
+//                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
+//                if let array = fullNameArr, array.indices.contains(0) {
+//                    first = array[0]
+//                }
+//                if let array = fullNameArr, array.indices.contains(1) {
+//                    last = array[1]
+//                }
+//                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
+//                FirebaseDBManager.checkFilledProfile()
+                return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
             AlertComponent.sharedInctance.showAlertMessage(message: "Такой пользователь уже существует",
                                                           vc: strongSelf)
@@ -80,11 +122,7 @@ class RegestrationViewController: BaseViewController {
         }
         GIDSignIn.sharedInstance().signIn()
     }
-    
-    @IBAction func phoneClicked(_ sender: Any) {
-        performSegue(withIdentifier: "sequePhoneScreen", sender: nil)
-    }
-    
+
     @IBAction func facebookClicked(_ sender: Any) {
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
@@ -106,7 +144,6 @@ class RegestrationViewController: BaseViewController {
                                     message: error.localizedDescription, vc: strongSelf)
                     }
                 }
-                
                 var first = ""
                 var last = ""
                 let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
@@ -124,21 +161,23 @@ class RegestrationViewController: BaseViewController {
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
-        return newString.count <= 320
-    }
-
     //MARK: - Private -
     private func setupInitialState() {
-        checkBox.boxType = .square
-        checkBox.onFillColor = .clear
-        checkBox.onCheckColor = #colorLiteral(red: 0.2745942175, green: 0.2475363314, blue: 0.2095298767, alpha: 1)
-        checkBox.onTintColor = #colorLiteral(red: 0.2745942175, green: 0.2475363314, blue: 0.2095298767, alpha: 1)
+        //
+    }
+    
+    private func animateView() {
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
 extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        print("dismissing Google SignIn")
+    }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -167,5 +206,46 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                 }
             })
         }
+    }
+}
+
+extension RegestrationViewController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        var state: Bool = false
+        switch textField.tag {
+        case 0:
+            allErrorLabels[0].isHidden = true
+            allSeparatorViews[0].backgroundColor = #colorLiteral(red: 0.9214683175, green: 0.921626389, blue: 0.9214584231, alpha: 1)
+            if (updatedString ?? "").count > 0 && (allTextFields[1].text ?? "").count > 0 && (allTextFields[2].text ?? "").count > 0 {
+                state = true
+            } else {
+                state = false
+            }
+        case 1:
+            allErrorLabels[1].isHidden = true
+            allSeparatorViews[1].backgroundColor = #colorLiteral(red: 0.9214683175, green: 0.921626389, blue: 0.9214584231, alpha: 1)
+            if (updatedString ?? "").count > 0 && (allTextFields[0].text ?? "").count > 0 && (allTextFields[2].text ?? "").count > 0 {
+                state = true
+            } else {
+                state = false
+            }
+        case 2:
+            allErrorLabels[2].isHidden = true
+            allSeparatorViews[2].backgroundColor = #colorLiteral(red: 0.9214683175, green: 0.921626389, blue: 0.9214584231, alpha: 1)
+            if (updatedString ?? "").count > 0 && (allTextFields[0].text ?? "").count > 0 && (allTextFields[1].text ?? "").count > 0 {
+                state = true
+            } else {
+                state = false
+            }
+        default:
+            break
+        }
+        animateView()
+        signUpButton.isEnabled = state ? true : false
+        signUpButton.backgroundColor = state ? #colorLiteral(red: 1, green: 0.6055343747, blue: 0.1803497076, alpha: 1) : #colorLiteral(red: 0.7803063989, green: 0.7804415822, blue: 0.780297935, alpha: 1)
+        return true
     }
 }

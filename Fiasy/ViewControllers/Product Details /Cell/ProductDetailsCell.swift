@@ -160,7 +160,7 @@ class ProductDetailsCell: UITableViewCell {
                 let addProduct = product
                 addProduct.productWeightByAdd = weight
                 UserInfo.sharedInstance.recipeFlow.allProduct.append(addProduct)
-                self.delegate?.closeModule()
+                self.delegate?.addProductInRecipe()
             }
         } else {
             if title == "ИЗМЕНЕНО" || title == "ДОБАВЛЕНО" {
@@ -212,7 +212,7 @@ class ProductDetailsCell: UITableViewCell {
                     
                     let state = currentDay == day && currentMonth == month && currentYear == year
                     
-                    let userData = ["day": day, "month": month, "year": year, "name": product.name, "weight": Int(weight), "protein": Int(protein), "fat": Int(fat), "carbohydrates": Int(carbohydrates), "calories": Int(Double(calories)?.rounded(toPlaces: 0) ?? 0), "presentDay" : state] as [String : Any]
+                    let userData = ["day": day, "month": month, "year": year, "name": product.name, "weight": Int(weight), "protein": Int(protein), "fat": Int(fat), "carbohydrates": Int(carbohydrates), "calories": Int(Double(calories)?.rounded(toPlaces: 0) ?? 0), "presentDay" : state, "isRecipe" : false] as [String : Any]
                     ref.child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getTitleMealtimeForFirebase()).childByAutoId().setValue(userData)
                     FirebaseDBManager.reloadItems()
                     delayWithSeconds(1) {

@@ -94,12 +94,18 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
     @IBAction func blurFilterClicked(_ sender: UIButton) {
         switch sender.tag {
         case 1:
+            if currentIndex != 1 {
+                moveToViewController(at: 1)
+            }
             UserInfo.sharedInstance.productFlow = AddProductFlow()
             performSegue(withIdentifier: "sequeAddProductScreen", sender: nil)
         case 2:
             UserInfo.sharedInstance.templateArray.removeAll()
             performSegue(withIdentifier: "sequeTemplateScreen", sender: nil)
         case 4:
+            if currentIndex != 3 {
+                moveToViewController(at: 3)
+            }
             UserInfo.sharedInstance.recipeFlow = AddRecipeFlow()
             performSegue(withIdentifier: "sequeAddRecipe", sender: nil)
         default:

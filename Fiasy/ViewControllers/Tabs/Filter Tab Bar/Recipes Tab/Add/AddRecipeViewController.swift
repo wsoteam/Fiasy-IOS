@@ -62,23 +62,45 @@ class AddRecipeViewController: UIViewController {
     
     @IBAction func nextStepClicked(_ sender: Any) {
         guard let recipeName = UserInfo.sharedInstance.recipeFlow.recipeName, !recipeName.isEmpty else {
-            if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddRecipeTableViewCell {
-                cell.nameTextField.becomeFirstResponder()
+            AlertComponent.sharedInctance.showSecondAlertMessage(message: "Введите название рецепта", vc: self) {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddRecipeTableViewCell {
+                    cell.nameTextField.becomeFirstResponder()
+                }
             }
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Введите название рецепта", vc: self)
+            return
         }
         if recipeName.replacingOccurrences(of: " ", with: "").isEmpty {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Название не может состоять только из пробелов", vc: self)
+            AlertComponent.sharedInctance.showSecondAlertMessage(message: "Название не может состоять только из пробелов", vc: self) {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddRecipeTableViewCell {
+                    cell.nameTextField.becomeFirstResponder()
+                }
+            }
+            return
         }
         guard let time = UserInfo.sharedInstance.recipeFlow.time, !time.isEmpty else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Введите время приготовления (мин)", vc: self)
+            AlertComponent.sharedInctance.showSecondAlertMessage(message: "Введите время приготовления (мин)", vc: self) {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AddRecipeTableViewCell {
+                    cell.nameTextField.becomeFirstResponder()
+                }
+            }
+            return
         }
         if let count = Int(time), count == 0 {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Время не может состоять из нулей", vc: self)
+            AlertComponent.sharedInctance.showSecondAlertMessage(message: "Время не может состоять из нулей", vc: self) {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AddRecipeTableViewCell {
+                    cell.nameTextField.becomeFirstResponder()
+                }
+            }
+            return
         }
         
         guard let complexity = UserInfo.sharedInstance.recipeFlow.complexity, !complexity.isEmpty else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Выберите сложность приготовления", vc: self)
+            AlertComponent.sharedInctance.showSecondAlertMessage(message: "Выберите сложность приготовления", vc: self) {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AddRecipeTableViewCell {
+                    cell.dropDown.show()
+                }
+            }
+            return
         }
         performSegue(withIdentifier: "sequeAddIngredientsScreen", sender: nil)
     }

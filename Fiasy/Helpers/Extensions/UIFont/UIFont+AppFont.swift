@@ -33,4 +33,14 @@ extension UIFont {
     static func sfProTextBold(size: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Bold", size: size)!
     }
+    
+    static func sfProTextRegular(size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Regular", size: size)!
+    }
+    
+    static func sfProTextSemibold(size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Semibold", size: size)!
+    }
 }
+
+

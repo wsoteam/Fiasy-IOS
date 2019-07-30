@@ -112,7 +112,7 @@ extension RecipesDetailsViewController: UITableViewDataSource, UITableViewDelega
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DishDescriptionCell") as? DishDescriptionCell else { fatalError() }
 
         if let recipe = selectedRecipe {
-            cell.fillCell(recipe: recipe, delegate: self)
+            cell.fillCell(recipe: recipe, delegate: self, ownRecipe: ownRecipe)
         }
         
         return cell

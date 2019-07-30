@@ -25,16 +25,27 @@ class ScreensController: NSObject {
             } catch {
                 print("Error while signing out!")
             }
-            updateRootController(with: UIStoryboard(name: "Authorization", bundle: nil).instantiateInitialViewController())
+            if let _ = UserDefaults.standard.value(forKey: "firstUnboarding") {
+                updateRootController(with: UIStoryboard(name: "Authorization", bundle: nil).instantiateInitialViewController())
+            } else {
+                UserDefaults.standard.set(true, forKey: "firstUnboarding")
+                UserDefaults.standard.synchronize()
+                updateRootController(with: UIStoryboard(name: "Unboarding", bundle: nil).instantiateInitialViewController())
+            }
             return setFirstLaunch()
         }
 
         if Auth.auth().currentUser != nil {
             updateRootController(with: UIStoryboard(name: "Menu", bundle: nil).instantiateInitialViewController())
         } else {
-            updateRootController(with: UIStoryboard(name: "Authorization", bundle: nil).instantiateInitialViewController())
+            if let _ = UserDefaults.standard.value(forKey: "firstUnboarding") {
+                updateRootController(with: UIStoryboard(name: "Authorization", bundle: nil).instantiateInitialViewController())
+            } else {
+                UserDefaults.standard.set(true, forKey: "firstUnboarding")
+                UserDefaults.standard.synchronize()
+                updateRootController(with: UIStoryboard(name: "Unboarding", bundle: nil).instantiateInitialViewController())
+            }
         }
-        
         setFirstLaunch()
     }
     

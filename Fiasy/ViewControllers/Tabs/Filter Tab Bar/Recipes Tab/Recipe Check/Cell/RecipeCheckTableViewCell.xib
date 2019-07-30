@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="SFProText-Medium.ttf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="127" id="dbj-ub-tSG" customClass="RecipeCheckTableViewCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dbj-ub-tSG" id="tBO-Bn-yfr">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="126.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-bZ-Iw0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="126.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4Y-bL-owc" userLabel="top Container">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="126.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Название рецепта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvd-uN-Hyn">
+                                        <rect key="frame" x="15" y="25" width="130" height="90.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                        <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szi-2p-UWw">
+                                        <rect key="frame" x="15" y="120.5" width="384" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WF-6z-fo5">
+                                        <rect key="frame" x="15" y="125.5" width="384" height="1"/>
+                                        <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="vmm-JB-hWq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="szi-2p-UWw" firstAttribute="leading" secondItem="T4Y-bL-owc" secondAttribute="leading" constant="15" id="3LL-TP-H9h"/>
+                                    <constraint firstAttribute="bottom" secondItem="6WF-6z-fo5" secondAttribute="bottom" id="GuP-xk-mXr"/>
+                                    <constraint firstItem="6WF-6z-fo5" firstAttribute="leading" secondItem="T4Y-bL-owc" secondAttribute="leading" constant="15" id="RKw-In-ZTN"/>
+                                    <constraint firstAttribute="trailing" secondItem="szi-2p-UWw" secondAttribute="trailing" constant="15" id="Yyh-5C-EpQ"/>
+                                    <constraint firstItem="Pvd-uN-Hyn" firstAttribute="leading" secondItem="T4Y-bL-owc" secondAttribute="leading" constant="15" id="aNJ-Da-o7J"/>
+                                    <constraint firstItem="szi-2p-UWw" firstAttribute="top" secondItem="Pvd-uN-Hyn" secondAttribute="bottom" constant="5" id="fy6-cc-NHD"/>
+                                    <constraint firstAttribute="trailing" secondItem="6WF-6z-fo5" secondAttribute="trailing" constant="15" id="l7y-1t-s2Q"/>
+                                    <constraint firstItem="Pvd-uN-Hyn" firstAttribute="top" secondItem="T4Y-bL-owc" secondAttribute="top" constant="25" id="lCH-1p-d1I"/>
+                                    <constraint firstItem="6WF-6z-fo5" firstAttribute="top" secondItem="szi-2p-UWw" secondAttribute="bottom" constant="5" id="voh-pt-XmW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="7Jl-bZ-Iw0" secondAttribute="bottom" id="GKc-z8-9qw"/>
+                    <constraint firstItem="7Jl-bZ-Iw0" firstAttribute="leading" secondItem="tBO-Bn-yfr" secondAttribute="leading" id="bgH-ix-Av7"/>
+                    <constraint firstAttribute="trailing" secondItem="7Jl-bZ-Iw0" secondAttribute="trailing" id="dnK-zl-OYt"/>
+                    <constraint firstItem="7Jl-bZ-Iw0" firstAttribute="top" secondItem="tBO-Bn-yfr" secondAttribute="top" id="t5w-v7-Leh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="szi-2p-UWw" id="1EK-le-svG"/>
+                <outlet property="separatorView" destination="6WF-6z-fo5" id="Hv9-Kw-7Pg"/>
+                <outlet property="titleLabel" destination="Pvd-uN-Hyn" id="Ina-Rv-8bh"/>
+            </connections>
+            <point key="canvasLocation" x="27.536231884057973" y="213.28125"/>
+        </tableViewCell>
+    </objects>
+</document>

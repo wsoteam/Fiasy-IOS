@@ -11,6 +11,7 @@ import Amplitude_iOS
 
 protocol ProductDetailsDelegate {
     func closeModule()
+    func addProductInRecipe()
     func showAlert(message: String)
     func showSendError()
     func showEmptyTextAlert()
@@ -143,6 +144,15 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension ProductDetailsViewController: ProductDetailsDelegate {
+    
+    func addProductInRecipe() {
+        let alert = UIAlertController(title: "Внимание", message: "Данный продукт добавлен в ваш рецепт", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ок", style: .default) { (alert) in
+            self.closeModule()
+        }
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+    }
     
     func closeModule() {
         navigationController?.popViewController(animated: true)

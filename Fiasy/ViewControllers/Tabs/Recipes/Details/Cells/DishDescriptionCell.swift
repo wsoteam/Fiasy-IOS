@@ -28,11 +28,13 @@ class DishDescriptionCell: UITableViewCell {
     //MARK: - Properties -
     private var servingCount: Int = 1
     private var delegate: RecipesDetailsDelegate?
+    private var ownRecipe: Bool = false
     private var recipe: Listrecipe?
     
     //MARK: - Interface -
-    func fillCell(recipe: Listrecipe, delegate: RecipesDetailsDelegate) {
+    func fillCell(recipe: Listrecipe, delegate: RecipesDetailsDelegate, ownRecipe: Bool) {
         self.recipe = recipe
+        self.ownRecipe = ownRecipe
         self.delegate = delegate
         
         fillScreenServing()
@@ -121,7 +123,7 @@ class DishDescriptionCell: UITableViewCell {
 
     private func insertViewInStackView(stackView: UIStackView, left: String, right: String, isTitle: Bool) {
         guard let view = NutrientsInsertView.fromXib() else { return }
-        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: false)
+        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: ownRecipe)
         stackView.addArrangedSubview(view)
     }
 
@@ -228,17 +230,34 @@ class DishDescriptionCell: UITableViewCell {
     }
     
     @IBAction func addProductClicked(_ sender: Any) {
-        if let uid = Auth.auth().currentUser?.uid, let weight = recipe?.weight, let protein = recipe?.proteins, let fat = recipe?.fats, let carbohydrates = recipe?.carbohydrates, let calories = recipe?.calories, let name = recipe?.name, let title = recipe?.eating?.first {
+
+        if let uid = Auth.auth().currentUser?.uid, let weight = recipe?.weight, let protein = recipe?.proteins, let fat = recipe?.fats, let carbohydrates = recipe?.carbohydrates, let calories = recipe?.calories, let name = recipe?.name {
             
             let ref = Database.database().reference()
             let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
             let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
             let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
             
-            let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount)] as [String : Any]
-            ref.child("USER_LIST").child(uid).child(fetchTitle(title: title)).childByAutoId().setValue(userData)
+            let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true] as [String : Any]
+            ref.child("USER_LIST").child(uid).child(getTitle()).childByAutoId().setValue(userData)
+            
             FirebaseDBManager.reloadItems()
             delegate?.showAnimate()
+        }
+    }
+    
+    private func getTitle() -> String {
+        switch UserInfo.sharedInstance.selectedMealtimeIndex {
+        case 0:
+            return "breakfasts"
+        case 1:
+            return "lunches"
+        case 2:
+            return "dinners"
+        case 3:
+            return "snacks"
+        default:
+            return "snacks"
         }
     }
 }

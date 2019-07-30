@@ -21,7 +21,7 @@ class QuizDisplayManager: NSObject {
     
     //MARK: - Properties -
     private var currentCellIndex: IndexPath = IndexPath(row: 0, section: 0)
-    private var cells = [QuizGenderCell.self, GrowthSelectionCell.self, WeightSelectionCell.self,  DateOfBirthSelectionCell.self, SelectActivityTableViewCell.self, TargetSelectedCell.self,]
+    private var cells = [QuizGenderCell.self, GrowthSelectionCell.self, WeightSelectionCell.self,  DateOfBirthSelectionCell.self, SelectActivityTableViewCell.self, TargetSelectedCell.self]
     private var collectionView: UICollectionView
     private var output: QuizViewOutput
     

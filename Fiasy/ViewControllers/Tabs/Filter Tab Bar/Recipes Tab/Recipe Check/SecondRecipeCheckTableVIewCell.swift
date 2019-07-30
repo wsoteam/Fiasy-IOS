@@ -1,5 +1,5 @@
 //
-//  RecipeCheckTableVIewCell.swift
+//  SecondRecipeCheckTableVIewCell.swift
 //  Fiasy
 //
 //  Created by Eugen Lipatov on 7/17/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipeCheckTableVIewCell: UITableViewCell {
+class SecondRecipeCheckTableVIewCell: UITableViewCell {
     
     // MARK: - Outlet -
     @IBOutlet weak var nameWidthConstraint: NSLayoutConstraint!
@@ -28,7 +28,12 @@ class RecipeCheckTableVIewCell: UITableViewCell {
             nameWidthConstraint.constant = 20
             nameLabel.text = "\(indexPath.row + 1)."
             if flow.instructionsList.indices.contains(indexPath.row) {
-                textView.text = flow.instructionsList[indexPath.row]
+                var text: String = ""
+                let fullNameArr2 = (flow.instructionsList[indexPath.row] ?? "").split{$0 == " "}.map(String.init)
+                for item in fullNameArr2 where !item.isEmpty {
+                    text = text.isEmpty ? item : text + " \(item)"
+                }
+                textView.text = text
             }
         default:
             break

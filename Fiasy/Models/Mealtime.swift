@@ -39,6 +39,7 @@ class Mealtime {
     var pottassium: Double?
     var sugar: Double?
     var secondCalories: Double?
+    var isRecipe: Bool?
 
     init(parentKey: String, generalKey: String, dictionary: [String : AnyObject]) {
         self.parentKey = parentKey
@@ -55,7 +56,7 @@ class Mealtime {
         fat = dictionary["fat"] as? Int
         carbohydrates = dictionary["carbohydrates"] as? Int
         presentDay = dictionary["presentDay"] as? Bool ?? false
-        
+        isRecipe = dictionary["isRecipe"] as? Bool ?? false
         fats = dictionary["fats"] as? Double
         secondCarbohydrates = dictionary["carbohydrates"] as? Double
         cholesterol = dictionary["cholesterol"] as? Double

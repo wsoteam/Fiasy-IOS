@@ -148,32 +148,44 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+        guard orientation == .right, self.mealTime.indices.contains(indexPath.section) else { return nil }
+        let isRecipe = self.mealTime[indexPath.section][indexPath.row].isRecipe
         
-        let editAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
-            guard let `self` = self else { return }
-            if self.mealTime.indices.contains(indexPath.section) {
-                if self.mealTime[indexPath.section].indices.contains(indexPath.row) {
+        if isRecipe == false {
+            let editAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
+                guard let `self` = self else { return }
+                if self.mealTime.indices.contains(indexPath.section) {
+                    if self.mealTime[indexPath.section].indices.contains(indexPath.row) {
                         UserInfo.sharedInstance.editMealtime = self.mealTime[indexPath.section][indexPath.row]
                         self.delegate.editMealTime()
+                    }
                 }
             }
+            editAction.image = #imageLiteral(resourceName: "Flag Icon")
+            editAction.hidesWhenSelected = true
+            editAction.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            
+            let deleteAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
+                self?.removeIndex = indexPath
+                self?.delegate.removeMealTime()
+            }
+            
+            deleteAction.image = #imageLiteral(resourceName: "Group 33")
+            deleteAction.hidesWhenSelected = true
+            deleteAction.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            
+            return [deleteAction, editAction]
+        } else {
+            let deleteAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
+                self?.removeIndex = indexPath
+                self?.delegate.removeMealTime()
+            }
+            deleteAction.image = #imageLiteral(resourceName: "Group 33")
+            deleteAction.hidesWhenSelected = true
+            deleteAction.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            
+            return [deleteAction]
         }
-    
-        editAction.image = #imageLiteral(resourceName: "Flag Icon")
-        editAction.hidesWhenSelected = true
-        editAction.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        let deleteAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
-            self?.removeIndex = indexPath
-            self?.delegate.removeMealTime()
-        }
-
-        deleteAction.image = #imageLiteral(resourceName: "Group 33")
-        deleteAction.hidesWhenSelected = true
-        deleteAction.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        return [deleteAction, editAction]
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

@@ -23,7 +23,7 @@ class UnboardingViewController: UIViewController {
     //MARK: - Actions -
     @IBAction func nextClicked(_ sender: Any) {
         if selectedIndex >= 2 {
-            performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+            performSegue(withIdentifier: "showFirstScreen", sender: nil)
         } else {
             selectedIndex += 1
             unboardingView.goToPage(index: selectedIndex, animated: true)
@@ -31,7 +31,7 @@ class UnboardingViewController: UIViewController {
     }
     
     @IBAction func skipClicked(_ sender: Any) {
-        performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+        performSegue(withIdentifier: "showFirstScreen", sender: nil)
     }
 }
 
@@ -52,7 +52,7 @@ extension UnboardingViewController: SwiftyOnboardDataSource {
             page.title.text = "Полезные рецепты\nна каждый день"
         case 2:
             page.imageView.image = #imageLiteral(resourceName: "дама 2")
-            page.title.text = "Удобно отследивать свои\nдостижения"
+            page.title.text = "Удобно отслеживать свои\nдостижения"
         default:
             break
         }

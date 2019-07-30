@@ -38,44 +38,54 @@ class AddRecipeCheckInfoViewController: UIViewController {
             activityView.isHidden = false
             var calories: Int = 0
             for item in flow.allProduct {
-                calories = calories + Int(Double((item.calories ?? 0.0) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
+                guard let second = item.calories, second != -1.0 else { break }
+                calories = calories + Int(Double((second) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
             }
             var carbohydrates: Double = 0.0
             for item in flow.allProduct {
-                carbohydrates = (carbohydrates + Double((item.carbohydrates ?? 0.0) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
+                guard let second = item.carbohydrates, second != -1.0 else { break }
+                carbohydrates = (carbohydrates + Double((second) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
             }
             var cellulose: Double = 0.0
             for item in flow.allProduct {
-                cellulose = (cellulose + Double((item.cellulose ?? 0.0) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
+                guard let second = item.cellulose, second != -1.0 else { break }
+                cellulose = (cellulose + Double((second) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
             }
             var cholesterol: Int = 0
             for item in flow.allProduct {
-                cholesterol = cholesterol + Int(Double((item.cholesterol ?? 0.0) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
+                guard let second = item.cholesterol, second != -1.0 else { break }
+                cholesterol = cholesterol + Int(Double((second) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
             }
             var fats: Double = 0.0
             for item in flow.allProduct {
-                fats = (fats + Double((item.fats ?? 0.0) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
+                guard let second = item.fats, second != -1.0 else { break }
+                fats = (fats + Double((second) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
             }
             var potassium: Int = 0
             for item in flow.allProduct {
-                potassium = potassium + Int(Double((item.pottassium ?? 0.0) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
+                guard let second = item.pottassium, second != -1.0 else { break }
+                potassium = potassium + Int(Double((second) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
             }
             var proteins: Double = 0.0
             for item in flow.allProduct {
-                proteins = proteins + (Double((item.proteins ?? 0.0) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
+                guard let second = item.proteins, second != -1.0 else { break }
+                proteins = proteins + (Double((second) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
             }
 
             var saturatedFats: Double = 0.0
             for item in flow.allProduct {
-                saturatedFats = saturatedFats + (Double((item.saturatedFats ?? 0.0) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
+                guard let second = item.saturatedFats, second != -1.0 else { break }
+                saturatedFats = saturatedFats + (Double((second) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
             }
             var sodium: Int = 0
             for item in flow.allProduct {
-                sodium = sodium + Int(Double((item.sodium ?? 0.0) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
+                guard let second = item.sodium, second != -1.0 else { break }
+                sodium = sodium + Int(Double((second) * Double((item.productWeightByAdd ?? 0))).rounded(toPlaces: 1))
             }
             var sugar: Double = 0.0
             for item in flow.allProduct {
-                sugar = sugar + (Double((item.sugar ?? 0.0) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
+                guard let sugars = item.sugar, sugars != -1.0 else { break }
+                sugar = sugar + (Double((sugars) * Double((item.productWeightByAdd ?? 0)))).rounded(toPlaces: 1)
             }
             var ingredients: [String] = []
             for item in flow.allProduct {
@@ -102,6 +112,16 @@ class AddRecipeCheckInfoViewController: UIViewController {
                 selectedProducts.append(post)
             }
             
+            
+            for (index, item) in flow.instructionsList.enumerated() {
+                var text: String = ""
+                let fullNameArr2 = item.split{$0 == " "}.map(String.init)
+                for item in fullNameArr2 where !item.isEmpty {
+                    text = text.isEmpty ? item : text + " \(item)"
+                }
+                flow.instructionsList[index] = text
+            }
+
             let ref = Database.database().reference()
             if let image = flow.recipeImage, let resizeImage = resizeImage(image: image, targetSize: CGSize(width: 450, height: 450)) {
                 let uuid = UUID().uuidString
@@ -147,8 +167,8 @@ class AddRecipeCheckInfoViewController: UIViewController {
     // MARK: - Private -
     private func setupTableView() {
         tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 30, right: 0)
-        tableView.register(type: RecipeCheckTableVIewCell.self)
-        tableView.register(type: AddProductSecondStepCell.self)
+        tableView.register(type: SecondRecipeCheckTableVIewCell.self)
+        tableView.register(type: RecipeCheckTableViewCell.self)
         tableView.register(AddProductFourthStepHeaderView.nib, forHeaderFooterViewReuseIdentifier: AddProductFourthStepHeaderView.reuseIdentifier)
     }
     
@@ -198,11 +218,11 @@ extension AddRecipeCheckInfoViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddProductSecondStepCell") as? AddProductSecondStepCell else { fatalError() }
-            cell.fillCellByCreateRecipe(flow: flow, index: indexPath.row)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCheckTableViewCell") as? RecipeCheckTableViewCell else { fatalError() }
+            cell.fillCell(flow: flow, index: indexPath.row)
             return cell
         case 1,2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCheckTableVIewCell") as? RecipeCheckTableVIewCell else { fatalError() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SecondRecipeCheckTableVIewCell") as? SecondRecipeCheckTableVIewCell else { fatalError() }
             cell.fillCell(flow: flow, indexPath)
             return cell
         default:
