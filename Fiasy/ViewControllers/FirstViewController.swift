@@ -39,6 +39,7 @@ class FirstViewController: UIViewController {
         }
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
             guard result?.isCancelled != true else { return }
+            guard let strongSelf = self else { return }
             if let error = error {
                 print("Failed to login: \(error.localizedDescription)")
                 return
@@ -55,19 +56,17 @@ class FirstViewController: UIViewController {
                     }
                 }
                 
-                var first = ""
-                var last = ""
                 let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
                 if let array = fullNameArr, array.indices.contains(0) {
-                    first = array[0]
+                    UserInfo.sharedInstance.registrationFlow.firstName = array[0]
                 }
                 if let array = fullNameArr, array.indices.contains(1) {
-                    last = array[1]
+                    UserInfo.sharedInstance.registrationFlow.lastName = array[1]
                 }
-                
-                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
-                FirebaseDBManager.checkFilledProfile()
-                self?.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                if let url = user?.photoURL?.absoluteString {
+                    UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                }
+                strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
     }
@@ -85,11 +84,12 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                 return
             }
         }
-        let first = user.profile.givenName ?? ""
-        let last = user.profile.familyName ?? ""
+        let first = user.profile.givenName
+        let last = user.profile.familyName
         if let error = error {
             return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
-                                                                  message: error.localizedDescription, vc: self)
+                                                         message: error.localizedDescription,
+                                                              vc: self)
         } else {
             guard let authentication = user.authentication else { return }
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
@@ -100,9 +100,16 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
                                                                           message: error.localizedDescription, vc: self)
                 } else {
-                    FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
-                    FirebaseDBManager.checkFilledProfile()
-                    self.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                    if let firsts = first {
+                        UserInfo.sharedInstance.registrationFlow.firstName = firsts
+                    }
+                    if let lasts = last {
+                        UserInfo.sharedInstance.registrationFlow.lastName = lasts
+                    }
+                    if let url = user?.photoURL?.absoluteString {
+                        UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                    }
+                    self.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })
         }

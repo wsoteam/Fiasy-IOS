@@ -97,8 +97,17 @@ class LoginViewController: UIViewController {
                     return AlertComponent.sharedInctance.showAlertMessage(title: "Login Error",
                                                 message: error.localizedDescription, vc: self)
                 }
-                FirebaseDBManager.checkFilledProfile()
-                self.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
+                if let array = fullNameArr, array.indices.contains(0) {
+                    UserInfo.sharedInstance.registrationFlow.firstName = array[0]
+                }
+                if let array = fullNameArr, array.indices.contains(1) {
+                    UserInfo.sharedInstance.registrationFlow.lastName = array[1]
+                }
+                if let url = user?.photoURL?.absoluteString {
+                    UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                }
+                self.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
     }
@@ -161,6 +170,8 @@ extension LoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
             return AlertComponent.sharedInctance.showAlertMessage(title: "Login Error",
                                                          message: error.localizedDescription, vc: self)
         } else {
+            let first = user.profile.givenName
+            let last = user.profile.familyName
             guard let authentication = user.authentication else { return }
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
@@ -171,8 +182,16 @@ extension LoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     return AlertComponent.sharedInctance.showAlertMessage(title: "Login Error",
                                     message: error.localizedDescription, vc: strongSelf)
                 } else {
-                    FirebaseDBManager.checkFilledProfile()
-                    strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                    if let firsts = first {
+                        UserInfo.sharedInstance.registrationFlow.firstName = firsts
+                    }
+                    if let lasts = last {
+                        UserInfo.sharedInstance.registrationFlow.lastName = lasts
+                    }
+                    if let url = user?.photoURL?.absoluteString {
+                        UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                    }
+                    strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })
         }

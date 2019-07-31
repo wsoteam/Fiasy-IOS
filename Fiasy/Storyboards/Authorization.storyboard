@@ -312,7 +312,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mJG-dU-V5i"/>
                     <connections>
-                        <segue destination="W9k-YU-98o" kind="custom" identifier="segueToMenu" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="YfU-T5-t8d"/>
+                        <segue destination="bqR-LD-ntF" kind="show" identifier="sequeQuizScreen" id="gOa-HT-5M5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxb-e3-eV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -532,7 +532,7 @@
                                 <rect key="frame" x="0.0" y="396" width="320" height="172"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="B6r-eu-3GG">
-                                        <rect key="frame" x="20" y="23.5" width="280" height="125"/>
+                                        <rect key="frame" x="21" y="23.5" width="280" height="125"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Nb-tN-Wy3">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
@@ -676,6 +676,7 @@
                         <outletCollection property="fieldsTitleLabel" destination="eOj-aK-oKx" collectionClass="NSMutableArray" id="lWq-Oc-ZZj"/>
                         <outletCollection property="fieldsTitleLabel" destination="XOI-4V-yaa" collectionClass="NSMutableArray" id="UEx-5E-3HZ"/>
                         <segue destination="W9k-YU-98o" kind="custom" identifier="segueToMenu" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="TW8-se-YJZ"/>
+                        <segue destination="bqR-LD-ntF" kind="show" identifier="sequeQuizScreen" id="z00-6p-11f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKW-qC-P7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1212,7 +1213,7 @@ Fiasy.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSa-kc-MZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-278" y="1893"/>
+            <point key="canvasLocation" x="-276" y="1774"/>
         </scene>
         <!--Menu-->
         <scene sceneID="fKj-1S-QVJ">
@@ -1969,7 +1970,7 @@ Fiasy.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mc5-L7-HvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="1118"/>
+            <point key="canvasLocation" x="-278" y="901"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bnQ-nS-BvG">
@@ -2032,7 +2033,7 @@ Fiasy.com</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMr-H3-cb6">
                                 <rect key="frame" x="15" y="166.5" width="290" height="401.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text"> Fiasy Privacy Policy
+                                <string key="text"> Fiasy Privacy Policy
 
 By installing our mobile application or in any way using or accessing our Services, you accept the terms and conditions of this Privacy Policy and the processing of your personal data.
 
@@ -2082,7 +2083,7 @@ E-MAIL
 contact@Fiasy.com
 
 Information about personal data we collect
-Fiasy.com</mutableString>
+Fiasy.com</string>
                                 <color key="textColor" red="0.36468160152435303" green="0.36071720719337463" blue="0.36478912830352783" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2112,7 +2113,7 @@ Fiasy.com</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FF-bx-GiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-983" y="1893"/>
+            <point key="canvasLocation" x="-979" y="1774"/>
         </scene>
     </scenes>
     <resources>
@@ -2135,6 +2136,7 @@ Fiasy.com</mutableString>
         <image name="Добро пожаловать в Fiasy!" width="246" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="z00-6p-11f"/>
         <segue reference="F38-iO-NwD"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,7 +25,6 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         
         setupInitialState()
-        UserInfo.sharedInstance.registrationFlow = RegistrationFlow()
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,6 +44,14 @@ class QuizViewController: UIViewController {
     
     // MARK: - Private -
     private func setupInitialState() {
+        UserInfo.sharedInstance.registrationFlow.gender = nil
+        UserInfo.sharedInstance.registrationFlow.photoUrl = ""
+        UserInfo.sharedInstance.registrationFlow.growth = 154
+        UserInfo.sharedInstance.registrationFlow.weight = 60.0
+        UserInfo.sharedInstance.registrationFlow.dateOfBirth = nil
+        UserInfo.sharedInstance.registrationFlow.loadActivity = 0.0
+        UserInfo.sharedInstance.registrationFlow.target = nil
+        
         displayManager = QuizDisplayManager(collectionView: collectionView, output: self)
     }
 }

@@ -88,37 +88,48 @@ class FirebaseDBManager {
     
     //MARK: - Registration -
     static func saveUserInDataBase(_ photoURL: String = "", firstName: String, lastName: String) {
+        let flow = UserInfo.sharedInstance.registrationFlow
+        let birthday: Date = flow.dateOfBirth ?? Date()
         if let uid = Auth.auth().currentUser?.uid {
-            let age = Int(UserInfo.sharedInstance.registrationAge) ?? 0
+            let age = Calendar.current.dateComponents([.year], from: birthday, to: Date())
             let difficultyLevel = UserInfo.sharedInstance.registrationLoadСomplexity
             let exerciseStress = UserInfo.sharedInstance.registrationPhysicalActivity
-            let female = UserInfo.sharedInstance.registrationGender == .girl
-            let height = Int(UserInfo.sharedInstance.registrationGrowth) ?? 0
-            let weight = Int(UserInfo.sharedInstance.registrationWeight) ?? 0
-            //let state = UserInfo.sharedInstance.updateOfIndicator
+            let female = (flow.gender ?? 1) == 0
+            let height: Int = flow.growth
+            let weight: Double = flow.weight
         
-            var boo: Double = 0.0
+            //var boo: Double = 0.0
             var waterCount: Int = 0
-            if female {
-                boo = (9.99 * Double(weight) + 6.25 * Double(height) - 4.92 * Double(age) - 161) * 1.1
-                waterCount = 30 * weight
-            } else {
-                boo = (9.99 * Double(weight) + 6.25 * Double(height) - 4.92 * Double(age) + 5) * 1.1
-                waterCount = 40 * weight
-            }
-            let K = FirebaseDBManager.getLoadFactor(activity: UserInfo.sharedInstance.registrationPhysicalActivity)
-            let SPK = getTarget(spk: boo * K, complexity: UserInfo.sharedInstance.registrationLoadСomplexity)
+//            if female {
+//                boo = (9.99 * Double(weight) + 6.25 * Double(height) - 4.92 * Double(age) - 161) * 1.1
+//                waterCount = 30 * weight
+//            } else {
+//                boo = (9.99 * Double(weight) + 6.25 * Double(height) - 4.92 * Double(age) + 5) * 1.1
+//                waterCount = 40 * weight
+//            }
+//            let K = FirebaseDBManager.getLoadFactor(activity: UserInfo.sharedInstance.registrationPhysicalActivity)
+//            let SPK = getTarget(spk: boo * K, complexity: UserInfo.sharedInstance.registrationLoadСomplexity)
             
-            let maxCarbo = Int(SPK * 0.5 / 3.75)
-            let maxFat = Int(SPK * 0.2 / 9)
-            let maxKcal = Int(SPK)
-            let maxProt = Int(SPK * 0.3 / 4)
+//            let maxCarbo = Int(SPK * 0.5 / 3.75)
+//            let maxFat = Int(SPK * 0.2 / 9)
+//            let maxKcal = Int(SPK)
+//            let maxProt = Int(SPK * 0.3 / 4)
+            
+            var BMR: Double = 0.0
+            let secondAge = Double(age.year ?? 0)
+            if flow.gender == 0 {
+                BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * secondAge) + 5
+            } else {
+                BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * secondAge) - 161
+            }
+            let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: flow.loadActivity))
+            let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: flow.target, count: activity).displayOnly(count: 0)
             
             let numberOfDay = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
             let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
             let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
             
-            let userData = ["age": age, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": maxFat, "maxKcal": maxKcal, "maxProt": maxProt, "maxCarbo" : maxCarbo, "updateOfIndicator" : true] as [String : Any]
+            let userData = ["age": age.year ?? 20, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": 0, "maxKcal": result, "maxProt": 0, "maxCarbo" : 0, "updateOfIndicator" : true] as [String : Any]
             Database.database().reference().child("USER_LIST").child(uid).child("profile").setValue(userData)
             Amplitude.instance().logEvent("create_acount")
         }

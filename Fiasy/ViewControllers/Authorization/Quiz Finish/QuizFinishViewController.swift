@@ -53,6 +53,13 @@ class QuizFinishViewController: UIViewController {
         progressView.progressColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
         
         displayManager = QuizFinishDisplayManager(collectionView: collectionView, output: self)
+        
+        let first = UserInfo.sharedInstance.registrationFlow.firstName
+        let last = UserInfo.sharedInstance.registrationFlow.lastName
+        let photo = UserInfo.sharedInstance.registrationFlow.photoUrl
+        
+        FirebaseDBManager.saveUserInDataBase(photo, firstName: first, lastName: last)
+        FirebaseDBManager.checkFilledProfile()
     }
 }
 

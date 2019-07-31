@@ -97,20 +97,17 @@ class RegestrationViewController: UIViewController {
         Auth.auth().createUser(withEmail: (allTextFields[0].text ?? ""), password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
             guard let strongSelf = self else { return }
             guard let _ = error else {
-                var first = "default"
-                var last = "default"
                 let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
                 if let array = fullNameArr, array.indices.contains(0) {
-                    first = array[0]
+                    UserInfo.sharedInstance.registrationFlow.firstName = array[0]
                 }
                 if let array = fullNameArr, array.indices.contains(1) {
-                    last = array[1]
+                    UserInfo.sharedInstance.registrationFlow.lastName = array[1]
                 }
-                UserInfo.sharedInstance.registrationFlow.firstName = first
-                UserInfo.sharedInstance.registrationFlow.lastName = last
+                if let url = user?.photoURL?.absoluteString {
+                    UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                }
                 return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
-//                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
-//                FirebaseDBManager.checkFilledProfile()
             }
             AlertComponent.sharedInctance.showAlertMessage(message: "Такой пользователь уже существует",
                                                           vc: strongSelf)
@@ -131,6 +128,7 @@ class RegestrationViewController: UIViewController {
         }
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
             guard result?.isCancelled != true else { return }
+            guard let strongSelf = self else { return }
             if let error = error {
                 print("Failed to login: \(error.localizedDescription)")
                 return
@@ -146,19 +144,17 @@ class RegestrationViewController: UIViewController {
                                     message: error.localizedDescription, vc: strongSelf)
                     }
                 }
-                var first = ""
-                var last = ""
                 let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
                 if let array = fullNameArr, array.indices.contains(0) {
-                    first = array[0]
+                    UserInfo.sharedInstance.registrationFlow.firstName = array[0]
                 }
                 if let array = fullNameArr, array.indices.contains(1) {
-                    last = array[1]
+                    UserInfo.sharedInstance.registrationFlow.lastName = array[1]
                 }
-                
-                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
-                FirebaseDBManager.checkFilledProfile()
-                self?.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                if let url = user?.photoURL?.absoluteString {
+                    UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                }
+                strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
     }
@@ -187,8 +183,8 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                 return
             }
         }
-        let first = user.profile.givenName ?? ""
-        let last = user.profile.familyName ?? ""
+        let first = user.profile.givenName
+        let last = user.profile.familyName
         if let error = error {
             return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
                                             message: error.localizedDescription, vc: self)
@@ -197,14 +193,22 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
             
-            Auth.auth().signIn(with: credential, completion: { [unowned self] (user, error) in
+            Auth.auth().signIn(with: credential, completion: { [weak self] (user, error) in
+                guard let strongSelf = self else { return }
                 if let error = error {
                     return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
-                                         message: error.localizedDescription, vc: self)
+                                         message: error.localizedDescription, vc: strongSelf)
                 } else {
-                    FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
-                    FirebaseDBManager.checkFilledProfile()
-                    self.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                    if let firsts = first {
+                        UserInfo.sharedInstance.registrationFlow.firstName = firsts
+                    }
+                    if let lasts = last {
+                        UserInfo.sharedInstance.registrationFlow.lastName = lasts
+                    }
+                    if let url = user?.photoURL?.absoluteString {
+                        UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                    }
+                    strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })
         }

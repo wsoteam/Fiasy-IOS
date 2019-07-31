@@ -49,8 +49,8 @@ class IngredientsViewController: UIViewController {
     }
     
     @IBAction func finishClicked(_ sender: Any) {
-        guard UserInfo.sharedInstance.recipeFlow.allProduct.count > 1 else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Вам нужно добавить как минимум 2 продукта", vc: self)
+        guard UserInfo.sharedInstance.recipeFlow.allProduct.count >= 1 else {
+            return AlertComponent.sharedInctance.showAlertMessage(message: "Вам нужно добавить как минимум 1 продукт", vc: self)
         }
         performSegue(withIdentifier: "sequeAddInstructionScreen", sender: nil)
     }

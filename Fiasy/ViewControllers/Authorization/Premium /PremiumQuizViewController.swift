@@ -17,6 +17,26 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
         return .default
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addObserver(for: self, #selector(paymentComplete), Constant.PAYMENT_COMPLETE)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        removeObserver()
+    }
+    
+    @objc func paymentComplete() {
+        UserInfo.sharedInstance.paymentComplete = true
+        DispatchQueue.global().async {
+            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        }
+        performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
+    }
+    
     // MARK: - Action's -
     @IBAction func showPrivacyClicked(_ sender: Any) {
         if let url = URL(string: "http://fiasy.com/PrivacyPolice.html") {

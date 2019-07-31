@@ -27,7 +27,7 @@ class FirstQuizFinishCell: UICollectionViewCell {
     func fillCell(delegate: QuizFinishViewOutput) {
         self.delegate = delegate
         
-        fillRecommendedCalories(count: 2500)
+        configureSelectedData()
         delegate.changeStateBackButton(hidden: true)
     }
     
@@ -49,6 +49,18 @@ class FirstQuizFinishCell: UICollectionViewCell {
     }
     
     private func configureSelectedData() {
-        //UserInfo.sharedInstance.registrationFlow.target
+        let flow = UserInfo.sharedInstance.registrationFlow
+        var BMR: Double = 0.0
+        let birthday: Date = flow.dateOfBirth ?? Date()
+        let ageComponents = Calendar.current.dateComponents([.year], from: birthday, to: Date())
+        let age = Double(ageComponents.year ?? 0)
+        if flow.gender == 0 {
+            BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) + 5
+        } else {
+            BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) - 161
+        }
+        let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: flow.loadActivity))
+        let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: flow.target, count: activity).displayOnly(count: 0)
+        fillRecommendedCalories(count: Int(result))
     }
 }
