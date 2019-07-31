@@ -49,6 +49,7 @@
 		3B325EF2226A44CE00D1A54E /* ProfileIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B325EF1226A44CE00D1A54E /* ProfileIndicatorCell.swift */; };
 		3B325EF4226A44EF00D1A54E /* ProfileIndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B325EF3226A44EF00D1A54E /* ProfileIndicatorCell.xib */; };
 		3B3913262285DACD0027659E /* UITextField+Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3913252285DACD0027659E /* UITextField+Attribute.swift */; };
+		3B3B856A22F18CD6005E95F3 /* RegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B856922F18CD6005E95F3 /* RegistrationFlow.swift */; };
 		3B3FF9E422AB9407002AEF7A /* DiaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9E322AB9407002AEF7A /* DiaryHeaderView.swift */; };
 		3B3FF9E622AB941A002AEF7A /* DiaryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9E522AB941A002AEF7A /* DiaryFooterView.swift */; };
 		3B3FF9E822AB944D002AEF7A /* DiaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9E722AB944D002AEF7A /* DiaryHeaderView.xib */; };
@@ -387,6 +388,7 @@
 		3B325EF1226A44CE00D1A54E /* ProfileIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIndicatorCell.swift; sourceTree = "<group>"; };
 		3B325EF3226A44EF00D1A54E /* ProfileIndicatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileIndicatorCell.xib; sourceTree = "<group>"; };
 		3B3913252285DACD0027659E /* UITextField+Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Attribute.swift"; sourceTree = "<group>"; };
+		3B3B856922F18CD6005E95F3 /* RegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlow.swift; sourceTree = "<group>"; };
 		3B3FF9E322AB9407002AEF7A /* DiaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryHeaderView.swift; sourceTree = "<group>"; };
 		3B3FF9E522AB941A002AEF7A /* DiaryFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryFooterView.swift; sourceTree = "<group>"; };
 		3B3FF9E722AB944D002AEF7A /* DiaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiaryHeaderView.xib; sourceTree = "<group>"; };
@@ -937,6 +939,15 @@
 				3B3913252285DACD0027659E /* UITextField+Attribute.swift */,
 			);
 			path = UITextField;
+			sourceTree = "<group>";
+		};
+		3B3B856822F18C8C005E95F3 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				F01748AB224A167600E2E646 /* RegestrationViewController.swift */,
+				3B3B856922F18CD6005E95F3 /* RegistrationFlow.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		3B3FF9E022AB9311002AEF7A /* Cell */ = {
@@ -2069,6 +2080,7 @@
 		F01748A4224A157000E2E646 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B3B856822F18C8C005E95F3 /* Registration */,
 				3B7EB68B22DC6E9300456104 /* Notifications */,
 				3BDF6B0D22CC96CC00412D82 /* Premium */,
 				3BDFD3C622B011DC00178885 /* Alert PopUp */,
@@ -2086,7 +2098,6 @@
 				F06FB41A225C7D5100295A92 /* BaseViewController */,
 				F01748A5224A158A00E2E646 /* TutorialViewController.swift */,
 				F01748A9224A15C200E2E646 /* FirstViewController.swift */,
-				F01748AB224A167600E2E646 /* RegestrationViewController.swift */,
 				F01748CD224A38FF00E2E646 /* LoginViewController.swift */,
 				F03E24352251747B00F338CD /* ForgotPasswordViewController.swift */,
 				F00E04B02251903800A25126 /* MainViewController.swift */,
@@ -2677,6 +2688,7 @@
 				3B21BD9922B808C9005ADBA8 /* GeneralTabBarViewController.swift in Sources */,
 				3BCE019522DB74FD0084EB19 /* EditProfileFooterView.swift in Sources */,
 				3BD85F5A22705BBF00109AF4 /* Constant.swift in Sources */,
+				3B3B856A22F18CD6005E95F3 /* RegistrationFlow.swift in Sources */,
 				3BE6083F226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift in Sources */,
 				F06C3190225CF12700FDDC34 /* CalendarItem.swift in Sources */,
 				3BBEDB9A22C2214300027856 /* TextGrowingTextView+Сonfigure.swift in Sources */,

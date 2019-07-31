@@ -27,6 +27,9 @@
         <array key="SFProText-Medium.ttf">
             <string>SFProText-Medium</string>
         </array>
+        <array key="SFProText-Regular.ttf">
+            <string>SFProText-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Unboarding View Controller-->
@@ -864,7 +867,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUF-LB-WKJ">
-                                <rect key="frame" x="14" y="104.5" width="292" height="239"/>
+                                <rect key="frame" x="14" y="84.5" width="292" height="279"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер для отправки смс с кодом" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05V-MD-u70">
                                         <rect key="frame" x="0.0" y="20" width="292" height="13"/>
@@ -952,10 +955,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tCo-9o-l0i">
-                                        <rect key="frame" x="50" y="203" width="192" height="16"/>
+                                        <rect key="frame" x="50" y="203" width="192" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cF-oS-kkj">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="-6" maxX="0.0" maxY="0.0"/>
@@ -967,7 +970,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tR-dP-9xb">
-                                                <rect key="frame" x="101" y="0.0" width="91" height="16"/>
+                                                <rect key="frame" x="101" y="0.0" width="91" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="-6" maxX="0.0" maxY="0.0"/>
@@ -1031,7 +1034,7 @@
         <!--Privacy Policy View Controller-->
         <scene sceneID="bTW-RC-ACC">
             <objects>
-                <viewController storyboardIdentifier="PrivacyPolicyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e7I-ol-8wo" customClass="PrivacyPolicyViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="e7I-ol-8wo" customClass="PrivacyPolicyViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="la2-Zw-lNn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1209,7 +1212,7 @@ Fiasy.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSa-kc-MZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5947.5" y="-98.239436619718305"/>
+            <point key="canvasLocation" x="-278" y="1893"/>
         </scene>
         <!--Menu-->
         <scene sceneID="fKj-1S-QVJ">
@@ -1379,13 +1382,29 @@ Fiasy.com</string>
                                                     <action selector="backClicked:" destination="qpF-Lk-9eG" eventType="touchUpInside" id="luJ-jP-CSc"/>
                                                 </connections>
                                             </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMz-xN-NBQ">
+                                                <rect key="frame" x="276" y="0.0" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="kMz-xN-NBQ" secondAttribute="height" multiplier="1:1" id="RiJ-V7-ASm"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="Group (30)"/>
+                                                <connections>
+                                                    <action selector="backClicked:" destination="qpF-Lk-9eG" eventType="touchUpInside" id="crw-pS-KJF"/>
+                                                    <action selector="backClicked:" destination="bqR-LD-ntF" eventType="touchUpInside" id="hkZ-dg-dx2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="kMz-xN-NBQ" secondAttribute="trailing" id="2zX-pf-VxT"/>
                                             <constraint firstItem="lgV-fj-mnX" firstAttribute="top" secondItem="vV0-i2-dKu" secondAttribute="top" id="3Vf-CK-Hca"/>
                                             <constraint firstAttribute="height" constant="44" id="4vS-gP-BCl"/>
                                             <constraint firstAttribute="bottom" secondItem="lgV-fj-mnX" secondAttribute="bottom" id="CYR-dU-X0P"/>
                                             <constraint firstItem="lgV-fj-mnX" firstAttribute="leading" secondItem="vV0-i2-dKu" secondAttribute="leading" id="XgP-W1-x6m"/>
+                                            <constraint firstItem="kMz-xN-NBQ" firstAttribute="top" secondItem="vV0-i2-dKu" secondAttribute="top" id="de2-G9-e0v"/>
+                                            <constraint firstItem="kMz-xN-NBQ" firstAttribute="width" secondItem="kMz-xN-NBQ" secondAttribute="height" multiplier="1:1" id="sRG-M8-UwP"/>
+                                            <constraint firstAttribute="bottom" secondItem="kMz-xN-NBQ" secondAttribute="bottom" id="tag-lH-92o"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vHC-g0-Y8s">
@@ -1792,6 +1811,9 @@ Fiasy.com</string>
                                                 <state key="normal" title="политики конфидециальности">
                                                     <color key="titleColor" red="1" green="0.60553437470000004" blue="0.18034970759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="XHG-VH-AnU" kind="show" id="aWo-fZ-fve"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1967,10 +1989,136 @@ Fiasy.com</string>
             </objects>
             <point key="canvasLocation" x="-1464" y="-98"/>
         </scene>
+        <!--Privacy Policy View Controller-->
+        <scene sceneID="P2d-tU-R8t">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XHG-VH-AnU" customClass="PrivacyPolicyViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bIX-YQ-uyj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7TP-yq-oLI">
+                                <rect key="frame" x="0.0" y="20" width="320" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5d-pa-W3U">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="h5d-pa-W3U" secondAttribute="height" multiplier="1:1" id="Lxy-CD-3lv"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.1293928325" green="0.12942266459999999" blue="0.129390955" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" image="Vector (16)"/>
+                                        <connections>
+                                            <action selector="backAction:" destination="dUA-J7-qOU" eventType="touchUpInside" id="FSN-QU-zCE"/>
+                                            <action selector="backClicked:" destination="XHG-VH-AnU" eventType="touchUpInside" id="LZK-eh-f7c"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="h5d-pa-W3U" secondAttribute="bottom" id="F5s-iK-fWt"/>
+                                    <constraint firstItem="h5d-pa-W3U" firstAttribute="width" secondItem="h5d-pa-W3U" secondAttribute="height" multiplier="1:1" id="LCn-ON-01U"/>
+                                    <constraint firstItem="h5d-pa-W3U" firstAttribute="leading" secondItem="7TP-yq-oLI" secondAttribute="leading" id="XEu-bR-sWf"/>
+                                    <constraint firstItem="h5d-pa-W3U" firstAttribute="top" secondItem="7TP-yq-oLI" secondAttribute="top" id="ajd-Dg-ehC"/>
+                                    <constraint firstAttribute="height" constant="40" id="beB-U8-XaI"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy &amp;  Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STD-bR-77a">
+                                <rect key="frame" x="15" y="70" width="278" height="76.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="32"/>
+                                <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMr-H3-cb6">
+                                <rect key="frame" x="15" y="166.5" width="290" height="401.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text"> Fiasy Privacy Policy
+
+By installing our mobile application or in any way using or accessing our Services, you accept the terms and conditions of this Privacy Policy and the processing of your personal data.
+
+Personal data controller
+
+Responsible for the processing of your personal data is:
+
+COMPANY NAME
+
+IP Salamov Alexander
+
+CORPORATE IDENTITY NO:
+
+319500700005522
+
+ADDRESS
+
+141551, Russia, Moscow obl., Solnechnogorskii, Andreevka, Staroandreevskaka street 43-231
+
+E-MAIL
+
+contact@Fiasy.com
+
+Information about personal data we collect
+Fiasy.com  Fiasy Privacy Policy
+
+By installing our mobile application or in any way using or accessing our Services, you accept the terms and conditions of this Privacy Policy and the processing of your personal data.
+
+Personal data controller
+
+Responsible for the processing of your personal data is:
+
+COMPANY NAME
+
+IP Salamov Alexander
+
+CORPORATE IDENTITY NO:
+
+319500700005522
+
+ADDRESS
+
+141551, Russia, Moscow obl., Solnechnogorskii, Andreevka, Staroandreevskaka street 43-231
+
+E-MAIL
+
+contact@Fiasy.com
+
+Information about personal data we collect
+Fiasy.com</mutableString>
+                                <color key="textColor" red="0.36468160152435303" green="0.36071720719337463" blue="0.36478912830352783" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="e7I-ol-8wo" id="8DD-qk-dC5"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7TP-yq-oLI" firstAttribute="top" secondItem="YCl-Eg-fFd" secondAttribute="top" id="4he-7x-DZV"/>
+                            <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="uMr-H3-cb6" secondAttribute="trailing" constant="15" id="QcN-CY-RtM"/>
+                            <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="7TP-yq-oLI" secondAttribute="trailing" id="QnL-yb-PPU"/>
+                            <constraint firstItem="YCl-Eg-fFd" firstAttribute="bottom" secondItem="uMr-H3-cb6" secondAttribute="bottom" id="Tup-Sb-4pY"/>
+                            <constraint firstItem="STD-bR-77a" firstAttribute="top" secondItem="7TP-yq-oLI" secondAttribute="bottom" constant="10" id="WJw-Uf-JxV"/>
+                            <constraint firstItem="uMr-H3-cb6" firstAttribute="top" secondItem="STD-bR-77a" secondAttribute="bottom" constant="20" id="Yn0-Rk-45f"/>
+                            <constraint firstItem="7TP-yq-oLI" firstAttribute="leading" secondItem="YCl-Eg-fFd" secondAttribute="leading" id="Zdj-p5-eJZ"/>
+                            <constraint firstItem="STD-bR-77a" firstAttribute="leading" secondItem="YCl-Eg-fFd" secondAttribute="leading" constant="15" id="gQL-f4-Ihn"/>
+                            <constraint firstItem="uMr-H3-cb6" firstAttribute="leading" secondItem="YCl-Eg-fFd" secondAttribute="leading" constant="15" id="vtY-cz-jTq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YCl-Eg-fFd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lOj-rm-PcU"/>
+                    <connections>
+                        <outlet property="textView" destination="uMr-H3-cb6" id="9V3-mm-6gq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FF-bx-GiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-983" y="1893"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Group (17)" width="164" height="74"/>
         <image name="Group (29)" width="22" height="22"/>
+        <image name="Group (30)" width="23" height="23"/>
         <image name="Rectangle" width="366" height="362"/>
         <image name="Shape" width="16" height="16"/>
         <image name="Shape (3)" width="28" height="22"/>

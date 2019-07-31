@@ -29,6 +29,7 @@ class WeightSelectionCell: UICollectionViewCell {
         
         delegate.changeTitle(title: "Выберите ваш вес")
         delegate.changeStateBackButton(hidden: false)
+        delegate.changeStateNextButton(state: true)
         delegate.changePageControl(index: 2)
     }
     
@@ -99,6 +100,7 @@ extension WeightSelectionCell: RKMultiUnitRulerDataSource, RKMultiUnitRulerDeleg
     }
     
     func valueChanged(measurement: NSMeasurement) {
+        UserInfo.sharedInstance.registrationFlow.weight = measurement.doubleValue.displayOnly(count: 1)
         growthLabel.text = "\(measurement.doubleValue.displayOnly(count: 1)) кг".replacingOccurrences(of: ".0", with: "")
     }
     

@@ -40,8 +40,13 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
         
         delegate.changeTitle(title: "Выберите дату рождения")
         delegate.changeStateBackButton(hidden: false)
-        delegate.changeStateNextButton(state: false)
         delegate.changePageControl(index: 3)
+        
+        if let _ = UserInfo.sharedInstance.registrationFlow.dateOfBirth {
+            delegate.changeStateNextButton(state: true)
+        } else {
+            delegate.changeStateNextButton(state: false)
+        }
     }
     
     // MARK: - Private -
@@ -52,6 +57,7 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
     // MARK: - Actions -
     @IBAction func changeValuePicker(_ sender: UIDatePicker) {
         delegate?.changeStateNextButton(state: true)
+        UserInfo.sharedInstance.registrationFlow.dateOfBirth = datePicker.date
         selectedDataLabel.text = mediumDate.string(from: datePicker.date).replacingOccurrences(of: "г.", with: "год")
     }
 }

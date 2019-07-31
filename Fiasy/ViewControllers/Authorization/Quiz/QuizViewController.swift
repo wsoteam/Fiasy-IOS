@@ -25,13 +25,13 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         
         setupInitialState()
+        UserInfo.sharedInstance.registrationFlow = RegistrationFlow()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         pageControl.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-        
     }
     
     // MARK: - Action's -

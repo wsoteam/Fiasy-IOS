@@ -77,5 +77,6 @@ class SelectActivityTableViewCell: UICollectionViewCell {
         default:
             break
         }
+        UserInfo.sharedInstance.registrationFlow.loadActivity = value
     }
 }

@@ -31,18 +31,23 @@ class TargetSelectedCell: UICollectionViewCell {
         
         delegate.changeTitle(title: "Выберите свою цель")
         delegate.changeStateBackButton(hidden: false)
-        delegate.changeStateNextButton(state: false)
         delegate.changePageControl(index: 5)
+        
+        if let _ = UserInfo.sharedInstance.registrationFlow.target {
+            delegate.changeStateNextButton(state: true)
+        } else {
+            delegate.changeStateNextButton(state: false)
+        }
     }
     
     // MARK: - Actions -
     @IBAction func targetClicked(_ sender: UIButton) {
         setupDefaultState()
+        UserInfo.sharedInstance.registrationFlow.target = sender.tag
         delegate?.changeStateNextButton(state: true)
         if targetImages.indices.contains(sender.tag) {
             targetImages[sender.tag].image = UIImage.coloredImage(image: fetchTargetImage(index: sender.tag), color: #colorLiteral(red: 0.9580997825, green: 0.5739049315, blue: 0.1940318346, alpha: 1))
         }
-        
         if targetTitles.indices.contains(sender.tag) {
             targetTitles[sender.tag].textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }

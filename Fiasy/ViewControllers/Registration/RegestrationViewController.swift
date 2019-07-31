@@ -97,18 +97,20 @@ class RegestrationViewController: UIViewController {
         Auth.auth().createUser(withEmail: (allTextFields[0].text ?? ""), password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
             guard let strongSelf = self else { return }
             guard let _ = error else {
-//                var first = "default"
-//                var last = "default"
-//                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
-//                if let array = fullNameArr, array.indices.contains(0) {
-//                    first = array[0]
-//                }
-//                if let array = fullNameArr, array.indices.contains(1) {
-//                    last = array[1]
-//                }
+                var first = "default"
+                var last = "default"
+                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
+                if let array = fullNameArr, array.indices.contains(0) {
+                    first = array[0]
+                }
+                if let array = fullNameArr, array.indices.contains(1) {
+                    last = array[1]
+                }
+                UserInfo.sharedInstance.registrationFlow.firstName = first
+                UserInfo.sharedInstance.registrationFlow.lastName = last
+                return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
 //                FirebaseDBManager.saveUserInDataBase(user?.photoURL?.absoluteString ?? "", firstName: first, lastName: last)
 //                FirebaseDBManager.checkFilledProfile()
-                return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
             AlertComponent.sharedInctance.showAlertMessage(message: "Такой пользователь уже существует",
                                                           vc: strongSelf)

@@ -27,6 +27,7 @@ class GrowthSelectionCell: UICollectionViewCell {
         
         delegate.changeTitle(title: "Выберите ваш рост")
         delegate.changeStateBackButton(hidden: false)
+        delegate.changeStateNextButton(state: true)
         delegate.changePageControl(index: 1)
     }
 
@@ -94,6 +95,7 @@ extension GrowthSelectionCell: RKMultiUnitRulerDataSource, RKMultiUnitRulerDeleg
     }
     
     func valueChanged(measurement: NSMeasurement) {
+        UserInfo.sharedInstance.registrationFlow.growth = Int("\(measurement.doubleValue)".replacingOccurrences(of: ".0", with: "")) ?? 0
         growthLabel.text = "\(measurement.doubleValue) см".replacingOccurrences(of: ".0", with: "")
     }
     

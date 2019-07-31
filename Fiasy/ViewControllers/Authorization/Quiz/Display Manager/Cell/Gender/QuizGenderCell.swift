@@ -38,6 +38,10 @@ class QuizGenderCell: UICollectionViewCell {
         delegate.changeTitle(title: "Выберите ваш пол")
         delegate.changeStateBackButton(hidden: true)
         delegate.changePageControl(index: 0)
+        
+        if let _ = UserInfo.sharedInstance.registrationFlow.gender {
+            delegate.changeStateNextButton(state: true)
+        }
     }
     
     // MARK: - Actions -
@@ -49,10 +53,12 @@ class QuizGenderCell: UICollectionViewCell {
             leftImage.image = #imageLiteral(resourceName: "Group (20)")
             rightImage.image = #imageLiteral(resourceName: "Group 2 (2)")
             titleLabel.text = "Вы выбрали женщину"
+            UserInfo.sharedInstance.registrationFlow.gender = 0
         case 1:
             leftImage.image = #imageLiteral(resourceName: "Group (19)")
             rightImage.image = #imageLiteral(resourceName: "Group 2 (3)")
             titleLabel.text = "Вы выбрали мужчину"
+            UserInfo.sharedInstance.registrationFlow.gender = 1
         default:
             break
         }

@@ -77,7 +77,9 @@ class UserInfo {
     
     var dayCount: [Date] = []
     
-    // MARK: - RegistrationUserInfo -
+    // MARK: - Registration Flow -
+    var registrationFlow = RegistrationFlow()
+    
     var registrationLoadСomplexity: String = TargetType.easy.rawValue
     var registrationPhysicalActivity: String = "Минимальная нагрузка"
     
