@@ -227,22 +227,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fiasy/Models/Mealtime.swift"
-            timestampString = "586184167.7741131"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "init(parentKey:generalKey:dictionary:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Fiasy/ViewControllers/RegestrationViewController.swift"
             timestampString = "586252885.369202"
             startingColumnNumber = "9223372036854775807"
@@ -260,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fiasy/ViewControllers/Tabs/Filter Tab Bar/Recipes Tab/Add/AddRecipeViewController.swift"
-            timestampString = "586361698.332118"
+            timestampString = "586442324.69605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -276,7 +260,7 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "586428123.94583"
+                  timestampString = "586441974.647646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
@@ -291,7 +275,7 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "586428123.947464"
+                  timestampString = "586441974.649328"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
@@ -306,7 +290,7 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "586428123.949139"
+                  timestampString = "586441974.6512671"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
@@ -323,12 +307,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fiasy/ViewControllers/Notifications/List/NotificationsListViewController.swift"
-            timestampString = "586428526.523574"
+            timestampString = "586442324.6964149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/ViewControllers/Tabs/Recipes/Details/Cells/DishDescriptionCell.swift"
+            timestampString = "586442324.696467"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "addProductClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,6 +13,7 @@
 		3B0D532322F428AB008051BE /* NotificationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532222F428AB008051BE /* NotificationsListViewController.swift */; };
 		3B0D532622F42A0F008051BE /* NotificationsHeaderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */; };
 		3B0D532822F42A25008051BE /* NotificationsHeaderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D532722F42A25008051BE /* NotificationsHeaderListCell.xib */; };
+		3B0D532A22F444D2008051BE /* Purpose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D532922F444D2008051BE /* Purpose.storyboard */; };
 		3B0F5211227ECD1500EBBE0F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F5210227ECD1500EBBE0F /* Recipe.swift */; };
 		3B0F5215227EEC4700EBBE0F /* diet-for-test.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F5214227EEC4700EBBE0F /* diet-for-test.json */; };
 		3B0F5219227F59ED00EBBE0F /* IngredientInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F5218227F59ED00EBBE0F /* IngredientInsertView.swift */; };
@@ -356,6 +357,7 @@
 		3B0D532222F428AB008051BE /* NotificationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListViewController.swift; sourceTree = "<group>"; };
 		3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsHeaderListCell.swift; sourceTree = "<group>"; };
 		3B0D532722F42A25008051BE /* NotificationsHeaderListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsHeaderListCell.xib; sourceTree = "<group>"; };
+		3B0D532922F444D2008051BE /* Purpose.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purpose.storyboard; sourceTree = "<group>"; };
 		3B0F5210227ECD1500EBBE0F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		3B0F5214227EEC4700EBBE0F /* diet-for-test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "diet-for-test.json"; sourceTree = "<group>"; };
 		3B0F5218227F59ED00EBBE0F /* IngredientInsertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientInsertView.swift; sourceTree = "<group>"; };
@@ -2108,6 +2110,7 @@
 				3B23025B22C20F840034EC34 /* Error.storyboard */,
 				3B9470CC22DC650600B4CFA2 /* Notifications.storyboard */,
 				3BE47E5D22F0257600F0BF05 /* Unboarding.storyboard */,
+				3B0D532922F444D2008051BE /* Purpose.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -2577,6 +2580,7 @@
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
 				3B993BAF22DEA4A400642C00 /* SecondRecipeCheckTableVIewCell.xib in Resources */,
 				F01DF1B1225E3D2200381A6D /* GoogleService-Info.plist in Resources */,
+				3B0D532A22F444D2008051BE /* Purpose.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

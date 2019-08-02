@@ -129,5 +129,9 @@ extension InstructionListViewController: InstructionListDelegate {
         UserInfo.sharedInstance.recipeFlow.instructionsList.append("")
         let indexPath = IndexPath(row: UserInfo.sharedInstance.recipeFlow.instructionsList.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .fade)
+        
+        if let cell = self.tableView.cellForRow(at: indexPath) as? InstructionListTableCell {
+            cell.textView.becomeFirstResponder()
+        }
     }
 }

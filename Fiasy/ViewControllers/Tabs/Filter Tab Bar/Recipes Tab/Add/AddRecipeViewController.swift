@@ -64,7 +64,7 @@ class AddRecipeViewController: UIViewController {
         guard let recipeName = UserInfo.sharedInstance.recipeFlow.recipeName, !recipeName.isEmpty else {
             AlertComponent.sharedInctance.showSecondAlertMessage(message: "Введите название рецепта", vc: self) {
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddRecipeTableViewCell {
-                    cell.nameTextField.becomeFirstResponder()
+                    cell.nameTextView.becomeFirstResponder()
                 }
             }
             return

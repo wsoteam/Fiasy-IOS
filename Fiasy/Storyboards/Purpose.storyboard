@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--General Tab Bar View Controller-->
+        <scene sceneID="GQ7-2S-yOO">
+            <objects>
+                <viewController id="3bf-US-Qv6" customClass="GeneralTabBarViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3oK-c7-Rre">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tool bar" translatesAutoresizingMaskIntoConstraints="NO" id="9Q6-oD-YeZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wk-hy-eWr">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Завтрак" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tya-U8-PQ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1r-vd-ffb">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="T1r-vd-ffb" secondAttribute="height" multiplier="1:1" id="n1v-WK-kmP"/>
+                                        </constraints>
+                                        <state key="normal" image="arrow-right"/>
+                                        <connections>
+                                            <action selector="backClicked:" destination="3bf-US-Qv6" eventType="touchUpInside" id="yQt-hN-W2l"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyl-KQ-kpt">
+                                        <rect key="frame" x="331" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Tyl-KQ-kpt" secondAttribute="height" multiplier="1:1" id="K90-jh-zkd"/>
+                                        </constraints>
+                                        <state key="normal" image="Group (6)"/>
+                                        <connections>
+                                            <action selector="filterClicked:" destination="3bf-US-Qv6" eventType="touchUpInside" id="fiQ-bK-Im0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Tyl-KQ-kpt" secondAttribute="bottom" id="3jz-pt-lSD"/>
+                                    <constraint firstItem="Tyl-KQ-kpt" firstAttribute="top" secondItem="8wk-hy-eWr" secondAttribute="top" id="ANO-PB-TIx"/>
+                                    <constraint firstItem="T1r-vd-ffb" firstAttribute="leading" secondItem="8wk-hy-eWr" secondAttribute="leading" id="IpR-q0-eC9"/>
+                                    <constraint firstItem="T1r-vd-ffb" firstAttribute="top" secondItem="8wk-hy-eWr" secondAttribute="top" id="J7u-6B-651"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tyl-KQ-kpt" secondAttribute="trailing" id="MVO-nz-PjK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tya-U8-PQ1" secondAttribute="trailing" id="RmM-Qz-Ey1"/>
+                                    <constraint firstItem="Tya-U8-PQ1" firstAttribute="leading" secondItem="8wk-hy-eWr" secondAttribute="leading" id="Suj-Wk-in1"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tya-U8-PQ1" secondAttribute="bottom" id="Zva-OR-5Tt"/>
+                                    <constraint firstAttribute="height" constant="44" id="hHf-y4-tHw"/>
+                                    <constraint firstAttribute="bottom" secondItem="T1r-vd-ffb" secondAttribute="bottom" id="oW9-rn-qOn"/>
+                                    <constraint firstItem="Tya-U8-PQ1" firstAttribute="top" secondItem="8wk-hy-eWr" secondAttribute="top" id="u3f-ZJ-Inr"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FOz-BL-WFQ" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vfH-Ye-I3f"/>
+                                </constraints>
+                                <inset key="scrollIndicatorInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c0V-bY-Cww">
+                                    <size key="itemSize" width="40" height="40"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bWE-GK-w0K">
+                                <rect key="frame" x="0.0" y="170" width="375" height="497"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bWE-GK-w0K" firstAttribute="leading" secondItem="mgB-an-9fU" secondAttribute="leading" id="9Aq-Xs-umD"/>
+                            <constraint firstItem="9Q6-oD-YeZ" firstAttribute="top" secondItem="3oK-c7-Rre" secondAttribute="top" id="Cjb-9G-d0J"/>
+                            <constraint firstItem="9Q6-oD-YeZ" firstAttribute="bottom" secondItem="8wk-hy-eWr" secondAttribute="bottom" id="E9j-O4-XC9"/>
+                            <constraint firstItem="mgB-an-9fU" firstAttribute="trailing" secondItem="bWE-GK-w0K" secondAttribute="trailing" id="S63-iP-fHm"/>
+                            <constraint firstItem="mgB-an-9fU" firstAttribute="bottom" secondItem="bWE-GK-w0K" secondAttribute="bottom" id="TNX-L6-Gt1"/>
+                            <constraint firstItem="FOz-BL-WFQ" firstAttribute="leading" secondItem="mgB-an-9fU" secondAttribute="leading" id="VnI-O0-zZn"/>
+                            <constraint firstItem="8wk-hy-eWr" firstAttribute="top" secondItem="mgB-an-9fU" secondAttribute="top" id="cG3-Jf-L2Y"/>
+                            <constraint firstItem="mgB-an-9fU" firstAttribute="trailing" secondItem="8wk-hy-eWr" secondAttribute="trailing" id="hUA-Yu-UIv"/>
+                            <constraint firstItem="mgB-an-9fU" firstAttribute="trailing" secondItem="FOz-BL-WFQ" secondAttribute="trailing" id="nH2-ag-GfQ"/>
+                            <constraint firstItem="8wk-hy-eWr" firstAttribute="leading" secondItem="mgB-an-9fU" secondAttribute="leading" id="qTR-2g-AuN"/>
+                            <constraint firstItem="9Q6-oD-YeZ" firstAttribute="leading" secondItem="mgB-an-9fU" secondAttribute="leading" id="qwM-3I-EaP"/>
+                            <constraint firstItem="mgB-an-9fU" firstAttribute="trailing" secondItem="9Q6-oD-YeZ" secondAttribute="trailing" id="sVV-XG-YGI"/>
+                            <constraint firstItem="FOz-BL-WFQ" firstAttribute="top" secondItem="8wk-hy-eWr" secondAttribute="bottom" id="xkr-jq-h1x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mgB-an-9fU"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonBarView" destination="FOz-BL-WFQ" id="7ir-ch-e4H"/>
+                        <outlet property="containerView" destination="bWE-GK-w0K" id="3jg-yI-o9J"/>
+                        <outlet property="titleLabel" destination="Tya-U8-PQ1" id="N4y-rP-lJb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMq-BY-FCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7" y="-46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Group (6)" width="16" height="16"/>
+        <image name="Tool bar" width="360" height="80"/>
+        <image name="arrow-right" width="19" height="15"/>
+    </resources>
+</document>
