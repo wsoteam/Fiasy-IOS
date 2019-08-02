@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 class RegistrationProfileViewController: UIViewController {
 
     @IBOutlet weak var centralView: UIView!
@@ -70,15 +67,15 @@ class RegistrationProfileViewController: UIViewController {
     }
     
     //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-        selectContentView.isHidden = true
-        blurView.isHidden = true
-        blurView2.isHidden = true
-
-
-    }
+//    @objc func dismissKeyboard() {
+//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+//        view.endEditing(true)
+//        selectContentView.isHidden = true
+//        blurView.isHidden = true
+//        blurView2.isHidden = true
+//
+//
+//    }
     func setupGroup2() {
         viewGroup1.buttonContainer.delegate = self
         viewGroup1.buttonContainer.setEachRadioButtonColor {

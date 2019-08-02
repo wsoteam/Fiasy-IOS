@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Bold.ttf">
+            <string>SFProText-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1ns-ux-0Nd" customClass="WeightSelectionCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhP-li-44Q" customClass="RKMultiUnitRuler" customModule="Fiasy" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="380" width="320" height="88"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgk-Ol-rDt">
+                        <rect key="frame" x="0.0" y="380" width="320" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view tag="1" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeF-df-3z1" customClass="RKMultiUnitRuler" customModule="Fiasy" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="281" width="320" height="187"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group (21)" translatesAutoresizingMaskIntoConstraints="NO" id="oLX-MR-Hh4">
+                        <rect key="frame" x="150" y="300" width="20" height="130"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjQ-VK-UZA">
+                        <rect key="frame" x="60" y="81" width="200" height="200"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 кг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRN-pY-JKd">
+                                <rect key="frame" x="34.5" y="71" width="131" height="57.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="48"/>
+                                <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="DjQ-VK-UZA" secondAttribute="height" multiplier="1:1" id="14q-rM-cJk"/>
+                            <constraint firstAttribute="width" constant="200" id="ZQG-mh-Uxn"/>
+                            <constraint firstItem="tRN-pY-JKd" firstAttribute="centerY" secondItem="DjQ-VK-UZA" secondAttribute="centerY" id="kyb-x7-g7N"/>
+                            <constraint firstItem="tRN-pY-JKd" firstAttribute="centerX" secondItem="DjQ-VK-UZA" secondAttribute="centerX" id="rAV-Xp-hHJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="SeF-df-3z1" firstAttribute="height" secondItem="1ns-ux-0Nd" secondAttribute="height" multiplier="0.4" id="0Ye-FC-C0G"/>
+                <constraint firstItem="SeF-df-3z1" firstAttribute="bottom" secondItem="1ns-ux-0Nd" secondAttribute="bottom" id="16x-1d-96g"/>
+                <constraint firstAttribute="trailing" secondItem="SeF-df-3z1" secondAttribute="trailing" id="4Rw-ze-Jw0"/>
+                <constraint firstItem="DjQ-VK-UZA" firstAttribute="centerX" secondItem="oLX-MR-Hh4" secondAttribute="centerX" id="4VS-fw-p8v"/>
+                <constraint firstItem="Rgk-Ol-rDt" firstAttribute="bottom" secondItem="oLX-MR-Hh4" secondAttribute="bottom" id="73k-T5-uRg"/>
+                <constraint firstItem="mhP-li-44Q" firstAttribute="trailing" secondItem="SeF-df-3z1" secondAttribute="trailing" id="GGc-R0-opy"/>
+                <constraint firstItem="SeF-df-3z1" firstAttribute="leading" secondItem="1ns-ux-0Nd" secondAttribute="leading" id="RdU-6T-28V"/>
+                <constraint firstItem="Rgk-Ol-rDt" firstAttribute="leading" secondItem="mhP-li-44Q" secondAttribute="leading" id="WKD-yO-vW5"/>
+                <constraint firstItem="Rgk-Ol-rDt" firstAttribute="trailing" secondItem="mhP-li-44Q" secondAttribute="trailing" id="WMi-fj-kIg"/>
+                <constraint firstItem="mhP-li-44Q" firstAttribute="top" secondItem="oLX-MR-Hh4" secondAttribute="bottom" constant="-50" id="eNP-7u-BPN"/>
+                <constraint firstItem="oLX-MR-Hh4" firstAttribute="bottom" secondItem="SeF-df-3z1" secondAttribute="bottom" constant="-38" id="goR-eW-G6v"/>
+                <constraint firstItem="Rgk-Ol-rDt" firstAttribute="top" secondItem="mhP-li-44Q" secondAttribute="top" id="jYb-s0-OSr"/>
+                <constraint firstItem="DjQ-VK-UZA" firstAttribute="bottom" secondItem="SeF-df-3z1" secondAttribute="top" id="kOL-H8-sQ0"/>
+                <constraint firstItem="mhP-li-44Q" firstAttribute="bottom" secondItem="SeF-df-3z1" secondAttribute="bottom" id="pGI-h4-zmT"/>
+                <constraint firstItem="mhP-li-44Q" firstAttribute="leading" secondItem="SeF-df-3z1" secondAttribute="leading" id="pob-fw-d5t"/>
+                <constraint firstItem="oLX-MR-Hh4" firstAttribute="centerX" secondItem="SeF-df-3z1" secondAttribute="centerX" id="xFa-1i-I0D"/>
+            </constraints>
+            <size key="customSize" width="410" height="468"/>
+            <connections>
+                <outlet property="arrowImageView" destination="oLX-MR-Hh4" id="cXf-DI-Xhu"/>
+                <outlet property="growthLabel" destination="tRN-pY-JKd" id="QQE-gD-gQk"/>
+                <outlet property="ruler" destination="SeF-df-3z1" id="qVf-Hz-Exg"/>
+                <outlet property="secondRulerView" destination="mhP-li-44Q" id="yg2-3P-21k"/>
+            </connections>
+            <point key="canvasLocation" x="27" y="1025"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Group (21)" width="20" height="130"/>
+    </resources>
+</document>

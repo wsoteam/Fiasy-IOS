@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="day-0U-rqQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Unboarding View Controller-->
+        <scene sceneID="pvN-hr-OqR">
+            <objects>
+                <viewController storyboardIdentifier="UnboardingViewController" id="Aed-Bb-YDH" customClass="UnboardingViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oic-l4-8nb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Добро пожаловать в Fiasy!" translatesAutoresizingMaskIntoConstraints="NO" id="1Qu-ZO-ScU">
+                                <rect key="frame" x="64.5" y="65.5" width="246" height="48"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sfI-Od-cMW">
+                                <rect key="frame" x="0.0" y="143.5" width="375" height="400"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-Qh-f6B" customClass="SwiftyOnboard" customModule="Fiasy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MG2-Pa-ZX3">
+                                <rect key="frame" x="0.0" y="543.5" width="375" height="113.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vNj-fF-nxG">
+                                        <rect key="frame" x="67.5" y="0.0" width="240" height="113.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ik-d2-MMi">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="74"/>
+                                                <state key="normal" image="Group (17)"/>
+                                                <connections>
+                                                    <action selector="nextClicked:" destination="Aed-Bb-YDH" eventType="touchUpInside" id="rEV-fb-Ak8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWg-JY-DY6">
+                                                <rect key="frame" x="0.0" y="74" width="240" height="29"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
+                                                <state key="normal" title="Пропустить">
+                                                    <color key="titleColor" red="0.74109476799999996" green="0.74122363329999996" blue="0.74108666180000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="skipClicked:" destination="Aed-Bb-YDH" eventType="touchUpInside" id="wBh-pG-fvE"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-vu-hNG">
+                                                <rect key="frame" x="0.0" y="103" width="240" height="10.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="92N-DT-eCr"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vNj-fF-nxG" secondAttribute="bottom" id="AHL-Kg-xTn"/>
+                                    <constraint firstItem="vNj-fF-nxG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MG2-Pa-ZX3" secondAttribute="top" id="Fns-8x-Hfa"/>
+                                    <constraint firstItem="vNj-fF-nxG" firstAttribute="centerX" secondItem="MG2-Pa-ZX3" secondAttribute="centerX" id="m6e-Hf-dfu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Vq-bW-PVa" firstAttribute="trailing" secondItem="sfI-Od-cMW" secondAttribute="trailing" id="6W8-uW-6ES"/>
+                            <constraint firstItem="0Vq-bW-PVa" firstAttribute="trailing" secondItem="MG2-Pa-ZX3" secondAttribute="trailing" id="OPa-YO-Ol1"/>
+                            <constraint firstItem="1Qu-ZO-ScU" firstAttribute="bottom" secondItem="sfI-Od-cMW" secondAttribute="top" constant="-30" id="V0O-3a-l8m"/>
+                            <constraint firstItem="1Qu-ZO-ScU" firstAttribute="centerX" secondItem="0Vq-bW-PVa" secondAttribute="centerX" id="Yr4-sO-3PD"/>
+                            <constraint firstItem="0Vq-bW-PVa" firstAttribute="bottom" secondItem="MG2-Pa-ZX3" secondAttribute="bottom" constant="10" id="cOu-EL-x0y"/>
+                            <constraint firstItem="sfI-Od-cMW" firstAttribute="height" secondItem="Oic-l4-8nb" secondAttribute="height" multiplier="0.6" id="fMR-cg-Ry0"/>
+                            <constraint firstItem="sfI-Od-cMW" firstAttribute="centerY" secondItem="0Vq-bW-PVa" secondAttribute="centerY" id="hfh-Ta-kuo"/>
+                            <constraint firstItem="MG2-Pa-ZX3" firstAttribute="leading" secondItem="0Vq-bW-PVa" secondAttribute="leading" id="ogg-ts-izO"/>
+                            <constraint firstItem="MG2-Pa-ZX3" firstAttribute="top" secondItem="sfI-Od-cMW" secondAttribute="bottom" id="thM-1a-tzB"/>
+                            <constraint firstItem="sfI-Od-cMW" firstAttribute="leading" secondItem="0Vq-bW-PVa" secondAttribute="leading" id="zQK-gY-uWT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Vq-bW-PVa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="raU-QN-WDA"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="generalStackView" destination="sfI-Od-cMW" id="7Pd-B2-2Au"/>
+                        <outlet property="unboardingView" destination="YgK-Qh-f6B" id="xgC-FG-pKp"/>
+                        <segue destination="SqL-zT-tbR" kind="custom" identifier="showFirstScreen" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="iIA-iU-VdR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8b-Pg-hPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-682" y="608"/>
+        </scene>
+        <!--Authorization-->
+        <scene sceneID="RAr-hw-5Qv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorization" id="SqL-zT-tbR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqE-jk-bb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10" y="607"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kdU-ah-ftD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="day-0U-rqQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="14Y-2R-5q7">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Aed-Bb-YDH" kind="relationship" relationship="rootViewController" id="dDF-CF-iyZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbx-EP-jzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1464.8" y="607.64617691154433"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Group (17)" width="164" height="74"/>
+        <image name="Добро пожаловать в Fiasy!" width="246" height="48"/>
+    </resources>
+</document>

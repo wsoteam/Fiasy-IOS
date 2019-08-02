@@ -1,30 +1,44 @@
-//
-//  Privacy Policy PrivacyPolicyViewController.swift
-//  Fiasy
-//
-//  Created by Eugen Lipatov on 4/8/19.
-//  Copyright © 2019 Eugen Lipatov. All rights reserved.
-//
-
 import UIKit
 
-class Privacy_Policy_PrivacyPolicyViewController: UIViewController {
+class PrivacyPolicyViewController: UIViewController {
+    
+    //MARK: - Outlet -
+    @IBOutlet weak var textView: UITextView!
+    
+    //MARK: - Properties -
+    override internal var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        textView.setContentOffset(.zero, animated: false)
+        textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Actions -
+    @IBAction func backClicked(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
-    */
-
 }
+//
+//extension PrivacyPolicyViewController: UIScrollViewDelegate, UITextViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if ((scrollView as? UITextView) != nil) {
+//            if scrollView.contentOffset.y < 0.0 {
+//                self.textView.isScrollEnabled = false
+//                self.scrollView.isScrollEnabled = true
+//            }
+//        } else {
+//            guard scrollView.contentOffset.y > 0 else {
+//                return scrollView.contentOffset = CGPoint(x: 0, y: 0) }
+//            if (contentView.frame.origin.y - 40) < scrollView.contentOffset.y {
+//                self.scrollView.contentOffset = CGPoint(x: 0, y: contentView.frame.origin.y - 40)
+//                self.scrollView.isScrollEnabled = false
+//                self.textView.isScrollEnabled = true
+//            }
+//        }
+//    }
+//}
+

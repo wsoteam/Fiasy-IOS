@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="92" id="oG3-LM-qbv" customClass="DiaryTableViewCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oG3-LM-qbv" id="udb-Tb-XnY">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2mx-T4-gP2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvt-BR-t1o">
+                                <rect key="frame" x="15" y="10" width="309" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес: 234г" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhh-aF-VzA">
+                                <rect key="frame" x="15" y="45.5" width="309" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YMO-gC-Bvi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                <color key="textColor" red="0.54895758628845215" green="0.54905533790588379" blue="0.54895150661468506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76 33 ккал" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="N7I-xb-nq5">
+                                <rect key="frame" x="329" y="44" width="70" height="35.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRB-19-g8X">
+                                <rect key="frame" x="15" y="90.5" width="399" height="1"/>
+                                <color key="backgroundColor" red="0.75287973880767822" green="0.74860489368438721" blue="0.7734639048576355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="nYb-Mx-Cnq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97240632772445679" green="0.98049050569534302" blue="0.98037070035934448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NRB-19-g8X" firstAttribute="leading" secondItem="2mx-T4-gP2" secondAttribute="leading" constant="15" id="8Pg-Hq-l2Y"/>
+                            <constraint firstItem="Hhh-aF-VzA" firstAttribute="leading" secondItem="2mx-T4-gP2" secondAttribute="leading" constant="15" id="9wA-tc-qt2"/>
+                            <constraint firstItem="Hhh-aF-VzA" firstAttribute="top" secondItem="Bvt-BR-t1o" secondAttribute="bottom" constant="5" id="Msa-IW-oSM"/>
+                            <constraint firstItem="Bvt-BR-t1o" firstAttribute="top" secondItem="2mx-T4-gP2" secondAttribute="top" constant="10" id="Mti-sf-2eB"/>
+                            <constraint firstAttribute="bottom" secondItem="NRB-19-g8X" secondAttribute="bottom" id="YOm-iH-4bb"/>
+                            <constraint firstItem="Hhh-aF-VzA" firstAttribute="trailing" secondItem="Bvt-BR-t1o" secondAttribute="trailing" id="cA5-vX-yQ6"/>
+                            <constraint firstItem="Hhh-aF-VzA" firstAttribute="bottom" secondItem="NRB-19-g8X" secondAttribute="top" constant="-5" id="hbL-W7-YR4"/>
+                            <constraint firstAttribute="trailing" secondItem="Bvt-BR-t1o" secondAttribute="trailing" constant="90" id="iVe-dl-R5h"/>
+                            <constraint firstAttribute="trailing" secondItem="NRB-19-g8X" secondAttribute="trailing" id="m73-ur-L9y"/>
+                            <constraint firstItem="Bvt-BR-t1o" firstAttribute="leading" secondItem="2mx-T4-gP2" secondAttribute="leading" constant="15" id="rEw-Q6-AaI"/>
+                            <constraint firstAttribute="trailing" secondItem="N7I-xb-nq5" secondAttribute="trailing" constant="15" id="u3W-GT-RDO"/>
+                            <constraint firstAttribute="bottom" secondItem="N7I-xb-nq5" secondAttribute="bottom" constant="12" id="uZA-jq-Lnc"/>
+                            <constraint firstItem="N7I-xb-nq5" firstAttribute="leading" secondItem="Bvt-BR-t1o" secondAttribute="trailing" constant="5" id="vdn-nL-GmS"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
+                                <color key="value" red="0.90186244249343872" green="0.90201741456985474" blue="0.90185278654098511" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="IBshadowOffset">
+                                <size key="value" width="0.0" height="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="IBshadowOpacity">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="IBshadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2mx-T4-gP2" firstAttribute="top" secondItem="udb-Tb-XnY" secondAttribute="top" id="A4z-AV-hh7"/>
+                    <constraint firstItem="2mx-T4-gP2" firstAttribute="leading" secondItem="udb-Tb-XnY" secondAttribute="leading" id="GwV-Py-1pv"/>
+                    <constraint firstAttribute="trailing" secondItem="2mx-T4-gP2" secondAttribute="trailing" id="RuQ-EM-0ml"/>
+                    <constraint firstAttribute="bottom" secondItem="2mx-T4-gP2" secondAttribute="bottom" id="a4h-Yj-q6C"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="caloriesCountLabel" destination="N7I-xb-nq5" id="2iK-L7-QxU"/>
+                <outlet property="productNameLabel" destination="Bvt-BR-t1o" id="tMk-8B-ZLT"/>
+                <outlet property="productWeight" destination="Hhh-aF-VzA" id="UYE-a0-BFv"/>
+                <outlet property="separatorView" destination="NRB-19-g8X" id="mjw-Ql-GKT"/>
+            </connections>
+            <point key="canvasLocation" x="-335.625" y="-151.05633802816902"/>
+        </tableViewCell>
+    </objects>
+</document>

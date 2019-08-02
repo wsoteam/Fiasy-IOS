@@ -10,6 +10,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
             scrollView.contentSize.height = 1.0
         }
     }
+    
     @IBOutlet weak var pageControl: UIPageControl!
     var slides:[Slide] = [];
 
@@ -63,7 +64,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         scrollView.isPagingEnabled = true
         
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
+            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
             scrollView.addSubview(slides[i])
         }
     }
@@ -74,6 +75,7 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
      * when scrollview is scrolled, the below code needs to be called:
      * slideScrollView.delegate = self or
      */
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         pageControl.currentPage = Int(pageIndex)
