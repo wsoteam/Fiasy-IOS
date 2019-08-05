@@ -85,7 +85,7 @@ class ForgotPasswordViewController: UIViewController {
                 self.errorLabel.alpha = 1
             } else {
                 self.sendDescriptionLabel.text = "Проверьте почту"
-                self.sendButton.setTitle("  ОТПРАВЛЕННО", for: .normal)
+                self.sendButton.setTitle("  ОТПРАВЛЕНО", for: .normal)
                 self.sendButton.setImage(#imageLiteral(resourceName: "Shape (2)"), for: .normal)
                 self.delayWithSeconds(2) {
                     self.dismiss(animated: true)

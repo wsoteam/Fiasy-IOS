@@ -231,14 +231,20 @@ class DishDescriptionCell: UITableViewCell {
     
     @IBAction func addProductClicked(_ sender: Any) {
 
-        if let uid = Auth.auth().currentUser?.uid, let weight = recipe?.weight, let protein = recipe?.proteins, let fat = recipe?.fats, let carbohydrates = recipe?.carbohydrates, let calories = recipe?.calories, let name = recipe?.name {
+        if let uid = Auth.auth().currentUser?.uid, let weight = recipe?.weight, let protein = recipe?.proteins, let fat = recipe?.fats, let carbohydrates = recipe?.carbohydrates, let calories = recipe?.calories, let name = recipe?.name, let date = UserInfo.sharedInstance.selectedDate {
             
             let ref = Database.database().reference()
-            let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
-            let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
-            let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
+            let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
+            let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
+            let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
             
-            let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true] as [String : Any]
+            let currentDay = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
+            let currentMonth = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
+            let currentYear = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
+            
+            let state = currentDay == day && currentMonth == month && currentYear == year
+            
+            let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true, "presentDay" : state] as [String : Any]
             ref.child("USER_LIST").child(uid).child(getTitle()).childByAutoId().setValue(userData)
             
             FirebaseDBManager.reloadItems()

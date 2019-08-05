@@ -125,11 +125,25 @@ class FirebaseDBManager {
             let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: flow.loadActivity))
             let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: flow.target, count: activity).displayOnly(count: 0)
             
+            var fat: Int = 0
+            var protein: Int = 0
+            var carbohydrates: Int = 0
+            
+            if flow.gender == 0 {
+                fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 16
+                protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 16
+                carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 16
+            } else {
+                fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 36
+                protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 36
+                carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 36
+            }
+            
             let numberOfDay = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
             let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
             let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
             
-            let userData = ["age": age.year ?? 20, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": 0, "maxKcal": result, "maxProt": 0, "maxCarbo" : 0, "updateOfIndicator" : true] as [String : Any]
+            let userData = ["age": age.year ?? 20, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": fat, "maxKcal": result, "maxProt": protein, "maxCarbo" : carbohydrates, "updateOfIndicator" : true] as [String : Any]
             Database.database().reference().child("USER_LIST").child(uid).child("profile").setValue(userData)
             Amplitude.instance().logEvent("create_acount")
         }

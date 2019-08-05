@@ -38,7 +38,7 @@ class AddRecipeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         hideKeyboardWhenTappedAround()
         configurationKeyboardNotification()
     }
@@ -64,7 +64,7 @@ class AddRecipeViewController: UIViewController {
         guard let recipeName = UserInfo.sharedInstance.recipeFlow.recipeName, !recipeName.isEmpty else {
             AlertComponent.sharedInctance.showSecondAlertMessage(message: "Введите название рецепта", vc: self) {
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddRecipeTableViewCell {
-                    cell.nameTextField.becomeFirstResponder()
+                    cell.nameTextView.becomeFirstResponder()
                 }
             }
             return
@@ -96,7 +96,7 @@ class AddRecipeViewController: UIViewController {
         
         guard let complexity = UserInfo.sharedInstance.recipeFlow.complexity, !complexity.isEmpty else {
             AlertComponent.sharedInctance.showSecondAlertMessage(message: "Выберите сложность приготовления", vc: self) {
-                if let cell = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AddRecipeTableViewCell {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AddRecipeTableViewCell {
                     cell.dropDown.show()
                 }
             }
@@ -145,7 +145,7 @@ extension AddRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddRecipeTableViewCell") as? AddRecipeTableViewCell else { fatalError() }
-        cell.fillCell(indexCell: indexPath, delegate: self, UserInfo.sharedInstance.recipeFlow.recipeImage, selectedRecipe)
+        cell.fillCell(tableView, indexCell: indexPath, delegate: self, UserInfo.sharedInstance.recipeFlow.recipeImage, selectedRecipe)
         return cell
     }
     

@@ -11,6 +11,9 @@ import UIKit
 class FirstQuizFinishCell: UICollectionViewCell {
     
     //MARK: - Outlet -
+    @IBOutlet weak var carbohydratesLabel: UILabel!
+    @IBOutlet weak var fatLabel: UILabel!
+    @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var recommendedCaloriesLabel: UILabel!
     
     //MARK: - Properties -
@@ -54,6 +57,10 @@ class FirstQuizFinishCell: UICollectionViewCell {
         let birthday: Date = flow.dateOfBirth ?? Date()
         let ageComponents = Calendar.current.dateComponents([.year], from: birthday, to: Date())
         let age = Double(ageComponents.year ?? 0)
+        
+        var fat: Int = 0
+        var protein: Int = 0
+        var carbohydrates: Int = 0
         if flow.gender == 0 {
             BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) + 5
         } else {
@@ -61,6 +68,19 @@ class FirstQuizFinishCell: UICollectionViewCell {
         }
         let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: flow.loadActivity))
         let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: flow.target, count: activity).displayOnly(count: 0)
+        
+        if flow.gender == 0 {
+            fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 16
+            protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 16
+            carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 16
+        } else {
+            fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 36
+            protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 36
+            carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 36
+        }
         fillRecommendedCalories(count: Int(result))
+        proteinLabel.text = "\(protein) г"
+        fatLabel.text = "\(fat) г"
+        carbohydratesLabel.text = "\(carbohydrates) г"
     }
 }

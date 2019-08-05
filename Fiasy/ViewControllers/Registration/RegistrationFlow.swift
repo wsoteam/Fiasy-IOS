@@ -2,7 +2,7 @@
 //  RegistrationFlow.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 7/31/19.
+//  Created by Eugen Lipatov on 7/31/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ struct RegistrationFlow {
     var gender: Int?
     var photoUrl: String = ""
     var growth: Int = 154
-    var weight: Double = 60.0
+    var weight: Double = 50.0
     var dateOfBirth: Date?
     var loadActivity: CGFloat = 0.0
     var target: Int?

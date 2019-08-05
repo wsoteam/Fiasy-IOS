@@ -270,11 +270,20 @@
                         <segue destination="QlD-v6-JPs" kind="show" identifier="sequePremiumScreen" id="eme-Mj-Bfd"/>
                         <segue destination="oOC-lw-LEb" kind="show" identifier="sequeEditProfile" id="m8D-nG-jNX"/>
                         <segue destination="4ib-4g-l63" kind="presentation" identifier="sequeNotificationsScreen" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="E3u-Bi-E6K"/>
+                        <segue destination="hdi-ge-h3e" kind="show" identifier="sequeNotificationsListScreen" id="xKJ-da-Usu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5j1-Qb-X7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1622" y="-503"/>
+        </scene>
+        <!--NotificationsListViewController-->
+        <scene sceneID="wiJ-7K-oZg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notifications" referencedIdentifier="NotificationsListViewController" id="hdi-ge-h3e" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0vU-za-Uhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2397" y="-802"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="5Hl-vf-RaL">
@@ -282,7 +291,7 @@
                 <viewControllerPlaceholder storyboardName="Notifications" id="4ib-4g-l63" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcY-he-Svu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2397" y="-704"/>
+            <point key="canvasLocation" x="2378" y="-714"/>
         </scene>
         <!--Premium-->
         <scene sceneID="Nce-oo-pjS">

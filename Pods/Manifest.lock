@@ -104,6 +104,7 @@ PODS:
   - SQLite.swift/standard (0.12.0)
   - SwiftyJSON (5.0.0)
   - TagListView (1.4.0)
+  - "UITextView+Placeholder (1.2.1)"
   - VisualEffectView (4.0.0)
   - XLPagerTabStrip (9.0.0)
 
@@ -142,6 +143,7 @@ DEPENDENCIES:
   - SQLite.swift
   - SwiftyJSON
   - TagListView
+  - "UITextView+Placeholder"
   - VisualEffectView
   - XLPagerTabStrip
 
@@ -187,6 +189,7 @@ SPEC REPOS:
     - SQLite.swift
     - SwiftyJSON
     - TagListView
+    - "UITextView+Placeholder"
     - VisualEffectView
     - XLPagerTabStrip
 
@@ -231,9 +234,10 @@ SPEC CHECKSUMS:
   SQLite.swift: 7cad9db150a03716336e69469ec9559c85aece5b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
   VisualEffectView: 9e9883f07d8a929b98c9c08a068f726279d92754
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 3a55d25de37b25466941dee899c9a903e18897ff
+PODFILE CHECKSUM: 683f55576bc5d790e2fc170b3daa8471e944a468
 
 COCOAPODS: 1.7.1

@@ -44,6 +44,16 @@ class SettingsViewController: UIViewController {
         Amplitude.instance().logEvent("view_settings")
     }
     
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+        if let vc = viewControllerToPresent as? NotificationsAlertViewController {
+            vc.completionHandler = { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.registerForPushNotifications()
+            }
+        }
+    }
+    
     //MARK: - Actions -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -69,7 +79,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             performSegue(withIdentifier: "sequeEditProfile", sender: nil)
         case 3:
-            performSegue(withIdentifier: "sequeNotificationsScreen", sender: nil)
+            checkIfPushNotificationsEnable { [weak self] (state) in
+                guard let strongSelf = self else { return }
+                DispatchQueue.main.async {
+                    if state {
+                        strongSelf.performSegue(withIdentifier: "sequeNotificationsListScreen", sender: nil)
+                    } else {
+                        strongSelf.performSegue(withIdentifier: "sequeNotificationsScreen", sender: nil)
+                    }
+                }
+            }
         case 6:
             picker.showPicker()
         default:

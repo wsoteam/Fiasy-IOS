@@ -90,7 +90,7 @@ class TemplatesTabViewController: UIViewController {
             filteredTemplates = firstItems
         }
         tableView.reloadData()
-        if filteredTemplates.isEmpty {
+        if filteredTemplates.isEmpty && !UserInfo.sharedInstance.searchProductText.isEmpty {
             AlertComponent.sharedInctance.showAlertMessage(message: "Шаблон не найден", vc: self)
         }
     }

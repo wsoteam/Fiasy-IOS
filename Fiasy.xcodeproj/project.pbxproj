@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3B00EAC022DFBE5C00A2B21C /* RecipeTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00EABF22DFBE5C00A2B21C /* RecipeTabTableViewCell.swift */; };
 		3B00EAC222DFBE7900A2B21C /* RecipeTabTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B00EAC122DFBE7900A2B21C /* RecipeTabTableViewCell.xib */; };
+		3B0D532022F41E86008051BE /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D531F22F41E86008051BE /* UIViewController+Push.swift */; };
+		3B0D532322F428AB008051BE /* NotificationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532222F428AB008051BE /* NotificationsListViewController.swift */; };
+		3B0D532622F42A0F008051BE /* NotificationsHeaderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */; };
+		3B0D532822F42A25008051BE /* NotificationsHeaderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D532722F42A25008051BE /* NotificationsHeaderListCell.xib */; };
+		3B0D532A22F444D2008051BE /* Purpose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D532922F444D2008051BE /* Purpose.storyboard */; };
 		3B0F5211227ECD1500EBBE0F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F5210227ECD1500EBBE0F /* Recipe.swift */; };
 		3B0F5215227EEC4700EBBE0F /* diet-for-test.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F5214227EEC4700EBBE0F /* diet-for-test.json */; };
 		3B0F5219227F59ED00EBBE0F /* IngredientInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F5218227F59ED00EBBE0F /* IngredientInsertView.swift */; };
@@ -244,6 +249,7 @@
 		3BE47E6322F037B800F0BF05 /* RecipeCheckTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE47E6222F037B800F0BF05 /* RecipeCheckTableViewCell.xib */; };
 		3BE6083C226F21B700461BD7 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6083B226F21B700461BD7 /* Authorization.storyboard */; };
 		3BE6083F226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6083E226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift */; };
+		3BE75B7322F870A400226F6E /* DTRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE75B7222F870A400226F6E /* DTRuler.swift */; };
 		3BE9014522E894D50094EE38 /* RKRangeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9013F22E894D40094EE38 /* RKRangeScrollView.swift */; };
 		3BE9014622E894D50094EE38 /* RKRangeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014022E894D40094EE38 /* RKRangeLayer.swift */; };
 		3BE9014722E894D50094EE38 /* RKMultiUnitRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014122E894D40094EE38 /* RKMultiUnitRuler.swift */; };
@@ -348,6 +354,11 @@
 /* Begin PBXFileReference section */
 		3B00EABF22DFBE5C00A2B21C /* RecipeTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabTableViewCell.swift; sourceTree = "<group>"; };
 		3B00EAC122DFBE7900A2B21C /* RecipeTabTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTabTableViewCell.xib; sourceTree = "<group>"; };
+		3B0D531F22F41E86008051BE /* UIViewController+Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
+		3B0D532222F428AB008051BE /* NotificationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListViewController.swift; sourceTree = "<group>"; };
+		3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsHeaderListCell.swift; sourceTree = "<group>"; };
+		3B0D532722F42A25008051BE /* NotificationsHeaderListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsHeaderListCell.xib; sourceTree = "<group>"; };
+		3B0D532922F444D2008051BE /* Purpose.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purpose.storyboard; sourceTree = "<group>"; };
 		3B0F5210227ECD1500EBBE0F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		3B0F5214227EEC4700EBBE0F /* diet-for-test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "diet-for-test.json"; sourceTree = "<group>"; };
 		3B0F5218227F59ED00EBBE0F /* IngredientInsertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientInsertView.swift; sourceTree = "<group>"; };
@@ -583,6 +594,7 @@
 		3BE47E6222F037B800F0BF05 /* RecipeCheckTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCheckTableViewCell.xib; sourceTree = "<group>"; };
 		3BE6083B226F21B700461BD7 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		3BE6083E226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+NSMutableAttributedString.swift"; sourceTree = "<group>"; };
+		3BE75B7222F870A400226F6E /* DTRuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTRuler.swift; sourceTree = "<group>"; };
 		3BE9013F22E894D40094EE38 /* RKRangeScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRangeScrollView.swift; sourceTree = "<group>"; };
 		3BE9014022E894D40094EE38 /* RKRangeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRangeLayer.swift; sourceTree = "<group>"; };
 		3BE9014122E894D40094EE38 /* RKMultiUnitRuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMultiUnitRuler.swift; sourceTree = "<group>"; };
@@ -710,6 +722,32 @@
 			children = (
 				3B00EABF22DFBE5C00A2B21C /* RecipeTabTableViewCell.swift */,
 				3B00EAC122DFBE7900A2B21C /* RecipeTabTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3B0D531E22F41E67008051BE /* UIViewController+Push */ = {
+			isa = PBXGroup;
+			children = (
+				3B0D531F22F41E86008051BE /* UIViewController+Push.swift */,
+			);
+			path = "UIViewController+Push";
+			sourceTree = "<group>";
+		};
+		3B0D532122F42892008051BE /* List */ = {
+			isa = PBXGroup;
+			children = (
+				3B0D532422F429EC008051BE /* Cell */,
+				3B0D532222F428AB008051BE /* NotificationsListViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		3B0D532422F429EC008051BE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */,
+				3B0D532722F42A25008051BE /* NotificationsHeaderListCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1093,6 +1131,7 @@
 		3B7EB68B22DC6E9300456104 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				3B0D532122F42892008051BE /* List */,
 				3B7EB68C22DC6E9800456104 /* Alert */,
 			);
 			path = Notifications;
@@ -2073,6 +2112,7 @@
 				3B23025B22C20F840034EC34 /* Error.storyboard */,
 				3B9470CC22DC650600B4CFA2 /* Notifications.storyboard */,
 				3BE47E5D22F0257600F0BF05 /* Unboarding.storyboard */,
+				3B0D532922F444D2008051BE /* Purpose.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -2236,6 +2276,7 @@
 		F06C3192225CF1CD00FDDC34 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3BE75B7222F870A400226F6E /* DTRuler.swift */,
 				3B9DFBD422EA070500DCCDC2 /* TGPControls */,
 				3BE9013E22E8949B0094EE38 /* RKMultiUnitRuler */,
 				3BF74C7222BE6EED00802238 /* UIButton */,
@@ -2266,6 +2307,7 @@
 		F06C3193225CF1ED00FDDC34 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3B0D531E22F41E67008051BE /* UIViewController+Push */,
 				3BC9378122B51CDB002C2704 /* Double */,
 				3B3913242285DA870027659E /* UITextField */,
 				3B6228772276F29000865374 /* UIApplication */,
@@ -2525,6 +2567,7 @@
 				3BF85CC622DB3DA2009B473D /* EditProfileHeaderView.xib in Resources */,
 				F0124F8D224261B9001B9793 /* Main.storyboard in Resources */,
 				3BC0EC9422DE54AE009795F2 /* InstructionListTableCell.xib in Resources */,
+				3B0D532822F42A25008051BE /* NotificationsHeaderListCell.xib in Resources */,
 				F00481D42265ADE300C720CA /* LaunchScreen.storyboard in Resources */,
 				3BDF6B1222CC971400412D82 /* PremiumSlideView.xib in Resources */,
 				F01748C7224A1ED000E2E646 /* Roboto-MediumItalic.ttf in Resources */,
@@ -2540,6 +2583,7 @@
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
 				3B993BAF22DEA4A400642C00 /* SecondRecipeCheckTableVIewCell.xib in Resources */,
 				F01DF1B1225E3D2200381A6D /* GoogleService-Info.plist in Resources */,
+				3B0D532A22F444D2008051BE /* Purpose.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2631,6 +2675,7 @@
 				3BE14EAF2280222F007D9C25 /* RecipeMealtimeViewController.swift in Sources */,
 				3BBA1B9B22DCA06E00D2783F /* AddProductFooterTableView.swift in Sources */,
 				3BEA1C6122DCC47600824098 /* AddProductVC+KeyboardExtension.swift in Sources */,
+				3B0D532322F428AB008051BE /* NotificationsListViewController.swift in Sources */,
 				3B3FF9E622AB941A002AEF7A /* DiaryFooterView.swift in Sources */,
 				3BCE019222DB5CCC0084EB19 /* UIImagePickerControllerImpl.swift in Sources */,
 				3BD1794E227B58C0009AB320 /* RegistrationUserInfoViewController.swift in Sources */,
@@ -2750,6 +2795,7 @@
 				3BBBC0CF22ABB9D400456DEA /* SwipeTableViewCellDelegate.swift in Sources */,
 				3BBBC0CC22ABB9D400456DEA /* SwipeActionTransitioning.swift in Sources */,
 				3BE9014F22E896D60094EE38 /* GrowthSelectionCell.swift in Sources */,
+				3BE75B7322F870A400226F6E /* DTRuler.swift in Sources */,
 				3BE9014822E894D50094EE38 /* RKRangeTextView.swift in Sources */,
 				3B0F5223227F98A700EBBE0F /* NutrientsInsertView.swift in Sources */,
 				F06C318C225CF09B00FDDC34 /* SecondMainCell.swift in Sources */,
@@ -2813,6 +2859,7 @@
 				3B466261226C9FAF0031FD40 /* UIViewController+Background.swift in Sources */,
 				3B2D31AA22B6B1DA005A59D6 /* RecipesSearchViewController.swift in Sources */,
 				3B96DCE122DE92C7000DD321 /* InstructionListVC+KeyboardExtension.swift in Sources */,
+				3B0D532022F41E86008051BE /* UIViewController+Push.swift in Sources */,
 				3B17BDAD2274B40100007CCE /* ARViewController.swift in Sources */,
 				3B961E7B226BC4840028E8A7 /* SettingsViewController.swift in Sources */,
 				3BEEBD6622DE155E00721BE4 /* AddRecipeVC+KeyboardExtension.swift in Sources */,
@@ -2838,6 +2885,7 @@
 				F06FB413225C077400295A92 /* RadioButtonColor.swift in Sources */,
 				3B8FF11922E0751D00195CD2 /* FavoritePickerService.swift in Sources */,
 				3BC6500A22EB59240002CE9D /* PremiumQuizViewController.swift in Sources */,
+				3B0D532622F42A0F008051BE /* NotificationsHeaderListCell.swift in Sources */,
 				3BBEDB9C22C2370F00027856 /* CircularProgress.swift in Sources */,
 				3B17BDB02274DE4000007CCE /* String+Attributed.swift in Sources */,
 				F02357E32261F91F00364832 /* AlertComponent.swift in Sources */,

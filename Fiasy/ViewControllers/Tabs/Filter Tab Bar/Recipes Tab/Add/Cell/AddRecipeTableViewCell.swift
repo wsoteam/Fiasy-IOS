@@ -12,6 +12,9 @@ import DropDown
 class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     // MARK: - Outlet -
+    @IBOutlet weak var nameTextView: UITextView!
+    @IBOutlet weak var fixedView: UIView!
+    @IBOutlet weak var resizeView: UIView!
     @IBOutlet weak var selectedStackView: UIStackView!
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var separatorView: UIView!
@@ -24,26 +27,34 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: - Properties -
     var dropDown = DropDown()
+    private var tableView: UITableView?
     private var delegate: AddRecipeDelegate?
     private var defaultUrl = "https://firebasestorage.googleapis.com/v0/b/diet-for-test.appspot.com/o/default_recipe.png?alt=media&token=1fcf855f-fa9d-4831-9ff2-af204a612707"
     
     // MARK: - Interface -
-    func fillCell(indexCell: IndexPath, delegate: AddRecipeDelegate, _ selectedImage: UIImage?, _ selectedRecipe: Listrecipe?) {
+    func fillCell(_ tableView: UITableView, indexCell: IndexPath, delegate: AddRecipeDelegate, _ selectedImage: UIImage?, _ selectedRecipe: Listrecipe?) {
         self.delegate = delegate
+        self.tableView = tableView
         
+        resizeView.isHidden = true
+        fixedView.isHidden = false
         cameraIconImageView.isHidden = indexCell.row != 1
         nameButton.isHidden = indexCell.row == 0 || indexCell.row == 2
         bottomContainerView.isHidden = true
         nameTextField.tag = indexCell.row
         switch indexCell.row {
             case 0:
-                fillNecessarilyField(label: titleLabel, text: "Название рецепта")
-                nameTextField.attributedPlaceholder = NSAttributedString(string: "",
-                                    attributes: [.foregroundColor: UIColor.black])
-            nameTextField.keyboardType = .default
+//                fillNecessarilyField(label: titleLabel, text: "Название рецепта")
+//                nameTextField.attributedPlaceholder = NSAttributedString(string: "",
+//                                    attributes: [.foregroundColor: UIColor.black])
+//            nameTextField.keyboardType = .default
+                
             if let selected = selectedRecipe {
-                  nameTextField.text = selected.name
+                  nameTextView.text = selected.name
             }
+            
+                resizeView.isHidden = false
+                fixedView.isHidden = true
             case 1:
                 titleLabel.text = "Изображение блюда"
                 
@@ -128,7 +139,7 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
         dropDown.dataSource.append("Сложная")
         
         dropDown.anchorView = separatorView
-        dropDown.textColor = #colorLiteral(red: 0.7136465907, green: 0.7137710452, blue: 0.7136388421, alpha: 1)
+        dropDown.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         dropDown.selectedTextColor = #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)
         dropDown.selectionBackgroundColor = .clear
         dropDown.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -143,7 +154,7 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
             guard let strongSelf = self else { return }
             strongSelf.nameTextField.text = item
             strongSelf.nameTextField.textColor = #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)
-            strongSelf.delegate?.textChange(tag: strongSelf.nameTextField.tag, text: item)
+            strongSelf.delegate?.textChange(tag: 3, text: item)
         }
     }
     
@@ -198,3 +209,21 @@ class AddRecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
         return  textField.tag == 2 ? count <= 5 : count <= 100
     }
 }
+
+extension AddRecipeTableViewCell: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        delegate?.textChange(tag: 0, text: newText)
+        return newText.count <= 100
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        UIView.performWithoutAnimation {
+            guard let table = self.tableView else { return }
+            table.beginUpdates()
+            table.endUpdates()
+        }
+    }
+}
+

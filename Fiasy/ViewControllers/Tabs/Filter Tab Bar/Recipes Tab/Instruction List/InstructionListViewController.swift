@@ -60,8 +60,13 @@ class InstructionListViewController: UIViewController {
         if UserInfo.sharedInstance.recipeFlow.instructionsList.isEmpty {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Пожалуйста, добавьте инструкцию по приготовлению", vc: self)
         }
-        for item in UserInfo.sharedInstance.recipeFlow.instructionsList where item.replacingOccurrences(of: " ", with: "").isEmpty {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Один из пунктов не может быть пустым", vc: self)
+        for (index,item) in UserInfo.sharedInstance.recipeFlow.instructionsList.enumerated() where item.replacingOccurrences(of: " ", with: "").isEmpty {
+            AlertComponent.sharedInctance.showSecondAlertMessage(message: "Один из пунктов не может быть пустым", vc: self) {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? InstructionListTableCell {
+                    cell.textView.becomeFirstResponder()
+                }
+            }
+            return
         }
         performSegue(withIdentifier: "sequeCheckRecipeScreen", sender: nil)
     }
@@ -124,5 +129,9 @@ extension InstructionListViewController: InstructionListDelegate {
         UserInfo.sharedInstance.recipeFlow.instructionsList.append("")
         let indexPath = IndexPath(row: UserInfo.sharedInstance.recipeFlow.instructionsList.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .fade)
+        
+        if let cell = self.tableView.cellForRow(at: indexPath) as? InstructionListTableCell {
+            cell.textView.becomeFirstResponder()
+        }
     }
 }

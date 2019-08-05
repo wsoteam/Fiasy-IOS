@@ -33,10 +33,8 @@ class RecipesTabViewController: UIViewController {
             self?.performSegue(withIdentifier: "sequeAddRecipe", sender: nil)
         }
         picker.remove = { [weak self] in
-            guard let key = self?.selectedRecipe?.key else { return }
-            FirebaseDBManager.removeOwnRecipe(key: key, handler: {
-                self?.removeRecipe(by: key)
-            })
+            guard let strongSelf = self else { return }
+            strongSelf.removeConfirmRecipe()
         }
         return picker
     }()
@@ -80,7 +78,7 @@ class RecipesTabViewController: UIViewController {
             filteredRecipes = firstItems
         }
         tableView.reloadData()
-        if filteredRecipes.isEmpty {
+        if filteredRecipes.isEmpty && !UserInfo.sharedInstance.searchProductText.isEmpty {
             AlertComponent.sharedInctance.showAlertMessage(message: "Рецепт не найден", vc: self)
         }
     }
@@ -104,6 +102,18 @@ class RecipesTabViewController: UIViewController {
             self.hideActivity()
             self.tableView.reloadData()
         }
+    }
+    
+    private func removeConfirmRecipe() {
+        let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить рецепт?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
+            guard let key = self.selectedRecipe?.key else { return }
+            FirebaseDBManager.removeOwnRecipe(key: key, handler: {
+                self.removeRecipe(by: key)
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        present(alert, animated: true)
     }
     
     private func removeRecipe(by key: String) {

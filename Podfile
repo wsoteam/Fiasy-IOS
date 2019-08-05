@@ -45,5 +45,6 @@ target 'Fiasy' do
         pod 'VisualEffectView'
         pod 'NextGrowingTextView'
         pod 'BarcodeScanner'
+        pod 'UITextView+Placeholder'
         
  end

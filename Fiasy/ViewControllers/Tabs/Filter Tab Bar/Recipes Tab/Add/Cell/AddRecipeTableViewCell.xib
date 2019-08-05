@@ -28,17 +28,63 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tuf-7n-XMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="198.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRN-tL-R7w" userLabel="top Container">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNz-XC-GNf" userLabel="resize">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Название рецепта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leH-Dc-bAK">
-                                        <rect key="frame" x="15" y="25" width="130" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название рецепта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ht9-2E-nt5">
+                                        <rect key="frame" x="15" y="25" width="130" height="10"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                        <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zk2-Vg-q9c">
+                                        <rect key="frame" x="10" y="40" width="389" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="dms-0L-p6e"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Название рецепта"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="blt-nr-uqe" id="gRQ-Md-uMU"/>
+                                        </connections>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilN-LA-b8f">
+                                        <rect key="frame" x="15" y="75" width="384" height="1"/>
+                                        <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Xbo-ch-f6p"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ilN-LA-b8f" firstAttribute="trailing" secondItem="zk2-Vg-q9c" secondAttribute="trailing" id="09N-PM-BUt"/>
+                                    <constraint firstItem="zk2-Vg-q9c" firstAttribute="top" secondItem="ht9-2E-nt5" secondAttribute="bottom" constant="5" id="1h0-gh-lgF"/>
+                                    <constraint firstItem="ht9-2E-nt5" firstAttribute="leading" secondItem="fNz-XC-GNf" secondAttribute="leading" constant="15" id="4fb-0x-RAW"/>
+                                    <constraint firstItem="zk2-Vg-q9c" firstAttribute="bottom" secondItem="ilN-LA-b8f" secondAttribute="top" constant="-5" id="5sr-2P-Jcj"/>
+                                    <constraint firstItem="ilN-LA-b8f" firstAttribute="leading" secondItem="ht9-2E-nt5" secondAttribute="leading" id="LUj-tM-ER6"/>
+                                    <constraint firstItem="ht9-2E-nt5" firstAttribute="top" secondItem="fNz-XC-GNf" secondAttribute="top" constant="25" id="XQE-xl-UyL"/>
+                                    <constraint firstItem="zk2-Vg-q9c" firstAttribute="leading" secondItem="fNz-XC-GNf" secondAttribute="leading" constant="10" id="jCM-nY-5Jm"/>
+                                    <constraint firstAttribute="trailing" secondItem="zk2-Vg-q9c" secondAttribute="trailing" constant="15" id="mzD-sy-Qpn"/>
+                                    <constraint firstAttribute="bottom" secondItem="ilN-LA-b8f" secondAttribute="bottom" id="ogA-zR-O4I"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRN-tL-R7w" userLabel="top Container">
+                                <rect key="frame" x="0.0" y="76" width="414" height="66"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название рецепта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leH-Dc-bAK">
+                                        <rect key="frame" x="15" y="25" width="130" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                         <color key="textColor" red="0.65090787410736084" green="0.65102213621139526" blue="0.65090078115463257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oo4-4V-X6L">
-                                        <rect key="frame" x="15" y="48" width="384" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oo4-4V-X6L">
+                                        <rect key="frame" x="15" y="30" width="384" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Fv7-lW-Osp"/>
                                         </constraints>
@@ -50,11 +96,11 @@
                                             <outlet property="delegate" destination="blt-nr-uqe" id="NSZ-vT-Rv6"/>
                                         </connections>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="_Glyphs _ Tab Bar _ Camera" translatesAutoresizingMaskIntoConstraints="NO" id="7xE-Lb-CmJ">
-                                        <rect key="frame" x="364" y="-22" width="20" height="128"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_Glyphs _ Tab Bar _ Camera" translatesAutoresizingMaskIntoConstraints="NO" id="7xE-Lb-CmJ">
+                                        <rect key="frame" x="364" y="30" width="20" height="30"/>
                                     </imageView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RBX-qY-nne">
-                                        <rect key="frame" x="330" y="-13" width="69" height="32"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RBX-qY-nne">
+                                        <rect key="frame" x="330" y="28" width="69" height="32"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rpr-pQ-fMp">
                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -80,14 +126,14 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPM-Pq-TkL">
-                                        <rect key="frame" x="15" y="48" width="384" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPM-Pq-TkL">
+                                        <rect key="frame" x="15" y="30" width="384" height="30"/>
                                         <connections>
                                             <action selector="nameClicked:" destination="blt-nr-uqe" eventType="touchUpInside" id="ltE-JH-bc9"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9AF-im-7gO">
-                                        <rect key="frame" x="15" y="83" width="384" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9AF-im-7gO">
+                                        <rect key="frame" x="15" y="65" width="384" height="1"/>
                                         <color key="backgroundColor" red="0.92146831750869751" green="0.92162638902664185" blue="0.92145842313766479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="qj4-QU-QKq"/>
@@ -116,24 +162,24 @@
                                     <constraint firstItem="RBX-qY-nne" firstAttribute="bottom" secondItem="BPM-Pq-TkL" secondAttribute="bottom" id="wrH-8e-HP4"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ocu-ir-5fj" userLabel="bottom Container">
-                                <rect key="frame" x="0.0" y="84" width="414" height="114.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ocu-ir-5fj" userLabel="bottom Container">
+                                <rect key="frame" x="0.0" y="142" width="414" height="56.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Могут видеть все пользователи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf2-B7-VlE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Могут видеть все пользователи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf2-B7-VlE">
                                         <rect key="frame" x="15" y="40" width="227.5" height="18"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UPF-sO-lbB">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UPF-sO-lbB">
                                         <rect key="frame" x="350" y="33.5" width="51" height="31"/>
                                         <color key="onTintColor" red="0.93862622979999999" green="0.4906092286" blue="0.001925615128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="switchChangeClicked:" destination="blt-nr-uqe" eventType="valueChanged" id="zPV-8q-imf"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0a-i1-YGI">
-                                        <rect key="frame" x="5" y="79.5" width="404" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0a-i1-YGI">
+                                        <rect key="frame" x="5" y="56.5" width="404" height="0.0"/>
                                         <string key="text">Созданные вами и введенные в базу рецепты или продукты могут быть доступны для других пользователей. Пожалуйста, постарайтесь заполнить приведенную выше форму максимально точно и полно.</string>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                                         <color key="textColor" red="0.71364659070968628" green="0.71377104520797729" blue="0.71363884210586548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -166,8 +212,11 @@
                 <outlet property="bottomContainerView" destination="Ocu-ir-5fj" id="O93-sL-MJV"/>
                 <outlet property="cameraIconImageView" destination="7xE-Lb-CmJ" id="prJ-ae-lJE"/>
                 <outlet property="descriptionLabel" destination="s0a-i1-YGI" id="JEm-gL-uba"/>
+                <outlet property="fixedView" destination="nRN-tL-R7w" id="tn7-yu-Zaz"/>
                 <outlet property="nameButton" destination="BPM-Pq-TkL" id="PuH-pK-kAG"/>
                 <outlet property="nameTextField" destination="Oo4-4V-X6L" id="mWA-pf-PRJ"/>
+                <outlet property="nameTextView" destination="zk2-Vg-q9c" id="pbs-0z-C7r"/>
+                <outlet property="resizeView" destination="fNz-XC-GNf" id="5NY-f7-EQe"/>
                 <outlet property="selectedImageView" destination="Rpr-pQ-fMp" id="9aL-SQ-cXh"/>
                 <outlet property="selectedStackView" destination="RBX-qY-nne" id="y1T-0Q-38z"/>
                 <outlet property="separatorView" destination="9AF-im-7gO" id="JKY-Jw-Ffu"/>

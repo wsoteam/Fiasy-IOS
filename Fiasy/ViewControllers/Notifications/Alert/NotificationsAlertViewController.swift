@@ -8,6 +8,7 @@
 
 import UIKit
 import VisualEffectView
+import UserNotifications
 
 class NotificationsAlertViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class NotificationsAlertViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Properties -
+    var completionHandler: (() -> Void)?
     private let isIphone5 = Display.typeIsLike == .iphone5
     
     // MARK: - Interface -
@@ -63,12 +65,23 @@ class NotificationsAlertViewController: UIViewController {
         })
     }
     
+    private func removeSomeAnimate() {
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.containerView.alpha = 0.0
+            self?.containerView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            }, completion: {[weak self] _ in
+                self?.dismiss(animated: true, completion: { [weak self] in
+                    self?.completionHandler?()
+                })
+        })
+    }
+    
     // MARK: - Actions -
     @IBAction func closeModuleClicked(_ sender: Any) {
         removeAnimate()
     }
     
     @IBAction func notificationClicked(_ sender: Any) {
-        
+        removeSomeAnimate()
     }
 }
