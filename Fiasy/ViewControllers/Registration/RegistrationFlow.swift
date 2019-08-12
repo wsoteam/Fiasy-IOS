@@ -12,10 +12,11 @@ struct RegistrationFlow {
 
     var firstName: String = "default"
     var lastName: String = "default"
+    var email: String = ""
     var gender: Int?
     var photoUrl: String = ""
     var growth: Int = 154
-    var weight: Double = 60.0
+    var weight: Double = 50.0
     var dateOfBirth: Date?
     var loadActivity: CGFloat = 0.0
     var target: Int?

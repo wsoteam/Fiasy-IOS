@@ -46,5 +46,6 @@ target 'Fiasy' do
         pod 'NextGrowingTextView'
         pod 'BarcodeScanner'
         pod 'UITextView+Placeholder'
+        pod 'Charts'
         
  end

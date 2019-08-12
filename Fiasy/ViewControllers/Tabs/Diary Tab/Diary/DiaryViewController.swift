@@ -10,68 +10,64 @@ import UIKit
 import Parchment
 import Amplitude_iOS
 import DynamicBlurView
+import Intercom
+import Amplitude_iOS
 import GradientProgressBar
+import VisualEffectView
 
 protocol DiaryViewDelegate {
+    func stopProgress()
     func editMealTime()
     func removeMealTime()
+    func showProducts()
 }
 
 class DiaryViewController: BaseViewController {
     
     //MARK: - Outlets -
-    @IBOutlet weak var endedLabel: UILabel!
-    @IBOutlet weak var eatenCaloriesLabel: UILabel!
-    @IBOutlet weak var daysCountLabel: UILabel!
-    @IBOutlet weak var addProductButton: UIButton!
-    @IBOutlet weak var caloriesProgress: GradientProgressBar!
-    @IBOutlet weak var proteinProgress: GradientProgressBar!
-    @IBOutlet weak var fatProgress: GradientProgressBar!
-    @IBOutlet weak var carbohydratesProgress: GradientProgressBar!
-    @IBOutlet weak var carbohydratesCountLabel: UILabel!
-    @IBOutlet weak var caloriesCountLabel: UILabel!
-    @IBOutlet weak var fatCountLabel: UILabel!
-    @IBOutlet weak var targetLabel: UILabel!
-    @IBOutlet weak var scorchedLabel: UILabel!
+    @IBOutlet weak var calendarView: CVCalendarView!
+    @IBOutlet weak var blurView: VisualEffectView!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
-    @IBOutlet weak var emptyBlurView: DynamicBlurView!
-    @IBOutlet weak var blurView: DynamicBlurView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateStackView: UIStackView!
     @IBOutlet weak var mountLabel: UILabel!
     @IBOutlet var dateLabels: [UILabel]!
-    @IBOutlet weak var eatenLabel: UILabel!
-    @IBOutlet weak var proteinLabel: UILabel!
     
-    //MARK: - Properties -
+    // MARK: - Properties -
     private var selectedDate: Date = Date()
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
+    lazy var currentCalendar: Calendar = {
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone(name: "GMT")! as TimeZone
+        return calendar
+    }()
+
     lazy var picker: DiaryClickedPicker = {
         let picker = DiaryClickedPicker()
         
         picker.changeDate = { [weak self] in
             guard let `self` = self else { return }
-            self.selectedDate = UserInfo.sharedInstance.selectedDate ?? Date()
+            let date = UserInfo.sharedInstance.selectedDate ?? Date()
+            self.calendarView.toggleViewWithDate(date)
+            self.displayManager.changeDate(self.mountLabel, date)
+            self.selectedDate = date
             self.setupTopContainer(date: self.selectedDate)
-            self.displayManager.changeDate(self.mountLabel, self.dateLabels, self.selectedDate)
-            self.blurView.alpha = 0
         }
-        
         picker.closeAction = { [weak self] in
             guard let `self` = self else { return }
-            self.blurView.alpha = 0
         }
         return picker
     }()
     
     lazy var displayManager: DiaryDisplayManager = {
-        return DiaryDisplayManager(tableView: tableView, delegate: self, emptyBlurView, addProductButton)
+        return DiaryDisplayManager(tableView, self, topView)
     }()
     
-    //MARK: - Life Cicle -
+    // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,15 +92,19 @@ class DiaryViewController: BaseViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        calendarView.commitCalendarViewUpdate()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         removeObserver()
-        emptyBlurView.trackingMode = .none
     }
     
     @objc func showProductDetails() {
-        emptyBlurView.trackingMode = .none
         performSegue(withIdentifier: "sequeProductsList", sender: nil)
     }
     
@@ -116,51 +116,45 @@ class DiaryViewController: BaseViewController {
         FirebaseDBManager.getMealtimeItemsInDataBase { [weak self] (error) in
             guard let `self` = self else { return }
             DispatchQueue.main.async(execute: {
-                UserInfo.sharedInstance.getDateCount { [weak self] count in
-                    guard let `self` = self else { return }
-                    self.daysCountLabel.text = "\(count)"
-                    self.setupTopContainer(date: self.selectedDate)
-                    self.tableView.reloadData()
-                }
+                self.displayManager.changeDate(self.mountLabel, self.selectedDate)
+                self.displayManager.changeNewDate(date: self.selectedDate)
+                self.post("reloadContent")
             })
         }
     }
     
-    //MARK: - Actions -
+    // MARK: - Actions -
     @IBAction func calendarClicked(_ sender: Any) {
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.blurView.alpha = 1
-        }
         picker.showDatePicker(date: self.selectedDate)
     }
     
-    //MARK: - Private -
+    // MARK: - Private -
     private func setupInitialState() {
-        blurView.blurRadius = 3
-        blurView.trackingMode = .common
-        blurView.quality = .high
-        emptyBlurView.blurRadius = 10
-        emptyBlurView.trackingMode = .common
+        blurView.colorTint = .gray
+        blurView.colorTintAlpha = 0.1
+        blurView.blurRadius = 5
+        blurView.scale = 1
         
         activity.startAnimating()
-        displayManager.changeDate(mountLabel, dateLabels, Date())
-        setupProgres(progress: caloriesProgress)
-        setupProgres(progress: proteinProgress)
-        setupProgres(progress: fatProgress)
-        setupProgres(progress: carbohydratesProgress)
-    }
-    
-    private func setupProgres(progress: GradientProgressBar) {
-        progress.backgroundColor = #colorLiteral(red: 0.1235194579, green: 0.338282913, blue: 0.3184858859, alpha: 1)
-        progress.gradientColorList = [#colorLiteral(red: 0.9965590835, green: 0.8556515574, blue: 0.3924552202, alpha: 1), #colorLiteral(red: 0.9693543315, green: 0.7608024478, blue: 0.2990708947, alpha: 1), #colorLiteral(red: 0.8953430057, green: 0.5070293546, blue: 0.04407442361, alpha: 1)]
     }
 }
 
 extension DiaryViewController: DiaryViewDelegate {
     
+    func stopProgress() {
+        activityView.isHidden = true
+        self.activity.stopAnimating()
+    }
+    
+    func showProducts() {
+        performSegue(withIdentifier: "sequeProductsList", sender: nil)
+    }
+    
     func removeMealTime() {
         let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить продукт?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
+            Amplitude.instance().logEvent("delete_food")
+            Intercom.logEvent(withName: "delete_food")
             self.displayManager.removeMealTime()
             self.getItemsInDataBase()
         }))
@@ -170,5 +164,83 @@ extension DiaryViewController: DiaryViewDelegate {
     
     func editMealTime() {
         performSegue(withIdentifier: "sequeEditScreen", sender: nil)
+    }
+}
+
+extension DiaryViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+    
+    func firstWeekday() -> Weekday { return .monday }
+    func presentationMode() -> CalendarMode { return .weekView }
+    func calendar() -> Calendar? { return currentCalendar }
+    func shouldShowWeekdaysOut() -> Bool { return true }
+    
+    func presentedDateUpdated(_ date: CVDate) {
+        UserInfo.sharedInstance.selectedDate = date.date
+        self.selectedDate = UserInfo.sharedInstance.selectedDate ?? Date()
+        self.setupTopContainer(date: self.selectedDate)
+        self.displayManager.changeDate(self.mountLabel, date.date)
+    }
+    
+    func didShowNextWeekView(from startDayView: DayView, to endDayView: DayView) {
+        let selected = UserInfo.sharedInstance.selectedDate ?? Date()
+        for item in startDayView.date.date.getWeekDates() where Calendar.current.component(.day, from: item) == Calendar.current.component(.day, from: selected) {
+            self.displayManager.changeDate(self.mountLabel, selected)
+            return
+        }
+        if startDayView.date.month != endDayView.date.month {
+            if endDayView.date.day > 3 {
+                self.displayManager.changeDate(self.mountLabel, endDayView.date.date)
+            } else {
+                self.displayManager.changeDate(self.mountLabel, startDayView.date.date)
+            }
+        } else {
+            self.displayManager.changeDate(self.mountLabel, startDayView.date.date)
+        }
+    }
+    
+    func didShowPreviousWeekView(from startDayView: DayView, to endDayView: DayView) {
+        let selected = UserInfo.sharedInstance.selectedDate ?? Date()
+        for item in startDayView.date.date.getWeekDates() where Calendar.current.component(.day, from: item) == Calendar.current.component(.day, from: selected) {
+            self.displayManager.changeDate(self.mountLabel, selected)
+            return
+        }
+        if startDayView.date.month != endDayView.date.month {
+            if endDayView.date.day > 3 {
+                self.displayManager.changeDate(self.mountLabel, endDayView.date.date)
+            } else {
+                self.displayManager.changeDate(self.mountLabel, startDayView.date.date)
+            }
+        } else {
+            self.displayManager.changeDate(self.mountLabel, startDayView.date.date)
+        }
+    }
+}
+
+extension DiaryViewController: CVCalendarViewAppearanceDelegate {
+    
+    func dayLabelWeekdayDisabledColor() -> UIColor { return .lightGray }
+    
+    func dayLabelPresentWeekdayInitallyBold() -> Bool { return false }
+    
+    func spaceBetweenDayViews() -> CGFloat { return 0 }
+    
+    func dayLabelFont(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIFont { return UIFont.sfProTextSemibold(size: 15) }
+    
+    func dayLabelColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
+        switch (weekDay, status, present) {
+        case (_, .selected, _), (_, .highlighted, _): return .white
+        case (.sunday, .in, _): return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
+        case (.sunday, _, _): return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
+        case (_, .in, _): return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
+        default: return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
+        }
+    }
+    
+    func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
+        switch (weekDay, status, present) {
+        //case (_, .selected, _), (_, .highlighted, _): return .clear
+        case (_, .selected, _), (_, .highlighted, _): return #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.1524507934, alpha: 1)
+        default: return nil
+        }
     }
 }

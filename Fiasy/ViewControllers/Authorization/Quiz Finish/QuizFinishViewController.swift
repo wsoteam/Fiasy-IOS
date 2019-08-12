@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class QuizFinishViewController: UIViewController {
     
@@ -26,6 +28,8 @@ class QuizFinishViewController: UIViewController {
         
         setupInitialState()
         secondView.isHidden = true
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "calculate"])
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "calculate"])
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,7 +50,7 @@ class QuizFinishViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         displayManager?.nextScrollCell()
     }
-    
+
     // MARK: - Privates -
     private func setupInitialState() {
         progressView.trackColor = .clear

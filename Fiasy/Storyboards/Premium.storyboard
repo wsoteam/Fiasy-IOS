@@ -578,7 +578,93 @@
                 <viewControllerPlaceholder storyboardName="Menu" id="IrG-TU-tMX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44D-Rp-uJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-798" y="1366"/>
+            <point key="canvasLocation" x="-813" y="1514"/>
+        </scene>
+        <!--Premium Finish View Controller-->
+        <scene sceneID="pFQ-cY-SIV">
+            <objects>
+                <viewController id="ejl-OP-3eM" customClass="PremiumFinishViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="67b-Nd-Pug">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKs-bE-nv7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lU2-Ll-jt0" customClass="VisualEffectView" customModule="VisualEffectView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MhE-5x-aYK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23C-I9-P7F">
+                                <rect key="frame" x="12" y="90" width="351" height="467"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premium_finish" translatesAutoresizingMaskIntoConstraints="NO" id="TDe-hz-XMP">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="467"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgD-nX-Fsb">
+                                        <rect key="frame" x="50" y="333.5" width="251" height="93.5"/>
+                                        <connections>
+                                            <action selector="cancelClicked:" destination="ejl-OP-3eM" eventType="touchUpInside" id="J5p-xl-3qE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="QgD-nX-Fsb" firstAttribute="leading" secondItem="TDe-hz-XMP" secondAttribute="leading" constant="50" id="CYj-J9-WG5"/>
+                                    <constraint firstItem="QgD-nX-Fsb" firstAttribute="height" secondItem="23C-I9-P7F" secondAttribute="height" multiplier="0.2" id="NqW-K2-wCH"/>
+                                    <constraint firstAttribute="trailing" secondItem="TDe-hz-XMP" secondAttribute="trailing" id="SGq-sp-cAz"/>
+                                    <constraint firstItem="QgD-nX-Fsb" firstAttribute="bottom" secondItem="TDe-hz-XMP" secondAttribute="bottom" constant="-40" id="Svj-XF-wLg"/>
+                                    <constraint firstItem="TDe-hz-XMP" firstAttribute="leading" secondItem="23C-I9-P7F" secondAttribute="leading" id="h9Z-ya-WXL"/>
+                                    <constraint firstItem="TDe-hz-XMP" firstAttribute="top" secondItem="23C-I9-P7F" secondAttribute="top" id="iHp-Qr-J3W"/>
+                                    <constraint firstItem="QgD-nX-Fsb" firstAttribute="trailing" secondItem="TDe-hz-XMP" secondAttribute="trailing" constant="-50" id="uYp-Ak-t1v"/>
+                                    <constraint firstAttribute="bottom" secondItem="TDe-hz-XMP" secondAttribute="bottom" id="yDt-uy-zJX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lU2-Ll-jt0" firstAttribute="trailing" secondItem="RKs-bE-nv7" secondAttribute="trailing" id="0Uk-oW-5BH"/>
+                            <constraint firstItem="lU2-Ll-jt0" firstAttribute="bottom" secondItem="RKs-bE-nv7" secondAttribute="bottom" id="1lC-kU-SAm"/>
+                            <constraint firstItem="nPA-Ci-VjD" firstAttribute="trailing" secondItem="RKs-bE-nv7" secondAttribute="trailing" id="FJM-3f-6vb"/>
+                            <constraint firstItem="RKs-bE-nv7" firstAttribute="leading" secondItem="nPA-Ci-VjD" secondAttribute="leading" id="FKL-kL-IKH"/>
+                            <constraint firstItem="23C-I9-P7F" firstAttribute="leading" secondItem="nPA-Ci-VjD" secondAttribute="leading" constant="12" id="GuO-kr-gtm"/>
+                            <constraint firstAttribute="bottom" secondItem="RKs-bE-nv7" secondAttribute="bottom" id="UG6-Zw-mmc"/>
+                            <constraint firstItem="23C-I9-P7F" firstAttribute="centerY" secondItem="nPA-Ci-VjD" secondAttribute="centerY" constant="-20" id="a5l-OJ-UyY"/>
+                            <constraint firstItem="lU2-Ll-jt0" firstAttribute="top" secondItem="RKs-bE-nv7" secondAttribute="top" id="e5F-fR-RDM"/>
+                            <constraint firstItem="lU2-Ll-jt0" firstAttribute="leading" secondItem="RKs-bE-nv7" secondAttribute="leading" id="fXE-48-vRc"/>
+                            <constraint firstItem="23C-I9-P7F" firstAttribute="height" secondItem="67b-Nd-Pug" secondAttribute="height" multiplier="0.7" id="jPD-uy-c52"/>
+                            <constraint firstItem="RKs-bE-nv7" firstAttribute="top" secondItem="67b-Nd-Pug" secondAttribute="top" id="m3F-sJ-AWd"/>
+                            <constraint firstItem="nPA-Ci-VjD" firstAttribute="trailing" secondItem="23C-I9-P7F" secondAttribute="trailing" constant="12" id="mDJ-wA-qum"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nPA-Ci-VjD"/>
+                    </view>
+                    <connections>
+                        <outlet property="blurView" destination="lU2-Ll-jt0" id="tjZ-47-0wb"/>
+                        <outlet property="containerView" destination="23C-I9-P7F" id="ASz-b1-bui"/>
+                        <segue destination="eQD-Am-RGH" kind="custom" identifier="sequeMenuScreen" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="mtp-vo-klx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YwN-VD-XiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-209" y="1346"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="MOK-f7-ZZv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Menu" id="eQD-Am-RGH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qWQ-V6-WcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="416" y="1346"/>
         </scene>
         <!--Premium Quiz View Controller-->
         <scene sceneID="0Nj-af-u29">
@@ -778,6 +864,10 @@
                         <viewLayoutGuide key="safeArea" id="257-8S-SpI"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="closeButton" destination="kXq-V5-aJL" id="jCw-na-w3P"/>
+                        <segue destination="ejl-OP-3eM" kind="presentation" identifier="sequeFinishPremiumScreen" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="YpJ-IW-xub"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAa-7i-6vT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -993,9 +1083,10 @@
         <image name="app bar bg" width="375" height="101"/>
         <image name="arrow-righter2" width="22" height="22"/>
         <image name="close" width="20" height="20"/>
-        <image name="diamond" width="146" height="146"/>
+        <image name="diamond" width="20" height="20"/>
         <image name="dish_icon_for_premium" width="161" height="161"/>
         <image name="finish_prem" width="287" height="93"/>
+        <image name="premium_finish" width="351" height="486"/>
         <image name="Оплата будет снята " width="341" height="130"/>
         <image name="Попробуйте 3 дня бесплатно! Затем 4" width="255" height="42"/>
         <image name="Попробуйте весь функционал с бесплатной подпиской н" width="252" height="34"/>

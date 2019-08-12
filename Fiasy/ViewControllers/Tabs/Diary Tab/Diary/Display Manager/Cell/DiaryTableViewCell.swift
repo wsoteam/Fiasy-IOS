@@ -19,8 +19,12 @@ class DiaryTableViewCell: SwipeTableViewCell {
     // MARK: - Interface -
     func fillCell(mealTime: Mealtime, isContainNext: Bool) {
         productNameLabel.text = mealTime.name
-        caloriesCountLabel.text = "\(mealTime.calories ?? 0)\nккал"
-        productWeight.text = "Вес: \(mealTime.weight ?? 0)г"
-        separatorView.isHidden = !isContainNext
+        caloriesCountLabel.text = "\(mealTime.calories ?? 0) Ккал"
+        
+        if let brand = mealTime.brand, !brand.isEmpty {
+            productWeight.text = "\(brand) • \(mealTime.weight ?? 0) г."
+        } else {
+            productWeight.text = "\(mealTime.weight ?? 0) г."
+        }
     }
 }

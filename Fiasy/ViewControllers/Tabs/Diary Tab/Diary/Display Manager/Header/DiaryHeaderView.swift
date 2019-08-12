@@ -11,34 +11,52 @@ import UIKit
 class DiaryHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - Outlet -
-    @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var titleNameLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
     
     // MARK: - Properties -
-    static var height: CGFloat = 50.0
+    static var height: CGFloat = 40.0
     private var section: Int?
+    private var tagIndex: Int = 0
     private var delegate: DiaryDisplayManagerDelegate?
     
     // MARK: - Interface -
-    func fillHeader(mealTimes: [Mealtime], delegate: DiaryDisplayManagerDelegate, section: Int, state: Bool) {
+    func fillHeader(delegate: DiaryDisplayManagerDelegate, section: Int, state: Bool, _ hasItems: Bool) {
         self.section = section
         self.delegate = delegate
         
-        arrowImageView.image = state ? #imageLiteral(resourceName: "arrow_top") : #imageLiteral(resourceName: "arrow_bottom")
-        
-        if let first = mealTimes.first {
-            titleNameLabel.text = UserInfo.sharedInstance.getTitleMealtime(text: first.parentKey ?? "")
+        switch section {
+        case 1:
+            tagIndex = 0
+            titleNameLabel.text = "Завтрак"
+        case 2:
+            tagIndex = 1
+            titleNameLabel.text = "Обед"
+        case 3:
+            tagIndex = 2
+            titleNameLabel.text = "Ужин"
+        case 4:
+            tagIndex = 3
+            titleNameLabel.text = "Перекус"
+        default:
+            break
         }
-        countLabel.text = "\(mealTimes.count) шт."
+        if hasItems {
+            arrowImageView.isHidden = false
+            arrowImageView.image = state ? #imageLiteral(resourceName: "Arrow_top-1") : #imageLiteral(resourceName: "Arrow_down-1")
+        } else {
+            arrowImageView.isHidden = true
+        }
     }
     
     // MARK: - Action -
     @IBAction func headerClicked(_ sender: Any) {
-        guard let id = self.section else {
-            return
-        }
+        guard let id = self.section else { return }
         delegate?.headerClicked(section: id)
+    }
+    
+    @IBAction func plusClicked(_ sender: Any) {
+        UserInfo.sharedInstance.selectedMealtimeIndex = tagIndex
+        delegate?.showProductTab()
     }
 }

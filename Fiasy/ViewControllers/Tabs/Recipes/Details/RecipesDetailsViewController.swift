@@ -9,9 +9,15 @@
 import UIKit
 import Kingfisher
 import Amplitude_iOS
+import Intercom
+
+protocol PremiumDisplayDelegate {
+    func showPremiumScreen()
+}
 
 protocol RecipesDetailsDelegate {
     func showAnimate()
+    func showPremiumScreen()
 }
 
 class RecipesDetailsViewController: UIViewController {
@@ -92,6 +98,14 @@ class RecipesDetailsViewController: UIViewController {
         return NSAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is PremiumQuizViewController {
+            let vc = segue.destination as? PremiumQuizViewController
+            vc?.isAutorization = false
+            vc?.trialFrom = "reciepe"
+        }
+    }
+    
     //MARK: - Action -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -153,6 +167,12 @@ extension RecipesDetailsViewController: UITableViewDataSource, UITableViewDelega
 }
 
 extension RecipesDetailsViewController: RecipesDetailsDelegate {
+    
+    func showPremiumScreen() {
+        Intercom.logEvent(withName: "product_page_micro")
+        Amplitude.instance()?.logEvent("product_page_micro")
+        performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
+    }
     
     func showAnimate() {
         loaderView.isHidden = false

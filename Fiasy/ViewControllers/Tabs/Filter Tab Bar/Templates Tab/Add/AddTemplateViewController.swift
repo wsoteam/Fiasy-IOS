@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 protocol AddTemplateDelegate {
     func showAddPortion()
@@ -74,6 +76,9 @@ class AddTemplateViewController: UIViewController {
                                                               vc: self)
         }
         FirebaseDBManager.saveTemplate(titleName: name, generalKey: self.generalKey)
+        
+        Intercom.logEvent(withName: "custom_template_success")
+        Amplitude.instance()?.logEvent("custom_template_success")
         navigationController?.popViewController(animated: true)
     }
     

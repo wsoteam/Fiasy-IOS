@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B00EAC022DFBE5C00A2B21C /* RecipeTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B00EABF22DFBE5C00A2B21C /* RecipeTabTableViewCell.swift */; };
 		3B00EAC222DFBE7900A2B21C /* RecipeTabTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B00EAC122DFBE7900A2B21C /* RecipeTabTableViewCell.xib */; };
+		3B08D6022300667700A12E92 /* PremiumFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08D6012300667700A12E92 /* PremiumFinishViewController.swift */; };
 		3B0D532022F41E86008051BE /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D531F22F41E86008051BE /* UIViewController+Push.swift */; };
 		3B0D532322F428AB008051BE /* NotificationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532222F428AB008051BE /* NotificationsListViewController.swift */; };
 		3B0D532622F42A0F008051BE /* NotificationsHeaderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */; };
@@ -86,13 +87,54 @@
 		3B77172522BBEEDB0089C4BA /* IngredientsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77172422BBEEDB0089C4BA /* IngredientsFooterView.swift */; };
 		3B77172722BBEEF60089C4BA /* IngredientsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77172622BBEEF60089C4BA /* IngredientsFooterView.xib */; };
 		3B77172922BCD1140089C4BA /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77172822BCD1130089C4BA /* DispatchQueue.swift */; };
+		3B77EAFD22FADC3B00ACD240 /* IntAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77EAF922FADC3B00ACD240 /* IntAxisValueFormatter.swift */; };
+		3B77EAFE22FADC3B00ACD240 /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77EAFA22FADC3B00ACD240 /* DateValueFormatter.swift */; };
+		3B77EAFF22FADC3B00ACD240 /* LargeValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77EAFB22FADC3B00ACD240 /* LargeValueFormatter.swift */; };
+		3B77EB0022FADC3B00ACD240 /* DayAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77EAFC22FADC3B00ACD240 /* DayAxisValueFormatter.swift */; };
+		3B77EB0622FADDC700ACD240 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77EB0322FADDC600ACD240 /* BalloonMarker.swift */; };
+		3B77EB0722FADDC700ACD240 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77EB0422FADDC600ACD240 /* RadarMarkerView.swift */; };
+		3B77EB0822FADDC700ACD240 /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77EB0522FADDC700ACD240 /* XYMarkerView.swift */; };
 		3B7EB68A22DC692800456104 /* SFProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B7EB68922DC692800456104 /* SFProText-Medium.ttf */; };
 		3B7EB68E22DC6EAB00456104 /* NotificationsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EB68D22DC6EAB00456104 /* NotificationsAlertViewController.swift */; };
 		3B83958322E1E4160048164C /* IngredientPickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B83958222E1E4160048164C /* IngredientPickerService.swift */; };
 		3B83958522E229AD0048164C /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B83958422E229AD0048164C /* UIImage+URL.swift */; };
+		3B86366622FF02F900520B6B /* CVCalendarMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364822FF02F600520B6B /* CVCalendarMenuViewDelegate.swift */; };
+		3B86366722FF02F900520B6B /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364922FF02F600520B6B /* CVAuxiliaryView.swift */; };
+		3B86366822FF02F900520B6B /* CVCalendarViewAppearanceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364A22FF02F600520B6B /* CVCalendarViewAppearanceDelegate.swift */; };
+		3B86366922FF02F900520B6B /* CVCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364B22FF02F600520B6B /* CVCalendarMonthView.swift */; };
+		3B86366A22FF02F900520B6B /* CVCalendarViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364C22FF02F600520B6B /* CVCalendarViewAppearance.swift */; };
+		3B86366B22FF02F900520B6B /* CVCalendarWeekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364D22FF02F600520B6B /* CVCalendarWeekday.swift */; };
+		3B86366C22FF02F900520B6B /* CVCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364E22FF02F600520B6B /* CVCalendarManager.swift */; };
+		3B86366D22FF02F900520B6B /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86364F22FF02F600520B6B /* CVCalendarContentViewController.swift */; };
+		3B86366E22FF02F900520B6B /* CVPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365022FF02F600520B6B /* CVPresent.swift */; };
+		3B86366F22FF02F900520B6B /* CVCalendarContentPresentationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365122FF02F600520B6B /* CVCalendarContentPresentationCoordinator.swift */; };
+		3B86367022FF02F900520B6B /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365222FF02F600520B6B /* CVCalendarDayView.swift */; };
+		3B86367122FF02F900520B6B /* CVCalendarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365322FF02F600520B6B /* CVCalendarViewDelegate.swift */; };
+		3B86367222FF02F900520B6B /* CVCalendarWeekContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365422FF02F600520B6B /* CVCalendarWeekContentViewController.swift */; };
+		3B86367322FF02F900520B6B /* CVDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365522FF02F600520B6B /* CVDate.swift */; };
+		3B86367422FF02F900520B6B /* CVStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365622FF02F600520B6B /* CVStatus.swift */; };
+		3B86367522FF02F900520B6B /* CVCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365722FF02F600520B6B /* CVCalendarWeekView.swift */; };
+		3B86367622FF02F900520B6B /* CVCalendarDayViewControlCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365822FF02F600520B6B /* CVCalendarDayViewControlCoordinator.swift */; };
+		3B86367722FF02F900520B6B /* CVCalendarViewAnimatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365922FF02F700520B6B /* CVCalendarViewAnimatorDelegate.swift */; };
+		3B86367822FF02F900520B6B /* CVCalendarTouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365A22FF02F700520B6B /* CVCalendarTouchController.swift */; };
+		3B86367922FF02F900520B6B /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365B22FF02F700520B6B /* CVCalendarMonthContentViewController.swift */; };
+		3B86367A22FF02F900520B6B /* CVRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365C22FF02F700520B6B /* CVRange.swift */; };
+		3B86367B22FF02F900520B6B /* CVCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365D22FF02F700520B6B /* CVCalendarView.swift */; };
+		3B86367C22FF02F900520B6B /* CVScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365E22FF02F700520B6B /* CVScrollDirection.swift */; };
+		3B86367D22FF02F900520B6B /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86365F22FF02F700520B6B /* CVWeekdaySymbolType.swift */; };
+		3B86367E22FF02F900520B6B /* CVSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86366022FF02F700520B6B /* CVSelectionType.swift */; };
+		3B86367F22FF02F900520B6B /* CVCalendarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86366122FF02F800520B6B /* CVCalendarMenuView.swift */; };
+		3B86368022FF02F900520B6B /* CVCalendarViewPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86366222FF02F800520B6B /* CVCalendarViewPresentationMode.swift */; };
+		3B86368122FF02F900520B6B /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86366322FF02F800520B6B /* CVSet.swift */; };
+		3B86368222FF02F900520B6B /* CVCalendarViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86366422FF02F800520B6B /* CVCalendarViewAnimator.swift */; };
+		3B86368322FF02F900520B6B /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86366522FF02F800520B6B /* CVShape.swift */; };
 		3B8AD3FC22DE699F0098ABD4 /* InstructionListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8AD3FB22DE699F0098ABD4 /* InstructionListFooterView.swift */; };
 		3B8AD3FE22DE69C20098ABD4 /* InstructionListFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B8AD3FD22DE69C20098ABD4 /* InstructionListFooterView.xib */; };
 		3B8AD40022DE6BEC0098ABD4 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B8AD3FF22DE6BEC0098ABD4 /* SFProText-Regular.ttf */; };
+		3B8D3ABA22FC18BE003257B9 /* Date+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D3AB922FC18BE003257B9 /* Date+Configure.swift */; };
+		3B8D3ABE22FC6F31003257B9 /* MounthAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D3ABD22FC6F31003257B9 /* MounthAxisValueFormatter.swift */; };
+		3B8D3AC022FC70DE003257B9 /* YearAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D3ABF22FC70DE003257B9 /* YearAxisValueFormatter.swift */; };
+		3B8D3AC222FC8DD4003257B9 /* ChartsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8D3AC122FC8DD4003257B9 /* ChartsFlow.swift */; };
 		3B8FF11922E0751D00195CD2 /* FavoritePickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8FF11822E0751D00195CD2 /* FavoritePickerService.swift */; };
 		3B902A8922DC889A002487F5 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B902A8822DC889A002487F5 /* AddProductViewController.swift */; };
 		3B902A8D22DC895C002487F5 /* AddProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B902A8C22DC895C002487F5 /* AddProductTableViewCell.swift */; };
@@ -126,6 +168,11 @@
 		3BA309DD2273675E00C98644 /* FirebaseDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA309DC2273675D00C98644 /* FirebaseDBManager.swift */; };
 		3BA3374622BA761C0044C9E0 /* ImagePickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3374522BA761C0044C9E0 /* ImagePickerService.swift */; };
 		3BA4CD0D22A5818900DB7B7D /* SearchVC+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4CD0C22A5818900DB7B7D /* SearchVC+KeyboardExtension.swift */; };
+		3BAF81B322F9898700F77231 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF81B222F9898700F77231 /* HelpViewController.swift */; };
+		3BAF81B622F98A5D00F77231 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF81B522F98A5D00F77231 /* HelpTableViewCell.swift */; };
+		3BAF81B822F98A7300F77231 /* HelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BAF81B722F98A7200F77231 /* HelpTableViewCell.xib */; };
+		3BAF81BB22F9963300F77231 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF81BA22F9963300F77231 /* QuestionViewController.swift */; };
+		3BAF81BE22F9A58800F77231 /* HelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF81BD22F9A58800F77231 /* HelpModel.swift */; };
 		3BBA076B22C0A7E8004BEF3B /* AddTemplateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBA076A22C0A7E8004BEF3B /* AddTemplateHeaderCell.swift */; };
 		3BBA076D22C0A807004BEF3B /* AddTemplateHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBA076C22C0A807004BEF3B /* AddTemplateHeaderCell.xib */; };
 		3BBA077122C0BF95004BEF3B /* AddPortionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBA077022C0BF95004BEF3B /* AddPortionViewController.swift */; };
@@ -188,6 +235,8 @@
 		3BCAC56422B79331009AF529 /* RecipesSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAC56322B79331009AF529 /* RecipesSearchHeaderView.swift */; };
 		3BCAC56622B79370009AF529 /* RecipesSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC56522B79370009AF529 /* RecipesSearchHeaderView.xib */; };
 		3BCAC56822B798C5009AF529 /* RecipesSearchVC+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAC56722B798C5009AF529 /* RecipesSearchVC+KeyboardExtension.swift */; };
+		3BCB113322FA0ACE00F849A0 /* ProfileAvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB113222FA0ACE00F849A0 /* ProfileAvatarTableViewCell.swift */; };
+		3BCB113522FA0AEA00F849A0 /* ProfileAvatarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB113422FA0AEA00F849A0 /* ProfileAvatarTableViewCell.xib */; };
 		3BCB31E722C107240067A11B /* AddPortionVC+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB31E622C107240067A11B /* AddPortionVC+KeyboardExtension.swift */; };
 		3BCB31EB22C1144E0067A11B /* AddTemplateListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB31EA22C1144E0067A11B /* AddTemplateListCell.swift */; };
 		3BCB31ED22C1145E0067A11B /* AddTemplateListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB31EC22C1145E0067A11B /* AddTemplateListCell.xib */; };
@@ -249,6 +298,7 @@
 		3BE47E6322F037B800F0BF05 /* RecipeCheckTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE47E6222F037B800F0BF05 /* RecipeCheckTableViewCell.xib */; };
 		3BE6083C226F21B700461BD7 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6083B226F21B700461BD7 /* Authorization.storyboard */; };
 		3BE6083F226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6083E226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift */; };
+		3BE75B7322F870A400226F6E /* DTRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE75B7222F870A400226F6E /* DTRuler.swift */; };
 		3BE9014522E894D50094EE38 /* RKRangeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9013F22E894D40094EE38 /* RKRangeScrollView.swift */; };
 		3BE9014622E894D50094EE38 /* RKRangeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014022E894D40094EE38 /* RKRangeLayer.swift */; };
 		3BE9014722E894D50094EE38 /* RKMultiUnitRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014122E894D40094EE38 /* RKMultiUnitRuler.swift */; };
@@ -276,6 +326,8 @@
 		3BF85CC622DB3DA2009B473D /* EditProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF85CC522DB3DA2009B473D /* EditProfileHeaderView.xib */; };
 		3BF85CC822DB447D009B473D /* EditProfileVC+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF85CC722DB447D009B473D /* EditProfileVC+KeyboardExtension.swift */; };
 		3BF996672293EA9200782501 /* DiaryClickedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF996662293EA9200782501 /* DiaryClickedPicker.swift */; };
+		3BFB366022FE109D005AC730 /* LimitDiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB365F22FE109D005AC730 /* LimitDiaryTableViewCell.swift */; };
+		3BFB366222FE10C6005AC730 /* LimitDiaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFB366122FE10C6005AC730 /* LimitDiaryTableViewCell.xib */; };
 		3BFED2C422DDE81E007E8B98 /* AddRecipeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFED2C322DDE81E007E8B98 /* AddRecipeFlow.swift */; };
 		72DA4F2403DA0E835D96D957 /* Pods_Fiasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBF4E95AB3377B64154ACC4 /* Pods_Fiasy.framework */; };
 		F00481D42265ADE300C720CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0124F93224261BB001B9793 /* LaunchScreen.storyboard */; };
@@ -353,6 +405,7 @@
 /* Begin PBXFileReference section */
 		3B00EABF22DFBE5C00A2B21C /* RecipeTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabTableViewCell.swift; sourceTree = "<group>"; };
 		3B00EAC122DFBE7900A2B21C /* RecipeTabTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTabTableViewCell.xib; sourceTree = "<group>"; };
+		3B08D6012300667700A12E92 /* PremiumFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFinishViewController.swift; sourceTree = "<group>"; };
 		3B0D531F22F41E86008051BE /* UIViewController+Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
 		3B0D532222F428AB008051BE /* NotificationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListViewController.swift; sourceTree = "<group>"; };
 		3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsHeaderListCell.swift; sourceTree = "<group>"; };
@@ -430,13 +483,54 @@
 		3B77172422BBEEDB0089C4BA /* IngredientsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsFooterView.swift; sourceTree = "<group>"; };
 		3B77172622BBEEF60089C4BA /* IngredientsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientsFooterView.xib; sourceTree = "<group>"; };
 		3B77172822BCD1130089C4BA /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		3B77EAF922FADC3B00ACD240 /* IntAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntAxisValueFormatter.swift; sourceTree = "<group>"; };
+		3B77EAFA22FADC3B00ACD240 /* DateValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
+		3B77EAFB22FADC3B00ACD240 /* LargeValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeValueFormatter.swift; sourceTree = "<group>"; };
+		3B77EAFC22FADC3B00ACD240 /* DayAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayAxisValueFormatter.swift; sourceTree = "<group>"; };
+		3B77EB0322FADDC600ACD240 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		3B77EB0422FADDC600ACD240 /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		3B77EB0522FADDC700ACD240 /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
 		3B7EB68922DC692800456104 /* SFProText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Medium.ttf"; sourceTree = "<group>"; };
 		3B7EB68D22DC6EAB00456104 /* NotificationsAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAlertViewController.swift; sourceTree = "<group>"; };
 		3B83958222E1E4160048164C /* IngredientPickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPickerService.swift; sourceTree = "<group>"; };
 		3B83958422E229AD0048164C /* UIImage+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
+		3B86364822FF02F600520B6B /* CVCalendarMenuViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMenuViewDelegate.swift; sourceTree = "<group>"; };
+		3B86364922FF02F600520B6B /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
+		3B86364A22FF02F600520B6B /* CVCalendarViewAppearanceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAppearanceDelegate.swift; sourceTree = "<group>"; };
+		3B86364B22FF02F600520B6B /* CVCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthView.swift; sourceTree = "<group>"; };
+		3B86364C22FF02F600520B6B /* CVCalendarViewAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAppearance.swift; sourceTree = "<group>"; };
+		3B86364D22FF02F600520B6B /* CVCalendarWeekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekday.swift; sourceTree = "<group>"; };
+		3B86364E22FF02F600520B6B /* CVCalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarManager.swift; sourceTree = "<group>"; };
+		3B86364F22FF02F600520B6B /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
+		3B86365022FF02F600520B6B /* CVPresent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVPresent.swift; sourceTree = "<group>"; };
+		3B86365122FF02F600520B6B /* CVCalendarContentPresentationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentPresentationCoordinator.swift; sourceTree = "<group>"; };
+		3B86365222FF02F600520B6B /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
+		3B86365322FF02F600520B6B /* CVCalendarViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewDelegate.swift; sourceTree = "<group>"; };
+		3B86365422FF02F600520B6B /* CVCalendarWeekContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekContentViewController.swift; sourceTree = "<group>"; };
+		3B86365522FF02F600520B6B /* CVDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVDate.swift; sourceTree = "<group>"; };
+		3B86365622FF02F600520B6B /* CVStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVStatus.swift; sourceTree = "<group>"; };
+		3B86365722FF02F600520B6B /* CVCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekView.swift; sourceTree = "<group>"; };
+		3B86365822FF02F600520B6B /* CVCalendarDayViewControlCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayViewControlCoordinator.swift; sourceTree = "<group>"; };
+		3B86365922FF02F700520B6B /* CVCalendarViewAnimatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAnimatorDelegate.swift; sourceTree = "<group>"; };
+		3B86365A22FF02F700520B6B /* CVCalendarTouchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarTouchController.swift; sourceTree = "<group>"; };
+		3B86365B22FF02F700520B6B /* CVCalendarMonthContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMonthContentViewController.swift; sourceTree = "<group>"; };
+		3B86365C22FF02F700520B6B /* CVRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVRange.swift; sourceTree = "<group>"; };
+		3B86365D22FF02F700520B6B /* CVCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarView.swift; sourceTree = "<group>"; };
+		3B86365E22FF02F700520B6B /* CVScrollDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVScrollDirection.swift; sourceTree = "<group>"; };
+		3B86365F22FF02F700520B6B /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
+		3B86366022FF02F700520B6B /* CVSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSelectionType.swift; sourceTree = "<group>"; };
+		3B86366122FF02F800520B6B /* CVCalendarMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarMenuView.swift; sourceTree = "<group>"; };
+		3B86366222FF02F800520B6B /* CVCalendarViewPresentationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewPresentationMode.swift; sourceTree = "<group>"; };
+		3B86366322FF02F800520B6B /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSet.swift; sourceTree = "<group>"; };
+		3B86366422FF02F800520B6B /* CVCalendarViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarViewAnimator.swift; sourceTree = "<group>"; };
+		3B86366522FF02F800520B6B /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVShape.swift; sourceTree = "<group>"; };
 		3B8AD3FB22DE699F0098ABD4 /* InstructionListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionListFooterView.swift; sourceTree = "<group>"; };
 		3B8AD3FD22DE69C20098ABD4 /* InstructionListFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionListFooterView.xib; sourceTree = "<group>"; };
 		3B8AD3FF22DE6BEC0098ABD4 /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
+		3B8D3AB922FC18BE003257B9 /* Date+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Configure.swift"; sourceTree = "<group>"; };
+		3B8D3ABD22FC6F31003257B9 /* MounthAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MounthAxisValueFormatter.swift; sourceTree = "<group>"; };
+		3B8D3ABF22FC70DE003257B9 /* YearAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAxisValueFormatter.swift; sourceTree = "<group>"; };
+		3B8D3AC122FC8DD4003257B9 /* ChartsFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsFlow.swift; sourceTree = "<group>"; };
 		3B8FF11822E0751D00195CD2 /* FavoritePickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePickerService.swift; sourceTree = "<group>"; };
 		3B902A8822DC889A002487F5 /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		3B902A8C22DC895C002487F5 /* AddProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductTableViewCell.swift; sourceTree = "<group>"; };
@@ -470,6 +564,11 @@
 		3BA309DC2273675D00C98644 /* FirebaseDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDBManager.swift; sourceTree = "<group>"; };
 		3BA3374522BA761C0044C9E0 /* ImagePickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerService.swift; sourceTree = "<group>"; };
 		3BA4CD0C22A5818900DB7B7D /* SearchVC+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+KeyboardExtension.swift"; sourceTree = "<group>"; };
+		3BAF81B222F9898700F77231 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		3BAF81B522F98A5D00F77231 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
+		3BAF81B722F98A7200F77231 /* HelpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpTableViewCell.xib; sourceTree = "<group>"; };
+		3BAF81BA22F9963300F77231 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		3BAF81BD22F9A58800F77231 /* HelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModel.swift; sourceTree = "<group>"; };
 		3BBA076A22C0A7E8004BEF3B /* AddTemplateHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTemplateHeaderCell.swift; sourceTree = "<group>"; };
 		3BBA076C22C0A807004BEF3B /* AddTemplateHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTemplateHeaderCell.xib; sourceTree = "<group>"; };
 		3BBA077022C0BF95004BEF3B /* AddPortionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortionViewController.swift; sourceTree = "<group>"; };
@@ -532,6 +631,8 @@
 		3BCAC56322B79331009AF529 /* RecipesSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSearchHeaderView.swift; sourceTree = "<group>"; };
 		3BCAC56522B79370009AF529 /* RecipesSearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipesSearchHeaderView.xib; sourceTree = "<group>"; };
 		3BCAC56722B798C5009AF529 /* RecipesSearchVC+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipesSearchVC+KeyboardExtension.swift"; sourceTree = "<group>"; };
+		3BCB113222FA0ACE00F849A0 /* ProfileAvatarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAvatarTableViewCell.swift; sourceTree = "<group>"; };
+		3BCB113422FA0AEA00F849A0 /* ProfileAvatarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileAvatarTableViewCell.xib; sourceTree = "<group>"; };
 		3BCB31E622C107240067A11B /* AddPortionVC+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPortionVC+KeyboardExtension.swift"; sourceTree = "<group>"; };
 		3BCB31EA22C1144E0067A11B /* AddTemplateListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTemplateListCell.swift; sourceTree = "<group>"; };
 		3BCB31EC22C1145E0067A11B /* AddTemplateListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTemplateListCell.xib; sourceTree = "<group>"; };
@@ -593,6 +694,7 @@
 		3BE47E6222F037B800F0BF05 /* RecipeCheckTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCheckTableViewCell.xib; sourceTree = "<group>"; };
 		3BE6083B226F21B700461BD7 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		3BE6083E226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+NSMutableAttributedString.swift"; sourceTree = "<group>"; };
+		3BE75B7222F870A400226F6E /* DTRuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTRuler.swift; sourceTree = "<group>"; };
 		3BE9013F22E894D40094EE38 /* RKRangeScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRangeScrollView.swift; sourceTree = "<group>"; };
 		3BE9014022E894D40094EE38 /* RKRangeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRangeLayer.swift; sourceTree = "<group>"; };
 		3BE9014122E894D40094EE38 /* RKMultiUnitRuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMultiUnitRuler.swift; sourceTree = "<group>"; };
@@ -620,6 +722,8 @@
 		3BF85CC522DB3DA2009B473D /* EditProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileHeaderView.xib; sourceTree = "<group>"; };
 		3BF85CC722DB447D009B473D /* EditProfileVC+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditProfileVC+KeyboardExtension.swift"; sourceTree = "<group>"; };
 		3BF996662293EA9200782501 /* DiaryClickedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryClickedPicker.swift; sourceTree = "<group>"; };
+		3BFB365F22FE109D005AC730 /* LimitDiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitDiaryTableViewCell.swift; sourceTree = "<group>"; };
+		3BFB366122FE10C6005AC730 /* LimitDiaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LimitDiaryTableViewCell.xib; sourceTree = "<group>"; };
 		3BFED2C322DDE81E007E8B98 /* AddRecipeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeFlow.swift; sourceTree = "<group>"; };
 		3D702CC0248698E8BF2FB58C /* Pods-Fiasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fiasy/Pods-Fiasy.debug.xcconfig"; sourceTree = "<group>"; };
 		3E09325AEF0935BC223032BC /* Pods-Fiasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiasy.debug.xcconfig"; path = "Target Support Files/Pods-Fiasy/Pods-Fiasy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -722,6 +826,14 @@
 				3B00EAC122DFBE7900A2B21C /* RecipeTabTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		3B08D6002300665A00A12E92 /* Premium Finish */ = {
+			isa = PBXGroup;
+			children = (
+				3B08D6012300667700A12E92 /* PremiumFinishViewController.swift */,
+			);
+			path = "Premium Finish";
 			sourceTree = "<group>";
 		};
 		3B0D531E22F41E67008051BE /* UIViewController+Push */ = {
@@ -954,6 +1066,7 @@
 			children = (
 				3B325EEA226A148700D1A54E /* Cell */,
 				3B325EE7226A13BB00D1A54E /* ProfileDisplayManager.swift */,
+				3B8D3AC122FC8DD4003257B9 /* ChartsFlow.swift */,
 			);
 			path = "Display Manager";
 			sourceTree = "<group>";
@@ -965,6 +1078,8 @@
 				3B325EEF226A161F00D1A54E /* DailyValuesCell.xib */,
 				3B325EF1226A44CE00D1A54E /* ProfileIndicatorCell.swift */,
 				3B325EF3226A44EF00D1A54E /* ProfileIndicatorCell.xib */,
+				3BCB113222FA0ACE00F849A0 /* ProfileAvatarTableViewCell.swift */,
+				3BCB113422FA0AEA00F849A0 /* ProfileAvatarTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -991,6 +1106,8 @@
 			children = (
 				3B3FF9EB22AB9D6B002AEF7A /* DiaryTableViewCell.swift */,
 				3B3FF9ED22AB9D7E002AEF7A /* DiaryTableViewCell.xib */,
+				3BFB365F22FE109D005AC730 /* LimitDiaryTableViewCell.swift */,
+				3BFB366122FE10C6005AC730 /* LimitDiaryTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1126,6 +1243,38 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3B77EAF822FADC1600ACD240 /* Chart Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				3B77EAFA22FADC3B00ACD240 /* DateValueFormatter.swift */,
+				3B77EAFC22FADC3B00ACD240 /* DayAxisValueFormatter.swift */,
+				3B77EAF922FADC3B00ACD240 /* IntAxisValueFormatter.swift */,
+				3B77EAFB22FADC3B00ACD240 /* LargeValueFormatter.swift */,
+				3B8D3ABD22FC6F31003257B9 /* MounthAxisValueFormatter.swift */,
+				3B8D3ABF22FC70DE003257B9 /* YearAxisValueFormatter.swift */,
+			);
+			path = "Chart Formatters";
+			sourceTree = "<group>";
+		};
+		3B77EB0122FADD7E00ACD240 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				3B77EB0222FADD8A00ACD240 /* Components */,
+				3B77EAF822FADC1600ACD240 /* Chart Formatters */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		3B77EB0222FADD8A00ACD240 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3B77EB0322FADDC600ACD240 /* BalloonMarker.swift */,
+				3B77EB0422FADDC600ACD240 /* RadarMarkerView.swift */,
+				3B77EB0522FADDC700ACD240 /* XYMarkerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		3B7EB68B22DC6E9300456104 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1143,6 +1292,43 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		3B86364722FF025400520B6B /* CVCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				3B86364922FF02F600520B6B /* CVAuxiliaryView.swift */,
+				3B86365122FF02F600520B6B /* CVCalendarContentPresentationCoordinator.swift */,
+				3B86364F22FF02F600520B6B /* CVCalendarContentViewController.swift */,
+				3B86365222FF02F600520B6B /* CVCalendarDayView.swift */,
+				3B86365822FF02F600520B6B /* CVCalendarDayViewControlCoordinator.swift */,
+				3B86364E22FF02F600520B6B /* CVCalendarManager.swift */,
+				3B86366122FF02F800520B6B /* CVCalendarMenuView.swift */,
+				3B86364822FF02F600520B6B /* CVCalendarMenuViewDelegate.swift */,
+				3B86365B22FF02F700520B6B /* CVCalendarMonthContentViewController.swift */,
+				3B86364B22FF02F600520B6B /* CVCalendarMonthView.swift */,
+				3B86365A22FF02F700520B6B /* CVCalendarTouchController.swift */,
+				3B86365D22FF02F700520B6B /* CVCalendarView.swift */,
+				3B86366422FF02F800520B6B /* CVCalendarViewAnimator.swift */,
+				3B86365922FF02F700520B6B /* CVCalendarViewAnimatorDelegate.swift */,
+				3B86364C22FF02F600520B6B /* CVCalendarViewAppearance.swift */,
+				3B86364A22FF02F600520B6B /* CVCalendarViewAppearanceDelegate.swift */,
+				3B86365322FF02F600520B6B /* CVCalendarViewDelegate.swift */,
+				3B86366222FF02F800520B6B /* CVCalendarViewPresentationMode.swift */,
+				3B86365422FF02F600520B6B /* CVCalendarWeekContentViewController.swift */,
+				3B86364D22FF02F600520B6B /* CVCalendarWeekday.swift */,
+				3B86365722FF02F600520B6B /* CVCalendarWeekView.swift */,
+				3B86365522FF02F600520B6B /* CVDate.swift */,
+				3B86365022FF02F600520B6B /* CVPresent.swift */,
+				3B86365C22FF02F700520B6B /* CVRange.swift */,
+				3B86365E22FF02F700520B6B /* CVScrollDirection.swift */,
+				3B86366022FF02F700520B6B /* CVSelectionType.swift */,
+				3B86366322FF02F800520B6B /* CVSet.swift */,
+				3B86366522FF02F800520B6B /* CVShape.swift */,
+				3B86365622FF02F600520B6B /* CVStatus.swift */,
+				3B86365F22FF02F700520B6B /* CVWeekdaySymbolType.swift */,
+			);
+			path = CVCalendar;
+			sourceTree = "<group>";
+		};
 		3B8AD3FA22DE69870098ABD4 /* Footer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,6 +1336,14 @@
 				3B8AD3FD22DE69C20098ABD4 /* InstructionListFooterView.xib */,
 			);
 			path = Footer;
+			sourceTree = "<group>";
+		};
+		3B8D3AB822FC18AC003257B9 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				3B8D3AB922FC18BE003257B9 /* Date+Configure.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		3B902A8722DC8886002487F5 /* Add */ = {
@@ -1297,6 +1491,41 @@
 				3BA17CF8226E0437008B66EC /* food_list.json */,
 			);
 			path = File;
+			sourceTree = "<group>";
+		};
+		3BAF81B122F9896F00F77231 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				3BAF81BC22F9A56300F77231 /* Model */,
+				3BAF81B422F98A4600F77231 /* Cell */,
+				3BAF81B222F9898700F77231 /* HelpViewController.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		3BAF81B422F98A4600F77231 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BAF81B522F98A5D00F77231 /* HelpTableViewCell.swift */,
+				3BAF81B722F98A7200F77231 /* HelpTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3BAF81B922F9961F00F77231 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				3BAF81BA22F9963300F77231 /* QuestionViewController.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		3BAF81BC22F9A56300F77231 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3BAF81BD22F9A58800F77231 /* HelpModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3BBA076922C0A7BF004BEF3B /* Cell */ = {
@@ -1822,6 +2051,7 @@
 		3BDF6B0D22CC96CC00412D82 /* Premium */ = {
 			isa = PBXGroup;
 			children = (
+				3B08D6002300665A00A12E92 /* Premium Finish */,
 				3BDF6B0E22CC96DA00412D82 /* Views */,
 				F01748CA224A225200E2E646 /* PremiumViewController.swift */,
 			);
@@ -2118,6 +2348,8 @@
 		F01748A4224A157000E2E646 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BAF81B922F9961F00F77231 /* Question */,
+				3BAF81B122F9896F00F77231 /* Help */,
 				3B3B856822F18C8C005E95F3 /* Registration */,
 				3B7EB68B22DC6E9300456104 /* Notifications */,
 				3BDF6B0D22CC96CC00412D82 /* Premium */,
@@ -2274,6 +2506,10 @@
 		F06C3192225CF1CD00FDDC34 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3B86364722FF025400520B6B /* CVCalendar */,
+				3B8D3AB822FC18AC003257B9 /* Date */,
+				3B77EB0122FADD7E00ACD240 /* Chart */,
+				3BE75B7222F870A400226F6E /* DTRuler.swift */,
 				3B9DFBD422EA070500DCCDC2 /* TGPControls */,
 				3BE9013E22E8949B0094EE38 /* RKMultiUnitRuler */,
 				3BF74C7222BE6EED00802238 /* UIButton */,
@@ -2521,6 +2757,7 @@
 				3BC8D06C227CB03100633AF0 /* RecipesHeaderDetailsView.xib in Resources */,
 				3BA17CF9226E0438008B66EC /* food_list.json in Resources */,
 				3B1FBF2722E790CA00243D0C /* UnboardingSlideView.xib in Resources */,
+				3BCB113522FA0AEA00F849A0 /* ProfileAvatarTableViewCell.xib in Resources */,
 				F01748C4224A1ED000E2E646 /* Roboto-BlackItalic.ttf in Resources */,
 				F06C3186225CF05D00FDDC34 /* PagingMainView.xib in Resources */,
 				F0124F92224261BB001B9793 /* Assets.xcassets in Resources */,
@@ -2536,6 +2773,7 @@
 				3B29B96922E9FF2F00CBD64D /* DateOfBirthSelectionCell.xib in Resources */,
 				F02DACA92268CA8C0068F764 /* Profile.storyboard in Resources */,
 				3BBA077622C0C3DE004BEF3B /* AddPortionTableViewCell.xib in Resources */,
+				3BAF81B822F98A7300F77231 /* HelpTableViewCell.xib in Resources */,
 				3B4A33082271BC6F0086F4F1 /* InsertDiaryView.xib in Resources */,
 				3B902A8F22DC8962002487F5 /* AddProductTableViewCell.xib in Resources */,
 				3BE47E5E22F0257600F0BF05 /* Unboarding.storyboard in Resources */,
@@ -2555,6 +2793,7 @@
 				3BDD4D5122DD3A830039CFE2 /* AddProductFourthStepHeaderView.xib in Resources */,
 				F0231C7C224E4B720051DFBA /* Slide.xib in Resources */,
 				3B21BD9F22B80CFF005ADBA8 /* GeneralTabBar.storyboard in Resources */,
+				3BFB366222FE10C6005AC730 /* LimitDiaryTableViewCell.xib in Resources */,
 				3BDD4D4222DCE7D90039CFE2 /* AddProductSecondStepCell.xib in Resources */,
 				3B7EB68A22DC692800456104 /* SFProText-Medium.ttf in Resources */,
 				3BE47E6322F037B800F0BF05 /* RecipeCheckTableViewCell.xib in Resources */,
@@ -2664,6 +2903,7 @@
 				3BDE6A0422E866410078E461 /* QuizDisplayManager.swift in Sources */,
 				3B325EEE226A160200D1A54E /* DailyValuesCell.swift in Sources */,
 				F06C319B225CF25E00FDDC34 /* UIView+Attributes.swift in Sources */,
+				3B86366922FF02F900520B6B /* CVCalendarMonthView.swift in Sources */,
 				F01748AC224A167600E2E646 /* RegestrationViewController.swift in Sources */,
 				3BEEBD6422DDF1BD00721BE4 /* SettingClickedPicker.swift in Sources */,
 				F0C7E4A1225F773C008F0442 /* User.swift in Sources */,
@@ -2674,19 +2914,28 @@
 				3BEA1C6122DCC47600824098 /* AddProductVC+KeyboardExtension.swift in Sources */,
 				3B0D532322F428AB008051BE /* NotificationsListViewController.swift in Sources */,
 				3B3FF9E622AB941A002AEF7A /* DiaryFooterView.swift in Sources */,
+				3B77EAFE22FADC3B00ACD240 /* DateValueFormatter.swift in Sources */,
 				3BCE019222DB5CCC0084EB19 /* UIImagePickerControllerImpl.swift in Sources */,
+				3B86367222FF02F900520B6B /* CVCalendarWeekContentViewController.swift in Sources */,
 				3BD1794E227B58C0009AB320 /* RegistrationUserInfoViewController.swift in Sources */,
+				3B86367722FF02F900520B6B /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				3B0F5211227ECD1500EBBE0F /* Recipe.swift in Sources */,
 				3BDD4D4422DCED5C0039CFE2 /* AddProductSecondStepVC+KeyboardExtension.swift in Sources */,
+				3B86367F22FF02F900520B6B /* CVCalendarMenuView.swift in Sources */,
 				F06FB419225C7CFE00295A92 /* RouterManager.swift in Sources */,
 				F01748AA224A15C200E2E646 /* FirstViewController.swift in Sources */,
+				3B86368122FF02F900520B6B /* CVSet.swift in Sources */,
+				3B86368222FF02F900520B6B /* CVCalendarViewAnimator.swift in Sources */,
 				3BDD4D4022DCE7C70039CFE2 /* AddProductSecondStepCell.swift in Sources */,
 				3B77172922BCD1140089C4BA /* DispatchQueue.swift in Sources */,
 				3BBA076B22C0A7E8004BEF3B /* AddTemplateHeaderCell.swift in Sources */,
+				3B77EB0622FADDC700ACD240 /* BalloonMarker.swift in Sources */,
 				3BBBC0DF22ABB9D400456DEA /* SwipeExpansionStyle.swift in Sources */,
 				3BBBC0D922ABB9D400456DEA /* SwipeCollectionViewCellDelegate.swift in Sources */,
+				3B86366C22FF02F900520B6B /* CVCalendarManager.swift in Sources */,
 				3B0F521E227F5F4A00EBBE0F /* InstructionInsertView.swift in Sources */,
 				3BBBC0D022ABB9D400456DEA /* SwipeTableViewCell+Accessibility.swift in Sources */,
+				3B86366D22FF02F900520B6B /* CVCalendarContentViewController.swift in Sources */,
 				3B0F5219227F59ED00EBBE0F /* IngredientInsertView.swift in Sources */,
 				3B466259226C6A3F0031FD40 /* UserInfo.swift in Sources */,
 				3BE14EB2228022D0007D9C25 /* MealtimeListHeaderView.swift in Sources */,
@@ -2694,10 +2943,12 @@
 				3BBBC0D722ABB9D400456DEA /* SwipeAnimator.swift in Sources */,
 				3BCE755E22B8EB2100025D04 /* AddRecipeTableViewCell.swift in Sources */,
 				3BE9014622E894D50094EE38 /* RKRangeLayer.swift in Sources */,
+				3BCB113322FA0ACE00F849A0 /* ProfileAvatarTableViewCell.swift in Sources */,
 				3B961E70226B8BF90028E8A7 /* EditProfileViewController.swift in Sources */,
 				3B42E0B922BE2C770043C07A /* NSAttributedString+ Size.swift in Sources */,
 				3B1FBF2D22E79AF100243D0C /* SwiftyOnboard.swift in Sources */,
 				3B21BDA122B817FA005ADBA8 /* SearchTabViewController.swift in Sources */,
+				3BAF81BB22F9963300F77231 /* QuestionViewController.swift in Sources */,
 				3BEDAF3D22C0458700F65D4A /* AddTemplateViewController.swift in Sources */,
 				F06FB414225C077400295A92 /* RadioButtonContainerView.swift in Sources */,
 				3B902A8D22DC895C002487F5 /* AddProductTableViewCell.swift in Sources */,
@@ -2705,6 +2956,7 @@
 				3B961E7E226BC87E0028E8A7 /* SettingCell.swift in Sources */,
 				3BCB31EB22C1144E0067A11B /* AddTemplateListCell.swift in Sources */,
 				3B9DFBD922EA072700DCCDC2 /* TGPDiscreteSlider.swift in Sources */,
+				3B86367022FF02F900520B6B /* CVCalendarDayView.swift in Sources */,
 				3BF85CC422DB3D9A009B473D /* EditProfileHeaderView.swift in Sources */,
 				3B21BDA722B81E9C005ADBA8 /* TemplatesTabViewController.swift in Sources */,
 				3BBBC0D822ABB9D400456DEA /* SwipeActionsView.swift in Sources */,
@@ -2723,11 +2975,15 @@
 				F06FB41C225C7D6D00295A92 /* BaseViewController.swift in Sources */,
 				3BC8D06A227CAFF700633AF0 /* RecipesHeaderDetailsView.swift in Sources */,
 				F01748CB224A225200E2E646 /* PremiumViewController.swift in Sources */,
+				3B8D3ABE22FC6F31003257B9 /* MounthAxisValueFormatter.swift in Sources */,
+				3B77EAFF22FADC3B00ACD240 /* LargeValueFormatter.swift in Sources */,
 				3BDD4D4C22DD39E10039CFE2 /* AddProductFourthStepViewController.swift in Sources */,
 				3BDE6A0C22E86F440078E461 /* UICollectionView+ReusableCell.swift in Sources */,
 				3B6CBB45227305D50011E689 /* ChangeRootControllerSegue.swift in Sources */,
+				3B86367122FF02F900520B6B /* CVCalendarViewDelegate.swift in Sources */,
 				3BEEBD6D22DE395B00721BE4 /* UIViewController+Extension.swift in Sources */,
 				3B21BD9922B808C9005ADBA8 /* GeneralTabBarViewController.swift in Sources */,
+				3B86367622FF02F900520B6B /* CVCalendarDayViewControlCoordinator.swift in Sources */,
 				3BCE019522DB74FD0084EB19 /* EditProfileFooterView.swift in Sources */,
 				3BD85F5A22705BBF00109AF4 /* Constant.swift in Sources */,
 				3B3B856A22F18CD6005E95F3 /* RegistrationFlow.swift in Sources */,
@@ -2742,11 +2998,13 @@
 				3BF74C7622BEBBBD00802238 /* SearchTabVC+KeyboardExtension.swift in Sources */,
 				F06FB40B225C076B00295A92 /* CheckboxLineStyle.swift in Sources */,
 				3BE14EBC228061BE007D9C25 /* ArticlesViewController.swift in Sources */,
+				3B77EB0722FADDC700ACD240 /* RadarMarkerView.swift in Sources */,
 				3B83958322E1E4160048164C /* IngredientPickerService.swift in Sources */,
 				3BBBC0D622ABB9D400456DEA /* SwipeFeedback.swift in Sources */,
 				3B325EEC226A151B00D1A54E /* UITableView+ReusableCell.swift in Sources */,
 				F04EF0B7225BD12400A13005 /* RegistrationProfileViewController.swift in Sources */,
 				3BBBC0D222ABB9D400456DEA /* SwipeOptions.swift in Sources */,
+				3B77EB0822FADDC700ACD240 /* XYMarkerView.swift in Sources */,
 				3BC0EC9222DE5498009795F2 /* InstructionListTableCell.swift in Sources */,
 				3BFED2C422DDE81E007E8B98 /* AddRecipeFlow.swift in Sources */,
 				3B77171D22BBE6DB0089C4BA /* IngredientsViewController.swift in Sources */,
@@ -2759,10 +3017,12 @@
 				F06C319E225CF28000FDDC34 /* UITableView + Scroll.swift in Sources */,
 				3BC216A022744451001D9809 /* SwiftGoogleTranslate.swift in Sources */,
 				F06FB401225C076100295A92 /* RadioCheckboxBaseContainer.swift in Sources */,
+				3B86367D22FF02F900520B6B /* CVWeekdaySymbolType.swift in Sources */,
 				3BC8D05A227C2EA100633AF0 /* RecipesCell.swift in Sources */,
 				3BF996672293EA9200782501 /* DiaryClickedPicker.swift in Sources */,
 				3B182AC522AA40F1009EB0F2 /* UIAlertController+Extensions.swift in Sources */,
 				3BA17CF2226DE55C008B66EC /* DesignableUITextField.swift in Sources */,
+				3B86367422FF02F900520B6B /* CVStatus.swift in Sources */,
 				3B9DFBDD22EA21BB00DCCDC2 /* TargetSelectedCell.swift in Sources */,
 				3BC6501222EB66B50002CE9D /* FirstQuizFinishCell.swift in Sources */,
 				3B3913262285DACD0027659E /* UITextField+Attribute.swift in Sources */,
@@ -2774,26 +3034,36 @@
 				3BC0496C22ACE65D00BD5D30 /* MotivationViewController.swift in Sources */,
 				3BDD4D4922DCF8980039CFE2 /* AddProductThirdVC+KeyboardExtension.swift in Sources */,
 				3BDE6A0122E865DF0078E461 /* QuizViewController.swift in Sources */,
+				3B08D6022300667700A12E92 /* PremiumFinishViewController.swift in Sources */,
 				3B46625E226C78260031FD40 /* NotificationManage.swift in Sources */,
 				3B83958522E229AD0048164C /* UIImage+URL.swift in Sources */,
 				3BC0497322ACF5EF00BD5D30 /* MotivationBottomCell.swift in Sources */,
 				3BA17CFB226E1112008B66EC /* Product.swift in Sources */,
+				3B8D3AC022FC70DE003257B9 /* YearAxisValueFormatter.swift in Sources */,
 				3BF74C6D22BE4CD400802238 /* ProductDetailsCell.swift in Sources */,
 				3B23FB7A22A3D5170077EE19 /* SQLDatabase.swift in Sources */,
 				3BDF6B1022CC970A00412D82 /* PremiumSlideView.swift in Sources */,
+				3BAF81B322F9898700F77231 /* HelpViewController.swift in Sources */,
 				3BDFD3C122AFEFCE00178885 /* MLModelHandler.swift in Sources */,
+				3B86367A22FF02F900520B6B /* CVRange.swift in Sources */,
+				3B86367522FF02F900520B6B /* CVCalendarWeekView.swift in Sources */,
 				3B4A33032271924F0086F4F1 /* String+RandomKey.swift in Sources */,
 				3BDA202722EA41C10017158C /* QuizFinishViewController.swift in Sources */,
+				3BAF81B622F98A5D00F77231 /* HelpTableViewCell.swift in Sources */,
 				3B6CBB48227309CA0011E689 /* MenuTabBarItem.swift in Sources */,
 				3B46625C226C71DD0031FD40 /* ComplexityViewController.swift in Sources */,
 				3B6CBB4E22730DE30011E689 /* MenuViewController.swift in Sources */,
 				F06FB412225C077400295A92 /* RadioButtonCircleStyle.swift in Sources */,
 				3BE440BD228C927E00F2BD6A /* RecipesPremiumViewController.swift in Sources */,
+				3B86366E22FF02F900520B6B /* CVPresent.swift in Sources */,
 				3BBBC0CF22ABB9D400456DEA /* SwipeTableViewCellDelegate.swift in Sources */,
 				3BBBC0CC22ABB9D400456DEA /* SwipeActionTransitioning.swift in Sources */,
+				3B86366B22FF02F900520B6B /* CVCalendarWeekday.swift in Sources */,
 				3BE9014F22E896D60094EE38 /* GrowthSelectionCell.swift in Sources */,
+				3BE75B7322F870A400226F6E /* DTRuler.swift in Sources */,
 				3BE9014822E894D50094EE38 /* RKRangeTextView.swift in Sources */,
 				3B0F5223227F98A700EBBE0F /* NutrientsInsertView.swift in Sources */,
+				3B86366F22FF02F900520B6B /* CVCalendarContentPresentationCoordinator.swift in Sources */,
 				F06C318C225CF09B00FDDC34 /* SecondMainCell.swift in Sources */,
 				3B325EF2226A44CE00D1A54E /* ProfileIndicatorCell.swift in Sources */,
 				3BEEBD6B22DE368000721BE4 /* ProductSearchListVC+KeyboardExtension.swift in Sources */,
@@ -2801,19 +3071,23 @@
 				F06C3191225CF12700FDDC34 /* SecondMainViewController.swift in Sources */,
 				3BF85CBF22DB3ADB009B473D /* EditProfileTableViewCell.swift in Sources */,
 				3BE9014722E894D50094EE38 /* RKMultiUnitRuler.swift in Sources */,
+				3B86367922FF02F900520B6B /* CVCalendarMonthContentViewController.swift in Sources */,
 				3B29B96722E9FF2600CBD64D /* DateOfBirthSelectionCell.swift in Sources */,
 				F01748CE224A38FF00E2E646 /* LoginViewController.swift in Sources */,
 				3B9DFBD122EA027200DCCDC2 /* SelectActivityTableViewCell.swift in Sources */,
 				3BA4CD0D22A5818900DB7B7D /* SearchVC+KeyboardExtension.swift in Sources */,
 				3B3FF9EC22AB9D6B002AEF7A /* DiaryTableViewCell.swift in Sources */,
 				F06C3180225CEFF900FDDC34 /* CustomPagingView.swift in Sources */,
+				3B86366A22FF02F900520B6B /* CVCalendarViewAppearance.swift in Sources */,
 				F06C319C225CF25E00FDDC34 /* UIView+Nib.swift in Sources */,
 				3BBBC0D522ABB9D400456DEA /* SwipeTransitionLayout.swift in Sources */,
 				F0124F90224261B9001B9793 /* Fiasy.xcdatamodeld in Sources */,
 				3BCB31F122C139300067A11B /* AddTemplateVC+KeyboardExtension.swift in Sources */,
 				F03E24362251747B00F338CD /* ForgotPasswordViewController.swift in Sources */,
 				3B182AC722AA4152009EB0F2 /* UIView+Extensions.swift in Sources */,
+				3B86366822FF02F900520B6B /* CVCalendarViewAppearanceDelegate.swift in Sources */,
 				3BBBC0D422ABB9D400456DEA /* SwipeTableViewCell+Display.swift in Sources */,
+				3B8D3ABA22FC18BE003257B9 /* Date+Configure.swift in Sources */,
 				3BC8D058227C2DD000633AF0 /* RecipesRow.swift in Sources */,
 				3BE9014A22E894D50094EE38 /* RKRangePointerView.swift in Sources */,
 				3B96DCE422DE9634000DD321 /* AddRecipeCheckInfoViewController.swift in Sources */,
@@ -2822,6 +3096,7 @@
 				3BCE019022DB58BF0084EB19 /* EditProfileClickedPicker.swift in Sources */,
 				3BCAC56422B79331009AF529 /* RecipesSearchHeaderView.swift in Sources */,
 				F0231C7D224E4B720051DFBA /* Slide.swift in Sources */,
+				3B86367322FF02F900520B6B /* CVDate.swift in Sources */,
 				3BDD4D4F22DD3A660039CFE2 /* AddProductFourthStepHeaderView.swift in Sources */,
 				F06FB408225C076B00295A92 /* CheckBoxColor.swift in Sources */,
 				F01748A6224A158A00E2E646 /* TutorialViewController.swift in Sources */,
@@ -2842,6 +3117,8 @@
 				3BE14EB722803725007D9C25 /* RecipeMealtimeCell.swift in Sources */,
 				3B1FBF2522E790C200243D0C /* UnboardingSlideView.swift in Sources */,
 				3BC6500D22EB655A0002CE9D /* QuizFinishDisplayManager.swift in Sources */,
+				3B86367822FF02F900520B6B /* CVCalendarTouchController.swift in Sources */,
+				3B86368322FF02F900520B6B /* CVShape.swift in Sources */,
 				3B1FBF2E22E79AF100243D0C /* SwiftyOnboardPage.swift in Sources */,
 				3B4A33062271BC150086F4F1 /* InsertDiaryView.swift in Sources */,
 				3BCB31E722C107240067A11B /* AddPortionVC+KeyboardExtension.swift in Sources */,
@@ -2850,9 +3127,11 @@
 				3B7EB68E22DC6EAB00456104 /* NotificationsAlertViewController.swift in Sources */,
 				F06C31A2225CF2D800FDDC34 /* UIView+constraints.swift in Sources */,
 				3BC8D064227CA6DF00633AF0 /* RecipesDetailsViewController.swift in Sources */,
+				3BFB366022FE109D005AC730 /* LimitDiaryTableViewCell.swift in Sources */,
 				F04EF0B3225BCC3800A13005 /* PrivacyPolicyViewController.swift in Sources */,
 				F06FB415225C077400295A92 /* RadioButton.swift in Sources */,
 				3B466261226C9FAF0031FD40 /* UIViewController+Background.swift in Sources */,
+				3B86367C22FF02F900520B6B /* CVScrollDirection.swift in Sources */,
 				3B2D31AA22B6B1DA005A59D6 /* RecipesSearchViewController.swift in Sources */,
 				3B96DCE122DE92C7000DD321 /* InstructionListVC+KeyboardExtension.swift in Sources */,
 				3B0D532022F41E86008051BE /* UIViewController+Push.swift in Sources */,
@@ -2860,10 +3139,13 @@
 				3B961E7B226BC4840028E8A7 /* SettingsViewController.swift in Sources */,
 				3BEEBD6622DE155E00721BE4 /* AddRecipeVC+KeyboardExtension.swift in Sources */,
 				F06FB400225C076100295A92 /* RadioCheckboxBaseButton.swift in Sources */,
+				3BAF81BE22F9A58800F77231 /* HelpModel.swift in Sources */,
 				3BCAC56822B798C5009AF529 /* RecipesSearchVC+KeyboardExtension.swift in Sources */,
 				F06FB409225C076B00295A92 /* CheckboxButton.swift in Sources */,
 				F05D0A962273599400E9CAFA /* FrameExtractor.swift in Sources */,
+				3B8D3AC222FC8DD4003257B9 /* ChartsFlow.swift in Sources */,
 				3BBBC0CA22ABB9D400456DEA /* SwipeCollectionViewCell+Accessibility.swift in Sources */,
+				3B86366722FF02F900520B6B /* CVAuxiliaryView.swift in Sources */,
 				3B21BDAA22B81EFA005ADBA8 /* RecipesTabViewController.swift in Sources */,
 				3B182ACA22AA4FBF009EB0F2 /* DiaryDisplayManager.swift in Sources */,
 				F00E6DD02251ED860055179E /* MyViewController.swift in Sources */,
@@ -2881,6 +3163,7 @@
 				F06FB413225C077400295A92 /* RadioButtonColor.swift in Sources */,
 				3B8FF11922E0751D00195CD2 /* FavoritePickerService.swift in Sources */,
 				3BC6500A22EB59240002CE9D /* PremiumQuizViewController.swift in Sources */,
+				3B86367B22FF02F900520B6B /* CVCalendarView.swift in Sources */,
 				3B0D532622F42A0F008051BE /* NotificationsHeaderListCell.swift in Sources */,
 				3BBEDB9C22C2370F00027856 /* CircularProgress.swift in Sources */,
 				3B17BDB02274DE4000007CCE /* String+Attributed.swift in Sources */,
@@ -2896,13 +3179,18 @@
 				3BBBC0DC22ABB9D400456DEA /* Swipeable.swift in Sources */,
 				3B3FF9E422AB9407002AEF7A /* DiaryHeaderView.swift in Sources */,
 				3B9DFBD822EA072700DCCDC2 /* TGPCamelLabels.swift in Sources */,
+				3B86366622FF02F900520B6B /* CVCalendarMenuViewDelegate.swift in Sources */,
+				3B77EAFD22FADC3B00ACD240 /* IntAxisValueFormatter.swift in Sources */,
 				3BBBC0CD22ABB9D400456DEA /* SwipeCollectionViewCell.swift in Sources */,
 				3BD85F572270592100109AF4 /* MealtimeViewController.swift in Sources */,
 				3BEEBD7022DE4A5700721BE4 /* InstructionListViewController.swift in Sources */,
+				3B86368022FF02F900520B6B /* CVCalendarViewPresentationMode.swift in Sources */,
+				3B77EB0022FADC3B00ACD240 /* DayAxisValueFormatter.swift in Sources */,
 				F008CF4B226575E500F94685 /* SearchCell.swift in Sources */,
 				F06C3196225CF21100FDDC34 /* UIFont+AppFont.swift in Sources */,
 				3BBBC0D322ABB9D400456DEA /* SwipeActionButton.swift in Sources */,
 				3BE9014522E894D50094EE38 /* RKRangeScrollView.swift in Sources */,
+				3B86367E22FF02F900520B6B /* CVSelectionType.swift in Sources */,
 				3B961E76226BBCD40028E8A7 /* PhysicalActivityCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import Amplitude_iOS
+import Intercom
 
 class DishDescriptionCell: UITableViewCell {
     
@@ -123,7 +125,7 @@ class DishDescriptionCell: UITableViewCell {
 
     private func insertViewInStackView(stackView: UIStackView, left: String, right: String, isTitle: Bool) {
         guard let view = NutrientsInsertView.fromXib() else { return }
-        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: ownRecipe)
+        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: ownRecipe, delegate: self)
         stackView.addArrangedSubview(view)
     }
 
@@ -247,6 +249,9 @@ class DishDescriptionCell: UITableViewCell {
             let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true, "presentDay" : state] as [String : Any]
             ref.child("USER_LIST").child(uid).child(getTitle()).childByAutoId().setValue(userData)
             
+            Intercom.logEvent(withName: "reciepe_add_success", metaData: ["reciepe_intake" : getTitle()])
+            Amplitude.instance()?.logEvent("reciepe_add_success", withEventProperties: ["reciepe_intake" : getTitle()])
+            
             FirebaseDBManager.reloadItems()
             delegate?.showAnimate()
         }
@@ -265,5 +270,12 @@ class DishDescriptionCell: UITableViewCell {
         default:
             return "snacks"
         }
+    }
+}
+
+extension DishDescriptionCell: PremiumDisplayDelegate {
+    
+    func showPremiumScreen() {
+        delegate?.showPremiumScreen()
     }
 }

@@ -3,6 +3,7 @@ import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
 import Amplitude_iOS
+import Intercom
 
 class RegestrationViewController: UIViewController {
     
@@ -93,22 +94,29 @@ class RegestrationViewController: UIViewController {
             animateView()
             return
         }
+        let email = (allTextFields[0].text ?? "")
 
-        Auth.auth().createUser(withEmail: (allTextFields[0].text ?? ""), password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
+        Auth.auth().createUser(withEmail: email, password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
             guard let strongSelf = self else { return }
             guard let _ = error else {
                 let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
                 if let array = fullNameArr, array.indices.contains(0) {
                     UserInfo.sharedInstance.registrationFlow.firstName = array[0]
                 }
+                UserInfo.sharedInstance.registrationFlow.email = email
                 if let array = fullNameArr, array.indices.contains(1) {
                     UserInfo.sharedInstance.registrationFlow.lastName = array[1]
                 }
                 if let url = user?.photoURL?.absoluteString {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "email"])
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "email"])
                 return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
+            
+            Intercom.logEvent(withName: "registration_error")
+            Amplitude.instance()?.logEvent("registration_error")
             AlertComponent.sharedInctance.showAlertMessage(message: "Такой пользователь уже существует",
                                                           vc: strongSelf)
         }
@@ -154,6 +162,9 @@ class RegestrationViewController: UIViewController {
                 if let url = user?.photoURL?.absoluteString {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
+                UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"])
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"])
                 strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
@@ -185,6 +196,7 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
         }
         let first = user.profile.givenName
         let last = user.profile.familyName
+        let email = user.profile.email
         if let error = error {
             return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
                                             message: error.localizedDescription, vc: self)
@@ -208,6 +220,9 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     if let url = user?.photoURL?.absoluteString {
                         UserInfo.sharedInstance.registrationFlow.photoUrl = url
                     }
+                    UserInfo.sharedInstance.registrationFlow.email = email ?? ""
+                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"])
+                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"])
                     strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })

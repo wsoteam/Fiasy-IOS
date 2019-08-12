@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Intercom
 import FirebaseDatabase
 import Amplitude_iOS
 
@@ -80,7 +81,7 @@ class ProductDetailsCell: UITableViewCell {
     
     private func insertViewInStackView(stackView: UIStackView, left: String, right: String, isTitle: Bool) {
         guard let view = NutrientsInsertView.fromXib() else { return }
-        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: self.isOwnRecipe)
+        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: self.isOwnRecipe, delegate: self)
         stackView.addArrangedSubview(view)
     }
     
@@ -188,6 +189,8 @@ class ProductDetailsCell: UITableViewCell {
                         table.child("fat").setValue(Int(fat))
                         table.child("carbohydrates").setValue(Int(carbohydrates))
                         table.child("calories").setValue(Int(calor ?? 0))
+                        Intercom.logEvent(withName: "edit_food", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
+                        Amplitude.instance()?.logEvent("edit_food", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
                         FirebaseDBManager.reloadItems()
                         UserInfo.sharedInstance.isReload = true
                         delayWithSeconds(1) {
@@ -199,7 +202,8 @@ class ProductDetailsCell: UITableViewCell {
                     }
                 }
             } else {
-                Amplitude.instance().logEvent("attempt_add_food")
+                Intercom.logEvent(withName: "add_food_success", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
+                Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
                 saveButton.showLoading()
                 if let uid = Auth.auth().currentUser?.uid, let date = UserInfo.sharedInstance.selectedDate, let weight = weightTextField.text, let calories = caloriesLabel.text?.replacingOccurrences(of: " Ккал", with: "").replacingOccurrences(of: " = ", with: "") {
                     let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
@@ -287,5 +291,12 @@ extension ProductDetailsCell: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         bottomSeparatorView.backgroundColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
+    }
+}
+
+extension ProductDetailsCell: PremiumDisplayDelegate {
+    
+    func showPremiumScreen() {
+        delegate?.showPremiumScreen()
     }
 }

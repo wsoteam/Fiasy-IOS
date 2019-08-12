@@ -8,13 +8,26 @@
 
 import UIKit
 import Firebase
+import Intercom
 import Amplitude_iOS
 
 class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     
+    // MARK: - Outlet -
+    @IBOutlet weak var closeButton: UIButton!
+    
     // MARK: - Properties -
+    var isAutorization: Bool = true
+    var trialFrom: String = "onboarding"
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
+    }
+    
+    // MARK: - Life cicle -
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        closeButton.isHidden = !isAutorization
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +47,14 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
         DispatchQueue.global().async {
             UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
         }
-        performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
+        performSegue(withIdentifier: "sequeFinishPremiumScreen", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is PremiumFinishViewController {
+            let vc = segue.destination as? PremiumFinishViewController
+            vc?.isAutorization = self.isAutorization
+        }
     }
     
     // MARK: - Action's -
@@ -50,6 +70,8 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func purchedClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "trial_success", metaData: ["trial_from" : trialFrom])
+        Amplitude.instance()?.logEvent("trial_success", withEventProperties: ["trial_from" : trialFrom])
         Amplitude.instance()?.logEvent("click_on_buy")
         SubscriptionService.shared.purchase()
     }

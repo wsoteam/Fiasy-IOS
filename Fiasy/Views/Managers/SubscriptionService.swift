@@ -10,6 +10,7 @@ import UIKit
 import StoreKit
 import Alamofire
 import Amplitude_iOS
+import Intercom
 
 enum ReceiptValidationError: Error {
     case receiptNotFound
@@ -181,10 +182,15 @@ extension SubscriptionService: SKPaymentTransactionObserver {
     
     private func complete(transaction: SKPaymentTransaction) {
         print("complete...")
-        Amplitude.instance().logEvent("buy_prem")
+        Intercom.logEvent(withName: "purchase_success")
+        Amplitude.instance()?.logEvent("purchase_success")
         NotificationCenter.default.post(name: Notification.Name("PaymentComplete"), object: nil)
         deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
+        
+        guard let productToPurchase = products.first else { return }
+        Intercom.logEvent(withName: "revenue", metaData: ["quantuty" : productToPurchase.price])
+        Amplitude.instance()?.logEvent("revenue", withEventProperties: ["quantuty" : productToPurchase.price])
     }
     
     private func restore(transaction: SKPaymentTransaction) {
@@ -200,8 +206,14 @@ extension SubscriptionService: SKPaymentTransactionObserver {
         if let transactionError = transaction.error as NSError?,
             let localizedDescription = transaction.error?.localizedDescription,
             transactionError.code != SKError.paymentCancelled.rawValue {
+            
+            Intercom.logEvent(withName: "purchase_error", metaData: ["purchase_error" : localizedDescription])
+            Amplitude.instance()?.logEvent("question_error", withEventProperties: ["purchase_error" : localizedDescription])
             print("Transaction Error: \(localizedDescription)")
         }
+        Intercom.logEvent(withName: "trial_error")
+        Amplitude.instance()?.logEvent("trial_error")
+    
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     

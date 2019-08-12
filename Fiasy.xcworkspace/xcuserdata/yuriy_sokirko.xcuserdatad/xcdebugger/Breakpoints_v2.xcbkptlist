@@ -118,7 +118,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -260,7 +260,7 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "586441974.647646"
+                  timestampString = "587293351.506413"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
@@ -275,7 +275,7 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "586441974.649328"
+                  timestampString = "587293351.5094661"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
@@ -290,7 +290,7 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "586441974.6512671"
+                  timestampString = "587293351.512386"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
@@ -322,13 +322,93 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fiasy/ViewControllers/Tabs/Recipes/Details/Cells/DishDescriptionCell.swift"
-            timestampString = "586442324.696467"
+            filePath = "Fiasy/ViewControllers/Tabs/Recipes/Details/RecipesDetailsViewController.swift"
+            timestampString = "587231056.037228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "addProductClicked(_:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/CVCalendar/CVCalendar/CVCalendarView.swift"
+            timestampString = "587137339.114484"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "shouldShowWeekdaysOut"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/Helpers/CVCalendar/CVCalendarMonthContentViewController.swift"
+            timestampString = "587141763.009865"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "scrolledRight()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/Helpers/CVCalendar/CVCalendarMonthContentViewController.swift"
+            timestampString = "587141763.010379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "scrolledRight()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/Helpers/CVCalendar/CVCalendarMonthContentViewController.swift"
+            timestampString = "587141763.010728"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/Views/Managers/FirebaseDBManager.swift"
+            timestampString = "587293149.422794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "saveUserInDataBase(_:firstName:lastName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

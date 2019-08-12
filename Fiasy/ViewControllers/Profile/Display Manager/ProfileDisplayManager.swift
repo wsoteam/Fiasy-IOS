@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol ProfileDisplayDelegate {
+    func arrowButtonClicked(indexPath: IndexPath)
+}
+
 protocol ProfileDelegate {
-    func showComplexityScreen()
     func editProfile()
+    func showComplexityScreen()
 }
 
 class ProfileDisplayManager: NSObject {
@@ -18,9 +22,10 @@ class ProfileDisplayManager: NSObject {
     // MARK: - Properties -
     private let tableView: UITableView
     private let delegate: ProfileDelegate
+    private var isArrowSelected: Bool = false
     
     // MARK: - Interface -
-    init(tableView: UITableView, delegate: ProfileDelegate) {
+    init(_ tableView: UITableView, _ delegate: ProfileDelegate) {
         self.delegate = delegate
         self.tableView = tableView
         super.init()
@@ -28,14 +33,16 @@ class ProfileDisplayManager: NSObject {
     }
     
     func reloadCells() {
-        tableView.reloadData()
+        tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
     }
     
     private func setupTableView() {
-        tableView.register(type: DailyValuesCell.self)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        tableView.register(type: ProfileAvatarTableViewCell.self)
         tableView.register(type: ProfileIndicatorCell.self)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.reloadData()
     }
 }
 
@@ -47,13 +54,27 @@ extension ProfileDisplayManager: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DailyValuesCell") as? DailyValuesCell else { fatalError() }
-            cell.fillCell(calories: "\(UserInfo.sharedInstance.currentUser?.maxKcal ?? 0)", waters: "\(UserInfo.sharedInstance.currentUser?.waterCount ?? 0) мл")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileAvatarTableViewCell") as? ProfileAvatarTableViewCell else { fatalError() }
+            cell.fillCell(delegate: self, indexCell: indexPath, state: isArrowSelected)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileIndicatorCell") as? ProfileIndicatorCell else { fatalError() }
-            cell.fillCell(delegate: delegate)
+            cell.fillCell()
+            //cell.fillCell(delegate: delegate)
             return cell
         }
+    }
+}
+
+extension ProfileDisplayManager: ProfileDisplayDelegate {
+    
+    func arrowButtonClicked(indexPath: IndexPath) {
+        isArrowSelected = !isArrowSelected
+        self.tableView.beginUpdates()
+//        if let cell = tableView.cellForRow(at: indexPath) as? ProfileAvatarTableViewCell {
+//            cell.bottomContainerView.isHidden = !state
+//        }
+        self.tableView.endUpdates()
+        self.tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

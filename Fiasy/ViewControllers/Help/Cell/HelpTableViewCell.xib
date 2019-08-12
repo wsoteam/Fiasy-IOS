@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Medium.ttf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="90" id="hBh-zp-vFD" customClass="HelpTableViewCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hBh-zp-vFD" id="4zd-gk-aKj">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzE-wA-YGI">
+                        <rect key="frame" x="20" y="20" width="345" height="49.5"/>
+                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="wR7-hI-zmP">
+                        <rect key="frame" x="380" y="35.5" width="19" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="wR7-hI-zmP" secondAttribute="height" multiplier="1:1" id="xpB-OZ-Jcx"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-TV-6gg">
+                        <rect key="frame" x="0.0" y="88.5" width="414" height="1"/>
+                        <color key="backgroundColor" red="0.92146831750869751" green="0.92162638902664185" blue="0.92145842313766479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="WA1-bT-zvW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RzE-wA-YGI" firstAttribute="top" secondItem="4zd-gk-aKj" secondAttribute="top" constant="20" id="0gW-lv-frx"/>
+                    <constraint firstItem="RzE-wA-YGI" firstAttribute="trailing" secondItem="wR7-hI-zmP" secondAttribute="leading" constant="-15" id="65l-Mm-67S"/>
+                    <constraint firstItem="mD4-TV-6gg" firstAttribute="leading" secondItem="4zd-gk-aKj" secondAttribute="leading" id="DjQ-GJ-0zk"/>
+                    <constraint firstAttribute="trailing" secondItem="mD4-TV-6gg" secondAttribute="trailing" id="KNX-Wc-0ez"/>
+                    <constraint firstAttribute="bottom" secondItem="mD4-TV-6gg" secondAttribute="bottom" id="KoS-d9-1dZ"/>
+                    <constraint firstItem="RzE-wA-YGI" firstAttribute="leading" secondItem="4zd-gk-aKj" secondAttribute="leading" constant="20" id="Rmq-zv-6uz"/>
+                    <constraint firstAttribute="trailing" secondItem="wR7-hI-zmP" secondAttribute="trailing" constant="15" id="URo-bb-gqd"/>
+                    <constraint firstItem="wR7-hI-zmP" firstAttribute="centerY" secondItem="4zd-gk-aKj" secondAttribute="centerY" id="ygh-4Y-YdP"/>
+                    <constraint firstAttribute="bottom" secondItem="RzE-wA-YGI" secondAttribute="bottom" constant="20" id="zWZ-Hf-nWy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="separatorLeading" destination="DjQ-GJ-0zk" id="BEJ-7i-M4B"/>
+                <outlet property="titleLabel" destination="RzE-wA-YGI" id="Z1i-C3-dlR"/>
+            </connections>
+            <point key="canvasLocation" x="-120.28985507246378" y="42.857142857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="gray_arrow" width="9" height="19"/>
+    </resources>
+</document>

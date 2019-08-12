@@ -46,6 +46,9 @@
                             <constraint firstItem="9QT-6L-amz" firstAttribute="centerY" secondItem="nIT-hg-pnx" secondAttribute="centerY" id="Yxo-S0-5t0"/>
                         </constraints>
                     </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Для расчета мы используем" translatesAutoresizingMaskIntoConstraints="NO" id="JOL-HD-FeB">
+                        <rect key="frame" x="128" y="40" width="177.00000000000006" height="81"/>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -55,8 +58,11 @@
                 <constraint firstItem="Hkt-9F-gbQ" firstAttribute="width" secondItem="9Vf-wa-87s" secondAttribute="width" multiplier="0.4" id="CD8-9u-g2d"/>
                 <constraint firstItem="nIT-hg-pnx" firstAttribute="centerY" secondItem="kO2-WM-h3B" secondAttribute="centerY" id="CSf-Op-WCG"/>
                 <constraint firstItem="kO2-WM-h3B" firstAttribute="leading" secondItem="9Vf-wa-87s" secondAttribute="leading" id="KgK-nL-8cT"/>
+                <constraint firstAttribute="trailing" secondItem="JOL-HD-FeB" secondAttribute="trailing" constant="15" id="NX5-LO-Ff3"/>
+                <constraint firstItem="JOL-HD-FeB" firstAttribute="top" secondItem="Hkt-9F-gbQ" secondAttribute="top" constant="40" id="O2L-fP-pm9"/>
                 <constraint firstItem="Hkt-9F-gbQ" firstAttribute="top" secondItem="9Vf-wa-87s" secondAttribute="top" id="gn7-Tb-JVq"/>
                 <constraint firstAttribute="trailing" secondItem="nIT-hg-pnx" secondAttribute="trailing" id="nAb-MM-1hf"/>
+                <constraint firstItem="JOL-HD-FeB" firstAttribute="leading" secondItem="Hkt-9F-gbQ" secondAttribute="trailing" id="qeL-Jd-YuW"/>
                 <constraint firstItem="nIT-hg-pnx" firstAttribute="leading" secondItem="Hkt-9F-gbQ" secondAttribute="trailing" id="wxt-rd-lfH"/>
             </constraints>
             <size key="customSize" width="410" height="468"/>
@@ -70,5 +76,6 @@
     </objects>
     <resources>
         <image name="Vector (10)" width="129" height="20"/>
+        <image name="Для расчета мы используем" width="239" height="81"/>
     </resources>
 </document>

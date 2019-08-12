@@ -14,6 +14,12 @@ class MenuViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let controllers = self.viewControllers {
+            for navViewController in controllers {
+                _ = navViewController.children[0].view
+            }
+        }
+        
         tabBar.isTranslucent = false
         UITabBar.appearance().tintColor = UIColor(red: 211/255.0, green: 143/255.0, blue: 68/255.0, alpha: 1.0)
         

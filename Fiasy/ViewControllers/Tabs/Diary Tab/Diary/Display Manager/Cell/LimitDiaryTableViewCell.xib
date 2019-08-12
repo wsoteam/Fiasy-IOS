@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+        <array key="SFProText-Medium.ttf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="291" id="xrY-KA-1TX" customClass="LimitDiaryTableViewCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="291"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xrY-KA-1TX" id="KEw-sS-s81">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="290.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hN-gk-5em">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="290.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="H5b-IL-q1X">
+                                <rect key="frame" x="20" y="0.0" width="374" height="290.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-Il-wrC">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="154"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Калории" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiV-ZR-OOx">
+                                                <rect key="frame" x="0.0" y="20" width="374" height="46"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                                <color key="textColor" red="0.45484954119999998" green="0.45493203399999999" blue="0.45484441520000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dDP-U5-tLl">
+                                                <rect key="frame" x="0.0" y="86" width="374" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Съеденно" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-dg-n4h">
+                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="WGz-sa-SHQ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                                        <color key="textColor" red="0.63522326946258545" green="0.63533496856689453" blue="0.63521629571914673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-xM-XVH">
+                                                        <rect key="frame" x="197" y="0.0" width="177" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="6cp-aP-t52"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                                        <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="yXr-Jz-mWx">
+                                                <rect key="frame" x="0.0" y="116" width="374" height="9"/>
+                                                <color key="backgroundColor" red="0.1235194579" green="0.33828291300000002" blue="0.31848588589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="8" id="F2i-ic-KWA"/>
+                                                </constraints>
+                                                <color key="progressTintColor" red="0.94206541779999997" green="0.68404620890000001" blue="0.44675540920000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="trackTintColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </progressView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gku-No-OVd">
+                                                <rect key="frame" x="0.0" y="134" width="374" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vpE-0D-XZh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="NSC-mU-XPQ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyh-d0-JRT">
+                                                        <rect key="frame" x="197" y="0.0" width="177" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="ild-BA-iSi"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                                        <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Gku-No-OVd" firstAttribute="leading" secondItem="cYc-Il-wrC" secondAttribute="leading" id="0VE-B7-Fi9"/>
+                                            <constraint firstItem="dDP-U5-tLl" firstAttribute="leading" secondItem="cYc-Il-wrC" secondAttribute="leading" id="1QB-ui-eA4"/>
+                                            <constraint firstItem="dDP-U5-tLl" firstAttribute="top" secondItem="SiV-ZR-OOx" secondAttribute="bottom" constant="20" id="6p3-Dv-O5e"/>
+                                            <constraint firstAttribute="trailing" secondItem="yXr-Jz-mWx" secondAttribute="trailing" id="IB9-GC-gCs"/>
+                                            <constraint firstItem="SiV-ZR-OOx" firstAttribute="leading" secondItem="cYc-Il-wrC" secondAttribute="leading" id="IDo-aZ-Zlq"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gku-No-OVd" secondAttribute="trailing" id="Q83-S5-BHk"/>
+                                            <constraint firstItem="yXr-Jz-mWx" firstAttribute="leading" secondItem="cYc-Il-wrC" secondAttribute="leading" id="RBe-NA-eiv"/>
+                                            <constraint firstAttribute="trailing" secondItem="dDP-U5-tLl" secondAttribute="trailing" id="SWs-HR-1IN"/>
+                                            <constraint firstAttribute="trailing" secondItem="SiV-ZR-OOx" secondAttribute="trailing" id="Wtm-FA-uGY"/>
+                                            <constraint firstItem="dDP-U5-tLl" firstAttribute="bottom" secondItem="yXr-Jz-mWx" secondAttribute="top" constant="-10" id="isO-eU-u79"/>
+                                            <constraint firstItem="yXr-Jz-mWx" firstAttribute="bottom" secondItem="Gku-No-OVd" secondAttribute="top" constant="-10" id="pdT-8d-SV6"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gku-No-OVd" secondAttribute="bottom" id="qGw-iU-Luw"/>
+                                            <constraint firstItem="SiV-ZR-OOx" firstAttribute="top" secondItem="cYc-Il-wrC" secondAttribute="top" constant="20" id="xzW-rL-Gan"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6fU-cD-gOK">
+                                        <rect key="frame" x="0.0" y="174" width="374" height="116.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MF5-ei-RM1">
+                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="116.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки (г)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vyR-0f-tfz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="AwD-J4-vf9"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                                        <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="ijh-UI-rlg">
+                                                        <rect key="frame" x="0.0" y="28" width="111.5" height="9"/>
+                                                        <color key="backgroundColor" red="0.1235194579" green="0.33828291300000002" blue="0.31848588589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="8" id="NA9-hQ-5Iz"/>
+                                                        </constraints>
+                                                        <color key="progressTintColor" red="0.94206541779999997" green="0.68404620890000001" blue="0.44675540920000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="trackTintColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </progressView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-Va-buy">
+                                                        <rect key="frame" x="0.0" y="44" width="111.5" height="72.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iJ5-Mf-k7l">
+                                                <rect key="frame" x="131.5" y="0.0" width="111" height="116.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Углеводы (г)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="txT-nA-sk7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="111" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="f3M-Zm-vvt"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                                        <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.34000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="utr-HI-sI7">
+                                                        <rect key="frame" x="0.0" y="28" width="111" height="9"/>
+                                                        <color key="backgroundColor" red="0.1235194579" green="0.33828291300000002" blue="0.31848588589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="8" id="Ead-sA-vZe"/>
+                                                        </constraints>
+                                                        <color key="progressTintColor" red="0.94206541779999997" green="0.68404620890000001" blue="0.44675540920000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="trackTintColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </progressView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gjx-ae-b5c">
+                                                        <rect key="frame" x="0.0" y="44" width="111" height="72.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-TT-MSb">
+                                                <rect key="frame" x="262.5" y="0.0" width="111.5" height="116.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жиры (г)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xtd-Zw-8bY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="8XW-Yn-W9j"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                                        <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="61h-vV-xwS">
+                                                        <rect key="frame" x="0.0" y="28" width="111.5" height="9"/>
+                                                        <color key="backgroundColor" red="0.1235194579" green="0.33828291300000002" blue="0.31848588589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="8" id="LjB-Fb-oBc"/>
+                                                        </constraints>
+                                                        <color key="progressTintColor" red="0.94206541776657104" green="0.68404620885848999" blue="0.44675540924072266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="trackTintColor" red="0.92146831750869751" green="0.92162638902664185" blue="0.92145842313766479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </progressView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iYG-Ya-Znv">
+                                                        <rect key="frame" x="0.0" y="44" width="111.5" height="72.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="H5b-IL-q1X" firstAttribute="leading" secondItem="2hN-gk-5em" secondAttribute="leading" constant="20" id="0QH-q5-15G"/>
+                            <constraint firstAttribute="trailing" secondItem="H5b-IL-q1X" secondAttribute="trailing" constant="20" id="J41-z8-Im3"/>
+                            <constraint firstAttribute="bottom" secondItem="H5b-IL-q1X" secondAttribute="bottom" id="duR-hd-0me"/>
+                            <constraint firstItem="H5b-IL-q1X" firstAttribute="top" secondItem="2hN-gk-5em" secondAttribute="top" id="fcr-4Z-E0Q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="2hN-gk-5em" secondAttribute="bottom" id="1Xh-GM-Uym"/>
+                    <constraint firstItem="2hN-gk-5em" firstAttribute="top" secondItem="KEw-sS-s81" secondAttribute="top" id="2id-qZ-bMq"/>
+                    <constraint firstItem="2hN-gk-5em" firstAttribute="leading" secondItem="KEw-sS-s81" secondAttribute="leading" id="FwQ-pc-3YP"/>
+                    <constraint firstAttribute="trailing" secondItem="2hN-gk-5em" secondAttribute="trailing" id="V05-G3-GsU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="caloriesProgress" destination="yXr-Jz-mWx" id="0O5-SB-JMJ"/>
+                <outlet property="carbohydratesCountLabel" destination="Gjx-ae-b5c" id="bIo-Tx-Zwq"/>
+                <outlet property="carbohydratesProgress" destination="utr-HI-sI7" id="9gk-h2-aeL"/>
+                <outlet property="eatenLabel" destination="vpE-0D-XZh" id="Y90-HU-qN3"/>
+                <outlet property="endedLabel" destination="7GY-xM-XVH" id="hTs-DE-lQT"/>
+                <outlet property="fatCountLabel" destination="iYG-Ya-Znv" id="TJH-gh-mMp"/>
+                <outlet property="fatProgress" destination="61h-vV-xwS" id="1Du-Ja-Ifm"/>
+                <outlet property="leftCaloriesLabel" destination="Pyh-d0-JRT" id="qHc-4i-AIv"/>
+                <outlet property="proteinLabel" destination="uCa-Va-buy" id="shH-yJ-seC"/>
+                <outlet property="proteinProgress" destination="ijh-UI-rlg" id="OOj-Sp-6r8"/>
+                <outlet property="targetLabel" destination="SiV-ZR-OOx" id="Rdh-kf-Ux5"/>
+            </connections>
+            <point key="canvasLocation" x="-114.49275362318842" y="45.870535714285715"/>
+        </tableViewCell>
+    </objects>
+</document>

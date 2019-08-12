@@ -64,7 +64,7 @@ extension Date {
     func getWeekDates() -> [Date] {
         var arrThisWeek: [Date] = []
         var calendar = Calendar.current
-        calendar.timeZone = TimeZone.ReferenceType.default
+        calendar.timeZone = NSTimeZone(name: "GMT")! as TimeZone
         for i in 0..<7 {
             arrThisWeek.append(calendar.date(byAdding: .day, value: i, to: startOfWeek)!)
         }
@@ -80,9 +80,15 @@ extension Date {
     
     var startOfWeek: Date {
         var calendar = Calendar.current
-        calendar.timeZone = TimeZone.ReferenceType.default
+        calendar.timeZone = NSTimeZone(name: "GMT")! as TimeZone
         let sunday = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
         return calendar.date(byAdding: .day, value: 0, to: sunday!)!
+    }
+    
+    var endOfWeek: Date? {
+        let gregorian = Calendar.current
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 7, to: sunday)
     }
     
     func toDate(format: String) -> String {

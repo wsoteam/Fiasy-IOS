@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import Amplitude_iOS
+import Intercom
 
 class AddRecipeCheckInfoViewController: UIViewController {
     
@@ -142,6 +144,8 @@ class AddRecipeCheckInfoViewController: UIViewController {
                                     ref.child("USER_LIST").child(uid).child("customRecipes").childByAutoId().setValue(userData)
                                 }
                                 UserInfo.sharedInstance.reloadRecipesScreen = true
+                                Intercom.logEvent(withName: "custom_reciepe_success")
+                                Amplitude.instance()?.logEvent("custom_reciepe_success")
                                 self.popBack(5)
                             }
                         }
@@ -159,6 +163,8 @@ class AddRecipeCheckInfoViewController: UIViewController {
                     ref.child("USER_LIST").child(uid).child("customRecipes").childByAutoId().setValue(userData)
                 }
                 UserInfo.sharedInstance.reloadRecipesScreen = true
+                Intercom.logEvent(withName: "custom_reciepe_success")
+                Amplitude.instance()?.logEvent("custom_reciepe_success")
                 popBack(5)
             }
         }

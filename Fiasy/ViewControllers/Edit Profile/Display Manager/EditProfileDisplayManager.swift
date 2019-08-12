@@ -81,9 +81,20 @@ class EditProfileDisplayManager: NSObject {
     }
     
     private func saveFields() {
-        if allFields[0].isEmpty {
+        var firstName: String = ""
+        let fullNameArr = allFields[0].split{$0 == " "}.map(String.init)
+        for item in fullNameArr where !item.isEmpty {
+            firstName = firstName.isEmpty ? item : firstName + " \(item)"
+        }
+        var lastName: String = ""
+        let fullNameLastArr = allFields[0].split{$0 == " "}.map(String.init)
+        for item in fullNameLastArr where !item.isEmpty {
+            lastName = lastName.isEmpty ? item : lastName + " \(item)"
+        }
+        
+        if firstName.isEmpty {
             delegate.showAlert(message: "Введите вашe имя")
-        } else if allFields[1].isEmpty {
+        } else if lastName.isEmpty {
             delegate.showAlert(message: "Введите вашу фамилию")
         } else if allFields[2].isEmpty {
             delegate.showAlert(message: "Введите вашу почту")
@@ -106,7 +117,7 @@ class EditProfileDisplayManager: NSObject {
         guard let age = Int(allFields[3]), !allFields[3].hasSpecialCharacters(), age <= 200 && age >= 12, age != 0 else {
             return delegate.showAlert(message: "Проверьте ваш возраст")
         }
-        guard let weight = Int(allFields[4]), !allFields[4].hasSpecialCharacters(), weight <= 500, weight != 0 else {
+        guard let weight = Double(allFields[4]), weight <= 200.0 && weight > 30.0 else {
             return delegate.showAlert(message: "Проверьте введенный вес")
         }
         guard let growth = Int(allFields[5]), !allFields[5].hasSpecialCharacters(), growth <= 300 && growth >= 100, growth != 0 else {
@@ -115,8 +126,8 @@ class EditProfileDisplayManager: NSObject {
         
         let ref = Database.database().reference()
         if let uid = Auth.auth().currentUser?.uid {
-            ref.child("USER_LIST").child(uid).child("profile").child("firstName").setValue(allFields[0])
-            ref.child("USER_LIST").child(uid).child("profile").child("lastName").setValue(allFields[1])
+            ref.child("USER_LIST").child(uid).child("profile").child("firstName").setValue(firstName)
+            ref.child("USER_LIST").child(uid).child("profile").child("lastName").setValue(lastName)
             ref.child("USER_LIST").child(uid).child("profile").child("email").setValue(allFields[2])
             ref.child("USER_LIST").child(uid).child("profile").child("age").setValue(age)
             ref.child("USER_LIST").child(uid).child("profile").child("height").setValue(growth)

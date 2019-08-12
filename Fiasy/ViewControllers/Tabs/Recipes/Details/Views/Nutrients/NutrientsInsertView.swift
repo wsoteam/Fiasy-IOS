@@ -15,9 +15,14 @@ class NutrientsInsertView: UIView {
     @IBOutlet weak var topSeparatorView: UIView!
     @IBOutlet weak var leftSideLabel: UILabel!
     @IBOutlet weak var rightSideLabel: UILabel!
+    
+    //MARK: - Properties -
+    private var delegate: PremiumDisplayDelegate?
 
-    //MARK: - Interface -
-    func fillView(leftName: String, rightName: String, isTitle: Bool, isOwn: Bool) {
+    // MARK: - Interface -
+    func fillView(leftName: String, rightName: String, isTitle: Bool, isOwn: Bool, delegate: PremiumDisplayDelegate?) {
+        
+        self.delegate = delegate
         
         topSeparatorView.isHidden = !isTitle
         
@@ -36,5 +41,10 @@ class NutrientsInsertView: UIView {
                 premiumViewContainer.isHidden = UserInfo.sharedInstance.purchaseIsValid
             }
         }
+    }
+    
+    // MARK: - Actions -
+    @IBAction func premiumClicked(_ sender: Any) {
+        delegate?.showPremiumScreen()
     }
 }

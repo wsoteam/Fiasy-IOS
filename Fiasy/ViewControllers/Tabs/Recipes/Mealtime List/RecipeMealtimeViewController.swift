@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Intercom
 import Amplitude_iOS
+import Intercom
 
 protocol RecipeMealtimeDelegate {
     func showMealtimeDetails()
@@ -31,7 +33,9 @@ class RecipeMealtimeViewController: UIViewController {
         
         setupTableView()
         navigationTitleLabel.text = UserInfo.sharedInstance.selectedMealtimeHeaderTitle
-        Amplitude.instance().logEvent("view_group_recipes")
+        let text = UserInfo.sharedInstance.getAmplitudeTitle(text: UserInfo.sharedInstance.selectedMealtimeHeaderTitle)
+        Intercom.logEvent(withName: "reciepe_category", metaData: ["reciepe_category" : text])
+        Amplitude.instance()?.logEvent("reciepe_category", withEventProperties: ["reciepe_category" : text])
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -277,20 +277,25 @@
 			<key>orderHint</key>
 			<integer>46</integer>
 		</dict>
-		<key>VisualEffectView.xcscheme_^#shared#^_</key>
+		<key>UITextView+Placeholder.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>47</integer>
 		</dict>
+		<key>VisualEffectView.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>48</integer>
+		</dict>
 		<key>XLPagerTabStrip-XLPagerTabStrip.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>49</integer>
+			<integer>50</integer>
 		</dict>
 		<key>XLPagerTabStrip.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>49</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>

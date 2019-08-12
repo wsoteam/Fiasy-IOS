@@ -2,6 +2,8 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
+import Intercom
+import Amplitude_iOS
 
 class FirstViewController: UIViewController {
     
@@ -66,6 +68,9 @@ class FirstViewController: UIViewController {
                 if let url = user?.photoURL?.absoluteString {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
+                UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"])
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"])
                 strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
@@ -86,6 +91,7 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
         }
         let first = user.profile.givenName
         let last = user.profile.familyName
+        let email = user.profile.email
         if let error = error {
             return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
                                                          message: error.localizedDescription,
@@ -109,6 +115,9 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     if let url = user?.photoURL?.absoluteString {
                         UserInfo.sharedInstance.registrationFlow.photoUrl = url
                     }
+                    UserInfo.sharedInstance.registrationFlow.email = email ?? ""
+                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"])
+                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"])
                     self.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })

@@ -42,7 +42,7 @@ enum TargetType: String {
 }
 
 class UserInfo {
-    
+
     static var sharedInstance = UserInfo()
     internal var complition: (() -> Void)?
     
@@ -275,6 +275,21 @@ class UserInfo {
             return "Перекус"
         default:
             return "Завтрак"
+        }
+    }
+    
+    func getAmplitudeTitle(text: String) -> String {
+        switch text {
+        case "Завтрак":
+            return "breakfasts"
+        case "Обед":
+            return "lunches"
+        case "Ужин":
+            return "dinners"
+        case "Перекус":
+            return "snacks"
+        default:
+            return "snacks"
         }
     }
     

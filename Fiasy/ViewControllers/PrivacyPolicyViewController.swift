@@ -1,4 +1,6 @@
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class PrivacyPolicyViewController: UIViewController {
     
@@ -13,6 +15,8 @@ class PrivacyPolicyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Intercom.logEvent(withName: "registration_privacy")
+        Amplitude.instance().logEvent("registration_privacy")
         textView.setContentOffset(.zero, animated: false)
         textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }

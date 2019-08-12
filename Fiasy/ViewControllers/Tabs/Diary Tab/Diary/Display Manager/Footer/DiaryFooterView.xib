@@ -8,73 +8,22 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="YdE-jI-xQi" customClass="DiaryFooterView" customModule="Fiasy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HA1-QK-TOh">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KOw-BY-TIH">
-                            <rect key="frame" x="8" y="0.0" width="398" height="20"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4x-dV-2US">
-                                    <rect key="frame" x="0.0" y="0.0" width="96" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="lli-JW-9IV"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8L-JU-HRw">
-                                    <rect key="frame" x="101" y="0.0" width="95.5" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="Hqh-Mm-Peo"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2L8-fP-TKG">
-                                    <rect key="frame" x="201.5" y="0.0" width="96" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="OLk-4x-zh8"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwX-4L-jMn">
-                                    <rect key="frame" x="302.5" y="0.0" width="95.5" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="L5w-xi-HYc"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                        </stackView>
-                    </subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aja-dd-HxD" userLabel="bottomShadow">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="14"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="KOw-BY-TIH" firstAttribute="leading" secondItem="HA1-QK-TOh" secondAttribute="leading" constant="8" id="43a-dr-34s"/>
-                        <constraint firstAttribute="trailing" secondItem="KOw-BY-TIH" secondAttribute="trailing" constant="8" id="Qyc-UQ-gGl"/>
-                        <constraint firstItem="KOw-BY-TIH" firstAttribute="top" secondItem="HA1-QK-TOh" secondAttribute="top" id="gPV-sL-ZPE"/>
-                        <constraint firstAttribute="bottom" secondItem="KOw-BY-TIH" secondAttribute="bottom" id="jlQ-Jk-7Uc"/>
+                        <constraint firstAttribute="height" constant="14" id="Vg8-5O-FWa"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
-                            <real key="value" value="3"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="size" keyPath="IBshadowOffset">
                             <size key="value" width="0.0" height="2"/>
@@ -82,41 +31,35 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="IBshadowOpacity">
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
-                            <color key="value" red="0.90186244249343872" green="0.90201741456985474" blue="0.90185278654098511" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="IBborderColor">
+                            <color key="value" red="0.82768040600000004" green="0.82768040600000004" blue="0.82768040600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="IBshadowRadius">
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
+                            <color key="value" red="0.86657208200000002" green="0.86672115329999999" blue="0.86656266449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtV-TR-SVX">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
-                    <color key="backgroundColor" red="0.7058361769" green="0.69874370100000005" blue="0.65677124259999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="cOl-rh-1JN"/>
-                    </constraints>
+                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bn-cB-ngV">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="W9n-pw-UYa" firstAttribute="trailing" secondItem="HA1-QK-TOh" secondAttribute="trailing" id="64S-Kr-HWt"/>
-                <constraint firstItem="W9n-pw-UYa" firstAttribute="bottom" secondItem="HA1-QK-TOh" secondAttribute="bottom" constant="20" id="8mC-Az-BnC"/>
-                <constraint firstItem="HA1-QK-TOh" firstAttribute="top" secondItem="W9n-pw-UYa" secondAttribute="top" id="AeA-IW-KLk"/>
-                <constraint firstItem="PtV-TR-SVX" firstAttribute="top" secondItem="W9n-pw-UYa" secondAttribute="top" id="JTF-xe-tnq"/>
-                <constraint firstItem="W9n-pw-UYa" firstAttribute="trailing" secondItem="PtV-TR-SVX" secondAttribute="trailing" id="gm8-5f-sUq"/>
-                <constraint firstItem="HA1-QK-TOh" firstAttribute="leading" secondItem="W9n-pw-UYa" secondAttribute="leading" id="hlL-C0-j8J"/>
-                <constraint firstItem="PtV-TR-SVX" firstAttribute="leading" secondItem="W9n-pw-UYa" secondAttribute="leading" id="shN-iT-vm6"/>
+                <constraint firstItem="W9n-pw-UYa" firstAttribute="trailing" secondItem="8Bn-cB-ngV" secondAttribute="trailing" id="7yi-1i-Jud"/>
+                <constraint firstItem="8Bn-cB-ngV" firstAttribute="bottom" secondItem="W9n-pw-UYa" secondAttribute="bottom" constant="-10" id="9ob-5t-PZh"/>
+                <constraint firstItem="W9n-pw-UYa" firstAttribute="trailing" secondItem="aja-dd-HxD" secondAttribute="trailing" id="U20-2M-NeV"/>
+                <constraint firstItem="8Bn-cB-ngV" firstAttribute="leading" secondItem="W9n-pw-UYa" secondAttribute="leading" id="Z1I-Q2-G0y"/>
+                <constraint firstItem="W9n-pw-UYa" firstAttribute="top" secondItem="8Bn-cB-ngV" secondAttribute="top" id="bYr-00-Mln"/>
+                <constraint firstItem="aja-dd-HxD" firstAttribute="top" secondItem="W9n-pw-UYa" secondAttribute="top" id="iHY-v2-LMR"/>
+                <constraint firstItem="aja-dd-HxD" firstAttribute="leading" secondItem="W9n-pw-UYa" secondAttribute="leading" id="vL5-wb-AX5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="W9n-pw-UYa"/>
-            <connections>
-                <outlet property="caloriesCount" destination="pwX-4L-jMn" id="hrW-PO-CkC"/>
-                <outlet property="carbohydratesCount" destination="2L8-fP-TKG" id="6PU-EQ-Mil"/>
-                <outlet property="fatCount" destination="f8L-JU-HRw" id="sdF-Ts-REj"/>
-                <outlet property="proteinCount" destination="o4x-dV-2US" id="wzO-vS-oH2"/>
-            </connections>
-            <point key="canvasLocation" x="136.875" y="-286.26760563380282"/>
+            <point key="canvasLocation" x="136.875" y="-246.6549295774648"/>
         </view>
     </objects>
 </document>

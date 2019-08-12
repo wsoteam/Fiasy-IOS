@@ -10,17 +10,17 @@ import UIKit
 
 class DailyValuesCell: UITableViewCell {
     
-    //MARK: - IBOutlet's -
+    // MARK: - IBOutlet's -
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var waterLabel: UILabel!
     
-    //MARK: - Interface -
+    // MARK: - Interface -
     func fillCell(calories: String, waters: String) {
         caloriesLabel.attributedText = fillReadings(first: "Калории", second: calories)
         waterLabel.attributedText = fillReadings(first: "Вода", second: waters)
     }
     
-    //MARK: - Private -
+    // MARK: - Private -
     private func fillReadings(first: String, second: String) -> NSMutableAttributedString {
         let mutableAttrString = NSMutableAttributedString()
         let paragraphStyle = NSMutableParagraphStyle()

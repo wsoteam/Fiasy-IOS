@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class DateOfBirthSelectionCell: UICollectionViewCell {
     
@@ -19,7 +21,7 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
     private let isIphone5 = Display.typeIsLike == .iphone5
     lazy var mediumDate: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .long
         formatter.timeStyle = .none
         formatter.locale = Locale(identifier: "ru_RU")
         
@@ -32,6 +34,8 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
         
         setupInitialState()
         datePicker.maximumDate = Date()
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "age"])
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "age"])
     }
     
     // MARK: - Interface -

@@ -8,6 +8,7 @@
 
 import UIKit
 import Amplitude_iOS
+import Intercom
 
 protocol ProductDetailsDelegate {
     func closeModule()
@@ -16,6 +17,7 @@ protocol ProductDetailsDelegate {
     func showSendError()
     func showEmptyTextAlert()
     func showZeroAlert()
+    func showPremiumScreen()
 }
 
 class ProductDetailsViewController: UIViewController {
@@ -38,7 +40,10 @@ class ProductDetailsViewController: UIViewController {
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
-                  
+        
+        Intercom.logEvent(withName: "view_product_page")
+        Amplitude.instance()?.logEvent("view_product_page")
+        
         isMakeRecipe = ((backViewController() as? ProductSearchListViewController) != nil)
         if let editMealTime = FirebaseDBManager.fetchEditMealtime() {
             self.editProduct = editMealTime
@@ -69,6 +74,10 @@ class ProductDetailsViewController: UIViewController {
         
         hideKeyboardWhenTappedAround()
         configurationKeyboardNotification()
+        
+        if self.tableView.alpha == 1 {
+            tableView.reloadData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -128,6 +137,14 @@ class ProductDetailsViewController: UIViewController {
     @IBAction func favoriteClicked(_ sender: Any) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is PremiumQuizViewController {
+            let vc = segue.destination as? PremiumQuizViewController
+            vc?.isAutorization = false
+            vc?.trialFrom = "micro"
+        }
+    }
 }
 
 extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -144,6 +161,13 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension ProductDetailsViewController: ProductDetailsDelegate {
+    
+    func showPremiumScreen() {
+        Intercom.logEvent(withName: "product_page_micro")
+        Amplitude.instance()?.logEvent("product_page_micro")
+        
+        performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
+    }
     
     func addProductInRecipe() {
         let alert = UIAlertController(title: "Внимание", message: "Данный продукт добавлен в ваш рецепт", preferredStyle: .alert)

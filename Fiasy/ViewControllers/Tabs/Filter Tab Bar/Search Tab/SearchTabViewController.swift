@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 import XLPagerTabStrip
 
 class SearchTabViewController: UIViewController {
@@ -62,6 +64,8 @@ class SearchTabViewController: UIViewController {
             filteredProducts = UserInfo.sharedInstance.allProducts
         } else {
             filteredProducts = SQLDatabase.shared.filter(text: UserInfo.sharedInstance.searchProductText)
+            Intercom.logEvent(withName: "food_search", metaData: ["results" : self.filteredProducts.count])
+            Amplitude.instance()?.logEvent("food_search", withEventProperties: ["results" : self.filteredProducts.count])
         }
         tableView.reloadData()
     }

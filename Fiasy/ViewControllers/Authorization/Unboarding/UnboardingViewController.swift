@@ -1,4 +1,6 @@
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class UnboardingViewController: UIViewController {
     
@@ -17,11 +19,15 @@ class UnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Intercom.logEvent(withName: "onboarding_next", metaData: ["onboarding" : selectedIndex + 1])
+        Amplitude.instance()?.logEvent("onboarding_next", withEventProperties: ["onboarding" : selectedIndex + 1])
         unboardingView.dataSource = self
     }
     
-    //MARK: - Actions -
+    // MARK: - Actions -
     @IBAction func nextClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "onboarding_next", metaData: ["onboarding" : selectedIndex + 2])
+        Amplitude.instance()?.logEvent("onboarding_next", withEventProperties: ["onboarding" : selectedIndex + 2])
         if selectedIndex >= 2 {
             performSegue(withIdentifier: "showFirstScreen", sender: nil)
         } else {
@@ -31,6 +37,8 @@ class UnboardingViewController: UIViewController {
     }
     
     @IBAction func skipClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "onboarding_skip")
+        Amplitude.instance().logEvent("onboarding_skip")
         performSegue(withIdentifier: "showFirstScreen", sender: nil)
     }
 }

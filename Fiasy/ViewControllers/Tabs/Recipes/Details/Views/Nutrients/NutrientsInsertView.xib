@@ -79,11 +79,21 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD8-Gt-DfU">
+                            <rect key="frame" x="107.5" y="0.0" width="80" height="59"/>
+                            <connections>
+                                <action selector="premiumClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="YVh-gX-wfk"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="TD8-Gt-DfU" firstAttribute="bottom" secondItem="PJV-kh-Sne" secondAttribute="bottom" id="96y-TO-vJb"/>
+                        <constraint firstItem="TD8-Gt-DfU" firstAttribute="trailing" secondItem="PJV-kh-Sne" secondAttribute="trailing" id="DVt-CM-wkv"/>
+                        <constraint firstItem="TD8-Gt-DfU" firstAttribute="leading" secondItem="PJV-kh-Sne" secondAttribute="leading" id="IFJ-e2-F8y"/>
                         <constraint firstItem="PJV-kh-Sne" firstAttribute="top" secondItem="QHO-a8-eTb" secondAttribute="top" id="IXG-Th-5iS"/>
                         <constraint firstAttribute="trailing" secondItem="PJV-kh-Sne" secondAttribute="trailing" id="LSm-Jb-xlW"/>
+                        <constraint firstItem="TD8-Gt-DfU" firstAttribute="top" secondItem="PJV-kh-Sne" secondAttribute="top" id="NXA-WD-yJF"/>
                         <constraint firstAttribute="bottom" secondItem="PJV-kh-Sne" secondAttribute="bottom" id="ts4-Zl-92U"/>
                     </constraints>
                 </view>

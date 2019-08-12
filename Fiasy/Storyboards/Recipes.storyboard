@@ -641,6 +641,14 @@
             </objects>
             <point key="canvasLocation" x="2061" y="635"/>
         </scene>
+        <!--PremiumQuizViewController-->
+        <scene sceneID="NoT-hV-x2o">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Premium" referencedIdentifier="PremiumQuizViewController" id="0Wl-mO-iiH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9x-Eb-9Pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2154" y="713"/>
+        </scene>
         <!--Recipe Mealtime View Controller-->
         <scene sceneID="Ehr-X7-w6K">
             <objects>
@@ -1056,6 +1064,7 @@
                         <outlet property="statusBarView" destination="u8q-Rv-eL1" id="Dh1-qY-tCt"/>
                         <outlet property="tableView" destination="5FX-hu-bYY" id="IOa-Ck-WsA"/>
                         <segue destination="NBP-j1-LqM" kind="show" identifier="sequelPremiumScreen" id="tSz-Gk-46H"/>
+                        <segue destination="0Wl-mO-iiH" kind="show" identifier="sequePremiumScreen" id="I0h-7R-3WE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wND-Bb-H8W" userLabel="First Responder" sceneMemberID="firstResponder"/>

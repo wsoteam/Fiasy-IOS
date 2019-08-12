@@ -34,10 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         SQLDatabase.shared.fetchProducts()
         FirebaseDBManager.checkFilledProfile()
-        SwiftGoogleTranslate.shared.start(with: "AIzaSyB5dv1L0W_85lcFrEcyqZ0KyGZeRn6wOTE")
+        //SwiftGoogleTranslate.shared.start(with: "AIzaSyB5dv1L0W_85lcFrEcyqZ0KyGZeRn6wOTE")
         Amplitude.instance()?.trackingSessionEvents = true
         Amplitude.instance()?.minTimeBetweenSessionsMillis = 5000
-        Amplitude.instance()?.initializeApiKey("115a722e4336d141626d680fc1cca21c")
+        Amplitude.instance()?.initializeApiKey("b148a2e64cc862b4efb10865dfd4d579")
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
         screensController.showScreens()

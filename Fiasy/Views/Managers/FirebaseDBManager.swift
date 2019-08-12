@@ -118,9 +118,9 @@ class FirebaseDBManager {
             var BMR: Double = 0.0
             let secondAge = Double(age.year ?? 0)
             if flow.gender == 0 {
-                BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * secondAge) + 5
-            } else {
                 BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * secondAge) - 161
+            } else {
+                BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * secondAge) + 5
             }
             let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: flow.loadActivity))
             let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: flow.target, count: activity).displayOnly(count: 0)
@@ -143,7 +143,7 @@ class FirebaseDBManager {
             let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
             let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
             
-            let userData = ["age": age.year ?? 20, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": fat, "maxKcal": result, "maxProt": protein, "maxCarbo" : carbohydrates, "updateOfIndicator" : true] as [String : Any]
+            let userData = ["age": age.year ?? 20, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": fat, "maxKcal": result, "maxProt": protein, "maxCarbo" : carbohydrates, "updateOfIndicator" : true, "email" : flow.email] as [String : Any]
             Database.database().reference().child("USER_LIST").child(uid).child("profile").setValue(userData)
             Amplitude.instance().logEvent("create_acount")
         }
@@ -156,6 +156,7 @@ class FirebaseDBManager {
                     UserDefaults.standard.set(true, forKey: "firstLoadComplete")
                     UserDefaults.standard.synchronize()
                     UserInfo.sharedInstance.currentUser = User(dictionary: snapshotValue)
+                    UserInfo.sharedInstance.userGender = UserInfo.sharedInstance.currentUser?.female == true ? .girl : .man
                 } else {
                     fillDefaultUserInDatabase()
                     checkFilledProfile()

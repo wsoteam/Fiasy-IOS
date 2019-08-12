@@ -11,6 +11,7 @@ import UIKit
 class FirstQuizFinishCell: UICollectionViewCell {
     
     //MARK: - Outlet -
+    @IBOutlet weak var genderImage: UIImageView!
     @IBOutlet weak var carbohydratesLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
@@ -24,6 +25,11 @@ class FirstQuizFinishCell: UICollectionViewCell {
         super.awakeFromNib()
         
         //setupDefaultState()
+        if UserInfo.sharedInstance.registrationFlow.gender == 0 {
+            genderImage.image = #imageLiteral(resourceName: "women")
+        } else {
+            genderImage.image = #imageLiteral(resourceName: "man")
+        }
     }
     
     // MARK: - Interface -
@@ -62,9 +68,9 @@ class FirstQuizFinishCell: UICollectionViewCell {
         var protein: Int = 0
         var carbohydrates: Int = 0
         if flow.gender == 0 {
-            BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) + 5
-        } else {
             BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) - 161
+        } else {
+            BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) + 5
         }
         let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: flow.loadActivity))
         let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: flow.target, count: activity).displayOnly(count: 0)

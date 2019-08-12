@@ -17,25 +17,25 @@ class DiaryFooterView: UITableViewHeaderFooterView {
     @IBOutlet weak var fatCount: UILabel!
     
     // MARK: - Properties -
-    static var height: CGFloat = 65.0
+    static var height: CGFloat = 40.0
     
     // MARK: - Interface -
     func fillFooter(mealTimes: [Mealtime]) {
-        var calories: Int = 0
-        var protein: Int = 0
-        var fat: Int = 0
-        var carbohydrates: Int = 0
-        
-        for item in mealTimes {
-            fat += item.fat ?? 0
-            calories += item.calories ?? 0
-            protein += item.protein ?? 0
-            carbohydrates += item.carbohydrates ?? 0
-        }
-        proteinCount.text = "\(protein) г\nБелки"
-        fatCount.text = "\(fat) г\nЖиры"
-        caloriesCount.text = "\(calories) г\nКкал"
-        carbohydratesCount.text = "\(carbohydrates) г\nУглеводы"
+//        var calories: Int = 0
+//        var protein: Int = 0
+//        var fat: Int = 0
+//        var carbohydrates: Int = 0
+//
+//        for item in mealTimes {
+//            fat += item.fat ?? 0
+//            calories += item.calories ?? 0
+//            protein += item.protein ?? 0
+//            carbohydrates += item.carbohydrates ?? 0
+//        }
+//        proteinCount.text = "\(protein) г\nБелки"
+//        fatCount.text = "\(fat) г\nЖиры"
+//        caloriesCount.text = "\(calories) г\nКкал"
+//        carbohydratesCount.text = "\(carbohydrates) г\nУглеводы"
     }
 }
 

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class TargetSelectedCell: UICollectionViewCell {
     
@@ -23,6 +25,8 @@ class TargetSelectedCell: UICollectionViewCell {
         super.awakeFromNib()
         
         setupDefaultState()
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "goal"])
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "goal"])
     }
     
     // MARK: - Interface -

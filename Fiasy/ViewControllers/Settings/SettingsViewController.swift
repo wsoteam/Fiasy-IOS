@@ -63,7 +63,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,9 +76,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
-        case 2:
+        case 1:
             performSegue(withIdentifier: "sequeEditProfile", sender: nil)
-        case 3:
+        case 2:
             checkIfPushNotificationsEnable { [weak self] (state) in
                 guard let strongSelf = self else { return }
                 DispatchQueue.main.async {
@@ -89,7 +89,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
-        case 6:
+        case 3:
+            performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
+        case 4:
             picker.showPicker()
         default:
             break

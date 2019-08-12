@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class SelectActivityTableViewCell: UICollectionViewCell {
     
@@ -26,6 +28,8 @@ class SelectActivityTableViewCell: UICollectionViewCell {
         
         setupSlider()
         changeState(value: 0.0)
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "active"])
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "active"])
     }
     
     // MARK: - Interface -

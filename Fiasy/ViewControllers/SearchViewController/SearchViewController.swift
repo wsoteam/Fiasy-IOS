@@ -9,6 +9,7 @@
 import UIKit
 import DropDown
 import Amplitude_iOS
+import Intercom
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
     
@@ -113,6 +114,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         self.filteredProducts = SQLDatabase.shared.filter(text: text)
+        Intercom.logEvent(withName: "food_search", metaData: ["results" : self.filteredProducts.count])
+        Amplitude.instance()?.logEvent("food_search", withEventProperties: ["results" : self.filteredProducts.count])
         self.tableView.reloadData()
         return true
     }
