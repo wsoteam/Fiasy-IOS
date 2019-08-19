@@ -40,6 +40,12 @@ class DiaryDisplayManager: NSObject {
         mountLabel.text = getMount(date: selectedDate).capitalizeFirst
     }
     
+    func reloadContent() {
+
+        //self.tableView.reloadData()
+        self.delegate.stopProgress()
+    }
+    
     func sortMealTime(mealTime: [Mealtime]) {
         self.mealTime = UserInfo.sortMealTime(mealtimes: mealTime)
         self.delegate.stopProgress()
@@ -57,7 +63,7 @@ class DiaryDisplayManager: NSObject {
                 FirebaseDBManager.removeItem(mealtime: mealTime, handler: {
                     self.mealTime[indexPath.section - 1].remove(at: indexPath.row)
                     if self.mealTime[indexPath.section - 1].isEmpty {
-                        self.mealTime.remove(at: indexPath.section - 1)
+                        //self.mealTime.remove(at: indexPath.section - 1)
                         self.states[indexPath.section] = false
                     }
                     self.tableView.reloadData()
@@ -68,6 +74,18 @@ class DiaryDisplayManager: NSObject {
     
     func changeNewDate(date: Date) {
         self.selectedDate = date
+        let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: selectedDate)!
+        let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: selectedDate)!
+        let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: selectedDate)!
+        
+        var mealTime: [Mealtime] = []
+        if !UserInfo.sharedInstance.allMealtime.isEmpty {
+            for item in UserInfo.sharedInstance.allMealtime where item.day == day && item.month == month && item.year == year {
+                mealTime.append(item)
+            }
+        }
+        self.mealTime = UserInfo.sortMealTime(mealtimes: mealTime)
+        self.delegate.stopProgress()
         self.tableView.reloadData()
     }
     
@@ -141,7 +159,8 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryHeaderView.reuseIdentifier) as? DiaryHeaderView else {
             return nil
         }
-        header.fillHeader(delegate: self, section: section, state: self.states[section], mealTime.indices.contains(section - 1))
+        
+        header.fillHeader(delegate: self, section: section, state: self.states[section], mealTime[section - 1].isEmpty)
         return header
     }
     

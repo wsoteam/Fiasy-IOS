@@ -33,13 +33,19 @@ class ProfileAvatarTableViewCell: UITableViewCell {
         guard let profile = UserInfo.sharedInstance.currentUser else { return }
         arrowImageView.image = state ? #imageLiteral(resourceName: "Arrow_top-1") : #imageLiteral(resourceName: "Arrow_down-1")
         bottomContainerView.isHidden = state ? false : true
-        if let path = UserInfo.sharedInstance.currentUser?.photoUrl, let url = try? path.asURL(), !path.isEmpty && path != "default" {
-            avatarImageView.kf.indicatorType = .activity
-            let resource = ImageResource(downloadURL: url)
-            avatarImageView.kf.setImage(with: resource)
+        
+        if let image = UserInfo.sharedInstance.currentUser?.temporaryPicture {
+            avatarImageView.image = image
         } else {
-            avatarImageView.image = UserInfo.sharedInstance.userGender.avatarImage
+            if let path = UserInfo.sharedInstance.currentUser?.photoUrl, let url = try? path.asURL(), !path.isEmpty && path != "default" {
+                avatarImageView.kf.indicatorType = .activity
+                let resource = ImageResource(downloadURL: url)
+                avatarImageView.kf.setImage(with: resource)
+            } else {
+                avatarImageView.image = UserInfo.sharedInstance.userGender.avatarImage
+            }
         }
+
         if let first = profile.firstName, let last = profile.lastName, first != "default" && last != "default" {
             nameLabel.text = "\(first) \(last)"
         } else {

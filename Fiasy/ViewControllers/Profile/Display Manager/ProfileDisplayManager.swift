@@ -36,6 +36,10 @@ class ProfileDisplayManager: NSObject {
         tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
     }
     
+    func reloadProfile() {
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+    }
+    
     private func setupTableView() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         tableView.register(type: ProfileAvatarTableViewCell.self)

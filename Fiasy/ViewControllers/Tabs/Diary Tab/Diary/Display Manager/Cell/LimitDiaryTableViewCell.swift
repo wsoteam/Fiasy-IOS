@@ -47,7 +47,7 @@ class LimitDiaryTableViewCell: UITableViewCell {
         var carbohydrates: Int = 0
         
         var isContains: Bool = false
-        var mealTime: [Mealtime] = []
+        //var mealTime: [Mealtime] = []
         if !UserInfo.sharedInstance.allMealtime.isEmpty {
             for item in UserInfo.sharedInstance.allMealtime where item.day == day && item.month == month && item.year == year {
                 
@@ -56,16 +56,16 @@ class LimitDiaryTableViewCell: UITableViewCell {
                 protein += item.protein ?? 0
                 carbohydrates += item.carbohydrates ?? 0
                 isContains = true
-                mealTime.append(item)
+                //mealTime.append(item)
             }
         }
-        self.delegate?.sortMealTime(mealTime: mealTime)
+        //self.delegate?.sortMealTime(mealTime: mealTime)
         if let user = UserInfo.sharedInstance.currentUser {
             fillTargetLabel(target: (user.maxKcal ?? 0))
             let currentCalories = ((user.maxKcal ?? 0) - calories)
             fatCountLabel.text = "\(fat) из \(user.maxFat ?? 0)"
-            endedLabel.text = (user.maxKcal ?? 0) >= calories ? "Осталось" : "Привышение"
-            leftCaloriesLabel.text = (user.maxKcal ?? 0) >= calories ? "\(currentCalories)" : "-\(calories - (user.maxKcal ?? 0))"
+            endedLabel.text = (user.maxKcal ?? 0) >= calories ? "Осталось" : "Прeвышение"
+            leftCaloriesLabel.text = (user.maxKcal ?? 0) >= calories ? "\(currentCalories)" : "+\(calories - (user.maxKcal ?? 0))"
             carbohydratesCountLabel.text = "\(carbohydrates) из \(user.maxCarbo ?? 0)"
             proteinLabel.text = "\(protein) из \(user.maxProt ?? 0)"
             

@@ -139,6 +139,47 @@ class EditProfileDisplayManager: NSObject {
             UserInfo.sharedInstance.currentUser?.email = allFields[2]
             UserInfo.sharedInstance.currentUser?.height = growth
             UserInfo.sharedInstance.currentUser?.weight = weight
+            
+            let female = UserInfo.sharedInstance.currentUser?.female
+            let height: Int = growth
+            let weight: Double = weight
+            
+            var BMR: Double = 0.0
+            let secondAge = Double(age)
+            if UserInfo.sharedInstance.currentUser?.female == true {
+                BMR = (10 * weight) + (6.25 * Double(growth)) - (5 * secondAge) - 161
+            } else {
+                BMR = (10 * weight) + (6.25 * Double(growth)) - (5 * secondAge) + 5
+            }
+            
+            let target: Int = UserInfo.sharedInstance.currentUser?.target ?? 0
+            let targetActivity: CGFloat = UserInfo.sharedInstance.currentUser?.targetActivity ?? 0.0
+            let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: targetActivity))
+            let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: target, count: activity).displayOnly(count: 0)
+            
+            var fat: Int = 0
+            var protein: Int = 0
+            var carbohydrates: Int = 0
+            
+            if UserInfo.sharedInstance.currentUser?.female == true {
+                fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 16
+                protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 16
+                carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 16
+            } else {
+                fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 36
+                protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 36
+                carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 36
+            }
+            
+            ref.child("USER_LIST").child(uid).child("profile").child("maxFat").setValue(fat)
+            ref.child("USER_LIST").child(uid).child("profile").child("maxProt").setValue(protein)
+            ref.child("USER_LIST").child(uid).child("profile").child("maxCarbo").setValue(carbohydrates)
+            ref.child("USER_LIST").child(uid).child("profile").child("maxKcal").setValue(result)
+            
+            UserInfo.sharedInstance.currentUser?.maxKcal = Int(result)
+            UserInfo.sharedInstance.currentUser?.maxFat = fat
+            UserInfo.sharedInstance.currentUser?.maxProt = protein
+            UserInfo.sharedInstance.currentUser?.maxCarbo = carbohydrates
         }
         guard let image = temporaryPicture else { return delegate.closeModule() }
         currentUser.temporaryPicture = image

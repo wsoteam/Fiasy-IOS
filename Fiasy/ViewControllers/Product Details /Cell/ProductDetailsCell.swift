@@ -164,6 +164,7 @@ class ProductDetailsCell: UITableViewCell {
                 self.delegate?.addProductInRecipe()
             }
         } else {
+            UserInfo.sharedInstance.isReload = true
             if title == "ИЗМЕНЕНО" || title == "ДОБАВЛЕНО" {
                 let message = isEditState ? "Выбранный продукт уже изменен" : "Вы уже добавили продукт в дневник"
                 self.delegate?.showAlert(message: message)
@@ -192,7 +193,6 @@ class ProductDetailsCell: UITableViewCell {
                         Intercom.logEvent(withName: "edit_food", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
                         Amplitude.instance()?.logEvent("edit_food", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
                         FirebaseDBManager.reloadItems()
-                        UserInfo.sharedInstance.isReload = true
                         delayWithSeconds(1) {
                             self.saveButton.hideLoading()
                             self.saveButton.setTitle("ИЗМЕНЕНО", for: .normal)

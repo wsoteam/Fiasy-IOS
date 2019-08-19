@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController {
 //        displayManager?.reloadCells()
 //        hideKeyboardWhenTappedAround()
         addObserver(for: self, #selector(reloadContent), "reloadContent")
+        addObserver(for: self, #selector(reloadProfile), "reloadProfile")
         Amplitude.instance().logEvent("view_profile")
     }
     
@@ -40,6 +41,10 @@ class ProfileViewController: UIViewController {
     
     @objc func reloadContent() {
         displayManager?.reloadCells()
+    }
+    
+    @objc func reloadProfile() {
+        displayManager?.reloadProfile()
     }
     
     //MARK: - Private -

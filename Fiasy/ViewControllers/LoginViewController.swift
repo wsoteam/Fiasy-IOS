@@ -84,6 +84,9 @@ class LoginViewController: UIViewController {
             } else {
                 if Auth.auth().currentUser != nil {
                     FirebaseDBManager.checkFilledProfile()
+                    if let uid = Auth.auth().currentUser?.uid {
+                        Intercom.registerUser(withUserId: uid)
+                    } 
                     strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
                 }
             }
@@ -108,22 +111,11 @@ class LoginViewController: UIViewController {
                 }
                 if Auth.auth().currentUser != nil {
                     FirebaseDBManager.checkFilledProfile()
+                    if let uid = Auth.auth().currentUser?.uid {
+                        Intercom.registerUser(withUserId: uid)
+                    }
                     self.performSegue(withIdentifier: "segueToMenu", sender: nil)
                 }
-               // print(user)
-//                let fullNameArr = user?.displayName?.split{$0 == " "}.map(String.init)
-//                if let array = fullNameArr, array.indices.contains(0) {
-//                    UserInfo.sharedInstance.registrationFlow.firstName = array[0]
-//                }
-//                if let array = fullNameArr, array.indices.contains(1) {
-//                    UserInfo.sharedInstance.registrationFlow.lastName = array[1]
-//                }
-//                if let url = user?.photoURL?.absoluteString {
-//                    UserInfo.sharedInstance.registrationFlow.photoUrl = url
-//                }
-//                Intercom.logEvent(withName: "enter_success", metaData: ["type" : "fb"])
-//                Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "fb"])
-//                self.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
     }
@@ -200,20 +192,11 @@ extension LoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                 } else {
                     if Auth.auth().currentUser != nil {
                         FirebaseDBManager.checkFilledProfile()
+                        if let uid = Auth.auth().currentUser?.uid {
+                            Intercom.registerUser(withUserId: uid)
+                        }
                         strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
                     }
-//                    if let firsts = first {
-//                        UserInfo.sharedInstance.registrationFlow.firstName = firsts
-//                    }
-//                    if let lasts = last {
-//                        UserInfo.sharedInstance.registrationFlow.lastName = lasts
-//                    }
-//                    if let url = user?.photoURL?.absoluteString {
-//                        UserInfo.sharedInstance.registrationFlow.photoUrl = url
-//                    }
-//                    Intercom.logEvent(withName: "enter_success", metaData: ["type" : "google"])
-//                    Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "google"])
-//                    strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })
         }

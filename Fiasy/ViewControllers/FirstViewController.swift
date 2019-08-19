@@ -69,6 +69,7 @@ class FirstViewController: UIViewController {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
                 UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
+                Intercom.registerUser(withEmail: user?.email ?? "")
                 Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"])
                 Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"])
                 strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
@@ -116,6 +117,7 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                         UserInfo.sharedInstance.registrationFlow.photoUrl = url
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
+                    Intercom.registerUser(withEmail: email ?? "")
                     Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"])
                     Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"])
                     self.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)

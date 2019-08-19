@@ -23,13 +23,16 @@ class EditProfileHeaderView: UITableViewHeaderFooterView {
     func fillHeader(delegate: EditProfileDelegate, currentUser: User) {
         self.delegate = delegate
         
-        if let image = currentUser.temporaryPicture {
-            avatarImageView.image = image
-        } else {
-            if let path = currentUser.photoUrl, let url = try? path.asURL(), path != "default" {
-                let resource = ImageResource(downloadURL: url)
-                avatarImageView.kf.setImage(with: resource)
+        guard let _ = avatarImageView.image else {
+            if let image = currentUser.temporaryPicture {
+                avatarImageView.image = image
+            } else {
+                if let path = currentUser.photoUrl, let url = try? path.asURL(), path != "default" {
+                    let resource = ImageResource(downloadURL: url)
+                    avatarImageView.kf.setImage(with: resource)
+                }
             }
+            return
         }
     }
     

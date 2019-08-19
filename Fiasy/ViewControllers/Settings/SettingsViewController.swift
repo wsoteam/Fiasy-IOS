@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Intercom
 import Amplitude_iOS
 
 class SettingsViewController: UIViewController {
@@ -22,6 +23,7 @@ class SettingsViewController: UIViewController {
         picker.signOut = { [weak self] in
             guard let `self` = self else { return }
             UserInfo.sharedInstance.removeRegistrationFields()
+            Intercom.logout()
             do {
                 try Auth.auth().signOut()
             } catch {
@@ -63,7 +65,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,20 +81,22 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             performSegue(withIdentifier: "sequeEditProfile", sender: nil)
         case 2:
-            checkIfPushNotificationsEnable { [weak self] (state) in
-                guard let strongSelf = self else { return }
-                DispatchQueue.main.async {
-                    if state {
-                        strongSelf.performSegue(withIdentifier: "sequeNotificationsListScreen", sender: nil)
-                    } else {
-                        strongSelf.performSegue(withIdentifier: "sequeNotificationsScreen", sender: nil)
-                    }
-                }
-            }
-        case 3:
+//            checkIfPushNotificationsEnable { [weak self] (state) in
+//                guard let strongSelf = self else { return }
+//                DispatchQueue.main.async {
+//                    if state {
+//                        strongSelf.performSegue(withIdentifier: "sequeNotificationsListScreen", sender: nil)
+//                    } else {
+//                        strongSelf.performSegue(withIdentifier: "sequeNotificationsScreen", sender: nil)
+//                    }
+//                }
+//            }
             performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
-        case 4:
+        case 3:
             picker.showPicker()
+            //performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
+//        case 4:
+//            picker.showPicker()
         default:
             break
         }

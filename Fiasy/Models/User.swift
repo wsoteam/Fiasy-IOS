@@ -28,6 +28,8 @@ class User {
     var maxCarbo: Int?
     var temporaryPicture: UIImage?
     var updateOfIndicator: Bool?
+    var target: Int?
+    var targetActivity: CGFloat?
     
     init(dictionary: [String : AnyObject]) {
         age = dictionary["age"] as? Int
@@ -42,6 +44,8 @@ class User {
         weight = dictionary["weight"] as? Double
         height = dictionary["height"] as? Int
         updateOfIndicator = dictionary["updateOfIndicator"] as? Bool
+        target = dictionary["target"] as? Int
+        targetActivity = dictionary["target_Activity"] as? CGFloat
         
         let day: Int = dictionary["numberOfDay"] as? Int ?? 1
         let month: Int = dictionary["month"] as? Int ?? 1

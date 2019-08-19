@@ -61,6 +61,8 @@ class UserInfo {
     var selectedDate: Date?
     var isReload: Bool = false
     
+    var reloadDiariContent: Bool = false
+    
     // MARK: - User fields -
     var paymentComplete: Bool = false
     var purchaseIsValid: Bool = false
@@ -214,18 +216,10 @@ class UserInfo {
             }
         }
         var sectionArray: [[Mealtime]] = []
-        if !breakfasts.isEmpty {
-            sectionArray.append(breakfasts)
-        }
-        if !lunches.isEmpty {
-            sectionArray.append(lunches)
-        }
-        if !dinners.isEmpty {
-            sectionArray.append(dinners)
-        }
-        if !snacks.isEmpty {
-            sectionArray.append(snacks)
-        }
+        sectionArray.append(breakfasts)
+        sectionArray.append(lunches)
+        sectionArray.append(dinners)
+        sectionArray.append(snacks)
         return sectionArray
     }
     

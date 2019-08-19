@@ -33,16 +33,16 @@ class SettingCell: UITableViewCell {
         case 1:
             titleLabel.text = "Личные данные"
             typeIconImageView.image = #imageLiteral(resourceName: "Glyph")
-        case 2:
-            titleLabel.text = "Уведомления"
-            typeIconImageView.image = #imageLiteral(resourceName: "ic-notifications-active-24px")
+//        case 2:
+//            titleLabel.text = "Уведомления"
+//            typeIconImageView.image = #imageLiteral(resourceName: "ic-notifications-active-24px")
 //        case 3:
 //            titleLabel.text = "Цель"
 //            typeIconImageView.image = #imageLiteral(resourceName: "ic-directions-run-24px")
-        case 3:
+        case 2:
             titleLabel.text = "Помощь"
             typeIconImageView.image = #imageLiteral(resourceName: "ic-help-24px")
-        case 4:
+        case 3:
             titleLabel.text = "Выход"
             titleLabel.textColor = #colorLiteral(red: 0.9231601357, green: 0.3388705254, blue: 0.3422900438, alpha: 1)
             typeIconImageView.image = #imageLiteral(resourceName: "ic-exit-to-app-48px")

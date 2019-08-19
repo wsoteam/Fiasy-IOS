@@ -33,12 +33,18 @@ class ChartsFlow {
                     fakeArray[index] = fakeArray[index] + Double(item.calories ?? 0)
                 }
             }
+            for (index, second) in fakeArray.enumerated() {
+                fakeArray[index] = second/7
+            }
             return fakeArray
         case .year:
             for item in UserInfo.sharedInstance.allMealtime where item.year == year {
                 if fakeArray.indices.contains(item.month ?? 0) {
                     fakeArray[(item.month ?? 0) - 1] = fakeArray[(item.month ?? 0) - 1] + Double(item.calories ?? 0)
                 }
+            }
+            for (index, second) in fakeArray.enumerated() {
+                fakeArray[index] = second/12
             }
             return fakeArray
         }

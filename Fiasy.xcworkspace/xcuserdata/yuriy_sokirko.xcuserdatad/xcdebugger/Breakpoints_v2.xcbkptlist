@@ -260,12 +260,12 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "587293351.506413"
+                  timestampString = "587403824.173568"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
                   endingLineNumber = "168"
-                  offsetFromSymbolStart = "203">
+                  offsetFromSymbolStart = "152">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -275,12 +275,12 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "587293351.5094661"
+                  timestampString = "587403824.175174"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
                   endingLineNumber = "168"
-                  offsetFromSymbolStart = "445">
+                  offsetFromSymbolStart = "344">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -290,12 +290,12 @@
                   moduleName = "Fiasy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "587293351.512386"
+                  timestampString = "587403824.176765"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "168"
                   endingLineNumber = "168"
-                  offsetFromSymbolStart = "683">
+                  offsetFromSymbolStart = "548">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -402,13 +402,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fiasy/Views/Managers/FirebaseDBManager.swift"
-            timestampString = "587293149.422794"
+            filePath = "Fiasy/ViewControllers/Tabs/Diary Tab/Diary/Display Manager/DiaryDisplayManager.swift"
+            timestampString = "587376568.8171999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "saveUserInDataBase(_:firstName:lastName:)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/ViewControllers/Tabs/Diary Tab/Diary/Display Manager/DiaryDisplayManager.swift"
+            timestampString = "587376568.817583"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "sortMealTime(mealTime:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/ViewControllers/Tabs/Diary Tab/Diary/DiaryViewController.swift"
+            timestampString = "587396416.501483"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "picker"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/ViewControllers/Tabs/Diary Tab/Diary/DiaryClickedPicker.swift"
+            timestampString = "587403823.938241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "addDatePicker(mode:date:minimumDate:maximumDate:action:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

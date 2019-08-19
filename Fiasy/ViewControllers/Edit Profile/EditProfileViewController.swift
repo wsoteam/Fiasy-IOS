@@ -73,6 +73,8 @@ class EditProfileViewController: UIViewController {
 extension EditProfileViewController: EditProfileDelegate {
     
     func closeModule() {
+        post("reloadProfile")
+        UserInfo.sharedInstance.reloadDiariContent = true
         navigationController?.popViewController(animated: true)
     }
     

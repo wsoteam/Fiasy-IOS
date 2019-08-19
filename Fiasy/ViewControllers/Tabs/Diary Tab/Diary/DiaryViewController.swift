@@ -90,6 +90,11 @@ class DiaryViewController: BaseViewController {
         if UserInfo.sharedInstance.allProducts.isEmpty {
             SQLDatabase.shared.fetchProducts()
         }
+        
+        if UserInfo.sharedInstance.reloadDiariContent {
+            UserInfo.sharedInstance.reloadDiariContent = false
+            getItemsInDataBase()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -183,7 +188,7 @@ extension DiaryViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func didShowNextWeekView(from startDayView: DayView, to endDayView: DayView) {
         let selected = UserInfo.sharedInstance.selectedDate ?? Date()
-        for item in startDayView.date.date.getWeekDates() where Calendar.current.component(.day, from: item) == Calendar.current.component(.day, from: selected) {
+        for item in startDayView.date.date.getWeekDates() where Calendar.current.component(.day, from: item) == Calendar.current.component(.day, from: selected) && Calendar.current.component(.year, from: item) == Calendar.current.component(.year, from: selected) && Calendar.current.component(.month, from: item) == Calendar.current.component(.month, from: selected) {
             self.displayManager.changeDate(self.mountLabel, selected)
             return
         }
@@ -200,7 +205,7 @@ extension DiaryViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     
     func didShowPreviousWeekView(from startDayView: DayView, to endDayView: DayView) {
         let selected = UserInfo.sharedInstance.selectedDate ?? Date()
-        for item in startDayView.date.date.getWeekDates() where Calendar.current.component(.day, from: item) == Calendar.current.component(.day, from: selected) {
+        for item in startDayView.date.date.getWeekDates() where Calendar.current.component(.day, from: item) == Calendar.current.component(.day, from: selected) && Calendar.current.component(.year, from: item) == Calendar.current.component(.year, from: selected) && Calendar.current.component(.month, from: item) == Calendar.current.component(.month, from: selected) {
             self.displayManager.changeDate(self.mountLabel, selected)
             return
         }

@@ -18,7 +18,7 @@ class FavoritesTabViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
-    private var itemInfo = IndicatorInfo(title: "Избранное")
+    private var itemInfo = IndicatorInfo(title: "Свои продукты")
     private var allFavorite: [Favorite] = []
     private var filteredFavorites: [Favorite] = []
     private var selectedFavorite: Favorite?

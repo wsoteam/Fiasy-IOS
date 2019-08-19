@@ -21,7 +21,7 @@ class DiaryHeaderView: UITableViewHeaderFooterView {
     private var delegate: DiaryDisplayManagerDelegate?
     
     // MARK: - Interface -
-    func fillHeader(delegate: DiaryDisplayManagerDelegate, section: Int, state: Bool, _ hasItems: Bool) {
+    func fillHeader(delegate: DiaryDisplayManagerDelegate, section: Int, state: Bool, _ isEmpty: Bool) {
         self.section = section
         self.delegate = delegate
         
@@ -41,11 +41,11 @@ class DiaryHeaderView: UITableViewHeaderFooterView {
         default:
             break
         }
-        if hasItems {
+        if isEmpty {
+            arrowImageView.isHidden = true
+        } else {
             arrowImageView.isHidden = false
             arrowImageView.image = state ? #imageLiteral(resourceName: "Arrow_top-1") : #imageLiteral(resourceName: "Arrow_down-1")
-        } else {
-            arrowImageView.isHidden = true
         }
     }
     

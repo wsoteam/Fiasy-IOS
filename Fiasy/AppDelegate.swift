@@ -42,10 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         screensController.showScreens()
         SubscriptionService.shared.getProducts()
-        Intercom.setApiKey("221925e0d17a40eb824938ad4c2a9857e2320b6f", forAppId: "dr8zfmz4")
-        
+        Intercom.setApiKey("ios_sdk-221925e0d17a40eb824938ad4c2a9857e2320b6f", forAppId:"dr8zfmz4")
         Amplitude.instance().logEvent("session_launch")
         Adjust.appDidLaunch(ADJConfig(appToken: "9gsjine9aqyo", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
+        
+        if let uid = Auth.auth().currentUser?.uid {
+            Intercom.registerUser(withUserId: uid)
+        } else {
+            Intercom.registerUnidentifiedUser()
+        }
         
         return true
     }
@@ -62,10 +67,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.prod)
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.prod)
+        Intercom.setDeviceToken(deviceToken)
+    }
+
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
@@ -76,12 +88,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication,
                                                         annotation: annotation)
     }
-    
-    
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        return FBSDKApplicationDelegate.sharedInstance()?.application(app, open: url, options: options) //SDKApplicationDelegate.shared.application(app, open: url, options: options)
-//    }
-
     
     // MARK: - Core Data stack
 

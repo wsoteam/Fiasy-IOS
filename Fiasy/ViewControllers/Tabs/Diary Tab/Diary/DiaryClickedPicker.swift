@@ -41,7 +41,7 @@ extension DiaryClickedPicker {
     
     func showDatePicker(date: Date) {
         let alert = UIAlertController(style: .actionSheet, title: "", message: "")
-        alert.addDatePicker(mode: .date, date: date, minimumDate: nil, maximumDate: Date()) { date in
+        alert.addDatePicker(mode: .date, date: date, minimumDate: nil, maximumDate: nil) { date in
             UserInfo.sharedInstance.selectedDate = date
         }
         
@@ -88,9 +88,8 @@ final class DatePickerViewController: UIViewController {
         
         datePicker.locale = Locale(identifier: "ru_RU")
         datePicker.timeZone = TimeZone(abbreviation: "GMT")!
+        
         datePicker.setDate(date ?? Date(), animated: false)
-        datePicker.minimumDate = minimumDate
-        datePicker.maximumDate = Date()
         UserInfo.sharedInstance.selectedDate = date ?? Date()
         self.action = action
     }

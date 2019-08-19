@@ -110,8 +110,13 @@ class RegestrationViewController: UIViewController {
                 if let url = user?.photoURL?.absoluteString {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
+                Intercom.registerUser(withEmail: email)
                 Intercom.logEvent(withName: "registration_success", metaData: ["type" : "email"])
                 Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "email"])
+                
+                if let uid = Auth.auth().currentUser?.uid {
+                    Intercom.registerUser(withUserId: uid)
+                }
                 return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
             
@@ -163,8 +168,10 @@ class RegestrationViewController: UIViewController {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
                 UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
+                Intercom.registerUser(withEmail: user?.email ?? "")
                 Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"])
                 Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"])
+                
                 strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
@@ -221,6 +228,7 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                         UserInfo.sharedInstance.registrationFlow.photoUrl = url
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
+                    Intercom.registerUser(withEmail: email ?? "")
                     Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"])
                     Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"])
                     strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
