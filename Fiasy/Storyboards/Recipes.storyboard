@@ -633,13 +633,13 @@
             </objects>
             <point key="canvasLocation" x="774" y="-916"/>
         </scene>
-        <!--Premium-->
+        <!--PremiumQuizViewController-->
         <scene sceneID="lXj-fS-Ovd">
             <objects>
-                <viewControllerPlaceholder storyboardName="Premium" id="NBP-j1-LqM" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Premium" referencedIdentifier="PremiumQuizViewController" id="NBP-j1-LqM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="act-KU-iIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2061" y="635"/>
+            <point key="canvasLocation" x="2153" y="635"/>
         </scene>
         <!--PremiumQuizViewController-->
         <scene sceneID="NoT-hV-x2o">
@@ -1113,6 +1113,6 @@
         <image name="Оформите подписку Premium - и вы будете получать рецепты" width="229" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QKH-HD-Ry5"/>
+        <segue reference="fM8-5F-uPH"/>
     </inferredMetricsTieBreakers>
 </document>

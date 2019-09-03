@@ -13,10 +13,11 @@ import Amplitude_iOS
 
 class SettingsViewController: UIViewController {
     
-    //MARK: - Outlet -
+    // MARK: - Outlet -
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK: - Properties -
+    // MARK: - Properties -
+    private var purchaseIsValid: Bool = false
     lazy var picker: SettingClickedPicker = {
         let picker = SettingClickedPicker()
         picker.targetVC = self
@@ -37,13 +38,24 @@ class SettingsViewController: UIViewController {
         return .default
     }
     
-    //MARK: - Life Cicle -
+    // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(type: SettingCell.self)
         tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        Amplitude.instance().logEvent("view_settings")
+        Amplitude.instance().logEvent("view_settings") //
+        Intercom.logEvent(withName: "view_settings") //
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        purchaseIsValid = UserInfo.sharedInstance.purchaseIsValid
+        tableView.reloadData()
+        DispatchQueue.global().async {
+            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        }
     }
     
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
@@ -56,7 +68,15 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    //MARK: - Actions -
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is PremiumQuizViewController {
+            let vc = segue.destination as? PremiumQuizViewController
+            vc?.isAutorization = false
+            vc?.trialFrom = "settings"
+        }
+    }
+    
+    // MARK: - Actions -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -65,40 +85,44 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return purchaseIsValid ? 4 : 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell") as? SettingCell else { fatalError() }
-        cell.fillCell(indexPath: indexPath)
+        cell.fillCell(indexPath: indexPath, purchaseIsValid: purchaseIsValid)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
-        case 1:
-            performSegue(withIdentifier: "sequeEditProfile", sender: nil)
-        case 2:
-//            checkIfPushNotificationsEnable { [weak self] (state) in
-//                guard let strongSelf = self else { return }
-//                DispatchQueue.main.async {
-//                    if state {
-//                        strongSelf.performSegue(withIdentifier: "sequeNotificationsListScreen", sender: nil)
-//                    } else {
-//                        strongSelf.performSegue(withIdentifier: "sequeNotificationsScreen", sender: nil)
-//                    }
-//                }
-//            }
-            performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
-        case 3:
-            picker.showPicker()
-            //performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
-//        case 4:
-//            picker.showPicker()
-        default:
-            break
+        if purchaseIsValid {
+            switch indexPath.row {
+            case 0:
+                performSegue(withIdentifier: "sequeEditProfile", sender: nil)
+            case 1:
+                performSegue(withIdentifier: "sequeCaloriesIntake", sender: nil)
+            case 2:
+                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
+            case 3:
+                picker.showPicker()
+            default:
+                break
+            }
+        } else {
+            switch indexPath.row {
+            case 0:
+                performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
+            case 1:
+                performSegue(withIdentifier: "sequeEditProfile", sender: nil)
+            case 2:
+                performSegue(withIdentifier: "sequeCaloriesIntake", sender: nil)
+            case 3:
+                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
+            case 4:
+                picker.showPicker()
+            default:
+                break
+            }
         }
     }
 }

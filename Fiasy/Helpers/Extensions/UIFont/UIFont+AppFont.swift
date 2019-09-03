@@ -41,6 +41,10 @@ extension UIFont {
     static func sfProTextSemibold(size: CGFloat) -> UIFont {
         return UIFont(name: "SFProText-Semibold", size: size)!
     }
+    
+    static func sfProTextHeavy(size: CGFloat) -> UIFont {
+        return UIFont(name: "SFProText-Heavy", size: size)!
+    }
 }
 
 

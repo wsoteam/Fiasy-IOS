@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Firebase
 import Parchment
 import Amplitude_iOS
 import DynamicBlurView
 import Intercom
 import Amplitude_iOS
+import UserNotifications
 import GradientProgressBar
 import VisualEffectView
 
@@ -25,6 +27,9 @@ protocol DiaryViewDelegate {
 class DiaryViewController: BaseViewController {
     
     //MARK: - Outlets -
+    @IBOutlet weak var topTitleConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tabTitleLable: UILabel!
+    @IBOutlet weak var intercomButton: UIButton!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var topView: UIView!
@@ -37,6 +42,7 @@ class DiaryViewController: BaseViewController {
     
     // MARK: - Properties -
     private var selectedDate: Date = Date()
+    private let isIphone5 = Display.typeIsLike == .iphone5
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
@@ -75,11 +81,25 @@ class DiaryViewController: BaseViewController {
         getItemsInDataBase()
         UserInfo.sharedInstance.selectedDate = Date()
         Amplitude.instance().logEvent("view_diary")
+        
+        var state: Bool = false
+        if let _ = UserInfo.sharedInstance.currentUser?.email {
+            state = true
+        }
+        
+        let identify = AMPIdentify()
+        identify.set("email", value: state as NSObject)
+        Amplitude.instance()?.identify(identify)
+        
+        let attributed = ICMUserAttributes()
+        attributed.customAttributes = ["email": state]
+        Intercom.updateUser(attributed)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
+        registerForRemoteNotification()
         if UserInfo.sharedInstance.isReload {
             UserInfo.sharedInstance.isReload = false
             getItemsInDataBase()
@@ -95,6 +115,11 @@ class DiaryViewController: BaseViewController {
             UserInfo.sharedInstance.reloadDiariContent = false
             getItemsInDataBase()
         }
+        
+        if let _ = Auth.auth().currentUser?.uid {
+            intercomButton.isHidden = false
+        }
+        getItemsInDataBase()
     }
     
     override func viewDidLayoutSubviews() {
@@ -128,9 +153,39 @@ class DiaryViewController: BaseViewController {
         }
     }
     
+    private func registerForRemoteNotification() {
+        if #available(iOS 10.0, *) {
+            let center  = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+                if error == nil {
+                    DispatchQueue.main.async(execute: {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    })
+                }
+                
+                let identify = AMPIdentify()
+                identify.set("push_enabled", value: granted as NSObject)
+                Amplitude.instance()?.identify(identify)
+                
+                let attributed = ICMUserAttributes()
+                attributed.customAttributes = ["push_enabled": granted]
+                Intercom.updateUser(attributed)
+            }
+        } else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
     // MARK: - Actions -
     @IBAction func calendarClicked(_ sender: Any) {
         picker.showDatePicker(date: self.selectedDate)
+    }
+    
+    @IBAction func showChatIntercom(_ sender: Any) {
+        Intercom.logEvent(withName: "intercom_chat") //
+        Amplitude.instance()?.logEvent("intercom_chat") //
+        Intercom.presentMessenger()
     }
     
     // MARK: - Private -
@@ -141,6 +196,11 @@ class DiaryViewController: BaseViewController {
         blurView.scale = 1
         
         activity.startAnimating()
+        
+        if isIphone5 {
+            topTitleConstraint.constant = 0.0
+            tabTitleLable.font = tabTitleLable.font.withSize(25)
+        }
     }
 }
 
@@ -158,8 +218,8 @@ extension DiaryViewController: DiaryViewDelegate {
     func removeMealTime() {
         let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить продукт?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
-            Amplitude.instance().logEvent("delete_food")
-            Intercom.logEvent(withName: "delete_food")
+            Amplitude.instance().logEvent("delete_food") //
+            Intercom.logEvent(withName: "delete_food") //
             self.displayManager.removeMealTime()
             self.getItemsInDataBase()
         }))

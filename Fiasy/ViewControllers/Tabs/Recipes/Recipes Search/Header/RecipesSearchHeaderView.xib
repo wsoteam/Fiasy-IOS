@@ -72,7 +72,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.99989157920000005" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="H1T-se-Hye" firstAttribute="leading" secondItem="BkX-1E-pHb" secondAttribute="leading" constant="16" id="3FU-29-kQ9"/>
                         <constraint firstItem="H1T-se-Hye" firstAttribute="top" secondItem="BkX-1E-pHb" secondAttribute="top" constant="16" id="cbY-rB-10b"/>
@@ -81,7 +81,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BkX-1E-pHb" secondAttribute="trailing" id="43h-hF-jnn"/>
                 <constraint firstItem="BkX-1E-pHb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="EDM-3d-xJa"/>

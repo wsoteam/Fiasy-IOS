@@ -24,9 +24,52 @@ PODS:
   - DropDown (2.3.13)
   - DynamicBlurView (4.0.0)
   - Fabric (1.9.0)
+  - FacebookCore (0.6.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.43)
+  - FacebookLogin (0.6.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.43)
+    - FBSDKLoginKit (~> 4.43)
+  - FacebookSDK (4.44.1):
+    - Bolts (~> 1.9)
+    - FacebookSDK/CoreKit (= 4.44.1)
+    - FacebookSDK/MarketingKit (= 4.44.1)
+  - FacebookSDK/CoreKit (4.44.1):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit
+  - FacebookSDK/LoginKit (4.44.1):
+    - Bolts (~> 1.9)
+    - FacebookSDK/CoreKit
+    - FBSDKLoginKit
+  - FacebookSDK/MarketingKit (4.44.1):
+    - Bolts (~> 1.9)
+    - FacebookSDK/CoreKit
+    - FBSDKMarketingKit
+  - FacebookSDK/PlacesKit (4.44.1):
+    - Bolts (~> 1.9)
+    - FacebookSDK/CoreKit
+    - FBSDKPlacesKit
+  - FacebookSDK/ShareKit (4.44.1):
+    - Bolts (~> 1.9)
+    - FacebookSDK/CoreKit
+    - FBSDKShareKit
+  - FacebookShare (0.6.1):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.43)
+    - FBSDKShareKit (~> 4.43)
   - FBSDKCoreKit (4.44.1):
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.44.1):
+    - FBSDKCoreKit
+  - FBSDKMarketingKit (4.38.0):
+    - FBSDKCoreKit
+  - FBSDKMessengerShareKit (1.3.2)
+  - FBSDKPlacesKit (4.44.1):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.44.1):
     - FBSDKCoreKit
   - Firebase/Auth (4.0.4):
     - Firebase/Core
@@ -90,6 +133,21 @@ PODS:
   - Kingfisher (5.3.1)
   - MaterialControls (1.2.2)
   - MBCircularProgressBar (0.3.5)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya-ObjectMapper/Core (2.8):
+    - Moya (~> 12.0)
+    - ObjectMapper (~> 3.4)
+  - Moya-ObjectMapper/RxSwift (2.8):
+    - Moya-ObjectMapper/Core
+    - Moya/RxSwift
+    - RxSwift (~> 4)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - Moya/RxSwift (12.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -99,15 +157,29 @@ PODS:
   - NVActivityIndicatorView (4.7.0):
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
+  - ObjectMapper (3.4.2)
   - Parchment (1.6.0)
   - Protobuf (3.7.0)
   - ReachabilitySwift (4.3.1)
+  - Realm (3.16.1):
+    - Realm/Headers (= 3.16.1)
+  - Realm/Headers (3.16.1)
+  - RealmSwift (3.16.1):
+    - Realm (= 3.16.1)
+  - Result (4.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
   - SQLite.swift (0.12.0):
     - SQLite.swift/standard (= 0.12.0)
   - SQLite.swift/standard (0.12.0)
   - SwiftyJSON (5.0.0)
+  - Swinject (2.6.1)
+  - SwinjectStoryboard (2.2.0):
+    - Swinject (~> 2.6)
   - TagListView (1.4.0)
   - "UITextView+Placeholder (1.2.1)"
+  - ViperMcFlurry (1.5.2)
   - VisualEffectView (4.0.0)
   - XLPagerTabStrip (9.0.0)
 
@@ -122,32 +194,50 @@ DEPENDENCIES:
   - Bolts
   - Bugsee
   - Charts
-  - Crashlytics (~> 3.12.0)
+  - Crashlytics
   - DropDown
   - DynamicBlurView
-  - Fabric (~> 1.9.0)
+  - Fabric
+  - FacebookCore
+  - FacebookLogin
+  - FacebookSDK
+  - FacebookSDK/LoginKit
+  - FacebookSDK/PlacesKit
+  - FacebookSDK/ShareKit
+  - FacebookShare
   - FBSDKCoreKit
   - FBSDKLoginKit
+  - FBSDKMessengerShareKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
-  - Firebase/Messaging (= 4.0.4)
+  - Firebase/Messaging
   - Firebase/Storage
-  - FirebaseInstanceID (= 2.0.0)
+  - FirebaseInstanceID
   - GoogleSignIn
   - GradientProgressBar
   - Intercom
   - Kingfisher
   - MaterialControls
   - MBCircularProgressBar
+  - Moya
+  - Moya-ObjectMapper/RxSwift
+  - Moya/RxSwift
   - NextGrowingTextView
   - NVActivityIndicatorView
+  - ObjectMapper
   - Parchment
   - ReachabilitySwift
+  - RealmSwift
+  - RxCocoa
+  - RxSwift
   - SQLite.swift
   - SwiftyJSON
+  - Swinject
+  - SwinjectStoryboard
   - TagListView
   - "UITextView+Placeholder"
+  - ViperMcFlurry
   - VisualEffectView
   - XLPagerTabStrip
 
@@ -167,8 +257,16 @@ SPEC REPOS:
     - DropDown
     - DynamicBlurView
     - Fabric
+    - FacebookCore
+    - FacebookLogin
+    - FacebookSDK
+    - FacebookShare
     - FBSDKCoreKit
     - FBSDKLoginKit
+    - FBSDKMarketingKit
+    - FBSDKMessengerShareKit
+    - FBSDKPlacesKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -185,16 +283,27 @@ SPEC REPOS:
     - Kingfisher
     - MaterialControls
     - MBCircularProgressBar
+    - Moya
+    - Moya-ObjectMapper
     - nanopb
     - NextGrowingTextView
     - NVActivityIndicatorView
+    - ObjectMapper
     - Parchment
     - Protobuf
     - ReachabilitySwift
+    - Realm
+    - RealmSwift
+    - Result
+    - RxCocoa
+    - RxSwift
     - SQLite.swift
     - SwiftyJSON
+    - Swinject
+    - SwinjectStoryboard
     - TagListView
     - "UITextView+Placeholder"
+    - ViperMcFlurry
     - VisualEffectView
     - XLPagerTabStrip
 
@@ -213,8 +322,16 @@ SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FacebookCore: 38cd3a4078738d6f648eb9b6b9d35b02d693e9a1
+  FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
+  FacebookSDK: 98dd798abb2fe8148d010d30f5d9b4b47bc30922
+  FacebookShare: 84bccbc222fc09c839b851925ad6c295a4ab7840
   FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
   FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
+  FBSDKMarketingKit: e609f39d74ab273cf52e2f8b7e8829ed412b2827
+  FBSDKMessengerShareKit: bdd14265f5845e6d1c95a128ab33705a68ca1c21
+  FBSDKPlacesKit: 51ea17fa8c831088177676ce10b740e4497934b0
+  FBSDKShareKit: 526d4cfb713d24855fa23d0dd74e191accd3a720
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -231,19 +348,30 @@ SPEC CHECKSUMS:
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   MaterialControls: 1c6b29e78d3a13d8dd6a67ed31b6d26eb5de8f72
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  Moya-ObjectMapper: c514b5eafcfd5e260f85f7a5bf66895a217e2b37
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NextGrowingTextView: 63d064e669caae6fd78b81b96a4ed156906bf80f
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  Realm: 601cacc51d8be3b17a377ef787be0f6ee0e76cf1
+  RealmSwift: 486f2e09d5a8ccff63ed66e48d0846b111deb5e5
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SQLite.swift: 7cad9db150a03716336e69469ec9559c85aece5b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Swinject: b624462f47b635a64f89a60a247baa5fccec14e1
+  SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
   TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+  ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
   VisualEffectView: 9e9883f07d8a929b98c9c08a068f726279d92754
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 6d25fe2576dae9d64e6db2861c114466f3948838
+PODFILE CHECKSUM: 9c5be697f5fdd55545c5fc97795c533202ccd6e7
 
 COCOAPODS: 1.7.1

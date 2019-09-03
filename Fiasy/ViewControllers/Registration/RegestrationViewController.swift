@@ -14,6 +14,8 @@ class RegestrationViewController: UIViewController {
     @IBOutlet var passwordButtons: [UIButton]!
     @IBOutlet var allErrorLabels: [UILabel]!
     
+    // MARK: - Properties -
+    
     //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +97,9 @@ class RegestrationViewController: UIViewController {
             return
         }
         let email = (allTextFields[0].text ?? "")
+        
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "email"]) //
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "email"]) //
 
         Auth.auth().createUser(withEmail: email, password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
             guard let strongSelf = self else { return }
@@ -110,35 +115,56 @@ class RegestrationViewController: UIViewController {
                 if let url = user?.photoURL?.absoluteString {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
-                Intercom.registerUser(withEmail: email)
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "email"])
-                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "email"])
+                if let uid = Auth.auth().currentUser?.uid {
+                    Intercom.registerUser(withUserId: uid)
+                }
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "email"]) //
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "email"]) //
                 
                 if let uid = Auth.auth().currentUser?.uid {
                     Intercom.registerUser(withUserId: uid)
                 }
+                let identify = AMPIdentify()
+                identify.set("registration", value: "email" as NSObject)
+                Amplitude.instance()?.identify(identify)
+                
+                let attributed = ICMUserAttributes()
+                attributed.customAttributes = ["registration": "email"]
+                Intercom.updateUser(attributed)
+                
+                Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "enter"]) //
+                Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "enter"]) //
+                
                 return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
             
-            Intercom.logEvent(withName: "registration_error")
-            Amplitude.instance()?.logEvent("registration_error")
             AlertComponent.sharedInctance.showAlertMessage(message: "Такой пользователь уже существует",
                                                           vc: strongSelf)
         }
     }
     
     @IBAction func googleClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "google"]) //
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "google"]) //
+        
         GIDSignIn.sharedInstance().signOut()
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
         }
         GIDSignIn.sharedInstance().signIn()
     }
-
+    
+    @IBAction func privacyClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "privacy"]) //
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "privacy"]) //
+    }
+    
     @IBAction func facebookClicked(_ sender: Any) {
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
         }
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "fb"]) //
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "fb"]) //
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
             guard result?.isCancelled != true else { return }
             guard let strongSelf = self else { return }
@@ -169,8 +195,16 @@ class RegestrationViewController: UIViewController {
                 }
                 UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
                 Intercom.registerUser(withEmail: user?.email ?? "")
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"])
-                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"])
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) //
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) //
+
+                let identify = AMPIdentify()
+                identify.set("registration", value: "facebook" as NSObject)
+                Amplitude.instance()?.identify(identify)
+                
+                let attributed = ICMUserAttributes()
+                attributed.customAttributes = ["registration": "facebook"]
+                Intercom.updateUser(attributed)
                 
                 strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
@@ -229,8 +263,17 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
                     Intercom.registerUser(withEmail: email ?? "")
-                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"])
-                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"])
+                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) //
+                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) //
+
+                    let identify = AMPIdentify()
+                    identify.set("registration", value: "google" as NSObject)
+                    Amplitude.instance()?.identify(identify)
+                    
+                    let attributed = ICMUserAttributes()
+                    attributed.customAttributes = ["registration": "google"]
+                    Intercom.updateUser(attributed)
+                    
                     strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })

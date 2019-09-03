@@ -24,22 +24,22 @@ enum Gender: Int {
     }
 }
 
-enum TargetType: String {
-    case easy = "Легкая"
-    case average = "Средняя"
-    case high = "Высокая"
-    
-    var targetColor: UIColor {
-        switch self {
-        case .easy:
-            return #colorLiteral(red: 0.5672869682, green: 0.782702148, blue: 0.2939775586, alpha: 1)
-        case .average:
-            return #colorLiteral(red: 1, green: 0.7656647563, blue: 0, alpha: 1)
-        case .high:
-            return #colorLiteral(red: 0.9309825301, green: 0.3653407693, blue: 0.1645739377, alpha: 1)
-        }
-    }
-}
+//enum TargetType: String {
+//    case easy = "Легкая"
+//    case average = "Средняя"
+//    case high = "Высокая"
+//    
+//    var targetColor: UIColor {
+//        switch self {
+//        case .easy:
+//            return #colorLiteral(red: 0.5672869682, green: 0.782702148, blue: 0.2939775586, alpha: 1)
+//        case .average:
+//            return #colorLiteral(red: 1, greGender7656647563, blue: 0, alpha: 1)
+//        case .high:
+//            return #colorLiteral(red: 0.9309825301, green: 0.3653407693, blue: 0.1645739377, alpha: 1)
+//        }
+//    }
+//}
 
 class UserInfo {
 
@@ -50,7 +50,7 @@ class UserInfo {
     var productModel: MLModel?
     var currentUser: User?
     
-    var userTarget: TargetType = .easy
+//    var userTarget: TargetType = .easy
     var userGender: Gender = .man
     var physicalActivity: String = "Минимальная нагрузка"
     
@@ -63,7 +63,11 @@ class UserInfo {
     
     var reloadDiariContent: Bool = false
     
+    var trialFrom: String = ""
+    
     // MARK: - User fields -
+    var editTarget: Int = 0
+    var editActivity: CGFloat = 0.0
     var paymentComplete: Bool = false
     var purchaseIsValid: Bool = false
     var name: String = ""
@@ -82,7 +86,7 @@ class UserInfo {
     // MARK: - Registration Flow -
     var registrationFlow = RegistrationFlow()
     
-    var registrationLoadСomplexity: String = TargetType.easy.rawValue
+    //var registrationLoadСomplexity: String = TargetType.easy.rawValue
     var registrationPhysicalActivity: String = "Минимальная нагрузка"
     
     var registrationGrowth: String = ""

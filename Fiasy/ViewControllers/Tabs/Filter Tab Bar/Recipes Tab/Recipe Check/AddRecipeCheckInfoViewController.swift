@@ -144,8 +144,8 @@ class AddRecipeCheckInfoViewController: UIViewController {
                                     ref.child("USER_LIST").child(uid).child("customRecipes").childByAutoId().setValue(userData)
                                 }
                                 UserInfo.sharedInstance.reloadRecipesScreen = true
-                                Intercom.logEvent(withName: "custom_reciepe_success")
-                                Amplitude.instance()?.logEvent("custom_reciepe_success")
+                                Intercom.logEvent(withName: "custom_recipe_success") //
+                                Amplitude.instance()?.logEvent("custom_recipe_success") //
                                 self.popBack(5)
                             }
                         }
@@ -163,8 +163,9 @@ class AddRecipeCheckInfoViewController: UIViewController {
                     ref.child("USER_LIST").child(uid).child("customRecipes").childByAutoId().setValue(userData)
                 }
                 UserInfo.sharedInstance.reloadRecipesScreen = true
-                Intercom.logEvent(withName: "custom_reciepe_success")
-                Amplitude.instance()?.logEvent("custom_reciepe_success")
+                Intercom.logEvent(withName: "custom_recipe_success") //
+                Amplitude.instance()?.logEvent("custom_recipe_success") //
+                
                 popBack(5)
             }
         }

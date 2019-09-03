@@ -7,9 +7,12 @@ import Intercom
 class ProfileViewController: UIViewController {
     
     //MARK: - Outlet -
+    @IBOutlet weak var topTitleConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tabTitleLable: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: - Properties -
+    private let isIphone5 = Display.typeIsLike == .iphone5
     private var displayManager: ProfileDisplayManager?
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -30,7 +33,9 @@ class ProfileViewController: UIViewController {
 //        hideKeyboardWhenTappedAround()
         addObserver(for: self, #selector(reloadContent), "reloadContent")
         addObserver(for: self, #selector(reloadProfile), "reloadProfile")
-        Amplitude.instance().logEvent("view_profile")
+        
+        Amplitude.instance().logEvent("view_profile") //
+        Intercom.logEvent(withName: "view_profile") //
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -50,6 +55,11 @@ class ProfileViewController: UIViewController {
     //MARK: - Private -
     private func setupInitialState() {
         displayManager = ProfileDisplayManager(tableView, self)
+        
+        if isIphone5 {
+            topTitleConstraint.constant = 20.0
+            tabTitleLable.font = tabTitleLable.font.withSize(25)
+        }
     }
     
     private func fillFields() {

@@ -146,8 +146,8 @@ class AddProductFourthStepViewController: UIViewController {
         let refreshAlert = UIAlertController(title: "Ваш продукт добавлен в Избранное", message: "", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard let strongSelf = self else { return }
-            Intercom.logEvent(withName: "custom_product_success")
-            Amplitude.instance()?.logEvent("custom_product_success")
+            Intercom.logEvent(withName: "custom_product_success") //
+            Amplitude.instance()?.logEvent("custom_product_success") //
             strongSelf.popBack(5)
         }))
         present(refreshAlert, animated: true)

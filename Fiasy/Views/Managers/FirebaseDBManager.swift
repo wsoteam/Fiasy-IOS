@@ -92,7 +92,7 @@ class FirebaseDBManager {
         let birthday: Date = flow.dateOfBirth ?? Date()
         if let uid = Auth.auth().currentUser?.uid {
             let age = Calendar.current.dateComponents([.year], from: birthday, to: Date())
-            let difficultyLevel = UserInfo.sharedInstance.registrationLoadСomplexity
+            //let difficultyLevel = UserInfo.sharedInstance.registrationLoadСomplexity
             let exerciseStress = UserInfo.sharedInstance.registrationPhysicalActivity
             let female = (flow.gender ?? 1) == 0
             let height: Int = flow.growth
@@ -145,7 +145,7 @@ class FirebaseDBManager {
             let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
             let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
             
-            let userData = ["age": age.year ?? 20, "difficultyLevel": difficultyLevel, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": fat, "maxKcal": result, "maxProt": protein, "maxCarbo" : carbohydrates, "updateOfIndicator" : true, "email" : flow.email, "target" : target ?? 0, "target_Activity" : targetActivity ?? 0.0] as [String : Any]
+            let userData = ["age": age.year ?? 20, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": fat, "maxKcal": result, "maxProt": protein, "maxCarbo" : carbohydrates, "updateOfIndicator" : true, "email" : flow.email, "target" : target ?? 0, "target_Activity" : targetActivity ?? 0.0] as [String : Any]
             Database.database().reference().child("USER_LIST").child(uid).child("profile").setValue(userData)
             Amplitude.instance().logEvent("create_acount")
         }
@@ -171,7 +171,7 @@ class FirebaseDBManager {
     
     static func fillDefaultUserInDatabase() {
         UserInfo.sharedInstance.registrationAge = "0"
-        UserInfo.sharedInstance.registrationLoadСomplexity = TargetType.easy.rawValue
+        //UserInfo.sharedInstance.registrationLoadСomplexity = TargetType.easy.rawValue
         UserInfo.sharedInstance.registrationPhysicalActivity = "Минимальная нагрузка"
         UserInfo.sharedInstance.registrationGender = .man
         UserInfo.sharedInstance.registrationGrowth = "0"

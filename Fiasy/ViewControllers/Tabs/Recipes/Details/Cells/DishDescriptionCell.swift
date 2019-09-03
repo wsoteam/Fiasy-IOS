@@ -249,8 +249,8 @@ class DishDescriptionCell: UITableViewCell {
             let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true, "presentDay" : state] as [String : Any]
             ref.child("USER_LIST").child(uid).child(getTitle()).childByAutoId().setValue(userData)
             
-            Intercom.logEvent(withName: "reciepe_add_success", metaData: ["reciepe_intake" : getTitle()])
-            Amplitude.instance()?.logEvent("reciepe_add_success", withEventProperties: ["reciepe_intake" : getTitle()])
+            Intercom.logEvent(withName: "recipe_add_success", metaData: ["recipe_intake" : getTitle()]) //
+            Amplitude.instance()?.logEvent("recipe_add_success", withEventProperties: ["recipe_intake" : getTitle()]) //
             
             FirebaseDBManager.reloadItems()
             delegate?.showAnimate()

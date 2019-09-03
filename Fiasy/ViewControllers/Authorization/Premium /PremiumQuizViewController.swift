@@ -39,7 +39,6 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        removeObserver()
     }
     
     @objc func paymentComplete() {
@@ -59,20 +58,41 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Action's -
     @IBAction func showPrivacyClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "privacy"]) //
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "privacy"]) //
         if let url = URL(string: "http://fiasy.com/PrivacyPolice.html") {
             UIApplication.shared.open(url)
         }
     }
     
+    @IBAction func closeClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "close"]) //
+        Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "close"]) //
+        
+        let identify = AMPIdentify()
+        identify.set("premium_status", value: "free" as NSObject)
+        Amplitude.instance()?.identify(identify)
+        
+        let attributed = ICMUserAttributes()
+        attributed.customAttributes = ["premium_status": "free"]
+        Intercom.updateUser(attributed)
+        
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "close"]) //
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "close"]) //
+        performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
+    }
+    
     @IBAction func backClicked(_ sender: Any) {
         Amplitude.instance()?.logEvent("close_premium")
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "back"]) //
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "back"]) //
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func purchedClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "trial_success", metaData: ["trial_from" : trialFrom])
-        Amplitude.instance()?.logEvent("trial_success", withEventProperties: ["trial_from" : trialFrom])
-        Amplitude.instance()?.logEvent("click_on_buy")
+        UserInfo.sharedInstance.trialFrom = trialFrom
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "next"]) //
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "next"]) //
         SubscriptionService.shared.purchase()
     }
     

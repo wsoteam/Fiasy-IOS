@@ -11,6 +11,7 @@ import UIKit
 class LoadingButton: UIButton {
     
     var originalButtonText: String?
+    var activityColor: UIColor = .white
     var activityIndicator: UIActivityIndicatorView!
     
     func showLoading() {
@@ -32,7 +33,7 @@ class LoadingButton: UIButton {
     private func createActivityIndicator() -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = UIColor.white
+        activityIndicator.color = activityColor
         return activityIndicator
     }
     

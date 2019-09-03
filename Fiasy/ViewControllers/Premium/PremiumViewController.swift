@@ -24,7 +24,7 @@ class PremiumViewController: UIViewController, UIScrollViewDelegate {
         
         slides = createSlides()
         setupSlideScrollView(slides: slides)
-        Amplitude.instance()?.logEvent("view_prem")
+
         if isIphone5 {
             nextButton.cornerRadius = 17.5
             buttonHeight.constant = 35
@@ -89,12 +89,10 @@ class PremiumViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func backClicked(_ sender: Any) {
-        Amplitude.instance()?.logEvent("close_premium")
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func purchedClicked(_ sender: Any) {
-        Amplitude.instance()?.logEvent("click_on_buy")
         SubscriptionService.shared.purchase()
     }
     

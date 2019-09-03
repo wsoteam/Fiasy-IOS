@@ -31,8 +31,8 @@ class QuizGenderCell: UICollectionViewCell {
             bottomHeightConstraint.constant = 10
             topHeightConstraint.constant = 10
         }
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "male"])
-        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "male"])
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "male"]) //
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "male"]) //
     }
     
     // MARK: - Interface -

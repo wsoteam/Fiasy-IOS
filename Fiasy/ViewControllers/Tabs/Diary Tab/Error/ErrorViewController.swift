@@ -29,8 +29,8 @@ class ErrorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Amplitude.instance().logEvent("product_page_bugsend")
-        Intercom.logEvent(withName: "product_page_bugsend")
+        Amplitude.instance().logEvent("product_page_bugsend") //
+        Intercom.logEvent(withName: "product_page_bugsend") //
         setupInitialState()
         sendTextView.configureGrowingTextView()
         sendTextView.textView.delegate = self

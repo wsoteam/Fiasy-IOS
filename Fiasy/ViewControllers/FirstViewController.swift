@@ -70,8 +70,17 @@ class FirstViewController: UIViewController {
                 }
                 UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
                 Intercom.registerUser(withEmail: user?.email ?? "")
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"])
-                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"])
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) //
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) //
+                
+                let identify = AMPIdentify()
+                identify.set("registration", value: "facebook" as NSObject)
+                Amplitude.instance()?.identify(identify)
+                
+                let attributed = ICMUserAttributes()
+                attributed.customAttributes = ["registration": "facebook"]
+                Intercom.updateUser(attributed)
+
                 strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             })
         }
@@ -102,10 +111,11 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                            accessToken: authentication.accessToken)
             
-            Auth.auth().signIn(with: credential, completion: { [unowned self] (user, error) in
+            Auth.auth().signIn(with: credential, completion: { [weak self] (user, error) in
+                guard let strongSelf = self else { return }
                 if let error = error {
                     return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
-                                                                          message: error.localizedDescription, vc: self)
+                                                                          message: error.localizedDescription, vc: strongSelf)
                 } else {
                     if let firsts = first {
                         UserInfo.sharedInstance.registrationFlow.firstName = firsts
@@ -118,9 +128,18 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
                     Intercom.registerUser(withEmail: email ?? "")
-                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"])
-                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"])
-                    self.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) //
+                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) //
+                    
+                    let identify = AMPIdentify()
+                    identify.set("registration", value: "google" as NSObject)
+                    Amplitude.instance()?.identify(identify)
+                    
+                    let attributed = ICMUserAttributes()
+                    attributed.customAttributes = ["registration": "google"]
+                    Intercom.updateUser(attributed)
+                    
+                    strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }
             })
         }

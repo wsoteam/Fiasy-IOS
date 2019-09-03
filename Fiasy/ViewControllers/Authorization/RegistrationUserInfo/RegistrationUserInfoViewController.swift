@@ -53,7 +53,7 @@ class RegistrationUserInfoViewController: UIViewController {
 
     //MARK: - Private -
     private func setupInitialState() {
-        loadСomplexityLabel.text = UserInfo.sharedInstance.registrationLoadСomplexity.uppercased()
+//        loadСomplexityLabel.text = UserInfo.sharedInstance.registrationLoadСomplexity.uppercased()
         physicalActivityLabel.text = UserInfo.sharedInstance.registrationPhysicalActivity.uppercased()
     }
     

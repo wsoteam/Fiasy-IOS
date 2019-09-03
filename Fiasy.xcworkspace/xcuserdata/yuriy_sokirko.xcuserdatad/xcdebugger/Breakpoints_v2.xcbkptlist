@@ -243,91 +243,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fiasy/ViewControllers/Tabs/Filter Tab Bar/Recipes Tab/Add/AddRecipeViewController.swift"
-            timestampString = "586442324.69605"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "textChange(tag:text:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Fiasy.AddRecipeViewController.textChange(tag: Swift.Int, text: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Fiasy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "587403824.173568"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "152">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Fiasy.AddRecipeViewController.textChange(tag: Swift.Int, text: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Fiasy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "587403824.175174"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "344">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Fiasy.AddRecipeViewController.textChange(tag: Swift.Int, text: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Fiasy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yuriy_sokirko/Project/Test-App/fiasy_demo/Fiasy/ViewControllers/Tabs/Filter%20Tab%20Bar/Recipes%20Tab/Add/AddRecipeViewController.swift"
-                  timestampString = "587403824.176765"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "548">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Fiasy/ViewControllers/Notifications/List/NotificationsListViewController.swift"
             timestampString = "586442324.6964149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fiasy/ViewControllers/Tabs/Recipes/Details/RecipesDetailsViewController.swift"
-            timestampString = "587231056.037228"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -434,14 +355,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fiasy/ViewControllers/Tabs/Diary Tab/Diary/DiaryViewController.swift"
-            timestampString = "587396416.501483"
+            filePath = "Fiasy/ViewControllers/Tabs/Diary Tab/Diary/DiaryClickedPicker.swift"
+            timestampString = "587403823.938241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "picker"
-            landmarkType = "24">
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "addDatePicker(mode:date:minimumDate:maximumDate:action:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -450,13 +371,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fiasy/ViewControllers/Tabs/Diary Tab/Diary/DiaryClickedPicker.swift"
-            timestampString = "587403823.938241"
+            filePath = "Fiasy/Views/Managers/SubscriptionService.swift"
+            timestampString = "589157455.23322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "addDatePicker(mode:date:minimumDate:maximumDate:action:)"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "validateReceipt()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/ViewControllers/Tabs/Recipes/Details/RecipesDetailsViewController.swift"
+            timestampString = "589157455.233798"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/ViewControllers/Tabs/Recipes/Mealtime List/RecipeMealtimeViewController.swift"
+            timestampString = "589157455.233856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1166,11 +1166,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMT-Zd-Jac">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMT-Zd-Jac">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zwP-d5-zT1">
-                                        <rect key="frame" x="0.0" y="169.5" width="375" height="308"/>
+                                        <rect key="frame" x="0.0" y="206.5" width="375" height="234"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4e-v4-3eN">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
@@ -1193,8 +1193,8 @@
                                                 <color key="textColor" red="0.4666130543" green="0.4666974545" blue="0.4666077495" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81d-hM-CDc">
-                                                <rect key="frame" x="0.0" y="244" width="375" height="64"/>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81d-hM-CDc">
+                                                <rect key="frame" x="0.0" y="234" width="375" height="64"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1M3-Fe-nYj">
                                                         <rect key="frame" x="76.5" y="20" width="222" height="44"/>

@@ -46,8 +46,10 @@ class RecipesDetailsViewController: UIViewController {
         
         setupTableView()
         ownRecipe = ((backViewController() as? GeneralTabBarViewController) != nil)
-        Amplitude.instance().logEvent("view_detail_food")
-        Amplitude.instance().logEvent("view_recipe")
+        //Amplitude.instance().logEvent("view_detail_food")
+
+        Intercom.logEvent(withName: "view_recipe") //
+        Amplitude.instance()?.logEvent("view_recipe") //
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +78,7 @@ class RecipesDetailsViewController: UIViewController {
         } else {
             if UserInfo.sharedInstance.purchaseIsValid {
                 premiumView.isHidden = true
+                tableView.reloadData()
             } else {
                 premiumView.isHidden = false
                 if let path = selectedRecipe?.url, let url = try? path.asURL() {
@@ -102,7 +105,7 @@ class RecipesDetailsViewController: UIViewController {
         if segue.destination is PremiumQuizViewController {
             let vc = segue.destination as? PremiumQuizViewController
             vc?.isAutorization = false
-            vc?.trialFrom = "reciepe"
+            vc?.trialFrom = "recipe"
         }
     }
     
@@ -169,8 +172,8 @@ extension RecipesDetailsViewController: UITableViewDataSource, UITableViewDelega
 extension RecipesDetailsViewController: RecipesDetailsDelegate {
     
     func showPremiumScreen() {
-        Intercom.logEvent(withName: "product_page_micro")
-        Amplitude.instance()?.logEvent("product_page_micro")
+        Intercom.logEvent(withName: "product_page_micro") //
+        Amplitude.instance()?.logEvent("product_page_micro") //
         performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
     }
     

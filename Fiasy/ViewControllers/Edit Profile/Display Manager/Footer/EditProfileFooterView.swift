@@ -13,13 +13,24 @@ class EditProfileFooterView: UITableViewHeaderFooterView {
     // MARK: - Properties -
     static var height: CGFloat = 120.0
     private var delegate: EditProfileDisplayDelegate?
+    private var secondDelegate: CalorieIntakeDelegate?
     
     // MARK: - Interface -
     func fillFooter(delegate: EditProfileDisplayDelegate) {
         self.delegate = delegate
     }
     
+    func fillSecondFooter(delegate: CalorieIntakeDelegate) {
+        self.secondDelegate = delegate
+    }
+    
     @IBAction func saveClicked(_ sender: Any) {
-        self.delegate?.saveAllFields()
+        if let delegate = self.delegate {
+            delegate.saveAllFields()
+        }
+        
+        if let secondDelegate = self.secondDelegate {
+            secondDelegate.saveAllFields()
+        }
     }
 }

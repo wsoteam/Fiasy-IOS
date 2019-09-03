@@ -10,6 +10,7 @@ import UIKit
 import Amplitude_iOS
 import DynamicBlurView
 import TagListView
+import Intercom
 import VisualEffectView
 
 protocol RecipesDelegate {
@@ -208,18 +209,25 @@ extension RecipesViewController: RecipesDelegate {
     
     func showMoreClicked(title: String) {
         UserInfo.sharedInstance.selectedMealtimeHeaderTitle = title
+        var item: String = ""
         switch title {
         case "Завтрак":
+            item = "breakfast"
             UserInfo.sharedInstance.selectedMealtimeData = breakfasts
         case "Обед":
+            item = "lunch"
             UserInfo.sharedInstance.selectedMealtimeData = lunches
         case "Ужин":
+            item = "dinner"
             UserInfo.sharedInstance.selectedMealtimeData = dinners
         case "Перекус":
+            item = "snack"
             UserInfo.sharedInstance.selectedMealtimeData = snacks
         default:
             break
         }
+        Intercom.logEvent(withName: "recipe_category", metaData: ["recipe_category" : item]) //
+        Amplitude.instance()?.logEvent("recipe_category", withEventProperties: ["recipe_category" : item]) //
         performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)
     }
 }

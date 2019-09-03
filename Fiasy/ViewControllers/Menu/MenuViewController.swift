@@ -33,6 +33,9 @@ class MenuViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        DispatchQueue.global().async {
+            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        }
         addObserver(for: self, #selector(didRecieveLogoutNotification), Constant.LOG_OUT)
     }
     

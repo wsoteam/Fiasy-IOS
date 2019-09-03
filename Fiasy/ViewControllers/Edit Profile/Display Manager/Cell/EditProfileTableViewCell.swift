@@ -101,7 +101,6 @@ class EditProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
                     }
                 }
             }
-            
           return count <= 5
         }
         if textField.tag == 3 || textField.tag == 5 {

@@ -13,6 +13,7 @@ import Amplitude_iOS
 class EditProfileViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var finishButton: LoadingButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
@@ -40,7 +41,7 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupInitialState()
+        finishButton.activityColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
         Amplitude.instance().logEvent("edit_profile")
     }
     
@@ -61,12 +62,26 @@ class EditProfileViewController: UIViewController {
     //MARK: - Private -
     private func setupInitialState() {
         guard let user = UserInfo.sharedInstance.currentUser else { return }
-        displayManager = EditProfileDisplayManager(tableView, self, user)
+        displayManager = EditProfileDisplayManager(tableView, self, user, finishButton)
+    }
+    
+    private func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
     }
 
-    //MARK: - Actions -
+    // MARK: - Actions -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func finishClicked(_ sender: Any) {
+        finishButton.showLoading()
+        delayWithSeconds(1) { [weak self] in
+            self?.finishButton.hideLoading()
+            self?.displayManager?.saveFields()
+        }
     }
 }
 

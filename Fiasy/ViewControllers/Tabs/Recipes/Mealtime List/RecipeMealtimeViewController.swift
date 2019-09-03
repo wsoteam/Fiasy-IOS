@@ -34,8 +34,6 @@ class RecipeMealtimeViewController: UIViewController {
         setupTableView()
         navigationTitleLabel.text = UserInfo.sharedInstance.selectedMealtimeHeaderTitle
         let text = UserInfo.sharedInstance.getAmplitudeTitle(text: UserInfo.sharedInstance.selectedMealtimeHeaderTitle)
-        Intercom.logEvent(withName: "reciepe_category", metaData: ["reciepe_category" : text])
-        Amplitude.instance()?.logEvent("reciepe_category", withEventProperties: ["reciepe_category" : text])
     }
     
     override func viewWillAppear(_ animated: Bool) {

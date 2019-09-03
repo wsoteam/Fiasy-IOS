@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProDisplay-Medium.ttf">
+            <string>SFProDisplay-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="102" id="Lls-SV-cBb" customClass="CalorieIntakeTableViewCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lls-SV-cBb" id="kJl-D5-UX1">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="101.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d3S-Qp-1pd">
+                        <rect key="frame" x="20" y="0.0" width="384" height="75.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOO-Vi-ZWh">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="14"/>
+                                <color key="textColor" red="0.68218958380000005" green="0.7011895776" blue="0.751206398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slb-aD-3L2">
+                                <rect key="frame" x="0.0" y="25" width="384" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="14"/>
+                                <color key="textColor" red="0.37642624974250793" green="0.3764960765838623" blue="0.37642186880111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQb-O0-DPj">
+                                <rect key="frame" x="0.0" y="50" width="384" height="25.5"/>
+                                <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <connections>
+                                    <action selector="valueChange:" destination="Lls-SV-cBb" eventType="editingChanged" id="W4C-Dh-zGR"/>
+                                    <outlet property="delegate" destination="Lls-SV-cBb" id="k2g-GN-fV0"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVZ-jG-Yjg">
+                        <rect key="frame" x="20" y="85.5" width="394" height="1"/>
+                        <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="2oo-fp-9U4"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJn-Rj-tcZ">
+                        <rect key="frame" x="20" y="0.0" width="384" height="75.5"/>
+                        <connections>
+                            <action selector="selectedButton:" destination="Lls-SV-cBb" eventType="touchUpInside" id="oto-KI-brW"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YVZ-jG-Yjg" firstAttribute="top" secondItem="d3S-Qp-1pd" secondAttribute="bottom" constant="10" id="21k-Fp-0Px"/>
+                    <constraint firstItem="d3S-Qp-1pd" firstAttribute="leading" secondItem="kJl-D5-UX1" secondAttribute="leading" constant="20" id="27a-RP-obC"/>
+                    <constraint firstAttribute="bottom" secondItem="YVZ-jG-Yjg" secondAttribute="bottom" constant="15" id="Aoj-Wz-crC"/>
+                    <constraint firstAttribute="trailing" secondItem="d3S-Qp-1pd" secondAttribute="trailing" constant="10" id="LKL-Jj-bSZ"/>
+                    <constraint firstItem="YVZ-jG-Yjg" firstAttribute="leading" secondItem="d3S-Qp-1pd" secondAttribute="leading" id="duo-Zg-1Vq"/>
+                    <constraint firstItem="QJn-Rj-tcZ" firstAttribute="trailing" secondItem="d3S-Qp-1pd" secondAttribute="trailing" id="dvx-JN-mce"/>
+                    <constraint firstItem="QJn-Rj-tcZ" firstAttribute="bottom" secondItem="d3S-Qp-1pd" secondAttribute="bottom" id="nkx-Xe-QM6"/>
+                    <constraint firstAttribute="trailing" secondItem="YVZ-jG-Yjg" secondAttribute="trailing" id="orG-TM-4Go"/>
+                    <constraint firstItem="d3S-Qp-1pd" firstAttribute="top" secondItem="kJl-D5-UX1" secondAttribute="top" id="pCl-ZW-eD8"/>
+                    <constraint firstItem="QJn-Rj-tcZ" firstAttribute="top" secondItem="d3S-Qp-1pd" secondAttribute="top" id="w4t-PW-PZd"/>
+                    <constraint firstItem="QJn-Rj-tcZ" firstAttribute="leading" secondItem="d3S-Qp-1pd" secondAttribute="leading" id="wnb-sc-jXp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="insertTextField" destination="PQb-O0-DPj" id="1K2-aL-Rk4"/>
+                <outlet property="moreLabel" destination="slb-aD-3L2" id="eYa-pP-YJY"/>
+                <outlet property="selectedButton" destination="QJn-Rj-tcZ" id="wun-hU-yfe"/>
+                <outlet property="titleNameLabel" destination="qOO-Vi-ZWh" id="0RY-hi-hir"/>
+            </connections>
+            <point key="canvasLocation" x="15.942028985507248" y="38.169642857142854"/>
+        </tableViewCell>
+    </objects>
+</document>

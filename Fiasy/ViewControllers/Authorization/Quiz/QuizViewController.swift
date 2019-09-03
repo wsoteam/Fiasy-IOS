@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class QuizViewController: UIViewController {
     
@@ -59,8 +61,37 @@ class QuizViewController: UIViewController {
 extension QuizViewController: QuizViewOutput {
     
     func openFinishScreen() {
+        let flow = UserInfo.sharedInstance.registrationFlow
+        let birthday: Date = flow.dateOfBirth ?? Date()
+        let ageComponents = Calendar.current.dateComponents([.year], from: birthday, to: Date())
+        let age = Double(ageComponents.year ?? 0)
+        let item = flow.gender == 0 ? "female" : "male"
+        
+        let identify = AMPIdentify()
+        identify.set("male", value: item as NSObject)
+        identify.set("height", value: flow.growth as NSObject)
+        identify.set("weight", value: flow.weight as NSObject)
+        identify.set("age", value: age as NSObject)
+        identify.set("active", value: Int(flow.loadActivity) + 1 as NSObject)
+        identify.set("goal", value: (flow.target ?? 0) + 1 as NSObject)
+        Amplitude.instance()?.identify(identify)
+        
+        let userAttributes = [
+            "male": item,
+            "height": flow.growth,
+            "weight": flow.weight,
+            "age": age,
+            "active": Int(flow.loadActivity) + 1,
+            "goal": (flow.target ?? 0) + 1
+            ] as [String : Any]
+        
+        let attributed = ICMUserAttributes()
+        attributed.customAttributes = userAttributes
+        Intercom.updateUser(attributed)
+        
         performSegue(withIdentifier: "sequeFinishQuiz", sender: nil)
     }
+    
     
     func changeTitle(title: String) {
         bottomTitleLabel.text = title

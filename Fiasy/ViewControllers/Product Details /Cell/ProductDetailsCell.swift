@@ -190,8 +190,8 @@ class ProductDetailsCell: UITableViewCell {
                         table.child("fat").setValue(Int(fat))
                         table.child("carbohydrates").setValue(Int(carbohydrates))
                         table.child("calories").setValue(Int(calor ?? 0))
-                        Intercom.logEvent(withName: "edit_food", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
-                        Amplitude.instance()?.logEvent("edit_food", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
+                        Intercom.logEvent(withName: "edit_food", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
+                        Amplitude.instance()?.logEvent("edit_food", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
                         FirebaseDBManager.reloadItems()
                         delayWithSeconds(1) {
                             self.saveButton.hideLoading()
@@ -202,8 +202,8 @@ class ProductDetailsCell: UITableViewCell {
                     }
                 }
             } else {
-                Intercom.logEvent(withName: "add_food_success", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
-                Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()])
+                Intercom.logEvent(withName: "add_food_success", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
+                Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
                 saveButton.showLoading()
                 if let uid = Auth.auth().currentUser?.uid, let date = UserInfo.sharedInstance.selectedDate, let weight = weightTextField.text, let calories = caloriesLabel.text?.replacingOccurrences(of: " Ккал", with: "").replacingOccurrences(of: " = ", with: "") {
                     let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!

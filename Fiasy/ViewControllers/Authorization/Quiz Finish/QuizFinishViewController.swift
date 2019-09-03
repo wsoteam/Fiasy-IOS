@@ -28,8 +28,8 @@ class QuizFinishViewController: UIViewController {
         
         setupInitialState()
         secondView.isHidden = true
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "calculate"])
-        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "calculate"])
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "calculate"]) //
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "calculate"]) //
     }
     
     override func viewDidAppear(_ animated: Bool) {

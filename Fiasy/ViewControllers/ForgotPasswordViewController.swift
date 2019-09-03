@@ -74,8 +74,8 @@ class ForgotPasswordViewController: UIViewController {
         guard let text = emailTextField.text, !text.isEmpty else { return }
         guard text.isValidEmail() else {
             errorLabel.text = "Неверный формат почты"
-            Intercom.logEvent(withName: "resend_error", metaData: ["error" : "invalid user email"])
-            Amplitude.instance()?.logEvent("resend_error", withEventProperties: ["error" : "invalid user email"])
+            Intercom.logEvent(withName: "resend_error", metaData: ["error" : "invalid user email"]) //
+            Amplitude.instance()?.logEvent("resend_error", withEventProperties: ["error" : "invalid user email"]) //
             separatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             errorLabel.alpha = 1
             return
@@ -87,11 +87,11 @@ class ForgotPasswordViewController: UIViewController {
                 self.separatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
                 self.errorLabel.text = "Данного пользователя не существует"
                 self.errorLabel.alpha = 1
-                Intercom.logEvent(withName: "resend_error", metaData: ["error" : "user not found"])
-                Amplitude.instance()?.logEvent("resend_error", withEventProperties: ["error" : "user not found"])
+                Intercom.logEvent(withName: "resend_error", metaData: ["error" : "user not found"]) //
+                Amplitude.instance()?.logEvent("resend_error", withEventProperties: ["error" : "user not found"]) //
             } else {
-                Intercom.logEvent(withName: "resend_success")
-                Amplitude.instance().logEvent("resend_success")
+                Intercom.logEvent(withName: "resend_success") //
+                Amplitude.instance().logEvent("resend_success") //
                 self.sendDescriptionLabel.text = "Проверьте почту"
                 self.sendButton.setTitle("  ОТПРАВЛЕНО", for: .normal)
                 self.sendButton.setImage(#imageLiteral(resourceName: "Shape (2)"), for: .normal)

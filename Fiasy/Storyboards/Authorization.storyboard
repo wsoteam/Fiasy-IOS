@@ -131,7 +131,7 @@
                                 <rect key="frame" x="0.0" y="40" width="320" height="188.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_profile_data_mk6k" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-PR-uHZ">
-                                        <rect key="frame" x="37.5" y="3" width="245" height="182"/>
+                                        <rect key="frame" x="152" y="86" width="16" height="16"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -715,25 +715,25 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восстановить пароль" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPz-cq-Kzc">
-                                <rect key="frame" x="15" y="70" width="241" height="76.5"/>
+                                <rect key="frame" x="15" y="70" width="210.5" height="75"/>
                                 <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zpi-YQ-UKd">
-                                <rect key="frame" x="20" y="142" width="280" height="304"/>
+                                <rect key="frame" x="20" y="142.5" width="280" height="303.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9dq-UG-M1X">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="89.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите Email для восстановления" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e28-Gy-Ho2">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="18"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IGl-Su-aW6">
-                                                <rect key="frame" x="0.0" y="18" width="280" height="40"/>
+                                                <rect key="frame" x="0.0" y="17.5" width="280" height="40"/>
                                                 <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="nLj-tO-ws9"/>
@@ -746,14 +746,14 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4h-3U-izD">
-                                                <rect key="frame" x="0.0" y="58" width="280" height="2"/>
+                                                <rect key="frame" x="0.0" y="57.5" width="280" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="WWi-Su-3B6"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный формат почты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVT-CM-KE2">
-                                                <rect key="frame" x="0.0" y="60" width="280" height="30"/>
+                                                <rect key="frame" x="0.0" y="59.5" width="280" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="wiy-X3-8ml"/>
                                                 </constraints>
@@ -764,14 +764,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-Yg-oee">
-                                        <rect key="frame" x="0.0" y="90" width="280" height="100"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="280" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="lYi-he-Adz"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-oo-NsN">
-                                        <rect key="frame" x="0.0" y="190" width="280" height="114"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="280" height="114"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mI-wu-xnj" customClass="LoadingButton" customModule="Fiasy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -811,7 +811,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixN-h4-dAp">
-                                        <rect key="frame" x="0.0" y="304" width="280" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="303.5" width="280" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="Eli-bO-OCg"/>
@@ -868,7 +868,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUF-LB-WKJ">
-                                <rect key="frame" x="14" y="84.5" width="292" height="279"/>
+                                <rect key="frame" x="14" y="104.5" width="292" height="239"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер для отправки смс с кодом" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05V-MD-u70">
                                         <rect key="frame" x="0.0" y="20" width="292" height="13"/>
@@ -956,10 +956,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tCo-9o-l0i">
-                                        <rect key="frame" x="50" y="203" width="192" height="56"/>
+                                        <rect key="frame" x="50" y="203" width="192" height="16"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cF-oS-kkj">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="-6" maxX="0.0" maxY="0.0"/>
@@ -971,7 +971,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tR-dP-9xb">
-                                                <rect key="frame" x="101" y="0.0" width="91" height="56"/>
+                                                <rect key="frame" x="101" y="0.0" width="91" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="-6" maxX="0.0" maxY="0.0"/>
@@ -1299,7 +1299,7 @@ Fiasy.com</string>
                                                 <rect key="frame" x="0.0" y="71" width="320" height="142"/>
                                                 <subviews>
                                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbi-FN-bIl">
-                                                        <rect key="frame" x="93" y="20" width="134" height="92"/>
+                                                        <rect key="frame" x="152" y="20" width="16" height="92"/>
                                                         <state key="normal" image="next_gray"/>
                                                         <connections>
                                                             <action selector="nextButtonClicked:" destination="bqR-LD-ntF" eventType="touchUpInside" id="aC5-Pl-glG"/>
@@ -1409,7 +1409,7 @@ Fiasy.com</string>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vHC-g0-Y8s">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="452"/>
+                                        <rect key="frame" x="0.0" y="44" width="320" height="400"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="887-pc-adQ">
                                             <size key="itemSize" width="50" height="50"/>
@@ -1429,10 +1429,10 @@ Fiasy.com</string>
                                         </cells>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaC-dj-JAg">
-                                        <rect key="frame" x="0.0" y="496" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="444" width="320" height="104"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi5-5X-Erg">
-                                                <rect key="frame" x="152" y="15" width="16" height="22"/>
+                                                <rect key="frame" x="78" y="15" width="164" height="74"/>
                                                 <state key="normal" image="Group (17)"/>
                                                 <connections>
                                                     <action selector="nextButtonClicked:" destination="qpF-Lk-9eG" eventType="touchUpInside" id="fO6-7A-mlg"/>
@@ -1463,22 +1463,22 @@ Fiasy.com</string>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6js-3g-GWt">
-                                <rect key="frame" x="27" y="151" width="266" height="286"/>
+                                <rect key="frame" x="27" y="150.5" width="266" height="287.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подождите немного" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejR-ty-E8I">
-                                        <rect key="frame" x="0.0" y="0.0" width="266" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="266" height="26.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Идет расчет индивидуального плана питания" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="318-CF-dTs">
-                                        <rect key="frame" x="0.0" y="36" width="266" height="40"/>
+                                        <rect key="frame" x="0.0" y="36.5" width="266" height="41"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.62738090753555298" green="0.62749135494232178" blue="0.62737399339675903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1E-9O-Uj7">
-                                        <rect key="frame" x="0.0" y="86" width="266" height="200"/>
+                                        <rect key="frame" x="0.0" y="87.5" width="266" height="200"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wG-QK-jxe" customClass="CircularProgress" customModule="Fiasy" customModuleProvider="target">
                                                 <rect key="frame" x="93" y="60" width="80" height="80"/>
@@ -1489,7 +1489,7 @@ Fiasy.com</string>
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape (3)" translatesAutoresizingMaskIntoConstraints="NO" id="SB4-BO-a1r">
-                                                <rect key="frame" x="125" y="92" width="16" height="16"/>
+                                                <rect key="frame" x="119" y="89" width="28" height="22"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1813,6 +1813,7 @@ Fiasy.com</string>
                                                     <color key="titleColor" red="1" green="0.60553437470000004" blue="0.18034970759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="privacyClicked:" destination="dUA-J7-qOU" eventType="touchUpInside" id="g8A-a9-4cd"/>
                                                     <segue destination="XHG-VH-AnU" kind="show" id="aWo-fZ-fve"/>
                                                 </connections>
                                             </button>
@@ -2136,7 +2137,7 @@ Fiasy.com</string>
         <image name="Добро пожаловать в Fiasy!" width="246" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gOa-HT-5M5"/>
+        <segue reference="2Gl-mt-sRS"/>
         <segue reference="F38-iO-NwD"/>
     </inferredMetricsTieBreakers>
 </document>

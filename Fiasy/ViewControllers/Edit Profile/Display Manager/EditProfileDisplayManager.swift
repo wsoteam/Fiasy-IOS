@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Amplitude_iOS
 import FirebaseStorage
 
 protocol EditProfileDelegate {
@@ -28,12 +29,14 @@ class EditProfileDisplayManager: NSObject {
     private let delegate: EditProfileDelegate
     private var currentUser: User
     private var header: EditProfileHeaderView?
+    private let finishButton: LoadingButton
     private var temporaryPicture: UIImage?
     private var allFields: [String] = ["","","","","",""]
     
     // MARK: - Interface -
-    init(_ tableView: UITableView, _ delegate: EditProfileDelegate, _ currentUser: User) {
+    init(_ tableView: UITableView, _ delegate: EditProfileDelegate, _ currentUser: User, _ finishButton: LoadingButton) {
         self.tableView = tableView
+        self.finishButton = finishButton
         self.currentUser = currentUser
         self.delegate = delegate
         super.init()
@@ -46,6 +49,7 @@ class EditProfileDisplayManager: NSObject {
         if let myHeaderView = self.header {
             temporaryPicture = image
             myHeaderView.fillImage(image: image)
+            self.finishButton.isEnabled = true
         }
     }
     
@@ -69,117 +73,43 @@ class EditProfileDisplayManager: NSObject {
         if let email = currentUser.email, !email.isEmpty && email != "default" {
             allFields[2] = email
         }
-        if let age = currentUser.age, age != 0 {
-            allFields[3] = "\(age)"
-        }
-        if let weight = currentUser.weight, weight != 0 {
-            allFields[4] = "\(weight)"
-        }
-        if let height = currentUser.height, height != 0 {
-            allFields[5] = "\(height)"
-        }
     }
     
-    private func saveFields() {
+    func saveFields() {
         var firstName: String = ""
         let fullNameArr = allFields[0].split{$0 == " "}.map(String.init)
         for item in fullNameArr where !item.isEmpty {
             firstName = firstName.isEmpty ? item : firstName + " \(item)"
         }
         var lastName: String = ""
-        let fullNameLastArr = allFields[0].split{$0 == " "}.map(String.init)
+        let fullNameLastArr = allFields[1].split{$0 == " "}.map(String.init)
         for item in fullNameLastArr where !item.isEmpty {
             lastName = lastName.isEmpty ? item : lastName + " \(item)"
         }
-        
-        if firstName.isEmpty {
-            delegate.showAlert(message: "Введите вашe имя")
-        } else if lastName.isEmpty {
-            delegate.showAlert(message: "Введите вашу фамилию")
-        } else if allFields[2].isEmpty {
-            delegate.showAlert(message: "Введите вашу почту")
-        } else if allFields[3].isEmpty {
-            delegate.showAlert(message: "Введите ваш возраст")
-        } else if allFields[4].isEmpty {
-            delegate.showAlert(message: "Введите ваш вес")
-        } else if allFields[5].isEmpty {
-            delegate.showAlert(message: "Введите ваш рост")
-        }
-        guard !allFields[0].hasSpecialCharacters() else {
-            return delegate.showAlert(message: "Проверьте ваше имя")
-        }
-        guard !allFields[1].hasSpecialCharacters() else {
-            return delegate.showAlert(message: "Проверьте вашу фамилию")
-        }
+//
+//        if firstName.isEmpty {
+//            delegate.showAlert(message: "Введите вашe имя")
+//        }
+//
+//        guard !allFields[0].hasSpecialCharacters() else {
+//            return delegate.showAlert(message: "Проверьте ваше имя")
+//        }
+//        guard !allFields[1].hasSpecialCharacters() else {
+//            return delegate.showAlert(message: "Проверьте вашу фамилию")
+//        }
         guard isValidEmail(emailStr: allFields[2]) else {
             return delegate.showAlert(message: "Проверьте вашу почту")
         }
-        guard let age = Int(allFields[3]), !allFields[3].hasSpecialCharacters(), age <= 200 && age >= 12, age != 0 else {
-            return delegate.showAlert(message: "Проверьте ваш возраст")
-        }
-        guard let weight = Double(allFields[4]), weight <= 200.0 && weight > 30.0 else {
-            return delegate.showAlert(message: "Проверьте введенный вес")
-        }
-        guard let growth = Int(allFields[5]), !allFields[5].hasSpecialCharacters(), growth <= 300 && growth >= 100, growth != 0 else {
-            return delegate.showAlert(message: "Проверьте введенный рост")
-        }
-        
+
         let ref = Database.database().reference()
         if let uid = Auth.auth().currentUser?.uid {
             ref.child("USER_LIST").child(uid).child("profile").child("firstName").setValue(firstName)
             ref.child("USER_LIST").child(uid).child("profile").child("lastName").setValue(lastName)
             ref.child("USER_LIST").child(uid).child("profile").child("email").setValue(allFields[2])
-            ref.child("USER_LIST").child(uid).child("profile").child("age").setValue(age)
-            ref.child("USER_LIST").child(uid).child("profile").child("height").setValue(growth)
-            ref.child("USER_LIST").child(uid).child("profile").child("weight").setValue(weight)
-            
-            UserInfo.sharedInstance.currentUser?.age = age
+
             UserInfo.sharedInstance.currentUser?.firstName = allFields[0]
             UserInfo.sharedInstance.currentUser?.lastName = allFields[1]
             UserInfo.sharedInstance.currentUser?.email = allFields[2]
-            UserInfo.sharedInstance.currentUser?.height = growth
-            UserInfo.sharedInstance.currentUser?.weight = weight
-            
-            let female = UserInfo.sharedInstance.currentUser?.female
-            let height: Int = growth
-            let weight: Double = weight
-            
-            var BMR: Double = 0.0
-            let secondAge = Double(age)
-            if UserInfo.sharedInstance.currentUser?.female == true {
-                BMR = (10 * weight) + (6.25 * Double(growth)) - (5 * secondAge) - 161
-            } else {
-                BMR = (10 * weight) + (6.25 * Double(growth)) - (5 * secondAge) + 5
-            }
-            
-            let target: Int = UserInfo.sharedInstance.currentUser?.target ?? 0
-            let targetActivity: CGFloat = UserInfo.sharedInstance.currentUser?.targetActivity ?? 0.0
-            let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: targetActivity))
-            let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: target, count: activity).displayOnly(count: 0)
-            
-            var fat: Int = 0
-            var protein: Int = 0
-            var carbohydrates: Int = 0
-            
-            if UserInfo.sharedInstance.currentUser?.female == true {
-                fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 16
-                protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 16
-                carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 16
-            } else {
-                fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 36
-                protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 36
-                carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 36
-            }
-            
-            ref.child("USER_LIST").child(uid).child("profile").child("maxFat").setValue(fat)
-            ref.child("USER_LIST").child(uid).child("profile").child("maxProt").setValue(protein)
-            ref.child("USER_LIST").child(uid).child("profile").child("maxCarbo").setValue(carbohydrates)
-            ref.child("USER_LIST").child(uid).child("profile").child("maxKcal").setValue(result)
-            
-            UserInfo.sharedInstance.currentUser?.maxKcal = Int(result)
-            UserInfo.sharedInstance.currentUser?.maxFat = fat
-            UserInfo.sharedInstance.currentUser?.maxProt = protein
-            UserInfo.sharedInstance.currentUser?.maxCarbo = carbohydrates
         }
         guard let image = temporaryPicture else { return delegate.closeModule() }
         currentUser.temporaryPicture = image
@@ -239,7 +169,7 @@ class EditProfileDisplayManager: NSObject {
 extension EditProfileDisplayManager: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -256,21 +186,13 @@ extension EditProfileDisplayManager: UITableViewDelegate, UITableViewDataSource 
         header.fillHeader(delegate: delegate, currentUser: currentUser)
         return header
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: EditProfileFooterView.reuseIdentifier) as? EditProfileFooterView else {
-            return nil
-        }
-        footer.fillFooter(delegate: self)
-        return footer
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return EditProfileHeaderView.height
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return EditProfileFooterView.height
+        return 0.0001
     }
 }
 
@@ -282,6 +204,7 @@ extension EditProfileDisplayManager: EditProfileDisplayDelegate {
     
     func fillField(by tag: Int, text: String) {
         if allFields.indices.contains(tag) {
+            self.finishButton.isEnabled = true
             allFields[tag] = text
         }
     }

@@ -51,7 +51,11 @@ class PremiumFinishViewController: UIViewController {
                 if self?.isAutorization == true {
                     self?.performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
                 } else {
-                    self?.dismiss(animated: true)
+                    self?.dismiss(animated: true, completion: {
+                        if let vc = UIApplication.getTopMostViewController() {
+                            vc.navigationController?.popViewController(animated: true)
+                        }
+                    })
                 }
         })
     }

@@ -13,23 +13,29 @@ import Fabric
 import FBSDKCoreKit
 import Firebase
 import Bugsee
+import FacebookCore
 import GoogleSignIn
 import FirebaseDatabase
 import Amplitude_iOS
+import UserNotifications
 import Adjust
 import Intercom
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     let screensController = ScreensController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        DispatchQueue.global().async {
+            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        }
        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
       //  Fabric.with([Crashlytics.self()])
-        Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
+        //Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
         
         FirebaseApp.configure()
         SQLDatabase.shared.fetchProducts()
@@ -44,14 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SubscriptionService.shared.getProducts()
         Intercom.setApiKey("ios_sdk-221925e0d17a40eb824938ad4c2a9857e2320b6f", forAppId:"dr8zfmz4")
         Amplitude.instance().logEvent("session_launch")
-        Adjust.appDidLaunch(ADJConfig(appToken: "9gsjine9aqyo", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
-        
+        Adjust.appDidLaunch(ADJConfig(appToken: "8qzg30s9d3wg", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
+
         if let uid = Auth.auth().currentUser?.uid {
             Intercom.registerUser(withUserId: uid)
         } else {
             Intercom.registerUnidentifiedUser()
         }
-        
+
         return true
     }
     
@@ -68,9 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
-        application.registerUserNotificationSettings(settings)
-        application.registerForRemoteNotifications()
+        AppEventsLogger.activate(application)
+        Adjust.trackSubsessionStart()
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        Adjust.trackSubsessionEnd()
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -81,6 +90,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        if let _ = UIApplication.getTopMostViewController() as? QuizViewController {
+            Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "reopen"]) //
+            Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "reopen"]) //
+        }
+        
         self.saveContext()
     }
     
