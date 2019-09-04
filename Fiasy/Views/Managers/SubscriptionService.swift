@@ -88,7 +88,7 @@ class SubscriptionService: NSObject {
         //#if DEBUG
         let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
 //        #else
-//        let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+ //       let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
 //        #endif
         
         var request = URLRequest(url: url)
@@ -143,11 +143,18 @@ class SubscriptionService: NSObject {
                     let attributed = ICMUserAttributes()
                     attributed.customAttributes = ["premium_status": "premium"]
                     Intercom.updateUser(attributed)
-                    
-                    FBSDKAppEvents.logPurchase(49.0, currency: "RUB")
-                    let event = ADJEvent.init(eventToken: "xrf3ix")
-                    event?.setRevenue(49.0, currency: "RUB")
-                    Adjust.trackEvent(event)
+                
+                    DispatchQueue.main.async {
+                        if let _ = UIApplication.getTopMostViewController() as? PremiumFinishViewController {
+                            FBSDKAppEvents.logPurchase(2490.0, currency: "RUB")
+                            let event = ADJEvent.init(eventToken: "xrf3ix")
+                            event?.setRevenue(2490.0, currency: "RUB")
+                            Adjust.trackEvent(event)
+                            
+                            Amplitude.instance()?.logRevenue(2490.0)
+                            Intercom.logEvent(withName: "revenue", metaData: ["quantuty" : 2490.0])
+                        }
+                    }
                 }
             }
             

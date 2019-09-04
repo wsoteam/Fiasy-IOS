@@ -167,6 +167,10 @@
 		3B96E02C22E996D0003D9D98 /* WeightSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B96E02B22E996D0003D9D98 /* WeightSelectionCell.xib */; };
 		3B993BAD22DEA47F00642C00 /* SecondRecipeCheckTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B993BAC22DEA47F00642C00 /* SecondRecipeCheckTableVIewCell.swift */; };
 		3B993BAF22DEA4A400642C00 /* SecondRecipeCheckTableVIewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B993BAE22DEA4A400642C00 /* SecondRecipeCheckTableVIewCell.xib */; };
+		3B9AC216231E86BB00301D47 /* DiaryWaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9AC215231E86BB00301D47 /* DiaryWaterTableViewCell.swift */; };
+		3B9AC218231E86D200301D47 /* DiaryWaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9AC217231E86D200301D47 /* DiaryWaterTableViewCell.xib */; };
+		3B9AC21B231E953700301D47 /* WaterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9AC21A231E953700301D47 /* WaterCollectionCell.swift */; };
+		3B9AC21D231E954200301D47 /* WaterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9AC21C231E954200301D47 /* WaterCollectionCell.xib */; };
 		3B9DFBD122EA027200DCCDC2 /* SelectActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD022EA027200DCCDC2 /* SelectActivityTableViewCell.swift */; };
 		3B9DFBD322EA027B00DCCDC2 /* SelectActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD222EA027B00DCCDC2 /* SelectActivityTableViewCell.xib */; };
 		3B9DFBD822EA072700DCCDC2 /* TGPCamelLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DFBD522EA072700DCCDC2 /* TGPCamelLabels.swift */; };
@@ -589,6 +593,10 @@
 		3B96E02B22E996D0003D9D98 /* WeightSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightSelectionCell.xib; sourceTree = "<group>"; };
 		3B993BAC22DEA47F00642C00 /* SecondRecipeCheckTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRecipeCheckTableVIewCell.swift; sourceTree = "<group>"; };
 		3B993BAE22DEA4A400642C00 /* SecondRecipeCheckTableVIewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondRecipeCheckTableVIewCell.xib; sourceTree = "<group>"; };
+		3B9AC215231E86BB00301D47 /* DiaryWaterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryWaterTableViewCell.swift; sourceTree = "<group>"; };
+		3B9AC217231E86D200301D47 /* DiaryWaterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiaryWaterTableViewCell.xib; sourceTree = "<group>"; };
+		3B9AC21A231E953700301D47 /* WaterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCollectionCell.swift; sourceTree = "<group>"; };
+		3B9AC21C231E954200301D47 /* WaterCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaterCollectionCell.xib; sourceTree = "<group>"; };
 		3B9DFBD022EA027200DCCDC2 /* SelectActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectActivityTableViewCell.swift; sourceTree = "<group>"; };
 		3B9DFBD222EA027B00DCCDC2 /* SelectActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectActivityTableViewCell.xib; sourceTree = "<group>"; };
 		3B9DFBD522EA072700DCCDC2 /* TGPCamelLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGPCamelLabels.swift; sourceTree = "<group>"; };
@@ -1205,10 +1213,13 @@
 		3B3FF9E022AB9311002AEF7A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				3B9AC219231E951800301D47 /* Collection */,
 				3B3FF9EB22AB9D6B002AEF7A /* DiaryTableViewCell.swift */,
 				3B3FF9ED22AB9D7E002AEF7A /* DiaryTableViewCell.xib */,
 				3BFB365F22FE109D005AC730 /* LimitDiaryTableViewCell.swift */,
 				3BFB366122FE10C6005AC730 /* LimitDiaryTableViewCell.xib */,
+				3B9AC215231E86BB00301D47 /* DiaryWaterTableViewCell.swift */,
+				3B9AC217231E86D200301D47 /* DiaryWaterTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1565,6 +1576,15 @@
 				3B96E02B22E996D0003D9D98 /* WeightSelectionCell.xib */,
 			);
 			path = Weight;
+			sourceTree = "<group>";
+		};
+		3B9AC219231E951800301D47 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				3B9AC21A231E953700301D47 /* WaterCollectionCell.swift */,
+				3B9AC21C231E954200301D47 /* WaterCollectionCell.xib */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		3B9DFBCF22EA025300DCCDC2 /* Select Activity  */ = {
@@ -3057,12 +3077,14 @@
 				3B00EAC222DFBE7900A2B21C /* RecipeTabTableViewCell.xib in Resources */,
 				3B746E9C230851A500119953 /* ArticleCollectionViewCell.xib in Resources */,
 				3B96E02C22E996D0003D9D98 /* WeightSelectionCell.xib in Resources */,
+				3B9AC218231E86D200301D47 /* DiaryWaterTableViewCell.xib in Resources */,
 				3BC0497522ACF60300BD5D30 /* MotivationBottomCell.xib in Resources */,
 				3BC8D05F227C3E4E00633AF0 /* RecipesHeaderView.xib in Resources */,
 				F01748C2224A1ED000E2E646 /* Roboto-ThinItalic.ttf in Resources */,
 				3B993BAF22DEA4A400642C00 /* SecondRecipeCheckTableVIewCell.xib in Resources */,
 				F01DF1B1225E3D2200381A6D /* GoogleService-Info.plist in Resources */,
 				3B0D532A22F444D2008051BE /* Purpose.storyboard in Resources */,
+				3B9AC21D231E954200301D47 /* WaterCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3257,6 +3279,7 @@
 				3BBBC0D222ABB9D400456DEA /* SwipeOptions.swift in Sources */,
 				3B77EB0822FADDC700ACD240 /* XYMarkerView.swift in Sources */,
 				3BC0EC9222DE5498009795F2 /* InstructionListTableCell.swift in Sources */,
+				3B9AC21B231E953700301D47 /* WaterCollectionCell.swift in Sources */,
 				3BFED2C422DDE81E007E8B98 /* AddRecipeFlow.swift in Sources */,
 				3B77171D22BBE6DB0089C4BA /* IngredientsViewController.swift in Sources */,
 				3BD85F542270454000109AF4 /* ProductDetailsViewController.swift in Sources */,
@@ -3321,6 +3344,7 @@
 				F06C318C225CF09B00FDDC34 /* SecondMainCell.swift in Sources */,
 				3B325EF2226A44CE00D1A54E /* ProfileIndicatorCell.swift in Sources */,
 				3BEEBD6B22DE368000721BE4 /* ProductSearchListVC+KeyboardExtension.swift in Sources */,
+				3B9AC216231E86BB00301D47 /* DiaryWaterTableViewCell.swift in Sources */,
 				3BF74C7122BE6B5600802238 /* ProductDetailsVC+ KeyboardExtension.swift in Sources */,
 				3B01A224230C090B00DA6D73 /* ArticlesListViewController.swift in Sources */,
 				F06C3191225CF12700FDDC34 /* SecondMainViewController.swift in Sources */,

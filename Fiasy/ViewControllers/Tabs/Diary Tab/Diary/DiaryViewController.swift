@@ -82,18 +82,15 @@ class DiaryViewController: BaseViewController {
         UserInfo.sharedInstance.selectedDate = Date()
         Amplitude.instance().logEvent("view_diary")
         
-        var state: Bool = false
-        if let _ = UserInfo.sharedInstance.currentUser?.email {
-            state = true
+        if let email = UserInfo.sharedInstance.currentUser?.email {
+            let identify = AMPIdentify()
+            identify.set("email", value: email as NSObject)
+            Amplitude.instance()?.identify(identify)
+            
+            let attributed = ICMUserAttributes()
+            attributed.customAttributes = ["email": email]
+            Intercom.updateUser(attributed)
         }
-        
-        let identify = AMPIdentify()
-        identify.set("email", value: state as NSObject)
-        Amplitude.instance()?.identify(identify)
-        
-        let attributed = ICMUserAttributes()
-        attributed.customAttributes = ["email": state]
-        Intercom.updateUser(attributed)
     }
     
     override func viewWillAppear(_ animated: Bool) {

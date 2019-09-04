@@ -120,8 +120,8 @@ class CalorieIntakeViewController: UIViewController {
             identify.set("age", value: age as NSObject)
             identify.set("height", value: growth as NSObject)
             identify.set("weight", value: weight as NSObject)
-            identify.set("active", value: Int(self.activity) + 1 as NSObject)
-            identify.set("goal", value: (self.target) + 1 as NSObject)
+            identify.set("active", value: (Int(self.activity) + 1).fetchUserActive() as NSObject)
+            identify.set("goal", value: ((self.target) + 1).fetchUserGoal() as NSObject)
             Amplitude.instance()?.identify(identify)
             
             let userAttributes = [

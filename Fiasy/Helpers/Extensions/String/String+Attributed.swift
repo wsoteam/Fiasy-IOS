@@ -38,6 +38,44 @@ extension String {
     }
 }
 
+extension Int {
+    func fetchUserActive() -> String {
+        switch self {
+        case 1:
+            return "minimal"
+        case 2:
+            return "light"
+        case 3:
+            return "two_trainings"
+        case 4:
+            return "five_trainings"
+        case 5:
+            return "everyday_intensive"
+        case 6:
+            return "ten_trainings"
+        case 7:
+            return "hard_work"
+        default:
+            return ""
+        }
+    }
+    
+    func fetchUserGoal() -> String {
+        switch self {
+        case 1:
+            return "keep_fit"
+        case 2:
+            return "lose_weight"
+        case 3:
+            return "gain_muscles"
+        case 4:
+            return "burn_fat"
+        default:
+            return ""
+        }
+    }
+}
+
 extension Double {
     /// Rounds the double to decimal places value
     func rounded(toPlaces places:Int) -> Double {

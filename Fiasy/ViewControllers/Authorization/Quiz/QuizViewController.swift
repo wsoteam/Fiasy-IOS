@@ -72,8 +72,8 @@ extension QuizViewController: QuizViewOutput {
         identify.set("height", value: flow.growth as NSObject)
         identify.set("weight", value: flow.weight as NSObject)
         identify.set("age", value: age as NSObject)
-        identify.set("active", value: Int(flow.loadActivity) + 1 as NSObject)
-        identify.set("goal", value: (flow.target ?? 0) + 1 as NSObject)
+        identify.set("active", value: (Int(flow.loadActivity) + 1).fetchUserActive() as NSObject)
+        identify.set("goal", value: ((flow.target ?? 0) + 1).fetchUserGoal() as NSObject)
         Amplitude.instance()?.identify(identify)
         
         let userAttributes = [
@@ -81,8 +81,8 @@ extension QuizViewController: QuizViewOutput {
             "height": flow.growth,
             "weight": flow.weight,
             "age": age,
-            "active": Int(flow.loadActivity) + 1,
-            "goal": (flow.target ?? 0) + 1
+            "active": (Int(flow.loadActivity) + 1).fetchUserActive(),
+            "goal": ((flow.target ?? 0) + 1).fetchUserGoal()
             ] as [String : Any]
         
         let attributed = ICMUserAttributes()
