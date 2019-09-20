@@ -11,8 +11,9 @@ import RxSwift
 
 protocol ProfileServiceProtocol {
     
-    //@discardableResult func resetPassword(phone: String) -> Observable<Verify>
-    //@discardableResult func loadNotifications() -> Observable<[NotificationList]>
+    @discardableResult func loadProducts() -> Observable<PaginationProduct>
+    @discardableResult func searchProduct(search: String) -> Observable<PaginationProduct>
+    @discardableResult func loadMoreProducts(link: String) -> Observable<PaginationProduct>
     
 //    func logout()
 }

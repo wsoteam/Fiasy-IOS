@@ -35,11 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
       //  Fabric.with([Crashlytics.self()])
-        //Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
+        Bugsee.launch(token :"9dd1f372-d496-4bef-ac70-0ff732d0b82b")
         
         FirebaseApp.configure()
-        SQLDatabase.shared.fetchProducts()
-        FirebaseDBManager.checkFilledProfile()
+        //SQLDatabase.shared.fetchProducts()
+        FirebaseDBManager.checkFilledProfile { (state) in }
         //SwiftGoogleTranslate.shared.start(with: "AIzaSyB5dv1L0W_85lcFrEcyqZ0KyGZeRn6wOTE")
         Amplitude.instance()?.trackingSessionEvents = true
         Amplitude.instance()?.minTimeBetweenSessionsMillis = 5000
@@ -48,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         screensController.showScreens()
         SubscriptionService.shared.getProducts()
+
         Intercom.setApiKey("ios_sdk-221925e0d17a40eb824938ad4c2a9857e2320b6f", forAppId:"dr8zfmz4")
-        Amplitude.instance().logEvent("session_launch")
         Adjust.appDidLaunch(ADJConfig(appToken: "8qzg30s9d3wg", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
 
         if let uid = Auth.auth().currentUser?.uid {
@@ -57,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         } else {
             Intercom.registerUnidentifiedUser()
         }
-
         return true
     }
     
@@ -68,14 +67,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if (Auth.auth().canHandleNotification(userInfo)) {
-            return print(userInfo)
+        if (Intercom.isIntercomPushNotification(userInfo)) {
+            Intercom.handlePushNotification(userInfo)
         }
+//        if (Auth.auth().canHandleNotification(userInfo)) {
+//            return print(userInfo)
+//        }
+        completionHandler(.noData);
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppEventsLogger.activate(application)
         Adjust.trackSubsessionStart()
+        
+        if let _ = UIApplication.getTopMostViewController() as? QuizViewController {
+            Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "reopen"]) // +
+            Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "reopen"]) // +
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -90,11 +98,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        if let _ = UIApplication.getTopMostViewController() as? QuizViewController {
-            Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "reopen"]) //
-            Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "reopen"]) //
-        }
         
+        if let _ = UIApplication.getTopMostViewController() as? QuizViewController {
+            UserDefaults.standard.set(true, forKey: "showQuizView")
+            UserDefaults.standard.synchronize()
+        }
         self.saveContext()
     }
     
@@ -102,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication,
                                                         annotation: annotation)
     }
-    
+
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

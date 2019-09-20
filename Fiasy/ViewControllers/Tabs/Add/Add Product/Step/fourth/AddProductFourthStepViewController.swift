@@ -143,11 +143,17 @@ class AddProductFourthStepViewController: UIViewController {
     }
     
     private func showConfirmAlert() {
-        let refreshAlert = UIAlertController(title: "Ваш продукт добавлен в Избранное", message: "", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "Ваш продукт добавлен в Свои продукты", message: "", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard let strongSelf = self else { return }
-            Intercom.logEvent(withName: "custom_product_success") //
-            Amplitude.instance()?.logEvent("custom_product_success") //
+            
+            var productName: String = ""
+            let fullNameArr = (strongSelf.flow.name ?? "").split{$0 == " "}.map(String.init)
+            for item in fullNameArr where !item.isEmpty {
+                productName = productName.isEmpty ? item : productName + " \(item)"
+            }
+            Intercom.logEvent(withName: "custom_product_success", metaData: ["product_id" : productName, "product_from" : strongSelf.flow.productFrom]) // +
+            Amplitude.instance()?.logEvent("custom_product_success", withEventProperties: ["product_id" : productName, "product_from" : strongSelf.flow.productFrom]) // +
             strongSelf.popBack(5)
         }))
         present(refreshAlert, animated: true)

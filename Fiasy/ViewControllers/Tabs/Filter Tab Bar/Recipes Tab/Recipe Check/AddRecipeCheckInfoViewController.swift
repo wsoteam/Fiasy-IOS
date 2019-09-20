@@ -144,8 +144,8 @@ class AddRecipeCheckInfoViewController: UIViewController {
                                     ref.child("USER_LIST").child(uid).child("customRecipes").childByAutoId().setValue(userData)
                                 }
                                 UserInfo.sharedInstance.reloadRecipesScreen = true
-                                Intercom.logEvent(withName: "custom_recipe_success") //
-                                Amplitude.instance()?.logEvent("custom_recipe_success") //
+                                Intercom.logEvent(withName: "custom_recipe_success", metaData: ["recipe_id" : recipeName, "recipe_from" : self.flow.recipeFrom]) // +
+                                Amplitude.instance()?.logEvent("custom_recipe_success", withEventProperties: ["recipe_id" : recipeName, "recipe_from" : self.flow.recipeFrom]) // +
                                 self.popBack(5)
                             }
                         }
@@ -163,9 +163,8 @@ class AddRecipeCheckInfoViewController: UIViewController {
                     ref.child("USER_LIST").child(uid).child("customRecipes").childByAutoId().setValue(userData)
                 }
                 UserInfo.sharedInstance.reloadRecipesScreen = true
-                Intercom.logEvent(withName: "custom_recipe_success") //
-                Amplitude.instance()?.logEvent("custom_recipe_success") //
-                
+                Intercom.logEvent(withName: "custom_recipe_success", metaData: ["recipe_id" : recipeName, "recipe_from" : self.flow.recipeFrom]) // +
+                Amplitude.instance()?.logEvent("custom_recipe_success", withEventProperties: ["recipe_id" : recipeName, "recipe_from" : self.flow.recipeFrom]) // +
                 popBack(5)
             }
         }

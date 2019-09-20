@@ -34,8 +34,8 @@ class ProfileViewController: UIViewController {
         addObserver(for: self, #selector(reloadContent), "reloadContent")
         addObserver(for: self, #selector(reloadProfile), "reloadProfile")
         
-        Amplitude.instance().logEvent("view_profile") //
-        Intercom.logEvent(withName: "view_profile") //
+        Amplitude.instance().logEvent("view_profile") // +
+        Intercom.logEvent(withName: "view_profile") // +
     }
     
     override func viewDidDisappear(_ animated: Bool) {

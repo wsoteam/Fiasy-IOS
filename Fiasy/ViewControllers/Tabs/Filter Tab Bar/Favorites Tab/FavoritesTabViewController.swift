@@ -66,6 +66,8 @@ class FavoritesTabViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         removeObserver()
+        filteredFavorites = allFavorite
+        tableView.reloadData()
     }
     
     @objc func searchByText() {

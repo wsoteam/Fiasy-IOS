@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,27 +22,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="378" height="311"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-b0-6Qn">
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-b0-6Qn">
                         <rect key="frame" x="20" y="0.0" width="338" height="311"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ge3-ES-4Ig">
-                                <rect key="frame" x="0.0" y="0.0" width="338" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="b3e-fY-Ird"/>
-                                </constraints>
-                            </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="2_step" translatesAutoresizingMaskIntoConstraints="NO" id="0OP-PU-rj8">
-                                <rect key="frame" x="0.0" y="65" width="338" height="135.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="2_step" translatesAutoresizingMaskIntoConstraints="NO" id="0OP-PU-rj8">
+                                <rect key="frame" x="0.0" y="0.0" width="338" height="186"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-n4-ZwY">
-                                <rect key="frame" x="0.0" y="215.5" width="338" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-n4-ZwY">
+                                <rect key="frame" x="0.0" y="201" width="338" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" red="0.62738090753555298" green="0.62749135494232178" blue="0.62737399339675903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbB-Cc-D5j" userLabel="oneTo10Slider" customClass="TGPDiscreteSlider" customModule="Fiasy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="251" width="338" height="40"/>
+                                <rect key="frame" x="0.0" y="233" width="338" height="38"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sk3-oC-OLK"/>
@@ -89,6 +82,7 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="9sc-b0-6Qn" firstAttribute="centerY" secondItem="eP5-Te-yes" secondAttribute="centerY" id="2mj-T7-hBQ"/>
                 <constraint firstItem="9sc-b0-6Qn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eP5-Te-yes" secondAttribute="top" id="Doh-XD-Ng8"/>
                 <constraint firstAttribute="trailing" secondItem="9sc-b0-6Qn" secondAttribute="trailing" constant="20" id="RTa-WR-fEn"/>
                 <constraint firstAttribute="bottom" secondItem="9sc-b0-6Qn" secondAttribute="bottom" constant="20" id="fIY-zX-wAs"/>

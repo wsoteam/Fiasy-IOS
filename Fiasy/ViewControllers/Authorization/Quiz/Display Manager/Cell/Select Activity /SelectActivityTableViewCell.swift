@@ -17,19 +17,19 @@ class SelectActivityTableViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var selectedStateImageView: UIImageView!
     
-    //MARK: - Properties -
+    // MARK: - Properties -
     private var delegate: QuizViewOutput?
     private var selectedState: CGFloat = 0.0
     private let isIphone5 = Display.typeIsLike == .iphone5
     
-    //MARK: - Life Cicle -
+    // MARK: - Life Cicle -
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupSlider()
         changeState(value: 0.0)
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "active"]) //
-        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "active"]) //
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "active"]) // +
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "active"]) // +
     }
     
     // MARK: - Interface -
@@ -54,7 +54,6 @@ class SelectActivityTableViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Private -
     private func changeState(value: CGFloat) {
         switch value {
         case 0.0:

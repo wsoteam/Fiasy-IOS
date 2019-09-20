@@ -48,8 +48,8 @@ class ProductDetailsViewController: UIViewController {
             UserInfo.sharedInstance.editMealtime = nil
             if let selected = SQLDatabase.shared.getEditProduct(by: editMealTime) {
                 selectedProduct = selected
-                Intercom.logEvent(withName: "view_product_page", metaData: ["product_item" : selected.id]) //
-                Amplitude.instance()?.logEvent("view_product_page", withEventProperties: ["product_item" : selected.id]) //
+                Intercom.logEvent(withName: "view_product_page", metaData: ["product_item" : selected.id]) // +
+                Amplitude.instance()?.logEvent("view_product_page", withEventProperties: ["product_item" : selected.id]) // +
             } else {
                 tableView.alpha = 0
                 FirebaseDBManager.fetchUndeletableCustomFoodsInDataBase { [weak self] (allFavorites) in
@@ -64,8 +64,8 @@ class ProductDetailsViewController: UIViewController {
                 }
             }
         } else {
-            Intercom.logEvent(withName: "view_product_page", metaData: ["product_item" : selectedProduct?.id]) //
-            Amplitude.instance()?.logEvent("view_product_page", withEventProperties: ["product_item" : selectedProduct?.id]) //
+            Intercom.logEvent(withName: "view_product_page", metaData: ["product_item" : selectedProduct?.id]) // +
+            Amplitude.instance()?.logEvent("view_product_page", withEventProperties: ["product_item" : selectedProduct?.id]) // +
         }
         setupInitialState()
         setupTableView()
@@ -165,8 +165,8 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
 extension ProductDetailsViewController: ProductDetailsDelegate {
     
     func showPremiumScreen() {
-        Intercom.logEvent(withName: "product_page_micro") //
-        Amplitude.instance()?.logEvent("product_page_micro") //
+        Intercom.logEvent(withName: "product_page_micro") // +
+        Amplitude.instance()?.logEvent("product_page_micro") // +
         
         performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
     }

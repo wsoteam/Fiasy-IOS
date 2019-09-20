@@ -36,18 +36,18 @@ class SQLDatabase {
         }
         UserInfo.sharedInstance.allProducts = allProducts
 
-        DispatchQueue.global(qos: .background).async {
-            var products: [Product] = []
-            if let second = try? self.connection?.prepare(Table("C_FOOD")) {
-                guard let de = second else { return }
-                for item in de {
-                    products.append(Product(row: item))
-                }
-            }
-            DispatchQueue.main.async {
-                UserInfo.sharedInstance.allProducts = products
-            }
-        }
+//        DispatchQueue.global(qos: .background).async {
+//            var products: [Product] = []
+//            if let second = try? self.connection?.prepare(Table("C_FOOD")) {
+//                guard let de = second else { return }
+//                for item in de {
+//                    products.append(Product(row: item))
+//                }
+//            }
+//            DispatchQueue.main.async {
+//                UserInfo.sharedInstance.allProducts = products
+//            }
+//        }
     }
 
     func filter(text: String) -> [Product] {

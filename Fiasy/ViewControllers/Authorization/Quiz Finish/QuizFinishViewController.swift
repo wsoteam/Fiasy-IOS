@@ -28,8 +28,8 @@ class QuizFinishViewController: UIViewController {
         
         setupInitialState()
         secondView.isHidden = true
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "calculate"]) //
-        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "calculate"]) //
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "calculate"]) // +
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "calculate"]) // +
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,7 +63,12 @@ class QuizFinishViewController: UIViewController {
         let photo = UserInfo.sharedInstance.registrationFlow.photoUrl
         
         FirebaseDBManager.saveUserInDataBase(photo, firstName: first, lastName: last)
-        FirebaseDBManager.checkFilledProfile()
+        FirebaseDBManager.checkFilledProfile { (state) in }
+        
+        if let _ = UserDefaults.standard.value(forKey: "showQuizView") {
+            UserDefaults.standard.removeObject(forKey: "showQuizView")
+            UserDefaults.standard.synchronize()
+        }
     }
 }
 

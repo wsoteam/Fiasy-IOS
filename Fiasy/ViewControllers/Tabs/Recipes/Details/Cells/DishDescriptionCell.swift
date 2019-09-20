@@ -232,6 +232,12 @@ class DishDescriptionCell: UITableViewCell {
     }
     
     @IBAction func addProductClicked(_ sender: Any) {
+        
+        if ownRecipe {
+            guard let name = recipe?.name else { return }
+            Intercom.logEvent(withName: "add_custom_recipe", metaData: ["recipe_id" : name]) // +
+            Amplitude.instance()?.logEvent("add_custom_recipe", withEventProperties: ["recipe_id" : name]) // +
+        }
 
         if let uid = Auth.auth().currentUser?.uid, let weight = recipe?.weight, let protein = recipe?.proteins, let fat = recipe?.fats, let carbohydrates = recipe?.carbohydrates, let calories = recipe?.calories, let name = recipe?.name, let date = UserInfo.sharedInstance.selectedDate {
             
@@ -249,8 +255,8 @@ class DishDescriptionCell: UITableViewCell {
             let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true, "presentDay" : state] as [String : Any]
             ref.child("USER_LIST").child(uid).child(getTitle()).childByAutoId().setValue(userData)
             
-            Intercom.logEvent(withName: "recipe_add_success", metaData: ["recipe_intake" : getTitle()]) //
-            Amplitude.instance()?.logEvent("recipe_add_success", withEventProperties: ["recipe_intake" : getTitle()]) //
+            Intercom.logEvent(withName: "add_recipe_success", metaData: ["recipe_intake" : getSecondTitle()]) // +
+            Amplitude.instance()?.logEvent("add_recipe_success", withEventProperties: ["recipe_intake" : getSecondTitle()]) // +
             
             FirebaseDBManager.reloadItems()
             delegate?.showAnimate()
@@ -269,6 +275,21 @@ class DishDescriptionCell: UITableViewCell {
             return "snacks"
         default:
             return "snacks"
+        }
+    }
+    
+    private func getSecondTitle() -> String {
+        switch UserInfo.sharedInstance.selectedMealtimeIndex {
+        case 0:
+            return "breakfast"
+        case 1:
+            return "lunch"
+        case 2:
+            return "dinner"
+        case 3:
+            return "snack"
+        default:
+            return "snack"
         }
     }
 }

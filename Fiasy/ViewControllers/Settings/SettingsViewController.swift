@@ -44,8 +44,8 @@ class SettingsViewController: UIViewController {
         
         tableView.register(type: SettingCell.self)
         tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        Amplitude.instance().logEvent("view_settings") //
-        Intercom.logEvent(withName: "view_settings") //
+        Amplitude.instance().logEvent("view_settings") // +
+        Intercom.logEvent(withName: "view_settings") // +
     }
     
     override func viewWillAppear(_ animated: Bool) {

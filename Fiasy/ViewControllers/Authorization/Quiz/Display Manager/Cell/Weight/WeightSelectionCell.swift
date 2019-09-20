@@ -35,8 +35,8 @@ class WeightSelectionCell: UICollectionViewCell {
         super.awakeFromNib()
         
         setupRulerView()
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "weight"]) //
-        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "weight"]) //
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "weight"]) // +
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "weight"]) // +
     }
     
     // MARK: - Private -

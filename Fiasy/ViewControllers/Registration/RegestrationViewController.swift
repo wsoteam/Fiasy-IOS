@@ -4,6 +4,7 @@ import Firebase
 import GoogleSignIn
 import Amplitude_iOS
 import Intercom
+import FirebaseStorage
 
 class RegestrationViewController: UIViewController {
     
@@ -21,7 +22,7 @@ class RegestrationViewController: UIViewController {
         super.viewDidLoad()
         
         setupInitialState()
-        Amplitude.instance().logEvent("start_registration")
+        //Amplitude.instance().logEvent("start_registration")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,8 +99,8 @@ class RegestrationViewController: UIViewController {
         }
         let email = (allTextFields[0].text ?? "")
         
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "email"]) //
-        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "email"]) //
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "email"]) // +
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "email"]) // +
 
         Auth.auth().createUser(withEmail: email, password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
             guard let strongSelf = self else { return }
@@ -118,8 +119,8 @@ class RegestrationViewController: UIViewController {
                 if let uid = Auth.auth().currentUser?.uid {
                     Intercom.registerUser(withUserId: uid)
                 }
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "email"]) //
-                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "email"]) //
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "email"]) // +
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "email"]) // +
                 
                 if let uid = Auth.auth().currentUser?.uid {
                     Intercom.registerUser(withUserId: uid)
@@ -132,8 +133,11 @@ class RegestrationViewController: UIViewController {
                 attributed.customAttributes = ["registration": "email"]
                 Intercom.updateUser(attributed)
                 
-                Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "enter"]) //
-                Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "enter"]) //
+                if let uid = Auth.auth().currentUser?.uid {
+                    let ref = Database.database().reference()
+                    let child = ref.child("USER_LIST").child(uid).child("profile")
+                    child.child("email").setValue(email)
+                }
                 
                 return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
@@ -144,8 +148,8 @@ class RegestrationViewController: UIViewController {
     }
     
     @IBAction func googleClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "google"]) //
-        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "google"]) //
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "google"]) // +
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "google"]) // +
         
         GIDSignIn.sharedInstance().signOut()
         guard isConnectedToNetwork() else {
@@ -155,16 +159,16 @@ class RegestrationViewController: UIViewController {
     }
     
     @IBAction func privacyClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "privacy"]) //
-        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "privacy"]) //
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "privacy"]) // +
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "privacy"]) // +
     }
     
     @IBAction func facebookClicked(_ sender: Any) {
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
         }
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "fb"]) //
-        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "fb"]) //
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "fb"]) // +
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "fb"]) // +
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
             guard result?.isCancelled != true else { return }
             guard let strongSelf = self else { return }
@@ -195,8 +199,8 @@ class RegestrationViewController: UIViewController {
                 }
                 UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
                 Intercom.registerUser(withEmail: user?.email ?? "")
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) //
-                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) //
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) // +
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) // +
 
                 let identify = AMPIdentify()
                 identify.set("registration", value: "facebook" as NSObject)
@@ -263,8 +267,8 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
                     Intercom.registerUser(withEmail: email ?? "")
-                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) //
-                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) //
+                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) // +
+                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) // +
 
                     let identify = AMPIdentify()
                     identify.set("registration", value: "google" as NSObject)

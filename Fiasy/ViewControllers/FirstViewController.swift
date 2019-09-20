@@ -35,6 +35,11 @@ class FirstViewController: UIViewController {
         GIDSignIn.sharedInstance().signIn()
     }
     
+    @IBAction func signInClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "enter"]) // +
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "enter"]) // +
+    }
+    
     @IBAction func facebookClicked(_ sender: Any) {
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
@@ -70,8 +75,8 @@ class FirstViewController: UIViewController {
                 }
                 UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
                 Intercom.registerUser(withEmail: user?.email ?? "")
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) //
-                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) //
+                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) // +
+                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) // +
                 
                 let identify = AMPIdentify()
                 identify.set("registration", value: "facebook" as NSObject)
@@ -128,8 +133,8 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
                     Intercom.registerUser(withEmail: email ?? "")
-                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) //
-                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) //
+                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) // +
+                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) // +
                     
                     let identify = AMPIdentify()
                     identify.set("registration", value: "google" as NSObject)

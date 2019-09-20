@@ -29,8 +29,6 @@ class RegistrationUserInfoViewController: UIViewController {
         super.viewDidLoad()
         
         setupInitialState()
-        Amplitude.instance().logEvent("free_enter")
-        Amplitude.instance().logEvent("fill_reg_data")
     }
     
     override func viewWillAppear(_ animated: Bool) {

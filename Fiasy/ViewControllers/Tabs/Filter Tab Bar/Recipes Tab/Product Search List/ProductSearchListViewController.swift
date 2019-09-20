@@ -29,20 +29,12 @@ class ProductSearchListViewController: UIViewController {
         super.viewWillAppear(animated)
         
         configurationKeyboardNotification()
-        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         removeObserver()
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if let _ = touch.view as? UITableViewCell {
-            return false
-        }
-        return true
     }
     
     // MARK: - Action -
@@ -65,7 +57,7 @@ extension ProductSearchListViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as? SearchCell else { fatalError() }
         if filteredProducts.indices.contains(indexPath.row) {
-            cell.fillCell(info: filteredProducts[indexPath.row])
+            cell.fillProductCell(info: filteredProducts[indexPath.row])
         }
         return cell
     }

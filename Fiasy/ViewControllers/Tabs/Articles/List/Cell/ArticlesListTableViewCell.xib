@@ -12,6 +12,9 @@
         <array key="SF-Pro-Text-Semibold.ttf">
             <string>SFProText-Semibold</string>
         </array>
+        <array key="SFProText-Heavy.ttf">
+            <string>SFProText-Heavy</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -67,10 +70,30 @@
                                     <constraint firstItem="fBu-JC-JU0" firstAttribute="leading" secondItem="Nke-P4-rC0" secondAttribute="leading" constant="15" id="tHG-HW-fpH"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gkq-Xs-hJv">
+                                <rect key="frame" x="289" y="0.0" width="85" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rw-ax-BNJ">
+                                        <rect key="frame" x="10" y="7" width="65" height="17"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="14"/>
+                                        <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4rw-ax-BNJ" secondAttribute="bottom" constant="7" id="J4g-2E-Co4"/>
+                                    <constraint firstItem="4rw-ax-BNJ" firstAttribute="top" secondItem="Gkq-Xs-hJv" secondAttribute="top" constant="7" id="U77-Rj-p9o"/>
+                                    <constraint firstAttribute="trailing" secondItem="4rw-ax-BNJ" secondAttribute="trailing" constant="10" id="qth-wV-JF4"/>
+                                    <constraint firstItem="4rw-ax-BNJ" firstAttribute="leading" secondItem="Gkq-Xs-hJv" secondAttribute="leading" constant="10" id="xGJ-Wl-dEu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Gkq-Xs-hJv" firstAttribute="top" secondItem="5PN-bi-UwU" secondAttribute="top" id="GO9-Zx-SZu"/>
                             <constraint firstItem="5PN-bi-UwU" firstAttribute="bottom" secondItem="Nke-P4-rC0" secondAttribute="bottom" id="LmQ-Cn-cNR"/>
+                            <constraint firstItem="5PN-bi-UwU" firstAttribute="trailing" secondItem="Gkq-Xs-hJv" secondAttribute="trailing" id="N9k-fI-Umk"/>
                             <constraint firstItem="Hle-9f-ea0" firstAttribute="top" secondItem="ffF-4g-EFc" secondAttribute="top" id="TL3-Zd-6mz"/>
                             <constraint firstAttribute="trailing" secondItem="Hle-9f-ea0" secondAttribute="trailing" id="Two-hD-iF9"/>
                             <constraint firstAttribute="bottom" secondItem="Hle-9f-ea0" secondAttribute="bottom" id="aUR-OC-LpF"/>
@@ -102,6 +125,7 @@
                 <outlet property="articleImageView" destination="Hle-9f-ea0" id="JDS-F7-4KQ"/>
                 <outlet property="blurView" destination="Sio-vn-pvm" id="6zG-tM-flm"/>
                 <outlet property="nameLabel" destination="fBu-JC-JU0" id="6pa-g7-hc6"/>
+                <outlet property="premiumContainerView" destination="Gkq-Xs-hJv" id="0ig-dy-Qm5"/>
             </connections>
             <point key="canvasLocation" x="31.884057971014496" y="87.723214285714278"/>
         </tableViewCell>

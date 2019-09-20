@@ -19,6 +19,11 @@ class ScreensController: NSObject {
     func showScreens() {
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        if let _ = UserDefaults.standard.value(forKey: "showQuizView"), Auth.auth().currentUser != nil {
+            updateRootController(with: UIStoryboard(name: "Authorization", bundle: nil).instantiateViewController(withIdentifier: "QuizViewController"))
+            return
+        }
+        
         guard let _ = UserDefaults.standard.value(forKey: "firstShowMenuView"), Auth.auth().currentUser != nil else {
             do {
                 try Auth.auth().signOut()
@@ -50,11 +55,11 @@ class ScreensController: NSObject {
     }
     
     private func setFirstLaunch() {
-        guard let _ = UserDefaults.standard.value(forKey: "authVerificationID") else {
-            UserDefaults.standard.set(true, forKey: "first_launch")
-            UserDefaults.standard.synchronize()
-            return Amplitude.instance().logEvent("first_launch")
-        }
+//        guard let _ = UserDefaults.standard.value(forKey: "authVerificationID") else {
+//            UserDefaults.standard.set(true, forKey: "first_launch")
+//            UserDefaults.standard.synchronize()
+//            return Amplitude.instance().logEvent("first_launch")
+//        }
     }
 
     private func updateRootController(with presenter: UIViewController?) {

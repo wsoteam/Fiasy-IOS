@@ -19,6 +19,7 @@ class User {
     var female: Bool?
     var photoUrl: String?
     var waterCount: Int?
+    var maxWater: Double?
     var weight: Double?
     var height: Int?
     var dateRegistration: String?
@@ -42,6 +43,7 @@ class User {
         photoUrl = dictionary["photoUrl"] as? String
         waterCount = dictionary["waterCount"] as? Int
         weight = dictionary["weight"] as? Double
+        maxWater = dictionary["maxWater"] as? Double
         height = dictionary["height"] as? Int
         updateOfIndicator = dictionary["updateOfIndicator"] as? Bool
         target = dictionary["target"] as? Int

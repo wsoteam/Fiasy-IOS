@@ -65,8 +65,8 @@ class LoginViewController: UIViewController {
             emailErrorLabel.text = "Неверный формат почты"
             emailSeparatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             emailErrorLabel.alpha = 1
-            Intercom.logEvent(withName: "enter_error", metaData: ["error_type" : "invalid email"]) //
-            Amplitude.instance()?.logEvent("enter_error", withEventProperties: ["error_type" : "invalid email"]) //
+//            Intercom.logEvent(withName: "enter_error", metaData: ["error_type" : "invalid email"]) //
+//            Amplitude.instance()?.logEvent("enter_error", withEventProperties: ["error_type" : "invalid email"]) //
             return
         }
         
@@ -77,17 +77,17 @@ class LoginViewController: UIViewController {
                 strongSelf.passwordErrorLabel.alpha = 1
                 strongSelf.emailSeparatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
                 strongSelf.passwordSeparatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
-                Intercom.logEvent(withName: "enter_error", metaData: ["error_type" : "invalid password"]) //
-                Amplitude.instance()?.logEvent("enter_error", withEventProperties: ["error_type" : "invalid password"]) //
+//                Intercom.logEvent(withName: "enter_error", metaData: ["error_type" : "invalid password"]) //
+//                Amplitude.instance()?.logEvent("enter_error", withEventProperties: ["error_type" : "invalid password"]) //
             } else {
                 if Auth.auth().currentUser != nil {
-                    FirebaseDBManager.checkFilledProfile()
+                    FirebaseDBManager.checkFilledProfile { (state) in }
                     if let uid = Auth.auth().currentUser?.uid {
                         Intercom.registerUser(withUserId: uid)
                     }
 
-                    Intercom.logEvent(withName: "enter_success", metaData: ["type" : "email"]) //
-                    Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "email"]) //
+                    Intercom.logEvent(withName: "enter_success", metaData: ["type" : "email"]) // +
+                    Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "email"]) // +
                     strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
                 }
             }
@@ -110,15 +110,20 @@ class LoginViewController: UIViewController {
                     return AlertComponent.sharedInctance.showAlertMessage(title: "Login Error",
                                                 message: error.localizedDescription, vc: self)
                 }
+                if let uid = Auth.auth().currentUser?.uid {
+                    Intercom.registerUser(withUserId: uid)
+                }
+                Intercom.logEvent(withName: "enter_success", metaData: ["type" : "fb"]) // +
+                Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "fb"]) // +
+                
                 if Auth.auth().currentUser != nil {
-                    FirebaseDBManager.checkFilledProfile()
-                    if let uid = Auth.auth().currentUser?.uid {
-                        Intercom.registerUser(withUserId: uid)
+                    FirebaseDBManager.checkFilledProfile { (state) in
+                        if state {
+                            self.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+                        } else {
+                            self.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                        }
                     }
-
-                    Intercom.logEvent(withName: "enter_success", metaData: ["type" : "fb"]) //
-                    Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "fb"]) //
-                    self.performSegue(withIdentifier: "segueToMenu", sender: nil)
                 }
             })
         }
@@ -197,14 +202,19 @@ extension LoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                                     message: error.localizedDescription, vc: strongSelf)
                 } else {
                     if Auth.auth().currentUser != nil {
-                        FirebaseDBManager.checkFilledProfile()
                         if let uid = Auth.auth().currentUser?.uid {
                             Intercom.registerUser(withUserId: uid)
                         }
-
-                        Intercom.logEvent(withName: "enter_success", metaData: ["type" : "google"]) //
-                        Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "google"]) //
-                        strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                        Intercom.logEvent(withName: "enter_success", metaData: ["type" : "google"]) // +
+                        Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "google"]) // +
+                        
+                        FirebaseDBManager.checkFilledProfile { (state) in
+                            if state {
+                                self?.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+                            } else {
+                                self?.performSegue(withIdentifier: "segueToMenu", sender: nil)
+                            }
+                        }
                     }
                 }
             })

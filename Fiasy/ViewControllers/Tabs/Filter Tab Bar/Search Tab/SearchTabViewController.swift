@@ -9,28 +9,46 @@
 import UIKit
 import Swinject
 import Intercom
+import RxSwift
 import Amplitude_iOS
 import XLPagerTabStrip
 
-class SearchTabViewController: UIViewController, SwinjectInitAssembler {
+protocol SearchTabInteractorInput {
+    func loadProducts()
+    func searchProduct(search: String)
+    func loadMoreProducts(pagination: PaginationProduct)
+}
+
+protocol SearchTabInteractorOutput: class {
+    func didLoadProducts(_ pagination: PaginationProduct)
+    func didLoadBySearch(_ pagination: PaginationProduct)
+    func didLoadMoreProducts(_ products: [SecondProduct])
+}
+
+class SearchTabViewController: UIViewController, Assembly, SwinjectInitAssembler {
+    func assemble(container: Container) {}
     
-    //MARK: - Outlets -
+    // MARK: - Outlets -
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var bottomTableConstraint: NSLayoutConstraint!
     @IBOutlet weak var emptySearchView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
-    //private var assembler = assembler.resolver as! Container
+    var interactor: SearchTabInteractorInput?
+    private var needReload: Bool = true
+    private var contentOffsetY: Int = 0
+    private var pagination: PaginationProduct?
     private var itemInfo = IndicatorInfo(title: "Поиск")
-    private var filteredProducts: [Product] = []
+    private var products: [SecondProduct] = []
     
-    //MARK: - Life Cicle -
+    // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.assembler = assembler.resolver
-        //filteredProducts = UserInfo.sharedInstance.allProducts
-        //emptySearchView.isHidden = !filteredProducts.isEmpty
+        activityView.startAnimating()
+        setupInteractor()
+        fetchProducts()
         setupTableView()
     }
     
@@ -38,40 +56,31 @@ class SearchTabViewController: UIViewController, SwinjectInitAssembler {
         super.viewWillAppear(animated)
         
         configurationKeyboardNotification()
-        hideKeyboardWhenTappedAround()
         addObserver(for: self, #selector(searchByText), "searchClicked")
-        
-        if !UserInfo.sharedInstance.allProducts.isEmpty && UserInfo.sharedInstance.allProducts.count != filteredProducts.count {
-            filteredProducts = UserInfo.sharedInstance.allProducts
-            tableView.reloadData()
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         removeObserver()
-        filteredProducts = UserInfo.sharedInstance.allProducts
-        tableView.reloadData()
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if let _ = touch.view as? UITableViewCell {
-            return false
+        if needReload {
+            interactor?.loadProducts()
+        } else {
+            needReload = true
         }
-        return true
     }
     
     @objc func searchByText() {
+        activityView.startAnimating()
         if UserInfo.sharedInstance.searchProductText.isEmpty {
-            filteredProducts = UserInfo.sharedInstance.allProducts
+            interactor?.loadProducts()
         } else {
-            filteredProducts = SQLDatabase.shared.filter(text: UserInfo.sharedInstance.searchProductText)
+            interactor?.searchProduct(search: UserInfo.sharedInstance.searchProductText)
         }
         tableView.reloadData()
     }
 
-    //MARK: - Private -
+    // MARK: - Private -
     private func setupTableView() {
         tableView.register(type: SearchCell.self)
         tableView.dataSource = self
@@ -79,39 +88,121 @@ class SearchTabViewController: UIViewController, SwinjectInitAssembler {
         tableView.reloadData()
     }
     
-    //MARK: - Actions -
-    @IBAction func addProductClicked(_ sender: UIButton) {
-        
+    private func setupInteractor() {
+        let container = assembler.resolver as! Container
+        let profileService = container.resolve(ProfileServiceProtocol.self)!
+        let interactor = SearchTabInteractor(profileService: profileService)
+        interactor.output = self
+        self.interactor = interactor
     }
+    
+    private func fetchProducts() {
+        self.interactor?.loadProducts()
+    }
+    
+    // MARK: - Actions -
+    @IBAction func addProductClicked(_ sender: UIButton) {}
 }
 
 extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredProducts.count
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as? SearchCell else { fatalError() }
-        
-        if filteredProducts.indices.contains(indexPath.row) {
-            cell.fillCell(info: filteredProducts[indexPath.row])
+        if products.indices.contains(indexPath.row) {
+            cell.fillCell(info: products[indexPath.row])
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if filteredProducts.indices.contains(indexPath.row) {
-            UserInfo.sharedInstance.selectedProduct = filteredProducts[indexPath.row]
+        if products.indices.contains(indexPath.row) {
+            UserInfo.sharedInstance.selectedProduct = products[indexPath.row]
+            needReload = false
             performSegue(withIdentifier: "sequeProductDetails", sender: nil)
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffsetYLast: Int = Int(scrollView.contentOffset.y+scrollView.bounds.size.height)
+        let heightContentSize = Int(scrollView.contentSize.height)
+        if contentOffsetYLast > heightContentSize && contentOffsetY <= heightContentSize {
+            if let pagination = self.pagination {
+                interactor?.loadMoreProducts(pagination: pagination)
+            }
+        }
+        contentOffsetY = contentOffsetYLast
     }
 }
 
 extension SearchTabViewController: IndicatorInfoProvider {
-    
-    // MARK: - IndicatorInfoProvider
+
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
+    }
+}
+
+class SearchTabInteractor: SearchTabInteractorInput {
+    
+    weak var output: SearchTabInteractorOutput?
+    private let profileService: ProfileServiceProtocol
+    private var dispose = DisposeBag()
+
+    init(profileService: ProfileServiceProtocol) {
+        self.profileService = profileService
+    }
+    
+    func loadProducts() {
+        profileService.loadProducts().subscribe(onNext: { [weak self] (response) in
+            guard let strongSelf = self else { return }
+            strongSelf.output?.didLoadProducts(response)
+        }).disposed(by: dispose)
+    }
+    
+    func loadMoreProducts(pagination: PaginationProduct) {
+        guard let link = pagination.next, !link.isEmpty else { return }
+        profileService.loadMoreProducts(link: link).subscribe(onNext: { [weak self] (response) in
+            guard let strongSelf = self else { return }
+            strongSelf.output?.didLoadMoreProducts(response.results)
+        }).disposed(by: dispose)
+    }
+    
+    func searchProduct(search: String) {
+        profileService.searchProduct(search: search).subscribe(onNext: { [weak self] (response) in
+            guard let strongSelf = self else { return }
+            Intercom.logEvent(withName: "search_success", metaData: ["search_item" : search]) // +
+            Amplitude.instance()?.logEvent("search_success", withEventProperties: ["search_item" : search]) // +
+            strongSelf.output?.didLoadBySearch(response)
+        }).disposed(by: dispose)
+    }
+}
+
+extension SearchTabViewController: SearchTabInteractorOutput {
+    
+    func didLoadProducts(_ pagination: PaginationProduct) {
+        self.pagination = pagination
+        self.activityView.stopAnimating()
+        self.products = pagination.results
+        
+        self.emptySearchView.isHidden = !products.isEmpty
+        self.tableView.reloadData()
+    }
+    
+    func didLoadMoreProducts(_ products: [SecondProduct]) {
+        for item in products {
+            self.products.append(item)
+        }
+        self.tableView.reloadData()
+    }
+    
+    func didLoadBySearch(_ pagination: PaginationProduct) {
+        self.pagination = pagination
+        self.emptySearchView.isHidden = !pagination.results.isEmpty
+        self.products = pagination.results
+        self.activityView.stopAnimating()
+        self.tableView.reloadData()
     }
 }

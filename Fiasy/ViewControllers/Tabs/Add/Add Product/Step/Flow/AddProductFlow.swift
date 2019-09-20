@@ -17,6 +17,8 @@ struct AddProductFlow {
     var showAll: Bool = false
     var selectedFavorite: Favorite?
     
+    var productFrom = "button"
+    
     // MARK: - Second Step -
     var calories: String?
     var fat: String?

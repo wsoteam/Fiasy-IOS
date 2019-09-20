@@ -12,6 +12,9 @@
         <array key="SF-Pro-Text-Semibold.ttf">
             <string>SFProText-Semibold</string>
         </array>
+        <array key="SFProText-Heavy.ttf">
+            <string>SFProText-Heavy</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -29,6 +32,24 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="27S-G0-nPc">
                                 <rect key="frame" x="0.0" y="0.0" width="348" height="180"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7v-hk-flo">
+                                <rect key="frame" x="263" y="0.0" width="85" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCk-ET-NRG">
+                                        <rect key="frame" x="10" y="7" width="65" height="17"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="14"/>
+                                        <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="XCk-ET-NRG" firstAttribute="leading" secondItem="G7v-hk-flo" secondAttribute="leading" constant="10" id="PE9-R2-t05"/>
+                                    <constraint firstItem="XCk-ET-NRG" firstAttribute="top" secondItem="G7v-hk-flo" secondAttribute="top" constant="7" id="Pqc-f7-TgM"/>
+                                    <constraint firstAttribute="bottom" secondItem="XCk-ET-NRG" secondAttribute="bottom" constant="7" id="a9p-70-VZq"/>
+                                    <constraint firstAttribute="trailing" secondItem="XCk-ET-NRG" secondAttribute="trailing" constant="10" id="eiY-nt-MjQ"/>
+                                </constraints>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DI6-9t-EOI">
                                 <rect key="frame" x="0.0" y="120" width="348" height="60"/>
                                 <subviews>
@@ -73,8 +94,10 @@
                             <constraint firstAttribute="bottom" secondItem="27S-G0-nPc" secondAttribute="bottom" id="0ja-a2-lae"/>
                             <constraint firstItem="miT-Sr-z9k" firstAttribute="trailing" secondItem="DI6-9t-EOI" secondAttribute="trailing" id="C1F-Jq-Ab3"/>
                             <constraint firstItem="27S-G0-nPc" firstAttribute="top" secondItem="PgN-d3-3qO" secondAttribute="top" id="YY9-0M-Avd"/>
+                            <constraint firstItem="miT-Sr-z9k" firstAttribute="trailing" secondItem="G7v-hk-flo" secondAttribute="trailing" id="esG-2Z-7HN"/>
                             <constraint firstItem="27S-G0-nPc" firstAttribute="leading" secondItem="PgN-d3-3qO" secondAttribute="leading" id="jmd-lj-6jY"/>
                             <constraint firstAttribute="trailing" secondItem="27S-G0-nPc" secondAttribute="trailing" id="nbV-Z1-gey"/>
+                            <constraint firstItem="G7v-hk-flo" firstAttribute="top" secondItem="miT-Sr-z9k" secondAttribute="top" id="y9a-Mh-a2M"/>
                             <constraint firstItem="DI6-9t-EOI" firstAttribute="leading" secondItem="miT-Sr-z9k" secondAttribute="leading" id="zGy-Pj-H65"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="miT-Sr-z9k"/>
@@ -84,6 +107,18 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="IBshadowRadius">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="IBshadowOpacity">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="IBshadowOffset">
+                                <size key="value" width="0.0" height="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
+                                <color key="value" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -108,6 +143,7 @@
                 <outlet property="articleImageView" destination="27S-G0-nPc" id="oOj-My-Vit"/>
                 <outlet property="blurView" destination="WJ8-BR-61j" id="huF-Sm-F6B"/>
                 <outlet property="nameLabel" destination="OGz-gk-rsY" id="ane-q3-fP7"/>
+                <outlet property="premiumContainerView" destination="G7v-hk-flo" id="q35-rL-4hs"/>
             </connections>
             <point key="canvasLocation" x="311.59420289855075" y="119.19642857142857"/>
         </collectionViewCell>

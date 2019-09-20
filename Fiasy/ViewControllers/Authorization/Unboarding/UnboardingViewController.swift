@@ -24,9 +24,11 @@ class UnboardingViewController: UIViewController {
     
     // MARK: - Actions -
     @IBAction func nextClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "onboarding_next", metaData: ["onboarding" : selectedIndex + 1]) //
-        Amplitude.instance()?.logEvent("onboarding_next", withEventProperties: ["onboarding" : selectedIndex + 1]) //
+        Intercom.logEvent(withName: "onboarding_next", metaData: ["onboarding" : "page\(selectedIndex + 1)"]) // +
+        Amplitude.instance()?.logEvent("onboarding_next", withEventProperties: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         if selectedIndex >= 2 {
+            Intercom.logEvent(withName: "onboarding_next", metaData: ["onboarding" : "reg"]) // +
+            Amplitude.instance()?.logEvent("onboarding_next", withEventProperties: ["onboarding" : "reg"]) // +
             performSegue(withIdentifier: "showFirstScreen", sender: nil)
         } else {
             selectedIndex += 1
@@ -35,8 +37,8 @@ class UnboardingViewController: UIViewController {
     }
     
     @IBAction func skipClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "onboarding_skip", metaData: ["onboarding" : selectedIndex + 1]) //
-        Amplitude.instance()?.logEvent("onboarding_skip", withEventProperties: ["onboarding" : selectedIndex + 1]) //
+        Intercom.logEvent(withName: "onboarding_skip", metaData: ["onboarding" : "page\(selectedIndex + 1)"]) // +
+        Amplitude.instance()?.logEvent("onboarding_skip", withEventProperties: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         performSegue(withIdentifier: "showFirstScreen", sender: nil)
     }
 }

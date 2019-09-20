@@ -67,7 +67,6 @@ class RecipesViewController: UIViewController {
         DispatchQueue.global().async {
             UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
         }
-        Amplitude.instance().logEvent("view_all_recipes")
     }
     
     override func viewDidLayoutSubviews() {
@@ -226,8 +225,8 @@ extension RecipesViewController: RecipesDelegate {
         default:
             break
         }
-        Intercom.logEvent(withName: "recipe_category", metaData: ["recipe_category" : item]) //
-        Amplitude.instance()?.logEvent("recipe_category", withEventProperties: ["recipe_category" : item]) //
+        Intercom.logEvent(withName: "recipe_category", metaData: ["recipe_category" : item]) // +
+        Amplitude.instance()?.logEvent("recipe_category", withEventProperties: ["recipe_category" : item]) // +
         performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)
     }
 }

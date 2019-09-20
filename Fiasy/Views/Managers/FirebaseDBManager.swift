@@ -36,6 +36,57 @@ class FirebaseDBManager {
         }
     }
     
+    static func fetchWaterItemsInDataBase(handler: @escaping ((String?) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("waters").observeSingleEvent(of: .value, with: { (snapshot) in
+                UserInfo.sharedInstance.allWaters.removeAll()
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue {
+                        if let dictionary = items as? [String:AnyObject] {
+                            let item = Water(generalKey: key, dictionary: dictionary)
+                            UserInfo.sharedInstance.allWaters.append(item)
+                        }
+                    }
+                }
+                handler(nil)
+            }) { (error) in
+                handler(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func fetchMyActivityInDataBase(handler: @escaping (([ActivityElement]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("customActivities").observeSingleEvent(of: .value, with: { (snapshot) in
+                var lists: [ActivityElement] = []
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue {
+                        lists.append(ActivityElement(generalKey: key, dictionary: items))
+                    }
+                }
+                return handler(lists)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func fetchDiaryActivityInDataBase(handler: @escaping (([ActivityElement]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("activities").observeSingleEvent(of: .value, with: { (snapshot) in
+                var lists: [ActivityElement] = []
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue {
+                        lists.append(ActivityElement(generalKey: key, dictionary: items))
+                    }
+                }
+                return handler(lists)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     static func reloadItems()  {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -147,11 +198,11 @@ class FirebaseDBManager {
             
             let userData = ["age": age.year ?? 20, "exerciseStress": exerciseStress, "female": female, "firstName": firstName, "lastName": lastName, "photoUrl": photoURL, "waterCount": waterCount, "weight": weight, "height" : height, "numberOfDay": numberOfDay, "month": month, "year": year, "maxFat": fat, "maxKcal": result, "maxProt": protein, "maxCarbo" : carbohydrates, "updateOfIndicator" : true, "email" : flow.email, "target" : target ?? 0, "target_Activity" : targetActivity ?? 0.0] as [String : Any]
             Database.database().reference().child("USER_LIST").child(uid).child("profile").setValue(userData)
-            Amplitude.instance().logEvent("create_acount")
+            //Amplitude.instance().logEvent("create_acount")
         }
     }
 
-    static func checkFilledProfile() {
+    static func checkFilledProfile(handler: @escaping ((Bool) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let snapshotValue = snapshot.value as? [String:AnyObject] {
@@ -159,9 +210,11 @@ class FirebaseDBManager {
                     UserDefaults.standard.synchronize()
                     UserInfo.sharedInstance.currentUser = User(dictionary: snapshotValue)
                     UserInfo.sharedInstance.userGender = UserInfo.sharedInstance.currentUser?.female == true ? .girl : .man
+                    handler(false)
                 } else {
-                    fillDefaultUserInDatabase()
-                    checkFilledProfile()
+                    handler(true)
+//                    fillDefaultUserInDatabase()
+//                    checkFilledProfile()
                 }
             }) { (error) in
                 print(error.localizedDescription)

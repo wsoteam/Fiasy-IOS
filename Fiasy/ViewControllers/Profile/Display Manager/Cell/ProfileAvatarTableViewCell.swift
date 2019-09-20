@@ -47,7 +47,7 @@ class ProfileAvatarTableViewCell: UITableViewCell {
         }
 
         if let first = profile.firstName, let last = profile.lastName, first != "default" && last != "default" {
-            nameLabel.text = "\(first) \(last)"
+            nameLabel.text = "\(first)\n\(last)"
         } else {
             nameLabel.text = "Ваше Имя"
         }

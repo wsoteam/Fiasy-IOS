@@ -14,6 +14,7 @@ import Amplitude_iOS
 class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Outlet -
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeButton: UIButton!
     
     // MARK: - Properties -
@@ -28,6 +29,15 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         closeButton.isHidden = !isAutorization
+        
+        var bottomPadding: CGFloat = 0.0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            bottomPadding = window?.safeAreaInsets.bottom ?? 0.0
+        }
+        if bottomPadding > 0.0 {
+            topConstraint.constant = 0
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,16 +68,16 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Action's -
     @IBAction func showPrivacyClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "privacy"]) //
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "privacy"]) //
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "privacy"]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "privacy"]) // +
         if let url = URL(string: "http://fiasy.com/PrivacyPolice.html") {
             UIApplication.shared.open(url)
         }
     }
     
     @IBAction func closeClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "close"]) //
-        Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "close"]) //
+        Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "close"]) // +
+        Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "close"]) // +
         
         let identify = AMPIdentify()
         identify.set("premium_status", value: "free" as NSObject)
@@ -77,26 +87,28 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
         attributed.customAttributes = ["premium_status": "free"]
         Intercom.updateUser(attributed)
         
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "close"]) //
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "close"]) //
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "close"]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "close"]) // +
         performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
     }
     
     @IBAction func backClicked(_ sender: Any) {
-        Amplitude.instance()?.logEvent("close_premium")
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "back"]) //
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "back"]) //
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "back"]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "back"]) // +
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func purchedClicked(_ sender: Any) {
         UserInfo.sharedInstance.trialFrom = trialFrom
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "next"]) //
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "next"]) //
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "next"]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "next"]) // +
         SubscriptionService.shared.purchase()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > 0 {
+            scrollView.contentOffset.x = 0
+        }
         guard scrollView.contentOffset.y > 0 else {
             return scrollView.contentOffset = CGPoint(x: 0, y: 0) }
     }

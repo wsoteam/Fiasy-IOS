@@ -23,4 +23,15 @@ extension NextGrowingTextView {
         textView.autocorrectionType = .no
         textView.textContainerInset = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
     }
+    
+    func configureSecondGrowingTextView() {
+        maxNumberOfLines = 3
+        textView.font = UIFont.sfProTextBold(size: 24)
+        textView.textColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+        textView.tintColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+
+        textView.isUserInteractionEnabled = true
+        textView.autocorrectionType = .no
+        textView.textContainerInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+    }
 }

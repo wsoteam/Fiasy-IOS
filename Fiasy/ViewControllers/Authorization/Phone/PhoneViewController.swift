@@ -84,7 +84,7 @@ class PhoneViewController: UIViewController {
                                                                      message: message,
                                                                           vc: strongSelf)
                     } else {
-                        FirebaseDBManager.checkFilledProfile()
+                        FirebaseDBManager.checkFilledProfile { (state) in }
                         strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
                     }
                 })

@@ -24,6 +24,7 @@ class AddProductViewController: UIViewController {
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties -
+    var productFrom = "button"
     private var selectedFavorite: Favorite?
     
     // MARK: - Life Cicle -

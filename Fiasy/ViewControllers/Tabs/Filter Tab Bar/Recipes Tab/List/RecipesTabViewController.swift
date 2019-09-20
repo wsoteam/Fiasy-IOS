@@ -65,6 +65,8 @@ class RecipesTabViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         removeObserver()
+        filteredRecipes = allRecipes
+        tableView.reloadData()
     }
     
     @objc func searchByText() {

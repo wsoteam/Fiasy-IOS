@@ -22,6 +22,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="236.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvM-Kw-OoA">
+                        <rect key="frame" x="374" y="10.5" width="20" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6u-33-TR4">
                         <rect key="frame" x="20" y="20" width="344" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -35,8 +39,11 @@
                             <constraint firstAttribute="width" secondItem="uFX-c2-tjp" secondAttribute="height" multiplier="1:1" id="dIe-1b-TYQ"/>
                         </constraints>
                         <state key="normal" image="more111"/>
+                        <connections>
+                            <action selector="moreClicked:" destination="vLF-Xy-jPf" eventType="touchUpInside" id="cyP-lZ-3vm"/>
+                        </connections>
                     </button>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-FL-Zlz">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-FL-Zlz">
                         <rect key="frame" x="0.0" y="60.5" width="414" height="60"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -46,33 +53,52 @@
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AUf-a1-Zzl">
-                        <rect key="frame" x="10" y="130.5" width="394" height="96"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AUf-a1-Zzl">
+                        <rect key="frame" x="10" y="140.5" width="394" height="76"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1Y-lt-4wH">
-                                <rect key="frame" x="0.0" y="0.0" width="394" height="96"/>
-                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
-                                <color key="textColor" red="0.68218958377838135" green="0.70118957757949829" blue="0.75120639801025391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjl-UC-hvY">
+                                <rect key="frame" x="0.0" y="0.0" width="394" height="76"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Норма установлена на 2л. Чтобы изменить это значение нажмите • • •" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1Y-lt-4wH">
+                                        <rect key="frame" x="10" y="0.0" width="374" height="76"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
+                                        <color key="textColor" red="0.68218958377838135" green="0.70118957757949829" blue="0.75120639801025391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="M1Y-lt-4wH" secondAttribute="trailing" constant="10" id="NYf-PK-xNb"/>
+                                    <constraint firstItem="M1Y-lt-4wH" firstAttribute="top" secondItem="zjl-UC-hvY" secondAttribute="top" id="d22-DR-ZkB"/>
+                                    <constraint firstItem="M1Y-lt-4wH" firstAttribute="leading" secondItem="zjl-UC-hvY" secondAttribute="leading" constant="10" id="gEF-LJ-XAH"/>
+                                    <constraint firstAttribute="bottom" secondItem="M1Y-lt-4wH" secondAttribute="bottom" id="vBp-hF-4YS"/>
+                                </constraints>
+                            </view>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water_filled" translatesAutoresizingMaskIntoConstraints="NO" id="cdE-E3-4sx">
+                                <rect key="frame" x="0.0" y="76" width="394" height="0.0"/>
+                            </imageView>
                         </subviews>
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="FvM-Kw-OoA" firstAttribute="bottom" secondItem="uFX-c2-tjp" secondAttribute="bottom" id="6RJ-sL-2Tg"/>
                     <constraint firstItem="AUf-a1-Zzl" firstAttribute="leading" secondItem="0Of-Od-g2U" secondAttribute="leading" constant="10" id="8ZU-4n-kzA"/>
                     <constraint firstItem="uFX-c2-tjp" firstAttribute="centerY" secondItem="C6u-33-TR4" secondAttribute="centerY" id="AND-Uc-gxb"/>
                     <constraint firstAttribute="trailing" secondItem="uFX-c2-tjp" secondAttribute="trailing" constant="10" id="BKQ-xl-Wff"/>
                     <constraint firstItem="C6u-33-TR4" firstAttribute="leading" secondItem="0Of-Od-g2U" secondAttribute="leading" constant="20" id="BuI-a2-UYL"/>
                     <constraint firstAttribute="trailing" secondItem="AUf-a1-Zzl" secondAttribute="trailing" constant="10" id="CI0-jG-guC"/>
-                    <constraint firstAttribute="bottom" secondItem="AUf-a1-Zzl" secondAttribute="bottom" constant="10" id="HdQ-Gx-K7r"/>
+                    <constraint firstAttribute="bottom" secondItem="AUf-a1-Zzl" secondAttribute="bottom" constant="20" id="HdQ-Gx-K7r"/>
                     <constraint firstAttribute="trailing" secondItem="aK2-FL-Zlz" secondAttribute="trailing" id="MYz-BP-vXj"/>
-                    <constraint firstItem="AUf-a1-Zzl" firstAttribute="top" secondItem="aK2-FL-Zlz" secondAttribute="bottom" constant="10" id="Mgb-2Y-KZ3"/>
+                    <constraint firstItem="AUf-a1-Zzl" firstAttribute="top" secondItem="aK2-FL-Zlz" secondAttribute="bottom" constant="20" id="Mgb-2Y-KZ3"/>
                     <constraint firstItem="C6u-33-TR4" firstAttribute="trailing" secondItem="uFX-c2-tjp" secondAttribute="leading" id="Ucf-Ql-NDz"/>
+                    <constraint firstItem="FvM-Kw-OoA" firstAttribute="width" secondItem="uFX-c2-tjp" secondAttribute="width" multiplier="0.5" id="XoI-Ov-fvb"/>
                     <constraint firstItem="C6u-33-TR4" firstAttribute="top" secondItem="0Of-Od-g2U" secondAttribute="top" constant="20" id="bxM-cQ-ye8"/>
+                    <constraint firstItem="FvM-Kw-OoA" firstAttribute="top" secondItem="uFX-c2-tjp" secondAttribute="top" id="mT1-oK-qff"/>
                     <constraint firstItem="aK2-FL-Zlz" firstAttribute="top" secondItem="uFX-c2-tjp" secondAttribute="bottom" constant="10" id="oLS-97-qtL"/>
+                    <constraint firstItem="FvM-Kw-OoA" firstAttribute="centerX" secondItem="uFX-c2-tjp" secondAttribute="centerX" id="tPg-Hg-5pm"/>
                     <constraint firstItem="aK2-FL-Zlz" firstAttribute="leading" secondItem="0Of-Od-g2U" secondAttribute="leading" id="zBn-z8-wsC"/>
                 </constraints>
             </tableViewCellContentView>
@@ -80,12 +106,15 @@
                 <outlet property="collectionView" destination="aK2-FL-Zlz" id="mrr-74-sVt"/>
                 <outlet property="descriptionLabel" destination="M1Y-lt-4wH" id="Wt0-PN-x7U"/>
                 <outlet property="moreButton" destination="uFX-c2-tjp" id="mK7-wJ-iNA"/>
+                <outlet property="offsetView" destination="FvM-Kw-OoA" id="bSv-le-x3f"/>
                 <outlet property="topLabel" destination="C6u-33-TR4" id="PHj-x7-1ou"/>
+                <outlet property="waterFiledImageView" destination="cdE-E3-4sx" id="db2-w5-Twd"/>
             </connections>
             <point key="canvasLocation" x="-7.2463768115942031" y="109.48660714285714"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="more111" width="25" height="5"/>
+        <image name="water_filled" width="356" height="110"/>
     </resources>
 </document>

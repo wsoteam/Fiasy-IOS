@@ -18,7 +18,18 @@ class SearchCell: UITableViewCell {
     //MARK: - Properties -
     
     //MARK: - Interface -
-    func fillCell(info: Product) {
+    func fillCell(info: SecondProduct) {
+        productNameLabel.text = "\(info.name ?? "")"
+        
+        if let brand = info.brand, let name = brand.name {
+            productWeightLabel.text = "\(name) • \(info.portion ?? 100) г.".replacingOccurrences(of: ".0", with: "")
+        } else {
+            productWeightLabel.text = "\(info.portion ?? 100) г.".replacingOccurrences(of: ".0", with: "")
+        }
+        caloriesLabel.text = "\(String(Double((info.calories ?? 0.0) * 100).rounded(toPlaces: 2))) Ккал".replacingOccurrences(of: ".0", with: "")
+    }
+    
+    func fillProductCell(info: Product) {
         productNameLabel.text = "\(info.name ?? "")"
         productWeightLabel.text = "\(info.brend ?? "") • \(info.portion ?? 100) г.".replacingOccurrences(of: ".0", with: "")
         caloriesLabel.text = "\(String(Double((info.calories ?? 0.0) * 100).rounded(toPlaces: 2))) Ккал".replacingOccurrences(of: ".0", with: "")

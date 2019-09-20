@@ -46,15 +46,17 @@ class RecipesDetailsViewController: UIViewController {
         
         setupTableView()
         ownRecipe = ((backViewController() as? GeneralTabBarViewController) != nil)
-        //Amplitude.instance().logEvent("view_detail_food")
 
-        Intercom.logEvent(withName: "view_recipe") //
-        Amplitude.instance()?.logEvent("view_recipe") //
+        Intercom.logEvent(withName: "view_recipe", metaData: ["recipe_item" : selectedRecipe?.name]) // +
+        Amplitude.instance()?.logEvent("view_recipe", withEventProperties: ["recipe_item" : selectedRecipe?.name]) // +
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        DispatchQueue.global().async {
+            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        }
         setupInitialState()
     }
     
@@ -172,8 +174,8 @@ extension RecipesDetailsViewController: UITableViewDataSource, UITableViewDelega
 extension RecipesDetailsViewController: RecipesDetailsDelegate {
     
     func showPremiumScreen() {
-        Intercom.logEvent(withName: "product_page_micro") //
-        Amplitude.instance()?.logEvent("product_page_micro") //
+        Intercom.logEvent(withName: "product_page_micro") // +
+        Amplitude.instance()?.logEvent("product_page_micro") // +
         performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
     }
     
@@ -186,7 +188,6 @@ extension RecipesDetailsViewController: RecipesDetailsDelegate {
             self?.containerView.alpha = 1.0
             self?.containerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }
-        Amplitude.instance().logEvent("success_add_food")
         delay(bySeconds: 1.0) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }

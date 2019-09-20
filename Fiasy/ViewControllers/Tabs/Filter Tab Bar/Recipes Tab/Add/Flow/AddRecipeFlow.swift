@@ -17,6 +17,8 @@ struct AddRecipeFlow {
     var complexity: String?
     var showAll: Bool = false
     
+    var recipeFrom = "button"
+    
     // MARK: - Second Step -
     var allProduct: [Product] = []
 

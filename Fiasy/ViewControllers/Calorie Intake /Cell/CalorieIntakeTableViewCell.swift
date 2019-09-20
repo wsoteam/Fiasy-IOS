@@ -11,47 +11,60 @@ import UIKit
 class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     // MARK: - Outlet -
+    @IBOutlet weak var separatorInsetConstraint: NSLayoutConstraint!
     @IBOutlet weak var moreLabel: UILabel!
     @IBOutlet weak var selectedButton: UIButton!
     @IBOutlet weak var titleNameLabel: UILabel!
     @IBOutlet weak var insertTextField: UITextField!
+    @IBOutlet weak var separatorView: UIView!
     
     // MARK: - Properties -
-    private var delegate: CalorieIntakeDelegate?
+    private var fat: Int?
+    private var protein: Int?
+    private var calories: Int?
+    private var carbohydrates: Int?
     private var indexPath: IndexPath?
+    private var delegate: CalorieIntakeDelegate?
     
     // MARK: - Interface -
-    func fillCell(indexCell: IndexPath, currentUser: User?, delegate: CalorieIntakeDelegate, target: Int, activity: CGFloat) {
+    func fillCell(indexCell: IndexPath, currentUser: User?, delegate: CalorieIntakeDelegate, target: Int, activity: CGFloat, _ allField: [String]) {
         self.delegate = delegate
         self.indexPath = indexCell
         
         selectedButton.isHidden = true
         moreLabel.isHidden = true
         insertTextField.isHidden = false
+        separatorView.isHidden = false
+        insertTextField.textColor = #colorLiteral(red: 0.4038744569, green: 0.4039486647, blue: 0.4038697779, alpha: 1)
+        insertTextField.isEnabled = true
+        separatorInsetConstraint.constant = 15
+        
         switch indexCell.row {
         case 0:
+            insertTextField.tag = 44
+            titleNameLabel.text = "Пол"
+            insertTextField.keyboardType = .numberPad
+            insertTextField.isEnabled = false
+            insertTextField.textColor = #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1)
+            if let female = currentUser?.female {
+                insertTextField.text = female == true ? "Женский" : "Мужской"
+            }
+        case 1:
             insertTextField.tag = 0
             titleNameLabel.text = "Рост"
             insertTextField.keyboardType = .numberPad
-            insertTextField.isEnabled = true
-            if let height = currentUser?.height, height != 0 {
-                insertTextField.text = "\(height)"
-            }
-        case 1:
+            insertTextField.text = allField[0]
+        case 2:
             insertTextField.tag = 1
             titleNameLabel.text = "Вес"
             insertTextField.keyboardType = .decimalPad
-            if let weight = currentUser?.weight, weight != 0 {
-                insertTextField.text = "\(weight)"
-            }
-        case 2:
+            insertTextField.text = allField[1]
+        case 3:
             insertTextField.tag = 2
             titleNameLabel.text = "Возраст"
             insertTextField.keyboardType = .numberPad
-            if let age = currentUser?.age, age != 0 {
-                insertTextField.text = "\(age)"
-            }
-        case 3:
+            insertTextField.text = allField[2]
+        case 4:
             titleNameLabel.text = "Активность"
             insertTextField.isEnabled = false
             insertTextField.isHidden = true
@@ -59,7 +72,7 @@ class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
             selectedButton.isHidden = false
             
             moreLabel.text = fetchActivity(value: activity)
-        case 4:
+        case 5:
             titleNameLabel.text = "Цель"
             insertTextField.isEnabled = false
             moreLabel.isHidden = false
@@ -67,11 +80,14 @@ class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
             insertTextField.isHidden = true
             
             moreLabel.text = fetchTargetName(index: target)
+            separatorInsetConstraint.constant = 0
+            separatorView.isHidden = true
         default:
             break
         }
     }
     
+    // MARK: - Private -
     private func fetchActivity(value: CGFloat) -> String {
         switch value {
         case 0.0:
@@ -151,15 +167,16 @@ class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
     // MARK: - Actions -
     @IBAction func valueChange(_ sender: UITextField) {
         guard let text = insertTextField.text else { return }
+        
         delegate?.fillField(by: sender.tag, text: text)
     }
     
     @IBAction func selectedButton(_ sender: Any) {
         guard let index = self.indexPath else { return }
         switch index.row {
-        case 3:
-            delegate?.showTarget()
         case 4:
+            delegate?.showTarget()
+        case 5:
             delegate?.showActivity()
         default:
             break

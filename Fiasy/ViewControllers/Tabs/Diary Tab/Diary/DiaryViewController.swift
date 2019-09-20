@@ -19,6 +19,7 @@ import VisualEffectView
 
 protocol DiaryViewDelegate {
     func stopProgress()
+    func showWaterDetails()
     func editMealTime()
     func removeMealTime()
     func showProducts()
@@ -42,6 +43,7 @@ class DiaryViewController: BaseViewController {
     
     // MARK: - Properties -
     private var selectedDate: Date = Date()
+    private var waterCount: Double =  UserInfo.sharedInstance.currentUser?.maxWater ?? 2.0
     private let isIphone5 = Display.typeIsLike == .iphone5
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -54,7 +56,6 @@ class DiaryViewController: BaseViewController {
 
     lazy var picker: DiaryClickedPicker = {
         let picker = DiaryClickedPicker()
-        
         picker.changeDate = { [weak self] in
             guard let `self` = self else { return }
             let date = UserInfo.sharedInstance.selectedDate ?? Date()
@@ -80,7 +81,6 @@ class DiaryViewController: BaseViewController {
         setupInitialState()
         getItemsInDataBase()
         UserInfo.sharedInstance.selectedDate = Date()
-        Amplitude.instance().logEvent("view_diary")
         
         if let email = UserInfo.sharedInstance.currentUser?.email {
             let identify = AMPIdentify()
@@ -95,6 +95,11 @@ class DiaryViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let user = UserInfo.sharedInstance.currentUser, let count = user.maxWater, self.waterCount != count {
+            self.waterCount = count
+            displayManager.reloadWater()
+        }
 
         registerForRemoteNotification()
         if UserInfo.sharedInstance.isReload {
@@ -113,10 +118,14 @@ class DiaryViewController: BaseViewController {
             getItemsInDataBase()
         }
         
+        if UserInfo.sharedInstance.reloadActiveContent {
+            UserInfo.sharedInstance.reloadActiveContent = false
+            getActivitysInDataBase()
+        }
+        
         if let _ = Auth.auth().currentUser?.uid {
             intercomButton.isHidden = false
         }
-        getItemsInDataBase()
     }
     
     override func viewDidLayoutSubviews() {
@@ -145,8 +154,20 @@ class DiaryViewController: BaseViewController {
             DispatchQueue.main.async(execute: {
                 self.displayManager.changeDate(self.mountLabel, self.selectedDate)
                 self.displayManager.changeNewDate(date: self.selectedDate)
+                self.getActivitysInDataBase()
+                FirebaseDBManager.fetchWaterItemsInDataBase { [weak self] (error) in
+                    guard let `self` = self else { return }
+                    self.displayManager.reloadWater()
+                }
                 self.post("reloadContent")
             })
+        }
+    }
+    
+    private func getActivitysInDataBase() {
+        FirebaseDBManager.fetchDiaryActivityInDataBase { [weak self] (list) in
+            guard let strongSelf = self else { return }
+            strongSelf.displayManager.reloadActivity(list, selectedDate: strongSelf.selectedDate)
         }
     }
     
@@ -180,8 +201,8 @@ class DiaryViewController: BaseViewController {
     }
     
     @IBAction func showChatIntercom(_ sender: Any) {
-        Intercom.logEvent(withName: "intercom_chat") //
-        Amplitude.instance()?.logEvent("intercom_chat") //
+        Intercom.logEvent(withName: "intercom_chat") // +
+        Amplitude.instance()?.logEvent("intercom_chat") // +
         Intercom.presentMessenger()
     }
     
@@ -199,9 +220,19 @@ class DiaryViewController: BaseViewController {
             tabTitleLable.font = tabTitleLable.font.withSize(25)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? EditActivityViewController, let model = sender as? ActivityElement {
+            vc.fillScreenByModel(model)
+        }
+    }
 }
 
 extension DiaryViewController: DiaryViewDelegate {
+    
+    func showWaterDetails() {
+        performSegue(withIdentifier: "sequeWaterDetailsScreen", sender: nil)
+    }
     
     func stopProgress() {
         activityView.isHidden = true
@@ -215,8 +246,8 @@ extension DiaryViewController: DiaryViewDelegate {
     func removeMealTime() {
         let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить продукт?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
-            Amplitude.instance().logEvent("delete_food") //
-            Intercom.logEvent(withName: "delete_food") //
+            Amplitude.instance().logEvent("delete_food") // +
+            Intercom.logEvent(withName: "delete_food") // +
             self.displayManager.removeMealTime()
             self.getItemsInDataBase()
         }))

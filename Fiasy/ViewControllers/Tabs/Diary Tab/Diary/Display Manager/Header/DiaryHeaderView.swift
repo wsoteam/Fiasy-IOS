@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Intercom
+import Amplitude_iOS
 
 class DiaryHeaderView: UITableViewHeaderFooterView {
 
@@ -26,16 +28,16 @@ class DiaryHeaderView: UITableViewHeaderFooterView {
         self.delegate = delegate
         
         switch section {
-        case 1:
+        case 2:
             tagIndex = 0
             titleNameLabel.text = "Завтрак"
-        case 2:
+        case 3:
             tagIndex = 1
             titleNameLabel.text = "Обед"
-        case 3:
+        case 4:
             tagIndex = 2
             titleNameLabel.text = "Ужин"
-        case 4:
+        case 5:
             tagIndex = 3
             titleNameLabel.text = "Перекус"
         default:
@@ -56,6 +58,21 @@ class DiaryHeaderView: UITableViewHeaderFooterView {
     }
     
     @IBAction func plusClicked(_ sender: Any) {
+        
+        var name: String = ""
+        switch tagIndex {
+        case 0:
+            name = "breakfast"
+        case 1:
+            name = "lunch"
+        case 2:
+            name = "dinner"
+        default:
+            name = "snack"
+        }
+        Intercom.logEvent(withName: "diary_next", metaData: ["add_intake" : name]) // +
+        Amplitude.instance()?.logEvent("diary_next", withEventProperties: ["add_intake" : name]) // +
+        
         UserInfo.sharedInstance.selectedMealtimeIndex = tagIndex
         delegate?.showProductTab()
     }

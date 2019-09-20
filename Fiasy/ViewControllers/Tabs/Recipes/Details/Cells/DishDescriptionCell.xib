@@ -148,7 +148,7 @@
                         <rect key="frame" x="0.0" y="155.5" width="375" height="300"/>
                         <subviews>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-Fp-LrX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="  Способ приготовления" image="knife-fork-2">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,19 +215,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KZh-SX-ZGI">
-                                <rect key="frame" x="15" y="44.5" width="329" height="196"/>
+                                <rect key="frame" x="15" y="44.5" width="329" height="192"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="w5r-aL-Crf">
-                                        <rect key="frame" x="0.0" y="0.0" width="329" height="166"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="329" height="162"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PqB-dc-sm5">
-                                        <rect key="frame" x="0.0" y="176" width="329" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="172" width="329" height="0.0"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-yI-FHe">
-                                        <rect key="frame" x="0.0" y="186" width="329" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="182" width="329" height="0.0"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uPP-dV-brD">
-                                        <rect key="frame" x="0.0" y="196" width="329" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="192" width="329" height="0.0"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -281,7 +281,7 @@
     </objects>
     <resources>
         <image name="ic-access-time-24px" width="15" height="15"/>
-        <image name="knife-fork-2" width="20" height="19"/>
+        <image name="knife-fork-2" width="24" height="24"/>
         <image name="minus" width="16" height="3"/>
         <image name="plus_icon" width="16" height="16"/>
     </resources>

@@ -36,8 +36,8 @@ class ProfileTargetViewController: UIViewController {
     
     // MARK: - Actions -
     @IBAction func targetClicked(_ sender: UIButton) {
-        Amplitude.instance().logEvent("change_goal") //
-        Intercom.logEvent(withName: "change_goal") //
+        Amplitude.instance().logEvent("change_goal") // +
+        Intercom.logEvent(withName: "change_goal") // +
         setupDefaultState()
         UserInfo.sharedInstance.editTarget = sender.tag
         if targetImages.indices.contains(sender.tag) {

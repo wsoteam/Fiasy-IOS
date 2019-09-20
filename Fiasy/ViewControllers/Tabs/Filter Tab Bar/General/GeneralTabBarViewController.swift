@@ -101,6 +101,7 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
                 moveToViewController(at: 1)
             }
             UserInfo.sharedInstance.productFlow = AddProductFlow()
+            UserInfo.sharedInstance.productFlow.productFrom = "plus"
             performSegue(withIdentifier: "sequeAddProductScreen", sender: nil)
         case 2:
             UserInfo.sharedInstance.templateArray.removeAll()
@@ -110,6 +111,7 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
                 moveToViewController(at: 3)
             }
             UserInfo.sharedInstance.recipeFlow = AddRecipeFlow()
+            UserInfo.sharedInstance.recipeFlow.recipeFrom = "plus"
             performSegue(withIdentifier: "sequeAddRecipe", sender: nil)
         default:
             break
@@ -126,7 +128,7 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
             
         }
     }
-    
+
     // MARK: - Private -
     private func setupInitialState() {
         blurView.colorTint = .gray
@@ -140,7 +142,14 @@ extension GeneralTabBarViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text else { return false }
-        UserInfo.sharedInstance.searchProductText = text
+        
+        var recipeName: String = ""
+        let searchNameArr = text.split{$0 == " "}.map(String.init)
+        for item in searchNameArr where !item.isEmpty {
+            recipeName = recipeName.isEmpty ? item : recipeName + " \(item)"
+        }
+        
+        UserInfo.sharedInstance.searchProductText = recipeName
         post("searchClicked")
         return true
     }

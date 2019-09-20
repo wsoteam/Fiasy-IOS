@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Добро пожаловать в Fiasy!" translatesAutoresizingMaskIntoConstraints="NO" id="y4G-nF-Pag">
-                                <rect key="frame" x="152" y="77.5" width="16" height="16"/>
+                                <rect key="frame" x="37" y="45.5" width="246" height="48"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ffm-Gm-Map">
                                 <rect key="frame" x="0.0" y="123.5" width="320" height="341"/>
@@ -55,18 +55,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STW-in-l9P">
                                 <rect key="frame" x="0.0" y="464.5" width="320" height="93.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="an8-sn-I9p">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="an8-sn-I9p">
                                         <rect key="frame" x="40" y="0.0" width="240" height="93.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbv-rr-Yz5">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbv-rr-Yz5">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="64.5"/>
                                                 <state key="normal" image="Group (17)"/>
                                                 <connections>
                                                     <action selector="nextClicked:" destination="0Dw-5B-TuN" eventType="touchUpInside" id="Pzv-lF-ydn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aft-oq-0qM">
-                                                <rect key="frame" x="0.0" y="22" width="240" height="29"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aft-oq-0qM">
+                                                <rect key="frame" x="0.0" y="64.5" width="240" height="29"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
                                                 <state key="normal" title="Пропустить">
                                                     <color key="titleColor" red="0.74109476804733276" green="0.74122363328933716" blue="0.74108666181564331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,8 +75,8 @@
                                                     <action selector="skipClicked:" destination="0Dw-5B-TuN" eventType="touchUpInside" id="kLr-T1-0Ta"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tmH-Ds-lMU">
-                                                <rect key="frame" x="0.0" y="51" width="240" height="42.5"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmH-Ds-lMU">
+                                                <rect key="frame" x="0.0" y="93.5" width="240" height="0.0"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="HBo-uw-bvL"/>
@@ -131,7 +131,7 @@
                                 <rect key="frame" x="0.0" y="40" width="320" height="188.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_profile_data_mk6k" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-PR-uHZ">
-                                        <rect key="frame" x="152" y="86" width="16" height="16"/>
+                                        <rect key="frame" x="37.5" y="3" width="245" height="182"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -277,6 +277,7 @@
                                                             <color key="titleColor" red="1" green="0.60553437471389771" blue="0.18034970760345459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
+                                                            <action selector="signInClicked:" destination="eJz-oS-jmj" eventType="touchUpInside" id="ZcF-dk-Obc"/>
                                                             <segue destination="lfH-OA-7in" kind="show" id="4RT-pV-7X3"/>
                                                         </connections>
                                                     </button>
@@ -312,7 +313,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mJG-dU-V5i"/>
                     <connections>
-                        <segue destination="bqR-LD-ntF" kind="show" identifier="sequeQuizScreen" id="gOa-HT-5M5"/>
+                        <segue destination="SgP-6s-fDM" kind="show" identifier="sequeQuizScreen" id="gOa-HT-5M5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxb-e3-eV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,7 +677,7 @@
                         <outletCollection property="fieldsTitleLabel" destination="eOj-aK-oKx" collectionClass="NSMutableArray" id="lWq-Oc-ZZj"/>
                         <outletCollection property="fieldsTitleLabel" destination="XOI-4V-yaa" collectionClass="NSMutableArray" id="UEx-5E-3HZ"/>
                         <segue destination="W9k-YU-98o" kind="custom" identifier="segueToMenu" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="TW8-se-YJZ"/>
-                        <segue destination="bqR-LD-ntF" kind="show" identifier="sequeQuizScreen" id="z00-6p-11f"/>
+                        <segue destination="SgP-6s-fDM" kind="show" identifier="sequeQuizScreen" id="z00-6p-11f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKW-qC-P7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -715,25 +716,25 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восстановить пароль" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPz-cq-Kzc">
-                                <rect key="frame" x="15" y="70" width="210.5" height="75"/>
+                                <rect key="frame" x="15" y="70" width="241" height="76.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zpi-YQ-UKd">
-                                <rect key="frame" x="20" y="142.5" width="280" height="303.5"/>
+                                <rect key="frame" x="20" y="142" width="280" height="304"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9dq-UG-M1X">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="89.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите Email для восстановления" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e28-Gy-Ho2">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IGl-Su-aW6">
-                                                <rect key="frame" x="0.0" y="17.5" width="280" height="40"/>
+                                                <rect key="frame" x="0.0" y="18" width="280" height="40"/>
                                                 <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="nLj-tO-ws9"/>
@@ -746,14 +747,14 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4h-3U-izD">
-                                                <rect key="frame" x="0.0" y="57.5" width="280" height="2"/>
+                                                <rect key="frame" x="0.0" y="58" width="280" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="WWi-Su-3B6"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный формат почты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVT-CM-KE2">
-                                                <rect key="frame" x="0.0" y="59.5" width="280" height="30"/>
+                                                <rect key="frame" x="0.0" y="60" width="280" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="wiy-X3-8ml"/>
                                                 </constraints>
@@ -764,14 +765,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-Yg-oee">
-                                        <rect key="frame" x="0.0" y="89.5" width="280" height="100"/>
+                                        <rect key="frame" x="0.0" y="90" width="280" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="lYi-he-Adz"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-oo-NsN">
-                                        <rect key="frame" x="0.0" y="189.5" width="280" height="114"/>
+                                        <rect key="frame" x="0.0" y="190" width="280" height="114"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mI-wu-xnj" customClass="LoadingButton" customModule="Fiasy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -811,7 +812,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixN-h4-dAp">
-                                        <rect key="frame" x="0.0" y="303.5" width="280" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="304" width="280" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="Eli-bO-OCg"/>
@@ -868,7 +869,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUF-LB-WKJ">
-                                <rect key="frame" x="14" y="104.5" width="292" height="239"/>
+                                <rect key="frame" x="14" y="84.5" width="292" height="279"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер для отправки смс с кодом" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05V-MD-u70">
                                         <rect key="frame" x="0.0" y="20" width="292" height="13"/>
@@ -956,10 +957,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tCo-9o-l0i">
-                                        <rect key="frame" x="50" y="203" width="192" height="16"/>
+                                        <rect key="frame" x="50" y="203" width="192" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cF-oS-kkj">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="-6" maxX="0.0" maxY="0.0"/>
@@ -971,7 +972,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tR-dP-9xb">
-                                                <rect key="frame" x="101" y="0.0" width="91" height="16"/>
+                                                <rect key="frame" x="101" y="0.0" width="91" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="-6" maxX="0.0" maxY="0.0"/>
@@ -1236,10 +1237,10 @@ Fiasy.com</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRR-ds-Ryw" userLabel="Navigation view">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="35"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtV-ze-4W2">
-                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <rect key="frame" x="5" y="0.0" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NtV-ze-4W2" secondAttribute="height" multiplier="1:1" id="afF-aX-qi1"/>
                                         </constraints>
@@ -1252,14 +1253,14 @@ Fiasy.com</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="NtV-ze-4W2" firstAttribute="leading" secondItem="tRR-ds-Ryw" secondAttribute="leading" id="Gi4-gF-4Zc"/>
-                                    <constraint firstAttribute="height" constant="44" id="TwM-Ld-XiK"/>
+                                    <constraint firstItem="NtV-ze-4W2" firstAttribute="leading" secondItem="tRR-ds-Ryw" secondAttribute="leading" constant="5" id="Gi4-gF-4Zc"/>
+                                    <constraint firstAttribute="height" constant="35" id="TwM-Ld-XiK"/>
                                     <constraint firstItem="NtV-ze-4W2" firstAttribute="top" secondItem="tRR-ds-Ryw" secondAttribute="top" id="Zbw-kt-16a"/>
                                     <constraint firstAttribute="bottom" secondItem="NtV-ze-4W2" secondAttribute="bottom" id="Zio-01-Nxq"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ain-Bx-tY4">
-                                <rect key="frame" x="0.0" y="64" width="320" height="281"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9hh-eq-lbp">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1279,10 +1280,10 @@ Fiasy.com</string>
                                 </cells>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gwu-8i-vDX" userLabel="bottom Stack">
-                                <rect key="frame" x="0.0" y="345" width="320" height="223"/>
+                                <rect key="frame" x="0.0" y="350" width="320" height="218"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yht-MF-Nn3">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="213"/>
+                                        <rect key="frame" x="0.0" y="5" width="320" height="213"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите ваш пол" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsa-xr-aQM">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
@@ -1299,7 +1300,7 @@ Fiasy.com</string>
                                                 <rect key="frame" x="0.0" y="71" width="320" height="142"/>
                                                 <subviews>
                                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbi-FN-bIl">
-                                                        <rect key="frame" x="152" y="20" width="16" height="92"/>
+                                                        <rect key="frame" x="93" y="15" width="134" height="102"/>
                                                         <state key="normal" image="next_gray"/>
                                                         <connections>
                                                             <action selector="nextButtonClicked:" destination="bqR-LD-ntF" eventType="touchUpInside" id="aC5-Pl-glG"/>
@@ -1308,9 +1309,9 @@ Fiasy.com</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="Dbi-FN-bIl" secondAttribute="bottom" constant="30" id="bz7-6d-82z"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Dbi-FN-bIl" secondAttribute="bottom" constant="25" id="bz7-6d-82z"/>
                                                     <constraint firstItem="Dbi-FN-bIl" firstAttribute="centerX" secondItem="4ga-mU-9W5" secondAttribute="centerX" id="oKP-5L-TuJ"/>
-                                                    <constraint firstItem="Dbi-FN-bIl" firstAttribute="top" secondItem="4ga-mU-9W5" secondAttribute="top" constant="20" id="r06-a8-s9e"/>
+                                                    <constraint firstItem="Dbi-FN-bIl" firstAttribute="top" secondItem="4ga-mU-9W5" secondAttribute="top" constant="15" id="r06-a8-s9e"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1318,7 +1319,7 @@ Fiasy.com</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="yht-MF-Nn3" firstAttribute="top" secondItem="Gwu-8i-vDX" secondAttribute="top" constant="10" id="3yI-FK-1l1"/>
+                                    <constraint firstItem="yht-MF-Nn3" firstAttribute="top" secondItem="Gwu-8i-vDX" secondAttribute="top" constant="5" id="3yI-FK-1l1"/>
                                     <constraint firstAttribute="trailing" secondItem="yht-MF-Nn3" secondAttribute="trailing" id="fZf-tb-He9"/>
                                     <constraint firstAttribute="bottom" secondItem="yht-MF-Nn3" secondAttribute="bottom" id="oLD-d4-RhQ"/>
                                     <constraint firstItem="yht-MF-Nn3" firstAttribute="leading" secondItem="Gwu-8i-vDX" secondAttribute="leading" id="sBl-Xs-j6w"/>
@@ -1344,6 +1345,7 @@ Fiasy.com</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N6O-6D-Scg"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hWa-s8-Sbc"/>
                     <connections>
                         <outlet property="backButton" destination="NtV-ze-4W2" id="FZa-le-5Ra"/>
                         <outlet property="bottomTitleLabel" destination="Rsa-xr-aQM" id="Fb8-Uv-tXP"/>
@@ -1355,7 +1357,7 @@ Fiasy.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXW-v3-0lJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461" y="1373"/>
+            <point key="canvasLocation" x="2406" y="1371"/>
         </scene>
         <!--Quiz Finish View Controller-->
         <scene sceneID="6Ic-HG-wDE">
@@ -1526,7 +1528,7 @@ Fiasy.com</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sy-BB-SvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2406" y="1372"/>
+            <point key="canvasLocation" x="3403.125" y="1371.1267605633802"/>
         </scene>
         <!--PremiumQuizViewController-->
         <scene sceneID="eZr-GF-q4G">
@@ -1966,7 +1968,7 @@ Fiasy.com</string>
                         <outletCollection property="allSeparatorViews" destination="vfx-zD-QfK" collectionClass="NSMutableArray" id="F9z-Y4-aLl"/>
                         <outletCollection property="allSeparatorViews" destination="cp8-n8-leE" collectionClass="NSMutableArray" id="yTu-m0-Gh5"/>
                         <segue destination="W9k-YU-98o" kind="custom" identifier="segueToMenu" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="F38-iO-NwD"/>
-                        <segue destination="bqR-LD-ntF" kind="show" identifier="sequeQuizScreen" id="2Gl-mt-sRS"/>
+                        <segue destination="SgP-6s-fDM" kind="show" identifier="sequeQuizScreen" id="2Gl-mt-sRS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mc5-L7-HvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2116,6 +2118,25 @@ Fiasy.com</string>
             </objects>
             <point key="canvasLocation" x="-979" y="1774"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Buv-Hm-nG3">
+            <objects>
+                <navigationController storyboardIdentifier="QuizViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="SgP-6s-fDM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kTD-nQ-0L6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bqR-LD-ntF" kind="relationship" relationship="rootViewController" id="Umk-78-Lbj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KAK-0e-926" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1631" y="1371"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Group (17)" width="164" height="74"/>
@@ -2137,7 +2158,7 @@ Fiasy.com</string>
         <image name="Добро пожаловать в Fiasy!" width="246" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Gl-mt-sRS"/>
+        <segue reference="z00-6p-11f"/>
         <segue reference="F38-iO-NwD"/>
     </inferredMetricsTieBreakers>
 </document>

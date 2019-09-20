@@ -38,8 +38,8 @@ class GrowthSelectionCell: UICollectionViewCell {
         super.awakeFromNib()
         
         setupRulerView()
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "height"]) //
-        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "height"]) //
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "height"]) // +
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "height"]) // +
     }
 
     // MARK: - Private -

@@ -149,6 +149,11 @@ class ProductDetailsCell: UITableViewCell {
         guard let product = self.product, let title = self.saveButton.titleLabel?.text else { return }
         if title.isEmpty { return }
         
+        if isOwnRecipe {
+            Intercom.logEvent(withName: "add_custom_success", metaData: ["product_id" : product.name]) // +
+            Amplitude.instance()?.logEvent("add_custom_success", withEventProperties: ["product_id" : product.name]) // +
+        }
+        
         if isMakeRecipe {
             var isContains: Bool = false
             for item in UserInfo.sharedInstance.recipeFlow.allProduct where item.id == product.id {
@@ -190,8 +195,8 @@ class ProductDetailsCell: UITableViewCell {
                         table.child("fat").setValue(Int(fat))
                         table.child("carbohydrates").setValue(Int(carbohydrates))
                         table.child("calories").setValue(Int(calor ?? 0))
-                        Intercom.logEvent(withName: "edit_food", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
-                        Amplitude.instance()?.logEvent("edit_food", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
+                        Intercom.logEvent(withName: "edit_food") // +
+                        Amplitude.instance()?.logEvent("edit_food") // +
                         FirebaseDBManager.reloadItems()
                         delayWithSeconds(1) {
                             self.saveButton.hideLoading()
@@ -202,8 +207,6 @@ class ProductDetailsCell: UITableViewCell {
                     }
                 }
             } else {
-                Intercom.logEvent(withName: "add_food_success", metaData: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
-                Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getTitleMealtimeForFirebase()]) //
                 saveButton.showLoading()
                 if let uid = Auth.auth().currentUser?.uid, let date = UserInfo.sharedInstance.selectedDate, let weight = weightTextField.text, let calories = caloriesLabel.text?.replacingOccurrences(of: " Ккал", with: "").replacingOccurrences(of: " = ", with: "") {
                     let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
@@ -216,6 +219,18 @@ class ProductDetailsCell: UITableViewCell {
                     
                     let state = currentDay == day && currentMonth == month && currentYear == year
                     
+                    var dayState: String = "today"
+                    if state {
+                        dayState = "today"
+                    } else if date.timeIntervalSince(Date()).sign == FloatingPointSign.minus {
+                        dayState = "past"
+                    } else {
+                        dayState = "future"
+                    }
+                    
+                    Intercom.logEvent(withName: "add_food_success", metaData: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : isOwnRecipe ? "custom" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
+                    Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : isOwnRecipe ? "custom" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
+
                     let userData = ["day": day, "month": month, "year": year, "name": product.name, "weight": Int(weight), "protein": Int(protein), "fat": Int(fat), "carbohydrates": Int(carbohydrates), "calories": Int(Double(calories)?.rounded(toPlaces: 0) ?? 0), "presentDay" : state, "isRecipe" : false] as [String : Any]
                     ref.child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getTitleMealtimeForFirebase()).childByAutoId().setValue(userData)
                     FirebaseDBManager.reloadItems()

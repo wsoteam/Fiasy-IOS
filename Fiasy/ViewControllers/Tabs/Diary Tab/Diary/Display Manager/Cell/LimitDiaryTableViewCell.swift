@@ -11,7 +11,7 @@ import UIKit
 class LimitDiaryTableViewCell: UITableViewCell {
     
     // MARK: - Outlets -
-    
+    @IBOutlet weak var wellLabel: UILabel!
     @IBOutlet weak var leftCaloriesLabel: UILabel!
     @IBOutlet weak var endedLabel: UILabel!
     @IBOutlet weak var caloriesProgress: UIProgressView!
@@ -29,14 +29,15 @@ class LimitDiaryTableViewCell: UITableViewCell {
     private var delegate: DiaryDisplayManagerDelegate?
     
     // MARK: - Interface -
-    func fillCell(selectedDate: Date, delegate: DiaryDisplayManagerDelegate) {
+    func fillCell(selectedDate: Date, delegate: DiaryDisplayManagerDelegate, activityCount: Int) {
         self.date = selectedDate
         self.delegate = delegate
-        setupTopContainer(date: selectedDate)
+        setupTopContainer(date: selectedDate, activityCount: activityCount)
     }
     
     // MARK: - Private -
-    private func setupTopContainer(date: Date) {
+    private func setupTopContainer(date: Date, activityCount: Int) {
+        wellLabel.text = "\(activityCount)"
         let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
         let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
         let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
@@ -62,7 +63,7 @@ class LimitDiaryTableViewCell: UITableViewCell {
         //self.delegate?.sortMealTime(mealTime: mealTime)
         if let user = UserInfo.sharedInstance.currentUser {
             fillTargetLabel(target: (user.maxKcal ?? 0))
-            let currentCalories = ((user.maxKcal ?? 0) - calories)
+            let currentCalories = ((user.maxKcal ?? 0) - calories) + activityCount
             fatCountLabel.text = "\(fat) из \(user.maxFat ?? 0)"
             endedLabel.text = (user.maxKcal ?? 0) >= calories ? "Осталось" : "Прeвышение"
             leftCaloriesLabel.text = (user.maxKcal ?? 0) >= calories ? "\(currentCalories)" : "+\(calories - (user.maxKcal ?? 0))"

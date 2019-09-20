@@ -44,8 +44,12 @@ class ArticlesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Intercom.logEvent(withName: "choose_articles") //
-        Amplitude.instance()?.logEvent("choose_articles") //
+        allRows[0] = allRows[0].shuffled()
+        allRows[1] = allRows[1].shuffled()
+        tableView.reloadData()
+        
+        Intercom.logEvent(withName: "choose_articles") // +
+        Amplitude.instance()?.logEvent("choose_articles") // +
     }
     
     // MARK: - Privates -
@@ -109,11 +113,11 @@ extension ArticlesViewController: ArticlesTabDelegate {
         self.selectedSection = section
         
         if section == 0 {
-            Intercom.logEvent(withName: "select_diet") //
-            Amplitude.instance()?.logEvent("select_diet") //
+            Intercom.logEvent(withName: "select_diet") // +
+            Amplitude.instance()?.logEvent("select_diet") // +
         } else {
-            Intercom.logEvent(withName: "select_training") //
-            Amplitude.instance()?.logEvent("select_training") //
+            Intercom.logEvent(withName: "select_training") // +
+            Amplitude.instance()?.logEvent("select_training") // +
         }
 
         performSegue(withIdentifier: "sequeArticleListScreen", sender: nil)

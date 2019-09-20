@@ -596,6 +596,6 @@ struct ArticleModel {
                 trainingModels.append(model)
             }
         }
-        return [nutritionModels, trainingModels]
+        return [nutritionModels.shuffled(), trainingModels.shuffled()]
     }
 }

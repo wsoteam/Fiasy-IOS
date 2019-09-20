@@ -129,7 +129,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as? SearchCell else { fatalError() }
         
         if filteredProducts.indices.contains(indexPath.row) {
-            cell.fillCell(info: filteredProducts[indexPath.row])
+            cell.fillProductCell(info: filteredProducts[indexPath.row])
         }
         return cell
     }

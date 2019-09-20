@@ -31,8 +31,8 @@ class ArticlesDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        Intercom.logEvent(withName: "view_articles", metaData: ["articles_item" : model?.name]) //
-        Amplitude.instance()?.logEvent("view_articles", withEventProperties: ["articles_item" : model?.name]) //
+        Intercom.logEvent(withName: "view_articles", metaData: ["articles_item" : model?.name]) // +
+        Amplitude.instance()?.logEvent("view_articles", withEventProperties: ["articles_item" : model?.name]) // +
     }
     
     override func viewWillAppear(_ animated: Bool) {

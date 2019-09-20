@@ -29,8 +29,8 @@ class SettingClickedPicker: NSObject, UINavigationControllerDelegate {
                                   style: .default,
                                   handler: { [weak self] _ in
                                     guard let `self` = self else { return }
-                                    Intercom.logEvent(withName: "profile_logout") //
-                                    Amplitude.instance()?.logEvent("profile_logout") //
+                                    Intercom.logEvent(withName: "profile_logout") // +
+                                    Amplitude.instance()?.logEvent("profile_logout") // +
                                     self.signOut?()
         })
         signOut.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")

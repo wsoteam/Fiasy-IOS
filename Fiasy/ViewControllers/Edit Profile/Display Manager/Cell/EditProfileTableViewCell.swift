@@ -106,7 +106,7 @@ class EditProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
         if textField.tag == 3 || textField.tag == 5 {
             return count <= 3
         } else {
-            return string == " " ? false : count <= (textField.tag == 2 ? 100 : 30)
+            return count <= (textField.tag == 2 ? 100 : 30)
         }
     }
     

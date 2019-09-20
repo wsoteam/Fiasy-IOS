@@ -26,11 +26,12 @@ class SubscriptionService: NSObject {
     
     static let shared = SubscriptionService()
     
+    var price: NSDecimalNumber = 0.0
     var products = [SKProduct]()
     let paymentQueue = SKPaymentQueue.default()
     
     func getProducts() {
-        let products: Set = ["com.fiasy.AutoYearRenewableSubscriptions"]
+        let products: Set = ["com.fiasy.AutoMonthRenewableSubscriptions"]
         let request = SKProductsRequest(productIdentifiers: products)
         request.delegate = self
         request.start()
@@ -42,7 +43,16 @@ class SubscriptionService: NSObject {
     func purchase() {
         guard let productToPurchase = products.first else { return }
         let payment = SKPayment(product: productToPurchase)
+        price = productToPurchase.price
         paymentQueue.add(payment)
+    }
+    
+    func localizedPriceForProduct(_ product:SKProduct) -> String {
+        let priceFormatter = NumberFormatter()
+        priceFormatter.formatterBehavior = NumberFormatter.Behavior.behavior10_4
+        priceFormatter.numberStyle = NumberFormatter.Style.currency
+        priceFormatter.locale = product.priceLocale
+        return priceFormatter.string(from: product.price)!
     }
     
     func restorePurchases() {
@@ -85,12 +95,12 @@ class SubscriptionService: NSObject {
         let receiptString = receiptData.base64EncodedString()
         let jsonObjectBody = ["receipt-data" : receiptString, "password" : "01ef8ea9c82046578c8e45b953c95652"]
         
-        //#if DEBUG
+//        #if DEBUG
         let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
 //        #else
- //       let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
-//        #endif
-        
+        //let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+        //#endif
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = try! JSONSerialization.data(withJSONObject: jsonObjectBody, options: .prettyPrinted)
@@ -125,14 +135,14 @@ class SubscriptionService: NSObject {
                     Adjust.trackEvent(ADJEvent.init(eventToken: "wxd2a7"))
                     //
                     if UserInfo.sharedInstance.trialFrom == "onboarding" {
-                        Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "trial"]) //
-                        Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "trial"]) //
+                        Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "trial"]) // +
+                        Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "trial"]) // +
                     }
                     
                     DispatchQueue.main.async {
                         if let _ = UIApplication.getTopMostViewController() as? PremiumFinishViewController {
-                            Intercom.logEvent(withName: "trial_success", metaData: ["trial_from" : UserInfo.sharedInstance.trialFrom]) //
-                            Amplitude.instance()?.logEvent("trial_success", withEventProperties: ["trial_from" : UserInfo.sharedInstance.trialFrom]) //
+                            Intercom.logEvent(withName: "trial_success", metaData: ["trial_from" : UserInfo.sharedInstance.trialFrom]) // +
+                            Amplitude.instance()?.logEvent("trial_success", withEventProperties: ["trial_from" : UserInfo.sharedInstance.trialFrom]) // +
                         }
                     }
                 } else {
@@ -146,19 +156,24 @@ class SubscriptionService: NSObject {
                 
                     DispatchQueue.main.async {
                         if let _ = UIApplication.getTopMostViewController() as? PremiumFinishViewController {
-                            FBSDKAppEvents.logPurchase(2490.0, currency: "RUB")
-                            let event = ADJEvent.init(eventToken: "xrf3ix")
-                            event?.setRevenue(2490.0, currency: "RUB")
-                            Adjust.trackEvent(event)
-                            
-                            Amplitude.instance()?.logRevenue(2490.0)
-                            Intercom.logEvent(withName: "revenue", metaData: ["quantuty" : 2490.0])
+                            Intercom.logEvent(withName: "purchase_success") // +
+                            Amplitude.instance()?.logEvent("purchase_success") // +
+
+                            if Double(self.price) > 0.0 {
+                                FBSDKAppEvents.logPurchase(Double(self.price), currency: "RUB")
+                                let event = ADJEvent.init(eventToken: "xrf3ix")
+                                event?.setRevenue(Double(self.price), currency: "RUB")
+                                Adjust.trackEvent(event)
+
+                                Amplitude.instance()?.logRevenue(self.price)
+                                Intercom.logEvent(withName: "revenue", metaData: ["quantity" : self.price])
+                            }
                         }
                     }
                 }
             }
             
-            guard let expirationDate = self.expirationDate(jsonResponse: jsonResponse, forProductId: "com.fiasy.AutoYearRenewableSubscriptions") else {
+            guard let expirationDate = self.expirationDate(jsonResponse: jsonResponse, forProductId: "com.fiasy.AutoMonthRenewableSubscriptions") else {
                 validationError = ReceiptValidationError.notBought
                 semaphore.signal()
                 return
@@ -259,8 +274,6 @@ extension SubscriptionService: SKPaymentTransactionObserver {
         attributed.customAttributes = userAttributes
         Intercom.updateUser(attributed)
         
-        Intercom.logEvent(withName: "purchase_success") //
-        Amplitude.instance()?.logEvent("purchase_success") //
         NotificationCenter.default.post(name: Notification.Name("PaymentComplete"), object: nil)
         deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
@@ -284,17 +297,27 @@ extension SubscriptionService: SKPaymentTransactionObserver {
     
     private func fail(transaction: SKPaymentTransaction) {
         print("fail...")
-        if let transactionError = transaction.error as NSError?,
-            let localizedDescription = transaction.error?.localizedDescription,
-            transactionError.code != SKError.paymentCancelled.rawValue {
+        if let transactionError = transaction.error as NSError? {
             
-//            Intercom.logEvent(withName: "purchase_error", metaData: ["purchase_error" : localizedDescription])
-//            Amplitude.instance()?.logEvent("question_error", withEventProperties: ["purchase_error" : localizedDescription])
-            print("Transaction Error: \(localizedDescription)")
+            switch transactionError.code {
+            case SKError.paymentCancelled.rawValue:
+                Intercom.logEvent(withName: "trial_error", metaData: ["back_or_canceled" : transaction.error?.localizedDescription])
+                Amplitude.instance()?.logEvent("trial_error", withEventProperties: ["back_or_canceled" : transaction.error?.localizedDescription])
+            case SKError.paymentInvalid.rawValue:
+                Intercom.logEvent(withName: "trial_error", metaData: ["item_unvailable" : transaction.error?.localizedDescription])
+                Amplitude.instance()?.logEvent("trial_error", withEventProperties: ["item_unvailable" : transaction.error?.localizedDescription])
+            case SKError.paymentNotAllowed.rawValue:
+                Intercom.logEvent(withName: "trial_error", metaData: ["billing_unvailable" : transaction.error?.localizedDescription])
+                Amplitude.instance()?.logEvent("trial_error", withEventProperties: ["billing_unvailable" : transaction.error?.localizedDescription])
+            case SKError.clientInvalid.rawValue:
+                Intercom.logEvent(withName: "trial_error", metaData: ["service_unvailable" : transaction.error?.localizedDescription])
+                Amplitude.instance()?.logEvent("trial_error", withEventProperties: ["service_unvailable" : transaction.error?.localizedDescription])
+            default:
+                Intercom.logEvent(withName: "trial_error", metaData: ["error" : transaction.error?.localizedDescription])
+                Amplitude.instance()?.logEvent("trial_error", withEventProperties: ["error" : transaction.error?.localizedDescription])
+            }
         }
-        Intercom.logEvent(withName: "trial_error") //
-        Amplitude.instance()?.logEvent("trial_error") //
-    
+
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     

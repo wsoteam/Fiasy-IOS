@@ -1145,13 +1145,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Норма калорий" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgE-qd-QKA">
-                                        <rect key="frame" x="98" y="12" width="124.5" height="20"/>
+                                        <rect key="frame" x="92" y="12" width="136" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uD0-Kn-vrh" customClass="LoadingButton" customModule="Fiasy" customModuleProvider="target">
-                                        <rect key="frame" x="254" y="0.0" width="56" height="44"/>
+                                        <rect key="frame" x="251" y="0.0" width="59" height="44"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Готово">
@@ -1212,11 +1212,20 @@
                         <outlet property="tableView" destination="d3a-JQ-Zd4" id="I31-AL-2lA"/>
                         <segue destination="23f-iW-GVn" kind="show" identifier="sequeChangePurpose" id="9FC-RG-31j"/>
                         <segue destination="RZ5-WT-JGx" kind="show" identifier="sequeTargetScreen" id="oaS-Sk-KGh"/>
+                        <segue destination="P0v-5V-yDt" kind="show" identifier="sequePremiumScreen" id="xBl-NM-GNo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAT-DR-gvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2660" y="566"/>
+        </scene>
+        <!--PremiumQuizViewController-->
+        <scene sceneID="3tT-8L-SVf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Premium" referencedIdentifier="PremiumQuizViewController" id="P0v-5V-yDt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fn0-lq-vaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2660" y="1040"/>
         </scene>
         <!--Profile Target View Controller-->
         <scene sceneID="r7e-KT-RAF">

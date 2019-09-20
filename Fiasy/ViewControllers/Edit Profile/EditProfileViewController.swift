@@ -42,7 +42,6 @@ class EditProfileViewController: UIViewController {
         super.viewDidLoad()
         
         finishButton.activityColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
-        Amplitude.instance().logEvent("edit_profile")
     }
     
     override func viewWillAppear(_ animated: Bool) {

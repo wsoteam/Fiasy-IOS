@@ -8,7 +8,9 @@
 
 import Moya
 import RxSwift
-import UIKit
+import RealmSwift
+import ObjectMapper
+import Moya_ObjectMapper
 
 class ProfileService : ProfileServiceProtocol {
     
@@ -18,19 +20,15 @@ class ProfileService : ProfileServiceProtocol {
         self.profileProvider = AppMoyaProvider<AuthProvider>()
     }
     
-//    func loadMapList() -> Observable<[TicketReponse]> {
-//        return companyProvider.rx.request(.requestList).mapArray(TicketReponse.self).asObservable()
-//    }
-//
-//    func finishTicket(id: Int) -> Observable<Verify> {
-//        return companyProvider.rx.request(.finishTicket(id)).mapObject(Verify.self).asObservable()
-//    }
-//
-//    func cancelTicket(id: Int, message: String) -> Observable<Verify> {
-//        return companyProvider.rx.request(.cancelTicket(id, message)).mapObject(Verify.self).asObservable()
-//    }
-//
-//    func applyTicket(id: Int) -> Observable<Verify> {
-//        return companyProvider.rx.request(.applyTicket(id)).mapObject(Verify.self).asObservable()
-//    }
+    func loadProducts() -> Observable<PaginationProduct> {
+        return profileProvider.rx.request(.productsList).mapObject(PaginationProduct.self).asObservable()
+    }
+    
+    func loadMoreProducts(link: String) -> Observable<PaginationProduct> {
+        return profileProvider.rx.request(.loadMoreProducts(link)).mapObject(PaginationProduct.self).asObservable()
+    }
+    
+    func searchProduct(search: String) -> Observable<PaginationProduct> {
+        return profileProvider.rx.request(.searchProducts(search: search)).mapObject(PaginationProduct.self).asObservable()
+    }
 }

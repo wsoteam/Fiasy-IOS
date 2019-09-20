@@ -63,6 +63,8 @@ class UserInfo {
     
     var reloadDiariContent: Bool = false
     
+    var reloadActiveContent: Bool = false
+    
     var trialFrom: String = ""
     
     // MARK: - User fields -
@@ -117,6 +119,8 @@ class UserInfo {
     var templateArray: [[String]] = []
     var reloadTemplate: Bool = false
     
+    var allWaters: [Water] = []
+    
     // MARK: - Product Flow -
     var productFlow = AddProductFlow()
     var reloadFavoriteScreen: Bool = false
@@ -169,7 +173,7 @@ class UserInfo {
                 UserInfo.sharedInstance.currentUser?.waterCount = female ? (30 * weight) : (40 * weight)
             }
         }
-        FirebaseDBManager.checkFilledProfile()
+        FirebaseDBManager.checkFilledProfile { (state) in }
     }
     
     func clearAllItems() {
@@ -246,6 +250,24 @@ class UserInfo {
         self.allRecipes = allRecipes
     }
     
+    func getAllActivitys() -> [ActivityElement] {
+        var allActivitys: [ActivityElement] = []
+        
+        if let path = Bundle.main.path(forResource: "activity_list", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                let activitys = try? JSONDecoder().decode(Activity.self, from: data)
+                
+                if let items = activitys {
+                    allActivitys = items
+                }
+            } catch let error {
+                print("parse error: \(error.localizedDescription)")
+            }
+        }
+        return allActivitys
+    }
+    
     func getTitleMealtimeForFirebase() -> String {
         switch selectedMealtimeIndex {
         case 0:
@@ -256,6 +278,21 @@ class UserInfo {
             return "dinners"
         case 3:
             return "snacks"
+        default:
+            return ""
+        }
+    }
+    
+    func getSecondTitleMealtimeForFirebase() -> String {
+        switch selectedMealtimeIndex {
+        case 0:
+            return "breakfast"
+        case 1:
+            return "lunch"
+        case 2:
+            return "dinner"
+        case 3:
+            return "snack"
         default:
             return ""
         }

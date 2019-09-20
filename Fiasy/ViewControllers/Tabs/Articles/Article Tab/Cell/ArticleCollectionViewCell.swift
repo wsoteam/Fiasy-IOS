@@ -14,6 +14,7 @@ import VisualEffectView
 class ArticleCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlet's -
+    @IBOutlet weak var premiumContainerView: UIView!
     @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,6 +31,10 @@ class ArticleCollectionViewCell: UICollectionViewCell {
         blurView.colorTintAlpha = 0.1
         blurView.blurRadius = 5
         blurView.scale = 1
+        
+        premiumContainerView.clipsToBounds = true
+        premiumContainerView.layer.cornerRadius = 8
+        premiumContainerView.layer.maskedCorners = [.layerMinXMaxYCorner]
     }
     
     //MARK: - Interface -
@@ -39,6 +44,7 @@ class ArticleCollectionViewCell: UICollectionViewCell {
         articleImageView.image = model.image
         nameLabel.text = model.name
         
+        premiumContainerView.isHidden = !model.premium
         alphaView.backgroundColor = model.alphaViewColor
     }
 }

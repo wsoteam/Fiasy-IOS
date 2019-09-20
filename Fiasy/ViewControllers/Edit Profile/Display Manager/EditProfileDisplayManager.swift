@@ -59,6 +59,7 @@ class EditProfileDisplayManager: NSObject {
         tableView.register(type: EditProfileTableViewCell.self)
         tableView.register(EditProfileHeaderView.nib, forHeaderFooterViewReuseIdentifier: EditProfileHeaderView.reuseIdentifier)
         tableView.register(EditProfileFooterView.nib, forHeaderFooterViewReuseIdentifier: EditProfileFooterView.reuseIdentifier)
+        tableView.register(DiaryFooterView.nib, forHeaderFooterViewReuseIdentifier: DiaryFooterView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -86,7 +87,6 @@ class EditProfileDisplayManager: NSObject {
         for item in fullNameLastArr where !item.isEmpty {
             lastName = lastName.isEmpty ? item : lastName + " \(item)"
         }
-//
 //        if firstName.isEmpty {
 //            delegate.showAlert(message: "Введите вашe имя")
 //        }
@@ -148,7 +148,6 @@ class EditProfileDisplayManager: NSObject {
         } else {
             newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
         }
-
         // This is the rect that we've calculated out and this is what is actually used below
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
         // Actually do the resizing to the rect using the ImageContext stuff

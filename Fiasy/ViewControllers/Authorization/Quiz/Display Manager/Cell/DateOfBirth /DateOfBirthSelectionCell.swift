@@ -34,8 +34,8 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
         
         setupInitialState()
         datePicker.maximumDate = Date()
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "age"]) //
-        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "age"]) //
+        Intercom.logEvent(withName: "question_next", metaData: ["question" : "age"]) // +
+        Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "age"]) // +
     }
     
     // MARK: - Interface -

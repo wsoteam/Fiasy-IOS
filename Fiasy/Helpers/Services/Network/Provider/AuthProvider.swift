@@ -9,66 +9,47 @@
 import Moya
 
 enum AuthProvider: BaseProvider {
-    //case userData
+    case productsList
+    case searchProducts(search: String)
+    case loadMoreProducts(String)
 }
 
 extension AuthProvider : TargetType {
     
-//    var path: String {
-//        switch self {
-//        case .userData: fallthrough
-//        case .changeAvatar:
-//            return ""
-//        case .loadAllAddress:
-//            return "meter/item/"
-//        case .loadKnowledgeBase:
-//            return "faq/"
-//        case .loadKnowledgeDetails(let id):
-//            return "faq/\(id)/"
-//        case .changePhone, .changePhoneResend, .changePhoneWithVerify:
-//            return "phone_change/"
-//        case .phoneVerify:
-//            return "phone/verify/"
-//        case .resetPassword:
-//            return "password-remind/"
-//        case .loadNotifications, .markReadNotifications:
-//            return "push_items/"
-//        case .removeNotification:
-//            return "push_delete/"
-//        case .loadMeterDetails(let id):
-//            return "meter/item/\(id)/"
-//        default:
-//            return ""
-//        }
-//    }
+    var baseURL: URL {
+        switch self {
+        case .loadMoreProducts(let link):
+            return URL(string: link)!
+        default:
+            return URL(string: "http://116.203.193.111:8000/api/v1/")!
+        }
+    }
     
-//    var method: Moya.Method {
-//        switch self {
-//        case .userData, .loadNotifications, .loadKnowledgeBase, .loadKnowledgeDetails, .changePhoneResend, .loadAllAddress, .loadMeterDetails:
-//            return .get
-//        case .markReadNotifications:
-//            return .put
-//        case .resetPassword, .removeNotification, .phoneVerify, .changePhone, .changePhoneWithVerify, .changeName, .changeAvatar:
-//            return .post
-//        }
-//    }
+    var path: String {
+        switch self {
+        case .productsList, .searchProducts:
+            return "products/"
+        default:
+            return ""
+        }
+    }
     
-//    var task: Task {
-//        switch self {
-//        case .changeAvatar(let avatar):
-//            var multipartFormDatas = [MultipartFormData]()
-//            multipartFormDatas.append(MultipartFormData(provider: .data(avatar.pngData()!), name: "avatar", fileName: "image.jpeg", mimeType: "image/jpeg"))
-//            return .uploadMultipart(multipartFormDatas)
-//        case .changeName(let firstName, let lastName):
-//            let parameters: [String: Any] = ["last_name": lastName, "first_name": firstName]
-//            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-//        case .changePhoneWithVerify(_, let code):
-//            let parameters: [String: Any] = ["verify_code": code]
-//            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-//        default:
-//            return .requestPlain
-//        }
-//    }
+    var method: Moya.Method {
+        switch self {
+        case .productsList, .loadMoreProducts, .searchProducts:
+            return .get
+        }
+    }
+    
+    var task: Task {
+        switch self {
+        case .searchProducts(let search):
+            let parameters: [String: Any] = ["search": search]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        default:
+            return .requestPlain
+        }
+    }
     
     var headers: [String: String]? {
         switch self {

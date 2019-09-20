@@ -21,12 +21,17 @@ class QuizViewController: UIViewController {
     
     // MARK: - Properties -
     private var displayManager: QuizDisplayManager?
+    private let isIphone5 = Display.typeIsLike == .iphone5
     
     // MARK: - Life cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupInitialState()
+        
+        if isIphone5 {
+            bottomTitleLabel.font = bottomTitleLabel.font?.withSize(16)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,34 +66,7 @@ class QuizViewController: UIViewController {
 extension QuizViewController: QuizViewOutput {
     
     func openFinishScreen() {
-        let flow = UserInfo.sharedInstance.registrationFlow
-        let birthday: Date = flow.dateOfBirth ?? Date()
-        let ageComponents = Calendar.current.dateComponents([.year], from: birthday, to: Date())
-        let age = Double(ageComponents.year ?? 0)
-        let item = flow.gender == 0 ? "female" : "male"
-        
-        let identify = AMPIdentify()
-        identify.set("male", value: item as NSObject)
-        identify.set("height", value: flow.growth as NSObject)
-        identify.set("weight", value: flow.weight as NSObject)
-        identify.set("age", value: age as NSObject)
-        identify.set("active", value: (Int(flow.loadActivity) + 1).fetchUserActive() as NSObject)
-        identify.set("goal", value: ((flow.target ?? 0) + 1).fetchUserGoal() as NSObject)
-        Amplitude.instance()?.identify(identify)
-        
-        let userAttributes = [
-            "male": item,
-            "height": flow.growth,
-            "weight": flow.weight,
-            "age": age,
-            "active": (Int(flow.loadActivity) + 1).fetchUserActive(),
-            "goal": ((flow.target ?? 0) + 1).fetchUserGoal()
-            ] as [String : Any]
-        
-        let attributed = ICMUserAttributes()
-        attributed.customAttributes = userAttributes
-        Intercom.updateUser(attributed)
-        
+        fillUserProperties()
         performSegue(withIdentifier: "sequeFinishQuiz", sender: nil)
     }
     
@@ -108,5 +86,66 @@ extension QuizViewController: QuizViewOutput {
     func changeStateNextButton(state: Bool) {
         nextButton.isUserInteractionEnabled = state
         nextButton.setImage(state ? #imageLiteral(resourceName: "ewfwefwewee") : #imageLiteral(resourceName: "next_gray"), for: .normal)
+    }
+    
+    private func fillUserProperties() {
+        let flow = UserInfo.sharedInstance.registrationFlow
+        let birthday: Date = flow.dateOfBirth ?? Date()
+        let ageComponents = Calendar.current.dateComponents([.year], from: birthday, to: Date())
+        let age = Double(ageComponents.year ?? 0)
+        let item = flow.gender == 0 ? "female" : "male"
+
+        var BMR: Double = 0.0
+        var fat: Int = 0
+        var protein: Int = 0
+        var carbohydrates: Int = 0
+        if flow.gender == 0 {
+            BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) - 161
+        } else {
+            BMR = (10 * flow.weight) + (6.25 * Double(flow.growth)) - (5 * age) + 5
+        }
+        let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: flow.loadActivity))
+        let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: flow.target, count: activity).displayOnly(count: 0)
+        
+        if flow.gender == 0 {
+            fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 16
+            protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 16
+            carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 16
+        } else {
+            fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 36
+            protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 36
+            carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 36
+        }
+        
+        let identify = AMPIdentify()
+        identify.set("male", value: item as NSObject)
+        identify.set("height", value: flow.growth as NSObject)
+        identify.set("weight", value: flow.weight as NSObject)
+        identify.set("age", value: age as NSObject)
+        identify.set("active", value: (Int(flow.loadActivity) + 1).fetchUserActive() as NSObject)
+        identify.set("goal", value: ((flow.target ?? 0) + 1).fetchUserGoal() as NSObject)
+        
+        identify.set("calorie", value: "\(Int(result))" as NSObject)
+        identify.set("proteins", value: "\(protein)" as NSObject)
+        identify.set("fats", value: "\(fat)" as NSObject)
+        identify.set("сarbohydrates", value: "\(carbohydrates)" as NSObject)
+        
+        Amplitude.instance()?.identify(identify)
+        
+        let userAttributes = [
+            "male": item,
+            "height": flow.growth,
+            "weight": flow.weight,
+            "age": age,
+            "active": (Int(flow.loadActivity) + 1).fetchUserActive(),
+            "goal": ((flow.target ?? 0) + 1).fetchUserGoal(),
+            "calorie": "\(Int(result))",
+            "proteins": "\(protein)",
+            "fats": "\(fat)",
+            "сarbohydrates": "\(carbohydrates)"] as [String : Any]
+        
+        let attributed = ICMUserAttributes()
+        attributed.customAttributes = userAttributes
+        Intercom.updateUser(attributed)
     }
 }

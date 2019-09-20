@@ -18,29 +18,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJw-y1-dEz">
+                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJw-y1-dEz">
                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottle-of-water-40" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-DL-N5z">
                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                             </imageView>
-                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRc-7r-G7o">
-                                <rect key="frame" x="13" y="0.0" width="34" height="60"/>
-                                <color key="backgroundColor" red="0.17520490288734436" green="0.61158150434494019" blue="0.85769367218017578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRc-7r-G7o" customClass="CustomView" customModule="Fiasy" customModuleProvider="target">
+                                <rect key="frame" x="13.5" y="0.0" width="33" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_png2" translatesAutoresizingMaskIntoConstraints="NO" id="7rk-r8-Dz6">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Слой 1" translatesAutoresizingMaskIntoConstraints="NO" id="7rk-r8-Dz6">
                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dRc-7r-G7o" firstAttribute="centerX" secondItem="Gp9-XH-RBs" secondAttribute="centerX" id="6Rh-jS-6Ds"/>
                             <constraint firstItem="7rk-r8-Dz6" firstAttribute="leading" secondItem="y0b-DL-N5z" secondAttribute="leading" id="JRg-w2-bhg"/>
                             <constraint firstAttribute="bottom" secondItem="y0b-DL-N5z" secondAttribute="bottom" id="LAn-Yb-qsE"/>
                             <constraint firstItem="y0b-DL-N5z" firstAttribute="top" secondItem="rJw-y1-dEz" secondAttribute="top" id="QK6-xF-fhR"/>
-                            <constraint firstItem="dRc-7r-G7o" firstAttribute="centerX" secondItem="y0b-DL-N5z" secondAttribute="centerX" id="Qap-q5-PEn"/>
                             <constraint firstItem="dRc-7r-G7o" firstAttribute="top" secondItem="y0b-DL-N5z" secondAttribute="top" id="QiE-hN-gVk"/>
                             <constraint firstItem="7rk-r8-Dz6" firstAttribute="trailing" secondItem="y0b-DL-N5z" secondAttribute="trailing" id="S82-uP-D5N"/>
-                            <constraint firstItem="dRc-7r-G7o" firstAttribute="width" secondItem="y0b-DL-N5z" secondAttribute="width" multiplier="0.55" constant="1" id="VMe-9n-PiH"/>
+                            <constraint firstItem="dRc-7r-G7o" firstAttribute="width" secondItem="rJw-y1-dEz" secondAttribute="width" multiplier="0.55" id="Sf7-4v-bpv"/>
                             <constraint firstItem="dRc-7r-G7o" firstAttribute="bottom" secondItem="y0b-DL-N5z" secondAttribute="bottom" id="X19-S8-7Ie"/>
                             <constraint firstItem="7rk-r8-Dz6" firstAttribute="bottom" secondItem="y0b-DL-N5z" secondAttribute="bottom" id="ZfO-cp-dCx"/>
                             <constraint firstItem="7rk-r8-Dz6" firstAttribute="top" secondItem="y0b-DL-N5z" secondAttribute="top" id="hlF-Rt-Y6a"/>
@@ -49,9 +49,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gp9-XH-RBs"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
@@ -73,13 +70,15 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="waterButtleImageView" destination="y0b-DL-N5z" id="y0H-FA-86J"/>
+                <outlet property="buttleImageView" destination="y0b-DL-N5z" id="wc4-6E-12G"/>
+                <outlet property="fillView" destination="dRc-7r-G7o" id="ILE-Qt-gRL"/>
+                <outlet property="filledWaterContainerView" destination="7rk-r8-Dz6" id="qDW-pT-Ote"/>
             </connections>
             <point key="canvasLocation" x="311.59420289855075" y="119.19642857142857"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="bottle-of-water-40" width="29" height="50"/>
-        <image name="test_png2" width="119" height="206"/>
+        <image name="Слой 1" width="119" height="206"/>
     </resources>
 </document>
