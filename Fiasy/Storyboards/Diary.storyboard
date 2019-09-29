@@ -783,6 +783,14 @@
             </objects>
             <point key="canvasLocation" x="1313" y="-963"/>
         </scene>
+        <!--QuizViewController-->
+        <scene sceneID="DCd-TA-KVR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorization" referencedIdentifier="QuizViewController" id="wak-D2-TJx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cR8-dx-lGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="-1058"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="QVI-gq-vas">
             <objects>
@@ -1813,7 +1821,7 @@
                                         </constraints>
                                         <state key="normal" image="plus_button"/>
                                         <connections>
-                                            <segue destination="DOh-B7-JOe" kind="presentation" id="ZqJ-4I-uUW"/>
+                                            <segue destination="DOh-B7-JOe" kind="presentation" identifier="sequeAddNewActivity" id="ZqJ-4I-uUW"/>
                                         </connections>
                                     </button>
                                 </subviews>

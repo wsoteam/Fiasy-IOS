@@ -23,6 +23,7 @@
                         <segue destination="yQ5-50-3G2" kind="relationship" relationship="viewControllers" id="gNi-ec-XsK"/>
                         <segue destination="maY-OD-ZGo" kind="relationship" relationship="viewControllers" id="bsW-mb-qA0"/>
                         <segue destination="lUe-Bp-AnC" kind="relationship" relationship="viewControllers" id="48L-Nf-hQY"/>
+                        <segue destination="QKW-ee-uAy" kind="show" identifier="sequeFillUserProfile" id="cwm-PX-PNt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asZ-6i-mrz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -76,6 +77,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bxx-3E-2OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="285" y="-269"/>
+        </scene>
+        <!--QuizViewController-->
+        <scene sceneID="xCF-qS-5XP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Authorization" referencedIdentifier="QuizViewController" id="QKW-ee-uAy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0s-Sk-TF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233" y="-166"/>
         </scene>
     </scenes>
 </document>

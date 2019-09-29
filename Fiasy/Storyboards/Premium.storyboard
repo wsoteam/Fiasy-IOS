@@ -586,7 +586,7 @@
         <!--Premium Finish View Controller-->
         <scene sceneID="pFQ-cY-SIV">
             <objects>
-                <viewController id="ejl-OP-3eM" customClass="PremiumFinishViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PremiumFinishViewController" id="ejl-OP-3eM" customClass="PremiumFinishViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="67b-Nd-Pug">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -680,7 +680,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-xE-Zxi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2 (4)" translatesAutoresizingMaskIntoConstraints="NO" id="1Zi-1M-iah">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2 (4)" translatesAutoresizingMaskIntoConstraints="NO" id="1Zi-1M-iah">
                                         <rect key="frame" x="0.0" y="-20" width="320" height="16"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbs-1V-fNC">
@@ -871,7 +871,7 @@
                             <constraint firstItem="Sfg-xE-Zxi" firstAttribute="top" secondItem="AfJ-AE-SMt" secondAttribute="top" id="WPl-9b-yFV"/>
                             <constraint firstItem="257-8S-SpI" firstAttribute="trailing" secondItem="Sfg-xE-Zxi" secondAttribute="trailing" id="WZG-br-YhD"/>
                             <constraint firstItem="Gf5-gm-EDT" firstAttribute="height" secondItem="AfJ-AE-SMt" secondAttribute="height" multiplier="0.3" id="cks-gp-5iK"/>
-                            <constraint firstItem="257-8S-SpI" firstAttribute="bottom" secondItem="Sfg-xE-Zxi" secondAttribute="bottom" id="s0H-d9-Vag"/>
+                            <constraint firstAttribute="bottom" secondItem="Sfg-xE-Zxi" secondAttribute="bottom" id="s0H-d9-Vag"/>
                             <constraint firstItem="xro-2o-85b" firstAttribute="centerX" secondItem="257-8S-SpI" secondAttribute="centerX" id="yr8-qE-XbK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="257-8S-SpI"/>
@@ -880,6 +880,7 @@
                     <connections>
                         <outlet property="closeButton" destination="kXq-V5-aJL" id="jCw-na-w3P"/>
                         <outlet property="topConstraint" destination="yWe-rH-EdI" id="SdI-j1-6yY"/>
+                        <outlet property="topImageView" destination="1Zi-1M-iah" id="jzh-ut-D09"/>
                         <segue destination="ejl-OP-3eM" kind="presentation" identifier="sequeFinishPremiumScreen" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="YpJ-IW-xub"/>
                         <segue destination="IrG-TU-tMX" kind="custom" identifier="sequeMenuScreen" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="kW7-bF-6jU"/>
                     </connections>

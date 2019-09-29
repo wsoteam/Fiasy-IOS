@@ -133,26 +133,21 @@ class ProductDetailsCell: UITableViewCell {
         }
         if var cholesterol = product.cholesterol, cholesterol != -1.0 && cholesterol != 0.0 {
             cholesterol = cholesterol <= 0.0 ? 0.0 : cholesterol
-            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * Double(servingCount).displayOnly(count: 2)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * Double(servingCount).displayOnly(count: 2)).displayOnly(count: 2)) мг", isTitle: false)
         }
         if var sodium = product.sodium, sodium != -1.0 && sodium != 0.0 {
             sodium = sodium <= 0.0 ? 0.0 : sodium
-            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * Double(servingCount).rounded(toPlaces: 1)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * Double(servingCount).rounded(toPlaces: 1)).displayOnly(count: 2)) мг", isTitle: false)
         }
         if var potassium = product.pottassium, potassium != -1.0 && potassium != 0.0 {
             potassium = potassium <= 0.0 ? 0.0 : potassium
-            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * Double(servingCount).rounded(toPlaces: 1)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * Double(servingCount).rounded(toPlaces: 1)).displayOnly(count: 2)) мг", isTitle: false)
         }
     }
     
     private func saveProductInDataBase(weight: Int) {
         guard let product = self.product, let title = self.saveButton.titleLabel?.text else { return }
         if title.isEmpty { return }
-        
-        if isOwnRecipe {
-            Intercom.logEvent(withName: "add_custom_success", metaData: ["product_id" : product.name]) // +
-            Amplitude.instance()?.logEvent("add_custom_success", withEventProperties: ["product_id" : product.name]) // +
-        }
         
         if isMakeRecipe {
             var isContains: Bool = false

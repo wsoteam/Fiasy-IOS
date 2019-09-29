@@ -28,17 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-        }
+//        DispatchQueue.global().async {
+//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+//        }
        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
       //  Fabric.with([Crashlytics.self()])
-        Bugsee.launch(token :"9dd1f372-d496-4bef-ac70-0ff732d0b82b")
+        //Bugsee.launch(token :"9dd1f372-d496-4bef-ac70-0ff732d0b82b")
         
         FirebaseApp.configure()
-        //SQLDatabase.shared.fetchProducts()
         FirebaseDBManager.checkFilledProfile { (state) in }
         //SwiftGoogleTranslate.shared.start(with: "AIzaSyB5dv1L0W_85lcFrEcyqZ0KyGZeRn6wOTE")
         Amplitude.instance()?.trackingSessionEvents = true

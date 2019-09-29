@@ -54,9 +54,9 @@ class RecipesDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-        }
+//        DispatchQueue.global().async {
+//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+//        }
         setupInitialState()
     }
     

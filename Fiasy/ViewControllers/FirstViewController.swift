@@ -7,6 +7,13 @@ import Amplitude_iOS
 
 class FirstViewController: UIViewController {
     
+    //MARK: - Outlet -
+    @IBOutlet weak var signUpLabel: UIButton!
+    @IBOutlet weak var signInLabel: UIButton!
+    @IBOutlet weak var orLabel: UILabel!
+    @IBOutlet weak var topDescriptionLabel: UILabel!
+    @IBOutlet weak var bottomDescriptionLabel: UILabel!
+    
     // MARK: - Properties -
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default

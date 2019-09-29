@@ -29,8 +29,8 @@ class EditActivityTableViewCell: UITableViewCell {
         nameLabel.text = model?.name
         
         if let calories = self.model?.burned, let time = self.model?.addedTime {
-            customSlider.value = Float((Double(time) / Double(360)))
-            selectedValue = Int(Double((Double(time) / Double(360)) * 360.00).rounded(toPlaces: 0))
+            customSlider.value = Float((Double(time) / Double(120)))
+            selectedValue = Int(Double((Double(time) / Double(120)) * 120).rounded(toPlaces: 0))
             let count = Int(Double((Double(calories)/Double(time)) * Double(selectedValue)).rounded(toPlaces: 0))
             fillSecondTimeCount(time: selectedValue, calories: count)
         }
@@ -38,7 +38,7 @@ class EditActivityTableViewCell: UITableViewCell {
     
     // MARK: - Actions -
     @IBAction func sliderValueChange(_ sender: UISlider) {
-        selectedValue = Int(Double(sender.value * 360.00).rounded(toPlaces: 0))
+        selectedValue = Int(Double(sender.value * 120).rounded(toPlaces: 0))
         if let count = self.model?.count, count != 0 {
             fillSecondTimeCount(time: selectedValue, calories: selectedValue * count)
             quantity =  selectedValue * count

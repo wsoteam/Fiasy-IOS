@@ -45,9 +45,9 @@ class RecipeMealtimeViewController: UIViewController {
                 performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)
             }
         }
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-        }
+//        DispatchQueue.global().async {
+//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+//        }
         configurationKeyboardNotification()
         hideKeyboardWhenTappedAround()
     }

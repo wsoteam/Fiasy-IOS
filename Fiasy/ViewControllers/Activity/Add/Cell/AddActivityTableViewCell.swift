@@ -98,7 +98,7 @@ class AddActivityTableViewCell: UITableViewCell {
             createdActivity.generalKey = ref.key
             
             self.delegate?.addNewActivity(createdActivity)
-            if let vc = UIApplication.getTopMostViewController() as? AddActivityViewController {
+            if let vc = UIApplication.getTopMostViewController() {
                 vc.view.endEditing(true)
                 vc.dismiss(animated: true)
             }
@@ -219,7 +219,7 @@ extension AddActivityTableViewCell: UITextFieldDelegate {
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         
-        return count < 6
+        return count < 5
     }
 }
 

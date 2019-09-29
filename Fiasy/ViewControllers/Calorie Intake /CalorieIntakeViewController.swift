@@ -240,7 +240,7 @@ class CalorieIntakeViewController: UIViewController {
             UserInfo.sharedInstance.currentUser?.target = self.target
             UserInfo.sharedInstance.currentUser?.targetActivity = self.activity
             
-            if !fillCustom {
+            if defaultFat == Int(currentUser?.maxFat ?? 0) && defaultCalories == Int(currentUser?.maxKcal ?? 0) && defaultProtein == Int(currentUser?.maxProt ?? 0) && defaultCarbohydrates == Int(currentUser?.maxCarbo ?? 0) {
                 let female = UserInfo.sharedInstance.currentUser?.female
                 let height: Int = growth
                 let weight: Double = weight
@@ -284,6 +284,7 @@ class CalorieIntakeViewController: UIViewController {
             }
         }
         post("reloadProfile")
+        UserInfo.sharedInstance.reloadDiariContent = true
         navigationController?.popViewController(animated: true)
     }
     
@@ -331,7 +332,7 @@ extension CalorieIntakeViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CalorieIntakePremiumCell") as? CalorieIntakePremiumCell else { fatalError() }
-            cell.fillCell(indexPath, currentUser, self, self.purchaseIsValid, [defaultCalories, defaultProtein, defaultCarbohydrates, defaultFat])
+            cell.fillCell(indexPath, currentUser, self, self.purchaseIsValid, [defaultCalories, defaultProtein, defaultCarbohydrates, defaultFat], allPremiumFields)
             return cell
         default:
             return UITableViewCell()

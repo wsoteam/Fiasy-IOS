@@ -25,7 +25,7 @@ class CalorieIntakePremiumCell: UITableViewCell {
     private var defaultData: [Int] = [0, 0, 0, 0]
     
     // MARK: - Interface -
-    func fillCell(_ indexCell: IndexPath, _ currentUser: User?, _ delegate: CalorieIntakeDelegate, _ purchaseIsValid: Bool, _ defaultData: [Int]) {
+    func fillCell(_ indexCell: IndexPath, _ currentUser: User?, _ delegate: CalorieIntakeDelegate, _ purchaseIsValid: Bool, _ defaultData: [Int], _ allPremiumFields: [String]) {
         self.delegate = delegate
         self.indexPath = indexCell
         self.defaultData = defaultData
@@ -78,6 +78,13 @@ class CalorieIntakePremiumCell: UITableViewCell {
         }
         for field in allTextFields {
             field.isEnabled = purchaseIsValid
+        }
+
+        if !allPremiumFields.isEmpty && allPremiumFields.count == 4 {
+            allTextFields[0].text = allPremiumFields[0]
+            allTextFields[1].text = allPremiumFields[1]
+            allTextFields[2].text = allPremiumFields[2]
+            allTextFields[3].text = allPremiumFields[3]
         }
     }
     

@@ -48,15 +48,16 @@ class PremiumFinishViewController: UIViewController {
             self?.containerView.alpha = 0.0
             self?.containerView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             }, completion: {[weak self] _ in
-                if self?.isAutorization == true {
-                    self?.performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
-                } else {
-                    self?.dismiss(animated: true, completion: {
-                        if let vc = UIApplication.getTopMostViewController() {
-                            vc.navigationController?.popViewController(animated: true)
-                        }
-                    })
-                }
+                self?.performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
+//                if self?.isAutorization == true {
+//                    self?.performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
+//                } else {
+//                    self?.dismiss(animated: true, completion: {
+//                        if let vc = UIApplication.getTopMostViewController() {
+//                            vc.navigationController?.popViewController(animated: true)
+//                        }
+//                    })
+//                }
         })
     }
 }

@@ -25,7 +25,7 @@ class ActivityViewController: UIViewController {
     
     // MARK: - Properties -
     private var searchText: String = ""
-    private var states: [Bool] = [true, true, true]
+    private var states: [Bool] = UserInfo.sharedInstance.activityStates
     private var allMyActivity: [ActivityElement] = []
     private var filteredMyActivity: [ActivityElement] = []
     
@@ -168,8 +168,9 @@ class ActivityViewController: UIViewController {
         return states.contains(true)
     }
     
-    private func deleteActionRow() -> SwipeAction {
-        let deleteAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
+    private func removeActivity(_ indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить активность?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] action in
             guard let strongSelf = self else { return }
             if indexPath.section == 0 && strongSelf.filteredMyActivity.indices.contains(indexPath.row) {
                 let activity = strongSelf.filteredMyActivity[indexPath.row]
@@ -178,7 +179,7 @@ class ActivityViewController: UIViewController {
                 for (index, item) in strongSelf.allMyActivity.enumerated() where item.generalKey == activity.generalKey {
                     strongSelf.allMyActivity.remove(at: index)
                 }
-
+                
                 guard let uid = Auth.auth().currentUser?.uid, let key = activity.generalKey else { return }
                 let ref = Database.database().reference()
                 ref.child("USER_LIST").child(uid).child("customActivities").child(key).removeValue()
@@ -195,7 +196,7 @@ class ActivityViewController: UIViewController {
                 for (index, item) in strongSelf.allFavoriteActivity.enumerated() where item.generalKey == activity.generalKey {
                     strongSelf.allFavoriteActivity.remove(at: index)
                 }
-
+                
                 guard let uid = Auth.auth().currentUser?.uid, let key = activity.generalKey else { return }
                 let ref = Database.database().reference()
                 ref.child("USER_LIST").child(uid).child("customActivities").child(key).removeValue()
@@ -206,6 +207,15 @@ class ActivityViewController: UIViewController {
                     strongSelf.removeRow(indexPath)
                 }
             }
+        }))
+        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    private func deleteActionRow() -> SwipeAction {
+        let deleteAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
+            guard let strongSelf = self else { return }
+            strongSelf.removeActivity(indexPath)
         }
         deleteAction.image = #imageLiteral(resourceName: "Combined Shape (1)")
         deleteAction.hidesWhenSelected = true
@@ -244,6 +254,7 @@ class ActivityViewController: UIViewController {
                         strongSelf.allFavoriteActivity.append(selectedActive)
                         strongSelf.tableView.reloadSections(IndexSet(integer: 1), with: .none)
                     }
+                    AlertComponent.sharedInctance.showAlertMessage(message: "Активность добавлена в Избранное", vc: strongSelf)
                 }
             } else if indexPath.section == 2 && strongSelf.filteredDefaultFavorites.indices.contains(indexPath.row) {
                 if let uid = Auth.auth().currentUser?.uid {
@@ -268,6 +279,8 @@ class ActivityViewController: UIViewController {
                         strongSelf.filteredFavoriteActivity.append(selectedActive)
                         strongSelf.allFavoriteActivity.append(selectedActive)
                         strongSelf.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                        
+                        AlertComponent.sharedInctance.showAlertMessage(message: "Активность добавлена в Избранное", vc: strongSelf)
                     }
                 }
             }
@@ -351,7 +364,9 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource, Sw
         default:
             break
         }
-        self.performSegue(withIdentifier: "sequeActivityDetails", sender: selectedActivity)
+        if let activity = selectedActivity {
+            self.performSegue(withIdentifier: "sequeActivityDetails", sender: activity)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -386,9 +401,7 @@ extension ActivityViewController: UITableViewDelegate, UITableViewDataSource, Sw
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         switch indexPath.section {
-        case 0:
-            return [deleteActionRow(), favoriteActionRow()]
-        case 1:
+        case 0, 1:
             return [deleteActionRow()]
         case 2:
             return [favoriteActionRow()]
@@ -420,6 +433,7 @@ extension ActivityViewController: ActivityManagerDelegate {
     
     func headerClicked(section: Int) {
         self.states[section] = !self.states[section]
+        UserInfo.sharedInstance.activityStates[section] = !UserInfo.sharedInstance.activityStates[section]
         UIView.transition(with: tableView,
                           duration: 0.2,
                           options: .transitionCrossDissolve,

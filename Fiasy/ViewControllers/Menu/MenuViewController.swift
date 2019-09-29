@@ -33,9 +33,23 @@ class MenuViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        FirebaseDBManager.fetchUserPromo { (state) in
+            if state {
+                UserInfo.sharedInstance.purchaseIsValid = true
+            } else {
+                DispatchQueue.global().async {
+                    UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+                }
+            }
         }
+        
+        FirebaseDBManager.checkProfileInDataBase { [weak self] (state) in
+            guard let strongSelf = self else { return }
+            if state {
+                strongSelf.performSegue(withIdentifier: "sequeFillUserProfile", sender: nil)
+            }
+        }
+
         addObserver(for: self, #selector(didRecieveLogoutNotification), Constant.LOG_OUT)
     }
     

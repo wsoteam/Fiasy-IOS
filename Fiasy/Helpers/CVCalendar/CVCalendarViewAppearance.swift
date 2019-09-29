@@ -49,15 +49,15 @@ public final class CVCalendarViewAppearance: NSObject {
 
     /// Default highlighted state background & alpha.
     public var dayLabelWeekdayHighlightedBackgroundColor: UIColor? = .colorFromCode(0x34AADC)
-    public var dayLabelWeekdayHighlightedBackgroundAlpha: CGFloat? = 0.8
+    public var dayLabelWeekdayHighlightedBackgroundAlpha: CGFloat? = 1.0
     public var dayLabelPresentWeekdayHighlightedBackgroundColor: UIColor? = .colorFromCode(0xFF5E3A)
-    public var dayLabelPresentWeekdayHighlightedBackgroundAlpha: CGFloat? = 0.8
+    public var dayLabelPresentWeekdayHighlightedBackgroundAlpha: CGFloat? = 1.0
 
     /// Default selected state background & alpha.
     public var dayLabelWeekdaySelectedBackgroundColor: UIColor? = .colorFromCode(0x1D62F0)
-    public var dayLabelWeekdaySelectedBackgroundAlpha: CGFloat? = 0.8
+    public var dayLabelWeekdaySelectedBackgroundAlpha: CGFloat? = 1.0
     public var dayLabelPresentWeekdaySelectedBackgroundColor: UIColor? = .colorFromCode(0xFF3B30)
-    public var dayLabelPresentWeekdaySelectedBackgroundAlpha: CGFloat? = 0.8
+    public var dayLabelPresentWeekdaySelectedBackgroundAlpha: CGFloat? = 1.0
 
     // Default dot marker color.
     public var dotMarkerColor: UIColor? = .white

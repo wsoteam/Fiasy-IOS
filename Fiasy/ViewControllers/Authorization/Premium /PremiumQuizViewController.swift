@@ -14,6 +14,7 @@ import Amplitude_iOS
 class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Outlet -
+    @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeButton: UIButton!
     
@@ -38,6 +39,12 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
         if bottomPadding > 0.0 {
             topConstraint.constant = 0
         }
+        
+        if UIDevice.current.screenType == .iPhone_XSMax {
+            topImageView.contentMode = .scaleAspectFill
+        } else {
+            topImageView.contentMode = .scaleAspectFit
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,9 +60,7 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func paymentComplete() {
         UserInfo.sharedInstance.paymentComplete = true
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-        }
+        UserInfo.sharedInstance.purchaseIsValid = true
         performSegue(withIdentifier: "sequeFinishPremiumScreen", sender: nil)
     }
     
@@ -68,8 +73,8 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Action's -
     @IBAction func showPrivacyClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "privacy"]) // +
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "privacy"]) // +
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "privacy", "from" : trialFrom]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "privacy", "from" : trialFrom]) // +
         if let url = URL(string: "http://fiasy.com/PrivacyPolice.html") {
             UIApplication.shared.open(url)
         }
@@ -87,21 +92,21 @@ class PremiumQuizViewController: UIViewController, UIScrollViewDelegate {
         attributed.customAttributes = ["premium_status": "free"]
         Intercom.updateUser(attributed)
         
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "close"]) // +
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "close"]) // +
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "close", "from" : trialFrom]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "close", "from" : trialFrom]) // +
         performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
     }
     
     @IBAction func backClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "back"]) // +
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "back"]) // +
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "back", "from" : trialFrom]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "back", "from" : trialFrom]) // +
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func purchedClicked(_ sender: Any) {
         UserInfo.sharedInstance.trialFrom = trialFrom
-        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "next"]) // +
-        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "next"]) // +
+        Intercom.logEvent(withName: "premium_next", metaData: ["push_button" : "next", "from" : trialFrom]) // +
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "next", "from" : trialFrom]) // +
         SubscriptionService.shared.purchase()
     }
     

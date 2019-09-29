@@ -39,9 +39,9 @@ class ArticlesDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         addObserver(for: self, #selector(paymentComplete), Constant.PAYMENT_COMPLETE)
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-        }
+//        DispatchQueue.global().async {
+//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+//        }
     }
     
     @objc func paymentComplete() {

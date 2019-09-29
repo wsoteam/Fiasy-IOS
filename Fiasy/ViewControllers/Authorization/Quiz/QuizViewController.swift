@@ -85,7 +85,7 @@ extension QuizViewController: QuizViewOutput {
     
     func changeStateNextButton(state: Bool) {
         nextButton.isUserInteractionEnabled = state
-        nextButton.setImage(state ? #imageLiteral(resourceName: "ewfwefwewee") : #imageLiteral(resourceName: "next_gray"), for: .normal)
+        nextButton.backgroundColor = state ? #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1) : #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)
     }
     
     private func fillUserProperties() {

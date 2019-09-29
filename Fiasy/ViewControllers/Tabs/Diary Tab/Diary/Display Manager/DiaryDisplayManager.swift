@@ -118,6 +118,26 @@ class DiaryDisplayManager: NSObject {
         }
     }
     
+    func removeActivity() {
+        guard let indexPath = self.removeIndex else { return }
+        if self.activitys.indices.contains(indexPath.row) {
+            let activity = self.activitys[indexPath.row]
+            self.activitys.remove(at: indexPath.row)
+            guard let uid = Auth.auth().currentUser?.uid, let key = activity.generalKey else { return }
+            for (index,item )in self.allActivity.enumerated() where item.generalKey == key {
+                self.allActivity.remove(at: index)
+                break
+            }
+            let ref = Database.database().reference()
+            ref.child("USER_LIST").child(uid).child("activities").child(key).removeValue()
+            if self.activitys.isEmpty {
+                self.tableView.reloadSections(IndexSet(integer: 6), with: .none)
+            } else {
+                self.removeRow(indexPath)
+            }
+        }
+    }
+    
     func changeNewDate(date: Date) {
         
         self.selectedDate = date
@@ -270,22 +290,8 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
             
             let deleteAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
                 guard let strongSelf = self else { return }
-                if strongSelf.activitys.indices.contains(indexPath.row) {
-                    let activity = strongSelf.activitys[indexPath.row]
-                    strongSelf.activitys.remove(at: indexPath.row)
-                    guard let uid = Auth.auth().currentUser?.uid, let key = activity.generalKey else { return }
-                    for (index,item )in strongSelf.allActivity.enumerated() where item.generalKey == key {
-                        strongSelf.allActivity.remove(at: index)
-                        break
-                    }
-                    let ref = Database.database().reference()
-                    ref.child("USER_LIST").child(uid).child("activities").child(key).removeValue()
-                    if strongSelf.activitys.isEmpty {
-                        strongSelf.tableView.reloadSections(IndexSet(integer: 6), with: .none)
-                    } else {
-                        strongSelf.removeRow(indexPath)
-                    }
-                }
+                strongSelf.removeIndex = indexPath
+                strongSelf.delegate.removeActivity()
             }
             
             deleteAction.image = #imageLiteral(resourceName: "Combined Shape (1)")

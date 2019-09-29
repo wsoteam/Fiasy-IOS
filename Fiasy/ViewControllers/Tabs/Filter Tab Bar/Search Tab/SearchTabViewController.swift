@@ -120,6 +120,7 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if products.indices.contains(indexPath.row) {
+            let f = products[indexPath.row]
             UserInfo.sharedInstance.selectedProduct = products[indexPath.row]
             needReload = false
             performSegue(withIdentifier: "sequeProductDetails", sender: nil)

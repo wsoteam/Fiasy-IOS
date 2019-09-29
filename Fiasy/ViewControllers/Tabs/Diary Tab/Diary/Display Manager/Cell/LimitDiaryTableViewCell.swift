@@ -66,7 +66,7 @@ class LimitDiaryTableViewCell: UITableViewCell {
             let currentCalories = ((user.maxKcal ?? 0) - calories) + activityCount
             fatCountLabel.text = "\(fat) из \(user.maxFat ?? 0)"
             endedLabel.text = (user.maxKcal ?? 0) >= calories ? "Осталось" : "Прeвышение"
-            leftCaloriesLabel.text = (user.maxKcal ?? 0) >= calories ? "\(currentCalories)" : "+\(calories - (user.maxKcal ?? 0))"
+            leftCaloriesLabel.text = ((user.maxKcal ?? 0) + activityCount) >= calories ? "\(currentCalories)" : "+\(calories - ((user.maxKcal ?? 0) + activityCount))"
             carbohydratesCountLabel.text = "\(carbohydrates) из \(user.maxCarbo ?? 0)"
             proteinLabel.text = "\(protein) из \(user.maxProt ?? 0)"
             
@@ -74,8 +74,8 @@ class LimitDiaryTableViewCell: UITableViewCell {
             carbohydratesProgress.progressTintColor = Float(carbohydrates) > Float(user.maxCarbo ?? 0) ? #colorLiteral(red: 0.9229121804, green: 0.4868420959, blue: 0.4857618213, alpha: 1) : #colorLiteral(red: 0.9420654178, green: 0.6840462089, blue: 0.4467554092, alpha: 1)
             fatProgress.progress = Float(fat) / Float(user.maxFat ?? 0)
             fatProgress.progressTintColor = Float(fat) > Float(user.maxFat ?? 0) ? #colorLiteral(red: 0.9229121804, green: 0.4868420959, blue: 0.4857618213, alpha: 1) : #colorLiteral(red: 0.9420654178, green: 0.6840462089, blue: 0.4467554092, alpha: 1)
-            caloriesProgress.progress = Float(calories) / Float(user.maxKcal ?? 0)
-            caloriesProgress.progressTintColor = Float(calories) > Float(user.maxKcal ?? 0) ? #colorLiteral(red: 0.9229121804, green: 0.4868420959, blue: 0.4857618213, alpha: 1) : #colorLiteral(red: 0.9420654178, green: 0.6840462089, blue: 0.4467554092, alpha: 1)
+            caloriesProgress.progress = Float(calories - activityCount) / Float(user.maxKcal ?? 0)
+            caloriesProgress.progressTintColor = Float(calories - activityCount) > Float(user.maxKcal ?? 0) ? #colorLiteral(red: 0.9229121804, green: 0.4868420959, blue: 0.4857618213, alpha: 1) : #colorLiteral(red: 0.9420654178, green: 0.6840462089, blue: 0.4467554092, alpha: 1)
             proteinProgress.progress = Float(protein) / Float(user.maxProt ?? 0)
             proteinProgress.progressTintColor = Float(protein) > Float(user.maxProt ?? 0) ? #colorLiteral(red: 0.9229121804, green: 0.4868420959, blue: 0.4857618213, alpha: 1) : #colorLiteral(red: 0.9420654178, green: 0.6840462089, blue: 0.4467554092, alpha: 1)
             

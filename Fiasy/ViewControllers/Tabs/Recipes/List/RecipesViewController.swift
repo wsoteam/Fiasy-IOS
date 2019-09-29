@@ -64,9 +64,9 @@ class RecipesViewController: UIViewController {
             }
         }
 
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-        }
+//        DispatchQueue.global().async {
+//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+//        }
     }
     
     override func viewDidLayoutSubviews() {

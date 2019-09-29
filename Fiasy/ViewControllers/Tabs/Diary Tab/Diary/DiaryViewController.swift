@@ -22,7 +22,9 @@ protocol DiaryViewDelegate {
     func showWaterDetails()
     func editMealTime()
     func removeMealTime()
+    func removeActivity()
     func showProducts()
+    func reloadAfterRemoveActivity()
 }
 
 class DiaryViewController: BaseViewController {
@@ -78,6 +80,7 @@ class DiaryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        calendarView.commitCalendarViewUpdate()
         setupInitialState()
         getItemsInDataBase()
         UserInfo.sharedInstance.selectedDate = Date()
@@ -127,13 +130,7 @@ class DiaryViewController: BaseViewController {
             intercomButton.isHidden = false
         }
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        calendarView.commitCalendarViewUpdate()
-    }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -229,6 +226,20 @@ class DiaryViewController: BaseViewController {
 }
 
 extension DiaryViewController: DiaryViewDelegate {
+    
+    func removeActivity() {
+        let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить активность?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
+            self.displayManager.removeActivity()
+            self.getItemsInDataBase()
+        }))
+        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    func reloadAfterRemoveActivity() {
+        getItemsInDataBase()
+    }
     
     func showWaterDetails() {
         performSegue(withIdentifier: "sequeWaterDetailsScreen", sender: nil)
@@ -333,7 +344,7 @@ extension DiaryViewController: CVCalendarViewAppearanceDelegate {
         switch (weekDay, status, present) {
         //case (_, .selected, _), (_, .highlighted, _): return .clear
         case (_, .selected, _), (_, .highlighted, _): return #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.1524507934, alpha: 1)
-        default: return nil
+        default: return .clear
         }
     }
 }

@@ -12,6 +12,9 @@
         <array key="SF-Pro-Text-Semibold.ttf">
             <string>SFProText-Semibold</string>
         </array>
+        <array key="SFProText-Bold.ttf">
+            <string>SFProText-Bold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Unboarding View Controller-->
@@ -22,33 +25,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Добро пожаловать в Fiasy!" translatesAutoresizingMaskIntoConstraints="NO" id="1Qu-ZO-ScU">
-                                <rect key="frame" x="179.5" y="97.5" width="16" height="16"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifb-pX-5yz">
+                                <rect key="frame" x="0.0" y="20" width="375" height="140"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7si-Op-WIU">
+                                        <rect key="frame" x="187.5" y="70" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7si-Op-WIU" firstAttribute="centerX" secondItem="ifb-pX-5yz" secondAttribute="centerX" id="81y-9k-7AV"/>
+                                    <constraint firstItem="7si-Op-WIU" firstAttribute="centerY" secondItem="ifb-pX-5yz" secondAttribute="centerY" id="QbK-sb-JsG"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sfI-Od-cMW">
-                                <rect key="frame" x="0.0" y="143.5" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="160" width="375" height="367"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-Qh-f6B" customClass="SwiftyOnboard" customModule="Fiasy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MG2-Pa-ZX3">
-                                <rect key="frame" x="0.0" y="543.5" width="375" height="113.5"/>
+                                <rect key="frame" x="0.0" y="527" width="375" height="130"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vNj-fF-nxG">
-                                        <rect key="frame" x="67.5" y="0.0" width="240" height="101"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vNj-fF-nxG">
+                                        <rect key="frame" x="94" y="0.0" width="187.5" height="120"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ik-d2-MMi">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="22"/>
-                                                <state key="normal" image="Group (17)"/>
-                                                <connections>
-                                                    <action selector="nextClicked:" destination="Aed-Bb-YDH" eventType="touchUpInside" id="rEV-fb-Ak8"/>
-                                                </connections>
-                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeF-bf-W3W">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="44"/>
+                                                <subviews>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ik-d2-MMi">
+                                                        <rect key="frame" x="18.5" y="0.0" width="150" height="44"/>
+                                                        <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="XJ0-Hi-tPp"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
+                                                        <state key="normal" title="ДАЛЕЕ  ">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="nextClicked:" destination="Aed-Bb-YDH" eventType="touchUpInside" id="rEV-fb-Ak8"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="5Ik-d2-MMi" secondAttribute="bottom" id="DKB-RJ-nel"/>
+                                                    <constraint firstItem="5Ik-d2-MMi" firstAttribute="centerX" secondItem="AeF-bf-W3W" secondAttribute="centerX" id="JVD-Hv-wPj"/>
+                                                    <constraint firstItem="5Ik-d2-MMi" firstAttribute="top" secondItem="AeF-bf-W3W" secondAttribute="top" id="Kn5-hR-dem"/>
+                                                    <constraint firstItem="5Ik-d2-MMi" firstAttribute="width" secondItem="AeF-bf-W3W" secondAttribute="width" multiplier="0.8" id="YYg-YD-dTc"/>
+                                                </constraints>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWg-JY-DY6">
-                                                <rect key="frame" x="0.0" y="22" width="240" height="29"/>
+                                                <rect key="frame" x="0.0" y="64" width="187.5" height="29"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
                                                 <state key="normal" title="Пропустить">
                                                     <color key="titleColor" red="0.74109476799999996" green="0.74122363329999996" blue="0.74108666180000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,7 +98,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-vu-hNG">
-                                                <rect key="frame" x="0.0" y="51" width="240" height="50"/>
+                                                <rect key="frame" x="0.0" y="113" width="187.5" height="7"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="92N-DT-eCr"/>
@@ -70,7 +110,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vNj-fF-nxG" secondAttribute="bottom" id="AHL-Kg-xTn"/>
-                                    <constraint firstItem="vNj-fF-nxG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MG2-Pa-ZX3" secondAttribute="top" id="Fns-8x-Hfa"/>
+                                    <constraint firstItem="vNj-fF-nxG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MG2-Pa-ZX3" secondAttribute="top" constant="10" id="Fns-8x-Hfa"/>
+                                    <constraint firstItem="vNj-fF-nxG" firstAttribute="width" secondItem="MG2-Pa-ZX3" secondAttribute="width" multiplier="0.5" id="fYM-29-pPD"/>
                                     <constraint firstItem="vNj-fF-nxG" firstAttribute="centerX" secondItem="MG2-Pa-ZX3" secondAttribute="centerX" id="m6e-Hf-dfu"/>
                                 </constraints>
                             </view>
@@ -78,11 +119,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0Vq-bW-PVa" firstAttribute="trailing" secondItem="sfI-Od-cMW" secondAttribute="trailing" id="6W8-uW-6ES"/>
+                            <constraint firstItem="ifb-pX-5yz" firstAttribute="top" secondItem="0Vq-bW-PVa" secondAttribute="top" id="9Rg-qQ-iNd"/>
                             <constraint firstItem="0Vq-bW-PVa" firstAttribute="trailing" secondItem="MG2-Pa-ZX3" secondAttribute="trailing" id="OPa-YO-Ol1"/>
-                            <constraint firstItem="1Qu-ZO-ScU" firstAttribute="bottom" secondItem="sfI-Od-cMW" secondAttribute="top" constant="-30" id="V0O-3a-l8m"/>
-                            <constraint firstItem="1Qu-ZO-ScU" firstAttribute="centerX" secondItem="0Vq-bW-PVa" secondAttribute="centerX" id="Yr4-sO-3PD"/>
+                            <constraint firstItem="0Vq-bW-PVa" firstAttribute="trailing" secondItem="ifb-pX-5yz" secondAttribute="trailing" id="Ynb-EM-lTk"/>
                             <constraint firstItem="0Vq-bW-PVa" firstAttribute="bottom" secondItem="MG2-Pa-ZX3" secondAttribute="bottom" constant="10" id="cOu-EL-x0y"/>
-                            <constraint firstItem="sfI-Od-cMW" firstAttribute="height" secondItem="Oic-l4-8nb" secondAttribute="height" multiplier="0.6" id="fMR-cg-Ry0"/>
+                            <constraint firstItem="sfI-Od-cMW" firstAttribute="height" secondItem="Oic-l4-8nb" secondAttribute="height" multiplier="0.55" id="fMR-cg-Ry0"/>
+                            <constraint firstItem="ifb-pX-5yz" firstAttribute="bottom" secondItem="sfI-Od-cMW" secondAttribute="top" id="gHl-eL-VmY"/>
+                            <constraint firstItem="ifb-pX-5yz" firstAttribute="leading" secondItem="0Vq-bW-PVa" secondAttribute="leading" id="hVn-77-4Uz"/>
                             <constraint firstItem="sfI-Od-cMW" firstAttribute="centerY" secondItem="0Vq-bW-PVa" secondAttribute="centerY" id="hfh-Ta-kuo"/>
                             <constraint firstItem="MG2-Pa-ZX3" firstAttribute="leading" secondItem="0Vq-bW-PVa" secondAttribute="leading" id="ogg-ts-izO"/>
                             <constraint firstItem="MG2-Pa-ZX3" firstAttribute="top" secondItem="sfI-Od-cMW" secondAttribute="bottom" id="thM-1a-tzB"/>
@@ -94,6 +137,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="generalStackView" destination="sfI-Od-cMW" id="7Pd-B2-2Au"/>
+                        <outlet property="nextButton" destination="5Ik-d2-MMi" id="A7z-Mz-NjO"/>
+                        <outlet property="skipButton" destination="IWg-JY-DY6" id="ZQs-OY-x0y"/>
+                        <outlet property="topLabel" destination="7si-Op-WIU" id="Ly2-eP-AS5"/>
                         <outlet property="unboardingView" destination="YgK-Qh-f6B" id="xgC-FG-pKp"/>
                         <segue destination="SqL-zT-tbR" kind="custom" identifier="showFirstScreen" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="iIA-iU-VdR"/>
                     </connections>
@@ -129,8 +175,4 @@
             <point key="canvasLocation" x="-1464.8" y="607.64617691154433"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Group (17)" width="164" height="74"/>
-        <image name="Добро пожаловать в Fiasy!" width="246" height="48"/>
-    </resources>
 </document>

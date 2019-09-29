@@ -53,9 +53,9 @@ class SettingsViewController: UIViewController {
         
         purchaseIsValid = UserInfo.sharedInstance.purchaseIsValid
         tableView.reloadData()
-        DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-        }
+//        DispatchQueue.global().async {
+//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+//        }
     }
     
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
@@ -85,7 +85,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return purchaseIsValid ? 4 : 5
+        return purchaseIsValid ? 4 : 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,12 +113,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
             case 1:
-                performSegue(withIdentifier: "sequeEditProfile", sender: nil)
+                performSegue(withIdentifier: "sequePromotionalCodeScreen", sender: nil)
             case 2:
-                performSegue(withIdentifier: "sequeCaloriesIntake", sender: nil)
+                performSegue(withIdentifier: "sequeEditProfile", sender: nil)
             case 3:
-                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
+                performSegue(withIdentifier: "sequeCaloriesIntake", sender: nil)
             case 4:
+                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
+            case 5:
                 picker.showPicker()
             default:
                 break

@@ -11,6 +11,9 @@
         <array key="SFProText-Bold.ttf">
             <string>SFProText-Bold</string>
         </array>
+        <array key="SFProText-Regular.ttf">
+            <string>SFProText-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -27,13 +30,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector (10)" translatesAutoresizingMaskIntoConstraints="NO" id="kO2-WM-h3B">
-                        <rect key="frame" x="0.0" y="242" width="16" height="16"/>
+                        <rect key="frame" x="0.0" y="240" width="129" height="20"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIT-hg-pnx">
                         <rect key="frame" x="128" y="150" width="192" height="200"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="154 см" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QT-6L-amz">
-                                <rect key="frame" x="20" y="72" width="152.5" height="56"/>
+                                <rect key="frame" x="11.5" y="71.5" width="169.5" height="57.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="48"/>
                                 <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -46,9 +49,24 @@
                             <constraint firstItem="9QT-6L-amz" firstAttribute="centerY" secondItem="nIT-hg-pnx" secondAttribute="centerY" id="Yxo-S0-5t0"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Для расчета мы используем" translatesAutoresizingMaskIntoConstraints="NO" id="JOL-HD-FeB">
-                        <rect key="frame" x="128" y="40" width="177" height="16"/>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvF-Lw-1la">
+                        <rect key="frame" x="128" y="0.0" width="192" height="211.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAn-40-JtR">
+                                <rect key="frame" x="5" y="55.5" width="182" height="100.5"/>
+                                <string key="text">Для расчета мы используем формулу Миффлина-Сан-Жеора, которую в 2005 году подтвердила Американская Диетическая Ассоциация (АДА), что она является более точной.</string>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <color key="textColor" red="0.62738090753555298" green="0.62749135494232178" blue="0.62737399339675903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KAn-40-JtR" secondAttribute="trailing" constant="5" id="VaK-eT-TIp"/>
+                            <constraint firstItem="KAn-40-JtR" firstAttribute="leading" secondItem="MvF-Lw-1la" secondAttribute="leading" constant="5" id="XjG-kG-N45"/>
+                            <constraint firstItem="KAn-40-JtR" firstAttribute="centerY" secondItem="MvF-Lw-1la" secondAttribute="centerY" id="fP8-mm-N7L"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
@@ -57,12 +75,13 @@
                 <constraint firstItem="kO2-WM-h3B" firstAttribute="centerY" secondItem="Hkt-9F-gbQ" secondAttribute="centerY" constant="16" id="AEj-fM-tzm"/>
                 <constraint firstItem="Hkt-9F-gbQ" firstAttribute="width" secondItem="9Vf-wa-87s" secondAttribute="width" multiplier="0.4" id="CD8-9u-g2d"/>
                 <constraint firstItem="nIT-hg-pnx" firstAttribute="centerY" secondItem="kO2-WM-h3B" secondAttribute="centerY" id="CSf-Op-WCG"/>
+                <constraint firstItem="MvF-Lw-1la" firstAttribute="bottom" secondItem="9QT-6L-amz" secondAttribute="top" constant="-10" id="IVJ-it-ATH"/>
                 <constraint firstItem="kO2-WM-h3B" firstAttribute="leading" secondItem="9Vf-wa-87s" secondAttribute="leading" id="KgK-nL-8cT"/>
-                <constraint firstAttribute="trailing" secondItem="JOL-HD-FeB" secondAttribute="trailing" constant="15" id="NX5-LO-Ff3"/>
-                <constraint firstItem="JOL-HD-FeB" firstAttribute="top" secondItem="Hkt-9F-gbQ" secondAttribute="top" constant="40" id="O2L-fP-pm9"/>
+                <constraint firstItem="MvF-Lw-1la" firstAttribute="leading" secondItem="Hkt-9F-gbQ" secondAttribute="trailing" id="YC3-pU-m4j"/>
                 <constraint firstItem="Hkt-9F-gbQ" firstAttribute="top" secondItem="9Vf-wa-87s" secondAttribute="top" id="gn7-Tb-JVq"/>
+                <constraint firstAttribute="trailing" secondItem="MvF-Lw-1la" secondAttribute="trailing" id="klH-NU-q91"/>
+                <constraint firstItem="MvF-Lw-1la" firstAttribute="top" secondItem="Hkt-9F-gbQ" secondAttribute="top" id="lS1-bC-uRs"/>
                 <constraint firstAttribute="trailing" secondItem="nIT-hg-pnx" secondAttribute="trailing" id="nAb-MM-1hf"/>
-                <constraint firstItem="JOL-HD-FeB" firstAttribute="leading" secondItem="Hkt-9F-gbQ" secondAttribute="trailing" id="qeL-Jd-YuW"/>
                 <constraint firstItem="nIT-hg-pnx" firstAttribute="leading" secondItem="Hkt-9F-gbQ" secondAttribute="trailing" id="wxt-rd-lfH"/>
             </constraints>
             <size key="customSize" width="410" height="468"/>
@@ -76,6 +95,5 @@
     </objects>
     <resources>
         <image name="Vector (10)" width="129" height="20"/>
-        <image name="Для расчета мы используем" width="239" height="81"/>
     </resources>
 </document>

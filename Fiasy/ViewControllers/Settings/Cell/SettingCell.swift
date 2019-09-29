@@ -48,15 +48,19 @@ class SettingCell: UITableViewCell {
                 titleLabel.textColor = #colorLiteral(red: 0.950156033, green: 0.605353117, blue: 0.2954440117, alpha: 1)
                 arrowIconImageView.image = #imageLiteral(resourceName: "arrow_premium")
             case 1:
+                titleLabel.text = "Промокоды"
+                typeIconImageView.image = #imageLiteral(resourceName: "gift_icon")
+                
+            case 2:
                 titleLabel.text = "Личные данные"
                 typeIconImageView.image = #imageLiteral(resourceName: "Glyph1")
-            case 2:
+            case 3:
                 titleLabel.text = "Норма калорий"
                 typeIconImageView.image = #imageLiteral(resourceName: "Glyph")
-            case 3:
+            case 4:
                 titleLabel.text = "Помощь"
                 typeIconImageView.image = #imageLiteral(resourceName: "ic-help-24px")
-            case 4:
+            case 5:
                 titleLabel.text = "Выход"
                 titleLabel.textColor = #colorLiteral(red: 0.9231601357, green: 0.3388705254, blue: 0.3422900438, alpha: 1)
                 typeIconImageView.image = #imageLiteral(resourceName: "ic-exit-to-app-48px")

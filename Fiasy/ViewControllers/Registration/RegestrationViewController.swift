@@ -9,6 +9,11 @@ import FirebaseStorage
 class RegestrationViewController: UIViewController {
     
     //MARK: - Outlet -
+    @IBOutlet weak var orSignInByLabel: UILabel!
+    @IBOutlet weak var privacyButton: UIButton!
+    @IBOutlet weak var agreeLabel: UILabel!
+    @IBOutlet var titleLabels: [UILabel]!
+    @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet var allSeparatorViews: [UIView]!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var allTextFields: [UITextField]!
@@ -71,6 +76,9 @@ class RegestrationViewController: UIViewController {
     }
     
     @IBAction func signUpClicked(_ sender: Any) {
+        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "email"]) // +
+        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "email"]) // +
+        
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
         }
@@ -98,9 +106,6 @@ class RegestrationViewController: UIViewController {
             return
         }
         let email = (allTextFields[0].text ?? "")
-        
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "email"]) // +
-        Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "email"]) // +
 
         Auth.auth().createUser(withEmail: email, password: (allTextFields[1].text ?? "")) { [weak self] (user, error) in
             guard let strongSelf = self else { return }

@@ -38,7 +38,7 @@ class DetailsActivityTableViewCell: UITableViewCell {
     
     // MARK: - Actions -
     @IBAction func sliderValueChange(_ sender: UISlider) {
-        selectedValue = Int(Double(sender.value * 360.00).rounded(toPlaces: 0))
+        selectedValue = Int(Double(sender.value * 120).rounded(toPlaces: 0))
         if let count = self.model?.count, count != 0 {
             fillSecondTimeCount(time: selectedValue, calories: selectedValue * count)
             quantity =  selectedValue * count
@@ -67,9 +67,7 @@ class DetailsActivityTableViewCell: UITableViewCell {
             let userData = ["title": model.name, "count": model.count, "calories": model.calories, "time" : model.time, "added_time" : selectedValue, "burned" : self.quantity, "day": day, "year": year, "month": month] as [String : Any]
             ref.childByAutoId().setValue(userData)
             UserInfo.sharedInstance.reloadActiveContent = true
-            if let vc = UIApplication.getTopMostViewController() {
-                vc.navigationController?.popViewController(animated: true)
-            }
+            showConfirmScreen()
         }
     }
     
@@ -89,6 +87,16 @@ class DetailsActivityTableViewCell: UITableViewCell {
                                                      color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "за 0 минут"))
         mutableAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, mutableAttrString.length))
         caloriesSpentLabel.attributedText = mutableAttrString
+    }
+    
+    private func showConfirmScreen() {
+        if let vc = UIApplication.getTopMostViewController() as? DetailsActivityViewController {
+            let alert = UIAlertController(title: "Внимание", message: "Активность добавлена в ваш дневник", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: { action in
+                vc.navigationController?.popViewController(animated: true)
+            }))
+            vc.present(alert, animated: true)
+        }
     }
     
     private func fillSecondTimeCount(time: Int, calories: Int) {

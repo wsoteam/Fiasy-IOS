@@ -4,7 +4,10 @@ import Amplitude_iOS
 
 class UnboardingViewController: UIViewController {
     
-    //MARK: - Outlet -
+    // MARK: - Outlet -
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var generalStackView: UIStackView!
     @IBOutlet weak var unboardingView: SwiftyOnboard!
     
@@ -19,6 +22,7 @@ class UnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fillTopLabel()
         unboardingView.dataSource = self
     }
     
@@ -40,6 +44,20 @@ class UnboardingViewController: UIViewController {
         Intercom.logEvent(withName: "onboarding_skip", metaData: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         Amplitude.instance()?.logEvent("onboarding_skip", withEventProperties: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         performSegue(withIdentifier: "showFirstScreen", sender: nil)
+    }
+    
+    // MARK: - Private -
+    private func fillTopLabel() {
+        let mutableAttrString = NSMutableAttributedString()
+        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 24),
+                                               color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "Добро пожаловать в\n"))
+        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 24),
+                                               color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: "Fiasy!"))
+        topLabel.attributedText = mutableAttrString
+    }
+    
+    private func configureAttrString(by font: UIFont, color: UIColor, text: String) -> NSAttributedString {
+        return NSAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])
     }
 }
 

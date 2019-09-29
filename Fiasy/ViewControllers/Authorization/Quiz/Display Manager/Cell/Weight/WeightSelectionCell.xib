@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,6 +10,9 @@
     <customFonts key="customFonts">
         <array key="SFProText-Bold.ttf">
             <string>SFProText-Bold</string>
+        </array>
+        <array key="SFProText-Regular.ttf">
+            <string>SFProText-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -47,9 +50,13 @@
                             <constraint firstItem="tRN-pY-JKd" firstAttribute="centerX" secondItem="DjQ-VK-UZA" secondAttribute="centerX" id="rAV-Xp-hHJ"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Для расчета мы" translatesAutoresizingMaskIntoConstraints="NO" id="tUd-8Y-g8u">
-                        <rect key="frame" x="9.5" y="66" width="301" height="65"/>
-                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Er9-pV-SiK">
+                        <rect key="frame" x="30" y="59" width="260" height="72"/>
+                        <string key="text">Для расчета мы используем формулу Миффлина-Сан-Жеора, которую в 2005 году подтвердила Американская Диетическая Ассоциация (АДА), что она является более точной.</string>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" red="0.62738090753555298" green="0.62749135494232178" blue="0.62737399339675903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
@@ -57,12 +64,12 @@
                 <constraint firstItem="SeF-df-3z1" firstAttribute="bottom" secondItem="1ns-ux-0Nd" secondAttribute="bottom" id="16x-1d-96g"/>
                 <constraint firstAttribute="trailing" secondItem="SeF-df-3z1" secondAttribute="trailing" id="4Rw-ze-Jw0"/>
                 <constraint firstItem="DjQ-VK-UZA" firstAttribute="centerX" secondItem="oLX-MR-Hh4" secondAttribute="centerX" id="4VS-fw-p8v"/>
+                <constraint firstItem="Er9-pV-SiK" firstAttribute="leading" secondItem="1ns-ux-0Nd" secondAttribute="leading" constant="30" id="K5j-mh-vLv"/>
+                <constraint firstAttribute="trailing" secondItem="Er9-pV-SiK" secondAttribute="trailing" constant="30" id="KC6-0m-aKz"/>
                 <constraint firstItem="SeF-df-3z1" firstAttribute="leading" secondItem="1ns-ux-0Nd" secondAttribute="leading" id="RdU-6T-28V"/>
-                <constraint firstItem="tUd-8Y-g8u" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1ns-ux-0Nd" secondAttribute="top" id="Vd1-qY-BKI"/>
-                <constraint firstItem="tUd-8Y-g8u" firstAttribute="bottom" secondItem="DjQ-VK-UZA" secondAttribute="top" id="dej-Tj-igH"/>
+                <constraint firstItem="Er9-pV-SiK" firstAttribute="bottom" secondItem="DjQ-VK-UZA" secondAttribute="top" id="cD1-Rm-EWp"/>
                 <constraint firstItem="oLX-MR-Hh4" firstAttribute="bottom" secondItem="SeF-df-3z1" secondAttribute="bottom" constant="-50" id="goR-eW-G6v"/>
                 <constraint firstItem="DjQ-VK-UZA" firstAttribute="bottom" secondItem="SeF-df-3z1" secondAttribute="top" id="kOL-H8-sQ0"/>
-                <constraint firstItem="tUd-8Y-g8u" firstAttribute="centerX" secondItem="1ns-ux-0Nd" secondAttribute="centerX" id="tsY-13-FLq"/>
                 <constraint firstItem="oLX-MR-Hh4" firstAttribute="centerX" secondItem="SeF-df-3z1" secondAttribute="centerX" id="xFa-1i-I0D"/>
             </constraints>
             <size key="customSize" width="410" height="468"/>
@@ -76,6 +83,5 @@
     </objects>
     <resources>
         <image name="Group (21)" width="20" height="130"/>
-        <image name="Для расчета мы" width="301" height="65"/>
     </resources>
 </document>

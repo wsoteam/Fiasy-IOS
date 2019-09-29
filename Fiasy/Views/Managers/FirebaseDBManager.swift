@@ -40,9 +40,9 @@ class FirebaseDBManager {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).child("waters").observeSingleEvent(of: .value, with: { (snapshot) in
                 UserInfo.sharedInstance.allWaters.removeAll()
-                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                if let snapshotValue = snapshot.value as? [String: [String:AnyObject]] {
                     for (key, items) in snapshotValue {
-                        if let dictionary = items as? [String:AnyObject] {
+                        if let dictionary = items as? [String: AnyObject] {
                             let item = Water(generalKey: key, dictionary: dictionary)
                             UserInfo.sharedInstance.allWaters.append(item)
                         }
@@ -222,6 +222,20 @@ class FirebaseDBManager {
         }
     }
     
+    static func checkProfileInDataBase(handler: @escaping ((Bool) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let _ = snapshot.value as? [String:AnyObject] {
+                    handler(false)
+                } else {
+                    handler(true)
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     static func fillDefaultUserInDatabase() {
         UserInfo.sharedInstance.registrationAge = "0"
         //UserInfo.sharedInstance.registrationLoadСomplexity = TargetType.easy.rawValue
@@ -283,6 +297,69 @@ class FirebaseDBManager {
             }
             UserInfo.sharedInstance.templateArray.removeAll()
             UserInfo.sharedInstance.reloadTemplate = true
+        }
+    }
+    
+    static func checkValidPromo(text: String, handler: @escaping ((Bool) -> ())) {
+        let ref: DatabaseReference = Database.database().reference()
+        let someText = text.replacingOccurrences(of: ".", with: "*").replacingOccurrences(of: "#", with: "*").replacingOccurrences(of: "$", with: "*").replacingOccurrences(of: "[", with: "*").replacingOccurrences(of: "[", with: "*").replacingOccurrences(of: "]", with: "*")
+        ref.child("PROMO_STORAGE").child("\(someText)").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshotValue = snapshot.value as? [String:AnyObject] {
+                let item = Promo(key: "", dictionary: snapshotValue)
+                if item.activated == false {
+                    if let uid = Auth.auth().currentUser?.uid {
+                        let userData = ["duration": item.duration, "id": item.id, "startActivated": Date().millisecondsSince1970, "type": item.type, "valid" : true] as [String : Any]
+                    ref.child("PROMO_STORAGE").child("\(someText)").child("activated").setValue(true)
+                    ref.child("PROMO_STORAGE").child("\(someText)").child("userOwner").setValue(uid)
+                    ref.child("USER_LIST").child(uid).child("userPromo").childByAutoId().setValue(userData)
+                        handler(true)
+                    }
+                } else {
+                    handler(false)
+                }
+            } else {
+                handler(false)
+            }
+        }) { (error) in
+            handler(false)
+        }
+    }
+    
+    static func fetchUserPromo(handler: @escaping ((Bool) -> ())) {
+        let ref: DatabaseReference = Database.database().reference()
+        if let uid = Auth.auth().currentUser?.uid {
+            ref.child("USER_LIST").child(uid).child("userPromo").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let snapshotValue = snapshot.value as? [String: [String:AnyObject]] {
+                    var promoArray: [Promo] = []
+                    for (key, items) in snapshotValue {
+                        let item = Promo(key: key, dictionary: items)
+                        promoArray.append(item)
+                    }
+                    if promoArray.isEmpty {
+                        handler(false)
+                    } else {
+                        var activePromo: Promo?
+                        for item in promoArray where item.valid == true {
+                            activePromo = item
+                            break
+                        }
+                        if let active = activePromo, let generalKey = active.generalKey, !generalKey.isEmpty {
+                            if (Date().millisecondsSince1970 <= (active.duration ?? 0) + (active.startActivated ?? 0)) {
+                                handler(true)
+                            } else {
+                                ref.child("USER_LIST").child(uid).child("userPromo").child(generalKey).child("valid").setValue(false)
+                                handler(false)
+                            }
+                        } else {
+                            handler(false)
+                        }
+                    }
+                } else {
+                    handler(false)
+                }
+            }) { (error) in
+                handler(false)
+            }
         }
     }
     
@@ -353,5 +430,16 @@ class FirebaseDBManager {
                 handler([])
             }
         }
+    }
+}
+
+extension Date {
+    
+    var millisecondsSince1970: Int64 {
+        return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
+    init(milliseconds:Int64) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }

@@ -50,6 +50,8 @@ class UserInfo {
     var productModel: MLModel?
     var currentUser: User?
     
+    var activityStates: [Bool] = [true, true, true]
+    
 //    var userTarget: TargetType = .easy
     var userGender: Gender = .man
     var physicalActivity: String = "Минимальная нагрузка"
