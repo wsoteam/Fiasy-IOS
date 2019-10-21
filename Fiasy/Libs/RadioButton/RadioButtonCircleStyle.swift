@@ -16,7 +16,7 @@ public struct RadioButtonCircleStyle {
     let lineWidth: CGFloat
     let contentPadding: CGFloat
     
-    public init(outerCircle: CGFloat = 16, innerCircle: CGFloat = 7, outerCircleBorder: CGFloat = 2, contentPadding: CGFloat = 6) {
+    public init(outerCircle: CGFloat = 24, innerCircle: CGFloat = 12, outerCircleBorder: CGFloat = 2, contentPadding: CGFloat = 6) {
         self.outer = outerCircle
         self.inner = innerCircle
         self.lineWidth = outerCircleBorder

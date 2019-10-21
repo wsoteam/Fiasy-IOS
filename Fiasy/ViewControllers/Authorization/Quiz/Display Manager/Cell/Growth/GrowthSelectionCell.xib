@@ -88,6 +88,7 @@
             <connections>
                 <outlet property="arrowImageView" destination="kO2-WM-h3B" id="bJ9-Sv-bh3"/>
                 <outlet property="growthLabel" destination="9QT-6L-amz" id="1za-k4-MDd"/>
+                <outlet property="mifinLabel" destination="KAn-40-JtR" id="eJZ-kL-mim"/>
                 <outlet property="ruler" destination="Hkt-9F-gbQ" id="vtd-a7-dQh"/>
             </connections>
             <point key="canvasLocation" x="27" y="1025"/>

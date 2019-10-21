@@ -129,7 +129,6 @@ PODS:
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
   - GradientProgressBar (1.2.8)
   - GTMSessionFetcher/Core (1.2.1)
-  - Intercom (5.3.0)
   - Kingfisher (5.3.1)
   - MaterialControls (1.2.2)
   - MBCircularProgressBar (0.3.5)
@@ -158,6 +157,7 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
   - ObjectMapper (3.4.2)
+  - OneSignal (2.10.1)
   - Parchment (1.6.0)
   - Protobuf (3.7.0)
   - ReachabilitySwift (4.3.1)
@@ -216,7 +216,6 @@ DEPENDENCIES:
   - FirebaseInstanceID
   - GoogleSignIn
   - GradientProgressBar
-  - Intercom
   - Kingfisher
   - MaterialControls
   - MBCircularProgressBar
@@ -226,6 +225,7 @@ DEPENDENCIES:
   - NextGrowingTextView
   - NVActivityIndicatorView
   - ObjectMapper
+  - OneSignal
   - Parchment
   - ReachabilitySwift
   - RealmSwift
@@ -279,7 +279,6 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GradientProgressBar
     - GTMSessionFetcher
-    - Intercom
     - Kingfisher
     - MaterialControls
     - MBCircularProgressBar
@@ -289,6 +288,7 @@ SPEC REPOS:
     - NextGrowingTextView
     - NVActivityIndicatorView
     - ObjectMapper
+    - OneSignal
     - Parchment
     - Protobuf
     - ReachabilitySwift
@@ -344,7 +344,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GradientProgressBar: c52f0eb3f0660f17e0b72a93b37461465cf9edbd
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
-  Intercom: 0919be8f5027720557ce68c449d81275eaddb985
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   MaterialControls: 1c6b29e78d3a13d8dd6a67ed31b6d26eb5de8f72
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
@@ -354,6 +353,7 @@ SPEC CHECKSUMS:
   NextGrowingTextView: 63d064e669caae6fd78b81b96a4ed156906bf80f
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  OneSignal: 8fb749fa07f88006403c9b659a570fb7fb74519a
   Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
@@ -372,6 +372,6 @@ SPEC CHECKSUMS:
   VisualEffectView: 9e9883f07d8a929b98c9c08a068f726279d92754
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 739aac985c166029b9b8432f2da2d1ece5c931b9
+PODFILE CHECKSUM: b860c051c16419014c71b343693639c2387f8100
 
 COCOAPODS: 1.7.1

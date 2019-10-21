@@ -8,7 +8,6 @@
 
 import UIKit
 import Amplitude_iOS
-import Intercom
 
 protocol ProductDetailsDelegate {
     func closeModule()
@@ -48,7 +47,6 @@ class ProductDetailsViewController: UIViewController {
             UserInfo.sharedInstance.editMealtime = nil
             if let selected = SQLDatabase.shared.getEditProduct(by: editMealTime) {
                 selectedProduct = selected
-                Intercom.logEvent(withName: "view_product_page", metaData: ["product_item" : selected.id]) // +
                 Amplitude.instance()?.logEvent("view_product_page", withEventProperties: ["product_item" : selected.id]) // +
             } else {
                 tableView.alpha = 0
@@ -64,7 +62,6 @@ class ProductDetailsViewController: UIViewController {
                 }
             }
         } else {
-            Intercom.logEvent(withName: "view_product_page", metaData: ["product_item" : selectedProduct?.id]) // +
             Amplitude.instance()?.logEvent("view_product_page", withEventProperties: ["product_item" : selectedProduct?.id]) // +
         }
         setupInitialState()
@@ -165,7 +162,6 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
 extension ProductDetailsViewController: ProductDetailsDelegate {
     
     func showPremiumScreen() {
-        Intercom.logEvent(withName: "product_page_micro") // +
         Amplitude.instance()?.logEvent("product_page_micro") // +
         
         performSegue(withIdentifier: "sequePremiumScreen", sender: nil)

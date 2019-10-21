@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 protocol ArticlesTabDelegate {
@@ -48,7 +47,6 @@ class ArticlesViewController: UIViewController {
         allRows[1] = allRows[1].shuffled()
         tableView.reloadData()
         
-        Intercom.logEvent(withName: "choose_articles") // +
         Amplitude.instance()?.logEvent("choose_articles") // +
     }
     
@@ -113,10 +111,8 @@ extension ArticlesViewController: ArticlesTabDelegate {
         self.selectedSection = section
         
         if section == 0 {
-            Intercom.logEvent(withName: "select_diet") // +
             Amplitude.instance()?.logEvent("select_diet") // +
         } else {
-            Intercom.logEvent(withName: "select_training") // +
             Amplitude.instance()?.logEvent("select_training") // +
         }
 

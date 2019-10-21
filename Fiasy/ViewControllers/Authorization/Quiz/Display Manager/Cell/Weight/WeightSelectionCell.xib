@@ -76,6 +76,7 @@
             <connections>
                 <outlet property="arrowImageView" destination="oLX-MR-Hh4" id="cXf-DI-Xhu"/>
                 <outlet property="growthLabel" destination="tRN-pY-JKd" id="QQE-gD-gQk"/>
+                <outlet property="mifinLabel" destination="Er9-pV-SiK" id="IJU-8X-DYW"/>
                 <outlet property="rulerContainerView" destination="SeF-df-3z1" id="5hn-Vz-5IJ"/>
             </connections>
             <point key="canvasLocation" x="27" y="1025"/>

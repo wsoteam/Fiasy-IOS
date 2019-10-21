@@ -39,7 +39,7 @@ target 'Fiasy' do
         pod 'FacebookSDK/ShareKit'
         pod 'FacebookSDK/PlacesKit'
         pod 'FBSDKMessengerShareKit'
-        pod 'Intercom'
+        pod 'OneSignal'
         pod 'Bolts'
         pod 'FBSDKCoreKit'
         pod 'FBSDKLoginKit'

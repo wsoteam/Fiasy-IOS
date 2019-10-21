@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipesSearchHeaderView: UITableViewHeaderFooterView {
+class RecipesSearchHeaderView: UITableViewHeaderFooterView, UITextFieldDelegate {
 
     //MARK: - Outlet -
     @IBOutlet weak var textField: DesignableUITextField!
@@ -24,7 +24,13 @@ class RecipesSearchHeaderView: UITableViewHeaderFooterView {
     
     //MARK: - Action -
     @IBAction func valueChange(_ sender: Any) {
-        guard let text = self.textField.text else { return }
+        guard let text = self.textField.text, text.isEmpty else { return }
+        self.delegate?.searchItem(text: "")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return false }
         self.delegate?.searchItem(text: text)
+        return true
     }
 }

@@ -2,7 +2,6 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
-import Intercom
 import Amplitude_iOS
 
 class FirstViewController: UIViewController {
@@ -17,6 +16,12 @@ class FirstViewController: UIViewController {
     // MARK: - Properties -
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        localizeDesign()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +38,14 @@ class FirstViewController: UIViewController {
 //        }
     }
     
+    private func localizeDesign() {
+        bottomDescriptionLabel.text = LS(key: .ACCOUNT_AVAILABLE)
+        topDescriptionLabel.text = LS(key: .AUTHORIZATION_WITH)
+        orLabel.text = LS(key: .OR)
+        signUpLabel.setTitle(LS(key: .REGISTRATION_BY_MAIL), for: .normal)
+        signInLabel.setTitle(LS(key: .SIGN_IN), for: .normal)
+    }
+    
     // MARK: - Action's -
     @IBAction func googleClicked(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
@@ -43,7 +56,6 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func signInClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "enter"]) // +
         Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "enter"]) // +
     }
     
@@ -51,6 +63,7 @@ class FirstViewController: UIViewController {
         guard isConnectedToNetwork() else {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
         }
+        var fetchedEmail: String = ""
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
             guard result?.isCancelled != true else { return }
             guard let strongSelf = self else { return }
@@ -62,38 +75,42 @@ class FirstViewController: UIViewController {
                 print("Failed to get access token")
                 return
             }
-            Auth.auth().signIn(with: FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString), completion: { (user, error) in
-                if let error = error {
-                    if let strongSelf = self {
-                        return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
-                                                                     message: error.localizedDescription, vc: strongSelf)
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email"]).start(completionHandler: { (connection, result, error) in
+                if error == nil {
+                    if let dictionary = result as? [String : Any], let fetchEmail = dictionary["email"] as? String {
+                        fetchedEmail = fetchEmail
                     }
+                } else {
+                    print("Error Getting Info \(error)");
                 }
                 
-                let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
-                if let array = fullNameArr, array.indices.contains(0) {
-                    UserInfo.sharedInstance.registrationFlow.firstName = array[0]
-                }
-                if let array = fullNameArr, array.indices.contains(1) {
-                    UserInfo.sharedInstance.registrationFlow.lastName = array[1]
-                }
-                if let url = user?.photoURL?.absoluteString {
-                    UserInfo.sharedInstance.registrationFlow.photoUrl = url
-                }
-                UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
-                Intercom.registerUser(withEmail: user?.email ?? "")
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) // +
-                Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) // +
-                
-                let identify = AMPIdentify()
-                identify.set("registration", value: "facebook" as NSObject)
-                Amplitude.instance()?.identify(identify)
-                
-                let attributed = ICMUserAttributes()
-                attributed.customAttributes = ["registration": "facebook"]
-                Intercom.updateUser(attributed)
-
-                strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+                Auth.auth().signIn(with: FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString), completion: { (user, error) in
+                    if let error = error {
+                        if let strongSelf = self {
+                            return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
+                                                                                  message: error.localizedDescription, vc: strongSelf)
+                        }
+                    }
+                    
+                    let fullNameArr = user?.displayName?.characters.split{$0 == " "}.map(String.init)
+                    if let array = fullNameArr, array.indices.contains(0) {
+                        UserInfo.sharedInstance.registrationFlow.firstName = array[0]
+                    }
+                    if let array = fullNameArr, array.indices.contains(1) {
+                        UserInfo.sharedInstance.registrationFlow.lastName = array[1]
+                    }
+                    if let url = user?.photoURL?.absoluteString {
+                        UserInfo.sharedInstance.registrationFlow.photoUrl = url
+                    }
+                    UserInfo.sharedInstance.registrationFlow.email = fetchedEmail
+                    Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) // +
+                    
+                    let identify = AMPIdentify()
+                    identify.set("registration", value: "facebook" as NSObject)
+                    Amplitude.instance()?.identify(identify)
+                    
+                    strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+                })
             })
         }
     }
@@ -139,17 +156,11 @@ extension FirstViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                         UserInfo.sharedInstance.registrationFlow.photoUrl = url
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
-                    Intercom.registerUser(withEmail: email ?? "")
-                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) // +
                     Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) // +
                     
                     let identify = AMPIdentify()
                     identify.set("registration", value: "google" as NSObject)
                     Amplitude.instance()?.identify(identify)
-                    
-                    let attributed = ICMUserAttributes()
-                    attributed.customAttributes = ["registration": "google"]
-                    Intercom.updateUser(attributed)
                     
                     strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }

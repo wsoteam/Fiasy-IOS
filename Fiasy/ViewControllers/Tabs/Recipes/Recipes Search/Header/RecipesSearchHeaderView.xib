@@ -43,6 +43,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="valueChange:" destination="iN0-l3-epB" eventType="editingChanged" id="QnO-Pr-Wf7"/>
+                                        <outlet property="delegate" destination="iN0-l3-epB" id="pdm-HJ-ypn"/>
                                     </connections>
                                 </textField>
                             </subviews>

@@ -2,7 +2,6 @@ import UIKit
 import Kingfisher
 import Alamofire
 import Amplitude_iOS
-import Intercom
 
 class ProfileViewController: UIViewController {
     
@@ -35,7 +34,6 @@ class ProfileViewController: UIViewController {
         addObserver(for: self, #selector(reloadProfile), "reloadProfile")
         
         Amplitude.instance().logEvent("view_profile") // +
-        Intercom.logEvent(withName: "view_profile") // +
     }
     
     override func viewDidDisappear(_ animated: Bool) {

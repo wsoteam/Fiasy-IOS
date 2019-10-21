@@ -337,7 +337,7 @@ class Ruler: UIScrollView, UIScrollViewDelegate {
       rulerBlocks.insert(rulerBlock, at: 0)
       container.insertSubview(rulerBlock, at: 0)
     }
-    rulerBlock.label = "\(newMajorScale.majorTextRepresentation()) КГ".replacingOccurrences(of: ".0", with: "")
+    rulerBlock.label = "\(newMajorScale.majorTextRepresentation()) \(LS(key: .WEIGHT_UNIT))".replacingOccurrences(of: ".0", with: "")
     rulerBlock.frame = calculateFrame(rulerBlock.frame)
   }
   

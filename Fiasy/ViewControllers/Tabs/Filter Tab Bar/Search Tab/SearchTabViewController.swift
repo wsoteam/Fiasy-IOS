@@ -8,7 +8,6 @@
 
 import UIKit
 import Swinject
-import Intercom
 import RxSwift
 import Amplitude_iOS
 import XLPagerTabStrip
@@ -26,6 +25,7 @@ protocol SearchTabInteractorOutput: class {
 }
 
 class SearchTabViewController: UIViewController, Assembly, SwinjectInitAssembler {
+    
     func assemble(container: Container) {}
     
     // MARK: - Outlets -
@@ -174,7 +174,6 @@ class SearchTabInteractor: SearchTabInteractorInput {
     func searchProduct(search: String) {
         profileService.searchProduct(search: search).subscribe(onNext: { [weak self] (response) in
             guard let strongSelf = self else { return }
-            Intercom.logEvent(withName: "search_success", metaData: ["search_item" : search]) // +
             Amplitude.instance()?.logEvent("search_success", withEventProperties: ["search_item" : search]) // +
             strongSelf.output?.didLoadBySearch(response)
         }).disposed(by: dispose)

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class SettingClickedPicker: NSObject, UINavigationControllerDelegate {
@@ -29,7 +28,6 @@ class SettingClickedPicker: NSObject, UINavigationControllerDelegate {
                                   style: .default,
                                   handler: { [weak self] _ in
                                     guard let `self` = self else { return }
-                                    Intercom.logEvent(withName: "profile_logout") // +
                                     Amplitude.instance()?.logEvent("profile_logout") // +
                                     self.signOut?()
         })

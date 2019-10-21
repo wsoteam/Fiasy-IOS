@@ -11,7 +11,6 @@ import Firebase
 import Parchment
 import Amplitude_iOS
 import DynamicBlurView
-import Intercom
 import Amplitude_iOS
 import UserNotifications
 import GradientProgressBar
@@ -89,10 +88,6 @@ class DiaryViewController: BaseViewController {
             let identify = AMPIdentify()
             identify.set("email", value: email as NSObject)
             Amplitude.instance()?.identify(identify)
-            
-            let attributed = ICMUserAttributes()
-            attributed.customAttributes = ["email": email]
-            Intercom.updateUser(attributed)
         }
     }
     
@@ -126,9 +121,7 @@ class DiaryViewController: BaseViewController {
             getActivitysInDataBase()
         }
         
-        if let _ = Auth.auth().currentUser?.uid {
-            intercomButton.isHidden = false
-        }
+        intercomButton.isHidden = true
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -181,10 +174,6 @@ class DiaryViewController: BaseViewController {
                 let identify = AMPIdentify()
                 identify.set("push_enabled", value: granted as NSObject)
                 Amplitude.instance()?.identify(identify)
-                
-                let attributed = ICMUserAttributes()
-                attributed.customAttributes = ["push_enabled": granted]
-                Intercom.updateUser(attributed)
             }
         } else {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
@@ -198,9 +187,7 @@ class DiaryViewController: BaseViewController {
     }
     
     @IBAction func showChatIntercom(_ sender: Any) {
-        Intercom.logEvent(withName: "intercom_chat") // +
         Amplitude.instance()?.logEvent("intercom_chat") // +
-        Intercom.presentMessenger()
     }
     
     // MARK: - Private -
@@ -258,7 +245,6 @@ extension DiaryViewController: DiaryViewDelegate {
         let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить продукт?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
             Amplitude.instance().logEvent("delete_food") // +
-            Intercom.logEvent(withName: "delete_food") // +
             self.displayManager.removeMealTime()
             self.getItemsInDataBase()
         }))
@@ -333,16 +319,25 @@ extension DiaryViewController: CVCalendarViewAppearanceDelegate {
     func dayLabelColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
         switch (weekDay, status, present) {
         case (_, .selected, _), (_, .highlighted, _): return .white
-        case (.sunday, .in, _): return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
-        case (.sunday, _, _): return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
-        case (_, .in, _): return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
         default: return #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
         }
     }
     
-    func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
+    func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
+        if (dayView.isCurrentDay) {
+            return true
+        }
+        return false
+    }
+    
+    func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
+        let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.frame, shape: CVShape.circle)
+        circleView.fillColor = #colorLiteral(red: 0.8900639415, green: 0.8978396654, blue: 0.9144185185, alpha: 1)
+        return circleView
+    }
+    
+    func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent, isCurrentDay: Bool) -> UIColor? {
         switch (weekDay, status, present) {
-        //case (_, .selected, _), (_, .highlighted, _): return .clear
         case (_, .selected, _), (_, .highlighted, _): return #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.1524507934, alpha: 1)
         default: return .clear
         }

@@ -65,7 +65,7 @@ public class RadioButton: RadioCheckboxBaseButton {
     /// Do initial stuff here
     /// Setting default color style
     override internal func setup() {
-        radioButtonColor = RadioButtonColor(active: tintColor, inactive: UIColor.lightGray)
+        radioButtonColor = RadioButtonColor(active: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), inactive: #colorLiteral(red: 0.9770868421, green: 0.8013967872, blue: 0.6480662823, alpha: 1))
         style = .circle
         super.setup()
     }

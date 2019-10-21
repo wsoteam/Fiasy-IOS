@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class DateOfBirthSelectionCell: UICollectionViewCell {
@@ -23,8 +22,11 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
-        formatter.locale = Locale(identifier: "ru_RU")
-        
+        if Locale.current.languageCode == "en" {
+            formatter.locale = Locale(identifier: "en_US")
+        } else {
+            formatter.locale = Locale(identifier: "ru_RU")
+        }        
         return formatter
     }()
     
@@ -34,7 +36,6 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
         
         setupInitialState()
         datePicker.maximumDate = Date()
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "age"]) // +
         Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "age"]) // +
     }
     
@@ -42,7 +43,7 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
     func fillCell(delegate: QuizViewOutput) {
         self.delegate = delegate
         
-        delegate.changeTitle(title: "Выберите дату рождения")
+        delegate.changeTitle(title: LS(key: .SELECT_YOUR_BIRTHDAY))
         delegate.changeStateBackButton(hidden: false)
         delegate.changePageControl(index: 3)
         
@@ -55,13 +56,17 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
     
     // MARK: - Private -
     private func setupInitialState() {
-        datePicker.locale = Locale(identifier: "ru_RU")
+        if Locale.current.languageCode == "en" {
+            datePicker.locale = Locale(identifier: "en_US")
+        } else {
+            datePicker.locale = Locale(identifier: "ru_RU")
+        }
     }
     
     // MARK: - Actions -
     @IBAction func changeValuePicker(_ sender: UIDatePicker) {
         delegate?.changeStateNextButton(state: true)
         UserInfo.sharedInstance.registrationFlow.dateOfBirth = datePicker.date
-        selectedDataLabel.text = mediumDate.string(from: datePicker.date).replacingOccurrences(of: "г.", with: "год")
+        selectedDataLabel.text = mediumDate.string(from: datePicker.date).replacingOccurrences(of: LS(key: .YEAR_SHORT), with: LS(key: .YEAR))
     }
 }

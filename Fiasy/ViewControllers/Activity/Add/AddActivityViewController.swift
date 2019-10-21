@@ -2,7 +2,7 @@
 //  AddActivityViewController.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 9/12/19.
+//  Created by Eugen Lipatov on 9/12/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 

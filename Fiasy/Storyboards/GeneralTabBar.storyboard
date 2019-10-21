@@ -411,10 +411,10 @@
             </objects>
             <point key="canvasLocation" x="209" y="433"/>
         </scene>
-        <!--Favorites Tab View Controller-->
+        <!--My Product View Controller-->
         <scene sceneID="8Eg-Bo-Peh">
             <objects>
-                <viewController storyboardIdentifier="FavoritesTabViewController" id="e6S-kS-RWq" customClass="FavoritesTabViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyProductViewController" id="e6S-kS-RWq" customClass="MyProductViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tfq-1H-y7u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

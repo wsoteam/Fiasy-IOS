@@ -61,7 +61,7 @@ class PremiumViewController: UIViewController, UIScrollViewDelegate {
     @objc func paymentComplete() {
         UserInfo.sharedInstance.paymentComplete = true
         DispatchQueue.global().async {
-            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+            SubscriptionService.shared.checkValidPurchases(generalState: true)
         }
         premiumTitleLabel.text = "Fiasy Premium"
         for item in finishViews {
@@ -83,7 +83,7 @@ class PremiumViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Action's -
     @IBAction func showPrivacyClicked(_ sender: Any) {
-        if let url = URL(string: "http://fiasy.com/PrivacyPolice.html") {
+        if let url = URL(string: "http://fiasy.com/privacypolice") {
             UIApplication.shared.open(url)
         }
     }
@@ -93,32 +93,12 @@ class PremiumViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func purchedClicked(_ sender: Any) {
-        SubscriptionService.shared.purchase()
+        SubscriptionService.shared.purchase(index: 0)
     }
     
     //MARK: - Private -
     private func createSlides() -> [PremiumSlideView] {
-        let slide1: PremiumSlideView = Bundle.main.loadNibNamed("PremiumSlideView", owner: self, options: nil)?.first as! PremiumSlideView
-        slide1.imageView.image = #imageLiteral(resourceName: "prem_1")
-        slide1.titleLabel.text = "Узнать КБЖУ продукта \nпо камере телефона"
-
-        let slide2: PremiumSlideView = Bundle.main.loadNibNamed("PremiumSlideView", owner: self, options: nil)?.first as! PremiumSlideView
-        slide2.imageView.image = #imageLiteral(resourceName: "prem_2")
-        slide2.titleLabel.text = "Сотни рецептов с КБЖУ"
-        
-        let slide3: PremiumSlideView = Bundle.main.loadNibNamed("PremiumSlideView", owner: self, options: nil)?.first as! PremiumSlideView
-        slide3.imageView.image = #imageLiteral(resourceName: "prem_3")
-        slide3.titleLabel.text = "Планы питания и \nконтроль веса"
-        
-        let slide4: PremiumSlideView = Bundle.main.loadNibNamed("PremiumSlideView", owner: self, options: nil)?.first as! PremiumSlideView
-        slide4.imageView.image = #imageLiteral(resourceName: "prem_4")
-        slide4.titleLabel.text = "Тысяча продуктов в базе"
-        
-        let slide5: PremiumSlideView = Bundle.main.loadNibNamed("PremiumSlideView", owner: self, options: nil)?.first as! PremiumSlideView
-        slide5.imageView.image = #imageLiteral(resourceName: "prem_5")
-        slide5.titleLabel.text = "Специальные статьи \nо правильном питании"
-        
-        return [slide1, slide2, slide3, slide4, slide5]
+        return []
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -139,23 +119,23 @@ class PremiumViewController: UIViewController, UIScrollViewDelegate {
 
         let percentOffset: CGPoint = CGPoint(x: percentageHorizontalOffset, y: percentageVerticalOffset)
         
-        if(percentOffset.x > 0 && percentOffset.x <= 0.25) {
-            
-            slides[0].imageView.transform = CGAffineTransform(scaleX: (0.25-percentOffset.x)/0.25, y: (0.25-percentOffset.x)/0.25)
-            slides[1].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.25, y: percentOffset.x/0.25)
-            
-        } else if(percentOffset.x > 0.25 && percentOffset.x <= 0.50) {
-            slides[1].imageView.transform = CGAffineTransform(scaleX: (0.50-percentOffset.x)/0.25, y: (0.50-percentOffset.x)/0.25)
-            slides[2].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.50, y: percentOffset.x/0.50)
-            
-        } else if(percentOffset.x > 0.50 && percentOffset.x <= 0.75) {
-            slides[2].imageView.transform = CGAffineTransform(scaleX: (0.75-percentOffset.x)/0.25, y: (0.75-percentOffset.x)/0.25)
-            slides[3].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.75, y: percentOffset.x/0.75)
-            
-        } else if(percentOffset.x > 0.75 && percentOffset.x <= 1) {
-            slides[3].imageView.transform = CGAffineTransform(scaleX: (1-percentOffset.x)/0.25, y: (1-percentOffset.x)/0.25)
-            slides[4].imageView.transform = CGAffineTransform(scaleX: percentOffset.x, y: percentOffset.x)
-        }
+//        if(percentOffset.x > 0 && percentOffset.x <= 0.25) {
+//
+//            slides[0].imageView.transform = CGAffineTransform(scaleX: (0.25-percentOffset.x)/0.25, y: (0.25-percentOffset.x)/0.25)
+//            slides[1].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.25, y: percentOffset.x/0.25)
+//
+//        } else if(percentOffset.x > 0.25 && percentOffset.x <= 0.50) {
+//            slides[1].imageView.transform = CGAffineTransform(scaleX: (0.50-percentOffset.x)/0.25, y: (0.50-percentOffset.x)/0.25)
+//            slides[2].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.50, y: percentOffset.x/0.50)
+//
+//        } else if(percentOffset.x > 0.50 && percentOffset.x <= 0.75) {
+//            slides[2].imageView.transform = CGAffineTransform(scaleX: (0.75-percentOffset.x)/0.25, y: (0.75-percentOffset.x)/0.25)
+//            slides[3].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.75, y: percentOffset.x/0.75)
+//
+//        } else if(percentOffset.x > 0.75 && percentOffset.x <= 1) {
+//            slides[3].imageView.transform = CGAffineTransform(scaleX: (1-percentOffset.x)/0.25, y: (1-percentOffset.x)/0.25)
+//            slides[4].imageView.transform = CGAffineTransform(scaleX: percentOffset.x, y: percentOffset.x)
+//        }
     }
     
     func scrollView(_ scrollView: UIScrollView, didScrollToPercentageOffset percentageHorizontalOffset: CGFloat) {

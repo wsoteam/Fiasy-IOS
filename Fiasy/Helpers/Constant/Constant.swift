@@ -17,6 +17,9 @@ let kScrollAnimationSpeed: CGFloat = 300.0
 let kRangeLayerMaximumWidth: Float = 7000.0
 let kRangeLayerMaximumHeight: Float = 7000.0
 
+let RUS = "ru"
+let EN = "en"
+
 class Constant {
     
     static let PAYMENT_COMPLETE = "PaymentComplete"

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class SelectActivityTableViewCell: UICollectionViewCell {
@@ -28,7 +27,6 @@ class SelectActivityTableViewCell: UICollectionViewCell {
         
         setupSlider()
         changeState(value: 0.0)
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "active"]) // +
         Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "active"]) // +
     }
     
@@ -36,7 +34,7 @@ class SelectActivityTableViewCell: UICollectionViewCell {
     func fillCell(delegate: QuizViewOutput) {
         self.delegate = delegate
         
-        delegate.changeTitle(title: "Выберите свою активность")
+        delegate.changeTitle(title: LS(key: .SELECT_YOUR_ACTIVITY))
         delegate.changeStateBackButton(hidden: false)
         delegate.changeStateNextButton(state: true)
         delegate.changePageControl(index: 4)
@@ -58,25 +56,25 @@ class SelectActivityTableViewCell: UICollectionViewCell {
         switch value {
         case 0.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "1_step")
-            descriptionLabel.text = "Минимальная нагрузка"
+            descriptionLabel.text = LS(key: .FIRST_ACTIVITY)
         case 1.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "2_step")
-            descriptionLabel.text = "Легкая физическая нагрузка\nв течении дня"
+            descriptionLabel.text = LS(key: .SECOND_ACTIVITY)
         case 2.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "3_step")
-            descriptionLabel.text = "Тренировки 2-4 раза в неделю\n(или работа средней тяжести)"
+            descriptionLabel.text = LS(key: .THIRD_ACTIVITY)
         case 3.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "4_step")
-            descriptionLabel.text = "Интенсивные тренировки\n4-5 раз в неделю"
+            descriptionLabel.text = LS(key: .FOURTH_ACTIVITY)
         case 4.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "5_step")
-            descriptionLabel.text = "Ежедневные интенсивные\nтренировки"
+            descriptionLabel.text = LS(key: .FIVE_ACTIVITY)
         case 5.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "6_step")
-            descriptionLabel.text = "Тренировки 5-7 раз в неделю,\nпо два раза в день"
+            descriptionLabel.text = LS(key: .SIX_ACTIVITY)
         case 6.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "7_step")
-            descriptionLabel.text = "Тяжелая физическая работа или\nежедневные интенсивные тренировки\nпо 2 раза в день"
+            descriptionLabel.text = LS(key: .SEVEN_ACTIVITY)
         default:
             break
         }

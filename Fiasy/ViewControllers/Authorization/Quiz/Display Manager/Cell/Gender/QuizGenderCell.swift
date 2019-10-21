@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class QuizGenderCell: UICollectionViewCell {
@@ -31,7 +30,6 @@ class QuizGenderCell: UICollectionViewCell {
             bottomHeightConstraint.constant = 10
             topHeightConstraint.constant = 10
         }
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "male"]) // +
         Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "male"]) // +
     }
     
@@ -39,12 +37,14 @@ class QuizGenderCell: UICollectionViewCell {
     func fillCell(delegate: QuizViewOutput) {
         self.delegate = delegate
         
-        delegate.changeTitle(title: "Выберите ваш пол")
+        delegate.changeTitle(title: LS(key: .SELECT_YOUR_GENDER))
         delegate.changeStateBackButton(hidden: true)
         delegate.changePageControl(index: 0)
         
         if let _ = UserInfo.sharedInstance.registrationFlow.gender {
             delegate.changeStateNextButton(state: true)
+        } else {
+            delegate.changeStateNextButton(state: false)
         }
     }
     
@@ -56,12 +56,12 @@ class QuizGenderCell: UICollectionViewCell {
         case 0:
             leftImage.image = #imageLiteral(resourceName: "Group (20)")
             rightImage.image = #imageLiteral(resourceName: "Group 2 (2)")
-            titleLabel.text = "Вы выбрали женщину"
+            titleLabel.text = LS(key: .SELECTED_WOMAN)
             UserInfo.sharedInstance.registrationFlow.gender = 0
         case 1:
             leftImage.image = #imageLiteral(resourceName: "Group (19)")
             rightImage.image = #imageLiteral(resourceName: "Group 2 (3)")
-            titleLabel.text = "Вы выбрали мужчину"
+            titleLabel.text = LS(key: .SELECTED_MAN)
             UserInfo.sharedInstance.registrationFlow.gender = 1
         default:
             break

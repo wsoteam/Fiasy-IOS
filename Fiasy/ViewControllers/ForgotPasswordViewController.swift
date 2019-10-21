@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Intercom
 import Amplitude_iOS
 
 class ForgotPasswordViewController: UIViewController {
@@ -34,7 +33,8 @@ class ForgotPasswordViewController: UIViewController {
     //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        localizeDesign()
         setupInitialState()
     }
     
@@ -53,15 +53,15 @@ class ForgotPasswordViewController: UIViewController {
     
     //MARK: - Actions -
     @IBAction func closeClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "Закрыть фому?", message: "Закрывая форму, вы не сможете\nвосстановить пароль", preferredStyle: .alert)
+        let alert = UIAlertController(title: LS(key: .RESET_CLOSE_SCREEN), message: LS(key: .RESET_CLOSE_DESCRIPTION), preferredStyle: .alert)
     
-        let close = UIAlertAction(title: "Закрыть", style: .default) { (alert) in
+        let close = UIAlertAction(title: LS(key: .RESET_CLOSE_TITLE), style: .default) { (alert) in
             self.dismiss(animated: true)
         }
         close.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
         alert.addAction(close)
 
-        let continueAction = UIAlertAction(title: "Продолжить", style: .cancel, handler: nil)
+        let continueAction = UIAlertAction(title: LS(key: .RESET_CLOSE_CONTINUE), style: .cancel, handler: nil)
         continueAction.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
         alert.addAction(continueAction)
         alert.setValue(NSAttributedString(string: alert.title ?? "", attributes: [.font : UIFont.sfProTextSemibold(size: 17), .foregroundColor : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)]), forKey: "attributedTitle")
@@ -73,7 +73,7 @@ class ForgotPasswordViewController: UIViewController {
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         guard let text = emailTextField.text, !text.isEmpty else { return }
         guard text.isValidEmail() else {
-            errorLabel.text = "Неверный формат почты"
+            errorLabel.text = LS(key: .WRONG_MAIL_ERROR)
             separatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             errorLabel.alpha = 1
             return
@@ -83,13 +83,12 @@ class ForgotPasswordViewController: UIViewController {
             self.sendButton.hideLoading()
             if let _ = error {
                 self.separatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
-                self.errorLabel.text = "Данного пользователя не существует"
+                self.errorLabel.text = LS(key: .USER_DOES_NOT_EXIST)
                 self.errorLabel.alpha = 1
             } else {
-                Intercom.logEvent(withName: "resend_success") // +
                 Amplitude.instance().logEvent("resend_success") // +
-                self.sendDescriptionLabel.text = "Проверьте почту"
-                self.sendButton.setTitle("  ОТПРАВЛЕНО", for: .normal)
+                self.sendDescriptionLabel.text = LS(key: .CHECK_MAIL)
+                self.sendButton.setTitle("  \(LS(key: .SENDED))", for: .normal)
                 self.sendButton.setImage(#imageLiteral(resourceName: "Shape (2)"), for: .normal)
                 self.delayWithSeconds(2) {
                     self.dismiss(animated: true)
@@ -108,6 +107,13 @@ class ForgotPasswordViewController: UIViewController {
             sendButton.titleLabel?.font = sendButton.titleLabel?.font.withSize(14)
             sendDescriptionLabel.font = sendDescriptionLabel.font.withSize(13)
         }
+    }
+    
+    private func localizeDesign() {
+        titleLabel.text = LS(key: .RESET_PASSWORD_TITLE)
+        emailTitleLabel.text = LS(key: .ENTER_MAIL_DESCRIPTION)
+        sendButton.setTitle(LS(key: .RESET_SEND), for: .normal)
+        sendDescriptionLabel.text = LS(key: .WE_SEND_EMAIL)
     }
     
     private func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {

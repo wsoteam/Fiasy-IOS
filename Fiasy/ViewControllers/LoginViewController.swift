@@ -3,7 +3,6 @@ import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
 import FirebaseDatabase
-import Intercom
 import Amplitude_iOS
 
 class LoginViewController: UIViewController {
@@ -38,6 +37,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        localizeDesign()
         setupInitialState()
     }
     
@@ -62,10 +62,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func emailLogin(_ sender: Any) {
         guard let email = loginField.text, email.isValidEmail() else {
-            emailErrorLabel.text = "Неверный формат почты"
+            emailErrorLabel.text = LS(key: .WRONG_MAIL_ERROR)
             emailSeparatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             emailErrorLabel.alpha = 1
-//            Intercom.logEvent(withName: "enter_error", metaData: ["error_type" : "invalid email"]) //
 //            Amplitude.instance()?.logEvent("enter_error", withEventProperties: ["error_type" : "invalid email"]) //
             return
         }
@@ -73,20 +72,13 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: passwordField.text ?? "") { [weak self] user, error in
             guard let strongSelf = self else { return }
             if let _ = error {
-                strongSelf.passwordErrorLabel.text = "Неверные данные"
+                strongSelf.passwordErrorLabel.text = LS(key: .WRONG_DATA)
                 strongSelf.passwordErrorLabel.alpha = 1
                 strongSelf.emailSeparatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
                 strongSelf.passwordSeparatorView.backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
-//                Intercom.logEvent(withName: "enter_error", metaData: ["error_type" : "invalid password"]) //
-//                Amplitude.instance()?.logEvent("enter_error", withEventProperties: ["error_type" : "invalid password"]) //
             } else {
                 if Auth.auth().currentUser != nil {
                     FirebaseDBManager.checkFilledProfile { (state) in }
-                    if let uid = Auth.auth().currentUser?.uid {
-                        Intercom.registerUser(withUserId: uid)
-                    }
-
-                    Intercom.logEvent(withName: "enter_success", metaData: ["type" : "email"]) // +
                     Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "email"]) // +
                     strongSelf.performSegue(withIdentifier: "segueToMenu", sender: nil)
                 }
@@ -110,10 +102,6 @@ class LoginViewController: UIViewController {
                     return AlertComponent.sharedInctance.showAlertMessage(title: "Login Error",
                                                 message: error.localizedDescription, vc: self)
                 }
-                if let uid = Auth.auth().currentUser?.uid {
-                    Intercom.registerUser(withUserId: uid)
-                }
-                Intercom.logEvent(withName: "enter_success", metaData: ["type" : "fb"]) // +
                 Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "fb"]) // +
                 
                 if Auth.auth().currentUser != nil {
@@ -132,7 +120,7 @@ class LoginViewController: UIViewController {
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
         guard isConnectedToNetwork() else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
+            return AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .NO_INTERNET_CONNECTION), vc: self)
         }
         GIDSignIn.sharedInstance().signIn()
     }
@@ -171,6 +159,22 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    private func localizeDesign() {
+        screenTitleLabel.text = LS(key: .SIGN_IN_TITLE)
+        for (index, item) in fieldsTitleLabel.enumerated() {
+            switch index {
+            case 0:
+                item.text = LS(key: .LOGIN)
+            default:
+                item.text = LS(key: .PASSWORD)
+            }
+        }
+        signInButton.setTitle(LS(key: .SIGN_IN_TITLE).uppercased(), for: .normal)
+        forgotLabel.text = LS(key: .FORGOT_PASSWORD)
+        resetPasswordButton.setTitle(LS(key: .RESTORE), for: .normal)
+        orLabel.text = LS(key: .OR_SIGN_IN_BY)
+    }
 }
 
 extension LoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
@@ -202,10 +206,6 @@ extension LoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                                     message: error.localizedDescription, vc: strongSelf)
                 } else {
                     if Auth.auth().currentUser != nil {
-                        if let uid = Auth.auth().currentUser?.uid {
-                            Intercom.registerUser(withUserId: uid)
-                        }
-                        Intercom.logEvent(withName: "enter_success", metaData: ["type" : "google"]) // +
                         Amplitude.instance()?.logEvent("enter_success", withEventProperties: ["type" : "google"]) // +
                         
                         FirebaseDBManager.checkFilledProfile { (state) in

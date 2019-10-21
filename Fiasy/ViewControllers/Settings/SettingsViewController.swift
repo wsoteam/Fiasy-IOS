@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Intercom
 import Amplitude_iOS
 
 class SettingsViewController: UIViewController {
@@ -24,7 +23,6 @@ class SettingsViewController: UIViewController {
         picker.signOut = { [weak self] in
             guard let `self` = self else { return }
             UserInfo.sharedInstance.removeRegistrationFields()
-            Intercom.logout()
             do {
                 try Auth.auth().signOut()
             } catch {
@@ -45,7 +43,6 @@ class SettingsViewController: UIViewController {
         tableView.register(type: SettingCell.self)
         tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         Amplitude.instance().logEvent("view_settings") // +
-        Intercom.logEvent(withName: "view_settings") // +
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +82,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return purchaseIsValid ? 4 : 6
+        return purchaseIsValid ? 4 : 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,15 +109,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.row {
             case 0:
                 performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
+//            case 1:
+//                performSegue(withIdentifier: "sequePromotionalCodeScreen", sender: nil)
             case 1:
-                performSegue(withIdentifier: "sequePromotionalCodeScreen", sender: nil)
-            case 2:
                 performSegue(withIdentifier: "sequeEditProfile", sender: nil)
-            case 3:
+            case 2:
                 performSegue(withIdentifier: "sequeCaloriesIntake", sender: nil)
-            case 4:
+            case 3:
                 performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
-            case 5:
+            case 4:
                 picker.showPicker()
             default:
                 break

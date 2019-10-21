@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 protocol QuizFinishViewOutput {
@@ -34,13 +33,13 @@ class QuizFinishDisplayManager: NSObject {
     }
     
     func nextScrollCell() {
-        if cells.indices.contains(currentCellIndex.row + 1) {
-            Intercom.logEvent(withName: "question_next", metaData: ["question" : "feature"]) // +
-            Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "feature"]) // +
-            scrollCollection(by: currentCellIndex.row + 1, position: .right)
-        } else if currentCellIndex.row == 1 {
-            output.openPremiumScreen()
-        }
+//        if cells.indices.contains(currentCellIndex.row + 1) {
+//            Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "feature"]) // +
+//            scrollCollection(by: currentCellIndex.row + 1, position: .right)
+//        } else if currentCellIndex.row == 1 {
+//            output.openPremiumScreen()
+//        }
+        output.openPremiumScreen()
     }
     
     func backScrollCell() {

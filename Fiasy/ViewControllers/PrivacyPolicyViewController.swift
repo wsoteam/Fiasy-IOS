@@ -1,10 +1,10 @@
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class PrivacyPolicyViewController: UIViewController {
     
     //MARK: - Outlet -
+    @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
     //MARK: - Properties -
@@ -15,6 +15,7 @@ class PrivacyPolicyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleNavigationLabel.text = LS(key: .PRIVACY_DESCRIPTION)
         textView.setContentOffset(.zero, animated: false)
         textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }

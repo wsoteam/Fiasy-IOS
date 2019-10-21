@@ -9,7 +9,6 @@
 import UIKit
 import Kingfisher
 import Amplitude_iOS
-import Intercom
 
 protocol PremiumDisplayDelegate {
     func showPremiumScreen()
@@ -47,7 +46,6 @@ class RecipesDetailsViewController: UIViewController {
         setupTableView()
         ownRecipe = ((backViewController() as? GeneralTabBarViewController) != nil)
 
-        Intercom.logEvent(withName: "view_recipe", metaData: ["recipe_item" : selectedRecipe?.name]) // +
         Amplitude.instance()?.logEvent("view_recipe", withEventProperties: ["recipe_item" : selectedRecipe?.name]) // +
     }
     
@@ -174,7 +172,6 @@ extension RecipesDetailsViewController: UITableViewDataSource, UITableViewDelega
 extension RecipesDetailsViewController: RecipesDetailsDelegate {
     
     func showPremiumScreen() {
-        Intercom.logEvent(withName: "product_page_micro") // +
         Amplitude.instance()?.logEvent("product_page_micro") // +
         performSegue(withIdentifier: "sequePremiumScreen", sender: nil)
     }

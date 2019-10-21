@@ -12,6 +12,9 @@ import VisualEffectView
 class PremiumFinishViewController: UIViewController {
     
     // MARK: - Outlets -
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var middleLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var containerView: UIView!
     
@@ -49,15 +52,6 @@ class PremiumFinishViewController: UIViewController {
             self?.containerView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             }, completion: {[weak self] _ in
                 self?.performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
-//                if self?.isAutorization == true {
-//                    self?.performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
-//                } else {
-//                    self?.dismiss(animated: true, completion: {
-//                        if let vc = UIApplication.getTopMostViewController() {
-//                            vc.navigationController?.popViewController(animated: true)
-//                        }
-//                    })
-//                }
         })
     }
 }

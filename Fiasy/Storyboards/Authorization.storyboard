@@ -35,10 +35,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoJ-UQ-Vey">
-                                <rect key="frame" x="0.0" y="40" width="320" height="189"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="188.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_profile_data_mk6k" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-PR-uHZ">
-                                        <rect key="frame" x="152" y="86.5" width="16" height="16"/>
+                                        <rect key="frame" x="37.5" y="3" width="245" height="182"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,16 +50,16 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kbF-dg-5rd">
-                                <rect key="frame" x="20" y="239" width="280" height="170.5"/>
+                                <rect key="frame" x="20" y="238.5" width="280" height="171.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЗАРЕГИСТРИРОВАТЬСЯ С ПОМОЩЬЮ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nr5-g3-Oe9">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="30.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="31.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
                                         <color key="textColor" red="0.74501591919999999" green="0.74514538050000001" blue="0.74500781299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpD-0i-i5h">
-                                        <rect key="frame" x="0.0" y="45.5" width="280" height="80"/>
+                                        <rect key="frame" x="0.0" y="46.5" width="280" height="80"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="OCx-2R-bb9">
                                                 <rect key="frame" x="40" y="0.0" width="200" height="80"/>
@@ -97,10 +97,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbG-Mg-9ky">
-                                        <rect key="frame" x="0.0" y="140.5" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="141.5" width="280" height="30"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-hg-haC">
-                                                <rect key="frame" x="81" y="14.5" width="35" height="1"/>
+                                                <rect key="frame" x="80" y="14.5" width="35" height="1"/>
                                                 <color key="backgroundColor" red="0.74109476804733276" green="0.74122363328933716" blue="0.74108666181564331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="0yK-xD-GUI"/>
@@ -108,13 +108,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ИЛИ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tds-Dx-iqh">
-                                                <rect key="frame" x="126" y="7" width="28.5" height="15.5"/>
+                                                <rect key="frame" x="125" y="7" width="30.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
                                                 <color key="textColor" red="0.74501591919999999" green="0.74514538050000001" blue="0.74500781299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ww-dg-q2J">
-                                                <rect key="frame" x="164.5" y="14.5" width="35" height="1"/>
+                                                <rect key="frame" x="165.5" y="14.5" width="35" height="1"/>
                                                 <color key="backgroundColor" red="0.74109476804733276" green="0.74122363328933716" blue="0.74108666181564331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="6pr-4e-kEs"/>
@@ -136,7 +136,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sOv-LP-VjG">
-                                <rect key="frame" x="20" y="409.5" width="280" height="124"/>
+                                <rect key="frame" x="20" y="410" width="280" height="124"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLx-3e-sVO">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="10"/>
@@ -166,16 +166,16 @@
                                         <rect key="frame" x="0.0" y="84" width="280" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Clb-h9-3rH">
-                                                <rect key="frame" x="43" y="0.0" width="194" height="40"/>
+                                                <rect key="frame" x="38.5" y="0.0" width="203" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уже есть аккаунт? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5w-Ti-dCN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="136" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="143" height="40"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                         <color key="textColor" red="0.64306563138961792" green="0.64317858219146729" blue="0.64305847883224487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqc-2a-dnE">
-                                                        <rect key="frame" x="141" y="0.0" width="53" height="40"/>
+                                                        <rect key="frame" x="148" y="0.0" width="55" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="rii-ul-tnQ"/>
                                                         </constraints>
@@ -264,25 +264,25 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Войти" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-0g-PRv">
-                                <rect key="frame" x="15" y="65" width="91.5" height="37.5"/>
+                                <rect key="frame" x="15" y="65" width="105" height="38.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ynW-Ly-NS2">
-                                <rect key="frame" x="15" y="83" width="290" height="189"/>
+                                <rect key="frame" x="15" y="82" width="290" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="o32-VG-EuB">
-                                        <rect key="frame" x="0.0" y="0.0" width="290" height="89.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOj-aK-oKx">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787410736084" green="0.65102213621139526" blue="0.65090078115463257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWe-tw-iTW">
-                                                <rect key="frame" x="0.0" y="17.5" width="290" height="40"/>
+                                                <rect key="frame" x="0.0" y="18" width="290" height="40"/>
                                                 <color key="tintColor" red="1" green="0.60553437470000004" blue="0.18034970759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Hck-Ab-zzr"/>
@@ -295,14 +295,14 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raw-Vz-XQH">
-                                                <rect key="frame" x="0.0" y="57.5" width="290" height="2"/>
+                                                <rect key="frame" x="0.0" y="58" width="290" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750869751" green="0.92162638902664185" blue="0.92145842313766479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Mq8-Al-RQx"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZN-dB-rI8">
-                                                <rect key="frame" x="0.0" y="59.5" width="290" height="30"/>
+                                                <rect key="frame" x="0.0" y="60" width="290" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ciA-C1-EwJ"/>
                                                 </constraints>
@@ -313,16 +313,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="axw-GJ-xWA">
-                                        <rect key="frame" x="0.0" y="99.5" width="290" height="89.5"/>
+                                        <rect key="frame" x="0.0" y="100" width="290" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOI-4V-yaa">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbX-os-2Bk">
-                                                <rect key="frame" x="0.0" y="17.5" width="290" height="40"/>
+                                                <rect key="frame" x="0.0" y="18" width="290" height="40"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBN-dH-rio">
                                                         <rect key="frame" x="0.0" y="0.0" width="235" height="40"/>
@@ -365,14 +365,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XD1-mx-DUG">
-                                                <rect key="frame" x="0.0" y="57.5" width="290" height="2"/>
+                                                <rect key="frame" x="0.0" y="58" width="290" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="Ehz-mp-W6T"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNG-HH-oWX">
-                                                <rect key="frame" x="0.0" y="59.5" width="290" height="30"/>
+                                                <rect key="frame" x="0.0" y="60" width="290" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Zli-yE-4g5"/>
                                                 </constraints>
@@ -408,16 +408,16 @@
                                         <rect key="frame" x="0.0" y="64" width="260" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dDx-BM-xCY">
-                                                <rect key="frame" x="19.5" y="0.0" width="221" height="40"/>
+                                                <rect key="frame" x="11.5" y="0.0" width="237" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Забыли пароль?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Uj-CE-ohh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="40"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
                                                         <color key="textColor" red="0.64306563139999995" green="0.64317858220000002" blue="0.6430584788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4w-pW-ysX">
-                                                        <rect key="frame" x="122" y="0.0" width="99" height="40"/>
+                                                        <rect key="frame" x="130" y="0.0" width="107" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Ie9-F6-6Dp"/>
                                                         </constraints>
@@ -459,7 +459,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ИЛИ ВОЙТИ С ПОМОЩЬЮ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgk-gi-XsB">
-                                                        <rect key="frame" x="125.5" y="8" width="29" height="14"/>
+                                                        <rect key="frame" x="125.5" y="8" width="29" height="14.5"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                                         <color key="textColor" red="0.74501591919999999" green="0.74514538050000001" blue="0.74500781299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -628,25 +628,25 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восстановить пароль" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPz-cq-Kzc">
-                                <rect key="frame" x="15" y="70" width="210.5" height="75"/>
+                                <rect key="frame" x="15" y="70" width="241" height="76.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="32"/>
                                 <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zpi-YQ-UKd">
-                                <rect key="frame" x="20" y="142.5" width="280" height="303.5"/>
+                                <rect key="frame" x="20" y="142" width="280" height="304"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9dq-UG-M1X">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="89.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите Email для восстановления" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e28-Gy-Ho2">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IGl-Su-aW6">
-                                                <rect key="frame" x="0.0" y="17.5" width="280" height="40"/>
+                                                <rect key="frame" x="0.0" y="18" width="280" height="40"/>
                                                 <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="nLj-tO-ws9"/>
@@ -659,14 +659,14 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4h-3U-izD">
-                                                <rect key="frame" x="0.0" y="57.5" width="280" height="2"/>
+                                                <rect key="frame" x="0.0" y="58" width="280" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="WWi-Su-3B6"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный формат почты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVT-CM-KE2">
-                                                <rect key="frame" x="0.0" y="59.5" width="280" height="30"/>
+                                                <rect key="frame" x="0.0" y="60" width="280" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="wiy-X3-8ml"/>
                                                 </constraints>
@@ -677,14 +677,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-Yg-oee">
-                                        <rect key="frame" x="0.0" y="89.5" width="280" height="100"/>
+                                        <rect key="frame" x="0.0" y="90" width="280" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="lYi-he-Adz"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-oo-NsN">
-                                        <rect key="frame" x="0.0" y="189.5" width="280" height="114"/>
+                                        <rect key="frame" x="0.0" y="190" width="280" height="114"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mI-wu-xnj" customClass="LoadingButton" customModule="Fiasy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -724,7 +724,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixN-h4-dAp">
-                                        <rect key="frame" x="0.0" y="303.5" width="280" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="304" width="280" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="Eli-bO-OCg"/>
@@ -923,7 +923,7 @@
         <!--Quiz Finish View Controller-->
         <scene sceneID="6Ic-HG-wDE">
             <objects>
-                <viewController id="qpF-Lk-9eG" customClass="QuizFinishViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuizFinishViewController" id="qpF-Lk-9eG" customClass="QuizFinishViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Cq-R7-sCv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -972,7 +972,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vHC-g0-Y8s">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="452"/>
+                                        <rect key="frame" x="0.0" y="44" width="320" height="415"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="887-pc-adQ">
                                             <size key="itemSize" width="50" height="50"/>
@@ -992,21 +992,34 @@
                                         </cells>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaC-dj-JAg">
-                                        <rect key="frame" x="0.0" y="496" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="459" width="320" height="89"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wi5-5X-Erg">
-                                                <rect key="frame" x="152" y="15" width="16" height="22"/>
-                                                <state key="normal" image="Group (17)"/>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdh-q5-1Vh">
+                                                <rect key="frame" x="96" y="15" width="128" height="44"/>
+                                                <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="r7f-ex-2dx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
+                                                <state key="normal" title="ДАЛЕЕ  " image="arrow_right22">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="nextButtonClicked:" destination="qpF-Lk-9eG" eventType="touchUpInside" id="fO6-7A-mlg"/>
+                                                    <action selector="nextButtonClicked:" destination="qpF-Lk-9eG" eventType="touchUpInside" id="cdv-gV-G8M"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="wi5-5X-Erg" firstAttribute="top" secondItem="WaC-dj-JAg" secondAttribute="top" constant="15" id="PWi-1a-AkW"/>
-                                            <constraint firstItem="wi5-5X-Erg" firstAttribute="centerX" secondItem="WaC-dj-JAg" secondAttribute="centerX" id="dLf-z3-30Q"/>
-                                            <constraint firstAttribute="bottom" secondItem="wi5-5X-Erg" secondAttribute="bottom" constant="15" id="qfS-JJ-hox"/>
+                                            <constraint firstItem="Rdh-q5-1Vh" firstAttribute="centerX" secondItem="WaC-dj-JAg" secondAttribute="centerX" id="CBf-z7-FB9"/>
+                                            <constraint firstItem="Rdh-q5-1Vh" firstAttribute="width" secondItem="WaC-dj-JAg" secondAttribute="width" multiplier="0.4" id="LfY-zQ-bvM"/>
+                                            <constraint firstAttribute="bottom" secondItem="Rdh-q5-1Vh" secondAttribute="bottom" constant="30" id="eQA-Ec-8ys"/>
+                                            <constraint firstItem="Rdh-q5-1Vh" firstAttribute="top" secondItem="WaC-dj-JAg" secondAttribute="top" constant="15" id="jeV-gF-f8y"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1025,22 +1038,22 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6js-3g-GWt">
-                                <rect key="frame" x="27" y="151" width="266" height="286"/>
+                                <rect key="frame" x="27" y="150.5" width="266" height="287.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подождите немного" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejR-ty-E8I">
-                                        <rect key="frame" x="0.0" y="0.0" width="266" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="266" height="26.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Идет расчет индивидуального плана питания" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="318-CF-dTs">
-                                        <rect key="frame" x="0.0" y="36" width="266" height="40"/>
+                                        <rect key="frame" x="0.0" y="36.5" width="266" height="41"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.62738090753555298" green="0.62749135494232178" blue="0.62737399339675903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1E-9O-Uj7">
-                                        <rect key="frame" x="0.0" y="86" width="266" height="200"/>
+                                        <rect key="frame" x="0.0" y="87.5" width="266" height="200"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wG-QK-jxe" customClass="CircularProgress" customModule="Fiasy" customModuleProvider="target">
                                                 <rect key="frame" x="93" y="60" width="80" height="80"/>
@@ -1051,7 +1064,7 @@
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shape (3)" translatesAutoresizingMaskIntoConstraints="NO" id="SB4-BO-a1r">
-                                                <rect key="frame" x="125" y="92" width="16" height="16"/>
+                                                <rect key="frame" x="119" y="89" width="28" height="22"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1081,8 +1094,11 @@
                         <outlet property="backButton" destination="lgV-fj-mnX" id="sbY-An-KAi"/>
                         <outlet property="collectionView" destination="vHC-g0-Y8s" id="Ko1-Xb-kqj"/>
                         <outlet property="finishStackView" destination="6js-3g-GWt" id="6iD-Dj-9hj"/>
+                        <outlet property="middleLabel" destination="318-CF-dTs" id="3xV-Xg-iq0"/>
+                        <outlet property="nextButton" destination="Rdh-q5-1Vh" id="jat-dR-ysH"/>
                         <outlet property="progressView" destination="6wG-QK-jxe" id="BEb-qI-a78"/>
                         <outlet property="secondView" destination="JPX-NR-rbz" id="YRw-zZ-Y3a"/>
+                        <outlet property="topLabel" destination="ejR-ty-E8I" id="CMw-6I-NKn"/>
                         <segue destination="p6a-Pd-F1x" kind="show" identifier="sequePremiumQuizScreen" id="Kl9-bx-ELG"/>
                     </connections>
                 </viewController>
@@ -1131,32 +1147,32 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqL-bR-3FF">
-                                <rect key="frame" x="10" y="70" width="179.5" height="35"/>
+                                <rect key="frame" x="10" y="70" width="208.5" height="36"/>
                                 <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="30"/>
                                 <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2X-K7-t5N">
-                                <rect key="frame" x="0.0" y="115" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="116" width="320" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="n0q-6M-cE1"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hq1-2i-PlP">
-                                <rect key="frame" x="15" y="135" width="290" height="183.5"/>
+                                <rect key="frame" x="15" y="136" width="290" height="185"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kuu-WJ-8h8">
-                                        <rect key="frame" x="0.0" y="0.0" width="290" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoM-K3-w1c">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9R3-LB-FW7">
-                                                <rect key="frame" x="0.0" y="17.5" width="290" height="35"/>
+                                                <rect key="frame" x="0.0" y="18" width="290" height="35"/>
                                                 <color key="tintColor" red="1" green="0.60553437470000004" blue="0.18034970759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="7eO-ot-Sit"/>
@@ -1175,14 +1191,14 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhY-z6-pod">
-                                                <rect key="frame" x="0.0" y="52.5" width="290" height="2"/>
+                                                <rect key="frame" x="0.0" y="53" width="290" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="vxA-iD-7mh"/>
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfv-id-hZq">
-                                                <rect key="frame" x="0.0" y="54.5" width="290" height="20"/>
+                                                <rect key="frame" x="0.0" y="55" width="290" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="7il-k7-EuB"/>
                                                 </constraints>
@@ -1193,16 +1209,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zE6-7b-aZ6">
-                                        <rect key="frame" x="0.0" y="64.5" width="290" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="65" width="290" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVX-lr-HNy">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57l-Lj-I0A">
-                                                <rect key="frame" x="0.0" y="17.5" width="290" height="35"/>
+                                                <rect key="frame" x="0.0" y="18" width="290" height="35"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Arm-vq-9M9">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
@@ -1246,14 +1262,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfx-zD-QfK">
-                                                <rect key="frame" x="0.0" y="52.5" width="290" height="2"/>
+                                                <rect key="frame" x="0.0" y="53" width="290" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="LeT-KF-Ah5"/>
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lK-qd-mX9">
-                                                <rect key="frame" x="0.0" y="54.5" width="290" height="20"/>
+                                                <rect key="frame" x="0.0" y="55" width="290" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="eUR-iR-ak1"/>
                                                 </constraints>
@@ -1264,16 +1280,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ld5-X3-jC5">
-                                        <rect key="frame" x="0.0" y="129" width="290" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="130" width="290" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите повторно пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5w-Hr-3Rn">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEY-V6-OcA">
-                                                <rect key="frame" x="0.0" y="17.5" width="290" height="35"/>
+                                                <rect key="frame" x="0.0" y="18" width="290" height="35"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-E2-HPw">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
@@ -1317,14 +1333,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cp8-n8-leE">
-                                                <rect key="frame" x="0.0" y="52.5" width="290" height="2"/>
+                                                <rect key="frame" x="0.0" y="53" width="290" height="2"/>
                                                 <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="iv0-EV-kEQ"/>
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDU-0N-WJq">
-                                                <rect key="frame" x="0.0" y="54.5" width="290" height="20"/>
+                                                <rect key="frame" x="0.0" y="55" width="290" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="QI2-IM-NSi"/>
                                                 </constraints>
@@ -1337,7 +1353,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0ek-qj-IM2">
-                                <rect key="frame" x="15" y="333.5" width="290" height="107.5"/>
+                                <rect key="frame" x="15" y="336" width="290" height="108"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkX-z9-te0">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
@@ -1357,16 +1373,16 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5zB-9m-q8V">
-                                        <rect key="frame" x="0.0" y="60" width="290" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="60" width="290" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="я согласен с условиями" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JG1-Pn-Umv">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="18"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
                                                 <color key="textColor" red="0.64306563139999995" green="0.64317858220000002" blue="0.6430584788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQS-12-a23">
-                                                <rect key="frame" x="0.0" y="17.5" width="290" height="30"/>
+                                                <rect key="frame" x="0.0" y="18" width="290" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="WTG-dn-VLS"/>
                                                 </constraints>
@@ -1384,10 +1400,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pq0-hb-Ux6">
-                                <rect key="frame" x="0.0" y="441" width="320" height="127"/>
+                                <rect key="frame" x="0.0" y="444" width="320" height="124"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ICV-zv-w10">
-                                        <rect key="frame" x="20" y="8.5" width="280" height="110"/>
+                                        <rect key="frame" x="20" y="7" width="280" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zI1-Vv-2rb">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
@@ -1401,7 +1417,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ИЛИ ВОЙТИ С ПОМОЩЬЮ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4B-jN-lC1">
-                                                        <rect key="frame" x="125.5" y="7.5" width="29" height="15.5"/>
+                                                        <rect key="frame" x="125.5" y="7" width="29" height="16"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
                                                         <color key="textColor" red="0.74501591919999999" green="0.74514538050000001" blue="0.74500781299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1470,13 +1486,13 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8g-dn-bHV">
-                                <rect key="frame" x="70" y="489.5" width="70" height="70"/>
+                                <rect key="frame" x="70" y="491" width="70" height="70"/>
                                 <connections>
                                     <action selector="facebookClicked:" destination="dUA-J7-qOU" eventType="touchUpInside" id="VwH-p4-hvd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR5-mg-bLY">
-                                <rect key="frame" x="180" y="489.5" width="70" height="70"/>
+                                <rect key="frame" x="180" y="491" width="70" height="70"/>
                                 <connections>
                                     <action selector="googleClicked:" destination="dUA-J7-qOU" eventType="touchUpInside" id="psP-CH-ikR"/>
                                 </connections>
@@ -1594,66 +1610,203 @@
                                     <constraint firstAttribute="height" constant="40" id="beB-U8-XaI"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy &amp;  Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STD-bR-77a">
-                                <rect key="frame" x="15" y="70" width="238.5" height="75"/>
-                                <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy &amp;  Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STD-bR-77a">
+                                <rect key="frame" x="15" y="70" width="290" height="60"/>
+                                <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="25"/>
                                 <color key="textColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMr-H3-cb6">
-                                <rect key="frame" x="15" y="165" width="290" height="403"/>
+                                <rect key="frame" x="15" y="150" width="290" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text"> Fiasy Privacy Policy
+                                <string key="text">Условия использования и политика конфиденциальности Fiasy  
+Устанавливая приложение Fiasy и используя его и / или предлагаемые Fiasy услуги, Вы соглашаетесь с условиями использования и политикой конфиденциальности Fiasy (далее совместно – Условия) в полном объеме и безо всяких оговорок и ограничений, а также даете согласие на обработку персональных данных в соответствии с ФЗ №152 "О защите персональных данных". 
 
-By installing our mobile application or in any way using or accessing our Services, you accept the terms and conditions of this Privacy Policy and the processing of your personal data.
+Данные компании – обработчика персональных данных (далее – Компания) 
 
-Personal data controller
+Название Компании 
+ИП Саламов Александр 
 
-Responsible for the processing of your personal data is:
+ИНН 
+319500700005522 
 
-COMPANY NAME
+Адрес регистрации 
+141551, РоссияМосковская обл, Солнечногорский районгор. пос. Андреевка, ул Староандреевская 43 
 
-IP Salamov Alexander
+E-mail для обратной связи 
+sav@wsoteam.com 
 
-CORPORATE IDENTITY NO:
 
-319500700005522
+2. Общие положения 
 
-ADDRESS
+Компания предлагает пользователю сети Интернет (далее – Пользователь) использовать свои услуги на условиях, изложенных в настоящих Условиях. Условия вступают в силу с момента выражения Пользователем согласия с их положениями в порядке, предусмотренном п. 1.4 Условий. 
 
-141551, Russia, Moscow obl., Solnechnogorskii, Andreevka, Staroandreevskaka street 43-231
+Fiasy – онлайн-сервис, который предоставляет пользователям возможность отслеживать питание, физическую активность, вносить персональные данные, получить доступ к информации и контенту о питании, физической активности и на иные темы, а также получать другие услуги. Все существующие на данный момент сервисы и услуги Компании (включая приложение Fiasy, но не ограничиваясь им), условия использования которых ссылаются на данные Условия, а также любое развитие их и/или добавление новых является предметом настоящих Условий. 
 
-E-MAIL
+Актуальная версия Условий доступна в профиле зарегистрированного пользователя и по адресу http://fiasy.com/privacypolice. Условия могут быть изменены без какого-либо специального уведомления, новая редакция Условий вступает в силу с момента их размещения в сети Интернет по указанному в настоящем абзаце адресу, если иное не предусмотрено новой редакцией Условий. 
 
-contact@Fiasy.com
+Начиная использовать какие-либо услуги/их отдельные функции и /или пройдя процедуру регистрации, Пользователь считается принявшим Условия в полном объеме, без всяких оговорок и исключений. В случае несогласия Пользователя с какими-либо из положений Условий, Пользователь не вправе пользоваться услугами Компании. В случае если Компанией были внесены какие-либо изменения в Соглашение в порядке, предусмотренном пунктом 1.3 Соглашения, с которыми Пользователь не согласен, он обязан прекратить использование услуг Компании. Если пользователь продолжает пользоваться приложением после изменения Условий, он считается автоматически принявшим Условия. 
 
-Information about personal data we collect
-Fiasy.com  Fiasy Privacy Policy
 
-By installing our mobile application or in any way using or accessing our Services, you accept the terms and conditions of this Privacy Policy and the processing of your personal data.
+3. Для кого предназначены сервис и услуги Компании 
 
-Personal data controller
+Сервис и услуги Компании предназначены для пользователей 14 лет и старше. Пользователи до 18 лет могут использовать данное приложение с согласия законных представителей. 
 
-Responsible for the processing of your personal data is:
+Все планы питания, марафоны и функционал интервального голодания, а также иные рекомендации по питанию и /или тренировкам предназначены для Пользователей 18 лет и старше. 
 
-COMPANY NAME
+Пользователи с пищевыми расстройствами, диабетом и иными заболеваниями, связанными с ЖКТ, а также беременные и кормящие должны проконсультироваться с врачом до применения планов питания, марафонов, функционала интервального голодания и иных рекомендаций и функционала в приложении. 
 
-IP Salamov Alexander
+Пользователи несут полную ответственность в отношении своего здоровья за последствия применения планов питания, марафонов, функционала голодания и иного функционала приложения. 
 
-CORPORATE IDENTITY NO:
 
-319500700005522
+4. Регистрация и учетная запись Пользователя 
 
-ADDRESS
+Для того чтобы воспользоваться приложением Fiasy или некоторыми отдельными функциями приложения, Пользователю необходимо пройти процедуру регистрации, в результате которой для Пользователя будет создана уникальная учетная запись. 
 
-141551, Russia, Moscow obl., Solnechnogorskii, Andreevka, Staroandreevskaka street 43-231
+Для регистрации Пользователь обязуется предоставить достоверную и полную информацию о себе по вопросам, предлагаемым в форме регистрации, и поддерживать эту информацию в актуальном состоянии. 
 
-E-MAIL
+Пользователь несет полную ответственность за полноту и достоверность предоставляемых сведений. Fiasy не несет ответственность за достоверность и полноту данных, предоставляемых пользователем, и не проверяет их. 
 
-contact@Fiasy.com
+Компания оставляет за собой право удалять информацию и/или аккаунт Пользователя по своему усмотрению, если выяснится, что предоставленная информация неверна, может нанести ущерб другим пользователям, несет оскорбительный характер, является незаконной или мошеннической на территории РФ. 
 
-Information about personal data we collect
-Fiasy.com</string>
+Персональная информация Пользователя, определенная Политикой конфиденциальности и содержащаяся в учетной записи Пользователя, хранится и обрабатывается Компанией в соответствии с условиями Политики конфиденциальности, представленной ниже. 
+
+Пользователь не вправе воспроизводить, повторять и копировать, продавать и перепродавать, а также использовать для каких-либо коммерческих целей дизайн, код и контент Fiasy (включая контент, размещаемый от имени Компании), кроме тех случаев, когда Пользователь получил такое разрешение от Компании. Исключение составляют персональные данные пользователя, которыми он может поделиться по своему усмотрению и под свою ответственность с другим пользователем / лицом, не зарегистрированным в Fiasy. 
+
+В случае нарушения Условий Fiasy оставляет за собой право заблокировать пользователя и/или аккаунт на неопределенный срок без предварительного уведомления. 
+
+5. Контент 
+
+Пользователь самостоятельно несет ответственность за соответствие содержания размещаемого Пользователем контента требованиям действующего законодательства, включая ответственность перед третьими лицами в случаях, когда размещение Пользователем того или иного контента или содержание контента нарушает права и законные интересы третьих лиц, в том числе личные неимущественные права авторов, иные интеллектуальные права третьих лиц, и/или посягает на принадлежащие им нематериальные блага. 
+
+Пользователь признает и соглашается с тем, что Компания не обязана просматривать контент любого вида, размещаемый и/или распространяемый Пользователем в приложении или посредством сервисов Компании, а также то, что Компания имеет право (но не обязанность) по своему усмотрению отказать Пользователю в размещении и/или распространении им контента или удалить любой контент, который доступен в приложении или посредством сервисов Компании. Пользователь осознает и согласен с тем, что он должен самостоятельно оценивать все риски, связанные с использованием контента, включая оценку надежности, полноты или полезности этого контента. 
+
+Пользователь осознает и соглашается с тем, что технология работы приложения и сервисов, используемых Компанией, может потребовать копирование (воспроизведение) контента Пользователя Компанией, а также переработки его Компанией для соответствия техническим требованиям приложения (сервиса, услуги). 
+
+
+6. Об использовании приложения для здоровья 
+
+Компания предоставляет сервис (в частности, приложение) и услуги по отслеживанию питания и физической активности и контенту на эту тему исключительно в целях информирования. 
+
+В частности, в приложении предоставляется возможность самостоятельно конструировать приемы пищи и функционал, который позволяет отслеживать питание до и после голодания, а также доступ к советам и рекомендациям, в том числе от третьих лиц. При этом Компания не несет ответственности за принятие Пользователем решения об использовании какого-либо функционала /контента или их частей и за последствия таких решений. 
+
+Никакая часть контента и /или функционала приложения, иных сервисов и услуг Компании не может быть истолкована как медицинские советы, диагнозы и не может служить заменой консультации со специалистом соответствующего профиля. 
+
+Перед использованием приложения / части его функционала, в особенности функционала голодания, а также иных сервисов и услуг Компании, Пользователю следует проконсультироваться с врачом / соответствующим профильным специалистом. В особенности это касается Пользователей, о которых упоминается в п. 3, пп.3 данных Условий. 
+
+7. Сайты и контент третьих лиц 
+
+Приложение Fiasy и иные сервисы Компании могут содержать ссылки на другие сайты в сети Интернет (сайты третьих лиц). Указанные третьи лица и их контент не проверяются Компанией на соответствие тем или иным требованиям (достоверности, полноты, законности и т.п.). Компания не несет ответственность за любую информацию, материалы, размещенные на сайтах третьих лиц, к которым Пользователь получает доступ с использованием сервисов и приложения, в том числе, за любые мнения или утверждения, выраженные на сайтах третьих лиц, рекламу и т.п., а также за доступность таких сайтов или контента и последствия их использования Пользователем. 
+
+Ссылка (в любой форме) на любой сайт, продукт, услугу, любую информацию коммерческого или некоммерческого характера, размещенная в приложении или ином сервисе, не является одобрением или рекомендацией данных продуктов (услуг, деятельности) со стороны Компании, за исключением случаев, когда на это прямо указывается на ресурсах Компании. 
+
+8. Исключительные права на содержание сервисов и контент 
+
+Все объекты, доступные при помощи сервисов Компании, в том числе элементы дизайна, текст, графические изображения, иллюстрации, видео, программы для ЭВМ, базы данных, музыка, звуки и другие объекты (далее – содержание сервисов), а также любой контент, размещенный на сервисах Компании, являются объектами исключительных прав Компании, Пользователей и других правообладателей. 
+
+Использование контента, а также каких-либо иных элементов сервисов возможно только в рамках функционала, предлагаемого сервисом (приложением). Никакие элементы содержания сервисов Компании, а также любой контент, размещенный на сервисах Компании, не могут быть использованы иным образом без предварительного разрешения правообладателя. Под использованием подразумеваются, в том числе: воспроизведение, копирование, переработка, распространение на любой основе, отображение во фрейме и т.д. Исключение составляют случаи, прямо предусмотренные законодательством РФ или условиями использования сервиса Компании. 
+
+Использование Пользователем элементов содержания сервисов, а также любого контента для личного некоммерческого использования, допускается при условии сохранения всех знаков охраны авторского права, смежных прав, товарных знаков, других уведомлений об авторстве, сохранения имени (или псевдонима) автора/наименования правообладателя в неизменном виде, сохранении соответствующего объекта в неизменном виде. Исключение составляют случаи, прямо предусмотренные законодательством РФ. 
+
+9. Подписка и оплата 
+
+Пользователь может использовать приложение Fiasy как бесплатно, так и в режиме платной подписки. 
+
+В случае если Пользователь оформляет платную подписку, внесение платы за подписку производится Пользователем в порядке предоплаты. 
+
+В целях оформления подписки и дальнейшей возможности оплаты подписки Пользователь использует карту, привязанную к его аккаунту в App Store или Google Play Store (далее - Привязанная карта). 
+
+При указании данных Привязанной карты и дальнейшем использовании Привязанной карты Пользователь подтверждает и гарантирует указание им достоверной и полной информации о действительной банковской карте, выданной на его имя; соблюдение им правил международных платежных систем и требований банка-эмитента, выпустившего Привязанную карту, в том числе в отношении порядка проведения безналичных расчетов. 
+
+Компания не несет ответственность за возможный ущерб третьим лицам, причиненный в результате использования Пользователем не принадлежащих ему средств оплаты. 
+
+
+10. Обязанности пользователя 
+
+Пользователь самостоятельно несет ответственность перед третьими лицами за свои действия, связанные с использованием приложения Fiasy и иных услуг Компании, в том числе, если такие действия приведут к нарушению прав и законных интересов третьих лиц, а также за соблюдение законодательства при использовании приложения или услуг Компании. 
+
+При использовании сервисов и услуг Компании Пользователь не вправе: 
+
+загружать, посылать, передавать или любым другим способом размещать и/или распространять контент, который является незаконным, вредоносным, клеветническим, оскорбляет нравственность, демонстрирует (или является пропагандой) насилия и жестокости, нарушает права интеллектуальной собственности, пропагандирует ненависть и/или дискриминацию людей по расовому, этническому, половому, религиозному, социальному признакам, содержит оскорбления в адрес каких-либо лиц или организаций, содержит элементы (или является пропагандой) порнографии, детской эротики, представляет собой рекламу (или является пропагандой) услуг сексуального характера (в том числе под видом иных услуг), разъясняет порядок изготовления, применения или иного использования наркотических веществ или их аналогов, взрывчатых веществ или иного оружия; 
+
+нарушать права третьих лиц, в том числе несовершеннолетних лиц и/или причинять им вред в любой форме; 
+
+выдавать себя за другого человека или представителя организации и/или сообщества без достаточных на то прав, в том числе за представителей Компании, а также вводить пользователей или Компанию в заблуждение относительно свойств и характеристик каких-либо субъектов или объектов; 
+
+Загружать, посылать, передавать или любым другим способом размещать и/или распространять контент, при отсутствии прав на такие действия согласно законодательству или каким-либо договорным отношениям; 
+
+загружать, посылать, передавать или любым другим способом размещать и/или распространять не разрешенную специальным образом рекламную информацию, спам (в том числе и поисковый), списки чужих адресов электронной почты, схемы «пирамид», многоуровневого (сетевого) маркетинга (MLM), системы интернет-заработка и e-mail-бизнесов, «письма счастья», а также использовать сервисы Компании для участия в этих мероприятиях; 
+
+загружать, посылать, передавать или любым другим способом размещать и/или распространять какие-либо материалы, содержащие вирусы или другие компьютерные коды, файлы или программы, предназначенные для нарушения, уничтожения либо ограничения функциональности любого компьютерного или телекоммуникационного оборудования или программ, для осуществления несанкционированного доступа, а также серийные номера к коммерческим программным продуктам и программы для их генерации, логины, пароли и прочие средства для получения несанкционированного доступа к платным ресурсам в Интернете, а также размещения ссылок на вышеуказанную информацию; 
+
+несанкционированно собирать и хранить персональные данные других лиц; 
+
+нарушать нормальную работу приложения и сервисов Компании; 
+
+содействовать действиям, направленным на нарушение ограничений и запретов, налагаемых Условиями; 
+
+другим образом нарушать нормы законодательства, в том числе нормы международного права. 
+
+
+11. Политика конфиденциальности 
+
+Настоящая политика конфиденциальности (далее — Политика) действует в отношении всей информации, включая персональные данные в понимании применимого законодательства (далее — «Персональная информация»), которую Компания может получить о Пользователе в процессе использования Пользователем любых сервисов и услуг Компании, а также в ходе исполнения Компанией / ее аффилированными лицами любых соглашений и договоров, заключенных с Пользователем в связи с использованием Пользователем сервисов и услуг Компании. Компания может также получать Персональную информацию от своих партнеров (далее — «Партнеры»), сайты, программы, продукты или сервисы которых Пользователь использует. В таких случаях передача Персональной информации возможна только в случаях, установленных применимым законодательством, и осуществляется на основании специальных договоров между Компанией и каждым из Партнеров. 
+
+Когда Пользователь осуществляет вход в свою учетную запись, Персональная информация, собранная о Пользователе Компанией во время использования им сервисов и услуг, относящихся к Компании, может быть сопоставлена и связана с другой Персональной информацией, собранной Компанией в рамках использования Пользователем его учетной записи (например, данные о личности, контактные данные, возраст и пол, если они были предоставлены Компании). Компания не проверяет предоставленную Пользователем Персональную информацию за исключением случаев, предусмотренных Условиями, и не может судить о ее достоверности, а также о том, обладает ли пользователь достаточной правоспособностью для предоставления своей Персональной информации. Тем не менее Компания исходит из того, что Пользователь предоставляет достоверную и достаточную Персональную информацию, а также своевременно обновляет ее. 
+
+Компания может собирать следующие категории Персональной информации о Пользователе во время использования сервисов и услуг Компании: 
+
+Персональная информация, предоставленная при регистрации (создании учетной записи), такая как имя, номер телефона, адрес и возраст; 
+
+электронные данные (IP-адрес, файлы cookie, пиксельные теги, данные об идентификаторе браузера, информация об аппаратном и программном обеспечении, информация, собираемая сервисами аналитики и отправки сообщений); 
+
+дата и время осуществления доступа к сервисам и услугам Компании; 
+
+информация об активности Пользователя во время использования сервисов и услуг Компании; 
+
+информация о геолокации; 
+
+иная информация о Пользователе, необходимая для обработки в соответствии с Условиями; 
+
+информация о Пользователе, которую мы получаем от наших Партнеров в соответствии с условиями соглашений, заключенных между Пользователем и соответствующим Партнером, и соглашений, заключенных между Компанией и Партнером. 
+
+Также Компания использует файлы данные аналитики (включая пиксельные теги) для сбора Персональной информации и связывания такой личной информации с устройством Пользователя и его поведением в приложении. 
+
+Компания не собирает данные с целью составления «портрета» пользователя в той степени, при которой это может существенно повлиять на права и свободы Пользователя в соответствии с применимым законодательством. 
+
+11. Рекламная информация 
+
+Компания вправе посылать своим пользователям информационные сообщения. Используя сервисы и услуги Компании, Пользователь также в соответствии с ч. 1 ст. 18 Федерального закона «О рекламе» дает свое согласие на получение сообщений рекламного характера. Пользователь вправе отказаться от получения сообщений рекламного характера путем использования соответствующего функционала того сервиса, в рамках которого или в связи с которым пользователем были получены сообщения рекламного характера. 
+
+Пользователь выражает согласие Компании на оповещение других Пользователей Сервиса о публичных действиях Пользователя, в том числе о внесении им записей в дневник питания, о произведенных им действиях в отношении Контента других Пользователей, а также иной активности, совершенной им в рамках сервиса или услуг Компании. 
+
+В целях повышения качества сервисов и услуг Компания и/или привлекаемые ею для проведения опроса лица вправе осуществлять сбор мнений и отзывов Пользователей по различным вопросам путем направления информационного сообщения при очередном посещении Пользователем сервиса либо осуществления связи по контактным данным, указанным Пользователем в учетной записи (посредством телефонных звонков или электронных писем). Собранные мнения и отзывы могут быть использованы для формирования статистических данных, которые могут быть использованы в сервисах и услугах Компании. Отзывы, предоставленные Пользователем при проведении опроса, также могут быть опубликованы Компанией в сервисах и аккаунтах Компании и на сторонних информационных площадках. При оставлении отзывов Пользователь обязуется руководствоваться требованиями настоящих Условий, в том числе требованиями, установленными в разделе Обязанности Пользователя. 
+
+Компания несет ответственность за рекламу, размещенную ею в приложении, в пределах, установленных законодательством РФ.
+12. Отсутствие гарантий, ограничение ответственности 
+
+Пользователь использует сервисы и услуги Компании на свой собственный риск. Сервисы предоставляются «как есть». Компания не принимает на себя никакой ответственности, в том числе за соответствие сервисов целям Пользователя. 
+
+Компания не гарантирует, что: сервисы и услуги соответствуют/будут соответствовать требованиям Пользователя; сервисы и услуги будут предоставляться непрерывно, быстро, надежно и без ошибок; результаты, которые могут быть получены с использованием сервисов и услуг, будут точными и надежными и могут использоваться для каких-либо целей или в каком-либо качестве (например, для установления и/или подтверждения каких-либо фактов); качество какого-либо продукта, услуги, информации и пр., полученных с использованием сервисов и услуг, будет соответствовать ожиданиям Пользователя. 
+
+Любые информацию и/или материалы (сообщения, какие-либо инструкции и руководства к действию и т.д.), доступ к которым Пользователь получает с использованием сервисов и услуг Компании, Пользователь может использовать на свой собственный страх и риск и самостоятельно несет ответственность за возможные последствия использования указанных информации и/или материалов, в том числе за ущерб, который это может причинить здоровью и устройствам Пользователя или третьим лицам, за потерю данных или любой другой вред. 
+
+Компания не несет ответственности за любые виды убытков и проблемы со здоровьем, произошедшие вследствие использования Пользователем сервисов и услуг Компании или отдельных частей/функций сервисов и услуг (приложения). 
+
+При любых обстоятельствах ответственность Компании в соответствии со статьей 15 Гражданского кодекса России ограничена 10 000 (десятью тысячами) рублей РФ и возлагается на нее только при наличии в ее действиях вины. 
+
+
+13. Иные положения 
+
+Настоящие Условия регулируются и толкуются в соответствии с законодательством Российской Федерации. Вопросы, не урегулированные настоящими Условиями, подлежат разрешению в соответствии с законодательством Российской Федерации. Все возможные споры, вытекающие из отношений, регулируемых настоящими Условиями, разрешаются в порядке, установленном действующим законодательством Российской Федерации, по нормам российского права. Везде по тексту настоящих Условий, если явно не указано иное, под термином «законодательство» понимается как законодательство Российской Федерации, так и законодательство места пребывания Пользователя. 
+
+В отношении услуг, оказываемых в рамках настоящего Соглашения на безвозмездной основе, нормы о защите прав потребителей, предусмотренные законодательством Российской Федерации, не могут быть применимыми к отношениям между Пользователем и Компанией. 
+
+Ничто в Условиях не может пониматься как установление между Пользователем и Компанией агентских отношений, отношений товарищества, отношений по совместной деятельности, отношений личного найма, либо каких-то иных отношений, прямо не предусмотренных Условиями. 
+
+Если по тем или иным причинам одно или несколько положений настоящих Условий будут признаны недействительными или не имеющими юридической силы, это не оказывает влияния на действительность или применимость остальных положений Условий. 
+
+ездействие со стороны Компании в случае нарушения Пользователем либо иными пользователями положений Условий не лишает Компанию права предпринять соответствующие действия в защиту своих интересов позднее, а также не означает отказа Компании от своих прав в случае совершения в последующем подобных либо сходных нарушений. </string>
                                 <color key="textColor" red="0.36468160152435303" green="0.36071720719337463" blue="0.36478912830352783" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1662,6 +1815,7 @@ Fiasy.com</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7TP-yq-oLI" firstAttribute="top" secondItem="YCl-Eg-fFd" secondAttribute="top" id="4he-7x-DZV"/>
+                            <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="STD-bR-77a" secondAttribute="trailing" constant="15" id="ORs-hP-oLx"/>
                             <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="uMr-H3-cb6" secondAttribute="trailing" constant="15" id="QcN-CY-RtM"/>
                             <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="7TP-yq-oLI" secondAttribute="trailing" id="QnL-yb-PPU"/>
                             <constraint firstItem="YCl-Eg-fFd" firstAttribute="bottom" secondItem="uMr-H3-cb6" secondAttribute="bottom" id="Tup-Sb-4pY"/>
@@ -1676,6 +1830,7 @@ Fiasy.com</string>
                     <navigationItem key="navigationItem" id="lOj-rm-PcU"/>
                     <connections>
                         <outlet property="textView" destination="uMr-H3-cb6" id="9V3-mm-6gq"/>
+                        <outlet property="titleNavigationLabel" destination="STD-bR-77a" id="SOp-rG-tzU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FF-bx-GiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1703,7 +1858,6 @@ Fiasy.com</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Group (17)" width="164" height="74"/>
         <image name="Group (29)" width="22" height="22"/>
         <image name="Group (30)" width="23" height="23"/>
         <image name="Shape (3)" width="28" height="22"/>
@@ -1717,7 +1871,7 @@ Fiasy.com</string>
         <image name="undraw_profile_data_mk6k" width="245" height="182"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Gl-mt-sRS"/>
-        <segue reference="F38-iO-NwD"/>
+        <segue reference="z00-6p-11f"/>
+        <segue reference="TW8-se-YJZ"/>
     </inferredMetricsTieBreakers>
 </document>

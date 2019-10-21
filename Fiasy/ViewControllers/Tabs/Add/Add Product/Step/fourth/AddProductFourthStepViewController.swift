@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Intercom
 import Amplitude_iOS
 
 class AddProductFourthStepViewController: UIViewController {
@@ -152,7 +151,6 @@ class AddProductFourthStepViewController: UIViewController {
             for item in fullNameArr where !item.isEmpty {
                 productName = productName.isEmpty ? item : productName + " \(item)"
             }
-            Intercom.logEvent(withName: "custom_product_success", metaData: ["product_id" : productName, "product_from" : strongSelf.flow.productFrom]) // +
             Amplitude.instance()?.logEvent("custom_product_success", withEventProperties: ["product_id" : productName, "product_from" : strongSelf.flow.productFrom]) // +
             strongSelf.popBack(5)
         }))

@@ -19,7 +19,7 @@ import FirebaseDatabase
 import Amplitude_iOS
 import UserNotifications
 import Adjust
-import Intercom
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -28,16 +28,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        DispatchQueue.global().async {
-//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-//        }
-       
+        FirebaseApp.configure()       
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+//        switch Locale.current.languageCode {
+//        case "en":
+//            EN.save(by: .APP_LANGUAGE)
+//        default:
+//            RUS.save(by: .APP_LANGUAGE)
+//        }
+        RUS.save(by: .APP_LANGUAGE)
 
       //  Fabric.with([Crashlytics.self()])
         //Bugsee.launch(token :"9dd1f372-d496-4bef-ac70-0ff732d0b82b")
         
-        FirebaseApp.configure()
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: "e1e154ab-efca-4303-a764-cf71a92b0cb2",
+                                        handleNotificationAction: nil,
+                                        settings: onesignalInitSettings)
+        
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            print("User accepted notifications: \(accepted)")
+        })
+        
         FirebaseDBManager.checkFilledProfile { (state) in }
         //SwiftGoogleTranslate.shared.start(with: "AIzaSyB5dv1L0W_85lcFrEcyqZ0KyGZeRn6wOTE")
         Amplitude.instance()?.trackingSessionEvents = true
@@ -48,14 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         screensController.showScreens()
         SubscriptionService.shared.getProducts()
 
-        Intercom.setApiKey("ios_sdk-221925e0d17a40eb824938ad4c2a9857e2320b6f", forAppId:"dr8zfmz4")
         Adjust.appDidLaunch(ADJConfig(appToken: "8qzg30s9d3wg", environment: ADJEnvironmentProduction, allowSuppressLogLevel: true))
 
-        if let uid = Auth.auth().currentUser?.uid {
-            Intercom.registerUser(withUserId: uid)
-        } else {
-            Intercom.registerUnidentifiedUser()
-        }
         return true
     }
     
@@ -66,12 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if (Intercom.isIntercomPushNotification(userInfo)) {
-            Intercom.handlePushNotification(userInfo)
-        }
-//        if (Auth.auth().canHandleNotification(userInfo)) {
-//            return print(userInfo)
-//        }
+
         completionHandler(.noData);
     }
     
@@ -80,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Adjust.trackSubsessionStart()
         
         if let _ = UIApplication.getTopMostViewController() as? QuizViewController {
-            Intercom.logEvent(withName: "onboarding_success", metaData: ["from" : "reopen"]) // +
             Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "reopen"]) // +
         }
     }
@@ -91,7 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Auth.auth().setAPNSToken(deviceToken, type: AuthAPNSTokenType.prod)
-        Intercom.setDeviceToken(deviceToken)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -60,13 +60,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ik-d2-MMi">
-                                                        <rect key="frame" x="18.5" y="0.0" width="150" height="44"/>
+                                                        <rect key="frame" x="61.5" y="14" width="65" height="16"/>
                                                         <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="XJ0-Hi-tPp"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
-                                                        <state key="normal" title="ДАЛЕЕ  ">
+                                                        <state key="normal" title="ДАЛЕЕ  " image="arrow_right22">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -175,4 +175,7 @@
             <point key="canvasLocation" x="-1464.8" y="607.64617691154433"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow_right22" width="12" height="10"/>
+    </resources>
 </document>

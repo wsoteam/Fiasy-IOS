@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class DiaryHeaderView: UITableViewHeaderFooterView {
@@ -70,7 +69,6 @@ class DiaryHeaderView: UITableViewHeaderFooterView {
         default:
             name = "snack"
         }
-        Intercom.logEvent(withName: "diary_next", metaData: ["add_intake" : name]) // +
         Amplitude.instance()?.logEvent("diary_next", withEventProperties: ["add_intake" : name]) // +
         
         UserInfo.sharedInstance.selectedMealtimeIndex = tagIndex

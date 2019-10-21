@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class TargetSelectedCell: UICollectionViewCell {
@@ -24,8 +23,8 @@ class TargetSelectedCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        localizeDesign()
         setupDefaultState()
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "goal"]) // +
         Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "goal"]) // +
     }
     
@@ -33,7 +32,7 @@ class TargetSelectedCell: UICollectionViewCell {
     func fillCell(delegate: QuizViewOutput) {
         self.delegate = delegate
         
-        delegate.changeTitle(title: "Выберите свою цель")
+        delegate.changeTitle(title: LS(key: .SELECT_YOUR_TARGET))
         delegate.changeStateBackButton(hidden: false)
         delegate.changePageControl(index: 5)
         
@@ -58,6 +57,21 @@ class TargetSelectedCell: UICollectionViewCell {
     }
     
     // MARK: - Private -
+    private func localizeDesign() {
+        for (index, item) in targetTitles.enumerated() {
+            switch index {
+            case 0:
+                item.text = LS(key: .FIRST_TARGET)
+            case 1:
+                item.text = LS(key: .SECOND_TARGET)
+            case 2:
+                item.text = LS(key: .THIRD_TARGET)
+            default:
+                item.text = LS(key: .FOURTH_TARGET)
+            }
+        }
+    }
+    
     private func setupDefaultState() {
         for item in targetImages {
             switch item.tag {

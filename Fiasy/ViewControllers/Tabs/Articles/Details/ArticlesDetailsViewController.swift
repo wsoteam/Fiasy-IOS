@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 protocol ArticlesDetailsDelegate {
@@ -31,7 +30,6 @@ class ArticlesDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        Intercom.logEvent(withName: "view_articles", metaData: ["articles_item" : model?.name]) // +
         Amplitude.instance()?.logEvent("view_articles", withEventProperties: ["articles_item" : model?.name]) // +
     }
     

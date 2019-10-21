@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="IWc-dH-xN0" customClass="PremiumDetailsCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="282"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IWc-dH-xN0" id="YcD-Zx-mwE">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="281.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wd7-bF-lbj">
+                        <rect key="frame" x="10" y="0.0" width="394" height="281.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Открой новые возможности PREMIUM" translatesAutoresizingMaskIntoConstraints="NO" id="A8Y-hn-IXr">
+                                <rect key="frame" x="0.0" y="0.0" width="394" height="123.5"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SGZ-Nk-OLO">
+                                <rect key="frame" x="0.0" y="153.5" width="394" height="128"/>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byM-Lq-zYy">
+                        <rect key="frame" x="10" y="153.5" width="394" height="128"/>
+                        <connections>
+                            <action selector="payClicked:" destination="IWc-dH-xN0" eventType="touchUpInside" id="qPw-d9-WEx"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="byM-Lq-zYy" firstAttribute="bottom" secondItem="SGZ-Nk-OLO" secondAttribute="bottom" id="1DB-58-DiO"/>
+                    <constraint firstItem="byM-Lq-zYy" firstAttribute="trailing" secondItem="SGZ-Nk-OLO" secondAttribute="trailing" id="1EX-ft-nmt"/>
+                    <constraint firstItem="wd7-bF-lbj" firstAttribute="top" secondItem="YcD-Zx-mwE" secondAttribute="top" id="8NQ-pa-xLo"/>
+                    <constraint firstItem="wd7-bF-lbj" firstAttribute="leading" secondItem="YcD-Zx-mwE" secondAttribute="leading" constant="10" id="OUV-bw-Xwt"/>
+                    <constraint firstItem="byM-Lq-zYy" firstAttribute="leading" secondItem="SGZ-Nk-OLO" secondAttribute="leading" id="QeB-SO-3YA"/>
+                    <constraint firstAttribute="bottom" secondItem="wd7-bF-lbj" secondAttribute="bottom" id="XoR-G8-R6H"/>
+                    <constraint firstItem="byM-Lq-zYy" firstAttribute="top" secondItem="SGZ-Nk-OLO" secondAttribute="top" id="ry8-t2-w1L"/>
+                    <constraint firstAttribute="trailing" secondItem="wd7-bF-lbj" secondAttribute="trailing" constant="10" id="y5W-Ny-efL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bottomImageView" destination="SGZ-Nk-OLO" id="zZ6-60-5Gv"/>
+                <outlet property="topImageView" destination="A8Y-hn-IXr" id="bF9-Sg-Cjt"/>
+            </connections>
+            <point key="canvasLocation" x="-130.43478260869566" y="135.26785714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Открой новые возможности PREMIUM" width="300" height="49"/>
+    </resources>
+</document>

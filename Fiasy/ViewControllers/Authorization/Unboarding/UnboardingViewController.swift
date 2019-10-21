@@ -1,5 +1,4 @@
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class UnboardingViewController: UIViewController {
@@ -24,14 +23,14 @@ class UnboardingViewController: UIViewController {
 
         fillTopLabel()
         unboardingView.dataSource = self
+        skipButton.setTitle(LS(key: .UNBOARDING_SKEEP), for: .normal)
+        nextButton.setTitle("\(LS(key: .UNBOARDING_NEXT)) ", for: .normal)
     }
     
     // MARK: - Actions -
     @IBAction func nextClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "onboarding_next", metaData: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         Amplitude.instance()?.logEvent("onboarding_next", withEventProperties: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         if selectedIndex >= 2 {
-            Intercom.logEvent(withName: "onboarding_next", metaData: ["onboarding" : "reg"]) // +
             Amplitude.instance()?.logEvent("onboarding_next", withEventProperties: ["onboarding" : "reg"]) // +
             performSegue(withIdentifier: "showFirstScreen", sender: nil)
         } else {
@@ -41,7 +40,6 @@ class UnboardingViewController: UIViewController {
     }
     
     @IBAction func skipClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "onboarding_skip", metaData: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         Amplitude.instance()?.logEvent("onboarding_skip", withEventProperties: ["onboarding" : "page\(selectedIndex + 1)"]) // +
         performSegue(withIdentifier: "showFirstScreen", sender: nil)
     }
@@ -50,7 +48,7 @@ class UnboardingViewController: UIViewController {
     private func fillTopLabel() {
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 24),
-                                               color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "Добро пожаловать в\n"))
+                                               color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "\(LS(key: .UNBOARDING_WELCOME))\n"))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 24),
                                                color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: "Fiasy!"))
         topLabel.attributedText = mutableAttrString
@@ -72,13 +70,13 @@ extension UnboardingViewController: SwiftyOnboardDataSource {
         switch index {
         case 0:
             page.imageView.image = #imageLiteral(resourceName: "дама 1")
-            page.title.text = "Множество научных статей\nо правильном питании"
+            page.title.text = LS(key: .UNBOARDING_FIRST_SCREEN)
         case 1:
             page.imageView.image = #imageLiteral(resourceName: "дама 3")
-            page.title.text = "Полезные рецепты\nна каждый день"
+            page.title.text = LS(key: .UNBOARDING_SECOND_SCREEN)
         case 2:
             page.imageView.image = #imageLiteral(resourceName: "дама 2")
-            page.title.text = "Удобно отслеживать свои\nдостижения"
+            page.title.text = LS(key: .UNBOARDING_THIRD_SCREEN)
         default:
             break
         }

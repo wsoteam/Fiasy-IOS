@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.7</string>
+	<string>2.8.6test</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -64,6 +64,8 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Used to choose pictures of food for testing</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>App would like to use your bluetooth for communication purposes</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We need access to your bluetooth connection to upload data from your device for crash reports.
 </string>

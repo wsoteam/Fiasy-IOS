@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Intercom
 import FirebaseDatabase
 import Amplitude_iOS
 
@@ -190,7 +189,6 @@ class ProductDetailsCell: UITableViewCell {
                         table.child("fat").setValue(Int(fat))
                         table.child("carbohydrates").setValue(Int(carbohydrates))
                         table.child("calories").setValue(Int(calor ?? 0))
-                        Intercom.logEvent(withName: "edit_food") // +
                         Amplitude.instance()?.logEvent("edit_food") // +
                         FirebaseDBManager.reloadItems()
                         delayWithSeconds(1) {
@@ -223,7 +221,6 @@ class ProductDetailsCell: UITableViewCell {
                         dayState = "future"
                     }
                     
-                    Intercom.logEvent(withName: "add_food_success", metaData: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : isOwnRecipe ? "custom" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
                     Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : isOwnRecipe ? "custom" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
 
                     let userData = ["day": day, "month": month, "year": year, "name": product.name, "weight": Int(weight), "protein": Int(protein), "fat": Int(fat), "carbohydrates": Int(carbohydrates), "calories": Int(Double(calories)?.rounded(toPlaces: 0) ?? 0), "presentDay" : state, "isRecipe" : false] as [String : Any]

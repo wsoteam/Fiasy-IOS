@@ -61,14 +61,14 @@ class GeneralTabBarViewController: ButtonBarPagerTabStripViewController {
     // MARK: - PagerTabStripDataSource -
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let firstScreen = UIStoryboard(name: "GeneralTabBar", bundle: nil).instantiateViewController(withIdentifier: "SearchTabViewController")
-        let secondScreen = UIStoryboard(name: "GeneralTabBar", bundle: nil).instantiateViewController(withIdentifier: "FavoritesTabViewController")
+        let secondScreen = UIStoryboard(name: "GeneralTabBar", bundle: nil).instantiateViewController(withIdentifier: "MyProductViewController")
 //        let thirdScreen = UIStoryboard(name: "GeneralTabBar", bundle: nil).instantiateViewController(withIdentifier: "TemplatesTabViewController")
         let fourthScreen = UIStoryboard(name: "GeneralTabBar", bundle: nil).instantiateViewController(withIdentifier: "RecipesTabViewController")
         
 //        guard let first = firstScreen as? SearchTabViewController, let second = secondScreen as? FavoritesTabViewController, let third = thirdScreen as? TemplatesTabViewController, let fourth = fourthScreen as? RecipesTabViewController else {
 //            return []
 //        }
-        guard let first = firstScreen as? SearchTabViewController, let second = secondScreen as? FavoritesTabViewController, let fourth = fourthScreen as? RecipesTabViewController else {
+        guard let first = firstScreen as? SearchTabViewController, let second = secondScreen as? MyProductViewController, let fourth = fourthScreen as? RecipesTabViewController else {
             return []
         }
         return [first, second, fourth]

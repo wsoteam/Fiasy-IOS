@@ -3,7 +3,6 @@ import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
 import Amplitude_iOS
-import Intercom
 import FirebaseStorage
 
 class RegestrationViewController: UIViewController {
@@ -12,22 +11,20 @@ class RegestrationViewController: UIViewController {
     @IBOutlet weak var orSignInByLabel: UILabel!
     @IBOutlet weak var privacyButton: UIButton!
     @IBOutlet weak var agreeLabel: UILabel!
-    @IBOutlet var titleLabels: [UILabel]!
     @IBOutlet weak var screenNameLabel: UILabel!
-    @IBOutlet var allSeparatorViews: [UIView]!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var allTextFields: [UITextField]!
     @IBOutlet var passwordButtons: [UIButton]!
     @IBOutlet var allErrorLabels: [UILabel]!
-    
-    // MARK: - Properties -
-    
+    @IBOutlet var titleLabels: [UILabel]!
+    @IBOutlet var allSeparatorViews: [UIView]!
+
     //MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        localizeDesign()
         setupInitialState()
-        //Amplitude.instance().logEvent("start_registration")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,21 +73,20 @@ class RegestrationViewController: UIViewController {
     }
     
     @IBAction func signUpClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "email"]) // +
         Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "email"]) // +
         
         guard isConnectedToNetwork() else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
+            return AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .NO_INTERNET_CONNECTION), vc: self)
         }
         guard (allTextFields[0].text ?? "").isValidEmail() else {
-            allErrorLabels[0].text = "Неверный формат почты"
+            allErrorLabels[0].text = LS(key: .WRONG_MAIL_ERROR)
             allSeparatorViews[0].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             allErrorLabels[0].isHidden = false
             animateView()
             return
         }
         guard (allTextFields[1].text ?? "").count >= 6 else {
-            allErrorLabels[1].text = "Пароль слишком простой"
+            allErrorLabels[1].text = LS(key: .SIMPLE_PASSWORD_ERROR)
             allSeparatorViews[1].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             allErrorLabels[1].isHidden = false
             animateView()
@@ -98,7 +94,7 @@ class RegestrationViewController: UIViewController {
         }
         
         guard (allTextFields[1].text ?? "") == (allTextFields[2].text ?? "") else {
-            allErrorLabels[1].text = "Не совпадают пароли"
+            allErrorLabels[1].text = LS(key: .PASSWORD_DONT_MATCH)
             allSeparatorViews[1].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             allSeparatorViews[2].backgroundColor = #colorLiteral(red: 0.9153415561, green: 0.3059891462, blue: 0.3479152918, alpha: 1)
             allErrorLabels[1].isHidden = false
@@ -121,22 +117,11 @@ class RegestrationViewController: UIViewController {
                 if let url = user?.photoURL?.absoluteString {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
-                if let uid = Auth.auth().currentUser?.uid {
-                    Intercom.registerUser(withUserId: uid)
-                }
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "email"]) // +
                 Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "email"]) // +
                 
-                if let uid = Auth.auth().currentUser?.uid {
-                    Intercom.registerUser(withUserId: uid)
-                }
                 let identify = AMPIdentify()
                 identify.set("registration", value: "email" as NSObject)
                 Amplitude.instance()?.identify(identify)
-                
-                let attributed = ICMUserAttributes()
-                attributed.customAttributes = ["registration": "email"]
-                Intercom.updateUser(attributed)
                 
                 if let uid = Auth.auth().currentUser?.uid {
                     let ref = Database.database().reference()
@@ -147,32 +132,29 @@ class RegestrationViewController: UIViewController {
                 return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
             
-            AlertComponent.sharedInctance.showAlertMessage(message: "Такой пользователь уже существует",
+            AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .USER_ALREADY_EXISTS),
                                                           vc: strongSelf)
         }
     }
     
     @IBAction func googleClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "google"]) // +
         Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "google"]) // +
         
         GIDSignIn.sharedInstance().signOut()
         guard isConnectedToNetwork() else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
+            return AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .NO_INTERNET_CONNECTION), vc: self)
         }
         GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func privacyClicked(_ sender: Any) {
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "privacy"]) // +
         Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "privacy"]) // +
     }
     
     @IBAction func facebookClicked(_ sender: Any) {
         guard isConnectedToNetwork() else {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Отсутствует подключение к интернету", vc: self)
+            return AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .NO_INTERNET_CONNECTION), vc: self)
         }
-        Intercom.logEvent(withName: "registration_next", metaData: ["push_button" : "fb"]) // +
         Amplitude.instance()?.logEvent("registration_next", withEventProperties: ["push_button" : "fb"]) // +
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
             guard result?.isCancelled != true else { return }
@@ -185,6 +167,16 @@ class RegestrationViewController: UIViewController {
                 print("Failed to get access token")
                 return
             }
+            var fetchedEmail: String = ""
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email"]).start(completionHandler: { (connection, result, error) in
+                if error == nil {
+                    if let dictionary = result as? [String : Any], let fetchEmail = dictionary["email"] as? String {
+                        fetchedEmail = fetchEmail
+                    }
+                } else {
+                    print("Error Getting Info \(error)");
+                }
+            
             Auth.auth().signIn(with: FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString), completion: { (user, error) in
                 if let error = error {
                     if let strongSelf = self {
@@ -202,20 +194,15 @@ class RegestrationViewController: UIViewController {
                 if let url = user?.photoURL?.absoluteString {
                     UserInfo.sharedInstance.registrationFlow.photoUrl = url
                 }
-                UserInfo.sharedInstance.registrationFlow.email = user?.email ?? ""
-                Intercom.registerUser(withEmail: user?.email ?? "")
-                Intercom.logEvent(withName: "registration_success", metaData: ["type" : "fb"]) // +
+                UserInfo.sharedInstance.registrationFlow.email = fetchedEmail
                 Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) // +
 
                 let identify = AMPIdentify()
                 identify.set("registration", value: "facebook" as NSObject)
                 Amplitude.instance()?.identify(identify)
                 
-                let attributed = ICMUserAttributes()
-                attributed.customAttributes = ["registration": "facebook"]
-                Intercom.updateUser(attributed)
-                
                 strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
+            })
             })
         }
     }
@@ -229,6 +216,24 @@ class RegestrationViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    private func localizeDesign() {
+        screenNameLabel.text = LS(key: .SIGN_UP_TITLE)
+        for (index, item) in titleLabels.enumerated() {
+            switch index {
+            case 0:
+                item.text = LS(key: .WRITE_EMAIL)
+            case 1:
+                item.text = LS(key: .WRITE_PASSWORD)
+            default:
+                item.text = LS(key: .REPEAT_PASSWORD)
+            }
+        }
+        signUpButton.setTitle(LS(key: .SIGN_IN_TITLE), for: .normal)
+        agreeLabel.text = LS(key: .AGREE_WITH_CONDITIONS)
+        privacyButton.setTitle(LS(key: .PRIVACY_POLICY), for: .normal)
+        orSignInByLabel.text = LS(key: .OR_SIGN_IN_BY)
     }
 }
 
@@ -248,7 +253,7 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
         let last = user.profile.familyName
         let email = user.profile.email
         if let error = error {
-            return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
+            return AlertComponent.sharedInctance.showAlertMessage(title: LS(key: .ERROR),
                                             message: error.localizedDescription, vc: self)
         } else {
             guard let authentication = user.authentication else { return }
@@ -258,7 +263,7 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
             Auth.auth().signIn(with: credential, completion: { [weak self] (user, error) in
                 guard let strongSelf = self else { return }
                 if let error = error {
-                    return AlertComponent.sharedInctance.showAlertMessage(title: "Ошибка",
+                    return AlertComponent.sharedInctance.showAlertMessage(title: LS(key: .ERROR),
                                          message: error.localizedDescription, vc: strongSelf)
                 } else {
                     if let firsts = first {
@@ -271,17 +276,11 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                         UserInfo.sharedInstance.registrationFlow.photoUrl = url
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
-                    Intercom.registerUser(withEmail: email ?? "")
-                    Intercom.logEvent(withName: "registration_success", metaData: ["type" : "google"]) // +
                     Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) // +
 
                     let identify = AMPIdentify()
                     identify.set("registration", value: "google" as NSObject)
                     Amplitude.instance()?.identify(identify)
-                    
-                    let attributed = ICMUserAttributes()
-                    attributed.customAttributes = ["registration": "google"]
-                    Intercom.updateUser(attributed)
                     
                     strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
                 }

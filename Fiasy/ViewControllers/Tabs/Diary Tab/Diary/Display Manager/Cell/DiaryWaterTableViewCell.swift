@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import DropDown
-import Intercom
 import Amplitude_iOS
 import FirebaseDatabase
 
@@ -158,7 +157,6 @@ class DiaryWaterTableViewCell: UITableViewCell {
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
             guard let strongSelf = self else { return }
             
-//            Intercom.logEvent(withName: "diary_next", metaData: ["add_intake" : "water"]) // +
 //            Amplitude.instance()?.logEvent("diary_next", withEventProperties: ["add_intake" : "water"]) // +
             strongSelf.delegate?.showWaterDetails()
         }
@@ -182,7 +180,6 @@ class DiaryWaterTableViewCell: UITableViewCell {
             }
             if let item = containsWater {
             ref.child("USER_LIST").child(uid).child("waters").child(item.generalKey ?? "").child("waterCount").setValue(count)
-                Intercom.logEvent(withName: "add_water_success", metaData: ["value" : count]) // +
                 Amplitude.instance()?.logEvent("add_water_success", withEventProperties: ["value" : count]) // +
             } else {
                 let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: selectedDate)!
@@ -200,7 +197,6 @@ class DiaryWaterTableViewCell: UITableViewCell {
                 waterFake.generalKey = generalK.key
                 UserInfo.sharedInstance.allWaters.append(waterFake)
                 
-                Intercom.logEvent(withName: "add_water_success", metaData: ["value" : count]) // +
                 Amplitude.instance()?.logEvent("add_water_success", withEventProperties: ["value" : count]) // +
             Database.database().reference().child("USER_LIST").child(uid).child("waters").child(generalK.key).setValue(userData)
             }

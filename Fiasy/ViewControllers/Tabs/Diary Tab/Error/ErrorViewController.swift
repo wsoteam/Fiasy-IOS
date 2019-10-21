@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import VisualEffectView
 import NextGrowingTextView
-import Intercom
 import Amplitude_iOS
 
 class ErrorViewController: UIViewController {
@@ -30,7 +29,6 @@ class ErrorViewController: UIViewController {
         super.viewDidLoad()
         
         Amplitude.instance().logEvent("product_page_bugsend") // +
-        Intercom.logEvent(withName: "product_page_bugsend") // +
         setupInitialState()
         sendTextView.configureGrowingTextView()
         sendTextView.textView.delegate = self

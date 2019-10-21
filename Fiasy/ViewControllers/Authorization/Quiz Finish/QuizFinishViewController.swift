@@ -7,12 +7,14 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class QuizFinishViewController: UIViewController {
     
-     // MARK: - Outlet's -
+    // MARK: - Outlet's -
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var finishStackView: UIStackView!
@@ -26,9 +28,9 @@ class QuizFinishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        localizeDesign()
         setupInitialState()
         secondView.isHidden = true
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "calculate"]) // +
         Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "calculate"]) // +
     }
     
@@ -69,6 +71,12 @@ class QuizFinishViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "showQuizView")
             UserDefaults.standard.synchronize()
         }
+    }
+    
+    private func localizeDesign() {
+        topLabel.text = LS(key: .WAIT_A_WHILE)
+        middleLabel.text = LS(key: .WAIT_A_WHILE_DESCRIPTION)
+        nextButton.setTitle("\(LS(key: .UNBOARDING_NEXT)) ", for: .normal)
     }
 }
 

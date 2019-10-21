@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import Amplitude_iOS
-import Intercom
 import FirebaseStorage
 
 protocol CalorieIntakeDelegate {
@@ -205,34 +204,6 @@ class CalorieIntakeViewController: UIViewController {
                 identify.set("сarbohydrates", value: "\(allPremiumFields[2])" as NSObject)
             }
             Amplitude.instance()?.identify(identify)
-            
-            if !allPremiumFields.isEmpty && allPremiumFields.count == 4 {
-                let userAttributes = [
-                    "height": growth,
-                    "weight": weight,
-                    "age": age,
-                    "active": Int(self.activity) + 1,
-                    "goal": (self.target) + 1,
-                    "calorie": "\(allPremiumFields[0])",
-                    "proteins": "\(allPremiumFields[1])",
-                    "fats": "\(allPremiumFields[3])",
-                    "сarbohydrates": "\(allPremiumFields[2])"] as [String : Any]
-                
-                let attributed = ICMUserAttributes()
-                attributed.customAttributes = userAttributes
-                Intercom.updateUser(attributed)
-            } else {
-                let userAttributes = [
-                    "height": growth,
-                    "weight": weight,
-                    "age": age,
-                    "active": Int(self.activity) + 1,
-                    "goal": (self.target) + 1] as [String : Any]
-                
-                let attributed = ICMUserAttributes()
-                attributed.customAttributes = userAttributes
-                Intercom.updateUser(attributed)
-            }
             
             UserInfo.sharedInstance.currentUser?.age = age
             UserInfo.sharedInstance.currentUser?.height = growth

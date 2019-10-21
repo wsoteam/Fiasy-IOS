@@ -14,6 +14,10 @@ class MenuViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.global().async {
+            SubscriptionService.shared.checkValidPurchases(generalState: false)
+        }
+        
         if let controllers = self.viewControllers {
             for navViewController in controllers {
                 _ = navViewController.children[0].view
@@ -32,16 +36,6 @@ class MenuViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        FirebaseDBManager.fetchUserPromo { (state) in
-            if state {
-                UserInfo.sharedInstance.purchaseIsValid = true
-            } else {
-                DispatchQueue.global().async {
-                    UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-                }
-            }
-        }
         
         FirebaseDBManager.checkProfileInDataBase { [weak self] (state) in
             guard let strongSelf = self else { return }

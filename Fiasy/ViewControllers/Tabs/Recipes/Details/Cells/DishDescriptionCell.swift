@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import Amplitude_iOS
-import Intercom
 
 class DishDescriptionCell: UITableViewCell {
     
@@ -86,13 +85,13 @@ class DishDescriptionCell: UITableViewCell {
             insertViewInStackView(stackView: proteinStackView, left: "Белки", right: "\((proteins * Double(servingCount)).displayOnly(count: 2)) г", isTitle: true)
         }
         if let cholesterol = recipe.cholesterol {
-            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * servingCount).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * servingCount).displayOnly(count: 2)) мг", isTitle: false)
         }
         if let sodium = recipe.sodium {
-            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * servingCount).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * servingCount).displayOnly(count: 2)) мг", isTitle: false)
         }
         if let potassium = recipe.potassium {
-            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * servingCount).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * servingCount).displayOnly(count: 2)) мг", isTitle: false)
         }
     }
 
@@ -235,7 +234,6 @@ class DishDescriptionCell: UITableViewCell {
         
         if ownRecipe {
             guard let name = recipe?.name else { return }
-            Intercom.logEvent(withName: "add_custom_recipe", metaData: ["recipe_id" : name]) // +
             Amplitude.instance()?.logEvent("add_custom_recipe", withEventProperties: ["recipe_id" : name]) // +
         }
 
@@ -255,7 +253,6 @@ class DishDescriptionCell: UITableViewCell {
             let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true, "presentDay" : state] as [String : Any]
             ref.child("USER_LIST").child(uid).child(getTitle()).childByAutoId().setValue(userData)
             
-            Intercom.logEvent(withName: "add_recipe_success", metaData: ["recipe_intake" : getSecondTitle()]) // +
             Amplitude.instance()?.logEvent("add_recipe_success", withEventProperties: ["recipe_intake" : getSecondTitle()]) // +
             
             FirebaseDBManager.reloadItems()

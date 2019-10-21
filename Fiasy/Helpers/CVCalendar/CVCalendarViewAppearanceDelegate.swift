@@ -46,7 +46,7 @@ public protocol CVCalendarViewAppearanceDelegate {
     @objc optional func dayLabelPresentWeekdaySelectedTextSize() -> CGFloat
     
     // Background Color & Alpha
-    @objc optional func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor?
+    @objc optional func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent, isCurrentDay: Bool) -> UIColor?
     // Highlighted state background & alpha.
     @objc optional func dayLabelWeekdayHighlightedBackgroundColor() -> UIColor
     @objc optional func dayLabelWeekdayHighlightedBackgroundAlpha() -> CGFloat

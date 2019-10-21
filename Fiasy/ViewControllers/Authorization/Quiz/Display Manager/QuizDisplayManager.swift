@@ -19,13 +19,13 @@ protocol QuizViewOutput {
 
 class QuizDisplayManager: NSObject {
     
-    //MARK: - Properties -
+    // MARK: - Properties -
     private var currentCellIndex: IndexPath = IndexPath(row: 0, section: 0)
     private var cells = [QuizGenderCell.self, GrowthSelectionCell.self, WeightSelectionCell.self,  DateOfBirthSelectionCell.self, SelectActivityTableViewCell.self, TargetSelectedCell.self]
     private var collectionView: UICollectionView
     private var output: QuizViewOutput
     
-    //MARK: - Iterface -
+    // MARK: - Iterface -
     init(collectionView: UICollectionView, output: QuizViewOutput) {
         self.output = output
         self.collectionView = collectionView
@@ -48,7 +48,7 @@ class QuizDisplayManager: NSObject {
         }
     }
     
-    //MARK: - Private -
+    // MARK: - Private -
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self

@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
-import Intercom
 
 protocol RecipeMealtimeDelegate {
     func showMealtimeDetails()

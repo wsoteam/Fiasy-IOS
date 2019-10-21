@@ -1,0 +1,514 @@
+/* 
+  Localizable.strings
+  Fiasy
+
+  Created by Eugen Lipatov on 9/23/19.
+  Copyright © 2019 Eugen Lipatov. All rights reserved.
+*/
+
+/*    Unboarding Screen    */
+"unboarding_welcome" = "Добро пожаловать в";
+"unboarding_first_screen" = "Множество научных статей о правильном питании";
+"unboarding_second_screen" = "Полезные рецепты на каждый день";
+"unboarding_third_screen" = "Полезные рецепты на каждый день";
+"unboarding_skeep" = "Пропустить";
+"unboarding_next" = "ДАЛЕЕ";
+
+/*    Authorization Screen    */
+"or" = "ИЛИ";
+"signIn" = "ВОЙТИ";
+"authorization_with" = "ЗАРЕГИСТРИРОВАТЬСЯ С ПОМОЩЬЮ";
+"account_available" = "Уже есть аккаунт?";
+"registration_by_mail" = "РЕГИСТРАЦИЯ ПО EMAIL";
+
+/*    Sign In Screen    */
+"signIn_title" = "Войти";
+"login" = "Логин";
+"password" = "Пароль";
+"restore" = "Восстановить";
+"forgot_password" = "Забыли пароль?";
+"or_signIn_by" = "или войти с помощью";
+"wrong_data" = "Неверные данные";
+
+/*    Sign Up Screen    */
+"signUp_title" = "Регистрация";
+"write_email" = "Введите Email";
+"write_password" = "Введите пароль";
+"repeat_password" = "Введите повторно пароль";
+"simple_password_error" = "Пароль слишком простой";
+"password_dont_match" = "Не совпадают пароли";
+"agree_with_conditions" = "я согласен с условиями";
+"privacy_policy" = "политики конфидециальности";
+"user_already_exists" = "Такой пользователь уже существует";
+"no_internet_connection" = "Отсутствует подключение к интернету";
+"error" = "Ошибка";
+
+/*    Privacy Policy Screen    */
+"privacy_description" = "Условия использования и Политика Конфиденциальности";
+
+/*    Reset Password Screen    */
+"reset_send" = "ОТПРАВИТЬ";
+"reset_close_screen" = "Закрыть форму?";
+"reset_close_title" = "Закрыть";
+"reset_close_continue" = "Продолжить";
+"reset_close_description" = "Закрывая форму, вы не сожете восстановить пароль";
+"wrong_mail_error" = "Неверный формат почты";
+"reset_password_title" = "Восстановить пароль";
+"we_send_email" = "Мы отправим вам письмо на почту";
+"enter_mail_description" = "Введите Email для восстановления";
+"user_does_not_exist" = "Данного пользователя не существует";
+"check_mail" = "Проверьте почту";
+"sended" = "ОТПРАВЛЕНО";
+
+/*    Interrogation Screen    */
+"select_your_gender" = "Выберите ваш пол";
+"selected_man" = "Вы выбрали мужской пол";
+"selected_woman" = "Вы выбрали женский пол";
+"select_your_growth" = "Выберите ваш рост";
+"growth_unit" = "см";
+"weight_unit" = "кг";
+"mifflin_formula" = "Для расчета мы используем формулу Миффлина-Сан-Жеора, которую в 2005 году подтвердила Американская Диетическая Ассоциация (АДА), что она является более точной.";
+"select_your_weight" = "Выберите ваш вес";
+"select_your_date_of_birth" = "Выберите дату рождения";
+"select_your_activity" = "Выберите свою активность";
+"first_activity" = "Минимальная нагрузка";
+"second_activity" = "Легкая физическая нагрузка в течении дня";
+"third_activity" = "Тренировки 2-4 раза в неделю (или работа средней тяжести)";
+"fourth_activity" = "Интенсивные тренировки 4-5 раз в неделю";
+"five_activity" = "Ежедневные интенсивные тренировки";
+"six_activity" = "Тренировки 5-7 раз в неделю, по два раза в день";
+"seven_activity" = "Тяжелая физическая работа или ежедневные интенсивные тренировки по 2 раза в день";
+"select_your_target" = "Выберите свою цель";
+"first_target" = "Поддержания тела\n в форме";
+"second_target" = "Похудение";
+"third_target" = "Набор мышечной\nмассы";
+"fourth_target" = "Сохранение мышц\nи сжигание жира";
+
+/*    Interrogation Finish Screen    */
+"wait_a_while" = "Подождите немного";
+"wait_a_while_description" = "Идет расчет индивидуального\nплана питания";
+"plan_calculated" = "Индивидуальный план\nрассчитан";
+"recommended_rate" = "Рекомендуемая норма";
+"calories_unit" = "ккал";
+"grams_unit" = "г";
+"protein" = "белки";
+"fat" = "жиры";
+"carbohydrates" = "углеводов";
+"in_a_month" = "уже через месяц";
+"first_piece_description" = "Вы достигнете своей цели";
+"second_piece_description" = ", получив доступ к\nуникальным статьям о здоровом\nпитании и сотни рецептов";
+
+/*    Premium Screen    */
+"reach_goal_faster" = "Достигайте цели быстрее";
+"everyday_recipes" = "Рецепты на каждый день";
+"science_articles" = "Полезные научные статьи";
+"trace_elements_in_recipes" = "Микроэлементы в продуктах и рецептах";
+"try" = "Попробуйте";
+"count_day_trial" = "7 дней бесплатно";
+"amount_per_month" = "Затем 199р. в месяц";
+"connect_premium" = "Подключить Premium";
+"privacy_title" = "Условия использования & Политика конфиденциальности";
+"special_offer" = "Специальное предложение";
+"payment_top_description" = "Станьте участником";
+"pay_description" = "После 7 дней пробного периода с вашей учетной записи Apple ID будет снята сумма 199р. в месяц при подтверждении покупки. Подписка автоматически продлевается, если она не отменена как минимум за 24 часа до окончания текущего периода. С вашего счета будет взиматься плата за продление в течение 24 часов до окончания текущего периода. Вы можете управлять своими подписками и отменять их, перейдя в настройки учетной записи App Store после покупки.";
+"payment_bottom_description" = "и вы\nполучите доступ ко всей базе\nрецептов, тренировок и статей!";
+"terms_and_conditions" = "Положения и условия";
+"payment_description" = "Оплата будет снята с вашей учетной записи Apple ID при подтверждении покупки. Подписка автоматически продлевается, если она не отменена как минимум за 24 часа до окончания текущего периода. С вашего счета будет взиматься плата за продление в течение 24 часов до окончания текущего периода. Вы можете управлять своими подписками и отменять их, перейдя в настройки учетной записи App Store после покупки.";
+
+/*    Premium purchase success Screen    */
+"congratulations" = "Поздравляем";
+"premium_courage_description" = "Теперь вы можете пользоваться всеми преимуществами Premium аккаунта";
+
+/*    Profile Screen    */
+"profile_title" = "Профиль";
+"your_name" = "Ваше Имя";
+"daily_goal" = "Ежедневная цель";
+"nutrition_plan" = "План питания";
+"standard" = "стандартный";
+"week" = "неделя";
+"month" = "месяц";
+"year" = "год";
+"reports" = "Отчеты";
+"daily_rate" = "Дневная норма";
+"your_performance" = "Ваши показатели";
+"monday" = "пн";
+"tuesday" = "вт";
+"wednesday" = "ср";
+"thursday" = "чт";
+"friday" = "пт";
+"saturday" = "сб";
+"sunday" = "вс";
+"january" = "январь";
+"february" = "февраль";
+"march" = "март";
+"april" = "апрель";
+"may" = "май";
+"june" = "июнь";
+"july" = "июль";
+"august" = "август";
+"september" = "сентябрь";
+"october" = "октябрь";
+"november" = "ноябрь";
+"december" = "декабрь";
+"year_short" = "г.";
+
+/*    Setting Screen    */
+"premium_account" = "Premium аккаунт";
+"promotional_codes" = "Промокоды";
+"personal_data" = "Личные данные";
+"calorie_intake" = "Норма калорий";
+"exit" = "Выход";
+"log_off" = "Выйти";
+"cancel" = "Отмена";
+
+/*    Promotional Code Screen    */
+"promotional_navigation" = "Промокоды";
+"promotional_title" = "Добавление промокодов";
+"promotional_description" = "Промокоды дают вам возможность  использовать приложение со скидкой или получить подарок";
+"enter_promotional_code" = "Вести промокод";
+"enter_your_promotional_code" = "Введите ваш промокод";
+"active_promode" = "АКТИВИРОВАТЬ ПРОМОКОД";
+"invalid_promotional_code_error" = "Неверный промокод";
+
+/*    Personal Data Screen    */
+"personal_data_navigation" = "Личные данные";
+"done" = "Готово";
+"name" = "Имя";
+"surname" = "Фамилия";
+"email" = "Почта";
+
+/*    Calorie Intake Screen    */
+"calorie_intake_navigation" = "Норма калорий";
+"gender" = "Пол";
+"growth" = "Рост";
+"weight" = "Вес";
+"age" = "Возраст";
+"activity" = "Активность";
+"target" = "Цель";
+"set_your_norm_title" = "Задать свою норму КБЖУ";
+"set_your_norm_description" = "Чтобы изменить КБЖУ вы должны купить";
+"calorie_intake" = "Калории";
+"protein_intake" = "Белки";
+"carbohydrates_intake" = "Углеводы";
+"fats_intake" = "Жиры";
+"day_norm_intake_description" = "Дневная норма КБЖУ, рассчитанная по формуле Миффлина - Сан Жеора";
+"default_intake" = "СТАНДАРТНЫЕ ЗНАЧЕНИЕ";
+"default_description_intake" = "Если вы меняли значение КБЖУ, то вы всегда можете вернуться к стандартным значеним";
+
+/*    Diary Screen    */
+"diary_title" = "Дневник";
+"diary_daily_rate" = "Ежедневная норма";
+"eaten_up" = "Съедено";
+"burnt" = "Сожжено";
+"left" = "Осталось";
+"water" = "Вода";
+"water_unit" = "л";
+"norm_established_first" = "Норма установлена на";
+"norm_established_second" = "Чтобы изменить это значение нажмите";
+"breakfast" = "Завтрак";
+"lunch" = "Обед";
+"dinner" = "Ужин";
+"snack" = "Перекус";
+"activity" = "Активности";
+"all" = "Все";
+"water_settings" = "Настройки воды";
+
+/*    Water Screen    */
+"benefit_water_title" = "Польза воды";
+"benefit_water_description_first" = "Снабжает кожу влагой и делает её упругой и эластичной";
+"benefit_water_description_second" = "Поставляет полезные вещества клеткам, не допуская тем самым их голодание и гибель";
+"benefit_water_description_third" = "Способствует похудению путём улучшения процессов обмена веществ";
+"benefit_water_title" = "Польза воды";
+"general" = "Общее";
+"liter" = "литра";
+"your_daily_rate" = "Ваша норма на каждый день";
+"make_default" = "Сделать по умолчанию";
+
+/*    Activity Screen    */
+"activity_navigation" = "Активность";
+"my_activity" = "Мои aктивности";
+"search" = "Поиск";
+"empty_my_activity_first" = "Вы пока не добавили ни одну активность. Для того, чтобы добавить активность нажмите на";
+"empty_my_activity_second" = " нажмите на ➕";
+"favorites" = "Избранное";
+"empty_favorites" = "Вы пока не добавили активность в избранное. Чтобы добавить активность, сделайте свайп влево и нажмите на сердечко";
+"standard_activities" = "Стандартные активности";
+"add_activitie" = "Добавить активность";
+"add_name_activitie" = "Напишите название активности";
+"training_time" = "Время тренировки";
+"training_time_description" = "Передвигая ползунком, выбирите то количество времени, которое вы потратили на актинвость";
+"minutes" = "минут";
+"calories_count" = "Количество калорий";
+"calories_count_description" = "Введите количество калорий, которые потратили или думайте, что потратили";
+"calories" = "калорий";
+"attention" = "Внимание!";
+"attention_description" = "Неправильно добавленная активность, может показывать недостоверные данные по дневной норме КБЖУ";
+"calories_spent" = "Потрачено калорий";
+"for" = "за";
+"move_slider" = "Передвигайте ползунок, чтобы изменить время";
+"add_to_diary" = "Добавить в дневник";
+
+/*    Search Product Screen    */
+"search_empty" = "Результаты не найдены. Попробуйте еще раз или создайте свой продукт";
+
+/*    My Product List Screen    */
+"add_product" = "Добавить продукт";
+"product_not_found" = "Продукт не найден";
+"product_list_empty" = "В этом разделе будут храниться понравившиеся или сохраненные вами рецепты и продукты";
+
+/*    My Recipes List Screen    */
+"add_recipes" = "Добавить рецепт";
+"recipes_not_found" = "Рецепт не найден";
+"recipes_list_empty" = "Здесь вы можете создать и сохранить набор продуктов, который употребляете ежедневно в определенный прием пищи";
+"create_product" = "Создать продукт";
+"create_recipes" = "Создать рецепт";
+
+/*    Recipe Creation Screen    */
+"recipes_name" = "Название рецепта";
+"recipes_image" = "Изображение блюда";
+"download" = "Загрузить";
+"gallery" = "Галерея";
+"photo" = "Фото";
+"time_for_preparing" = "Время приготовления";
+"photo" = "Фото";
+"min" = "мин";
+"complexity" = "Сложность";
+"choose_complexity" = "Выбрать сложность";
+"easy" = "Легкая";
+"medium" = "Средняя";
+"сomplex" = "Сложная";
+"all_users_can_see" = "Могут видеть все пользователи";
+"all_users_can_see_description" = "Созданные вами и введенные в базу рецепты или продукты могут быть доступны для других пользователей. Пожалуйста, постарайтесь заполнить приведенную выше форму максимально точно и полно.";
+"ingredients_for_serving" = "Ингредиенты на 1 порцию";
+"instruction" = "Инструкция";
+"add_instruction" = "Добавить инструкцию";
+"instruction_description" = "Пожалуйста, записывайте инструкцию по приготовлению по пунктам";
+"recipes_info" = "Информация о рецепте";
+"ingredients" = "Ингредиенты";
+"verification_of_information" = "Проверка информации";
+
+/*    Product Creation Screen    */
+"brand_manufacturer" = "Марка/производитель";
+"product_name" = "Название продукта";
+"barcode" = "Штрих-код";
+"barcode_scanning" = "Сканирование штрих-кода";
+"barcode_scanning_description" = "Поместите штрих-код в окно для сканирования. Поиск начнется автоматически.";
+"product_calories" = "Калорийность";
+"nutrients" = "Питательные вещества на 100 г";
+"сellulose" = "Клетчатка";
+"sugar" = "Сахар";
+"saturated_fat" = "Насыщенные жиры";
+"monounsaturated_fat" = "Мононенасыщенные жиры";
+"polyunsaturated_fats" = "Полиненасыщенные жиры";
+"cholesterol" = "Холестерин";
+"sodium" = "Натрий";
+"potassium" = "Калий";
+"product_info" = "Информация о продукте";
+"nutritional_value" = "Пищевая ценность на 100 г.";
+"product_added_to_your_products" = "Ваш продукт добавлен в Свои продукты";
+
+/*    Product Details Screen    */
+"product_calculation" = "Расчет продукта";
+"product_weighs" = "Продукт весит";
+"product_add_nutrients" = "Питательные вещества на";
+"report_bug" = "Сообщить об ошибке";
+
+/*    Recipe Details Screen    */
+"portion" = "порцию";
+"servings" = "порции";
+"ingredients_on" = "Ингридиенты на";
+"сooking_method" = "Способ приготовления";
+"recipe_added" = "Рецепт добавлен";
+
+/*    Default Activity  List  */
+"aikido" = "Айкидо";
+"aqua_run" = "Аква-бег";
+"water_aerobics" = "Аквааэробика";
+"mountaineering" = "Альпинизм";
+"american_football" = "Американский футбол";
+"army_press" = "Армейский жим";
+"aerobics_high_load" = "Аэробика, высокая нагрузка";
+"aerobics_medium_load" = "Аэробика, средняя нагрузка";
+"badminton_high_load" = "Бадминтон, высокая нагрузка";
+"badminton_medium_load" = "Бадминтон, средняя нагрузка ";
+"basketball_high_load" = "Баскетбол, высокая нагрузка";
+"basketball_medium_load" = "Баскетбол, средняя нагрузка";
+"run_11.3_km/h" = "Бег 11,3 км/ч";
+"run_12.1_km/h" = "Бег 12,1 км/ч";
+"run_12.9_km/h" = "Бег 12,9 км/ч";
+"run_14.5_km/h" = "Бег 14,5км/ч";
+"run_16.09_km/h" = "Бег 16,09 км/ч";
+"run_17.7_km/h" = "Бег 17,7 км/ч";
+"run_6.4_km/h" = "Бег 6,4 км/ч";
+"run_8_km/h" = "Бег 8 км/ч";
+"run_9.7_km/h" = "Бег 9,7 км/ч";
+"running_up_the_stairs" = "Бег вверх по лестнице";
+"сross_country_running" = "Бег по пересеченной местности";
+"sand_running" = "Бег по песку";
+"jogging" = "Бег трусцой";
+"treadmill" = "Беговая дорожка";
+"baseball" = "Бейсбол";
+"biathlon" = "Биатлон";
+"bikram_yoga" = "Бикрам-Йога";
+"billiards" = "Бильярд";
+"arm_curl(Biceps)" = "Сгибание рук(бицепс)";
+"body_step" = "Боди Степ";
+"martial_arts" = "Боевые искусства";
+"boxing" = "Бокс";
+"boxing_high_load" = "Бокс, высокая нагрузка";
+"boxing_training" = "Бокс, тренировочный";
+"boxing_punching_bag" = "Бокс: груша";
+"bowling" = "Боулинг";
+"quick_run_up_stairs" = "Быстрая пробежка вверх по лестнице";
+"brisk_walking_6.5_km/h" = "Быстрая ходьба пешком 6,5 км/ч";
+"wakeboarding" = "Вейкбординг";
+"bicycle_aerobics_high_load" = "Велоаэробика, высокая нагрузка";
+"bicycle_aerobics_medium_load" = "Велоаэробика, средняя нагрузка";
+"cycling_high_load" = "Велоспорт, высокая нагрузка";
+"cycling_medium_load" = "Велоспорт, средняя нагрузка";
+"horseback_riding" = "Верховая езда";
+"horseback_riding_dressage" = "Верховая езда: выездка";
+"horse_riding_gallop" = "Верховая езда: галоп";
+"horse_riding_obstacles" = "Верховая езда: препятствия";
+"horse_riding_lynx" = "Верховая езда: рысь";
+"windsurfing" = "Виндсерфинг";
+"water_gymnastics" = "Водная гимнастика";
+"water_polo" = "Водное поло";
+"volleyball_high_load" = "Волейбол, высокая нагрузка";
+"volleyball_light_load" = "Волейбол, легкая нагрузка";
+"handball" = "Гандбол";
+"gymnastics" = "Гимнастика";
+"gymnastics_intensive" = "Гимнастика, интенсив";
+"gymnastics_average_load" = "Гимнастика, средняя нагрузка";
+"kettlebell_training" = "Гиревая тренировка";
+"laundry_ironing" = "Глажка белья";
+"golf_normal" = "Гольф (обычный)";
+"alpine_skiing_high_load" = "Горные лыжи, высокая нагрузка";
+"alpine_skiing_medium_load" = "Горные лыжи, средняя нагрузка";
+"alpine_skiing_moderate_load" = "Горные лыжи, умеренная нагрузка";
+"kayaking" = "Гребля на байдарках";
+"canoeing" = "Гребля на каноэ";
+"rowing_high_load" = "Гребля, высокая нагрузка";
+"rowing_low_load" = "Гребля, низкая нагрузка";
+"rowing_medium_load" = "Гребля, средняя нагрузка";
+"diving" = "Дайвинг";
+"scuba_diving" = "Дайвинг с аквалангом";
+"judo" = "Дзюдо";
+"bench_press" = "Жим лежа";
+"leg_press" = "Жим ногами";
+"winter_kiting" = "Зимний кайтинг";
+"zumba" = "Зумба";
+"drumming" = "Игра на барабанах";
+"intense_walk" = "Интенсивная прогулка";
+"hiit_interval_training" = "Интервальная тренировка HIIT, высокая интенсивность";
+"yoga" = "Йога";
+"kitesurfing" = "Кайтсерфинг";
+"karate" = "Карате";
+"cardiovascular_equipment" = "Кардиотренажеры";
+"cross_country_skiing" = "Катание на беговых лыжах";
+"riding_bicycle" = "Катание на велосипеде";
+"water_skiing" = "Катание на водных лыжах";
+"mountain_biking" = "Катание на горном велосипеде";
+"skating" = "Катание на коньках";
+"ice_skating_high_load" = "Катание на коньках,высокая нагрузка";
+"cross_country_skiing_high_load" = "Катание на лыжах по пересеченной местности, высокая нагрузка";
+"cross_country_skiing_moderate_exercise" = "Катание на лыжах по пересеченной местности, умеренная нагрузка";
+"skiing_medium_load" = "Катание на лыжах, средняя нагрузка";
+"roller_skating" = "Катание на роликовых каньках";
+"in-line_skiing" = "Катание на роликовых лыжах";
+"scooter_riding" = "Катание на самокате";
+"sledging" = "Катание на санках";
+"skateboarding" = "Катание на скейтборде";
+"snowboarding" = "Катание на сноуборде";
+"press_swing" = "Качание пресса";
+"curling" = "Керлинг";
+"kickboxing" = "Кикбоксинг";
+"digging_the_earth" = "Копание земли";
+"mowing_grass" = "Кошение травы";
+"cross_skating" = "Кросс-конькобежный спорт";
+"сross_trainer" = "Кросс-тренажер";
+"сrossfit" = "Кроссфит";
+"сircular_training" = "Круговая тренировка";
+"hoop_torsion" = "Кручение обруча";
+"bodybuilding" = "Культуризм (Бодибилдинг)";
+"lacrosse" = "Лакросс";
+"portion" = "Медленная ходба пешком 4,5 км/ч";
+"slow_walking_4.5_km/h" = "Медленная ходба пешком 4,5 км/ч";
+"window_cleaning" = "Мойка окон";
+"motocross" = "Мотокросс";
+"car_wash" = "Мытье машины";
+"slopes" = "Наклоны";
+"table_tennis" = "Настольный тенис";
+"push_ups" = "Отжимания";
+"powerlifting" = "Пауэрлифтинг (силовое троеборье)";
+"hiking" = "Пеший туризм";
+"hiking_with_backpack." = "Пеший туризм, с рюкзаком";
+"pilates" = "Пилатес";
+"butterfly_swimming" = "Плавание баттерфляем";
+"breaststroke" = "Плавание брассом";
+"backstroke" = "Плавание на спине";
+"sailing" = "Плавание под парусом";
+"snorkeling" = "Плавание с маской(Снорклинг)";
+"swimming_high_load" = "Плавание, высокая нагрузка";
+"swimming_low_load" = "Плавание, низкая нагрузка";
+"swimming_free" = "Плавание, свободное";
+"swimming_medium_load" = "Плавание, средняя нагрузка";
+"lying_hips" = "Поднятие бедер из положения лежа";
+"pull-ups" = "Подтягивания";
+"climbing_stairs" = "Подъем по лестнице";
+"polo" = "Поло";
+"obstacle_course" = "Полоса препятствий";
+"squat_on_one_leg" = "Приседание на одной ноге";
+"shoulder_squat" = "Приседание со штангой на плечах";
+"stroll" = "Прогулка";
+"walking_in_no_hurry" = "Прогулка не торопливым шагом";
+"walk_through_the_woods" = "Прогулка по лесу";
+"professional_football" = "Профессиональный футбол";
+"long_jump" = "Прыжки в длину";
+"trampoline_amateur" = "Прыжки на батуте, любительские";
+"rope_jumping" = "Прыжки со скакалкой";
+"vacuuming" = "Пылесошение";
+"work_with_a_rake" = "Работа с граблями";
+"stretching" = "Растяжка";
+"rugby" = "Регби";
+"gardening" = "Садоводство";
+"salsa" = "Сальса";
+"sex" = "Секс";
+"surfing" = "Серфинг";
+"power_yoga" = "Силовая йога";
+"power_training" = "Силовые тренировки";
+"strength_exercises" = "Силовые упражнения";
+"synchronized_swimming" = "Синхронное плавание";
+"rock_climbing" = "Скалолазание";
+"nordic_walking" = "Скандинавская ходьба";
+"twisting" = "Скручивание ";
+"mixed_martial_arts" = "Смешанные единоборства";
+"orienteering" = "Спортивное ориентирование";
+"deadlift" = "Становая тяга";
+"step" = "Степ";
+"step_platform" = "Степ-платформа";
+"pan" = "Табата";
+"thai_boxing" = "Тайский бокс";
+"dance_aerobics" = "Танцевальная аэробика";
+"dancing" = "Танцы";
+"pole_dancing" = "Танцы у шеста";
+"twist" = "Твист";
+"tennis" = "Теннис";
+"cleaning" = "Уборка";
+"snow_removal_with_shovel" = "Уборка снега лопатой";
+"burpee_exercise" = "Упражнение Burpee";
+"exercise_plank" = "Упражнение планка";
+"exercise_lunges" = "Упражнение выпады";
+"fencing" = "Фехтование";
+"frisbee" = "Фрисби";
+"football" = "Футбол";
+"walking_up_the_stairs" = "Хотьба вверх по лестнице";
+"indoor_walking" = "Ходьба внутри помещения";
+"walking_5_km/h" = "Ходьба пешком, 5 км/ч";
+"hockey" = "Хоккей";
+"stick_walking" = "Ходьба с палками";
+"gymnastics" = "Художественная гимнастика";
+"shopping" = "Шопинг";
+"elliptical_trainer_high_load" = "Эллиптический тренажер, высокая нагрузка";
+"elliptical_trainer_medium_load" = "Эллиптический тренажер, средняя нагрузка";
+"elliptical_trainer_low_load" = "Эллиптический тренажер, низкая нагрузка";

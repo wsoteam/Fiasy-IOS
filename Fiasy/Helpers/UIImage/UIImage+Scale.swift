@@ -2,7 +2,7 @@
 //  UIImage+Scale.swift
 //  onlinesadik
 //
-//  Created by Yuriy Sokirko on 12/25/18.
+//  Created by Eugen Lipatov on 12/25/18.
 //  Copyright © 2018 Андрей. All rights reserved.
 //
 

@@ -10,7 +10,6 @@ import UIKit
 import Amplitude_iOS
 import DynamicBlurView
 import TagListView
-import Intercom
 import VisualEffectView
 
 protocol RecipesDelegate {
@@ -53,7 +52,7 @@ class RecipesViewController: UIViewController {
             self.hideActivity()
         })
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -63,10 +62,10 @@ class RecipesViewController: UIViewController {
                 performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)
             }
         }
-
-//        DispatchQueue.global().async {
-//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-//        }
+        
+        //        DispatchQueue.global().async {
+        //            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
+        //        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,12 +76,12 @@ class RecipesViewController: UIViewController {
     
     //MARK: - Action -
     @IBAction func filterClicked(_ sender: Any) {
-//        if blur.isHidden {
-//            blur.fadeIn(secondView: filterView)
-//        } else {
-//            blur.fadeOut(secondView: filterView)
-//
-//        }
+        //        if blur.isHidden {
+        //            blur.fadeIn(secondView: filterView)
+        //        } else {
+        //            blur.fadeOut(secondView: filterView)
+        //
+        //        }
         filterView.isHidden = !filterView.isHidden
     }
     
@@ -105,7 +104,7 @@ class RecipesViewController: UIViewController {
     }
     
     private func setupInitialState() {
-
+        
         blurView.colorTint = .gray
         blurView.colorTintAlpha = 0.1
         blurView.blurRadius = 5
@@ -161,24 +160,24 @@ extension RecipesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipesRow") as? RecipesRow else { fatalError() }
         
         switch indexPath.section {
-            case 0:
-                if breakfasts.indices.contains(indexPath.row) {
-                    cell.fillRow(by: breakfasts)
-                }
-            case 1:
-                if lunches.indices.contains(indexPath.row) {
-                    cell.fillRow(by: lunches)
-                }
-            case 2:
-                if dinners.indices.contains(indexPath.row) {
-                    cell.fillRow(by: dinners.reversed())
-                }
-            case 3:
-                if snacks.indices.contains(indexPath.row) {
-                    cell.fillRow(by: snacks)
-                }
-            default:
-                break
+        case 0:
+            if breakfasts.indices.contains(indexPath.row) {
+                cell.fillRow(by: breakfasts)
+            }
+        case 1:
+            if lunches.indices.contains(indexPath.row) {
+                cell.fillRow(by: lunches)
+            }
+        case 2:
+            if dinners.indices.contains(indexPath.row) {
+                cell.fillRow(by: dinners.reversed())
+            }
+        case 3:
+            if snacks.indices.contains(indexPath.row) {
+                cell.fillRow(by: snacks)
+            }
+        default:
+            break
         }
         return cell
     }
@@ -225,7 +224,6 @@ extension RecipesViewController: RecipesDelegate {
         default:
             break
         }
-        Intercom.logEvent(withName: "recipe_category", metaData: ["recipe_category" : item]) // +
         Amplitude.instance()?.logEvent("recipe_category", withEventProperties: ["recipe_category" : item]) // +
         performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)
     }

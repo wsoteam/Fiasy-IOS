@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class GrowthSelectionCell: UICollectionViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var mifinLabel: UILabel!
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var growthLabel: UILabel!
     @IBOutlet weak var ruler: RKMultiUnitRuler?
@@ -27,7 +27,7 @@ class GrowthSelectionCell: UICollectionViewCell {
     func fillCell(delegate: QuizViewOutput) {
         self.delegate = delegate
         
-        delegate.changeTitle(title: "Выберите ваш рост")
+        delegate.changeTitle(title: LS(key: .SELECT_YOUR_GROWTH))
         delegate.changeStateBackButton(hidden: false)
         delegate.changeStateNextButton(state: true)
         delegate.changePageControl(index: 1)
@@ -37,8 +37,10 @@ class GrowthSelectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        mifinLabel.text = LS(key: .MIFFLIN_FORMULA)
+        growthLabel.text = "\(154) \(LS(key: .GROWTH_UNIT))"
+        
         setupRulerView()
-        Intercom.logEvent(withName: "question_next", metaData: ["question" : "height"]) // +
         Amplitude.instance()?.logEvent("question_next", withEventProperties: ["question" : "height"]) // +
     }
 
@@ -100,7 +102,7 @@ extension GrowthSelectionCell: RKMultiUnitRulerDataSource, RKMultiUnitRulerDeleg
     
     func valueChanged(measurement: NSMeasurement) {
         UserInfo.sharedInstance.registrationFlow.growth = Int("\(measurement.doubleValue)".replacingOccurrences(of: ".0", with: "")) ?? 0
-        growthLabel.text = "\(measurement.doubleValue) см".replacingOccurrences(of: ".0", with: "")
+        growthLabel.text = "\(measurement.doubleValue) \(LS(key: .GROWTH_UNIT))".replacingOccurrences(of: ".0", with: "")
     }
     
     private func createSegments() -> Array<RKSegmentUnit> {
@@ -111,19 +113,19 @@ extension GrowthSelectionCell: RKMultiUnitRulerDataSource, RKMultiUnitRulerDeleg
         
         kgSegment.name = ""
         kgSegment.unit = UnitLength.centimeters
-        let kgMarkerTypeMax = RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 50.0), scale: 10.0, unit: "см")
+        let kgMarkerTypeMax = RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 50.0), scale: 10.0, unit: LS(key: .GROWTH_UNIT))
         kgMarkerTypeMax.labelVisible = true
         kgSegment.markerTypes = [
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 1.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 2.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 3.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 4.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 25.0), scale: 5.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 6.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 7.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 8.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 9.0, unit: "см"),
-            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 2.0, height: 50.0), scale: 10.0, unit: "см")]
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 1.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 2.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 3.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 4.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 25.0), scale: 5.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 6.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 7.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 8.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 1.0, height: 11.0), scale: 9.0, unit: LS(key: .GROWTH_UNIT)),
+            RKRangeMarkerType(color: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1), size: CGSize(width: 2.0, height: 50.0), scale: 10.0, unit: LS(key: .GROWTH_UNIT))]
         kgSegment.markerTypes.last?.labelVisible = true
         return [kgSegment]
     }

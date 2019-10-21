@@ -9,7 +9,6 @@
 import UIKit
 import DropDown
 import Amplitude_iOS
-import Intercom
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
     

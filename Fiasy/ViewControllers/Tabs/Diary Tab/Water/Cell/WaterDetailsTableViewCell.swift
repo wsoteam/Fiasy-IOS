@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Intercom
 import Amplitude_iOS
 import FirebaseStorage
 
@@ -93,7 +92,6 @@ class WaterDetailsTableViewCell: UITableViewCell {
             ref.child("USER_LIST").child(uid).child("profile").child("maxWater").setValue(count)
             UserInfo.sharedInstance.currentUser?.maxWater = count
             
-            Intercom.logEvent(withName: "add_water_success", metaData: ["change_goal" : count]) // +
             Amplitude.instance()?.logEvent("add_water_success", withEventProperties: ["change_goal" : count]) // +
         }
         
@@ -121,7 +119,6 @@ class WaterDetailsTableViewCell: UITableViewCell {
             if let uid = Auth.auth().currentUser?.uid {
                 strongSelf.ref.child("USER_LIST").child(uid).child("profile").child("maxWater").setValue(2.0)
                 UserInfo.sharedInstance.currentUser?.maxWater = 2.0
-                Intercom.logEvent(withName: "add_water_success", metaData: ["change_goal" : 2.0]) // +
                 Amplitude.instance()?.logEvent("add_water_success", withEventProperties: ["change_goal" : 2.0]) // +
             }
         }

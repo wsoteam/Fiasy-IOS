@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Intercom
 import Amplitude_iOS
 
 class QuizViewController: UIViewController {
@@ -28,7 +27,7 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         
         setupInitialState()
-        
+        nextButton.setTitle("\(LS(key: .UNBOARDING_NEXT)) ", for: .normal)
         if isIphone5 {
             bottomTitleLabel.font = bottomTitleLabel.font?.withSize(16)
         }
@@ -131,21 +130,5 @@ extension QuizViewController: QuizViewOutput {
         identify.set("сarbohydrates", value: "\(carbohydrates)" as NSObject)
         
         Amplitude.instance()?.identify(identify)
-        
-        let userAttributes = [
-            "male": item,
-            "height": flow.growth,
-            "weight": flow.weight,
-            "age": age,
-            "active": (Int(flow.loadActivity) + 1).fetchUserActive(),
-            "goal": ((flow.target ?? 0) + 1).fetchUserGoal(),
-            "calorie": "\(Int(result))",
-            "proteins": "\(protein)",
-            "fats": "\(fat)",
-            "сarbohydrates": "\(carbohydrates)"] as [String : Any]
-        
-        let attributed = ICMUserAttributes()
-        attributed.customAttributes = userAttributes
-        Intercom.updateUser(attributed)
     }
 }
