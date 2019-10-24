@@ -11,6 +11,7 @@ import Firebase
 import Amplitude_iOS
 
 protocol PremiumQuizDelegate {
+    func showPrivacyScreen()
     func showPremiumList()
     func purchedClicked()
     func changeSubscriptionIndex(index: Int)
@@ -114,12 +115,17 @@ extension PremiumQuizViewController: UITableViewDelegate, UITableViewDataSource 
             cell.fillCell()
         } else if let cell = cell as? PremiumBottomTableViewCell {
             cell.fillCell(delegate: self)
+            cell.adjustTextViewHeight()
         }
         return cell
     }
 }
 
 extension PremiumQuizViewController: PremiumQuizDelegate {
+    
+    func showPrivacyScreen() {
+        performSegue(withIdentifier: "sequePrivacyScreen", sender: nil)
+    }
     
     func purchedClicked() {
         UserInfo.sharedInstance.trialFrom = trialFrom

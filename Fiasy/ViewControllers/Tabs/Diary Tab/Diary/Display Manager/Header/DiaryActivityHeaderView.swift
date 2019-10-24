@@ -11,6 +11,10 @@ import UIKit
 class DiaryActivityHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Outlet -
+    //article_next
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var arrowImageView: UIImageView!
     
     // MARK: - Properties -
@@ -24,12 +28,23 @@ class DiaryActivityHeaderView: UITableViewHeaderFooterView {
         self.delegate = delegate
         self.section = section
         
+        leftButton.isHidden = false
+        
+        titleLabel.text = "Активности"
         if isEmpty {
             arrowImageView.isHidden = true
         } else {
             arrowImageView.isHidden = false
             arrowImageView.image = state ? #imageLiteral(resourceName: "Arrow_top-1") : #imageLiteral(resourceName: "Arrow_down-1")
         }
+    }
+    
+    func fillHeaderByMeasurement() {
+        rightButton.isHidden = true
+
+        titleLabel.text = "Измерение тела"
+        leftButton.isHidden = true
+        arrowImageView.isHidden = true
     }
     
     // MARK: - Action -

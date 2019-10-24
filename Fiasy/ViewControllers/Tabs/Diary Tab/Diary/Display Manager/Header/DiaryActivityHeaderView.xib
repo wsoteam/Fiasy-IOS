@@ -78,6 +78,9 @@
             <viewLayoutGuide key="safeArea" id="FdY-gA-zDh"/>
             <connections>
                 <outlet property="arrowImageView" destination="7fs-F8-uvw" id="F8X-vH-MZJ"/>
+                <outlet property="leftButton" destination="BPI-5H-gfD" id="HM6-Dv-xrl"/>
+                <outlet property="rightButton" destination="xD4-l5-adV" id="XC6-wE-R8E"/>
+                <outlet property="titleLabel" destination="tq5-j1-L2C" id="GPa-2d-FnO"/>
             </connections>
             <point key="canvasLocation" x="136.23188405797103" y="-266.18303571428572"/>
         </view>

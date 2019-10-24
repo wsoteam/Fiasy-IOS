@@ -53,6 +53,7 @@ target 'Fiasy' do
         pod 'Kingfisher'
         pod 'Amplitude-iOS'
         pod 'Adjust'
+        pod 'AMPopTip'
         pod 'SQLite.swift'
         pod 'GradientProgressBar'
         pod 'DynamicBlurView'

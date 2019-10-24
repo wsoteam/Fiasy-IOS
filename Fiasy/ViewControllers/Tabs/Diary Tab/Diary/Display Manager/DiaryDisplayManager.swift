@@ -16,6 +16,7 @@ protocol DiaryDisplayManagerDelegate {
     func sortMealTime(mealTime: [Mealtime])
     func headerClicked(section: Int)
     func showProductTab()
+    func showMeasuringScreen()
 }
 
 class DiaryDisplayManager: NSObject {
@@ -30,7 +31,7 @@ class DiaryDisplayManager: NSObject {
     private var allActivitySpend: Int = 0
     private var allActivity: [ActivityElement] = []
     private var activitys: [ActivityElement] = []
-    private var states: [Bool] = [false, false, false, false, false, false, false]
+    private var states: [Bool] = [false, false, false, false, false, false, false, false]
     private var lastContentOffset: CGFloat = 0
     
     // MARK: - Interface -
@@ -87,8 +88,10 @@ class DiaryDisplayManager: NSObject {
     }
     
     func reloadWater() {
-        UIView.performWithoutAnimation {
-            tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        if !tableView.visibleCells.isEmpty {
+            UIView.performWithoutAnimation {
+                tableView.reloadSections(IndexSet(integer: 1), with: .none)
+            }
         }
     }
     
@@ -162,7 +165,9 @@ class DiaryDisplayManager: NSObject {
         tableView.register(type: LimitDiaryTableViewCell.self)
         tableView.register(type: DiaryWaterTableViewCell.self)
         tableView.register(type: ActivityListTableViewCell.self)
+        tableView.register(type: DiaryMeasuringTableViewCell.self)
         tableView.register(DiaryHeaderView.nib, forHeaderFooterViewReuseIdentifier: DiaryHeaderView.reuseIdentifier)
+        tableView.register(DiaryMeasuringHeaderView.nib, forHeaderFooterViewReuseIdentifier: DiaryMeasuringHeaderView.reuseIdentifier)
         tableView.register(DiaryFooterView.nib, forHeaderFooterViewReuseIdentifier: DiaryFooterView.reuseIdentifier)
         tableView.register(DiaryActivityHeaderView.nib, forHeaderFooterViewReuseIdentifier: DiaryActivityHeaderView.reuseIdentifier)
         
@@ -195,7 +200,7 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 || section == 1 { return 1 }
+        if section == 0 || section == 1 || section == 7 { return 1 }
         if !states.isEmpty {
             if states[section] == false {
                 return 0
@@ -227,6 +232,10 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
                 cell.delegate = self
             }
             return cell
+        } else if indexPath.section == 7 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryMeasuringTableViewCell") as? DiaryMeasuringTableViewCell else { fatalError() }
+            cell.fillCell(delegate: self)
+            return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryTableViewCell") as? DiaryTableViewCell else { fatalError() }
             if mealTime.indices.contains(indexPath.section - 2) {
@@ -245,13 +254,20 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         print(section)
-        return (section == 5 || section == 6 || section == 0) ? DiaryFooterView.height : 0.0001
+        return (section == 5 || section == 6 || section == 7 || section == 0) ? DiaryFooterView.height : 0.0001
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 || section == 1 { return nil }
         
-        if section == (states.count - 1) {
+        if section == 7 {
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryMeasuringHeaderView.reuseIdentifier) as? DiaryMeasuringHeaderView else {
+                return nil
+            }
+            return header
+        }
+        
+        if section == (states.count - 2) {
             guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryActivityHeaderView.reuseIdentifier) as? DiaryActivityHeaderView else {
                 return nil
             }
@@ -268,7 +284,7 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryFooterView.reuseIdentifier) as? DiaryFooterView, section == 5 || section == 0 || section == 6 else {
+        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryFooterView.reuseIdentifier) as? DiaryFooterView, section == 5 || section == 0 || section == 6 || section == 7 else {
             return nil
         }
         return footer
@@ -382,6 +398,10 @@ extension DiaryViewController {
 }
 
 extension DiaryDisplayManager: DiaryDisplayManagerDelegate {
+    
+    func showMeasuringScreen() {
+        delegate.openMeasuringScreen()
+    }
     
     func reloadWaterCell() {
         UIView.transition(with: tableView,

@@ -17,6 +17,7 @@ import GradientProgressBar
 import VisualEffectView
 
 protocol DiaryViewDelegate {
+    func openMeasuringScreen()
     func stopProgress()
     func showWaterDetails()
     func editMealTime()
@@ -213,6 +214,10 @@ class DiaryViewController: BaseViewController {
 }
 
 extension DiaryViewController: DiaryViewDelegate {
+    
+    func openMeasuringScreen() {
+        performSegue(withIdentifier: "sequeMeasuringScreen", sender: nil)
+    }
     
     func removeActivity() {
         let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить активность?", preferredStyle: .alert)

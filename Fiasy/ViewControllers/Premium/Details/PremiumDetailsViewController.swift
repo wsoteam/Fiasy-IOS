@@ -10,6 +10,7 @@ import UIKit
 import Amplitude_iOS
 
 protocol PremiumDetailsDelegate {
+    func showPrivacyScreen()
     func showSubscriptions(_ selectedIndex: Int)
 }
 
@@ -52,7 +53,7 @@ class PremiumDetailsViewController: UIViewController {
     
     // MARK: - Private -
     private func setupTableView() {
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 40, right: 0)
         tableView.register(type: PremiumDetailsCell.self)
         tableView.delegate = self
         tableView.dataSource = self
@@ -90,6 +91,10 @@ extension PremiumDetailsViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension PremiumDetailsViewController: PremiumDetailsDelegate {
+    
+    func showPrivacyScreen() {
+        performSegue(withIdentifier: "sequePrivacyScreen", sender: nil)
+    }
     
     func showSubscriptions(_ selectedIndex: Int) {
         SubscriptionService.shared.purchase(index: selectedIndex)

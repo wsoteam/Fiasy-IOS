@@ -388,7 +388,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fiasy/Helpers/CVCalendar/CVCalendarDayView.swift"
-            timestampString = "591891591.479342"
+            timestampString = "593525349.46428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "500"
@@ -420,7 +420,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fiasy/Helpers/CVCalendar/CVCalendarDayView.swift"
-            timestampString = "591891591.479422"
+            timestampString = "593525349.464713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "295"
@@ -468,13 +468,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fiasy/Views/Managers/SubscriptionService.swift"
-            timestampString = "593253299.112851"
+            timestampString = "593470798.419385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "checkSubscription(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -484,13 +484,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fiasy/Views/Managers/SubscriptionService.swift"
-            timestampString = "593253299.11322"
+            timestampString = "593470798.4194421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
             endingLineNumber = "260"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "getCurrentUserRecipe(generalState:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fiasy/Helpers/CVCalendar/CVCalendarWeekView.swift"
+            timestampString = "593469177.646356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "didPressInteractiveView(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

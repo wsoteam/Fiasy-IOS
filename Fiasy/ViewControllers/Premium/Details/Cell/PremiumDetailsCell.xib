@@ -21,14 +21,20 @@
                         <rect key="frame" x="10" y="0.0" width="394" height="281.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Открой новые возможности PREMIUM" translatesAutoresizingMaskIntoConstraints="NO" id="A8Y-hn-IXr">
-                                <rect key="frame" x="0.0" y="0.0" width="394" height="123.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="394" height="16"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SGZ-Nk-OLO">
-                                <rect key="frame" x="0.0" y="153.5" width="394" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGZ-Nk-OLO">
+                                <rect key="frame" x="0.0" y="46" width="394" height="128"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-i9-DwS">
+                                <rect key="frame" x="0.0" y="204" width="394" height="77.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byM-Lq-zYy">
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byM-Lq-zYy">
                         <rect key="frame" x="10" y="153.5" width="394" height="128"/>
                         <connections>
                             <action selector="payClicked:" destination="IWc-dH-xN0" eventType="touchUpInside" id="qPw-d9-WEx"/>
@@ -48,6 +54,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bottomImageView" destination="SGZ-Nk-OLO" id="zZ6-60-5Gv"/>
+                <outlet property="descriptionTextView" destination="wuz-i9-DwS" id="ECx-Sh-pJs"/>
                 <outlet property="topImageView" destination="A8Y-hn-IXr" id="bF9-Sg-Cjt"/>
             </connections>
             <point key="canvasLocation" x="-130.43478260869566" y="135.26785714285714"/>
