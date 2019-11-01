@@ -8,23 +8,36 @@
 
 import UIKit
 
-protocol MeasuringListDelegate {
-    func filterClickedByTag(index: Int)
-}
-
 class MeasuringListViewController: UIViewController {
     
+    enum ScreenState: Int {
+        case weight = 0
+        case waist = 1
+        case chest = 2
+        case hips = 3
+    }
+    
     // MARK: - Outlet -
+    @IBOutlet weak var emptySectionsView: UIView!
+    @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var backgroundListVIews: [UIView]!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties -
     private var selectedIndex: Int = 0
+    private var allMeasurings: [Measuring] = []
+    private var selectedMeasurings: [Measuring] = []
+    private var selectedScreenState: ScreenState = .weight
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        changeIndex(index: 0)
+        showActivity()
         setupTableView()
+        fetchMeasuring()
     }
     
     // MARK: - Actions -
@@ -32,28 +45,91 @@ class MeasuringListViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func filterClicked(_ sender: UIButton) {
+        changeIndex(index: sender.tag)
+        applyScreenMeasuring(state: ScreenState(rawValue: sender.tag) ?? .weight)
+    }
+    
     // MARK: - Private -
     private func setupTableView() {
         tableView.register(type: MeasuringListTableViewCell.self)
+    }
+    
+    private func fetchMeasuring() {
+        FirebaseDBManager.fetchMyMeasuringInDataBase { [weak self] (list) in
+            guard let strongSelf = self else { return }
+            strongSelf.allMeasurings = list
+            strongSelf.setupTableView()
+            strongSelf.applyScreenMeasuring(state: .weight)
+            strongSelf.hideActivity()
+        }
+    }
+
+    private func showActivity() {
+        activityView.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    private func hideActivity() {
+        activityView.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+    
+    private func changeIndex(index: Int) {
+        for item in backgroundListVIews {
+            if item.tag == index {
+                item.backgroundColor = #colorLiteral(red: 0.9344636798, green: 0.5902308822, blue: 0.1663158238, alpha: 1)
+            } else {
+                item.backgroundColor = #colorLiteral(red: 0.8783355355, green: 0.8784865737, blue: 0.8783260584, alpha: 1)
+            }
+        }
+    }
+    
+    private func applyScreenMeasuring(state: ScreenState) {
+        var list: [Measuring] = []
+        switch state {
+        case .weight:
+            for item in allMeasurings where item.type == .weight {
+                list.append(item)
+            }
+            selectedMeasurings = list
+        case .waist:
+            for item in allMeasurings where item.type == .waist {
+                list.append(item)
+            }
+            selectedMeasurings = list
+        case .chest:
+            for item in allMeasurings where item.type == .chest {
+                list.append(item)
+            }
+            selectedMeasurings = list
+        case .hips:
+            for item in allMeasurings where item.type == .hips {
+                list.append(item)
+            }
+            selectedMeasurings = list
+        }
+        
+        selectedMeasurings = selectedMeasurings.sorted (by: {$0.timeInMillis > $1.timeInMillis})
+
+        if list.isEmpty {
+            emptySectionsView.isHidden = false
+        } else {
+            emptySectionsView.isHidden = true
+            tableView.reloadData()
+        }
     }
 }
 
 extension MeasuringListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return selectedMeasurings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MeasuringListTableViewCell") as? MeasuringListTableViewCell else { fatalError() }
-        cell.fillCell(index: selectedIndex, delegate: self)
+        cell.fillCell(measuring: selectedMeasurings[indexPath.row])
         return cell
-    }
-}
-
-extension MeasuringListViewController: MeasuringListDelegate {
-    
-    func filterClickedByTag(index: Int) {
-        //
     }
 }

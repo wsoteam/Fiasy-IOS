@@ -16,6 +16,8 @@
 		3B01A22F230C2E5600DA6D73 /* ArticlesDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01A22E230C2E5600DA6D73 /* ArticlesDetailsTableViewCell.swift */; };
 		3B01A231230C2E6A00DA6D73 /* ArticlesDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B01A230230C2E6A00DA6D73 /* ArticlesDetailsTableViewCell.xib */; };
 		3B08D6022300667700A12E92 /* PremiumFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08D6012300667700A12E92 /* PremiumFinishViewController.swift */; };
+		3B09C7D92368782300ADFA24 /* MeasuringSecondAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B09C7D82368782300ADFA24 /* MeasuringSecondAlertView.swift */; };
+		3B09C7DB2368783500ADFA24 /* MeasuringSecondAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B09C7DA2368783500ADFA24 /* MeasuringSecondAlertView.xib */; };
 		3B0D532022F41E86008051BE /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D531F22F41E86008051BE /* UIViewController+Push.swift */; };
 		3B0D532322F428AB008051BE /* NotificationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532222F428AB008051BE /* NotificationsListViewController.swift */; };
 		3B0D532622F42A0F008051BE /* NotificationsHeaderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */; };
@@ -345,6 +347,8 @@
 		3BCE755E22B8EB2100025D04 /* AddRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE755D22B8EB2100025D04 /* AddRecipeTableViewCell.swift */; };
 		3BCE756022B8EB5800025D04 /* AddRecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE755F22B8EB5800025D04 /* AddRecipeTableViewCell.xib */; };
 		3BD1794E227B58C0009AB320 /* RegistrationUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD1794D227B58C0009AB320 /* RegistrationUserInfoViewController.swift */; };
+		3BD71B192365885300AB8058 /* Measuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD71B182365885300AB8058 /* Measuring.swift */; };
+		3BD71B1C2365D8AE00AB8058 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD71B1B2365D8AE00AB8058 /* Int+Ext.swift */; };
 		3BD85F542270454000109AF4 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD85F532270454000109AF4 /* ProductDetailsViewController.swift */; };
 		3BD85F572270592100109AF4 /* MealtimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD85F562270592100109AF4 /* MealtimeViewController.swift */; };
 		3BD85F5A22705BBF00109AF4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD85F5922705BBF00109AF4 /* Constant.swift */; };
@@ -537,6 +541,8 @@
 		3B01A22E230C2E5600DA6D73 /* ArticlesDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		3B01A230230C2E6A00DA6D73 /* ArticlesDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		3B08D6012300667700A12E92 /* PremiumFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFinishViewController.swift; sourceTree = "<group>"; };
+		3B09C7D82368782300ADFA24 /* MeasuringSecondAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringSecondAlertView.swift; sourceTree = "<group>"; };
+		3B09C7DA2368783500ADFA24 /* MeasuringSecondAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeasuringSecondAlertView.xib; sourceTree = "<group>"; };
 		3B0D531F22F41E86008051BE /* UIViewController+Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
 		3B0D532222F428AB008051BE /* NotificationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListViewController.swift; sourceTree = "<group>"; };
 		3B0D532522F42A0F008051BE /* NotificationsHeaderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsHeaderListCell.swift; sourceTree = "<group>"; };
@@ -867,6 +873,8 @@
 		3BCE755D22B8EB2100025D04 /* AddRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		3BCE755F22B8EB5800025D04 /* AddRecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeTableViewCell.xib; sourceTree = "<group>"; };
 		3BD1794D227B58C0009AB320 /* RegistrationUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUserInfoViewController.swift; sourceTree = "<group>"; };
+		3BD71B182365885300AB8058 /* Measuring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measuring.swift; sourceTree = "<group>"; };
+		3BD71B1B2365D8AE00AB8058 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		3BD85F532270454000109AF4 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		3BD85F562270592100109AF4 /* MealtimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealtimeViewController.swift; sourceTree = "<group>"; };
 		3BD85F5922705BBF00109AF4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -1273,6 +1281,8 @@
 				3B1FF1F9235F62DC00C58C04 /* MeasuringInsertView.xib */,
 				3BEBCDBD23605E3800FA3604 /* MeasuringAlertMiddleWeightView.swift */,
 				3BEBCDBF23605E5400FA3604 /* MeasuringAlertMiddleWeightView.xib */,
+				3B09C7D82368782300ADFA24 /* MeasuringSecondAlertView.swift */,
+				3B09C7DA2368783500ADFA24 /* MeasuringSecondAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2609,6 +2619,14 @@
 			path = RegistrationUserInfo;
 			sourceTree = "<group>";
 		};
+		3BD71B1A2365D8A000AB8058 /* Int */ = {
+			isa = PBXGroup;
+			children = (
+				3BD71B1B2365D8AE00AB8058 /* Int+Ext.swift */,
+			);
+			path = Int;
+			sourceTree = "<group>";
+		};
 		3BD85F522270452600109AF4 /* Product Details  */ = {
 			isa = PBXGroup;
 			children = (
@@ -3431,6 +3449,7 @@
 		F06C3193225CF1ED00FDDC34 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3BD71B1A2365D8A000AB8058 /* Int */,
 				3B0D531E22F41E67008051BE /* UIViewController+Push */,
 				3BC9378122B51CDB002C2704 /* Double */,
 				3B3913242285DA870027659E /* UITextField */,
@@ -3542,6 +3561,7 @@
 				3B206191232EA1F0008154A4 /* ActivityElement.swift */,
 				3B206193232EB581008154A4 /* ActivityList.swift */,
 				3B3F567823368AC900262A6B /* Promo.swift */,
+				3BD71B182365885300AB8058 /* Measuring.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3655,6 +3675,7 @@
 				3B325EF4226A44EF00D1A54E /* ProfileIndicatorCell.xib in Resources */,
 				3B77172722BBEEF60089C4BA /* IngredientsFooterView.xib in Resources */,
 				3B466264226CB4280031FD40 /* Diary.storyboard in Resources */,
+				3B09C7DB2368783500ADFA24 /* MeasuringSecondAlertView.xib in Resources */,
 				3BA005D82358E6D5002206F6 /* InsertPremiumDescriptionView.xib in Resources */,
 				3BEBCDCA23607EBC00FA3604 /* MeasuringWeightDescriptionCell.xib in Resources */,
 				3B7845B5231FF76000E16F76 /* WaterDetailsTableViewCell.xib in Resources */,
@@ -3995,6 +4016,7 @@
 				3BC216A022744451001D9809 /* SwiftGoogleTranslate.swift in Sources */,
 				3B51F7DC2358EECD0060A553 /* PremiumMiddleTableViewCell.swift in Sources */,
 				F06FB401225C076100295A92 /* RadioCheckboxBaseContainer.swift in Sources */,
+				3BD71B1C2365D8AE00AB8058 /* Int+Ext.swift in Sources */,
 				3B86367D22FF02F900520B6B /* CVWeekdaySymbolType.swift in Sources */,
 				3BC8D05A227C2EA100633AF0 /* RecipesCell.swift in Sources */,
 				3BBE4C8C2332136C00ADCA76 /* EditActivityViewController.swift in Sources */,
@@ -4030,6 +4052,7 @@
 				3BAF81B322F9898700F77231 /* HelpViewController.swift in Sources */,
 				3BDFD3C122AFEFCE00178885 /* MLModelHandler.swift in Sources */,
 				3B4FBFAE23475DC200F128A1 /* ProductAddingOptionsCell.swift in Sources */,
+				3B09C7D92368782300ADFA24 /* MeasuringSecondAlertView.swift in Sources */,
 				3B86367A22FF02F900520B6B /* CVRange.swift in Sources */,
 				3B86367522FF02F900520B6B /* CVCalendarWeekView.swift in Sources */,
 				3B4A33032271924F0086F4F1 /* String+RandomKey.swift in Sources */,
@@ -4117,6 +4140,7 @@
 				3BC0496F22ACE9D400BD5D30 /* MotivationTopCell.swift in Sources */,
 				3BDD4D5A22DD5A7E0039CFE2 /* Favorite.swift in Sources */,
 				3B4FF605235EF2530032BED8 /* MeasuringTableViewCell.swift in Sources */,
+				3BD71B192365885300AB8058 /* Measuring.swift in Sources */,
 				F06C31A4225CF2D800FDDC34 /* DateFormatters.swift in Sources */,
 				3B1FBF2222E7900200243D0C /* UnboardingViewController.swift in Sources */,
 				3BBA077422C0C3C2004BEF3B /* AddPortionTableViewCell.swift in Sources */,

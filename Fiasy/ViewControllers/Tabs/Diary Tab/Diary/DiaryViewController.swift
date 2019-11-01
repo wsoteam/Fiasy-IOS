@@ -17,6 +17,7 @@ import GradientProgressBar
 import VisualEffectView
 
 protocol DiaryViewDelegate {
+    func replaceMeasuringList(list: [Measuring])
     func openMeasuringScreen()
     func stopProgress()
     func showWaterDetails()
@@ -150,6 +151,15 @@ class DiaryViewController: BaseViewController {
                     guard let `self` = self else { return }
                     self.displayManager.reloadWater()
                 }
+                FirebaseDBManager.fetchMyMeasuringInDataBase { [weak self] (list) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.displayManager.reloadMeasuringsContent(allMeasurings: list)
+                    if !strongSelf.tableView.visibleCells.isEmpty {
+                        UIView.performWithoutAnimation {
+                            strongSelf.tableView.reloadSections(IndexSet(integer: 7), with: .none)
+                        }
+                    }
+                }
                 self.post("reloadContent")
             })
         }
@@ -209,11 +219,22 @@ class DiaryViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? EditActivityViewController, let model = sender as? ActivityElement {
             vc.fillScreenByModel(model)
+        } else if let vc = segue.destination as? MeasuringViewController {
+            vc.delegate = self
         }
     }
 }
 
 extension DiaryViewController: DiaryViewDelegate {
+    
+    func replaceMeasuringList(list: [Measuring]) {
+        displayManager.reloadMeasuringsContent(allMeasurings: list)
+        if !tableView.visibleCells.isEmpty {
+            UIView.performWithoutAnimation {
+                tableView.reloadSections(IndexSet(integer: 7), with: .none)
+            }
+        }
+    }
     
     func openMeasuringScreen() {
         performSegue(withIdentifier: "sequeMeasuringScreen", sender: nil)

@@ -50,7 +50,40 @@ class FirebaseDBManager {
                 }
                 handler(nil)
             }) { (error) in
-                handler(error.localizedDescription)
+             handler(error.localizedDescription)
+            }
+        }
+    }
+
+    static func fetchMyMeasuringInDataBase(handler: @escaping (([Measuring]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            var lists: [Measuring] = []
+            Database.database().reference().child("USER_LIST").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let snapshotValue = snapshot.value as? [String : [String : AnyObject]] {
+                    if let weights = snapshotValue["weights"] as? [String : [String : AnyObject]] {
+                        for (key, items) in weights {
+                            lists.append(Measuring(generalKey: key, dictionary: items, type: .weight))
+                        }
+                    }
+                    if let waist = snapshotValue["waist"] as? [String : [String : AnyObject]] {
+                        for (key, items) in waist {
+                            lists.append(Measuring(generalKey: key, dictionary: items, type: .waist))
+                        }
+                    }
+                    if let chest = snapshotValue["chest"] as? [String : [String : AnyObject]] {
+                        for (key, items) in chest {
+                            lists.append(Measuring(generalKey: key, dictionary: items, type: .chest))
+                        }
+                    }
+                    if let hips = snapshotValue["hips"] as? [String : [String : AnyObject]] {
+                        for (key, items) in hips {
+                            lists.append(Measuring(generalKey: key, dictionary: items, type: .hips))
+                        }
+                    }
+                    handler(lists)
+                }
+            }) { (error) in
+                print(error.localizedDescription)
             }
         }
     }
@@ -106,6 +139,56 @@ class FirebaseDBManager {
             }) { (error) in
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    static func removeMeasuring(measuring: Measuring, type: MeasuringType, handler: @escaping (() -> ())) {
+        guard let uid = Auth.auth().currentUser?.uid, let key = measuring.generalKey else { return }
+        var item: String = ""
+        switch type {
+        case .weight:
+            item = "weights"
+        case .waist:
+            item = "waist"
+        case .chest:
+            item = "chest"
+        case .hips:
+            item = "hips"
+        }
+        let ref = Database.database().reference()
+        ref.child("USER_LIST").child(uid).child(item).child(key).removeValue()
+        handler()
+    }
+    
+    static func addMeasuring(date: Date, measuring: Measuring?, weight: Double, type: MeasuringType, handler: @escaping ((Measuring) -> ())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        var item: String = ""
+        switch type {
+        case .weight:
+            item = "weights"
+        case .waist:
+            item = "waist"
+        case .chest:
+            item = "chest"
+        case .hips:
+            item = "hips"
+        }
+        
+        if let key = measuring?.generalKey {
+            Database.database().reference().child("USER_LIST").child(uid).child("\(item)").child(key).child("weight").setValue(weight)
+            handler(Measuring())
+        } else {
+            let milisecond = Int64((date.timeIntervalSince1970 * 1000.0).rounded())
+            let userData = ["key": "", "timeInMillis": milisecond, "weight": weight] as [String : Any]
+            Database.database().reference().child("USER_LIST").child(uid).child(item).child("\(milisecond)").setValue(userData)
+            let model = Measuring()
+            model.key = ""
+            model.date = date
+            model.type = type
+            model.timeInMillis = Int(milisecond)
+            model.weight = weight
+            model.generalKey = "\(Int(milisecond))"
+            handler(model)
         }
     }
     

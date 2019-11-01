@@ -32,7 +32,7 @@ class SubscriptionService: NSObject {
     let paymentQueue = SKPaymentQueue.default()
     
     func getProducts() {
-        let products: Set = ["com.fiasy.NewAutoYearlySubscriptions", "com.fiasy.NewAutoHalfYearSubscriptions", "com.fiasy.NewAutoThreeMonthsSubscriptions"]
+        let products: Set = ["com.fiasy.AutoYearRenewableSubscriptions", "com.fiasy.AutoHalfYearRenewableSubscriptions", "com.fiasy.AutoThreeMonthRenewableSubscriptions"]
         let request = SKProductsRequest(productIdentifiers: products)
         request.delegate = self
         request.start()
@@ -40,7 +40,7 @@ class SubscriptionService: NSObject {
     }
     
     func purchase(index: Int) {
-        let allSubscription = ["com.fiasy.NewAutoYearlySubscriptions", "com.fiasy.NewAutoHalfYearSubscriptions", "com.fiasy.NewAutoThreeMonthsSubscriptions"]
+        let allSubscription = ["com.fiasy.AutoYearRenewableSubscriptions", "com.fiasy.AutoHalfYearRenewableSubscriptions", "com.fiasy.AutoThreeMonthRenewableSubscriptions"]
         
         if allSubscription.indices.contains(index) {
             var product: SKProduct?

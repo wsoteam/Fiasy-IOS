@@ -626,16 +626,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="296" height="398"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="prem_success" translatesAutoresizingMaskIntoConstraints="NO" id="a4U-HH-Oye">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="185"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="232"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Поздравляем!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wa8-vn-H9b">
-                                                <rect key="frame" x="0.0" y="205" width="296" height="26"/>
+                                                <rect key="frame" x="0.0" y="252" width="296" height="12"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
                                                 <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Теперь вы можете пользоваться всеми преимуществами Premium аккаунта" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jb-Ak-OEY">
-                                                <rect key="frame" x="0.0" y="251" width="296" height="33"/>
+                                                <rect key="frame" x="0.0" y="284" width="296" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -934,7 +934,7 @@
         <image name="arrow-righter2" width="22" height="22"/>
         <image name="back_icon" width="16" height="16"/>
         <image name="close" width="20" height="20"/>
-        <image name="diamond" width="20" height="20"/>
+        <image name="diamond" width="146" height="146"/>
         <image name="finish_prem" width="287" height="93"/>
         <image name="new_close" width="23" height="23"/>
         <image name="prem_success" width="287" height="232"/>
@@ -942,7 +942,7 @@
         <image name="Попробуйте весь функционал с бесплатной подпиской н" width="252" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2g5-va-ldw"/>
-        <segue reference="ddU-2w-0ON"/>
+        <segue reference="Y0A-wn-Xus"/>
+        <segue reference="N0I-ke-QST"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,6 +24,7 @@ class DiaryDisplayManager: NSObject {
     // MARK: - Properties -
     private let tableView: UITableView
     private let topView: UIView
+    private var allMeasurings: [Measuring] = []
     private let delegate: DiaryViewDelegate
     private var mealTime: [[Mealtime]] = []
     private var removeIndex: IndexPath?
@@ -49,6 +50,10 @@ class DiaryDisplayManager: NSObject {
     
     func reloadContent() {
         self.delegate.stopProgress()
+    }
+    
+    func reloadMeasuringsContent(allMeasurings: [Measuring]) {
+        self.allMeasurings = allMeasurings
     }
     
     func reloadActivity(_ list: [ActivityElement], selectedDate: Date) {
@@ -234,7 +239,7 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
             return cell
         } else if indexPath.section == 7 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryMeasuringTableViewCell") as? DiaryMeasuringTableViewCell else { fatalError() }
-            cell.fillCell(delegate: self)
+            cell.fillCell(delegate: self, selectedDate: selectedDate, allMeasurings: self.allMeasurings)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryTableViewCell") as? DiaryTableViewCell else { fatalError() }

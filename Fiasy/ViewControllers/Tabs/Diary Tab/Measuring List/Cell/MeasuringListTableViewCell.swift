@@ -11,33 +11,31 @@ import UIKit
 class MeasuringListTableViewCell: UITableViewCell {
     
     // MARK: - Outlet -
-    @IBOutlet weak var emptyStackView: UIStackView!
-    @IBOutlet var backgroundListVIews: [UIView]!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
 
     // MARK: - Properties -
-    private var delegate: MeasuringListDelegate?
+    private var measuring: Measuring?
     
     // MARK: - Interface -
-    func fillCell(index: Int, delegate: MeasuringListDelegate) {
-        self.delegate = delegate
-        changeIndex(index: index)
+    func fillCell(measuring: Measuring) {
+        self.measuring = measuring
+        
+        if let date = measuring.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(identifier:"GMT")
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+            dateFormatter.dateFormat = "dd MMMM yyyy"
+            dateLabel.text =  dateFormatter.string(from: date)
+        }        
+        fillAmount(count: measuring.weight ?? 0.0)
     }
     
     // MARK: - Private -
-    private func changeIndex(index: Int) {
-        for item in backgroundListVIews {
-            if item.tag == index {
-                item.backgroundColor = #colorLiteral(red: 0.9344636798, green: 0.5902308822, blue: 0.1663158238, alpha: 1)
-            } else {
-                item.backgroundColor = #colorLiteral(red: 0.8783355355, green: 0.8784865737, blue: 0.8783260584, alpha: 1)
-            }
-        }
-    }
-    
-    // MARK: - Actions -
-    @IBAction func filterClicked(_ sender: UIButton) {
-        emptyStackView.alpha = 0.0
-        changeIndex(index: sender.tag)
-        self.delegate?.filterClickedByTag(index: sender.tag)
+    private func fillAmount(count: Double) {
+        let mutableAttrString = NSMutableAttributedString()
+        mutableAttrString.append(NSAttributedString(string: "\(count)", attributes: [ .foregroundColor: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)]))
+        mutableAttrString.append(NSAttributedString(string: " кг", attributes: [ .foregroundColor: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1)]))
+        amountLabel.attributedText = mutableAttrString
     }
 }
