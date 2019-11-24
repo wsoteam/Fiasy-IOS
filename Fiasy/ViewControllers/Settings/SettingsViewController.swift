@@ -13,6 +13,7 @@ import Amplitude_iOS
 class SettingsViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
@@ -40,6 +41,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        localizeDesign()
         tableView.register(type: SettingCell.self)
         tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         Amplitude.instance().logEvent("view_settings") // +
@@ -50,9 +52,6 @@ class SettingsViewController: UIViewController {
         
         purchaseIsValid = UserInfo.sharedInstance.purchaseIsValid
         tableView.reloadData()
-//        DispatchQueue.global().async {
-//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-//        }
     }
     
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
@@ -77,12 +76,17 @@ class SettingsViewController: UIViewController {
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - Private -
+    private func localizeDesign() {
+        navigationTitleLabel.text = LS(key: .SETTINGS_TITLE)
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return purchaseIsValid ? 4 : 5
+        return purchaseIsValid ? 3 : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,9 +102,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 performSegue(withIdentifier: "sequeEditProfile", sender: nil)
             case 1:
                 performSegue(withIdentifier: "sequeCaloriesIntake", sender: nil)
+//            case 2:
+//                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
             case 2:
-                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
-            case 3:
                 picker.showPicker()
             default:
                 break
@@ -115,9 +119,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 performSegue(withIdentifier: "sequeEditProfile", sender: nil)
             case 2:
                 performSegue(withIdentifier: "sequeCaloriesIntake", sender: nil)
+//            case 3:
+//                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
             case 3:
-                performSegue(withIdentifier: "sequeHelpScreen", sender: nil)
-            case 4:
                 picker.showPicker()
             default:
                 break

@@ -12,8 +12,8 @@
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
         </array>
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
         </array>
     </customFonts>
     <objects>
@@ -31,19 +31,19 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pON-RF-kj1">
-                    <rect key="frame" x="0.0" y="11" width="375" height="59"/>
+                    <rect key="frame" x="0.0" y="13" width="375" height="45"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExG-us-QSA">
-                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="59"/>
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="dOq-mk-5pb"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                            <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO1-Un-GbM">
-                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="59"/>
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="tKs-df-wY0"/>
                             </constraints>
@@ -53,14 +53,14 @@
                         </label>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-a8-eTb">
-                    <rect key="frame" x="187.5" y="11" width="187.5" height="59"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-a8-eTb">
+                    <rect key="frame" x="187.5" y="13" width="187.5" height="45"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJV-kh-Sne">
-                            <rect key="frame" x="107.5" y="0.0" width="80" height="59"/>
+                            <rect key="frame" x="107.5" y="0.0" width="80" height="45"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREMIUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hd-9z-YaL">
-                                    <rect key="frame" x="15" y="5" width="50" height="49"/>
+                                    <rect key="frame" x="15" y="5" width="50" height="35"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD8-Gt-DfU">
-                            <rect key="frame" x="107.5" y="0.0" width="80" height="59"/>
+                            <rect key="frame" x="107.5" y="0.0" width="80" height="45"/>
                             <connections>
                                 <action selector="premiumClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="YVh-gX-wfk"/>
                             </connections>
@@ -106,9 +106,9 @@
                 <constraint firstItem="QHO-a8-eTb" firstAttribute="top" secondItem="oO1-Un-GbM" secondAttribute="top" id="Zky-iG-uVY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="WTh-7B-0nC" secondAttribute="top" id="di0-9O-rsQ"/>
                 <constraint firstItem="WTh-7B-0nC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="-30" id="guJ-zk-UrB"/>
-                <constraint firstItem="pON-RF-kj1" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jW4-l9-x0B"/>
+                <constraint firstItem="pON-RF-kj1" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-12" id="jW4-l9-x0B"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pON-RF-kj1" secondAttribute="trailing" id="jh1-ZM-KZC"/>
-                <constraint firstItem="pON-RF-kj1" firstAttribute="top" secondItem="WTh-7B-0nC" secondAttribute="bottom" constant="10" id="pLQ-5I-xJR"/>
+                <constraint firstItem="pON-RF-kj1" firstAttribute="top" secondItem="WTh-7B-0nC" secondAttribute="bottom" constant="12" id="pLQ-5I-xJR"/>
                 <constraint firstItem="pON-RF-kj1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pZ6-n6-2cY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WTh-7B-0nC" secondAttribute="trailing" constant="-30" id="y1R-Dq-Inv"/>
             </constraints>

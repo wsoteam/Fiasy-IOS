@@ -17,34 +17,36 @@ class NutrientsInsertView: UIView {
     @IBOutlet weak var rightSideLabel: UILabel!
     
     //MARK: - Properties -
-    private var delegate: PremiumDisplayDelegate?
+    //private var delegate: PremiumDisplayDelegate?
 
     // MARK: - Interface -
-    func fillView(leftName: String, rightName: String, isTitle: Bool, isOwn: Bool, delegate: PremiumDisplayDelegate?) {
+    func fillView(leftName: String, rightName: String, isTitle: Bool) {
         
-        self.delegate = delegate
+        //self.delegate = delegate
         
         topSeparatorView.isHidden = !isTitle
         
         leftSideLabel.text = isTitle ? leftName : "   \(leftName)"
         rightSideLabel.text = isTitle ? rightName : "   \(rightName)"
         
-        leftSideLabel.font = isTitle ? UIFont.fontRobotoMedium(size: 13) : UIFont.fontRobotoRegular(size: 13)
-        rightSideLabel.font = isTitle ? UIFont.fontRobotoMedium(size: 13) : UIFont.fontRobotoRegular(size: 13)
+        leftSideLabel.textColor = isTitle ? #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1) : #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
+        rightSideLabel.textColor = isTitle ? #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1) : #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)
+        leftSideLabel.font = isTitle ? UIFont.sfProTextSemibold(size: 13) : UIFont.sfProTextRegular(size: 13)
+        rightSideLabel.font = isTitle ? UIFont.sfProTextSemibold(size: 13) : UIFont.sfProTextRegular(size: 13)
         
-        if isTitle {
-            premiumViewContainer.isHidden = true
-        } else {
-            if isOwn {
-                premiumViewContainer.isHidden = true
-            } else {
-                premiumViewContainer.isHidden = UserInfo.sharedInstance.purchaseIsValid
-            }
-        }
+        //if isTitle {
+            //premiumViewContainer.isHidden = true
+//        } else {
+//            if isOwn {
+//                premiumViewContainer.isHidden = true
+//            } else {
+//                premiumViewContainer.isHidden = UserInfo.sharedInstance.purchaseIsValid
+//            }
+//        }
     }
     
     // MARK: - Actions -
     @IBAction func premiumClicked(_ sender: Any) {
-        delegate?.showPremiumScreen()
+        //delegate?.showPremiumScreen()
     }
 }

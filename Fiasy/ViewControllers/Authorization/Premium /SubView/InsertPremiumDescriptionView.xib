@@ -23,18 +23,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SEb-xQ-cOZ">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SEb-xQ-cOZ">
+                    <rect key="frame" x="5" y="0.0" width="365" height="91"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-3S-k3v">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-3S-k3v">
+                            <rect key="frame" x="0.0" y="0.0" width="365" height="63"/>
                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="20"/>
                             <state key="normal" title=" Эксклюзивные статьи" image="Glyph (2)">
                                 <color key="titleColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="tt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kh-hD-NHE">
-                            <rect key="frame" x="0.0" y="73" width="375" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="tt" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kh-hD-NHE">
+                            <rect key="frame" x="0.0" y="73" width="365" height="18"/>
                             <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                             <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -42,11 +42,11 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Mwr-Xl-9bB" firstAttribute="bottom" secondItem="SEb-xQ-cOZ" secondAttribute="bottom" id="60C-fg-h2M"/>
-                <constraint firstItem="SEb-xQ-cOZ" firstAttribute="leading" secondItem="XmM-jx-Yhk" secondAttribute="leading" id="BoF-Cl-f69"/>
-                <constraint firstAttribute="trailing" secondItem="SEb-xQ-cOZ" secondAttribute="trailing" id="Q4M-yL-CRC"/>
+                <constraint firstItem="SEb-xQ-cOZ" firstAttribute="leading" secondItem="XmM-jx-Yhk" secondAttribute="leading" constant="5" id="BoF-Cl-f69"/>
+                <constraint firstAttribute="trailing" secondItem="SEb-xQ-cOZ" secondAttribute="trailing" constant="5" id="Q4M-yL-CRC"/>
                 <constraint firstAttribute="top" secondItem="SEb-xQ-cOZ" secondAttribute="top" id="fbz-0w-wBH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

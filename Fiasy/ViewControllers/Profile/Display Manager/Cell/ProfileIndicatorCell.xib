@@ -25,14 +25,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отчеты" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzt-Kq-bNA">
-                        <rect key="frame" x="20" y="40" width="345" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Отчеты" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzt-Kq-bNA">
+                        <rect key="frame" x="21" y="40" width="345" height="24"/>
                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="20"/>
                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vJJ-XD-1ZS">
-                        <rect key="frame" x="30" y="114" width="315" height="35.5"/>
+                        <rect key="frame" x="30" y="113.5" width="315" height="35.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKi-xI-SFX">
                                 <rect key="frame" x="0.0" y="0.0" width="101.5" height="35.5"/>
@@ -92,16 +92,16 @@
                         </subviews>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-Uw-MYa">
-                        <rect key="frame" x="0.0" y="149.5" width="375" height="126"/>
+                        <rect key="frame" x="0.0" y="149" width="375" height="125.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riw-Mi-NDI">
-                                <rect key="frame" x="170.5" y="30" width="34.5" height="16"/>
+                                <rect key="frame" x="171.5" y="30" width="32" height="15.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
                                 <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-7H-yEL">
-                                <rect key="frame" x="76" y="46" width="223" height="50"/>
+                                <rect key="frame" x="78" y="45.5" width="219" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bt2-lg-CjJ">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -116,13 +116,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BN-pq-uEn">
-                                        <rect key="frame" x="80" y="0.0" width="63" height="50"/>
+                                        <rect key="frame" x="80" y="0.0" width="59" height="50"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="24"/>
                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMI-0s-iE1">
-                                        <rect key="frame" x="173" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="169" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vMI-0s-iE1" secondAttribute="height" multiplier="1:1" id="DAX-ce-0wy"/>
                                         </constraints>
@@ -148,14 +148,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgl-Bs-KIC" customClass="BarChartView" customModule="Charts">
-                        <rect key="frame" x="0.0" y="275.5" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="274.5" width="375" height="300"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="300" id="Ckp-MI-QqB"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RoT-fk-s8G">
-                        <rect key="frame" x="0.0" y="555.5" width="375" height="40"/>
+                        <rect key="frame" x="0.0" y="554.5" width="375" height="40"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="UrR-Cm-0r7">
                                 <rect key="frame" x="-139.5" y="0.0" width="654" height="40"/>
@@ -195,7 +195,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дневная норма" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZV-oK-3Wt">
-                                                <rect key="frame" x="40" y="12.5" width="272" height="14.5"/>
+                                                <rect key="frame" x="40" y="13" width="272" height="14"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
                                                 <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -246,7 +246,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваши показатели" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fh-wd-fev">
-                                                <rect key="frame" x="40" y="12.5" width="272" height="14.5"/>
+                                                <rect key="frame" x="40" y="13" width="272" height="14"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -296,8 +296,11 @@
                 <outlet property="centerLabel" destination="0BN-pq-uEn" id="Xnx-AH-Xrn"/>
                 <outlet property="chartView" destination="tgl-Bs-KIC" id="bKG-iD-h8g"/>
                 <outlet property="leftArrow" destination="bt2-lg-CjJ" id="Jrk-eQ-MmB"/>
+                <outlet property="normalLabel" destination="dZV-oK-3Wt" id="Zgk-LB-AVc"/>
+                <outlet property="reportsLabel" destination="Fzt-Kq-bNA" id="t5z-3B-Vep"/>
                 <outlet property="rightArrow" destination="vMI-0s-iE1" id="UTL-Hr-29E"/>
                 <outlet property="yearLabel" destination="riw-Mi-NDI" id="XAm-Ch-vRx"/>
+                <outlet property="yourIndicatorsLabel" destination="1Fh-wd-fev" id="wl6-KZ-kQU"/>
                 <outletCollection property="selectedButtons" destination="XKi-xI-SFX" collectionClass="NSMutableArray" id="sVW-K0-WGv"/>
                 <outletCollection property="selectedButtons" destination="9Vt-77-Grl" collectionClass="NSMutableArray" id="OOV-1c-Rto"/>
                 <outletCollection property="selectedButtons" destination="cxh-c4-wcm" collectionClass="NSMutableArray" id="aLg-cC-ccM"/>

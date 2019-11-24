@@ -2,7 +2,7 @@
 //  MeasuringInsertView.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 10/22/19.
+//  Created by Eugen Lipatov on 10/22/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
@@ -54,8 +54,10 @@ class MeasuringInsertView: UIView {
             for item in weekNumberLabels {
                 item.text = ""
             }
-            for item in weekNumberButtons {
-                item.setImage(UIImage(), for: .normal)
+            for (index, item) in date.getWeekDates().enumerated() {
+                let color = Date().millisecondsSince1970 < item.millisecondsSince1970 ? #colorLiteral(red: 0.7685428858, green: 0.7686761618, blue: 0.7685345411, alpha: 1) : #colorLiteral(red: 0.9344636798, green: 0.5902308822, blue: 0.1663158238, alpha: 1)
+                weekNumberButtons[index].tintColor = color
+                weekNumberButtons[index].setImage(#imageLiteral(resourceName: "plus_icon"), for: .normal)
             }
         }
     }
@@ -100,8 +102,10 @@ class MeasuringInsertView: UIView {
             for item in weekNumberLabels {
                 item.text = ""
             }
-            for item in weekNumberButtons {
-                item.setImage(UIImage(), for: .normal)
+            for (index, item) in date.getWeekDates().enumerated() {
+                let color = Date().millisecondsSince1970 < item.millisecondsSince1970 ? #colorLiteral(red: 0.7685428858, green: 0.7686761618, blue: 0.7685345411, alpha: 1) : #colorLiteral(red: 0.9344636798, green: 0.5902308822, blue: 0.1663158238, alpha: 1)
+                weekNumberButtons[index].tintColor = color
+                weekNumberButtons[index].setImage(#imageLiteral(resourceName: "plus_icon"), for: .normal)
             }
         }
     }

@@ -13,6 +13,9 @@ import ObjectMapper
 class Product: NSObject {
 
     var id: Int?
+    var day: Int?
+    var month: Int?
+    var year: Int?
     var name: String!
     var brend: String?
     var portion: Double?
@@ -21,8 +24,10 @@ class Product: NSObject {
     var calories: Double?
     var proteins: Double?
     var carbohydrates: Double?
+    var generalKey: String?
     var sugar: Double?
     var fats: Double?
+    var weight: Int?
     var saturatedFats: Double?
     var monoUnSaturatedFats: Double?
     var polyUnSaturatedFats: Double?
@@ -30,6 +35,14 @@ class Product: NSObject {
     var cellulose: Double?
     var sodium: Double?
     var pottassium: Double?
+    var presentDay: Bool = false
+    var isRecipe: Bool = false
+    var parentKey: String?
+    var measurementUnits: [MeasurementUnits] = []
+    var selectedPortion: MeasurementUnits?
+    var selectedUnit: String?
+    var portionId: Int?
+    var divisionBasketTitle: String?
 
     var productWeightByAdd: Int?
 
@@ -67,7 +80,7 @@ class Product: NSObject {
 
     required convenience init(favorite: Favorite) {
         self.init()
-
+        
         name = favorite.name
         brend = favorite.brand
         calories = favorite.calories
@@ -82,6 +95,66 @@ class Product: NSObject {
         cellulose = favorite.cellulose
         sodium = favorite.sodium
         pottassium = favorite.pottassium
+        measurementUnits = favorite.measurementUnits
+    }
+    
+//    required convenience init(second: SecondProduct, portion: MeasurementUnits) {
+//        self.init()
+//        
+//        id = second.id
+//        name = second.name
+//        brend = second.brand?.name
+//        calories = second.calories
+//        proteins = second.proteins
+//        carbohydrates = second.carbohydrates
+//        sugar = second.sugar
+//        fats = second.fats
+//        saturatedFats = second.saturatedFats
+//        monoUnSaturatedFats = second.monoUnSaturatedFats
+//        polyUnSaturatedFats = second.polyUnSaturatedFats
+//        cholesterol = second.cholesterol
+//        cellulose = second.cellulose
+//        sodium = second.sodium
+//        pottassium = second.pottassium
+//        selectedPortion = portion
+//    }
+
+    required convenience init(mealtime: Mealtime) {
+        self.init()
+        
+        parentKey = mealtime.parentKey
+        generalKey = mealtime.generalKey
+        day = mealtime.day
+        month = mealtime.month
+        year = mealtime.year
+        name = mealtime.name
+        brend = mealtime.brand
+        presentDay = mealtime.presentDay
+        calories = mealtime.calories
+        proteins = mealtime.protein
+        carbohydrates = mealtime.carbohydrates
+        fats = mealtime.fat
+        weight = mealtime.weight
+        isRecipe = mealtime.isRecipe ?? false
+        cholesterol = mealtime.cholesterol
+        polyUnSaturatedFats = mealtime.polyUnSaturatedFats
+        sodium = mealtime.sodium
+        cellulose = mealtime.cellulose
+        saturatedFats = mealtime.saturatedFats
+        monoUnSaturatedFats = mealtime.monoUnSaturatedFats
+        pottassium = mealtime.pottassium
+        sugar = mealtime.sugar
+        measurementUnits = mealtime.measurementUnits
+        selectedUnit = mealtime.selectedUnit
+        isLiquid = mealtime.isLiquid
+        
+        if let portionId = mealtime.portionId {
+            for item in mealtime.measurementUnits where portionId == item.id {
+                selectedPortion = item
+                self.portionId = item.id
+                break
+            }
+        }
     }
 
     required convenience init(dictionary: [String : AnyObject]) {

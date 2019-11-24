@@ -14,13 +14,13 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Properties -
-    static let rowHeight: CGFloat = Display.typeIsLike == .iphone5 ? 160.0 : 200.0
-    private var models: [ArticleModel] = []
+    static let rowHeight: CGFloat = 200.0
+    private var articles: [Article] = []
     private let isIphone5 = Display.typeIsLike == .iphone5
     
     // MARK: - Interface -
-    func fillRow(models: [ArticleModel]) {
-        self.models = models
+    func fillRow(articles: [Article]) {
+        self.articles = articles
         
         setupCollectionView()
     }
@@ -37,18 +37,18 @@ class ArticleTableViewCell: UITableViewCell {
 extension ArticleTableViewCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return models.count
+        return articles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as? ArticleCollectionViewCell else { return UICollectionViewCell() }
-        cell.fillRow(model: models[indexPath.row])
+        cell.fillRow(article: articles[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = UIApplication.getTopMostViewController() {
-            vc.performSegue(withIdentifier: "sequeArticleDetailsScreen", sender: models[indexPath.row])
+            vc.performSegue(withIdentifier: "sequeArticleDetailsScreen", sender: articles[indexPath.row])
         }
     }
 }
@@ -56,10 +56,6 @@ extension ArticleTableViewCell: UICollectionViewDataSource {
 extension ArticleTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isIphone5 {
-            return CGSize(width: UIScreen.main.bounds.size.width - 50, height: 160)
-        } else {
-            return CGSize(width: UIScreen.main.bounds.size.width - 50, height: 200)
-        }
+        return CGSize(width: UIScreen.main.bounds.size.width - 50, height: 200)
     }
 }

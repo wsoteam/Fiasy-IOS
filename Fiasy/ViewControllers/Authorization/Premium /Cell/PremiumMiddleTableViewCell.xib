@@ -22,6 +22,7 @@
                         <rect key="frame" x="10" y="0.0" width="394" height="619.5"/>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="MP6-oE-fEx" secondAttribute="bottom" id="L9A-L1-F6m"/>
                     <constraint firstItem="MP6-oE-fEx" firstAttribute="top" secondItem="gXt-NT-R9D" secondAttribute="top" id="hZH-fk-VWf"/>
@@ -29,6 +30,7 @@
                     <constraint firstItem="MP6-oE-fEx" firstAttribute="leading" secondItem="gXt-NT-R9D" secondAttribute="leading" constant="10" id="kzd-rU-o1n"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="QQg-bH-Ywt"/>
             <connections>
                 <outlet property="insertStackView" destination="MP6-oE-fEx" id="o6H-rv-xKW"/>

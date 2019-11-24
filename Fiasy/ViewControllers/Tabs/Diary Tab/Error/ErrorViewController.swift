@@ -48,7 +48,7 @@ class ErrorViewController: UIViewController {
         blurView.scale = 1
 
         progressView.trackColor = .clear
-        progressView.progressColor = #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1)
+        progressView.progressColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
     }
     
     private func sendClaims() {
@@ -78,6 +78,7 @@ class ErrorViewController: UIViewController {
     }
     
     private func removeAnimate() {
+        view.endEditing(true)
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.containerView.alpha = 0.0
             self?.containerView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)

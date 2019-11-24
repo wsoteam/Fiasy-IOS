@@ -8,9 +8,15 @@
 
 import UIKit
 
+enum TypeProduct: Int {
+    case liquid = 1
+    case product = 0
+}
+
 struct AddProductFlow {
     
     // MARK: - First Step -
+    var productType: TypeProduct = .product
     var brend: String?
     var name: String?
     var barCode: String?
@@ -18,6 +24,9 @@ struct AddProductFlow {
     var selectedFavorite: Favorite?
     
     var productFrom = "button"
+    
+    // MARK: - Second Step -
+    var allServingSize: [Serving] = [Serving(name: "Стандартная порция", unit: "г.", size: 100)]
     
     // MARK: - Second Step -
     var calories: String?
@@ -38,5 +47,4 @@ struct AddProductFlow {
     func getFields() -> [String] {
         return [cellulose ?? "", sugar ?? "", saturatedFats ?? "", monounsaturatedFats ?? "", polyunsaturatedFats ?? "", cholesterol ?? "", sodium ?? "", potassium ?? ""]
     }
-    
 }

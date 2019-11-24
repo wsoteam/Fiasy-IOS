@@ -1,0 +1,951 @@
+[
+    {
+        "name" : "Aikido",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Aquajogging",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Aeróbic acuático",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Escalada en montaña",
+        "count" : 11
+    },
+    
+    {
+        "name" : "Fútbol",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Prensa",
+        "count" : 1
+    },
+    
+    {
+        "name" : "Aeróbicos, intensidad alta",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Aeróbicos, intensidad media",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Bádminton, intensidad alta",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Bádminton, intensidad media",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Baloncesto, intensidad alta",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Baloncesto, intensidad media",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Running, 11,3 km/h",
+        "count" : 12
+    },
+    
+    {
+        "name" : "Running, 12,1 km/h",
+        "count" : 12
+    },
+    
+    {
+        "name" : "Running, 12,9 km/h",
+        "count" : 13
+    },
+    
+    {
+        "name" : "Running, 14,5 km/h",
+        "count" : 15
+    },
+    
+    {
+        "name" : "Running, 16.09 kph",
+        "count" : 17
+    },
+    
+    {
+        "name" : "Running, 17.7 kph",
+        "count" : 17
+    },
+    
+    {
+        "name" : "Running, 6.4 kph",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Running, 8 kph",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Running, 9.7 kph",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Running en escalera",
+        "count" : 15
+    },
+    
+    {
+        "name" : "Cross",
+        "count" : 12
+    },
+    
+    {
+        "name" : "Running en arena",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Jogging",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Cinta",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Béisbol",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Biatlón",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Bikram yoga",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Billar",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Flexiones de bíceps",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Body step",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Artes marciales",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Boxeo",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Boxeo, intensidad alta",
+        "count" : 12
+    },
+    
+    {
+        "name" : "Boxeo, práctica",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Boxeo, saco de boxeo",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Bolos",
+        "count" : 2
+    },
+    
+    {
+        "name" : "Running rápido en escalera",
+        "count" : 13
+    },
+    
+    {
+        "name" : "Andar, 6,5 km/h",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Esquí acuático",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Spinning, intensidad alta",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Spinning, intensidad media",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Ciclismo, intensidad alta",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Ciclismo, intensidad media",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Montar a caballo",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Montar a caballo, doma Clásica",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Montar a caballo, galope",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Montar a caballo, obstáculos",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Montar a caballo, trote",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Windsurf",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Gimnasia acuática",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Waterpolo",
+        "count" : 13
+    },
+    
+    {
+        "name" : "Vóleibol, intensidad alta",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Vóleibol, intensidad baja",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Balonmano",
+        "count" : 12
+    },
+    
+    {
+        "name" : "Gimnasia",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Gimnasia, intensa",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Gimnasia, intensidad media",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Entrenamiento con pesas rusas",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Planchar la ropa",
+        "count" : 2
+    },
+    
+    {
+        "name" : "Oro (regular)",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Esquí alpino, intensidad baja",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Esquí alpino, intensidad media",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Esquí alpino, intensidad moderada",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Kayak",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Canoa",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Remo, intensidad alta",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Remo, intensidad baja",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Remo, intensidad media",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Buceo",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Submarinismo",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Judo",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Prensa",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Prensa de piernas",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Snow kite",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Zumba",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Smash Drum Fit",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Caminar rápido",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Entrenamiento HITT, intensidad alta",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Yoga",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Kitesurfing",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Kárate",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Equipo de cardio",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Esquí de fondo",
+        "count" : 18
+    },
+    
+    {
+        "name" : "Ciclismo",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Esquí acuático",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Ciclismo de montaña",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Patinaje sobre hielo",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Patinaje sobre hielo, intensidad alta",
+        "count" : 11
+    },
+    
+    {
+        "name" : "Esquí de fondo, alta intensidad",
+        "count" : 11
+    },
+    
+    {
+        "name" : "Esquí de fondo, intensidad moderada",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Esquí, intensidad media",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Patinaje sobre ruedas",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Patinaje en línea",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Montar en moto",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Trineo",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Skateboard",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Snowboard",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Abdominales",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Curling",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Kickboxing",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Excavar",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Cortar el césped",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Cross-skating",
+        "count" : 11
+    },
+    
+    {
+        "name" : "Entrenador de cross",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Crossfit",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Entrenamiento en circuito",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Ejercicios con hula hoop",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Culturismo",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Lacrosse",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Caminata lenta, 4,5 km/h",
+        "count" : 2
+    },
+    
+    {
+        "name" : "Limpiar ventanas",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Motocross",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Lavar un coche",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Fondos",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Tenis de mesa",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Flexiones",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Levantamiento de pesas",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Senderismo",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Senderismo con mochila",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Pilates",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Natación, mariposa",
+        "count" : 13
+    },
+    
+    {
+        "name" : "Natación, braza",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Natación, espalda",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Vela",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Snorkel",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Natación, intensidad alta",
+        "count" : 12
+    },
+    
+    {
+        "name" : "Natación, intensidad baja",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Natación, estilo libre",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Natación, intensidad media",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Levantamientos de cadera desde posición tumbada",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Dominadas",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Subida de escaleras",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Polo",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Pista de obstáculos",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Sentadillas a una pierna",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Sentadillas con barra",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Marcha",
+        "count" : 2
+    },
+    
+    {
+        "name" : "Marcha, lenta",
+        "count" : 2
+    },
+    
+    {
+        "name" : "Marcha por el bosque",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Fútbol profesional",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Salto de longitud",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Salto de trampolín, aficionado",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Saltar la cuerda",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Pasar la aspiradora",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Rastrillar",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Estiramientos",
+        "count" : 2
+    },
+    
+    {
+        "name" : "Rugby",
+        "count" : 11
+    },
+    
+    {
+        "name" : "Jardinería",
+        "count" : 11
+    },
+    
+    {
+        "name" : "Salsa",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Sexo",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Surf",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Power yoga",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Entrenamiento de fuerza",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Ejercicios de fuerza",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Natación sincronizada",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Escalada en roca",
+        "count" : 11
+    },
+    
+    {
+        "name" : "Marcha nórdica",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Giros",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Artes marciales mixtas",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Orientación",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Peso muerto",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Aeróbic en step",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Plataforma de step",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Entrenamiento Tabata",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Boxeo tailandés",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Aeróbic con baile",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Danza",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Pole dance",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Danza, giros",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Tenis",
+        "count" : 7
+    },
+    
+    {
+        "name" : "Limpieza de la casa",
+        "count" : 2
+    },
+    
+    {
+        "name" : "Quitar la nieve",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Burpees",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Tablón",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Suelo",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Esgrima",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Frisbee",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Fútbol",
+        "count" : 10
+    },
+    
+    {
+        "name" : "Subir las escaleras",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Andar por un edificio",
+        "count" : 5
+    },
+    
+    {
+        "name" : "Caminata, 5 km/h",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Hockey",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Caminata con palos",
+        "count" : 4
+    },
+    
+    {
+        "name" : "Gimnasia",
+        "count" : 8
+    },
+    
+    {
+        "name" : "Ir de compras",
+        "count" : 3
+    },
+    
+    {
+        "name" : "Máquina elíptica, intensidad alta",
+        "count" : 9
+    },
+    
+    {
+        "name" : "Máquina elíptica, intensidad media",
+        "count" : 6
+    },
+    
+    {
+        "name" : "Máquina elíptica, intensidad baja",
+        "count" : 5
+    }
+]

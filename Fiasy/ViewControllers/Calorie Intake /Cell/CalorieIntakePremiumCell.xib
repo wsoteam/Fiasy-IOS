@@ -225,12 +225,17 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="bottomDescriptionLabel" destination="Shz-wU-qos" id="HPD-SC-iLC"/>
                 <outlet property="defaultButton" destination="1zF-kj-YuN" id="A9X-ok-Emn"/>
                 <outlet property="mifinLabel" destination="A7g-pz-8aM" id="Di3-9f-yOO"/>
                 <outletCollection property="allTextFields" destination="ere-GM-A1h" collectionClass="NSMutableArray" id="Rda-4o-ymq"/>
                 <outletCollection property="allTextFields" destination="F1E-Tf-cDv" collectionClass="NSMutableArray" id="2gO-U0-E66"/>
                 <outletCollection property="allTextFields" destination="jc9-xC-2pC" collectionClass="NSMutableArray" id="TmF-yM-EPg"/>
                 <outletCollection property="allTextFields" destination="Nks-32-3E6" collectionClass="NSMutableArray" id="Tws-M4-gw5"/>
+                <outletCollection property="titleLabels" destination="xY3-Of-VSh" collectionClass="NSMutableArray" id="yVl-nF-aXh"/>
+                <outletCollection property="titleLabels" destination="BzZ-pa-g08" collectionClass="NSMutableArray" id="LlP-2C-rat"/>
+                <outletCollection property="titleLabels" destination="uci-gk-LpM" collectionClass="NSMutableArray" id="7wM-aL-Wn1"/>
+                <outletCollection property="titleLabels" destination="NYg-ZD-aaH" collectionClass="NSMutableArray" id="HFK-7D-YUr"/>
             </connections>
             <point key="canvasLocation" x="16" y="157"/>
         </tableViewCell>

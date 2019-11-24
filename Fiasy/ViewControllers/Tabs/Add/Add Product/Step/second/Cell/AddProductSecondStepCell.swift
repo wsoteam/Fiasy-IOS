@@ -11,6 +11,7 @@ import UIKit
 class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
     
     // MARK: - Outlet -
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -27,28 +28,36 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
         
         switch indexPath.row {
         case 0:
-            fillNecessarilyField(label: titleLabel, text: "Калорийность (ккал)")
+            nameTextField.tag = 0
+            errorLabel.text = "Введите калорийность продукта"
+            titleLabel.text = "Калорийность (ккал)"
             if let calories = flow.calories {
                 nameTextField.text = calories
             } else {
                 nameTextField.text?.removeAll()
             }
         case 1:
-            fillNecessarilyField(label: titleLabel, text: "Жиры (г)")
+            nameTextField.tag = 1
+            errorLabel.text = "Введите жиры продукта"
+            titleLabel.text = "Жиры (г)"
             if let fats = flow.fat {
                 nameTextField.text = fats
             } else {
                 nameTextField.text?.removeAll()
             }
         case 2:
-            fillNecessarilyField(label: titleLabel, text: "Углеводы (г)")
+            nameTextField.tag = 2
+            errorLabel.text = "Введите углеводы продукта"
+            titleLabel.text = "Углеводы (г)"
             if let carbohydrates = flow.carbohydrates {
                 nameTextField.text = carbohydrates
             } else {
                 nameTextField.text?.removeAll()
             }
         case 3:
-            fillNecessarilyField(label: titleLabel, text: "Белки (г)")
+            nameTextField.tag = 3
+            errorLabel.text = "Введите белки продукта"
+            titleLabel.text = "Белки (г)"
             if let proteins = flow.protein {
                 nameTextField.text = proteins
             } else {
@@ -154,7 +163,15 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             default:
-                break
+                if flow.allServingSize.indices.contains(indexPath.row - 3) {
+                    let serving = flow.allServingSize[indexPath.row - 3]
+                    titleLabel.text = serving.name
+                    if let cher = "\(serving.unitMeasurement ?? "")".lowercased().first {
+                        nameTextField.text = "\(serving.servingSize ?? 0) \(String(cher))."
+                    } else {
+                        nameTextField.text = ""
+                    }
+                }
             }
         } else {
             switch indexPath.row {
@@ -369,20 +386,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
     }
     
     // MARK: - Private -
-    private func fillNecessarilyField(label: UILabel, text: String) {
-        let mutableAttrString = NSMutableAttributedString()
-        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 15.0),
-                                                     color: #colorLiteral(red: 0.6548290849, green: 0.654943943, blue: 0.6548218727, alpha: 1), text: text))
-        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 15.0),
-                                                     color: #colorLiteral(red: 0.8957664371, green: 0.2344577312, blue: 0.1905975044, alpha: 1), text: " *"))
-        
-        label.attributedText = mutableAttrString
-    }
-    
-    private func configureAttrString(by font: UIFont, color: UIColor, text: String) -> NSAttributedString {
-        return NSAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])
-    }
-    
+
     // MARK: - Actions -
     @IBAction func textChange(_ sender: UITextField) {
         delegate?.textChange(tag: sender.tag, text: nameTextField.text)
@@ -393,6 +397,9 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
             let rangeOfTextToReplace = Range(range, in: textFieldText) else {
                 return false
         }
+        errorLabel.isHidden = true
+        separatorView.backgroundColor = #colorLiteral(red: 0.9293106198, green: 0.9294700027, blue: 0.9293007255, alpha: 1)
+        
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         

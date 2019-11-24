@@ -2,7 +2,7 @@
 //  MeasuringSecondAlertView.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 10/29/19.
+//  Created by Eugen Lipatov on 10/29/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 

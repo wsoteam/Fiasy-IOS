@@ -9,6 +9,7 @@
 import UIKit
 
 protocol RecipesSearchDelegate {
+    func changeScreenState(state: ProductAddingState)
     func searchItem(text: String)
 }
 
@@ -114,6 +115,7 @@ extension RecipesSearchViewController: RecipeMealtimeDelegate {
 }
 
 extension RecipesSearchViewController: RecipesSearchDelegate {
+    func changeScreenState(state: ProductAddingState) {}
     
     func searchItem(text: String) {
         guard !text.isEmpty else {

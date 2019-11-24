@@ -19,10 +19,10 @@ struct AddRecipeFlow {
     
     var recipeFrom = "button"
     
-    // MARK: - Second Step -
+    // MARK: - Third Step -
     var allProduct: [Product] = []
 
-    // MARK: - Third Step -
+    // MARK: - Four Step -
     var instructionsList: [String] = []
     
     // MARK: - Edit Flow -

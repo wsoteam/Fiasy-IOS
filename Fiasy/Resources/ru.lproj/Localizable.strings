@@ -14,6 +14,13 @@
 "unboarding_skeep" = "Пропустить";
 "unboarding_next" = "ДАЛЕЕ";
 
+/*    Setting Screen    */
+"settings_items_premium" = "Premium аккаунт";
+"settings_items_personal" = "Личные данные";
+"settings_items_intake" = "Норма калорий";
+"settings_items_help" = "Помощь";
+"activity_profile_settings_settings" = "Настройки";
+
 /*    Authorization Screen    */
 "or" = "ИЛИ";
 "signIn" = "ВОЙТИ";
@@ -72,12 +79,12 @@
 "select_your_date_of_birth" = "Выберите дату рождения";
 "select_your_activity" = "Выберите свою активность";
 "first_activity" = "Минимальная нагрузка";
-"second_activity" = "Легкая физическая нагрузка в течении дня";
-"third_activity" = "Тренировки 2-4 раза в неделю (или работа средней тяжести)";
-"fourth_activity" = "Интенсивные тренировки 4-5 раз в неделю";
-"five_activity" = "Ежедневные интенсивные тренировки";
-"six_activity" = "Тренировки 5-7 раз в неделю, по два раза в день";
-"seven_activity" = "Тяжелая физическая работа или ежедневные интенсивные тренировки по 2 раза в день";
+"second_activity" = "Легкая физическая нагрузка\nв течении дня";
+"third_activity" = "Тренировки 2-4 раза в неделю\n(или работа средней тяжести)";
+"fourth_activity" = "Интенсивные тренировки 4-5\nраз в неделю";
+"five_activity" = "Ежедневные интенсивные\nтренировки";
+"six_activity" = "Тренировки 5-7 раз в неделю,\nпо два раза в день";
+"seven_activity" = "Тяжелая физическая работа или\nежедневные интенсивные тренировки\nпо 2 раза в день";
 "select_your_target" = "Выберите свою цель";
 "first_target" = "Поддержания тела\n в форме";
 "second_target" = "Похудение";
@@ -99,6 +106,40 @@
 "second_piece_description" = ", получив доступ к\nуникальным статьям о здоровом\nпитании и сотни рецептов";
 
 /*    Premium Screen    */
+"long_prem_open" = "Открой новые\nвозможности";
+"currency_symbol_pay" = "₽";
+"one_mounth" = "месяц";
+"few_mounth" = "месяца";
+"many_mounth" = "месяцев";
+"title_save_percent" = "save";
+"black_prem_hours" = "часы";
+"black_prem_minutes" = "минуты";
+"black_prem_seconds" = "секунды";
+"black_prem_end" = "До конца акции осталось";
+"long_prem_titl_1" = "Сбрасывайте вес\nбез стресса и жестких диет с\n";
+"long_prem_features_diary" = "Дневник питания и\nнагрузок";
+"long_prem_features_elements" = "Учет\nмакроэлементов";
+"long_prem_features_recipe" = "Рецепты";
+"long_prem_features_articles" = "Эксклюзивные\nстатьи от диетолога";
+"long_prem_features_statistic" = "Вся статистика";
+"long_prem_features_body" = "Учет морфологии тела";
+"buy" = "КУПИТЬ";
+
+"long_prem_easy" = "ВСЕ ПРОЩЕ С";
+"long_prem_article_title" = "Эксклюзивные статьи";
+"long_prem_article_txt" = "Вы получите доступ к статьям от\nпопулярного диетолога и\nфитнес-тренера";
+"long_prem_recipe_title" = "База рецептов";
+"long_prem_recipe_txt" = "Легие в приготовление рецепты с\nданными КБЖУ с недорогими, но\nвкусными продуктами";
+"long_prem_settings_title" = "Персональные настройки";
+"long_prem_settings_txt" = "Вы сможете просматривать и\nрегулировать уровень своего КБЖУ";
+"long_prem_plans_title" = "Планы питания";
+"long_prem_plans_txt" = "Готовые планы питания на любой вкус\nи для любой цели";
+"long_prem_measure_title" = "Измерения тела";
+"long_prem_measure_txt" = "Отслеживайте динамику прогресса с\nпомощью подробного анализа\nпараметров своего тела";
+
+"premium_title_1" = "ВАШ БИЛЕТ К УСПЕХУ";
+"premium_title_2" = "ДОВОЛЬНЫЕ КЛИЕНТЫ";
+"premium_title" = "Premium";
 "reach_goal_faster" = "Достигайте цели быстрее";
 "everyday_recipes" = "Рецепты на каждый день";
 "science_articles" = "Полезные научные статьи";
@@ -178,6 +219,8 @@
 "email" = "Почта";
 
 /*    Calorie Intake Screen    */
+"sex_male" = "Мужской";
+"sex_female" = "Женский";
 "calorie_intake_navigation" = "Норма калорий";
 "gender" = "Пол";
 "growth" = "Рост";
@@ -225,6 +268,9 @@
 "make_default" = "Сделать по умолчанию";
 
 /*    Activity Screen    */
+"alert_yes" = "Да";
+"alert_no" = "Нет";
+"alert_dialog_confirm_question" = "Вы уверены, что хотите удалить активность?";
 "activity_navigation" = "Активность";
 "my_activity" = "Мои aктивности";
 "search" = "Поиск";

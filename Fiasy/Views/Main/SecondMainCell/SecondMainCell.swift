@@ -51,58 +51,58 @@ class SecondMainCell: UITableViewCell {
             mealtimeTitleLabel.text = "Завтрак"
 
             if !UserInfo.sharedInstance.breakfasts.isEmpty {
-                for (index,item) in UserInfo.sharedInstance.breakfasts.enumerated() where item.day == day && item.month == month && item.year == year {
-                    guard let view = InsertDiaryView.fromXib() else { return }
-                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
-                    allFat += item.fat ?? 0
-                    allProtein += item.protein ?? 0
-                    allCalories += item.calories ?? 0
-                    allCarbohydrates += item.carbohydrates ?? 0
-                    insertStackView.addArrangedSubview(view)
-                }
+//                for (index,item) in UserInfo.sharedInstance.breakfasts.enumerated() where item.day == day && item.month == month && item.year == year {
+//                    guard let view = InsertDiaryView.fromXib() else { return }
+//                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
+//                    allFat += item.fat ?? 0
+//                    allProtein += item.protein ?? 0
+//                    allCalories += item.calories ?? 0
+//                    allCarbohydrates += item.carbohydrates ?? 0
+//                    insertStackView.addArrangedSubview(view)
+//                }
             }
         case 1:
             mealtimeTitleLabel.text = "Обед"
             
             if !UserInfo.sharedInstance.lunches.isEmpty {
-                for (index,item) in UserInfo.sharedInstance.lunches.enumerated() where item.day == day && item.month == month && item.year == year {
-                    guard let view = InsertDiaryView.fromXib() else { return }
-                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
-                    allFat += item.fat ?? 0
-                    allProtein += item.protein ?? 0
-                    allCalories += item.calories ?? 0
-                    allCarbohydrates += item.carbohydrates ?? 0
-                    insertStackView.addArrangedSubview(view)
-                }
+//                for (index,item) in UserInfo.sharedInstance.lunches.enumerated() where item.day == day && item.month == month && item.year == year {
+//                    guard let view = InsertDiaryView.fromXib() else { return }
+//                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
+//                    allFat += item.fat ?? 0
+//                    allProtein += item.protein ?? 0
+//                    allCalories += item.calories ?? 0
+//                    allCarbohydrates += item.carbohydrates ?? 0
+//                    insertStackView.addArrangedSubview(view)
+//                }
             }
         case 2:
             mealtimeTitleLabel.text = "Ужин"
             
-            if !UserInfo.sharedInstance.dinners.isEmpty {
-                for (index,item) in UserInfo.sharedInstance.dinners.enumerated() where item.day == day && item.month == month && item.year == year {
-                    guard let view = InsertDiaryView.fromXib() else { return }
-                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
-                    allFat += item.fat ?? 0
-                    allProtein += item.protein ?? 0
-                    allCalories += item.calories ?? 0
-                    allCarbohydrates += item.carbohydrates ?? 0
-                    insertStackView.addArrangedSubview(view)
-                }
-            }
+//            if !UserInfo.sharedInstance.dinners.isEmpty {
+//                for (index,item) in UserInfo.sharedInstance.dinners.enumerated() where item.day == day && item.month == month && item.year == year {
+//                    guard let view = InsertDiaryView.fromXib() else { return }
+//                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
+//                    allFat += item.fat ?? 0
+//                    allProtein += item.protein ?? 0
+//                    allCalories += item.calories ?? 0
+//                    allCarbohydrates += item.carbohydrates ?? 0
+//                    insertStackView.addArrangedSubview(view)
+//                }
+//            }
         case 3:
             mealtimeTitleLabel.text = "Перекус"
-            
-            if !UserInfo.sharedInstance.snacks.isEmpty {
-                for (index,item) in UserInfo.sharedInstance.snacks.enumerated() where item.day == day && item.month == month && item.year == year {
-                    guard let view = InsertDiaryView.fromXib() else { return }
-                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
-                    allFat += item.fat ?? 0
-                    allProtein += item.protein ?? 0
-                    allCalories += item.calories ?? 0
-                    allCarbohydrates += item.carbohydrates ?? 0
-                    insertStackView.addArrangedSubview(view)
-                }
-            }
+//            
+//            if !UserInfo.sharedInstance.snacks.isEmpty {
+//                for (index,item) in UserInfo.sharedInstance.snacks.enumerated() where item.day == day && item.month == month && item.year == year {
+//                    guard let view = InsertDiaryView.fromXib() else { return }
+//                    view.fillView(by: item, delegate: self.delegate, index: index, indexPath: indexCell)
+//                    allFat += item.fat ?? 0
+//                    allProtein += item.protein ?? 0
+//                    allCalories += item.calories ?? 0
+//                    allCarbohydrates += item.carbohydrates ?? 0
+//                    insertStackView.addArrangedSubview(view)
+//                }
+//            }
         default:
             break
         }

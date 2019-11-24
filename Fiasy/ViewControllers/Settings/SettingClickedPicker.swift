@@ -24,7 +24,7 @@ class SettingClickedPicker: NSObject, UINavigationControllerDelegate {
                                         message: nil,
                                  preferredStyle: .actionSheet)
         
-        let signOut = UIAlertAction(title: "Выйти",
+        let signOut = UIAlertAction(title: LS(key: .LOG_OFF),
                                   style: .default,
                                   handler: { [weak self] _ in
                                     guard let `self` = self else { return }
@@ -35,7 +35,7 @@ class SettingClickedPicker: NSObject, UINavigationControllerDelegate {
 
         refreshAlert.addAction(signOut)
         
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancel = UIAlertAction(title: LS(key: .CANCEL), style: .cancel)
         cancel.setValue(#colorLiteral(red: 0.9231601357, green: 0.3388705254, blue: 0.3422900438, alpha: 1), forKey: "titleTextColor")
         refreshAlert.addAction(cancel)
         

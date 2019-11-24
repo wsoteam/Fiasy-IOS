@@ -17,14 +17,19 @@ protocol PremiumDetailsDelegate {
 class PremiumDetailsViewController: UIViewController {
 
     // MARK: - Outlet -
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var navigationView: UIView!
+    @IBOutlet weak var statusContainerView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
     var isAutorization: Bool = true
     var trialFrom: String = "onboarding"
+    var state: PremiumColorState = .black
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
+        return state == .black ? .lightContent : .default
     }
     
     deinit {
@@ -36,6 +41,7 @@ class PremiumDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        applyColorState(state: .black)
         closeButton.isHidden = !isAutorization
     }
     
@@ -75,18 +81,44 @@ class PremiumDetailsViewController: UIViewController {
         Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "close", "from" : trialFrom]) // +
         performSegue(withIdentifier: "sequeMenuScreen", sender: nil)
     }
+    
+    // MARK: - Private -
+    func applyColorState(state: PremiumColorState) {
+        switch state {
+        case .black:
+            backButton.tintColor = #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1)
+            closeButton.tintColor = #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1)
+            titleLabel.textColor = #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1)
+            statusContainerView.backgroundColor = #colorLiteral(red: 0.1725074947, green: 0.1764294505, blue: 0.1805890203, alpha: 1)
+            navigationView.backgroundColor = #colorLiteral(red: 0.1725074947, green: 0.1764294505, blue: 0.1805890203, alpha: 1)
+            tableView.backgroundColor = #colorLiteral(red: 0.1019451842, green: 0.1018963829, blue: 0.1060404405, alpha: 1)
+            navigationView.shadowColor = nil
+        case .white:
+            backButton.tintColor = #colorLiteral(red: 0.3372145891, green: 0.3372780979, blue: 0.3372106552, alpha: 1)
+            closeButton.tintColor = #colorLiteral(red: 0.3372145891, green: 0.3372780979, blue: 0.3372106552, alpha: 1)
+            statusContainerView.backgroundColor = #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1)
+            titleLabel.textColor = #colorLiteral(red: 0.3372145891, green: 0.3372780979, blue: 0.3372106552, alpha: 1)
+            navigationView.backgroundColor = #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1)
+            navigationView.shadowColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+            tableView.backgroundColor = #colorLiteral(red: 0.9881281257, green: 0.9882970452, blue: 0.9881176353, alpha: 1)
+        }
+    }
 }
 
 extension PremiumDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PremiumDetailsCell") as? PremiumDetailsCell else { fatalError() }
-        cell.fillCell(index: indexPath.row, delegate: self)
+        cell.fillCell(delegate: self, state: self.state)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 

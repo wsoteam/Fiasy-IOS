@@ -17,6 +17,13 @@ public enum LS_STRING: String {
     case UNBOARDING_SKEEP = "unboarding_skeep"
     case UNBOARDING_NEXT = "unboarding_next"
     
+    /*    Setting Screen    */
+    case SETTINGS_HELP = "settings_items_help"
+    case SETTINGS_PREMIUM = "settings_items_premium"
+    case SETTINGS_PERSONAL = "settings_items_personal"
+    case SETTINGS_INTAKE = "settings_items_intake"
+    case SETTINGS_TITLE = "activity_profile_settings_settings"
+    
     /*    Authorization Screen    */
     case OR = "or"
     case SIGN_IN = "signIn"
@@ -100,8 +107,38 @@ public enum LS_STRING: String {
     case IN_A_MONTH = "in_a_month"
     case FIRST_PIECE_DESCRIPTION = "first_piece_description"
     case SECOND_PIECE_DESCRIPTION = "second_piece_description"
-    
+
     /*    Premium Screen    */
+    case LONG_PREM_OPEN = "long_prem_open"
+    case MANY_MOUNTH = "many_mounth"
+    case TITLE_SAVE_PERCENT = "title_save_percent"
+    case BLACK_PREM_HOURS = "black_prem_hours"
+    case BLACK_PREM_MINUTES = "black_prem_minutes"
+    case BLACK_PREM_SECONDS = "black_prem_seconds"
+    case BLACK_PREM_END = "black_prem_end"
+    case LONG_PREM_TITL_1 = "long_prem_titl_1"
+    case LONG_PREM_FEATURES_DIARY = "long_prem_features_diary"
+    case LONG_PREM_FEATURES_ELEMENTS = "long_prem_features_elements"
+    case LONG_PREM_FEATURES_RECIPE = "long_prem_features_recipe"
+    case LONG_PREM_FEATURES_ARTICLES = "long_prem_features_articles"
+    case LONG_PREM_FEATURES_STATISTIC = "long_prem_features_statistic"
+    case LONG_PREM_FEATURES_BODY = "long_prem_features_body"
+    case LONG_PREM_FEATURES_BUY = "buy"
+
+    case LONG_PREM_EASY = "long_prem_easy"
+    case LONG_PREM_ARTICLE_TITLE = "long_prem_article_title"
+    case LONG_PREM_ARTICLE_TXT = "long_prem_article_txt"
+    case LONG_PREM_RECIPE_TITLE = "long_prem_recipe_title"
+    case LONG_PREM_RECIPE_TXT = "long_prem_recipe_txt"
+    case LONG_PREM_SETTINGS_TITLE = "long_prem_settings_title"
+    case LONG_PREM_SETTINGS_TXT = "long_prem_settings_txt"
+    case LONG_PREM_PLANS_TITLE = "long_prem_plans_title"
+    case LONG_PREM_PLANS_TXT = "long_prem_plans_txt"
+    case LONG_PREM_MEASURE_TITLE = "long_prem_measure_title"
+    case LONG_PREM_MEASURE_TXT = "long_prem_measure_txt"
+    
+    case PREMIUM_TITLE_2 = "premium_title_2"
+    case PREMIUM_TITLE = "premium_title"
     case REACH_GOAL_FASTER = "reach_goal_faster"
     case EVERYDAY_RECIPES = "everyday_recipes"
     case SCIENCE_ARTICLES = "science_articles"
@@ -181,6 +218,8 @@ public enum LS_STRING: String {
     case EMAIL = "email"
     
     /*    Calorie Intake Screen    */
+    case SEX_MALE = "sex_male"
+    case SEX_FEMALE = "sex_female"
     case CALORIE_INTAKE_NAVIGATION = "calorie_intake_navigation"
     case GENDER = "gender"
     case GROWTH = "growth"
@@ -228,6 +267,9 @@ public enum LS_STRING: String {
     case MAKE_DEFAULT = "make_default"
     
     /*    Activity Screen    */
+    case ALERT_YES = "alert_yes"
+    case ALERT_NO = "alert_no"
+    case ACTIVITY_REMOVE_ALERT = "alert_dialog_confirm_question"
     case ACTIVITY_NAVIGATION = "activity_navigation"
     case MY_ACTIVITY = "my_activity"
     case SEARCH = "search"

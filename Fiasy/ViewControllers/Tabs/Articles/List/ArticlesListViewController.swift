@@ -18,8 +18,8 @@ class ArticlesListViewController: UIViewController {
     
     // MARK: - Properties -
     private var titleText: String = ""
-    private var models: [ArticleModel] = []
-    private var filteredModels: [ArticleModel] = []
+    private var articles: [Article] = []
+    private var filteredArticles: [Article] = []
     private let isIphone5 = Display.typeIsLike == .iphone5
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -51,14 +51,16 @@ class ArticlesListViewController: UIViewController {
     }
     
     // MARK: - Interface -
-    func fillModels(models: [ArticleModel], index: Int) {
-        self.models = models
-        self.filteredModels = models
-        self.titleText = index == 0 ? "Питание" : "Тренировки"
+    func fillModels(articles: [Article]) {
+        self.articles = articles
+        self.filteredArticles = articles
+        if let title = articles.first?.category?.name {
+            self.titleText = title
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ArticlesDetailsViewController, let model = sender as? ArticleModel, (segue.identifier == "sequeArticleDetailsScreen") {
+        if let vc = segue.destination as? ArticlesDetailsViewController, let model = sender as? Article, (segue.identifier == "sequeArticleDetailsScreen") {
             vc.fillScreen(by: model)
         }
     }
@@ -90,19 +92,19 @@ class ArticlesListViewController: UIViewController {
 extension ArticlesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredModels.count
+        return filteredArticles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticlesListTableViewCell") as? ArticlesListTableViewCell else { fatalError() }
-        cell.fillRow(model: filteredModels[indexPath.row])
+        cell.fillRow(article: filteredArticles[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if filteredModels.indices.contains(indexPath.row) {
+        if filteredArticles.indices.contains(indexPath.row) {
             view.endEditing(true)
-            performSegue(withIdentifier: "sequeArticleDetailsScreen", sender: filteredModels[indexPath.row])
+            performSegue(withIdentifier: "sequeArticleDetailsScreen", sender: filteredArticles[indexPath.row])
         }
     }
     
@@ -127,26 +129,28 @@ extension ArticlesListViewController: UITableViewDelegate, UITableViewDataSource
 
 extension ArticlesListViewController: RecipesSearchDelegate {
     
+    func changeScreenState(state: ProductAddingState) {}
+    
     func searchItem(text: String) {
-        guard !text.isEmpty else {
-            filteredModels = models
-            emptySearchStackView.isHidden = true
-            tableView.isScrollEnabled = true
-            return tableView.reloadData()
-        }
-        
-        var firstItems: [ArticleModel] = []
-        for item in models where self.isContains(pattern: text, in: item.name) {
-            firstItems.append(item)
-        }
-        filteredModels = firstItems
-        emptySearchStackView.isHidden = !filteredModels.isEmpty
-        
-        if filteredModels.isEmpty {
-            tableView.isScrollEnabled = false
-        } else {
-            tableView.isScrollEnabled = true
-        }
-        tableView.reloadData()
+//        guard !text.isEmpty else {
+//            filteredModels = models
+//            emptySearchStackView.isHidden = true
+//            tableView.isScrollEnabled = true
+//            return tableView.reloadData()
+//        }
+//        
+//        var firstItems: [ArticleModel] = []
+//        for item in models where self.isContains(pattern: text, in: item.name) {
+//            firstItems.append(item)
+//        }
+//        filteredModels = firstItems
+//        emptySearchStackView.isHidden = !filteredModels.isEmpty
+//        
+//        if filteredModels.isEmpty {
+//            tableView.isScrollEnabled = false
+//        } else {
+//            tableView.isScrollEnabled = true
+//        }
+//        tableView.reloadData()
     }
 }

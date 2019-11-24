@@ -1,0 +1,557 @@
+/* 
+  Localizable.strings
+  Fiasy
+
+  Created by Eugen Lipatov on 9/23/19.
+  Copyright © 2019 Eugen Lipatov. All rights reserved.
+*/
+
+"unboarding_welcome" = "Bienvenido a";
+"unboarding_first_screen" = "Numerosos artículos científicos sobre comidas saludables";
+"unboarding_second_screen" = "Recetas saludables cada día";
+"unboarding_third_screen" = "Recetas saludables cada día";
+"unboarding_skeep" = "Omitir";
+"unboarding_next" = "SIGUIENTE";
+
+/*    Setting Screen    */
+"settings_items_premium" = "Cuenta Premium";
+"settings_items_personal" = "Información personal";
+"settings_items_intake" = "Ingesta de calorías";
+"settings_items_help" = "Ayuda";
+"activity_profile_settings_settings" = "Configuraciones";
+
+/*    Authorization Screen    */
+"or" = "O";
+"signIn" = "INICIAR SESIÓN";
+"authorization_with" = "INICIAR SESIÓN CON";
+"account_available" = "¿Ya tiene una cuenta?";
+"registration_by_mail" = "registro por correo electrónico";
+
+/*    Sign In Screen    */
+"signIn_title" = "Entrada";
+"login" = "Iniciar sesión";
+"password" = "Contraseña";
+"restore" = "Recuperar contraseña";
+"forgot_password" = "¿Ha olvidado su contraseña?";
+"or_signIn_by" = "o inicie sesión con";
+"wrong_data" = "Información incorrecta";
+
+/*    Sign Up Screen    */
+"signUp_title" = "Registrarse";
+"write_email" = "Introduzca la dirección de correo electrónico";
+"write_password" = "Introduzca la contraseña";
+"repeat_password" = "Vuelva a introducir la contraseña";
+"simple_password_error" = "La contraseña no es segura.";
+"password_dont_match" = "Las contraseñas no coinciden.";
+"agree_with_conditions" = "Acepto los términos y las condiciones.";
+"privacy_policy" = "Política de privacidad";
+"user_already_exists" = "Este usuario ya existe";
+"no_internet_connection" = "Sin conexión a Internet";
+"error" = "Error";
+
+/*    Privacy Policy Screen    */
+"privacy_description" = "Política de privacidad y\ntérminos de servicio";
+
+/*    Reset Password Screen    */
+"reset_send" = "ENVIAR";
+"reset_close_screen" = "¿Cerrar el formulario?";
+"reset_close_title" = "Cerrar";
+"reset_close_continue" = "Continuar";
+"reset_close_description" = "Si cierra el formulario, no podrá restaurar su contraseña.";
+"wrong_mail_error" = "Formato de dirección de correo electrónico no válido";
+"reset_password_title" = "Restablecer contraseña";
+"we_send_email" = "Hemos enviado un correo electrónico a su bandeja de entrada.";
+"enter_mail_description" = "Introduzca la dirección de correo electrónico para restablecer la contraseña.";
+"user_does_not_exist" = "Este usuario no existe";
+"check_mail" = "Revisar correo";
+"sended" = "Enviado";
+
+/*    Interrogation Screen    */
+"select_your_gender" = "Seleccione su sexo";
+"selected_man" = "Ha seleccionado hombre";
+"selected_woman" = "Ha seleccionado mujer";
+"select_your_growth" = "Seleccione su altura";
+"growth_unit" = "cm";
+"weight_unit" = "kg";
+"mifflin_formula" = "Usamos la fórmula de Mifflin-St Jeor para realizar el cálculo, que la Asociación Americana de Dietética (ADA por sus siglas en inglés) confirmó como la más exacta en 2005.";
+"select_your_weight" = "Seleccione su peso";
+"select_your_date_of_birth" = "Seleccione su fecha de nacimiento";
+"select_your_activity" = "Seleccione su nivel de actividad";
+"first_activity" = "Ejercicio mínimo";
+"second_activity" = "Ejercicio leve a lo largo del día";
+"third_activity" = "Practico ejercicio 2 - 4 veces a la semana (o mi trabajo implica un ejercicio físico moderado).";
+"fourth_activity" = "Practico ejercicio intenso 4 - 5 veces a la semana.";
+"five_activity" = "Practico ejercicio intenso a diario.";
+"six_activity" = "Practico ejercicio dos veces al día, 5 - 7 días a la semana.";
+"seven_activity" = "Mi trabajo requiere mucha actividad física intensa, o practico ejercicio intenso dos veces al día, a diario.";
+"select_your_target" = "Seleccione su objetivo";
+"first_target" = "Mantenerse en\nforma";
+"second_target" = "Perder peso";
+"third_target" = "Ganar masa\nmuscular";
+"fourth_target" = "Mantener la musculatura\ny quemar grasa";
+
+/*    Interrogation Finish Screen    */
+"wait_a_while" = "Espere un momento";
+"wait_a_while_description" = "Su dieta personalizada\nse está calculando.";
+"plan_calculated" = "Su dieta personalizada\nse ha calculado.";
+"recommended_rate" = "Ingesta recomendada";
+"calories_unit" = "kcal";
+"grams_unit" = "g";
+"protein" = "proteína";
+"fat" = "grasa";
+"carbohydrates" = "carbohidratos";
+"in_a_month" = "en solo un mes";
+"first_piece_description" = "Alcanzará su objetivo";
+"second_piece_description" = ", y obtenga acceso a artículos exclusivos sobre alimentación saludable y cientos de recetas.";
+"year_short" = "a.";
+
+/*    Premium Screen    */
+"long_prem_open" = "Desbloquear más\nopciones";
+"one_mounth" = "mes";
+"few_mounth" = "mes";
+"many_mounth" = "meses";
+"title_save_percent" = "guardar";
+"black_prem_hours" = "horas";
+"black_prem_minutes" = "minutos";
+"black_prem_seconds" = "segundos";
+"black_prem_end" = "La oferta especial finalizará en";
+"long_prem_titl_1" = "Pierda peso sin\nestrés ni dietas estrictas con\n";
+"long_prem_features_diary" = "Diario de nutrición\ny ejercicio";
+"long_prem_features_elements" = "Control de\nmacronutrientes";
+"long_prem_features_recipe" = "Recetas";
+"long_prem_features_articles" = "Artículos exclusivos\nde un nutricionista profesional";
+"long_prem_plans_title" = "Planes de comida";
+"long_prem_features_statistic" = "Todas las\nestadísticas";
+"long_prem_features_body" = "Control de la\nmorfología corporal";
+"buy" = "Comprar";
+
+"long_prem_easy" = "TODO ES MÁS FÁCIL CON";
+"long_prem_article_title" = "Artículos exclusivos";
+"long_prem_article_txt" = "Obtendrá acceso a artículosde un nutricionista y entrenador físico famoso";
+"long_prem_recipe_title" = "Base de datos de recetas";
+"long_prem_recipe_txt" = "Recetas fáciles de cocinar, asequibles y deliciosas con datos de CPFC";
+"long_prem_settings_title" = "Ajustes personalizados";
+"long_prem_settings_txt" = "Vea y ajuste su nivel de CPFC";
+"long_prem_plans_title" = "Planes de comida";
+"long_prem_plans_txt" = "Planes de comida listos para todos los gustos y objetivos";
+"long_prem_measure_title" = "Medidas corporales";
+"long_prem_measure_txt" = "Controle sus progresos con análisis detallados de medidas corporales";
+
+"premium_title" = "Premium"; 
+"premium_title_2" = "CLIENTES SATISFECHOS";
+"reach_goal_faster" = "Logre su objetivo más rápidamente";
+"everyday_recipes" = "Recetas para cada día";
+"science_articles" = "Interesantes artículos científicos";
+"trace_elements_in_recipes" = "Micronutrientes de alimentos y recetas";
+"try" = "Pruébelo";
+"count_day_trial" = "de forma gratuita durante siete días";
+"amount_per_month" = "Y por menos de 3 euros al mes.";
+"connect_premium" = "ACTIVAR CUENTA PREMIUM";
+"privacy_title" = "Términos de uso y política de privacidad";
+"terms_and_conditions" = "Términos y condiciones";
+"pay_description" = "El pago se cargará en su cuenta de Apple ID cuando la compra se confirme. La suscripción se renovará automáticamente a menos que se cancele con una antelación mínima de 24 horas antes del fin del período de suscripción vigente. El pago para renovar la suscripción se cargará en su cuenta hasta 24 horas antes del fin del período de suscripción actual. Una vez que realice la compra, podrá gestionar sus suscripciones y cancelarlas en los ajustes de su cuenta de App Store.";
+"special_offer" = "Oferta especial";
+"payment_top_description" = "Hazte miembro";
+"payment_bottom_description" = "¡y obtendrá\nacceso a toda la base de datos\nde recetas, entrenamientos y artículos!";
+"payment_description" = "El pago se cargará en su cuenta de Apple ID cuando la compra se confirme. La suscripción se renovará automáticamente a menos que se cancele con una antelación mínima de 24 horas antes del fin del período de suscripción vigente. El pago para renovar la suscripción se cargará en su cuenta hasta 24 horas antes del fin del período de suscripción actual. Una vez que realice la compra, podrá gestionar sus suscripciones y cancelarlas en los ajustes de su cuenta de App Store.";
+
+/*    Premium purchase success Screen    */
+"congratulations" = "Enhorabuena";
+"premium_courage_description" = "Ya tiene acceso a todas las ventajas de una cuenta premium.";
+
+/*    Profile Screen    */
+"profile_title" = "Perfil";
+"your_name" = "Su nombre";
+"daily_goal" = "Objetivo diario";
+"nutrition_plan" = "Dieta";
+"standard" = "estándar";
+"week" = "semana";
+"month" = "mes";
+"year" = "año";
+"reports" = "Informes";
+"daily_rate" = "Ingesta diaria";
+"your_performance" = "Su rendimiento";
+"monday" = "Lun";
+"tuesday" = "Mar";
+"wednesday" = "Miér";
+"thursday" = "Jue";
+"friday" = "Vier";
+"saturday" = "Sáb";
+"sunday" = "Dom";
+"january" = "Enero";
+"february" = "Febrero";
+"march" = "Marzo";
+"april" = "Abril";
+"may" = "Mayo";
+"june" = "Junio";
+"july" = "Julio";
+"august" = "Agosto";
+"september" = "Septiembre";
+"october" = "Octubre";
+"november" = "Noviembre";
+"december" = "Diciembre";
+
+/*    Setting Screen    */
+"premium_account" = "Cuenta premium";
+"promotional_codes" = "Códigos de promoción";
+"personal_data" = "Información personal";
+"calorie_intake" = "Ingesta de calorías";
+"exit" = "Cerrar sesión";
+"log_off" = "Cerrar sesión";
+"cancel" = "Cancelar";
+
+/*    Promotional Code Screen    */
+"promotional_navigation" = "Códigos de promoción";
+"promotional_title" = "Añadiendo códigos de promoción";
+"promotional_description" = "Los códigos de promoción pueden otorgarle un descuento en la aplicación o permitirle usarla de forma gratuita.";
+"enter_promotional_code" = "Introduzca el código de promoción";
+"enter_your_promotional_code" = "Introduzca su código de promoción";
+"active_promode" = "ACTIVAR CÓDIGO DE PROMOCIÓN";
+"invalid_promotional_code_error" = "Código de promoción no válido";
+
+/*    Personal Data Screen    */
+"personal_data_navigation" = "Información personal";
+"done" = "Listo";
+"name" = "Nombre";
+"surname" = "Apellidos";
+"email" = "Dirección de correo electrónico";
+
+/*    Calorie Intake Screen    */
+"sex_male" = "Hombre";
+"sex_female" = "Mujer";
+"calorie_intake_navigation" = "Ingesta de calorías";
+"gender" = "Sexo";
+"growth" = "Altura";
+"weight" = "Peso";
+"age" = "Edad";
+"activity" = "Actividad";
+"target" = "Objetivo";
+"set_your_norm_title" = "Ajuste su ingesta de calorías, proteínas, grasas y carbohidratos (CPFC, en inglés)";
+"set_your_norm_description" = "Para cambiar su CPFC, compre";
+"calorie_intake" = "Calorías";
+"protein_intake" = "Proteína";
+"carbohydrates_intake" = "Carbohidratos";
+"fats_intake" = "Gorda";
+"day_norm_intake_description" = "Ingesta de CPFC diaria obtenida con la fórmula de Mifflin-St Jeor";
+"default_intake" = "INGESTA PREDETERMINADA";
+"default_description_intake" = "Si cambia su ingesta de CPFC, siempre podrá volver al valor predeterminado";
+
+/*    Diary Screen    */
+"diary_title" = "Diario";
+"diary_daily_rate" = "Cálculo diario";
+"eaten_up" = "Ingeridas";
+"burnt" = "Quemadas";
+"left" = "Restante";
+"water" = "Agua";
+"water_unit" = "l";
+"norm_established_first" = "Ingesta ajustada a";
+"norm_established_second" = "Para cambiar este valor, pulse";
+"breakfast" = "Desayuno";
+"lunch" = "Almuerzo";
+"dinner" = "Cena";
+"snack" = "Aperitivo";
+"activity" = "Actividades";
+"all" = "Todo";
+"water_settings" = "Parámetros de agua";
+
+/*    Water Screen    */
+"benefit_water_title" = "Ventajas del agua";
+"benefit_water_description_first" = "Hidrata su piel y la deja más suave.";
+"benefit_water_description_second" = "Aporta nutrientes a las células, que las sacia y evita que se oxiden.";
+"benefit_water_description_third" = "Le ayuda a perder peso al mejorar su metabolismo.";
+"benefit_water_title" = "Ventajas del agua";
+"general" = "General";
+"liter" = "litros";
+"your_daily_rate" = "Su ingesta diaria";
+"make_default" = "Establecer como predeterminado";
+
+/*    Activity Screen    */
+"alert_yes" = "Si";
+"alert_no" = "No";
+"alert_dialog_confirm_question" = "¿Estás seguro de que deseas eliminar el elemento?";
+"activity_navigation" = "Actividades";
+"my_activity" = "Mis actividades";
+"search" = "Buscar";
+"empty_my_activity_first" = "Aún no ha añadido actividades. Para añadir una, pulse";
+"empty_my_activity_second" = " pulse ➕";
+"favorites" = "Favoritos";
+"empty_favorites" = "Aún no ha añadido actividades a sus favoritos. Para añadir una, deslice hacia la izquierda y pulse en el símbolo de corazón.";
+"standard_activities" = "Actividades estándares";
+"add_activitie" = "Añadir actividad";
+"add_name_activitie" = "Introduzca el nombre de la actividad";
+"training_time" = "Duración del ejercicio";
+"training_time_description" = "Arrastre el control deslizante para seleccionar cuánto tiempo dedicó a esta actividad.";
+"minutes" = "minutos";
+"calories_count" = "Calorías";
+"calories_count_description" = "Introduzca la cantidad de calorías que ha quemado o cree haber quemado.";
+"calories" = "calories";
+"attention" = "Tenga en cuenta:";
+"attention_description" = "Si introduce mal una actividad, los datos sobre su ingesta de CPFC diaria podrían mostrarse incorrectamente.";
+"calories_spent" = "Calorías quemadas";
+"for" = "para";
+"move_slider" = "Arrastre el control deslizante para cambiar la cantidad de tiempo";
+"add_to_diary" = "Añadir al diario";
+
+/*    Search Product Screen    */
+"search_empty" = "No se han encontrado los resultados. Vuelva a intentarlo o cree su propia comida.";
+
+/*    My Product List Screen    */
+"add_product" = "Añadir comida";
+"product_not_found" = "No se ha encontrado la comida";
+"product_list_empty" = "Las recetas y las comidas guardadas y que le gustan seconservarán en esta sección.";
+
+/*    My Recipes List Screen    */
+"add_recipes" = "Añadir receta";
+"recipes_not_found" = "No se ha encontrado la receta";
+"recipes_list_empty" = "Aquí puede crear y guardar varios alimentos que toma a diario con determinadas comidas.";
+"create_product" = "Crear comida";
+"create_recipes" = "Crear receta";
+
+/*    Recipe Creation Screen    */
+"recipes_name" = "Nombre de receta";
+"recipes_image" = "Imagen de plato";
+"download" = "Cargar";
+"gallery" = "Galería";
+"photo" = "Foto";
+"time_for_preparing" = "Tiempo de cocinado";
+"min" = "min";
+"complexity" = "Dificultad";
+"choose_complexity" = "Seleccione un nivel de dificultad";
+"easy" = "Fácil";
+"medium" = "Medio";
+"сomplex" = "Difícil";
+"all_users_can_see" = "Visible para todos los usuarios";
+"all_users_can_see_description" = "Las recetas y comidas que cree y añada a la base de datos podrán verlas otros usuarios. Intente completar el formulario anterior de la forma más precisa y completa posible.";
+"ingredients_for_serving" = "Ingredientes para una ración";
+"instruction" = "Instrucciones";
+"add_instruction" = "Añadir instrucciones";
+"instruction_description" = "Escriba instrucciones paso a paso para elaborar el plato";
+"recipes_info" = "Información de la receta";
+"ingredients" = "Ingredientes";
+"verification_of_information" = "Verificación de la información";
+
+/*    Product Creation Screen    */
+"brand_manufacturer" = "Marca/fabricante";
+"product_name" = "Nombre de la comida";
+"barcode" = "Código de barras";
+"barcode_scanning" = "Lectura del código de barras";
+"barcode_scanning_description" = "Coloque el código de barras en la ventana de lectura del escáner. La búsqueda empezará automáticamente.";
+"product_calories" = "Contenido calórico";
+"nutrients" = "Nutrientes por cada 100 g";
+"сellulose" = "Celulosa";
+"sugar" = "Azúcar";
+"saturated_fat" = "Grasa saturada";
+"monounsaturated_fat" = "Grasa monosaturada";
+"polyunsaturated_fats" = "Grasa poliinsaturada";
+"cholesterol" = "Colesterol";
+"sodium" = "Sodio";
+"potassium" = "Potasio";
+"product_info" = "Información de la comida";
+"nutritional_value" = "Valor nutricional por cada 100 g";
+"product_added_to_your_products" = "Su comida se ha añadido a Mis comidas";
+
+/*    Product Details Screen    */
+"product_calculation" = "Información de la comida";
+"product_weighs" = "La comida pesa";
+"product_add_nutrients" = "Nutrientes por";
+"report_bug" = "Informar de un error";
+
+/*    Recipe Details Screen    */
+"portion" = "ración";
+"servings" = "raciones";
+"ingredients_on" = "Ingredientes por";
+"сooking_method" = "Método de cocinado";
+"recipe_added" = "Receta añadida";
+
+/*    Default Activity  List  */
+"aikido" = "Aikido";
+"aqua_run" = "Aquajogging";
+"water_aerobics" = "Aeróbic acuático";
+"mountaineering" = "Escalada en montaña";
+"american_football" = "Fútbol";
+"army_press" = "Prensa";
+"aerobics_high_load" = "Aeróbicos, intensidad alta";
+"aerobics_medium_load" = "Aeróbicos, intensidad media";
+"badminton_high_load" = "Bádminton, intensidad alta";
+"badminton_medium_load" = "Bádminton, intensidad media";
+"basketball_high_load" = "Baloncesto, intensidad alta";
+"basketball_medium_load" = "Baloncesto, intensidad media";
+"run_11.3_km/h" = "Running, 11,3 km/h";
+"run_12.1_km/h" = "Running, 12,1 km/h";
+"run_12.9_km/h" = "Running, 12,9 km/h";
+"run_14.5_km/h" = "Running, 14,5 km/h";
+"run_16.09_km/h" = "Running, 16.09 kph";
+"run_17.7_km/h" = "Running, 17.7 kph";
+"run_6.4_km/h" = "Running, 6.4 kph";
+"run_8_km/h" = "Running, 8 kph";
+"run_9.7_km/h" = "Running, 9.7 kph";
+"running_up_the_stairs" = "Running en escalera";
+"сross_country_running" = "Cross";
+"sand_running" = "Running en arena";
+"jogging" = "Jogging";
+"treadmill" = "Cinta";
+"baseball" = "Béisbol";
+"biathlon" = "Biatlón";
+"bikram_yoga" = "Bikram yoga";
+"billiards" = "Billar";
+"arm_curl(Biceps)" = "Flexiones de bíceps";
+"body_step" = "Body step";
+"martial_arts" = "Artes marciales";
+"boxing" = "Boxeo";
+"boxing_high_load" = "Boxeo, intensidad alta";
+"boxing_training" = "Boxeo, práctica";
+"boxing_punching_bag" = "Boxeo, saco de boxeo";
+"bowling" = "Bolos";
+"quick_run_up_stairs" = "Running rápido en escalera";
+"brisk_walking_6.5_km/h" = "Andar, 6,5 km/h";
+"wakeboarding" = "Esquí acuático";
+"bicycle_aerobics_high_load" = "Spinning, intensidad alta";
+"bicycle_aerobics_medium_load" = "Spinning, intensidad media";
+"cycling_high_load" = "Ciclismo, intensidad alta";
+"cycling_medium_load" = "Ciclismo, intensidad media";
+"horseback_riding" = "Montar a caballo";
+"horseback_riding_dressage" = "Montar a caballo, doma Clásica";
+"horse_riding_gallop" = "Montar a caballo, galope";
+"horse_riding_obstacles" = "Montar a caballo, obstáculos";
+"horse_riding_lynx" = "Montar a caballo, trote";
+"windsurfing" = "Windsurf";
+"water_gymnastics" = "Gimnasia acuática";
+"water_polo" = "Waterpolo";
+"volleyball_high_load" = "Vóleibol, intensidad alta";
+"volleyball_light_load" = "Vóleibol, intensidad baja";
+"handball" = "Balonmano";
+"gymnastics" = "Gimnasia";
+"gymnastics_intensive" = "Gimnasia, intensa";
+"gymnastics_average_load" = "Gimnasia, intensidad media";
+"kettlebell_training" = "Entrenamiento con pesas rusas";
+"laundry_ironing" = "Planchar la ropa";
+"golf_normal" = "Oro (regular)";
+"alpine_skiing_high_load" = "Esquí alpino, intensidad baja";
+"alpine_skiing_medium_load" = "Esquí alpino, intensidad media";
+"alpine_skiing_moderate_load" = "Esquí alpino, intensidad moderada";
+"kayaking" = "Kayak";
+"canoeing" = "Canoa";
+"rowing_high_load" = "Remo, intensidad alta";
+"rowing_low_load" = "Remo, intensidad baja";
+"rowing_medium_load" = "Remo, intensidad media";
+"diving" = "Buceo";
+"scuba_diving" = "Submarinismo";
+"judo" = "Judo";
+"bench_press" = "Prensa";
+"leg_press" = "Prensa de piernas";
+"winter_kiting" = "Snow kite";
+"zumba" = "Zumba";
+"drumming" = "Smash Drum Fit";
+"intense_walk" = "Caminar rápido";
+"hiit_interval_training" = "Entrenamiento HITT, intensidad alta";
+"yoga" = "Yoga";
+"kitesurfing" = "Kitesurfing";
+"karate" = "Kárate";
+"cardiovascular_equipment" = "Equipo de cardio";
+"cross_country_skiing" = "Esquí de fondo";
+"riding_bicycle" = "Ciclismo";
+"water_skiing" = "Esquí acuático";
+"mountain_biking" = "Ciclismo de montaña";
+"skating" = "Patinaje sobre hielo";
+"ice_skating_high_load" = "Patinaje sobre hielo, intensidad alta";
+"cross_country_skiing_high_load" = "Esquí de fondo, alta intensidad";
+"cross_country_skiing_moderate_exercise" = "Esquí de fondo, intensidad moderada";
+"skiing_medium_load" = "Esquí, intensidad media";
+"roller_skating" = "Patinaje sobre ruedas";
+"in-line_skiing" = "Patinaje en línea";
+"scooter_riding" = "Montar en moto";
+"sledging" = "Trineo";
+"skateboarding" = "Skateboard";
+"snowboarding" = "Snowboard";
+"press_swing" = "Abdominales";
+"curling" = "Curling";
+"kickboxing" = "Kickboxing";
+"digging_the_earth" = "Excavar";
+"mowing_grass" = "Cortar el césped";
+"cross_skating" = "Cross-skating";
+"сross_trainer" = "Entrenador de cross";
+"сrossfit" = "Crossfit";
+"сircular_training" = "Entrenamiento en circuito";
+"hoop_torsion" = "Ejercicios con hula hoop";
+"bodybuilding" = "Culturismo";
+"lacrosse" = "Lacrosse";
+"portion" = "parte";
+"slow_walking_4.5_km/h" = "Caminata lenta, 4,5 km/h";
+"window_cleaning" = "Limpiar ventanas";
+"motocross" = "Motocross";
+"car_wash" = "Lavar un coche";
+"slopes" = "Fondos";
+"table_tennis" = "Tenis de mesa";
+"push_ups" = "Flexiones";
+"powerlifting" = "Levantamiento de pesas";
+"hiking" = "Senderismo";
+"hiking_with_backpack." = "Senderismo con mochila";
+"pilates" = "Pilates";
+"butterfly_swimming" = "Natación, mariposa";
+"breaststroke" = "Natación, braza";
+"backstroke" = "Natación, espalda";
+"sailing" = "Vela";
+"snorkeling" = "Snorkel";
+"swimming_high_load" = "Natación, intensidad alta";
+"swimming_low_load" = "Natación, intensidad baja";
+"swimming_free" = "Natación, estilo libre";
+"swimming_medium_load" = "Natación, intensidad media";
+"lying_hips" = "Levantamientos de cadera desde posición tumbada";
+"pull-ups" = "Dominadas";
+"climbing_stairs" = "Subida de escaleras";
+"polo" = "Polo";
+"obstacle_course" = "Pista de obstáculos";
+"squat_on_one_leg" = "Sentadillas a una pierna";
+"shoulder_squat" = "Sentadillas con barra";
+"stroll" = "Marcha";
+"walking_in_no_hurry" = "Marcha, lenta";
+"walk_through_the_woods" = "Marcha por el bosque";
+"professional_football" = "Fútbol profesional";
+"long_jump" = "Salto de longitud";
+"trampoline_amateur" = "Salto de trampolín, aficionado";
+"rope_jumping" = "Saltar la cuerda";
+"vacuuming" = "Pasar la aspiradora";
+"work_with_a_rake" = "Rastrillar";
+"stretching" = "Estiramientos";
+"rugby" = "Rugby";
+"gardening" = "Jardinería";
+"salsa" = "Salsa";
+"sex" = "Sexo";
+"surfing" = "Surf";
+"power_yoga" = "Power yoga";
+"power_training" = "Entrenamiento de fuerza";
+"strength_exercises" = "Ejercicios de fuerza";
+"synchronized_swimming" = "Natación sincronizada";
+"rock_climbing" = "Escalada en roca";
+"nordic_walking" = "Marcha nórdica";
+"twisting" = "Giros";
+"mixed_martial_arts" = "Artes marciales mixtas";
+"orienteering" = "Orientación";
+"deadlift" = "Peso muerto";
+"step" = "Aeróbic en step";
+"step_platform" = "Plataforma de step";
+"pan" = "Entrenamiento Tabata";
+"thai_boxing" = "Boxeo tailandés";
+"dance_aerobics" = "Aeróbic con baile";
+"dancing" = "Danza";
+"pole_dancing" = "Pole dance";
+"twist" = "Danza, giros";
+"tennis" = "Tenis";
+"cleaning" = "Limpieza de la casa";
+"snow_removal_with_shovel" = "Quitar la nieve";
+"burpee_exercise" = "Burpees";
+"exercise_plank" = "Tablón";
+"exercise_lunges" = "Suelo";
+"fencing" = "Esgrima";
+"frisbee" = "Frisbee";
+"football" = "Fútbol";
+"walking_up_the_stairs" = "Subir las escaleras";
+"indoor_walking" = "Andar por un edificio";
+"walking_5_km/h" = "Caminata, 5 km/h";
+"hockey" = "Hockey";
+"stick_walking" = "Caminata con palos";
+"gymnastics" = "Gimnasia";
+"shopping" = "Ir de compras";
+"elliptical_trainer_high_load" = "Máquina elíptica, intensidad alta";
+"elliptical_trainer_medium_load" = "Máquina elíptica, intensidad media";
+"elliptical_trainer_low_load" = "Máquina elíptica, intensidad baja";

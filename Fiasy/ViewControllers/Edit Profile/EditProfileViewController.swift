@@ -13,6 +13,7 @@ import Amplitude_iOS
 class EditProfileViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet weak var finishButton: LoadingButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
@@ -42,6 +43,8 @@ class EditProfileViewController: UIViewController {
         super.viewDidLoad()
         
         finishButton.activityColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+        titleNavigationLabel.text = LS(key: .PERSONAL_DATA)
+        finishButton.setTitle(LS(key: .DONE), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -46,6 +46,9 @@ class UserInfo {
     static var sharedInstance = UserInfo()
     internal var complition: (() -> Void)?
     
+    // MARK: - Measuring -
+    var measuringList: [Measuring] = []
+    
     // MARK: - Current User -
     var productModel: MLModel?
     var currentUser: User?
@@ -255,7 +258,26 @@ class UserInfo {
     func getAllActivitys() -> [ActivityElement] {
         var allActivitys: [ActivityElement] = []
         
-        if let path = Bundle.main.path(forResource: "activity_list", ofType: "json") {
+        var fileName: String = "activity_list"
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            fileName = "activity_spain_list"
+//        case "pt":
+//            // португалия (бразилия)
+//            formatter.locale = Locale(identifier: "pt_BR")
+//        case "en":
+//            // английский
+//            formatter.locale = Locale(identifier: "en_US")
+//        case "de":
+//            // немецикий
+            
+            fileName = "activity_deut_list"
+        default:
+            break
+        }
+        
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
                 let activitys = try? JSONDecoder().decode(Activity.self, from: data)

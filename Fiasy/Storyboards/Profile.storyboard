@@ -272,6 +272,7 @@
                         <viewLayoutGuide key="safeArea" id="ELo-rg-lFz"/>
                     </view>
                     <connections>
+                        <outlet property="navigationTitleLabel" destination="TKl-dc-K2w" id="7AX-t0-pfd"/>
                         <outlet property="tableView" destination="OCg-0r-GJU" id="Lhu-OJ-zod"/>
                         <segue destination="QlD-v6-JPs" kind="show" identifier="sequePremiumScreen" id="eme-Mj-Bfd"/>
                         <segue destination="oOC-lw-LEb" kind="show" identifier="sequeEditProfile" id="m8D-nG-jNX"/>
@@ -349,8 +350,8 @@
                                             <action selector="backClicked:" destination="wQb-iF-mab" eventType="touchUpInside" id="iYe-wF-HOi"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Личный данные" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyQ-vu-iek">
-                                        <rect key="frame" x="91" y="12" width="138.5" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Личные данные" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyQ-vu-iek">
+                                        <rect key="frame" x="91" y="12" width="138" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -420,6 +421,7 @@
                         <outlet property="finishButton" destination="V2t-Fg-NKv" id="T1k-wQ-SrF"/>
                         <outlet property="tableBottomConstraint" destination="JMG-ds-3Gg" id="Umm-Lf-ttX"/>
                         <outlet property="tableView" destination="fQl-U9-lsd" id="aJ2-5L-Wl4"/>
+                        <outlet property="titleNavigationLabel" destination="DyQ-vu-iek" id="nxd-Lp-Ako"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YA9-iw-cnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,8 +1175,7 @@
                                             <color key="titleColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="finishClicked:" destination="heY-o9-Rja" eventType="touchUpInside" id="S8Z-eO-IhD"/>
-                                            <action selector="finishClicked:" destination="OHo-ba-dXq" eventType="touchUpInside" id="ZJ7-8I-Rp4"/>
+                                            <action selector="finishClicked:" destination="OHo-ba-dXq" eventType="touchUpInside" id="vLL-L9-QTg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1220,6 +1221,7 @@
                     </view>
                     <connections>
                         <outlet property="finishButton" destination="uD0-Kn-vrh" id="dLq-fM-nmX"/>
+                        <outlet property="navigationTitleLabel" destination="MgE-qd-QKA" id="n3C-ZV-I88"/>
                         <outlet property="tableBottomConstraint" destination="RC3-vY-jqz" id="sCP-6Y-LW5"/>
                         <outlet property="tableView" destination="d3a-JQ-Zd4" id="I31-AL-2lA"/>
                         <segue destination="23f-iW-GVn" kind="show" identifier="sequeChangePurpose" id="9FC-RG-31j"/>
@@ -1330,6 +1332,7 @@
                                                 <constraints>
                                                     <constraint firstItem="Rdk-Sg-FIg" firstAttribute="height" secondItem="Li0-bR-b4M" secondAttribute="height" id="Jlv-w9-8pP"/>
                                                     <constraint firstItem="CiN-dV-ZEs" firstAttribute="height" secondItem="Pvs-ax-CU6" secondAttribute="height" id="Lpv-6v-o7K"/>
+                                                    <constraint firstItem="Li0-bR-b4M" firstAttribute="bottom" secondItem="Rdk-Sg-FIg" secondAttribute="bottom" id="XzB-pj-3nR"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Y-mM-1VS">
@@ -1407,6 +1410,7 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="Dz7-2V-zN4" firstAttribute="bottom" secondItem="eCd-v4-iMy" secondAttribute="bottom" id="YGE-td-CIo"/>
                                                     <constraint firstItem="eCd-v4-iMy" firstAttribute="height" secondItem="Dz7-2V-zN4" secondAttribute="height" id="bhn-Wk-9WV"/>
                                                 </constraints>
                                             </stackView>
@@ -1515,6 +1519,7 @@
                         <viewLayoutGuide key="safeArea" id="Gkj-kL-osE"/>
                     </view>
                     <connections>
+                        <outlet property="titleNavigationLabel" destination="JT9-1a-TiV" id="emz-lt-Yul"/>
                         <outletCollection property="targetTitles" destination="Pvs-ax-CU6" collectionClass="NSMutableArray" id="Hg2-25-esn"/>
                         <outletCollection property="targetTitles" destination="CiN-dV-ZEs" collectionClass="NSMutableArray" id="kLO-yq-oxg"/>
                         <outletCollection property="targetTitles" destination="ELw-fT-IrH" collectionClass="NSMutableArray" id="lB0-oa-jch"/>
@@ -1709,6 +1714,7 @@
                         <outlet property="descriptionLabel" destination="kdA-rP-FkK" id="AEc-VZ-Y4q"/>
                         <outlet property="selectedStateImageView" destination="KEl-5Z-8fV" id="UFY-Ew-3T4"/>
                         <outlet property="slider" destination="oMB-cL-AZ5" id="X9P-to-Mck"/>
+                        <outlet property="titleNavigationLabel" destination="xyx-dR-dvh" id="DWh-qb-Gks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOK-UX-bGt" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -2,7 +2,7 @@
 //  MeasuringViewController.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 10/22/19.
+//  Created by Eugen Lipatov on 10/22/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
@@ -69,8 +69,10 @@ class MeasuringViewController: UIViewController {
     private func setupPickerView() {
         var leftSide: [String] = []
         var secondLeftSide: [String] = []
-        for index in 1...200 {
+        for index in 30...300 {
             leftSide.append("\(index) кг")
+        }
+        for index in 1...100 {
             secondLeftSide.append("\(index) см")
         }
         var rightSide: [String] = []
@@ -140,16 +142,22 @@ class MeasuringViewController: UIViewController {
     }
     
     @IBAction func addMeasuringClicked(_ sender: Any) {
-        guard let value = Double("\(selectedPicker.selectedRow(inComponent: 0) + 1).\(selectedPicker.selectedRow(inComponent: 1))") else { return }
+        var count: Double?
+        if isPremiumPicker {
+            count = Double("\(selectedPicker.selectedRow(inComponent: 0) + 1).\(selectedPicker.selectedRow(inComponent: 1))")
+        } else {
+            count = Double("\(selectedPicker.selectedRow(inComponent: 0) + 30).\(selectedPicker.selectedRow(inComponent: 1))")
+        }
+        guard let value = count else { return }
         if isPremiumPicker {
             var type: MeasuringType = .chest
-            var title: String = "Грудь обновленна"
+            var title: String = "Грудь обновлена"
             if premiumTag == 1 {
                 type = .waist
-                title = "Талия обновленна"
+                title = "Талия обновлена"
             } else if premiumTag == 2 {
                 type = .hips
-                title = "Бедра обновленны"
+                title = "Бедра обновлена"
             }
             FirebaseDBManager.addMeasuring(date: Date(), measuring: self.selectedMeasuring, weight: value, type: type) { [weak self] (result) in
                 guard let strongSelf = self else { return }
@@ -165,6 +173,10 @@ class MeasuringViewController: UIViewController {
                 }
                 strongSelf.selectedMeasuring = nil
                 strongSelf.tableView.reloadRows(at: [IndexPath(row: strongSelf.premiumTag, section: 1)], with: .none)
+                
+                if let view = strongSelf.tableView.headerView(forSection: 1) as? MeasuringHeaderView {
+                    view.fillHeaderView(strongSelf.allMeasurings)
+                }
             }
         } else {
             guard let date = self.selectedDate else { return }
@@ -172,7 +184,10 @@ class MeasuringViewController: UIViewController {
                 guard let strongSelf = self else { return }
                 strongSelf.closePicker()
                 if let measuring = strongSelf.selectedMeasuring {
-                    strongSelf.showProgress(title: "Вес обновлен")
+                    if Calendar.current.component(.day, from: measuring.date ?? Date()) == Calendar.current.component(.day, from: Date()) && Calendar.current.component(.month, from: measuring.date ?? Date()) == Calendar.current.component(.month, from: Date()) && Calendar.current.component(.year, from: measuring.date ?? Date()) == Calendar.current.component(.year, from: Date()) {
+                        strongSelf.showProgress(title: "Вес обновлен")
+                    }
+
                     for (index, item) in strongSelf.allMeasurings.enumerated() where item.generalKey == measuring.generalKey {
                         strongSelf.allMeasurings[index].weight = value
                     }
@@ -187,6 +202,9 @@ class MeasuringViewController: UIViewController {
                 }
                 strongSelf.selectedMeasuring = nil
                 strongSelf.delegate?.replaceMeasuringList(list: strongSelf.allMeasurings)
+//                if let view = strongSelf.tableView.headerView(forSection: 1) as? MeasuringHeaderView {
+//                    view.fillHeaderView(strongSelf.allMeasurings)
+//                }
             }
         }
     }
@@ -203,6 +221,9 @@ class MeasuringViewController: UIViewController {
                 strongSelf.delegate?.replaceMeasuringList(list: strongSelf.allMeasurings)
                 if let cell = strongSelf.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? MeasuringTableViewCell {
                     cell.updatePresent(allMeasurings: strongSelf.allMeasurings)
+                }
+                if let view = strongSelf.tableView.headerView(forSection: 1) as? MeasuringHeaderView {
+                    view.fillHeaderView(strongSelf.allMeasurings)
                 }
             }
         }
@@ -236,6 +257,7 @@ extension MeasuringViewController: UITableViewDelegate, UITableViewDataSource {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MeasuringHeaderView.reuseIdentifier) as? MeasuringHeaderView else {
             return nil
         }
+        header.fillHeaderView(allMeasurings)
         return header
     }
     
@@ -255,6 +277,24 @@ extension MeasuringViewController: MeasuringDelegate {
         premiumTag = tag
         selectedPicker.reloadAllComponents()
         self.selectedMeasuring = measuring
+        if let meas = measuring, let weight = meas.weight?.displayOnly(count: 1) {
+            let fullNameArr : [String] = "\(weight)".components(separatedBy: ".")
+            if fullNameArr.count == 2 {
+                let left = (Int(fullNameArr[0]) ?? 0) - 1
+                let right = Int(fullNameArr[1]) ?? 0
+                if left >= 0 && right >= 0 && (pickerPremiumData[0].indices.contains(left) && pickerPremiumData[1].indices.contains(right)) {
+                    selectedPicker.selectRow(left, inComponent: 0, animated: false)
+                    selectedPicker.selectRow(right, inComponent: 1, animated: false)
+                } else {
+                    selectedPicker.selectRow(0, inComponent: 0, animated: false)
+                    selectedPicker.selectRow(0, inComponent: 1, animated: false)
+                }
+            }
+        } else {
+            selectedPicker.selectRow(0, inComponent: 0, animated: false)
+            selectedPicker.selectRow(0, inComponent: 1, animated: false)
+        }
+        
         self.removeButton.isHidden = true
         UIView.animate(withDuration: 0.3) { 
             if let background = self.pickerContainerView.superview {
@@ -274,6 +314,25 @@ extension MeasuringViewController: MeasuringDelegate {
         
         self.selectedDate = date
         self.selectedMeasuring = measuring
+        
+        if let meas = measuring, let weight = meas.weight?.displayOnly(count: 1) {
+            let fullNameArr : [String] = "\(weight)".components(separatedBy: ".")
+            if fullNameArr.count == 2 {
+                let left = (Int(fullNameArr[0]) ?? 0) - 30
+                let right = Int(fullNameArr[1]) ?? 0
+                if (left >= 0 && right >= 0) && (pickerData[0].indices.contains(left) && pickerData[1].indices.contains(right)) {
+                    selectedPicker.selectRow(left, inComponent: 0, animated: false)
+                    selectedPicker.selectRow(right, inComponent: 1, animated: false)
+                } else {
+                    selectedPicker.selectRow(0, inComponent: 0, animated: false)
+                    selectedPicker.selectRow(0, inComponent: 1, animated: false)
+                }
+            }
+        } else {
+            selectedPicker.selectRow(0, inComponent: 0, animated: false)
+            selectedPicker.selectRow(0, inComponent: 1, animated: false)
+        }
+        
         if let _ = measuring {
             self.removeButton.isHidden = false
         } else {

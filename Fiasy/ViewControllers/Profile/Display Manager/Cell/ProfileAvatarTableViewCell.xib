@@ -107,20 +107,20 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgL-1S-ymQ" userLabel="bottom">
                                 <rect key="frame" x="0.0" y="200.5" width="414" height="2"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bRN-HW-ltz">
-                                        <rect key="frame" x="30" y="0.0" width="354" height="2"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bRN-HW-ltz">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="2"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OxD-tb-dST">
-                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="2"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.5" height="2"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="65 г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsc-uf-gea">
-                                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="белка" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdZ-3s-p9y">
-                                                        <rect key="frame" x="0.0" y="2" width="111.5" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="2" width="89.5" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
                                                         <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -128,16 +128,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3BY-vw-p4J">
-                                                <rect key="frame" x="121.5" y="0.0" width="111" height="2"/>
+                                                <rect key="frame" x="99.5" y="0.0" width="157.5" height="2"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="235 г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjo-oT-AEM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="111" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="углеводов" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwF-Me-Soe">
-                                                        <rect key="frame" x="0.0" y="2" width="111" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="2" width="157.5" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
                                                         <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -145,16 +145,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Otl-o0-4Eq">
-                                                <rect key="frame" x="242.5" y="0.0" width="111.5" height="2"/>
+                                                <rect key="frame" x="267" y="0.0" width="107" height="2"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0C-gX-UAS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="жиры" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcV-OJ-5eS">
-                                                        <rect key="frame" x="0.0" y="2" width="111.5" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="2" width="107" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
                                                         <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -166,8 +166,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="bRN-HW-ltz" firstAttribute="leading" secondItem="XgL-1S-ymQ" secondAttribute="leading" constant="30" id="T2z-7n-J8W"/>
-                                    <constraint firstAttribute="trailing" secondItem="bRN-HW-ltz" secondAttribute="trailing" constant="30" id="i6N-My-zEB"/>
+                                    <constraint firstItem="bRN-HW-ltz" firstAttribute="leading" secondItem="XgL-1S-ymQ" secondAttribute="leading" constant="20" id="T2z-7n-J8W"/>
+                                    <constraint firstAttribute="trailing" secondItem="bRN-HW-ltz" secondAttribute="trailing" constant="20" id="i6N-My-zEB"/>
                                     <constraint firstItem="bRN-HW-ltz" firstAttribute="top" secondItem="XgL-1S-ymQ" secondAttribute="top" id="sm6-Xp-koh"/>
                                     <constraint firstAttribute="bottom" secondItem="bRN-HW-ltz" secondAttribute="bottom" id="ubO-zN-pQ5"/>
                                 </constraints>
@@ -196,11 +196,15 @@
                 <outlet property="arrowImageView" destination="ypy-Ph-jGc" id="bf1-9O-ciV"/>
                 <outlet property="avatarImageView" destination="fSX-wH-4zF" id="yUz-C6-mlu"/>
                 <outlet property="bottomContainerView" destination="XgL-1S-ymQ" id="OMm-6X-WRK"/>
+                <outlet property="carboLabel" destination="FwF-Me-Soe" id="Uqj-xE-B8C"/>
                 <outlet property="carbohydratesLabel" destination="Gjo-oT-AEM" id="uuZ-Ol-1pz"/>
                 <outlet property="dayTargetLabel" destination="RfQ-jF-cgz" id="78c-jX-gFs"/>
                 <outlet property="fatLabel" destination="r0C-gX-UAS" id="Yl8-BX-E01"/>
+                <outlet property="fatsLabel" destination="EcV-OJ-5eS" id="vHr-4k-ehT"/>
                 <outlet property="nameLabel" destination="aEI-BH-YoX" id="Cus-dV-lhV"/>
                 <outlet property="proteinLabel" destination="rsc-uf-gea" id="psI-6u-BQS"/>
+                <outlet property="proteinsLabel" destination="DdZ-3s-p9y" id="dp3-CM-Qa3"/>
+                <outlet property="standartLabel" destination="1te-tE-Unp" id="Zrr-uO-rXL"/>
             </connections>
             <point key="canvasLocation" x="46.399999999999999" y="-46.326836581709152"/>
         </tableViewCell>

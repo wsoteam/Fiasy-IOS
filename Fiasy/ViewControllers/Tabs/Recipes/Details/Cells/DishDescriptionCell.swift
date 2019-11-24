@@ -124,7 +124,7 @@ class DishDescriptionCell: UITableViewCell {
 
     private func insertViewInStackView(stackView: UIStackView, left: String, right: String, isTitle: Bool) {
         guard let view = NutrientsInsertView.fromXib() else { return }
-        view.fillView(leftName: left, rightName: right, isTitle: isTitle, isOwn: ownRecipe, delegate: self)
+        view.fillView(leftName: left, rightName: right, isTitle: isTitle)
         stackView.addArrangedSubview(view)
     }
 

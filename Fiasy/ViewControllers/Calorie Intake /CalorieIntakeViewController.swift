@@ -22,6 +22,7 @@ protocol CalorieIntakeDelegate {
 class CalorieIntakeViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var finishButton: LoadingButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
@@ -60,6 +61,8 @@ class CalorieIntakeViewController: UIViewController {
         if let height = currentUser?.height, height != 0 {
             allFields[0] = "\(height)"
         }
+        navigationTitleLabel.text = LS(key: .CALORIE_INTAKE)
+        finishButton.setTitle(LS(key: .DONE), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,6 +193,21 @@ class CalorieIntakeViewController: UIViewController {
             child.child("target").setValue(self.target)
             child.child("target_Activity").setValue(self.activity)
             
+            if UserInfo.sharedInstance.currentUser?.weight != weight {
+                var findMeasurings: Measuring?
+                for secondItem in UserInfo.sharedInstance.measuringList where (Calendar.current.component(.day, from: secondItem.date ?? Date()) == Calendar.current.component(.day, from: Date()) && Calendar.current.component(.month, from: secondItem.date ?? Date()) == Calendar.current.component(.month, from: Date()) && Calendar.current.component(.year, from: secondItem.date ?? Date()) == Calendar.current.component(.year, from: Date())) {
+                    findMeasurings = secondItem
+                    break
+                }
+                if let find = findMeasurings, let key = find.generalKey {
+                    Database.database().reference().child("USER_LIST").child(uid).child("weights").child(key).child("weight").setValue(weight)
+                } else {
+                    let milisecond = Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
+                    let userData = ["key": "", "timeInMillis": milisecond, "weight": weight] as [String : Any]
+                    Database.database().reference().child("USER_LIST").child(uid).child("weights").child("\(milisecond)").setValue(userData)
+                }
+            }
+
             let identify = AMPIdentify()
             identify.set("age", value: age as NSObject)
             identify.set("height", value: growth as NSObject)
@@ -318,7 +336,7 @@ extension CalorieIntakeViewController: UITableViewDelegate, UITableViewDataSourc
         if purchaseIsValid {
             return section == 1 ? 100.0 : 0.00001
         } else {
-            return section == 0 ? 0.00001 : CalorieIntakeHeaderView.height
+            return section == 0 ? 0.00001 : CalorieIntakeHeaderView.getHeaderHeight()
         }
     }
     

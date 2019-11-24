@@ -15,7 +15,7 @@ extension ProductDetailsViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            self.bottomTableConstraint.constant = keyboardHeight - (tabBarController?.tabBar.frame.height ?? 49.0)
+            self.tableBottomConstraint.constant = keyboardHeight - (tabBarController?.tabBar.frame.height ?? 49.0)
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
@@ -23,7 +23,7 @@ extension ProductDetailsViewController {
     }
     
     @objc override func keyboardWillHide(notification: NSNotification) {
-        self.bottomTableConstraint.constant = 0
+        self.tableBottomConstraint.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }

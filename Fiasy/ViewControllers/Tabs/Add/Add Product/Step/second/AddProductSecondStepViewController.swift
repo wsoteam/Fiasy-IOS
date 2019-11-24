@@ -82,28 +82,37 @@ extension AddProductSecondStepViewController: AddProductDelegate {
     func nextStepClicked() {
         guard let calories = UserInfo.sharedInstance.productFlow.calories, !calories.replacingOccurrences(of: ".", with: "").isEmpty else {
             if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddProductSecondStepCell {
+                cell.errorLabel.isHidden = false
+                cell.separatorView.backgroundColor = #colorLiteral(red: 0.9617733359, green: 0.6727946401, blue: 0.6699010134, alpha: 1)
                 cell.nameTextField.becomeFirstResponder()
             }
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество калорий в продукте", vc: self)
+            return
         }
         guard let fat = UserInfo.sharedInstance.productFlow.fat, !fat.replacingOccurrences(of: ".", with: "").isEmpty else {
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddProductSecondStepCell {
+                cell.errorLabel.isHidden = false
+                cell.separatorView.backgroundColor = #colorLiteral(red: 0.9617733359, green: 0.6727946401, blue: 0.6699010134, alpha: 1)
                 cell.nameTextField.becomeFirstResponder()
             }
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество жиров в продукте", vc: self)
+            return
         }
         guard let carbohydrates = UserInfo.sharedInstance.productFlow.carbohydrates, !carbohydrates.replacingOccurrences(of: ".", with: "").isEmpty else {
             if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AddProductSecondStepCell {
+                cell.errorLabel.isHidden = false
+                cell.separatorView.backgroundColor = #colorLiteral(red: 0.9617733359, green: 0.6727946401, blue: 0.6699010134, alpha: 1)
                 cell.nameTextField.becomeFirstResponder()
             }
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество углеводов в продукте", vc: self)
+            return
         }
         guard let protein = UserInfo.sharedInstance.productFlow.protein, !protein.replacingOccurrences(of: ".", with: "").isEmpty else {
             if let cell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AddProductSecondStepCell {
+                cell.errorLabel.isHidden = false
+                cell.separatorView.backgroundColor = #colorLiteral(red: 0.9617733359, green: 0.6727946401, blue: 0.6699010134, alpha: 1)
                 cell.nameTextField.becomeFirstResponder()
             }
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Введите количество белков в продукте", vc: self)
+            return
         }
+        view.endEditing(true)
         performSegue(withIdentifier: "sequeAddProductThirdStep", sender: nil)
     }
     

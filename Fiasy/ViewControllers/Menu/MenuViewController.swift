@@ -18,6 +18,12 @@ class MenuViewController: UITabBarController {
             SubscriptionService.shared.checkValidPurchases(generalState: false)
         }
         
+        DispatchQueue.global().async {
+            FirebaseDBManager.fetchMyMeasuringInDataBase { [weak self] (list) in
+                UserInfo.sharedInstance.measuringList = list
+            }
+        }
+        
         if let controllers = self.viewControllers {
             for navViewController in controllers {
                 _ = navViewController.children[0].view

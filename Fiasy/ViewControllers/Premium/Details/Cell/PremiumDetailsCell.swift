@@ -8,52 +8,50 @@
 
 import UIKit
 
+protocol PremiumDetailsCellDelegate {
+    func pay(by index: Int)
+}
+
 class PremiumDetailsCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var insertStackVIew: UIStackView!
     @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var bottomImageView: UIImageView!
-    @IBOutlet weak var topImageView: UIImageView!
     
     // MARK: - Properties -
-    private var indexCell: Int?
     private var delegate: PremiumDetailsDelegate?
     
     // MARK: - Interface -
-    func fillCell(index: Int, delegate: PremiumDetailsDelegate) {
-        self.indexCell = index
+    func fillCell(delegate: PremiumDetailsDelegate, state: PremiumColorState) {
         self.delegate = delegate
-        
-        switch index {
-        case 0:
-            descriptionTextView.isHidden = true
-            topImageView.isHidden = false
-            bottomImageView.image = #imageLiteral(resourceName: "price1")
-        case 1:
-            descriptionTextView.isHidden = true
-            topImageView.isHidden = true
-            bottomImageView.image = #imageLiteral(resourceName: "price2")
-        case 2:
-            descriptionTextView.isHidden = false
-            topImageView.isHidden = true
-            bottomImageView.image = #imageLiteral(resourceName: "price3")
-            fillTextViewDescription()
-            adjustTextViewHeight()
-        default:
-            break
+
+        let mutableAttrString = NSMutableAttributedString()
+        mutableAttrString.append(configureAttrString(color: state == .black ? #colorLiteral(red: 0.866572082, green: 0.8667211533, blue: 0.8665626645, alpha: 1) : #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: LS(key: .LONG_PREM_OPEN)))
+        mutableAttrString.append(configureAttrString(color: state == .black ? #colorLiteral(red: 0.8516539931, green: 0.6581981182, blue: 0.267614007, alpha: 1) : #colorLiteral(red: 0.9187557101, green: 0.5817510486, blue: 0.2803534865, alpha: 1), text: " PREMIUM"))
+        topLabel.attributedText = mutableAttrString
+        insertStackVIew.removeAllSubviews()
+        for index in 0...2 {
+            guard let view = PremiumInsertView.fromXib() else { return }
+            view.fillCell(index: index, state: state, delegate: self)
+            insertStackVIew.addArrangedSubview(view)
         }
+        descriptionTextView.isHidden = false
+        fillTextViewDescription()
+        adjustTextViewHeight()
     }
     
     // MARK: - Actions -
-    @IBAction func payClicked(_ sender: Any) {
-        guard let selectedIndex = indexCell else { return }
-        delegate?.showSubscriptions(selectedIndex)
-    }
+    //
     
     // MARK: - Private -
     private func adjustTextViewHeight() {
         descriptionTextView.sizeToFit()
         descriptionTextView.isScrollEnabled = false
+    }
+    
+    private func configureAttrString(color: UIColor, text: String) -> NSAttributedString {
+        return NSAttributedString(string: text, attributes: [.font: UIFont.sfProTextHeavy(size: 24), .foregroundColor: color])
     }
     
     private func fillTextViewDescription() {
@@ -96,5 +94,11 @@ extension PremiumDetailsCell: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         delegate?.showPrivacyScreen()
         return false
+    }
+}
+
+extension PremiumDetailsCell: PremiumDetailsCellDelegate {
+    func pay(by index: Int) {
+        delegate?.showSubscriptions(index)
     }
 }

@@ -51,6 +51,8 @@ target 'Fiasy' do
         pod 'DropDown'
         pod 'BEMCheckBox'
         pod 'Kingfisher'
+        pod 'SwiftEntryKit', '1.0.4'
+        
         pod 'Amplitude-iOS'
         pod 'Adjust'
         pod 'AMPopTip'
@@ -64,8 +66,8 @@ target 'Fiasy' do
         pod 'AMDots'
         pod 'VisualEffectView'
         pod 'NextGrowingTextView'
-        pod 'BarcodeScanner'
         pod 'UITextView+Placeholder'
+        pod 'UICircularProgressRing'
         pod 'Charts'
         
  end

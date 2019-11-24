@@ -14,7 +14,7 @@ extension AddProductViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            self.tableBottomConstraint.constant = keyboardHeight - (tabBarController?.tabBar.frame.height ?? 49.0)
+            self.tableBottomConstraint.constant = keyboardHeight
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }

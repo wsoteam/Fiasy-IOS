@@ -2,7 +2,7 @@
 //  Measuring.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 10/27/19.
+//  Created by Eugen Lipatov on 10/27/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 

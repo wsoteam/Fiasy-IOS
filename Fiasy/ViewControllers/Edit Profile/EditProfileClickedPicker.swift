@@ -22,7 +22,7 @@ class EditProfileClickedPicker: NSObject, UINavigationControllerDelegate {
                                         message: nil,
                                  preferredStyle: .actionSheet)
         
-        let image = UIAlertAction(title: "Галерея",
+        let image = UIAlertAction(title: LS(key: .GALLERY),
                                 style: .default,
                               handler: { [weak self] _ in
                                     guard let `self` = self else { return }
@@ -30,7 +30,7 @@ class EditProfileClickedPicker: NSObject, UINavigationControllerDelegate {
         })
         image.setValue(#colorLiteral(red: 0.9501459002, green: 0.6092506051, blue: 0.3090541661, alpha: 1), forKey: "titleTextColor")
         
-        let photo = UIAlertAction(title: "Сделать фото",
+        let photo = UIAlertAction(title: LS(key: .PHOTO),
                                 style: .default,
                               handler: { [weak self] _ in
                                     guard let `self` = self else { return }
@@ -41,7 +41,7 @@ class EditProfileClickedPicker: NSObject, UINavigationControllerDelegate {
         refreshAlert.addAction(image)
         refreshAlert.addAction(photo)
         
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancel = UIAlertAction(title: LS(key: .CANCEL), style: .cancel)
         cancel.setValue(#colorLiteral(red: 0.6156174541, green: 0.6157259941, blue: 0.6156106591, alpha: 1), forKey: "titleTextColor")
         refreshAlert.addAction(cancel)
         

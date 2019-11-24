@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Medium.ttf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="206" id="ukQ-k1-lZI" customClass="ProductSearchEmptyCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="206"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ukQ-k1-lZI" id="RVZ-rq-l42">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="205.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kJ6-8G-Bzx">
+                        <rect key="frame" x="40" y="30" width="334" height="175.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="enter_chose" translatesAutoresizingMaskIntoConstraints="NO" id="sNV-zT-PFM">
+                                <rect key="frame" x="0.0" y="0.0" width="334" height="120.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Начните вводить в строку поиска название продукта" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGo-Uv-V2N">
+                                <rect key="frame" x="0.0" y="140.5" width="334" height="35"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kJ6-8G-Bzx" firstAttribute="top" secondItem="RVZ-rq-l42" secondAttribute="top" constant="30" id="G5i-35-ZHO"/>
+                    <constraint firstAttribute="trailing" secondItem="kJ6-8G-Bzx" secondAttribute="trailing" constant="40" id="PH6-h3-NYR"/>
+                    <constraint firstAttribute="bottom" secondItem="kJ6-8G-Bzx" secondAttribute="bottom" id="VYl-hB-uQX"/>
+                    <constraint firstItem="kJ6-8G-Bzx" firstAttribute="leading" secondItem="RVZ-rq-l42" secondAttribute="leading" constant="40" id="f0E-Mp-wrE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-149.27536231884059" y="71.651785714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="enter_chose" width="239" height="154"/>
+    </resources>
+</document>

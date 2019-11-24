@@ -10,12 +10,14 @@ import Moya
 
 enum AuthProvider: BaseProvider {
     case productsList
+    case loadArticles
+    case searchSuggestProducts(search: String)
     case searchProducts(search: String)
     case loadMoreProducts(String)
 }
 
 extension AuthProvider : TargetType {
-    
+
     var baseURL: URL {
         switch self {
         case .loadMoreProducts(let link):
@@ -24,11 +26,15 @@ extension AuthProvider : TargetType {
             return URL(string: "http://116.203.193.111:8000/api/v1/")!
         }
     }
-    
+
     var path: String {
         switch self {
         case .productsList, .searchProducts:
-            return "products/"
+            return "search/"
+        case .searchSuggestProducts:
+            return "search/suggest/"
+        case .loadArticles:
+            return "articles/"
         default:
             return ""
         }
@@ -36,7 +42,7 @@ extension AuthProvider : TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .productsList, .loadMoreProducts, .searchProducts:
+        case .productsList, .loadMoreProducts, .searchProducts, .searchSuggestProducts, .loadArticles:
             return .get
         }
     }
@@ -45,6 +51,9 @@ extension AuthProvider : TargetType {
         switch self {
         case .searchProducts(let search):
             let parameters: [String: Any] = ["search": search]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .searchSuggestProducts(let search):
+            let parameters: [String: Any] = ["name_suggest__completion": search]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         default:
             return .requestPlain

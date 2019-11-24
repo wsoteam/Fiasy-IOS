@@ -23,19 +23,19 @@ public class DayAxisValueFormatter: NSObject, IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         switch Int(value) {
         case 0:
-            return "пн"
+            return LS(key: .MONDAY)
         case 1:
-            return "вт"
+            return LS(key: .TUESDAY)
         case 2:
-            return "ср"
+            return LS(key: .WEDNESDAY)
         case 3:
-            return "чт"
+            return LS(key: .THURSDAY)
         case 4:
-            return "пт"
+            return LS(key: .FRIDAY)
         case 5:
-            return "сб"
+            return LS(key: .SATURDAY)
         case 6:
-            return "вс"
+            return LS(key: .SUNDAY)
         default:
             return ""
         }

@@ -19,7 +19,7 @@ class ArticlesDetailsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
-    private var model: ArticleModel?
+    private var article: Article?
     private var currentState: Bool = UserInfo.sharedInstance.purchaseIsValid
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -30,7 +30,7 @@ class ArticlesDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        Amplitude.instance()?.logEvent("view_articles", withEventProperties: ["articles_item" : model?.name]) // +
+//        Amplitude.instance()?.logEvent("view_articles", withEventProperties: ["articles_item" : model?.name]) // +
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +56,8 @@ class ArticlesDetailsViewController: UIViewController {
     }
     
     // MARK: - Interface -
-    func fillScreen(by model: ArticleModel) {
-        self.model = model
+    func fillScreen(by article: Article) {
+        self.article = article
     }
     
     // MARK: - Action's -
@@ -84,8 +84,8 @@ extension ArticlesDetailsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticlesDetailsTableViewCell") as? ArticlesDetailsTableViewCell else { fatalError() }
-        if let model = self.model {
-            cell.fillRow(model: model, premState: currentState, delegate: self)
+        if let article = self.article {
+            cell.fillRow(article: article, premState: currentState, delegate: self)
         }
         return cell
     }

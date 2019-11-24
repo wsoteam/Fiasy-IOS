@@ -169,8 +169,8 @@ class ActivityViewController: UIViewController {
     }
     
     private func removeActivity(_ indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить активность?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] action in
+        let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ACTIVITY_REMOVE_ALERT), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { [weak self] action in
             guard let strongSelf = self else { return }
             if indexPath.section == 0 && strongSelf.filteredMyActivity.indices.contains(indexPath.row) {
                 let activity = strongSelf.filteredMyActivity[indexPath.row]
@@ -208,7 +208,7 @@ class ActivityViewController: UIViewController {
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
         present(alert, animated: true)
     }
     
@@ -223,7 +223,7 @@ class ActivityViewController: UIViewController {
         
         return deleteAction
     }
-
+    
     private func favoriteActionRow() -> SwipeAction {
         let favoriteAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
             guard let strongSelf = self else { return }

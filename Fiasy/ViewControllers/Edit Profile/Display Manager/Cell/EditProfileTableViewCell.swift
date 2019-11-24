@@ -24,19 +24,19 @@ class EditProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
         insertTextField.tag = indexCell.row
         switch indexCell.row {
         case 0:
-            titleNameLabel.text = "Имя"
+            titleNameLabel.text = LS(key: .NAME)
             insertTextField.keyboardType = .default
             if let name = currentUser.firstName, !name.isEmpty && name != "default" {
                 insertTextField.text = name
             }
         case 1:
-            titleNameLabel.text = "Фамилия"
+            titleNameLabel.text = LS(key: .SURNAME)
             insertTextField.keyboardType = .default
             if let name = currentUser.lastName, !name.isEmpty && name != "default" {
                 insertTextField.text = name
             }
         case 2:
-            titleNameLabel.text = "Почта"
+            titleNameLabel.text = LS(key: .EMAIL)
             insertTextField.keyboardType = .emailAddress
             if let email = currentUser.email, !email.isEmpty && email != "default" {
                 insertTextField.text = email

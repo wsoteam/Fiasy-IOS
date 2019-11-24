@@ -31,11 +31,11 @@ class InsertDiaryView: UIView {
         self.indexPath = indexPath
         
         nameLabel.text = model.name
-        caloriesLabel.text = "\(model.calories ?? Int(0)) Ккал"
-        
-        proteinLabel.text = "Б. \(model.protein ?? Int(0.0))"
-        fatLabel.text = "Ж. \(model.fat ?? Int(0.0))"
-        carbLabel.text = "У. \(model.carbohydrates ?? Int(0.0))"
+//        caloriesLabel.text = "\(model.calories ?? Int(0)) Ккал"
+//        
+//        proteinLabel.text = "Б. \(model.protein ?? Int(0.0))"
+//        fatLabel.text = "Ж. \(model.fat ?? Int(0.0))"
+//        carbLabel.text = "У. \(model.carbohydrates ?? Int(0.0))"
         
         mealtimeNameLabel.text = "Вес \(model.weight ?? 100) г"
         

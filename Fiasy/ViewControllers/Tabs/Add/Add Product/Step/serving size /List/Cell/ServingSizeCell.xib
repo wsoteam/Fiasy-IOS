@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="68" id="kQ6-yh-TyC" customClass="ServingSizeCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kQ6-yh-TyC" id="tAb-Wf-AFo">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="67.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9tH-Qz-WpP">
+                        <rect key="frame" x="16" y="12" width="315" height="43.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стандартная порция" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tJ-lp-3GC">
+                                <rect key="frame" x="0.0" y="0.0" width="315" height="18.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 г." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esP-U1-qMj">
+                                <rect key="frame" x="0.0" y="23.5" width="315" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="A3n-rN-iPv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="11"/>
+                                <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3R-7K-VDW">
+                        <rect key="frame" x="331" y="19" width="83" height="30"/>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                        <state key="normal" title="Изм.">
+                            <color key="titleColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="changeClicked:" destination="kQ6-yh-TyC" eventType="touchUpInside" id="7QW-Fa-yID"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-lB-5uD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                        <color key="backgroundColor" red="0.94499534368515015" green="0.94515722990036011" blue="0.94498521089553833" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ZB3-On-YWm"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9tH-Qz-WpP" firstAttribute="top" secondItem="tAb-Wf-AFo" secondAttribute="top" constant="12" id="3Sg-bM-9dz"/>
+                    <constraint firstAttribute="trailing" secondItem="TOA-lB-5uD" secondAttribute="trailing" id="UM1-Ew-zad"/>
+                    <constraint firstItem="TOA-lB-5uD" firstAttribute="leading" secondItem="tAb-Wf-AFo" secondAttribute="leading" id="WDG-gj-2Pj"/>
+                    <constraint firstItem="i3R-7K-VDW" firstAttribute="centerY" secondItem="tAb-Wf-AFo" secondAttribute="centerY" id="XyK-5u-r1x"/>
+                    <constraint firstItem="TOA-lB-5uD" firstAttribute="top" secondItem="tAb-Wf-AFo" secondAttribute="top" id="aWa-le-tez"/>
+                    <constraint firstItem="9tH-Qz-WpP" firstAttribute="leading" secondItem="tAb-Wf-AFo" secondAttribute="leading" constant="16" id="dCq-Tw-jgQ"/>
+                    <constraint firstAttribute="bottom" secondItem="9tH-Qz-WpP" secondAttribute="bottom" constant="12" id="j88-qZ-5o4"/>
+                    <constraint firstAttribute="trailing" secondItem="i3R-7K-VDW" secondAttribute="trailing" id="j8z-dF-fuk"/>
+                    <constraint firstItem="9tH-Qz-WpP" firstAttribute="trailing" secondItem="i3R-7K-VDW" secondAttribute="leading" id="t9v-OX-6sj"/>
+                    <constraint firstItem="i3R-7K-VDW" firstAttribute="width" secondItem="tAb-Wf-AFo" secondAttribute="width" multiplier="0.2" id="tKZ-UE-uwa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="changeButton" destination="i3R-7K-VDW" id="4Ew-1A-wG9"/>
+                <outlet property="nameLabel" destination="9tJ-lp-3GC" id="7I0-Xy-5se"/>
+                <outlet property="unitLabel" destination="esP-U1-qMj" id="VcI-Ev-NQc"/>
+            </connections>
+            <point key="canvasLocation" x="-175.36231884057972" y="45.535714285714285"/>
+        </tableViewCell>
+    </objects>
+</document>

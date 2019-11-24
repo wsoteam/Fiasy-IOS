@@ -19,6 +19,9 @@ let kRangeLayerMaximumHeight: Float = 7000.0
 
 let RUS = "ru"
 let EN = "en"
+let ES = "es"
+let PT = "pt"
+let GER = "de"
 
 class Constant {
     

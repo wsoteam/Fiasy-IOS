@@ -27,13 +27,13 @@ class SQLDatabase {
     
     func fetchProducts() {
         var allProducts: [Product] = []
-        if let food = try? self.connection?.prepare(Table("C_FOOD")) {
-            guard let foods = food else { return }
-            for item in foods {
-                guard allProducts.count < 1000 else { break }
-                allProducts.append(Product(row: item))
-            }
-        }
+//        if let food = try? self.connection?.prepare(Table("C_FOOD")) {
+//            guard let foods = food else { return }
+//            for item in foods {
+//                guard allProducts.count < 1000 else { break }
+//                allProducts.append(Product(row: item))
+//            }
+//        }
         UserInfo.sharedInstance.allProducts = allProducts
 
 //        DispatchQueue.global(qos: .background).async {

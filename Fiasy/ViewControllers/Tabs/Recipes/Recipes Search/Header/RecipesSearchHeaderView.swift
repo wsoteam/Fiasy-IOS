@@ -25,12 +25,16 @@ class RecipesSearchHeaderView: UITableViewHeaderFooterView, UITextFieldDelegate 
     //MARK: - Action -
     @IBAction func valueChange(_ sender: Any) {
         guard let text = self.textField.text, text.isEmpty else { return }
-        self.delegate?.searchItem(text: "")
+        self.delegate?.searchItem(text: text)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text else { return false }
         self.delegate?.searchItem(text: text)
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.delegate?.changeScreenState(state: .search)
     }
 }

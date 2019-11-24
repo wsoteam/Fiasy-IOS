@@ -25,17 +25,16 @@ class AddProductFourthStepViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        if let _ = UserInfo.sharedInstance.productFlow.selectedFavorite {
-           finishButton.setImage(#imageLiteral(resourceName: "Group (16)"), for: .normal)
-        } else {
-            finishButton.setImage(#imageLiteral(resourceName: "Group (10)"), for: .normal)
-        }
+//        if let _ = UserInfo.sharedInstance.productFlow.selectedFavorite {
+//           finishButton.setImage(#imageLiteral(resourceName: "Group (16)"), for: .normal)
+//        } else {
+//            finishButton.setImage(#imageLiteral(resourceName: "Group (10)"), for: .normal)
+//        }
     }
     
     // MARK: - Action -
     @IBAction func backClicked(_ sender: Any) {
-        navigationController?.popViewController(animated:
-            true)
+        navigationController?.popViewController(animated: true)
     }
 
     @IBAction func finishClicked(_ sender: Any) {
@@ -45,14 +44,14 @@ class AddProductFourthStepViewController: UIViewController {
             flow.fat = flow.fat?.replacingOccurrences(of: ",", with: ".")
             flow.carbohydrates = flow.carbohydrates?.replacingOccurrences(of: ",", with: ".")
             flow.protein = flow.protein?.replacingOccurrences(of: ",", with: ".")
-            flow.cellulose = flow.cellulose?.replacingOccurrences(of: ",", with: ".")
-            flow.sugar = flow.sugar?.replacingOccurrences(of: ",", with: ".")
-            flow.saturatedFats = flow.saturatedFats?.replacingOccurrences(of: ",", with: ".")
-            flow.monounsaturatedFats = flow.monounsaturatedFats?.replacingOccurrences(of: ",", with: ".")
-            flow.polyunsaturatedFats = flow.polyunsaturatedFats?.replacingOccurrences(of: ",", with: ".")
-            flow.cholesterol = flow.cholesterol?.replacingOccurrences(of: ",", with: ".")
-            flow.sodium = flow.sodium?.replacingOccurrences(of: ",", with: ".")
-            flow.potassium = flow.potassium?.replacingOccurrences(of: ",", with: ".")
+//            flow.cellulose = flow.cellulose?.replacingOccurrences(of: ",", with: ".")
+//            flow.sugar = flow.sugar?.replacingOccurrences(of: ",", with: ".")
+//            flow.saturatedFats = flow.saturatedFats?.replacingOccurrences(of: ",", with: ".")
+//            flow.monounsaturatedFats = flow.monounsaturatedFats?.replacingOccurrences(of: ",", with: ".")
+//            flow.polyunsaturatedFats = flow.polyunsaturatedFats?.replacingOccurrences(of: ",", with: ".")
+//            flow.cholesterol = flow.cholesterol?.replacingOccurrences(of: ",", with: ".")
+//            flow.sodium = flow.sodium?.replacingOccurrences(of: ",", with: ".")
+//            flow.potassium = flow.potassium?.replacingOccurrences(of: ",", with: ".")
             
             var calories: Double = -1
             if let calor = flow.calories, let count = Double(calor), !calor.isEmpty {
@@ -70,38 +69,38 @@ class AddProductFourthStepViewController: UIViewController {
             if let protein = flow.protein, let count = Double(protein), !protein.isEmpty {
                 proteins = (count/100).displayOnly(count: 3)
             }
-            var celluloses: Double = -1
-            if let cellulose = flow.cellulose, let count = Double(cellulose), !cellulose.isEmpty {
-                celluloses = (count/100).displayOnly(count: 3)
-            }
-            var sugars: Double = -1
-            if let sugar = flow.sugar, let count = Double(sugar), !sugar.isEmpty {
-                sugars = (count/100).displayOnly(count: 3)
-            }
-            var saturatedFats: Double = -1
-            if let saturatedFat = flow.saturatedFats, let count = Double(saturatedFat), !saturatedFat.isEmpty {
-                saturatedFats = (count/100).displayOnly(count: 3)
-            }
-            var monounsaturatedFats: Double = -1
-            if let monounsaturatedFat = flow.monounsaturatedFats, let count = Double(monounsaturatedFat), !monounsaturatedFat.isEmpty {
-                monounsaturatedFats = (count/100).displayOnly(count: 3)
-            }
-            var polyunsaturatedFats: Double = -1
-            if let polyunsaturatedFat = flow.polyunsaturatedFats, let count = Double(polyunsaturatedFat), !polyunsaturatedFat.isEmpty {
-                polyunsaturatedFats = (count/100).displayOnly(count: 3)
-            }
-            var cholesterols: Double = -1
-            if let cholesterol = flow.cholesterol, let count = Double(cholesterol), !cholesterol.isEmpty {
-                cholesterols = (count/100).displayOnly(count: 3)
-            }
-            var sodiums: Double = -1
-            if let sodium = flow.sodium, let count = Double(sodium), !sodium.isEmpty {
-                sodiums = (count/100).displayOnly(count: 3)
-            }
-            var potassiums: Double = -1
-            if let potassium = flow.potassium, let count = Double(potassium), !potassium.isEmpty {
-                potassiums = (count/100).displayOnly(count: 3)
-            }
+//            var celluloses: Double = -1
+//            if let cellulose = flow.cellulose, let count = Double(cellulose), !cellulose.isEmpty {
+//                celluloses = (count/100).displayOnly(count: 3)
+//            }
+//            var sugars: Double = -1
+//            if let sugar = flow.sugar, let count = Double(sugar), !sugar.isEmpty {
+//                sugars = (count/100).displayOnly(count: 3)
+//            }
+//            var saturatedFats: Double = -1
+//            if let saturatedFat = flow.saturatedFats, let count = Double(saturatedFat), !saturatedFat.isEmpty {
+//                saturatedFats = (count/100).displayOnly(count: 3)
+//            }
+//            var monounsaturatedFats: Double = -1
+//            if let monounsaturatedFat = flow.monounsaturatedFats, let count = Double(monounsaturatedFat), !monounsaturatedFat.isEmpty {
+//                monounsaturatedFats = (count/100).displayOnly(count: 3)
+//            }
+//            var polyunsaturatedFats: Double = -1
+//            if let polyunsaturatedFat = flow.polyunsaturatedFats, let count = Double(polyunsaturatedFat), !polyunsaturatedFat.isEmpty {
+//                polyunsaturatedFats = (count/100).displayOnly(count: 3)
+//            }
+//            var cholesterols: Double = -1
+//            if let cholesterol = flow.cholesterol, let count = Double(cholesterol), !cholesterol.isEmpty {
+//                cholesterols = (count/100).displayOnly(count: 3)
+//            }
+//            var sodiums: Double = -1
+//            if let sodium = flow.sodium, let count = Double(sodium), !sodium.isEmpty {
+//                sodiums = (count/100).displayOnly(count: 3)
+//            }
+//            var potassiums: Double = -1
+//            if let potassium = flow.potassium, let count = Double(potassium), !potassium.isEmpty {
+//                potassiums = (count/100).displayOnly(count: 3)
+//            }
             
             var productName: String = ""
             let fullNameArr = (flow.name ?? "").split{$0 == " "}.map(String.init)
@@ -114,21 +113,32 @@ class AddProductFourthStepViewController: UIViewController {
             for item in fullNameArr2 where !item.isEmpty {
                 productBrend = productBrend.isEmpty ? item : productBrend + " \(item)"
             }
-            
-            let userData = ["brand": productBrend, "barcode": flow.barCode, "name": productName, "calories": calories, "carbohydrates": carbohydrates, "cellulose": celluloses, "cholesterol": cholesterols, "fats": fats, "monoUnSaturatedFats": monounsaturatedFats, "polyUnSaturatedFats" : polyunsaturatedFats, "pottassium": potassiums, "proteins": proteins, "saturatedFats": saturatedFats, "sodium": sodiums, "sugar": sugars] as [String : Any]
-            if let key = UserInfo.sharedInstance.productFlow.selectedFavorite?.key {
-                if flow.showAll {
-                    Database.database().reference().child("LIST_CUSTOM_FOOD").child("\(key)").setValue(userData)
+    
+            var listDictionary: [Any] = []
+            if !flow.allServingSize.isEmpty {
+                for item in flow.allServingSize where item.name != "Стандартная порция" && item.servingSize != 100 {
+                    let dictionary: [String : Any] = ["name": "\(item.name ?? "")", "amount": "\(Int(item.servingSize ?? 0))", "unit" : "\(item.unitMeasurement ?? "0")"]
+                    listDictionary.append(dictionary)
                 }
+            }
+            
+            let userData = ["brand": productBrend, "barcode": flow.barCode, "name": productName, "calories": calories, "carbohydrates": carbohydrates, "fats": fats, "proteins": proteins, "measurement_units" : listDictionary, "is_Liquid" : flow.productType == .product ? false : true] as [String : Any]
+            
+            if let key = UserInfo.sharedInstance.productFlow.selectedFavorite?.key {
+//                if flow.showAll {
+//                    Database.database().reference().child("LIST_CUSTOM_FOOD").child("\(key)").setValue(userData)
+//                }
                 Database.database().reference().child("USER_LIST").child(uid).child("customFoods").child("\(key)").setValue(userData)
                 Database.database().reference().child("USER_LIST").child(uid).child("undeletableCustomFoods").child("\(key)").setValue(userData)
+                UserInfo.sharedInstance.productFlow = AddProductFlow()
                 popBack(5)
             } else {
-                if flow.showAll {
-                    Database.database().reference().child("LIST_CUSTOM_FOOD").childByAutoId().setValue(userData)
-                }
+//                if flow.showAll {
+//                    Database.database().reference().child("LIST_CUSTOM_FOOD").childByAutoId().setValue(userData)
+//                }
             Database.database().reference().child("USER_LIST").child(uid).child("customFoods").childByAutoId().setValue(userData)
                 Database.database().reference().child("USER_LIST").child(uid).child("undeletableCustomFoods").childByAutoId().setValue(userData)
+                UserInfo.sharedInstance.productFlow = AddProductFlow()
                 showConfirmAlert()
             }
         }
@@ -136,13 +146,13 @@ class AddProductFourthStepViewController: UIViewController {
     
     // MARK: - Private -
     private func setupTableView() {
-        tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 30, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 80, right: 0)
         tableView.register(type: AddProductSecondStepCell.self)
         tableView.register(AddProductFourthStepHeaderView.nib, forHeaderFooterViewReuseIdentifier: AddProductFourthStepHeaderView.reuseIdentifier)
     }
     
     private func showConfirmAlert() {
-        let refreshAlert = UIAlertController(title: "Ваш продукт добавлен в Свои продукты", message: "", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "Ваш продукт добавлен в Мои продукты", message: "", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard let strongSelf = self else { return }
             
@@ -165,7 +175,7 @@ extension AddProductFourthStepViewController: UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 3 : 12
+        return section == 0 ? (3 + flow.allServingSize.count) : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -188,5 +198,14 @@ extension AddProductFourthStepViewController: UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.0000001
+    }
+}
+
+extension Dictionary where Key == String, Value == Any {
+    
+    mutating func append(anotherDict:[String:Any]) {
+        for (key, value) in anotherDict {
+            self.updateValue(value, forKey: key)
+        }
     }
 }

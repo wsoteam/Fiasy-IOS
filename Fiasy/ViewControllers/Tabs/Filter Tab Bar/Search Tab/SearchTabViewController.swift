@@ -120,7 +120,6 @@ extension SearchTabViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if products.indices.contains(indexPath.row) {
-            let f = products[indexPath.row]
             UserInfo.sharedInstance.selectedProduct = products[indexPath.row]
             needReload = false
             performSegue(withIdentifier: "sequeProductDetails", sender: nil)
@@ -164,31 +163,31 @@ class SearchTabInteractor: SearchTabInteractorInput {
     }
     
     func loadMoreProducts(pagination: PaginationProduct) {
-        guard let link = pagination.next, !link.isEmpty else { return }
-        profileService.loadMoreProducts(link: link).subscribe(onNext: { [weak self] (response) in
-            guard let strongSelf = self else { return }
-            strongSelf.output?.didLoadMoreProducts(response.results)
-        }).disposed(by: dispose)
+//        guard let link = pagination.next, !link.isEmpty else { return }
+//        profileService.loadMoreProducts(link: link).subscribe(onNext: { [weak self] (response) in
+//            guard let strongSelf = self else { return }
+//            strongSelf.output?.didLoadMoreProducts(response.results)
+//        }).disposed(by: dispose)
     }
     
     func searchProduct(search: String) {
-        profileService.searchProduct(search: search).subscribe(onNext: { [weak self] (response) in
-            guard let strongSelf = self else { return }
-            Amplitude.instance()?.logEvent("search_success", withEventProperties: ["search_item" : search]) // +
-            strongSelf.output?.didLoadBySearch(response)
-        }).disposed(by: dispose)
+//        profileService.searchProduct(search: search).subscribe(onNext: { [weak self] (response) in
+//            guard let strongSelf = self else { return }
+//            Amplitude.instance()?.logEvent("search_success", withEventProperties: ["search_item" : search]) // +
+//            //strongSelf.output?.didLoadBySearch(response)
+//        }).disposed(by: dispose)
     }
 }
 
 extension SearchTabViewController: SearchTabInteractorOutput {
     
     func didLoadProducts(_ pagination: PaginationProduct) {
-        self.pagination = pagination
-        self.activityView.stopAnimating()
-        self.products = pagination.results
-        
-        self.emptySearchView.isHidden = !products.isEmpty
-        self.tableView.reloadData()
+//        self.pagination = pagination
+//        self.activityView.stopAnimating()
+//        self.products = pagination.results
+//        
+//        self.emptySearchView.isHidden = !products.isEmpty
+//        self.tableView.reloadData()
     }
     
     func didLoadMoreProducts(_ products: [SecondProduct]) {
@@ -199,10 +198,10 @@ extension SearchTabViewController: SearchTabInteractorOutput {
     }
     
     func didLoadBySearch(_ pagination: PaginationProduct) {
-        self.pagination = pagination
-        self.emptySearchView.isHidden = !pagination.results.isEmpty
-        self.products = pagination.results
-        self.activityView.stopAnimating()
-        self.tableView.reloadData()
+//        self.pagination = pagination
+//        self.emptySearchView.isHidden = !pagination.results.isEmpty
+//        self.products = pagination.results
+//        self.activityView.stopAnimating()
+//        self.tableView.reloadData()
     }
 }

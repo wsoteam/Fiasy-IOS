@@ -12,6 +12,8 @@ import Amplitude_iOS
 class ProfileTargetViewController: UIViewController {
     
     // MARK: - Outlet -
+    
+    @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet var targetTitles: [UILabel]!
     @IBOutlet var targetImages: [UIImageView]!
     
@@ -24,6 +26,20 @@ class ProfileTargetViewController: UIViewController {
         super.viewDidLoad()
         
         setupDefaultState()
+        for (index, item) in targetTitles.enumerated() {
+            switch index {
+            case 0:
+                item.text = LS(key: .FIRST_TARGET)
+            case 1:
+                item.text = LS(key: .SECOND_TARGET)
+            case 2:
+                item.text = LS(key: .THIRD_TARGET)
+            case 3:
+                item.text = LS(key: .FOURTH_TARGET)
+            default:
+                break
+            }
+        }
         let target = UserInfo.sharedInstance.editTarget
         if targetImages.indices.contains(target) {
             targetImages[target].image = UIImage.coloredImage(image: fetchTargetImage(index: target), color: #colorLiteral(red: 0.9580997825, green: 0.5739049315, blue: 0.1940318346, alpha: 1))
@@ -31,6 +47,7 @@ class ProfileTargetViewController: UIViewController {
         if targetTitles.indices.contains(target) {
             targetTitles[target].textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
+        titleNavigationLabel.text = LS(key: .TARGET)
     }
     
     // MARK: - Actions -

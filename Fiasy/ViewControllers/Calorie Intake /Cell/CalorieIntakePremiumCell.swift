@@ -11,6 +11,8 @@ import UIKit
 class CalorieIntakePremiumCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var bottomDescriptionLabel: UILabel!
+    @IBOutlet var titleLabels: [UILabel]!
     @IBOutlet weak var defaultButton: UIButton!
     @IBOutlet weak var mifinLabel: UILabel!
     @IBOutlet var allTextFields: [UITextField]!
@@ -24,11 +26,34 @@ class CalorieIntakePremiumCell: UITableViewCell {
     private var delegate: CalorieIntakeDelegate?
     private var defaultData: [Int] = [0, 0, 0, 0]
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        for (index, item) in titleLabels.enumerated() {
+            switch index {
+            case 0:
+                item.text = "\(LS(key: .CALORIE_INTAKE)) (\(LS(key: .CALORIES_UNIT)))"
+            case 1:
+                item.text = "\(LS(key: .PROTEIN_INTAKE)) (\(LS(key: .GRAMS_UNIT)).)"
+            case 2:
+                item.text = "\(LS(key: .CARBOHYDRATES_INTAKE)) (\(LS(key: .GRAMS_UNIT)).)"
+            case 3:
+                item.text = "\(LS(key: .FATS_INTAKE)) (\(LS(key: .GRAMS_UNIT)).)"
+            default:
+                break
+            }
+        }
+    }
+    
     // MARK: - Interface -
     func fillCell(_ indexCell: IndexPath, _ currentUser: User?, _ delegate: CalorieIntakeDelegate, _ purchaseIsValid: Bool, _ defaultData: [Int], _ allPremiumFields: [String]) {
         self.delegate = delegate
         self.indexPath = indexCell
         self.defaultData = defaultData
+        
+        defaultButton.setTitle("          \(LS(key: .DEFAULT_INTAKE))          ", for: .normal)
+        mifinLabel.text = LS(key: .DAY_NORM_INTAKE_DESCRIPTION)
+        bottomDescriptionLabel.text = LS(key: .DEFAULT_DESCRIPTION_INTAKE)
         
         if self.fat == nil {
             self.fat = currentUser?.maxFat

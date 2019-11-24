@@ -18,6 +18,9 @@ enum ChartsState {
 class ProfileIndicatorCell: UITableViewCell {
     
     // MARK: - Outlets -
+    @IBOutlet weak var yourIndicatorsLabel: UILabel!
+    @IBOutlet weak var normalLabel: UILabel!
+    @IBOutlet weak var reportsLabel: UILabel!
     @IBOutlet weak var rightArrow: UIButton!
     @IBOutlet weak var centerLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -28,9 +31,7 @@ class ProfileIndicatorCell: UITableViewCell {
     // MARK: - Properties -
     private var delegate: ProfileDelegate?
     private var chartsState: ChartsState = .week
-    
     private var selectedData = Date()
-
     private var currentYear = Calendar.current.component(.year, from: Date())
     private var currentMonth = Calendar.current.component(.month, from: Date())
     private var currentDay = Calendar.current.component(.day, from: Date())
@@ -38,7 +39,23 @@ class ProfileIndicatorCell: UITableViewCell {
     private lazy var mounthFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = .current
-        formatter.locale = Locale(identifier: "ru_RU")
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            formatter.locale = Locale(identifier: "es_ES")
+        case "pt":
+            // португалия (бразилия)
+            formatter.locale = Locale(identifier: "pt_BR")
+        case "en":
+            // английский
+            formatter.locale = Locale(identifier: "en_US")
+        case "de":
+            // немецикий
+            formatter.locale = Locale(identifier: "de_DE")
+        default:
+            // русский
+            formatter.locale = Locale(identifier: "ru_RU")
+        }
         formatter.dateFormat = "LLLL"
         return formatter
     }()
@@ -58,7 +75,22 @@ class ProfileIndicatorCell: UITableViewCell {
     // MARK: - Life Cicle -
     override func awakeFromNib() {
         super.awakeFromNib()
-//
+        
+        reportsLabel.text = LS(key: .REPORTS)
+        normalLabel.text = LS(key: .DAILY_RATE)
+        yourIndicatorsLabel.text = LS(key: .YOUR_PERFORMANCE)
+        for (index, item) in selectedButtons.enumerated() {
+            switch index {
+            case 0:
+                item.setTitle(LS(key: .WEEK).uppercased(), for: .normal)
+            case 1:
+                item.setTitle(LS(key: .MONTH).uppercased(), for: .normal)
+            case 2:
+                item.setTitle(LS(key: .YEAR).uppercased(), for: .normal)
+            default:
+                break
+            }
+        }
 //        changeChartsState(state: chartsState)
 //        setupCharts(by: chartsState)
 //        leftArrow.transform = CGAffineTransform(scaleX: -1, y: 1)

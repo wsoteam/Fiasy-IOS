@@ -31,16 +31,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()       
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
-//        switch Locale.current.languageCode {
-//        case "en":
-//            EN.save(by: .APP_LANGUAGE)
-//        default:
-//            RUS.save(by: .APP_LANGUAGE)
-//        }
-        RUS.save(by: .APP_LANGUAGE)
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            ES.save(by: .APP_LANGUAGE)
+        case "pt":
+            // португалия (бразилия)
+            PT.save(by: .APP_LANGUAGE)
+        case "en":
+            // английский
+            EN.save(by: .APP_LANGUAGE)
+        case "de":
+            // немецикий
+            GER.save(by: .APP_LANGUAGE)
+        default:
+            // русский
+            RUS.save(by: .APP_LANGUAGE)
+        }
 
       //  Fabric.with([Crashlytics.self()])
-        //Bugsee.launch(token :"9dd1f372-d496-4bef-ac70-0ff732d0b82b")
+        Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
         
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
         
@@ -55,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         })
         
         FirebaseDBManager.checkFilledProfile { (state) in }
-        //SwiftGoogleTranslate.shared.start(with: "AIzaSyB5dv1L0W_85lcFrEcyqZ0KyGZeRn6wOTE")
         Amplitude.instance()?.trackingSessionEvents = true
         Amplitude.instance()?.minTimeBetweenSessionsMillis = 5000
         Amplitude.instance()?.initializeApiKey("b148a2e64cc862b4efb10865dfd4d579")

@@ -42,30 +42,30 @@ class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
         switch indexCell.row {
         case 0:
             insertTextField.tag = 44
-            titleNameLabel.text = "Пол"
+            titleNameLabel.text = LS(key: .GENDER)
             insertTextField.keyboardType = .numberPad
             insertTextField.isEnabled = false
             insertTextField.textColor = #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1)
             if let female = currentUser?.female {
-                insertTextField.text = female == true ? "Женский" : "Мужской"
+                insertTextField.text = female == true ? LS(key: .SEX_FEMALE) : LS(key: .SEX_MALE)
             }
         case 1:
             insertTextField.tag = 0
-            titleNameLabel.text = "Рост"
+            titleNameLabel.text = LS(key: .GROWTH)
             insertTextField.keyboardType = .numberPad
             insertTextField.text = allField[0]
         case 2:
             insertTextField.tag = 1
-            titleNameLabel.text = "Вес"
+            titleNameLabel.text = LS(key: .WEIGHT)
             insertTextField.keyboardType = .decimalPad
             insertTextField.text = allField[1]
         case 3:
             insertTextField.tag = 2
-            titleNameLabel.text = "Возраст"
+            titleNameLabel.text = LS(key: .AGE)
             insertTextField.keyboardType = .numberPad
             insertTextField.text = allField[2]
         case 4:
-            titleNameLabel.text = "Активность"
+            titleNameLabel.text = LS(key: .ACTIVITY)
             insertTextField.isEnabled = false
             insertTextField.isHidden = true
             moreLabel.isHidden = false
@@ -73,7 +73,7 @@ class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
             
             moreLabel.text = fetchActivity(value: activity)
         case 5:
-            titleNameLabel.text = "Цель"
+            titleNameLabel.text = LS(key: .TARGET)
             insertTextField.isEnabled = false
             moreLabel.isHidden = false
             selectedButton.isHidden = false
@@ -91,19 +91,19 @@ class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
     private func fetchActivity(value: CGFloat) -> String {
         switch value {
         case 0.0:
-            return "Минимальная нагрузка"
+            return LS(key: .FIRST_ACTIVITY)
         case 1.0:
-            return "Легкая физическая нагрузка\nв течении дня"
+            return LS(key: .SECOND_ACTIVITY)
         case 2.0:
-            return "Тренировки 2-4 раза в неделю\n(или работа средней тяжести)"
+            return LS(key: .THIRD_ACTIVITY)
         case 3.0:
-            return "Интенсивные тренировки\n4-5 раз в неделю"
+            return LS(key: .FOURTH_ACTIVITY)
         case 4.0:
-            return "Ежедневные интенсивные\nтренировки"
+            return LS(key: .FIVE_ACTIVITY)
         case 5.0:
-            return "Тренировки 5-7 раз в неделю,\nпо два раза в день"
+            return LS(key: .SIX_ACTIVITY)
         case 6.0:
-            return "Тяжелая физическая работа или\nежедневные интенсивные тренировки\nпо 2 раза в день"
+            return LS(key: .SEVEN_ACTIVITY)
         default:
             return ""
         }
@@ -112,13 +112,13 @@ class CalorieIntakeTableViewCell: UITableViewCell, UITextFieldDelegate {
     private func fetchTargetName(index: Int) -> String {
         switch index {
         case 0:
-            return "Поддержание тела в форме"
+            return LS(key: .FIRST_TARGET)
         case 1:
-            return "Похудение"
+            return LS(key: .SECOND_TARGET)
         case 2:
-            return "Набор мышечной массы"
+            return LS(key: .THIRD_TARGET)
         default:
-            return "Сохранение мышц и сжигание жира"
+            return LS(key: .FOURTH_TARGET)
         }
     }
     

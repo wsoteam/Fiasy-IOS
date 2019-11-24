@@ -13,6 +13,13 @@
 "unboarding_skeep" = "Skip";
 "unboarding_next" = "NEXT";
 
+/*    Setting Screen    */
+"settings_items_premium" = "Premium Account";
+"settings_items_personal" = "Personal information";
+"settings_items_intake" = "Calorie intake";
+"settings_items_help" = "Help";
+"activity_profile_settings_settings" = "Settings";
+
 /*    Authorization Screen    */
 "or" = "OR";
 "signIn" = "LOG IN";
@@ -78,15 +85,15 @@
 "six_activity" = "I exercise twice a day, 5–7 days a week.";
 "seven_activity" = "My job is physically intense, or I exercise intensely twice a day, every day.";
 "select_your_target" = "Choose your goal";
-"first_target" = "Stay in shape";
+"first_target" = "Stay in\nshape";
 "second_target" = "Lose weight";
-"third_target" = "Build muscle mass";
+"third_target" = "Build muscle\nmass";
 "fourth_target" = "Maintain musculature\nand burn fat";
 
 /*    Interrogation Finish Screen    */
 "wait_a_while" = "Just a moment";
 "wait_a_while_description" = "Your personalized diet\nis being calculated.";
-"plan_calculated" = "Your personalized diet has been calculated.";
+"plan_calculated" = "Your personalized diet\nhas been calculated.";
 "recommended_rate" = "Recommended intake";
 "calories_unit" = "kcal";
 "grams_unit" = "g";
@@ -99,6 +106,40 @@
 "year_short" = "y.";
 
 /*    Premium Screen    */
+"long_prem_open" = "Unlock more\noptions";
+"currency_symbol_pay" = "$";
+"one_mounth" = "month";
+"few_mounth" = "month";
+"many_mounth" = "months";
+"title_save_percent" = "save";
+"black_prem_hours" = "hours";
+"black_prem_minutes" = "minutes";
+"black_prem_seconds" = "seconds";
+"black_prem_end" = "The special offer will end in";
+"long_prem_titl_1" = "Lose weight without\nstress or strict diets with\n";
+"long_prem_features_diary" = "Nutrition and\nexercise journal";
+"long_prem_features_elements" = "Macro-nutrient\ntracking";
+"long_prem_features_recipe" = "Recipes";
+"long_prem_features_articles" = "Exclusive articles\nfrom a nutritionist";
+"long_prem_plans_title" = "Meal plans";
+"long_prem_features_statistic" = "All statistics";
+"long_prem_features_body" = "Body morphology tracking";
+"buy" = "Buy";
+
+"long_prem_easy" = "EVERYTHING IS EASIER WITH";
+"long_prem_article_title" = "Exclusive articles";
+"long_prem_article_txt" = "You'll get access to articles\nfroma popular nutritionist\nand fitness trainer";
+"long_prem_recipe_title" = "Recipe database";
+"long_prem_recipe_txt" = "Easy-to-cook, affordable, delicious\nrecipes with CPFC data";
+"long_prem_settings_title" = "Personalized settings";
+"long_prem_settings_txt" = "View and adjust your CPFC level";
+"long_prem_plans_title" = "Meal plans";
+"long_prem_plans_txt" = "Ready-made meal plans for every taste and goal";
+"long_prem_measure_title" = "Body measurements";
+"long_prem_measure_txt" = "Track your progress with detailed\nbody measurement analysis";
+
+"premium_title" = "Premium"; 
+"premium_title_2" = "SATISFIED CLIENTS";
 "reach_goal_faster" = "Reach your goal more quickly";
 "everyday_recipes" = "Everyday recipes";
 "science_articles" = "Useful scientific articles";
@@ -177,6 +218,8 @@
 "email" = "Email address";
 
 /*    Calorie Intake Screen    */
+"sex_male" = "Male";
+"sex_female" = "Female";
 "calorie_intake_navigation" = "Calorie intake";
 "gender" = "Gender";
 "growth" = "Height";
@@ -224,6 +267,9 @@
 "make_default" = "Set to default";
 
 /*    Activity Screen    */
+"alert_yes" = "Yes";
+"alert_no" = "No";
+"alert_dialog_confirm_question" = "Are you sure you want to delete the item?";
 "activity_navigation" = "Activity";
 "my_activity" = "My activities";
 "search" = "Search";

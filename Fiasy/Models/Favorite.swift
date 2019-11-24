@@ -26,6 +26,8 @@ class Favorite {
     var sodium: Double?
     var pottassium: Double?
     var barcode: String?
+    var isLiquid: Bool?
+    var measurementUnits: [MeasurementUnits] = []
 
     init(dictionary: [String : AnyObject], generalKey: String) {
         
@@ -45,5 +47,18 @@ class Favorite {
         cellulose = dictionary["cellulose"] as? Double
         sodium = dictionary["sodium"] as? Double
         pottassium = dictionary["pottassium"] as? Double
+        isLiquid = dictionary["is_Liquid"] as? Bool
+        
+        if let list = dictionary["measurement_units"] as? [NSDictionary] {
+            for item in list {
+                let measurement: MeasurementUnits = MeasurementUnits()
+                measurement.name = item["name"] as? String
+                if let text = item["amount"] as? String, let count = Int(text) {
+                    measurement.amount = count
+                }
+                measurement.unit = item["unit"] as? String ?? ""
+                measurementUnits.append(measurement)
+            }
+        }
     }
 }

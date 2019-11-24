@@ -24,9 +24,9 @@ class ArticleHeaderView: UITableViewHeaderFooterView {
         self.delegate = delegate
         
         switch section {
-        case 0:
-            titleLabel.text = "Питание"
         case 1:
+            titleLabel.text = "Питание"
+        case 2:
             titleLabel.text = "Тренировки"
         default:
             break

@@ -12,6 +12,10 @@ import Kingfisher
 class ProfileAvatarTableViewCell: UITableViewCell {
 
     // MARK: - Outlet -
+    @IBOutlet weak var fatsLabel: UILabel!
+    @IBOutlet weak var carboLabel: UILabel!
+    @IBOutlet weak var proteinsLabel: UILabel!
+    @IBOutlet weak var standartLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var carbohydratesLabel: UILabel!
@@ -30,6 +34,10 @@ class ProfileAvatarTableViewCell: UITableViewCell {
         self.delegate = delegate
         self.indexCell = indexCell
         
+        fatsLabel.text = LS(key: .FAT)
+        carboLabel.text = LS(key: .CARBOHYDRATES)
+        proteinsLabel.text = LS(key: .PROTEIN)
+        standartLabel.text = "\(LS(key: .NUTRITION_PLAN)) - \(LS(key: .STANDARD))"
         guard let profile = UserInfo.sharedInstance.currentUser else { return }
         arrowImageView.image = state ? #imageLiteral(resourceName: "Arrow_top-1") : #imageLiteral(resourceName: "Arrow_down-1")
         bottomContainerView.isHidden = state ? false : true
@@ -49,12 +57,12 @@ class ProfileAvatarTableViewCell: UITableViewCell {
         if let first = profile.firstName, let last = profile.lastName, first != "default" && last != "default" {
             nameLabel.text = "\(first)\n\(last)"
         } else {
-            nameLabel.text = "Ваше Имя"
+            nameLabel.text = LS(key: .YOUR_NAME)
         }
         
-        fatLabel.text = "\(profile.maxFat ?? 0) г"
-        proteinLabel.text = "\(profile.maxProt ?? 0) г"
-        carbohydratesLabel.text = "\(profile.maxCarbo ?? 0) г"
+        fatLabel.text = "\(profile.maxFat ?? 0) \(LS(key: .GRAMS_UNIT))"
+        proteinLabel.text = "\(profile.maxProt ?? 0) \(LS(key: .GRAMS_UNIT))"
+        carbohydratesLabel.text = "\(profile.maxCarbo ?? 0) \(LS(key: .GRAMS_UNIT))"
         dayTargetLabel.attributedText = fillCalories(count: profile.maxKcal ?? 0)
     }
     
@@ -62,9 +70,9 @@ class ProfileAvatarTableViewCell: UITableViewCell {
     private func fillCalories(count: Int) -> NSMutableAttributedString {
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 15),
-                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "Ежедневная цель –– "))
+                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "\(LS(key: .DAILY_GOAL)) –– "))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 15),
-                                                     color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: "\(count) ккал"))
+                                                     color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: "\(count) \(LS(key: .CALORIES_UNIT))"))
         return mutableAttrString
     }
     

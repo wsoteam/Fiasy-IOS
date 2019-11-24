@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
     //MARK: - Private -
     private func setupInitialState() {
         displayManager = ProfileDisplayManager(tableView, self)
-        
+        tabTitleLable.text = LS(key: .PROFILE_TITLE)
         if isIphone5 {
             topTitleConstraint.constant = 20.0
             tabTitleLable.font = tabTitleLable.font.withSize(25)

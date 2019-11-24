@@ -120,6 +120,60 @@ class FirebaseDBManager {
         }
     }
     
+    static func saveProductList(_ list: [[SecondProduct]]) {
+        for section in list {
+            for product in section {
+                if let uid = Auth.auth().currentUser?.uid, let date = UserInfo.sharedInstance.selectedDate {
+                    let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
+                    let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
+                    let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
+                    
+                    let currentDay = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
+                    let currentMonth = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
+                    let currentYear = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
+                    
+                    let state = currentDay == day && currentMonth == month && currentYear == year
+                    
+                    var dayState: String = "today"
+                    if state {
+                        dayState = "today"
+                    } else if date.timeIntervalSince(Date()).sign == FloatingPointSign.minus {
+                        dayState = "past"
+                    } else {
+                        dayState = "future"
+                    }
+                    
+                    var count: Int = 100
+                    var portionId: Int?
+                    if let weight = product.weight {
+                        count = weight
+                        if let port = product.selectedPortion {
+                            portionId = port.id
+                        }
+                    } else {
+                        if let port = product.selectedPortion {
+                            portionId = port.id
+                            count = 1
+                        }
+                    }
+
+                    var listDictionary: [Any] = []
+                    if !product.measurementUnits.isEmpty {
+                        for item in product.measurementUnits where item.name != "Стандартная порция" && item.amount != 100 {
+                            let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
+                            listDictionary.append(dictionary)
+                        }
+                    }
+
+                    let userData = ["day": day, "month": month, "year": year, "name": product.name, "weight": count, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "brand": product.brend ?? "", "is_Liquid" : product.isLiquid, "selectedUnit" : product.selectedUnit, "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "product_id" : product.id, "measurement_units" : listDictionary, "portionId" : portionId] as [String : Any]
+                    
+                    Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getAmplitudeTitle(text: product.divisionBasketTitle ?? "Завтрак"), "food_category" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
+                    Database.database().reference().child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getAmplitudeTitle(text: product.divisionBasketTitle ?? "Завтрак")).childByAutoId().setValue(userData)
+                }
+            }
+        }
+    }
+    
     static func reloadItems()  {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -172,6 +226,72 @@ class FirebaseDBManager {
             item = "chest"
         case .hips:
             item = "hips"
+        }
+        
+        if type == .weight && (Calendar.current.component(.day, from: Date()) == Calendar.current.component(.day, from: date) && Calendar.current.component(.month, from: Date()) == Calendar.current.component(.month, from: date) && Calendar.current.component(.year, from: Date()) == Calendar.current.component(.year, from: date)) {
+            if let uid = Auth.auth().currentUser?.uid {
+                let child = Database.database().reference().child("USER_LIST").child(uid).child("profile")
+                child.child("weight").setValue(weight)
+                UserInfo.sharedInstance.currentUser?.weight = weight
+                UserInfo.sharedInstance.reloadDiariContent = true
+                
+                var findMeasurings: Measuring?
+                for secondItem in UserInfo.sharedInstance.measuringList where (Calendar.current.component(.day, from: secondItem.date ?? Date()) == Calendar.current.component(.day, from: Date()) && Calendar.current.component(.month, from: secondItem.date ?? Date()) == Calendar.current.component(.month, from: Date()) && Calendar.current.component(.year, from: secondItem.date ?? Date()) == Calendar.current.component(.year, from: Date())) {
+                    findMeasurings = secondItem
+                    break
+                }
+                if let find = findMeasurings {
+                    //
+                } else {
+                    let milisecond = Int64((date.timeIntervalSince1970 * 1000.0).rounded())
+                    let model = Measuring()
+                    model.key = ""
+                    model.date = date
+                    model.type = type
+                    model.timeInMillis = Int(milisecond)
+                    model.weight = weight
+                    model.generalKey = "\(Int(milisecond))"
+                    UserInfo.sharedInstance.measuringList.append(model)
+                }
+                
+                var BMR: Double = 0.0
+                let growth = UserInfo.sharedInstance.currentUser?.height ?? 0
+                let secondAge = Double(UserInfo.sharedInstance.currentUser?.age ?? 0)
+                if UserInfo.sharedInstance.currentUser?.female == true {
+                    BMR = (10 * weight) + (6.25 * Double(growth)) - (5 * secondAge) - 161
+                } else {
+                    BMR = (10 * weight) + (6.25 * Double(growth)) - (5 * secondAge) + 5
+                }
+                
+                let target: Int = UserInfo.sharedInstance.currentUser?.target ?? 0
+                let targetActivity: CGFloat = UserInfo.sharedInstance.currentUser?.targetActivity ?? 0.0
+                let activity = (BMR * RegistrationFlow.fetchActivityCoefficient(value: targetActivity))
+                let result = RegistrationFlow.fetchResultByAdjustmentCoefficient(target: target, count: activity).displayOnly(count: 0)
+                
+                var fat: Int = 0
+                var protein: Int = 0
+                var carbohydrates: Int = 0
+                
+                if UserInfo.sharedInstance.currentUser?.female == true {
+                    fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 16
+                    protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 16
+                    carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 16
+                } else {
+                    fat = (Int((result * 0.25).displayOnly(count: 0))/9) + 36
+                    protein = (Int((result * 0.4).displayOnly(count: 0))/4) - 36
+                    carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 36
+                }
+                let ref = Database.database().reference()
+                ref.child("USER_LIST").child(uid).child("profile").child("maxFat").setValue(fat)
+                ref.child("USER_LIST").child(uid).child("profile").child("maxProt").setValue(protein)
+                ref.child("USER_LIST").child(uid).child("profile").child("maxCarbo").setValue(carbohydrates)
+                ref.child("USER_LIST").child(uid).child("profile").child("maxKcal").setValue(result)
+                
+                UserInfo.sharedInstance.currentUser?.maxKcal = Int(result)
+                UserInfo.sharedInstance.currentUser?.maxFat = fat
+                UserInfo.sharedInstance.currentUser?.maxProt = protein
+                UserInfo.sharedInstance.currentUser?.maxCarbo = carbohydrates
+            }
         }
         
         if let key = measuring?.generalKey {

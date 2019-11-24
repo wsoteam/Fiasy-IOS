@@ -8,9 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Medium.ttf">
-            <string>Roboto-Medium</string>
-        </array>
         <array key="SFProText-Medium.ttf">
             <string>SFProText-Medium</string>
         </array>
@@ -31,18 +28,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7u-hY-JbM" userLabel="top Container">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название рецепта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0f-ri-r1D">
-                                        <rect key="frame" x="15" y="25" width="130" height="53.5"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
-                                        <color key="textColor" red="0.65090787409999995" green="0.65102213620000005" blue="0.65090078119999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Название рецепта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0f-ri-r1D">
+                                        <rect key="frame" x="15" y="25" width="139.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                        <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FKK-RX-0YR">
-                                        <rect key="frame" x="15" y="83.5" width="384" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FKK-RX-0YR">
+                                        <rect key="frame" x="15" y="48" width="384" height="30"/>
+                                        <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="6W4-6G-h6k"/>
                                         </constraints>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <connections>
@@ -50,24 +48,38 @@
                                             <outlet property="delegate" destination="ntT-9O-RdP" id="2Pe-ai-Jog"/>
                                         </connections>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFg-iy-Wys">
-                                        <rect key="frame" x="15" y="118.5" width="384" height="1"/>
-                                        <color key="backgroundColor" red="0.92146831750000002" green="0.92162638900000005" blue="0.92145842310000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFg-iy-Wys">
+                                        <rect key="frame" x="15" y="83" width="384" height="2"/>
+                                        <color key="backgroundColor" red="0.92931061983108521" green="0.9294700026512146" blue="0.92930072546005249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="pBX-o2-erl"/>
+                                            <constraint firstAttribute="height" constant="2" id="pBX-o2-erl"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Введите название продукта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MX-Gq-dtQ">
+                                        <rect key="frame" x="15" y="105" width="384" height="14.5"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
+                                        <color key="textColor" red="0.92315465210000003" green="0.34297114610000001" blue="0.342156291" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="a0f-ri-r1D" firstAttribute="top" secondItem="C7u-hY-JbM" secondAttribute="top" constant="25" id="0tB-7s-x6G"/>
+                                    <constraint firstItem="4MX-Gq-dtQ" firstAttribute="top" secondItem="RFg-iy-Wys" secondAttribute="bottom" constant="2" id="5bm-xm-JTE"/>
                                     <constraint firstItem="RFg-iy-Wys" firstAttribute="trailing" secondItem="FKK-RX-0YR" secondAttribute="trailing" id="Ay9-jr-gu2"/>
+                                    <constraint firstItem="4MX-Gq-dtQ" firstAttribute="leading" secondItem="FKK-RX-0YR" secondAttribute="leading" id="FnY-XS-5A4"/>
                                     <constraint firstAttribute="trailing" secondItem="FKK-RX-0YR" secondAttribute="trailing" constant="15" id="KN2-vm-rbr"/>
                                     <constraint firstItem="RFg-iy-Wys" firstAttribute="leading" secondItem="FKK-RX-0YR" secondAttribute="leading" id="T4v-0y-dC5"/>
-                                    <constraint firstAttribute="bottom" secondItem="RFg-iy-Wys" secondAttribute="bottom" id="VVS-Yk-SVS"/>
                                     <constraint firstItem="RFg-iy-Wys" firstAttribute="top" secondItem="FKK-RX-0YR" secondAttribute="bottom" constant="5" id="Wve-18-SkZ"/>
                                     <constraint firstItem="FKK-RX-0YR" firstAttribute="top" secondItem="a0f-ri-r1D" secondAttribute="bottom" constant="5" id="XlZ-Ww-8YU"/>
+                                    <constraint firstAttribute="bottom" secondItem="4MX-Gq-dtQ" secondAttribute="bottom" id="Yx5-MA-EJZ"/>
                                     <constraint firstItem="a0f-ri-r1D" firstAttribute="leading" secondItem="C7u-hY-JbM" secondAttribute="leading" constant="15" id="jKb-9i-nrE"/>
+                                    <constraint firstItem="4MX-Gq-dtQ" firstAttribute="trailing" secondItem="FKK-RX-0YR" secondAttribute="trailing" id="qHy-kd-u4P"/>
                                     <constraint firstItem="FKK-RX-0YR" firstAttribute="leading" secondItem="C7u-hY-JbM" secondAttribute="leading" constant="15" id="yHY-is-KY3"/>
                                 </constraints>
                             </view>
@@ -82,6 +94,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="errorLabel" destination="4MX-Gq-dtQ" id="MDl-3V-cHU"/>
                 <outlet property="nameTextField" destination="FKK-RX-0YR" id="B3A-ax-7E4"/>
                 <outlet property="separatorView" destination="RFg-iy-Wys" id="d83-Gj-woa"/>
                 <outlet property="titleLabel" destination="a0f-ri-r1D" id="Bxw-TK-6qI"/>

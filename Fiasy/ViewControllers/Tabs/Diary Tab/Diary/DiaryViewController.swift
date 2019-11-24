@@ -17,11 +17,12 @@ import GradientProgressBar
 import VisualEffectView
 
 protocol DiaryViewDelegate {
+    func reloadMealtime()
     func replaceMeasuringList(list: [Measuring])
     func openMeasuringScreen()
     func stopProgress()
     func showWaterDetails()
-    func editMealTime()
+    func editMealTime(mealTime: Mealtime)
     func removeMealTime()
     func removeActivity()
     func showProducts()
@@ -109,10 +110,6 @@ class DiaryViewController: BaseViewController {
         addObserver(for: self, #selector(showProductDetails), Constant.SHOW_PRODUCT_LIST)
         addObserver(for: self, #selector(reloadDiary), Constant.RELOAD_DIARY)
 
-        if UserInfo.sharedInstance.allProducts.isEmpty {
-            SQLDatabase.shared.fetchProducts()
-        }
-        
         if UserInfo.sharedInstance.reloadDiariContent {
             UserInfo.sharedInstance.reloadDiariContent = false
             getItemsInDataBase()
@@ -140,7 +137,7 @@ class DiaryViewController: BaseViewController {
         getItemsInDataBase()
     }
     
-    private func getItemsInDataBase() {
+    func getItemsInDataBase() {
         FirebaseDBManager.getMealtimeItemsInDataBase { [weak self] (error) in
             guard let `self` = self else { return }
             DispatchQueue.main.async(execute: {
@@ -216,16 +213,41 @@ class DiaryViewController: BaseViewController {
         }
     }
     
+    private func fillTitleNavigation() -> String {
+        switch UserInfo.sharedInstance.selectedMealtimeIndex {
+        case 0:
+            return "Завтрак"
+        case 1:
+            return "Обед"
+        case 2:
+            return "Ужин"
+        case 3:
+            return "Перекус"
+        default:
+            return ""
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? EditActivityViewController, let model = sender as? ActivityElement {
             vc.fillScreenByModel(model)
         } else if let vc = segue.destination as? MeasuringViewController {
             vc.delegate = self
+        } else if let vc = segue.destination as? ProductAddingOptionsViewController {
+            vc.diaryDelegate = self
+        } else if let vc = segue.destination as? ProductDetailsViewController {
+            if let model = sender as? Mealtime {
+                vc.fillSelectedProduct(product: Product(mealtime: model), title: fillTitleNavigation(), basketProduct: false)
+            }
         }
     }
 }
 
 extension DiaryViewController: DiaryViewDelegate {
+    
+    func reloadMealtime() {
+        getItemsInDataBase()
+    }
     
     func replaceMeasuringList(list: [Measuring]) {
         displayManager.reloadMeasuringsContent(allMeasurings: list)
@@ -278,8 +300,8 @@ extension DiaryViewController: DiaryViewDelegate {
         present(alert, animated: true)
     }
     
-    func editMealTime() {
-        performSegue(withIdentifier: "sequeEditScreen", sender: nil)
+    func editMealTime(mealTime: Mealtime) {
+        performSegue(withIdentifier: "sequeEditScreen", sender: mealTime)
     }
 }
 

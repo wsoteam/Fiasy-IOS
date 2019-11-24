@@ -2,7 +2,7 @@
 //  DiaryMeasuringTableViewCell.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 10/22/19.
+//  Created by Eugen Lipatov on 10/22/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
@@ -29,7 +29,7 @@ class DiaryMeasuringTableViewCell: UITableViewCell {
             list.append(item)
         }
 
-        weightLabel.text = "--"
+        weightLabel.text = "\(UserInfo.sharedInstance.currentUser?.weight ?? 0.0) кг".replacingOccurrences(of: ".0", with: "")
         if Calendar.current.component(.day, from: selectedDate) == Calendar.current.component(.day, from: Date()) && Calendar.current.component(.month, from: selectedDate) == Calendar.current.component(.month, from: Date()) && Calendar.current.component(.year, from: selectedDate) == Calendar.current.component(.year, from: Date()) {
             if !isContains {
                 descriptionLabel.text = "Вы еще не заносили данные"
@@ -63,7 +63,7 @@ class DiaryMeasuringTableViewCell: UITableViewCell {
                 break
             }
             if !contains {
-                weightLabel.text = "--"
+                weightLabel.text = "\(UserInfo.sharedInstance.currentUser?.weight ?? 0.0) кг".replacingOccurrences(of: ".0", with: "")
                 descriptionLabel.text = "Вы еще не заносили данные"
                 selectedButton.setTitle("Добавить вес", for: .normal)
             }

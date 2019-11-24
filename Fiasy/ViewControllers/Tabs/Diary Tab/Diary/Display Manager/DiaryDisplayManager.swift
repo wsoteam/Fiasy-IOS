@@ -139,7 +139,7 @@ class DiaryDisplayManager: NSObject {
             let ref = Database.database().reference()
             ref.child("USER_LIST").child(uid).child("activities").child(key).removeValue()
             if self.activitys.isEmpty {
-                self.tableView.reloadSections(IndexSet(integer: 6), with: .none)
+                self.tableView.reloadSections(IndexSet(integer: 7), with: .none)
             } else {
                 self.removeRow(indexPath)
             }
@@ -205,11 +205,11 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 || section == 1 || section == 7 { return 1 }
+        if section == 0 || section == 1 || section == 6 { return 1 }
         if !states.isEmpty {
             if states[section] == false {
                 return 0
-            } else if section == 6 {
+            } else if section == 7 {
                 return activitys.count
             } else if mealTime.indices.contains(section - 2) {
                 return mealTime[section - 2].count
@@ -231,15 +231,15 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
             cell.fillCell(delegate: self, selectedDate: self.selectedDate)
             return cell
         } else if indexPath.section == 6 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryMeasuringTableViewCell") as? DiaryMeasuringTableViewCell else { fatalError() }
+            cell.fillCell(delegate: self, selectedDate: selectedDate, allMeasurings: self.allMeasurings)
+            return cell
+        } else if indexPath.section == 7 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityListTableViewCell") as? ActivityListTableViewCell else { fatalError() }
             if activitys.indices.contains(indexPath.row) {
                 cell.fillByDiaryCell(activitys[indexPath.row])
                 cell.delegate = self
             }
-            return cell
-        } else if indexPath.section == 7 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryMeasuringTableViewCell") as? DiaryMeasuringTableViewCell else { fatalError() }
-            cell.fillCell(delegate: self, selectedDate: selectedDate, allMeasurings: self.allMeasurings)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryTableViewCell") as? DiaryTableViewCell else { fatalError() }
@@ -265,14 +265,14 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 || section == 1 { return nil }
         
-        if section == 7 {
+        if section == 6 {
             guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryMeasuringHeaderView.reuseIdentifier) as? DiaryMeasuringHeaderView else {
                 return nil
             }
             return header
         }
         
-        if section == (states.count - 2) {
+        if section == (states.count - 1) {
             guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryActivityHeaderView.reuseIdentifier) as? DiaryActivityHeaderView else {
                 return nil
             }
@@ -296,7 +296,7 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        if indexPath.section == 6 {
+        if indexPath.section == 7 {
             guard orientation == .right else { return nil }
             
             let editAction = SwipeAction(style: .destructive, title: nil) { [weak self] action, indexPath in
@@ -329,8 +329,8 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
                     guard let `self` = self else { return }
                     if self.mealTime.indices.contains(indexPath.section - 2) {
                         if self.mealTime[indexPath.section - 2].indices.contains(indexPath.row) {
-                            UserInfo.sharedInstance.editMealtime = self.mealTime[indexPath.section - 2][indexPath.row]
-                            self.delegate.editMealTime()
+                            let product = self.mealTime[indexPath.section - 2][indexPath.row]
+                            self.delegate.editMealTime(mealTime: product)
                         }
                     }
                 }
@@ -429,7 +429,7 @@ extension DiaryDisplayManager: DiaryDisplayManagerDelegate {
     }
     
     func headerClicked(section: Int) {
-        if section == 6 && self.activitys.isEmpty { return }
+        if section == 7 && self.activitys.isEmpty { return }
         self.states[section] = !self.states[section]
         UIView.transition(with: tableView,
                     duration: 0.2,

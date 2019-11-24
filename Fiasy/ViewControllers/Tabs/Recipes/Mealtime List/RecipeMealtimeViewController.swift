@@ -125,6 +125,7 @@ extension RecipeMealtimeViewController: RecipeMealtimeDelegate {
 }
 
 extension RecipeMealtimeViewController: RecipesSearchDelegate {
+    func changeScreenState(state: ProductAddingState) {}
     
     func searchItem(text: String) {
         guard !text.isEmpty else {

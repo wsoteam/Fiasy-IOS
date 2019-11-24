@@ -32,6 +32,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njX-Sb-Fuu">
                     <rect key="frame" x="5" y="26" width="325" height="150"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4444rrrrreee" translatesAutoresizingMaskIntoConstraints="NO" id="8st-rT-uAK">
+                            <rect key="frame" x="0.0" y="0.0" width="325" height="150"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0d-BK-u5g">
                             <rect key="frame" x="0.0" y="0.0" width="183" height="150"/>
                             <subviews>
@@ -50,7 +58,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NyD-gP-Qst">
                             <rect key="frame" x="183" y="27.5" width="122" height="95"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 год" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="9hq-gd-8jb">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 год" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="9hq-gd-8jb">
                                     <rect key="frame" x="0.0" y="0.0" width="122" height="18"/>
                                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
                                     <color key="textColor" red="0.37642624974250793" green="0.3764960765838623" blue="0.37642186880111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,13 +70,13 @@
                                     <color key="textColor" red="0.37642624969999999" green="0.37649607660000001" blue="0.3764218688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 год" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvJ-bI-dk0">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 год" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvJ-bI-dk0">
                                     <rect key="frame" x="0.0" y="61" width="122" height="17"/>
                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                     <color key="textColor" red="0.37642624969999999" green="0.37649607660000001" blue="0.3764218688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 год" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDM-kh-Brh">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 год" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDM-kh-Brh">
                                     <rect key="frame" x="0.0" y="78" width="122" height="17"/>
                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                     <color key="textColor" red="0.37642624969999999" green="0.37649607660000001" blue="0.3764218688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,10 +122,14 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="8st-rT-uAK" secondAttribute="trailing" id="3l9-Ec-TIP"/>
                         <constraint firstItem="WI7-4s-hz1" firstAttribute="top" secondItem="njX-Sb-Fuu" secondAttribute="top" constant="-15" id="74Q-re-0a1"/>
                         <constraint firstItem="n0d-BK-u5g" firstAttribute="trailing" secondItem="NyD-gP-Qst" secondAttribute="leading" id="9My-jg-oCY"/>
+                        <constraint firstAttribute="bottom" secondItem="8st-rT-uAK" secondAttribute="bottom" id="CVa-Fu-BjB"/>
+                        <constraint firstItem="8st-rT-uAK" firstAttribute="top" secondItem="njX-Sb-Fuu" secondAttribute="top" id="KaJ-C2-7CL"/>
                         <constraint firstAttribute="bottom" secondItem="n0d-BK-u5g" secondAttribute="bottom" id="QlL-R4-6ed"/>
                         <constraint firstItem="n0d-BK-u5g" firstAttribute="top" secondItem="njX-Sb-Fuu" secondAttribute="top" id="YxP-9S-Y0E"/>
+                        <constraint firstItem="8st-rT-uAK" firstAttribute="leading" secondItem="njX-Sb-Fuu" secondAttribute="leading" id="dSZ-hs-igJ"/>
                         <constraint firstItem="NyD-gP-Qst" firstAttribute="centerY" secondItem="njX-Sb-Fuu" secondAttribute="centerY" id="hQZ-8A-FS8"/>
                         <constraint firstAttribute="trailing" secondItem="WI7-4s-hz1" secondAttribute="trailing" constant="20" id="lcw-A0-3jd"/>
                         <constraint firstItem="n0d-BK-u5g" firstAttribute="leading" secondItem="njX-Sb-Fuu" secondAttribute="leading" id="uFV-Uw-f8e"/>
@@ -153,6 +165,8 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="amountAfterDiscountLabel" destination="JvJ-bI-dk0" id="0kR-Ai-wTq"/>
+                <outlet property="backgroundSlideView" destination="njX-Sb-Fuu" id="xgl-dP-yeA"/>
+                <outlet property="blackFirstSlideImage" destination="8st-rT-uAK" id="exT-R0-RYU"/>
                 <outlet property="brilliantImageView" destination="6Rn-sx-spX" id="eoA-Nh-jyi"/>
                 <outlet property="crossedOutLabel" destination="NDM-kh-Brh" id="s61-Uu-ARt"/>
                 <outlet property="discountContainerView" destination="WI7-4s-hz1" id="YDF-bm-gKn"/>
@@ -164,6 +178,7 @@
         </view>
     </objects>
     <resources>
+        <image name="4444rrrrreee" width="284" height="165"/>
         <image name="brilliant" width="131" height="75"/>
     </resources>
 </document>

@@ -2,7 +2,7 @@
 //  MeasuringPremiumTableViewCell.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 10/23/19.
+//  Created by Eugen Lipatov on 10/23/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
@@ -38,21 +38,35 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                 addButton.setImage(UIImage(), for: .normal)
                 addButton.setTitle("Добавить", for: .normal)
             } else {
-                addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
                 if let first = list.first, list.count > 1 {
+                    let components = Calendar.current.dateComponents([.day], from: first.date ?? Date(), to: Date())
+                    if (components.day ?? 0) >= 5 {
+                        addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
+                    } else {
+                        addButton.setImage(UIImage(), for: .normal)
+                    }
+                    
                     let mutableAttrString = NSMutableAttributedString()
                     mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) см ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
                     let current: CGFloat = CGFloat(list[0].weight ?? 0.0)
                     let old: CGFloat = CGFloat(list[1].weight ?? 0.0)
-                    let percent = pctDiff(x1: old, x2: current).rounded(toPlaces: 1)
-                    if percent > 0.0 {
-                        mutableAttrString.append(NSAttributedString(string: "(+\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
-                    } else if percent != 0.0 {
-                        mutableAttrString.append(NSAttributedString(string: "(\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                    if current > 0.0 && old > 0.0 {
+                        let percent = pctDiff(x1: old, x2: current).rounded(toPlaces: 1)
+                        if percent > 0.0 {
+                            mutableAttrString.append(NSAttributedString(string: "(+\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                        } else if percent != 0.0 {
+                            mutableAttrString.append(NSAttributedString(string: "(\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                        }
                     }
                     measuring = first
                     addButton.setAttributedTitle(mutableAttrString, for: .normal)
                 } else {
+                    let components = Calendar.current.dateComponents([.day], from: list.first?.date ?? Date(), to: Date())
+                    if (components.day ?? 0) >= 5 {
+                        addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
+                    } else {
+                        addButton.setImage(UIImage(), for: .normal)
+                    }
                     measuring = list.first
                     addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) см", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
                 }
@@ -71,21 +85,36 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                 addButton.setImage(UIImage(), for: .normal)
                 addButton.setTitle("Добавить", for: .normal)
             } else {
-                addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
                 if let first = list.first, list.count > 1 {
+                    let components = Calendar.current.dateComponents([.day], from: first.date ?? Date(), to: Date())
+                    if (components.day ?? 0) >= 5 {
+                        addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
+                    } else {
+                        addButton.setImage(UIImage(), for: .normal)
+                    }
+                    
                     let mutableAttrString = NSMutableAttributedString()
                     mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) см ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
                     let current: CGFloat = CGFloat(list[0].weight ?? 0.0)
                     let old: CGFloat = CGFloat(list[1].weight ?? 0.0)
-                    let percent = pctDiff(x1: old, x2: current).rounded(toPlaces: 1)
-                    if percent > 0.0 {
-                        mutableAttrString.append(NSAttributedString(string: "(+\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
-                    } else if percent != 0.0 {
-                        mutableAttrString.append(NSAttributedString(string: "(\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                    if current > 0.0 && old > 0.0 {
+                        let percent = pctDiff(x1: old, x2: current).rounded(toPlaces: 1)
+                        if percent > 0.0 {
+                            mutableAttrString.append(NSAttributedString(string: "(+\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                        } else if percent != 0.0 {
+                            mutableAttrString.append(NSAttributedString(string: "(\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                        }
                     }
                     measuring = first
                     addButton.setAttributedTitle(mutableAttrString, for: .normal)
                 } else {
+                    let components = Calendar.current.dateComponents([.day], from: list.first?.date ?? Date(), to: Date())
+                    if (components.day ?? 0) >= 5 {
+                        addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
+                    } else {
+                        addButton.setImage(UIImage(), for: .normal)
+                    }
+                    
                     measuring = list.first
                     addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) см", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
                 }
@@ -104,21 +133,36 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                 addButton.setImage(UIImage(), for: .normal)
                 addButton.setTitle("Добавить", for: .normal)
             } else {
-                addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
                 if let first = list.first, list.count > 1 {
+                    let components = Calendar.current.dateComponents([.day], from: first.date ?? Date(), to: Date())
+                    if (components.day ?? 0) >= 5 {
+                        addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
+                    } else {
+                        addButton.setImage(UIImage(), for: .normal)
+                    }
+
                     let mutableAttrString = NSMutableAttributedString()
                     mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) см ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
                     let current: CGFloat = CGFloat(list[0].weight ?? 0.0)
                     let old: CGFloat = CGFloat(list[1].weight ?? 0.0)
-                    let percent = pctDiff(x1: old, x2: current).rounded(toPlaces: 1)
-                    if percent > 0.0 {
-                        mutableAttrString.append(NSAttributedString(string: "(+\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
-                    } else if percent != 0.0 {
-                        mutableAttrString.append(NSAttributedString(string: "(\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                    if current > 0.0 && old > 0.0 {
+                        let percent = pctDiff(x1: old, x2: current).rounded(toPlaces: 1)
+                        if percent > 0.0 {
+                            mutableAttrString.append(NSAttributedString(string: "(+\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                        } else if percent != 0.0 {
+                            mutableAttrString.append(NSAttributedString(string: "(\(percent)%)", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.1528404951, green: 0.6837828755, blue: 0.3752267957, alpha: 1)]))
+                        }
                     }
                     measuring = first
                     addButton.setAttributedTitle(mutableAttrString, for: .normal)
                 } else {
+                    let components = Calendar.current.dateComponents([.day], from: list.first?.date ?? Date(), to: Date())
+                    if (components.day ?? 0) >= 5 {
+                        addButton.setImage(#imageLiteral(resourceName: "icon_glyph_arrow-reload"), for: .normal)
+                    } else {
+                        addButton.setImage(UIImage(), for: .normal)
+                    }
+                    
                     measuring = list.first
                     addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) см", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
                 }

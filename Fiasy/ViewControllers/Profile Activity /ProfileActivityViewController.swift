@@ -11,6 +11,7 @@ import UIKit
 class ProfileActivityViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet weak var slider: TGPDiscreteSlider!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var selectedStateImageView: UIImageView!
@@ -28,6 +29,7 @@ class ProfileActivityViewController: UIViewController {
         selectedState = UserInfo.sharedInstance.editActivity
         changeState(value: UserInfo.sharedInstance.editActivity)
         slider.value = UserInfo.sharedInstance.editActivity
+        titleNavigationLabel.text = LS(key: .ACTIVITY_NAVIGATION)
     }
     
     // MARK: - Private -
@@ -52,25 +54,25 @@ class ProfileActivityViewController: UIViewController {
         switch value {
         case 0.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "1_step")
-            descriptionLabel.text = "Минимальная нагрузка"
+            descriptionLabel.text = LS(key: .FIRST_ACTIVITY)
         case 1.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "2_step")
-            descriptionLabel.text = "Легкая физическая нагрузка\nв течении дня"
+            descriptionLabel.text = LS(key: .SECOND_ACTIVITY)
         case 2.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "3_step")
-            descriptionLabel.text = "Тренировки 2-4 раза в неделю\n(или работа средней тяжести)"
+            descriptionLabel.text = LS(key: .THIRD_ACTIVITY)
         case 3.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "4_step")
-            descriptionLabel.text = "Интенсивные тренировки\n4-5 раз в неделю"
+            descriptionLabel.text = LS(key: .FOURTH_ACTIVITY)
         case 4.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "5_step")
-            descriptionLabel.text = "Ежедневные интенсивные\nтренировки"
+            descriptionLabel.text = LS(key: .FIVE_ACTIVITY)
         case 5.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "6_step")
-            descriptionLabel.text = "Тренировки 5-7 раз в неделю,\nпо два раза в день"
+            descriptionLabel.text = LS(key: .SIX_ACTIVITY)
         case 6.0:
             selectedStateImageView.image = #imageLiteral(resourceName: "7_step")
-            descriptionLabel.text = "Тяжелая физическая работа или\nежедневные интенсивные тренировки\nпо 2 раза в день"
+            descriptionLabel.text = LS(key: .SEVEN_ACTIVITY)
         default:
             break
         }

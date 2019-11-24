@@ -42,24 +42,45 @@ class LimitDiaryTableViewCell: UITableViewCell {
         let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
         let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
         
-        var calories: Int = 0
-        var protein: Int = 0
-        var fat: Int = 0
-        var carbohydrates: Int = 0
+        var calories1: Double = 0.0
+        var protein1: Double = 0.0
+        var fat1: Double = 0.0
+        var carbohydrates1: Double = 0.0
         
         var isContains: Bool = false
         //var mealTime: [Mealtime] = []
         if !UserInfo.sharedInstance.allMealtime.isEmpty {
             for item in UserInfo.sharedInstance.allMealtime where item.day == day && item.month == month && item.year == year {
                 
-                fat += item.fat ?? 0
-                calories += item.calories ?? 0
-                protein += item.protein ?? 0
-                carbohydrates += item.carbohydrates ?? 0
+                var portionSize: Int?
+                if let id = item.portionId, !item.measurementUnits.isEmpty {
+                    for portion in item.measurementUnits where portion.id == id {
+                        portionSize = portion.amount
+                        break
+                    }
+                }
+                
+                if let weight = item.weight {
+                    if let mult = portionSize {
+                        fat1 += Double(weight * mult) * (item.fat ?? 0.0)
+                        protein1 += Double(weight * mult) * (item.protein ?? 0.0)
+                        calories1 += Double(weight * mult) * (item.calories ?? 0.0)
+                        carbohydrates1 += Double(weight * mult) * (item.carbohydrates ?? 0.0)
+                    } else {
+                        fat1 += Double(weight) * (item.fat ?? 0.0)
+                        protein1 += Double(weight) * (item.protein ?? 0.0)
+                        calories1 += Double(weight) * (item.calories ?? 0.0)
+                        carbohydrates1 += Double(weight) * (item.carbohydrates ?? 0.0)
+                    }
+                }
                 isContains = true
                 //mealTime.append(item)
             }
         }
+        var calories: Int = Int(calories1.rounded(toPlaces: 0).displayOnly(count: 0))
+        var protein: Int = Int(protein1.rounded(toPlaces: 0).displayOnly(count: 0))
+        var fat: Int = Int(fat1.rounded(toPlaces: 0).displayOnly(count: 0))
+        var carbohydrates: Int = Int(carbohydrates1.rounded(toPlaces: 0).displayOnly(count: 0))
         //self.delegate?.sortMealTime(mealTime: mealTime)
         if let user = UserInfo.sharedInstance.currentUser {
             fillTargetLabel(target: (user.maxKcal ?? 0))

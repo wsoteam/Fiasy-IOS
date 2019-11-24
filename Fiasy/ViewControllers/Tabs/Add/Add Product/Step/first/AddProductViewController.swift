@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import BarcodeScanner
 
 protocol AddProductDelegate {
-    
     func nextStepClicked()
     func showCodeReading()
     func switchChangeValue(state: Bool)
@@ -32,6 +30,7 @@ class AddProductViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +44,14 @@ class AddProductViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         removeObserver()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sequeBarcodeScannerScreen" {
+            if let vc = segue.destination as? BarcodeViewController {
+                vc.fillDelegate(delegate: self)
+            }
+        }
     }
     
     func fillEditProductFavorite(favorite: Favorite) {
@@ -107,8 +114,8 @@ class AddProductViewController: UIViewController {
     
     // MARK: - Private -
     private func setupTableView() {
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         tableView.register(type: AddProductTableViewCell.self)
-        tableView.register(AddProductFooterTableView.nib, forHeaderFooterViewReuseIdentifier: AddProductFooterTableView.reuseIdentifier)
     }
     
     private func fillBarCode(code: String) {
@@ -127,25 +134,17 @@ extension AddProductViewController: UITableViewDelegate, UITableViewDataSource {
         cell.fillCell(indexCell: indexPath, delegate: self, barCode: UserInfo.sharedInstance.productFlow.barCode, selectedFavorite)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddProductFooterTableView.reuseIdentifier) as? AddProductFooterTableView else {
-            return nil
-        }
-        footer.fillFooter(delegate: self)
-        return footer
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.0000001
+        return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return AddProductFooterTableView.height
+        return CGFloat.leastNormalMagnitude
     }
 }
 
-extension AddProductViewController: AddProductDelegate, BarcodeScannerCodeDelegate, BarcodeScannerDismissalDelegate {
+extension AddProductViewController: AddProductDelegate {
     
     func switchChangeValue(state: Bool) {
         UserInfo.sharedInstance.productFlow.showAll = state
@@ -167,9 +166,12 @@ extension AddProductViewController: AddProductDelegate, BarcodeScannerCodeDelega
     func nextStepClicked() {
         guard let name = UserInfo.sharedInstance.productFlow.name, !name.isEmpty else {
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddProductTableViewCell {
+                tableView.scrollToRow(at: IndexPath(row: 1, section: 0), at: .middle, animated: true)
+                cell.errorLabel.isHidden = false
+                cell.separatorView.backgroundColor = #colorLiteral(red: 0.9617733359, green: 0.6727946401, blue: 0.6699010134, alpha: 1)
                 cell.nameTextField.becomeFirstResponder()
             }
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Введите название продукта", vc: self)
+            return
         }
         if name.replacingOccurrences(of: " ", with: "").isEmpty {
             return AlertComponent.sharedInctance.showAlertMessage(message: "Имя не может состоять только из пробелов", vc: self)
@@ -183,27 +185,19 @@ extension AddProductViewController: AddProductDelegate, BarcodeScannerCodeDelega
                 UserInfo.sharedInstance.productFlow.brend = nil
             }
         }
-
-        performSegue(withIdentifier: "sequeAddProductSecondStep", sender: nil)
+        view.endEditing(true)
+        performSegue(withIdentifier: "sequeServingSizeScreen", sender: nil)
     }
     
     func showCodeReading() {
-        let viewController = BarcodeScannerViewController()
-        viewController.headerViewController.titleLabel.text = "Сканирование штрих-кода"
-        viewController.codeDelegate = self
-        viewController.dismissalDelegate = self
-        viewController.messageViewController.messages.scanningText = "Поместите штрих-код в окно для сканирования. Поиск начнется автоматически."
-        present(viewController, animated: true)
-    }
-    
-    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-        UserInfo.sharedInstance.productFlow.barCode = code
-        fillBarCode(code: code)
-        controller.dismiss(animated: true)
-    }
-    
-    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
-        controller.dismiss(animated: true)
+        performSegue(withIdentifier: "sequeBarcodeScannerScreen", sender: nil)
     }
 }
 
+extension AddProductViewController: BarcodeDelegate {
+    
+    func foundBarcode(code: String) {
+        UserInfo.sharedInstance.productFlow.barCode = code
+        fillBarCode(code: code)
+    }
+}

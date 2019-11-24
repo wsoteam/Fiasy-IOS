@@ -31,4 +31,12 @@ class ProfileService : ProfileServiceProtocol {
     func searchProduct(search: String) -> Observable<PaginationProduct> {
         return profileProvider.rx.request(.searchProducts(search: search)).mapObject(PaginationProduct.self).asObservable()
     }
+    
+    func searchSuggestProduct(search: String) -> Observable<Suggest> {
+        return profileProvider.rx.request(.searchSuggestProducts(search: search)).mapObject(Suggest.self).asObservable()
+    }
+    
+    func loadArticles() -> Observable<PaginationArticle> {
+        return profileProvider.rx.request(.loadArticles).mapObject(PaginationArticle.self).asObservable()
+    }
 }

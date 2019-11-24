@@ -20,7 +20,7 @@ public class YearAxisValueFormatter: NSObject, IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         switch Int(value) {
         case 0:
-            return "янв"
+            return LS(key: .JANUARY)
         case 1:
             return "фев"
         case 2:

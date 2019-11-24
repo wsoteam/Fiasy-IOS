@@ -15,33 +15,41 @@ class InsertPremiumDescriptionView: UIView {
     @IBOutlet weak var bottomLabel: UILabel!
     
     // MARK: - Interface -
-    func fillCell(index: Int) {
+    func fillCell(index: Int, state: PremiumColorState) {
+        let color = state == .black ? #colorLiteral(red: 0.866572082, green: 0.8667211533, blue: 0.8665626645, alpha: 1) : #colorLiteral(red: 0.3568204045, green: 0.3568871021, blue: 0.356816262, alpha: 1)
+        topButton.setTitleColor(color, for: .normal)
+        bottomLabel.textColor = color
         switch index {
         case 0:
-            topButton.setImage(#imageLiteral(resourceName: "prem3"), for: .normal)
-            topButton.setTitle(" Эксклюзивные статьи", for: .normal)
+            let image = state == .black ? #imageLiteral(resourceName: "middle_1") : #imageLiteral(resourceName: "prem3")
+            topButton.setImage(image, for: .normal)
+            topButton.setTitle(" \(LS(key: .LONG_PREM_ARTICLE_TITLE))", for: .normal)
             
-            bottomLabel.text = "Вы получите доступ к статьям от\nпопулярного диетолога и\nфитнес-тренера"
+            bottomLabel.text = LS(key: .LONG_PREM_ARTICLE_TXT)
         case 1:
-            topButton.setImage(#imageLiteral(resourceName: "prem4"), for: .normal)
-            topButton.setTitle(" База рецептов", for: .normal)
+            let image = state == .black ? #imageLiteral(resourceName: "middle_2") : #imageLiteral(resourceName: "prem4")
+            topButton.setImage(image, for: .normal)
+            topButton.setTitle(" \(LS(key: .LONG_PREM_RECIPE_TITLE))", for: .normal)
             
-            bottomLabel.text = "Легие в приготовление рецепты с\nданными КБЖУ с недорогими, но\nвкусными продуктами"
+            bottomLabel.text = LS(key: .LONG_PREM_RECIPE_TXT)
         case 2:
-            topButton.setImage(#imageLiteral(resourceName: "prem5"), for: .normal)
-            topButton.setTitle(" Персональные настройки", for: .normal)
+            let image = state == .black ? #imageLiteral(resourceName: "middle_3") : #imageLiteral(resourceName: "prem5")
+            topButton.setImage(image, for: .normal)
+            topButton.setTitle(" \(LS(key: .LONG_PREM_SETTINGS_TITLE))", for: .normal)
             
-            bottomLabel.text = "Вы сможете просматривать и\nрегулировать уровень своего КБЖУ"
+            bottomLabel.text = LS(key: .LONG_PREM_SETTINGS_TXT)
         case 3:
-            topButton.setImage(#imageLiteral(resourceName: "prem6"), for: .normal)
-            topButton.setTitle(" Планы питания", for: .normal)
+            let image = state == .black ? #imageLiteral(resourceName: "middle_4") : #imageLiteral(resourceName: "prem6")
+            topButton.setImage(image, for: .normal)
+            topButton.setTitle(" \(LS(key: .LONG_PREM_PLANS_TITLE))", for: .normal)
             
-            bottomLabel.text = "Готовые планы питания на любой вкус\nи для любой цели"
+            bottomLabel.text = LS(key: .LONG_PREM_PLANS_TXT)
         case 4:
-            topButton.setImage(#imageLiteral(resourceName: "prem7"), for: .normal)
-            topButton.setTitle(" Измерения тела", for: .normal)
+            let image = state == .black ? #imageLiteral(resourceName: "middle_5") : #imageLiteral(resourceName: "prem7")
+            topButton.setImage(image, for: .normal)
+            topButton.setTitle(" \(LS(key: .LONG_PREM_MEASURE_TITLE))", for: .normal)
             
-            bottomLabel.text = "Отслеживайте динамику прогресса с\nпомощью подробного анализа\nпараметров своего тела"
+            bottomLabel.text = LS(key: .LONG_PREM_MEASURE_TXT)
         default:
             break
         }

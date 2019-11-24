@@ -2,7 +2,7 @@
 //  MeasuringListViewController.swift
 //  Fiasy
 //
-//  Created by Yuriy Sokirko on 10/23/19.
+//  Created by Eugen Lipatov on 10/23/19.
 //  Copyright © 2019 Eugen Lipatov. All rights reserved.
 //
 
@@ -58,7 +58,20 @@ class MeasuringListViewController: UIViewController {
     private func fetchMeasuring() {
         FirebaseDBManager.fetchMyMeasuringInDataBase { [weak self] (list) in
             guard let strongSelf = self else { return }
-            strongSelf.allMeasurings = list
+            for item in list {
+                var isContains: Bool = false
+                for (index, secondItem) in strongSelf.allMeasurings.enumerated() where secondItem.type == item.type && (Calendar.current.component(.day, from: secondItem.date ?? Date()) == Calendar.current.component(.day, from: item.date ?? Date()) && Calendar.current.component(.month, from: secondItem.date ?? Date()) == Calendar.current.component(.month, from: item.date ?? Date()) && Calendar.current.component(.year, from: secondItem.date ?? Date()) == Calendar.current.component(.year, from: item.date ?? Date())) {
+                    isContains = true
+                    if secondItem.timeInMillis < item.timeInMillis {
+                        strongSelf.allMeasurings[index] = item
+                    }
+                    break
+                }
+                if !isContains {
+                    strongSelf.allMeasurings.append(item)
+                }
+            }
+
             strongSelf.setupTableView()
             strongSelf.applyScreenMeasuring(state: .weight)
             strongSelf.hideActivity()
