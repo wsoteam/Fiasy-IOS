@@ -26,7 +26,7 @@ struct AddProductFlow {
     var productFrom = "button"
     
     // MARK: - Second Step -
-    var allServingSize: [Serving] = [Serving(name: "Стандартная порция", unit: "г.", size: 100)]
+    var allServingSize: [Serving] = [Serving(name: LS(key: .CREATE_STEP_TITLE_16), unit: "\(LS(key: .GRAMS_UNIT)).", size: 100)]
     
     // MARK: - Second Step -
     var calories: String?

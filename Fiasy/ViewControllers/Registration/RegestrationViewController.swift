@@ -1,6 +1,7 @@
 import UIKit
 import FBSDKLoginKit
 import Firebase
+import Swinject
 import GoogleSignIn
 import Amplitude_iOS
 import FirebaseStorage
@@ -18,12 +19,16 @@ class RegestrationViewController: UIViewController {
     @IBOutlet var allErrorLabels: [UILabel]!
     @IBOutlet var titleLabels: [UILabel]!
     @IBOutlet var allSeparatorViews: [UIView]!
+    
+    // MARK: - Properties -
+    private var interactor: RegistrationInteractor?
 
-    //MARK: - Life Cicle -
+    // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
         localizeDesign()
+        setupInteractor()
         setupInitialState()
     }
     
@@ -128,7 +133,7 @@ class RegestrationViewController: UIViewController {
                     let child = ref.child("USER_LIST").child(uid).child("profile")
                     child.child("email").setValue(email)
                 }
-                
+                self?.interactor?.sendSendsay(email: email)
                 return strongSelf.performSegue(withIdentifier: "sequeQuizScreen", sender: nil)
             }
             
@@ -196,6 +201,10 @@ class RegestrationViewController: UIViewController {
                 }
                 UserInfo.sharedInstance.registrationFlow.email = fetchedEmail
                 Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "fb"]) // +
+                
+                if !fetchedEmail.isEmpty {
+                    self?.interactor?.sendSendsay(email: fetchedEmail)
+                }
 
                 let identify = AMPIdentify()
                 identify.set("registration", value: "facebook" as NSObject)
@@ -210,6 +219,13 @@ class RegestrationViewController: UIViewController {
     //MARK: - Private -
     private func setupInitialState() {
         //
+    }
+    
+    private func setupInteractor() {
+        let container = assembler.resolver as! Container
+        let profileService = container.resolve(ProfileServiceProtocol.self)!
+        let interactor = RegistrationInteractor(profileService: profileService)
+        self.interactor = interactor
     }
     
     private func animateView() {
@@ -276,8 +292,12 @@ extension RegestrationViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                         UserInfo.sharedInstance.registrationFlow.photoUrl = url
                     }
                     UserInfo.sharedInstance.registrationFlow.email = email ?? ""
+                    if let sended = email, !sended.isEmpty {
+                        self?.interactor?.sendSendsay(email: sended)
+                    }
+                    
                     Amplitude.instance()?.logEvent("registration_success", withEventProperties: ["type" : "google"]) // +
-
+                    
                     let identify = AMPIdentify()
                     identify.set("registration", value: "google" as NSObject)
                     Amplitude.instance()?.identify(identify)

@@ -18,6 +18,7 @@ class BarcodeViewController: BarcodeScannerViewController {
     
     //MARK: - Outlets -
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var bottomTitleLabel: UILabel!
     
     // MARK: - Properties -
     private var delegate: BarcodeDelegate?
@@ -30,6 +31,8 @@ class BarcodeViewController: BarcodeScannerViewController {
         super.viewDidLoad()
         
         self.codeDelegate = self
+        bottomTitleLabel.text = LS(key: .BARCODE_TITLE_4)
+        descriptionLabel.text = LS(key: .BARCODE_TITLE_5)
     }
     
     // MARK: - Interface -

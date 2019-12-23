@@ -18,6 +18,8 @@ protocol ActivityManagerDelegate {
 class ActivityViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var searchTextField: DesignableUITextField!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var emptyView: UIView!
@@ -43,6 +45,8 @@ class ActivityViewController: UIViewController {
         
         startActivity()
         fetchMyActivitys()
+        navigationTitleLabel.text = LS(key: .ACTIVITY_NAVIGATION)
+        searchTextField.placeholder = LS(key: .SEARCH)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -235,7 +239,7 @@ class ActivityViewController: UIViewController {
                     break
                 }
                 if isContains {
-                    AlertComponent.sharedInctance.showAlertMessage(message: "Данная активность уже добавлена в избранное", vc: strongSelf)
+                    AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .ACTIVITY_DESCRIPTION_1), vc: strongSelf)
                 } else {
                     if let uid = Auth.auth().currentUser?.uid {
                         let ref = Database.database().reference()
@@ -254,7 +258,7 @@ class ActivityViewController: UIViewController {
                         strongSelf.allFavoriteActivity.append(selectedActive)
                         strongSelf.tableView.reloadSections(IndexSet(integer: 1), with: .none)
                     }
-                    AlertComponent.sharedInctance.showAlertMessage(message: "Активность добавлена в Избранное", vc: strongSelf)
+                    AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .ACTIVITY_DESCRIPTION_2), vc: strongSelf)
                 }
             } else if indexPath.section == 2 && strongSelf.filteredDefaultFavorites.indices.contains(indexPath.row) {
                 if let uid = Auth.auth().currentUser?.uid {
@@ -266,7 +270,7 @@ class ActivityViewController: UIViewController {
                     }
                     
                     if isContains {
-                        AlertComponent.sharedInctance.showAlertMessage(message: "Данная активность уже добавлена в Избранное", vc: strongSelf)
+                        AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .ACTIVITY_DESCRIPTION_1), vc: strongSelf)
                     } else {
                         let ref = Database.database().reference()
                         let item = ref.child("USER_LIST").child(uid).child("customActivities").childByAutoId()
@@ -280,7 +284,7 @@ class ActivityViewController: UIViewController {
                         strongSelf.allFavoriteActivity.append(selectedActive)
                         strongSelf.tableView.reloadSections(IndexSet(integer: 1), with: .none)
                         
-                        AlertComponent.sharedInctance.showAlertMessage(message: "Активность добавлена в Избранное", vc: strongSelf)
+                        AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .ACTIVITY_DESCRIPTION_2), vc: strongSelf)
                     }
                 }
             }

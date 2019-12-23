@@ -18,13 +18,17 @@ protocol ProductDetailsDelegate {
     func showPremiumScreen()
     func showSelectedPicker()
     func showSuccess()
+    func showWrongErrorCount()
     func menuClicked(indexPath: IndexPath)
+    func caloriesChanged(_ count: Int)
     func changeBasketProduct(product: Product)
 }
 
 class ProductDetailsViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var progressTitleLabel: UILabel!
     @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var pickerContainerView: UIView!
@@ -44,7 +48,7 @@ class ProductDetailsViewController: UIViewController {
     private var selectedPortionId: Int?
     private var selectedTitle: String = ""
     private var product: Product?
-    private var pickerData: [[String]] = []
+    private var pickerData: [String] = []
     private var isEditState: Bool = false
     private lazy var dropdownView: LMDropdownView = LMDropdownView()
     private let isIphone5 = Display.typeIsLike == .iphone5
@@ -57,6 +61,8 @@ class ProductDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cancelButton.setTitle("     \(LS(key: .CANCEL).uppercased())     ", for: .normal)
+        finishButton.setTitle("     \(LS(key: .DONE).uppercased())     ", for: .normal)
         tableView.tag = 0
         menuTableView.tag = 1
         setupInitialState()
@@ -88,9 +94,9 @@ class ProductDetailsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         menuTableView.frame = CGRect(x: menuTableView.frame.minX,
-                                 y: menuTableView.frame.minY,
-                             width: view.bounds.width,
-                            height: min(view.bounds.height, CGFloat(200)))
+                                     y: menuTableView.frame.minY,
+                                 width: view.bounds.width,
+                                height: min(view.bounds.height, CGFloat(200)))
     }
     
     func fillSelectedProduct(product: Product, title: String, basketProduct: Bool) {
@@ -102,11 +108,13 @@ class ProductDetailsViewController: UIViewController {
             self.isEditState = true
             self.portionCount = weight
         } else if basketProduct == true {
-            if let portion = product.selectedPortion {
+            if let _ = product.selectedPortion {
                 portionCount = 1
             } else {
                 portionCount = 100
             }
+        } else if let _ = product.selectedPortion {
+            portionCount = 1
         }
     }
     
@@ -139,13 +147,13 @@ class ProductDetailsViewController: UIViewController {
         UserInfo.sharedInstance.selectedMealtimeIndex = index
         switch index {
         case 0:
-            selectedTitle = "Завтрак"
+            selectedTitle = LS(key: .BREAKFAST)
         case 1:
-            selectedTitle = "Обед"
+            selectedTitle = LS(key: .LUNCH)
         case 2:
-            selectedTitle = "Ужин"
+            selectedTitle = LS(key: .DINNER)
         case 3:
-            selectedTitle = "Перекус"
+            selectedTitle = LS(key: .SNACK)
         default:
             break
         }
@@ -154,13 +162,13 @@ class ProductDetailsViewController: UIViewController {
     
     private func checkTitle(title: String) {
         switch title {
-        case "Завтрак":
+        case LS(key: .BREAKFAST):
             UserInfo.sharedInstance.selectedMealtimeIndex = 0
-        case "Обед":
+        case LS(key: .LUNCH):
             UserInfo.sharedInstance.selectedMealtimeIndex = 1
-        case "Ужин":
+        case LS(key: .DINNER):
             UserInfo.sharedInstance.selectedMealtimeIndex = 2
-        case "Перекус":
+        case LS(key: .SNACK):
             UserInfo.sharedInstance.selectedMealtimeIndex = 3
         default:
             break
@@ -169,18 +177,13 @@ class ProductDetailsViewController: UIViewController {
     
     private func setupPickerData() {
         guard let product = self.product else { return }
-        var leftSide: [String] = []
         var rightSide: [String] = []
-        for index in 1...999 {
-            leftSide.append("\(index)")
-        }
-        
         if !product.measurementUnits.isEmpty {
             for item in product.measurementUnits {
                 if !item.unit.isEmpty {
                     rightSide.append("\(item.name ?? "") (\(item.amount) \(item.unit))")
                 } else {
-                    rightSide.append("\(item.name ?? "") (\(item.amount) \(product.isLiquid == true ? "мл" : "г"))")
+                    rightSide.append("\(item.name ?? "") (\(item.amount) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT)))")
                 }
             }
         }
@@ -192,18 +195,27 @@ class ProductDetailsViewController: UIViewController {
                     if !item.unit.isEmpty {
                         rightSide.insert("\(item.name ?? "") (\(item.amount) \(item.unit))", at: 0)
                     } else {
-                        rightSide.insert("\(item.name ?? "") (\(item.amount) \(product.isLiquid == true ? "мл" : "г"))", at: 0)
+                        rightSide.insert("\(item.name ?? "") (\(item.amount) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT)))", at: 0)
                     }
                 }
                 break
             }
-            rightSide.append(product.isLiquid == true ? "мл" : "грамм")
+            
+            if let _ = product.weight {
+                if let _ = product.portionId {
+                    rightSide.append(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))
+                } else {
+                    selectedPortionId = nil
+                    rightSide.insert(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT), at: 0)
+                }
+            } else {
+                rightSide.append(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))
+            }
         } else {
-            rightSide.insert(product.isLiquid == true ? "мл" : "грамм", at: 0)
+            rightSide.insert(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT), at: 0)
         }
         
-        pickerData.append(leftSide)
-        pickerData.append(rightSide)
+        pickerData = rightSide
         selectedPicker.delegate = self
         selectedPicker.dataSource = self
     }
@@ -236,6 +248,7 @@ class ProductDetailsViewController: UIViewController {
     }
     
     private func showPicker() {
+        view.endEditing(true)
         UIView.animate(withDuration: 0.3) { 
             if let background = self.pickerContainerView.superview {
                 background.fadeIn()
@@ -260,15 +273,15 @@ class ProductDetailsViewController: UIViewController {
     
     @IBAction func addWeightClicked(_ sender: Any) {
         guard let product = self.product else { return }
-        self.portionCount = selectedPicker.selectedRow(inComponent: 0) + 1
-        let text = pickerData[1][selectedPicker.selectedRow(inComponent: 1)]
+        //self.portionCount = selectedPicker.selectedRow(inComponent: 0) + 1
+        let text = pickerData[selectedPicker.selectedRow(inComponent: 0)]
 
         if !product.measurementUnits.isEmpty {
             for item in product.measurementUnits {
                 if !item.unit.isEmpty && "\(item.name ?? "") (\(item.amount) \(item.unit))" == text {
                     selectedPortionId = item.id
                     break
-                } else if "\(item.name ?? "") (\(item.amount) \(product.isLiquid == true ? "мл" : "г"))" == text {
+                } else if "\(item.name ?? "") (\(item.amount) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT)))" == text {
                     selectedPortionId = item.id
                     break
                 } else {
@@ -312,6 +325,19 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
 
 extension ProductDetailsViewController: ProductDetailsDelegate {
     
+    func showWrongErrorCount() {
+        let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ADD_PRODUCT_NEW), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ок", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    func caloriesChanged(_ count: Int) {
+        self.portionCount = count
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ProductDetailsCell {
+            cell.fillCell(product, self, portionCount, selectedPortionId, isEditState, basketProduct)
+        }
+    }
+    
     func changeBasketProduct(product: Product) {
         delegate?.replaceProduct(newCount: portionCount, selectedPortionId)
         showSuccess()
@@ -336,16 +362,16 @@ extension ProductDetailsViewController: ProductDetailsDelegate {
     func showSuccess() {
         if isEditState {
             if basketProduct {
-                progressTitleLabel.text = "Продукт изменен в корзине"
+                progressTitleLabel.text = LS(key: .PRODUCT_CHANGED_IN_BUSKET)
             } else {
                 reloadDiary()
-                progressTitleLabel.text = "Продукт изменен в дневнике"
+                progressTitleLabel.text = LS(key: .PRODUCT_ADDED_IN_DIARY)
             }
         } else if basketProduct {
-            progressTitleLabel.text = "Продукт изменен в корзине"
+            progressTitleLabel.text = LS(key: .PRODUCT_CHANGED_IN_BUSKET)
         } else {
             reloadDiary()
-            progressTitleLabel.text = "Продукт добавлен в дневник"
+            progressTitleLabel.text = LS(key: .PRODUCT_ADDED_IN_DIARY)
         }
         progressView.trackColor = .clear
         progressView.progressColor = #colorLiteral(red: 0.9344636798, green: 0.5902308822, blue: 0.1663158238, alpha: 1)
@@ -396,20 +422,20 @@ extension ProductDetailsViewController: ProductDetailsDelegate {
 extension ProductDetailsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return pickerData.count
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData[component].count
+        return pickerData.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[component][row]
+        return pickerData[row]
     }
       
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.text = pickerData[component][row]
+        pickerLabel.text = pickerData[row]
         pickerLabel.font = UIFont.sfProTextRegular(size: 18)
         pickerLabel.textAlignment = .center
         return pickerLabel

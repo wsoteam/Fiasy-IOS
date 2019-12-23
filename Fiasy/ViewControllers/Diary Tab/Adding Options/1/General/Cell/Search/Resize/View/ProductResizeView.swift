@@ -31,13 +31,13 @@ class ProductResizeView: UIView {
         
         var productList: [SecondProduct] = []
         switch title {
-        case "Завтрак":
+        case LS(key: .BREAKFAST):
             productList = selectedProduct[0]
-        case "Обед":
+        case LS(key: .LUNCH):
             productList = selectedProduct[1]
-        case "Ужин":
+        case LS(key: .DINNER):
             productList = selectedProduct[2]
-        case "Перекус":
+        case LS(key: .SNACK):
             productList = selectedProduct[3]
         default:
             productList = selectedProduct[0]
@@ -47,7 +47,7 @@ class ProductResizeView: UIView {
             break
         }
         topLabel.text = portion.name
-        bottomLabel.text = "\(portion.amount) \(product.isLiquid == true ? "мл" : "ккал")"
+        bottomLabel.text = "\(portion.amount) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))"
     }
     
     // MARK: - Private -

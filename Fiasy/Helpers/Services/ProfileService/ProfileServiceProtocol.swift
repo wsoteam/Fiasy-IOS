@@ -12,6 +12,7 @@ import RxSwift
 protocol ProfileServiceProtocol {
     
     @discardableResult func loadProducts() -> Observable<PaginationProduct>
+    @discardableResult func sendSendsay(_ mail: String) -> Observable<Suggest>  
     @discardableResult func searchSuggestProduct(search: String) -> Observable<Suggest>
     @discardableResult func searchProduct(search: String) -> Observable<PaginationProduct>
     @discardableResult func loadMoreProducts(link: String) -> Observable<PaginationProduct>

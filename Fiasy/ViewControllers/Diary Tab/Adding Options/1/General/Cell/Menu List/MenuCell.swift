@@ -31,25 +31,25 @@ class MenuCell: UITableViewCell {
         }
         switch indexPath.row {
         case 0:
-            if selectedTitle == "Завтрак" {
+            if selectedTitle == LS(key: .BREAKFAST) {
                 radioButton.isOn = true
             }
-            titleLabel.text = "Завтрак"
+            titleLabel.text = LS(key: .BREAKFAST)
         case 1:
-            if selectedTitle == "Обед" {
+            if selectedTitle == LS(key: .LUNCH) {
                 radioButton.isOn = true
             }
-            titleLabel.text = "Обед"
+            titleLabel.text = LS(key: .LUNCH)
         case 2:
-            if selectedTitle == "Ужин" {
+            if selectedTitle == LS(key: .DINNER) {
                 radioButton.isOn = true
             }
-            titleLabel.text = "Ужин"
+            titleLabel.text = LS(key: .DINNER)
         case 3:
-            if selectedTitle == "Перекус" {
+            if selectedTitle == LS(key: .SNACK) {
                 radioButton.isOn = true
             }
-            titleLabel.text = "Перекус"
+            titleLabel.text = LS(key: .SNACK)
             bottomView.isHidden = false
         default:
             break

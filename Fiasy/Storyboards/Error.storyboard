@@ -37,13 +37,13 @@
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
-                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilr-Ed-zE4">
+                                    <view alpha="0.0" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ilr-Ed-zE4">
                                         <rect key="frame" x="30" y="161" width="315" height="185"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="28y-uY-Eoc">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="28y-uY-Eoc">
                                                 <rect key="frame" x="15" y="10" width="285" height="165"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OLz-F9-g5N">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OLz-F9-g5N">
                                                         <rect key="frame" x="0.0" y="0.0" width="285" height="165"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geZ-mf-C6f">
@@ -59,17 +59,17 @@
                                                                 <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxQ-sT-ANU">
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jxQ-sT-ANU">
                                                                 <rect key="frame" x="0.0" y="55" width="285" height="50"/>
                                                                 <subviews>
-                                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gv9-Nl-dL2" customClass="NextGrowingTextView" customModule="NextGrowingTextView">
+                                                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gv9-Nl-dL2" customClass="NextGrowingTextView" customModule="NextGrowingTextView">
                                                                         <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="yK7-ZN-rkF"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5l-Sa-VKL" userLabel="separator">
+                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5l-Sa-VKL" userLabel="separator">
                                                                         <rect key="frame" x="0.0" y="48" width="285" height="2"/>
                                                                         <color key="backgroundColor" red="0.89009904861450195" green="0.89025193452835083" blue="0.89008951187133789" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
@@ -93,7 +93,7 @@
                                                                     <constraint firstItem="W5l-Sa-VKL" firstAttribute="leading" secondItem="jxQ-sT-ANU" secondAttribute="leading" id="tKo-dt-roZ"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-cf-9Gm">
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-cf-9Gm">
                                                                 <rect key="frame" x="0.0" y="115" width="285" height="50"/>
                                                                 <subviews>
                                                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqn-MR-Rnx">
@@ -197,6 +197,7 @@
                         <outlet property="blurView" destination="qT2-FS-WSP" id="Ika-px-cVs"/>
                         <outlet property="closeButton" destination="mL5-Ns-iNP" id="XJF-CD-y3B"/>
                         <outlet property="containerView" destination="ilr-Ed-zE4" id="gSZ-px-oYJ"/>
+                        <outlet property="descriptionLabel" destination="UMM-Ku-mck" id="flR-Xu-dbU"/>
                         <outlet property="messageStackView" destination="OLz-F9-g5N" id="z1h-h0-tPN"/>
                         <outlet property="progressContainerView" destination="Csl-6Z-OuC" id="124-Yd-2VV"/>
                         <outlet property="progressView" destination="e6O-I3-Atb" id="vKZ-PG-ONB"/>

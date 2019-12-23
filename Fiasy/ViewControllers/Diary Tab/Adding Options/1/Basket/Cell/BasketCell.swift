@@ -49,27 +49,34 @@ class BasketCell: UITableViewCell {
     private func fillCalories(count: Double, _ product: SecondProduct) { 
         let mutableAttrString = NSMutableAttributedString()
         if let weight = product.weight {
-            if let amount = product.selectedPortion?.amount {
-                let result = Int(count * Double(weight * amount).rounded(toPlaces: 0))
-                let unit = product.isLiquid == true ? "мл" : "грамм"
-                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(weight * amount) \(unit) • "))
-                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) ккал"))
+            if let _ = product.portionId {
+                if let amount = product.selectedPortion?.amount {
+                    let result = Int(count * Double(weight * amount).rounded(toPlaces: 0))
+                    let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)
+                    mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(weight * amount) \(unit) • "))
+                    mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) \(LS(key: .CALORIES_UNIT))"))
+                } else {
+                    let result = Int(count * Double(weight).rounded(toPlaces: 1))
+                    let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)
+                    mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(weight) \(unit) • "))
+                    mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) \(LS(key: .CALORIES_UNIT))"))
+                }
             } else {
                 let result = Int(count * Double(weight).rounded(toPlaces: 1))
-                let unit = product.isLiquid == true ? "мл" : "грамм"
+                let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)
                 mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(weight) \(unit) • "))
-                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) ккал"))
+                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) \(LS(key: .CALORIES_UNIT))"))
             }
         } else {
-            let unit = product.isLiquid == true ? "мл" : "грамм"
+            let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)
             if let portion = product.selectedPortion {
                 let result = Int((count * Double(portion.amount)).rounded(toPlaces: 0))
                 mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(portion.amount) \(unit) • "))
-                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) ккал"))
+                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) \(LS(key: .CALORIES_UNIT))"))
             } else {
                 let result = Int(count * Double(100).rounded(toPlaces: 1))
                 mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "100 \(unit) • "))
-                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) ккал"))
+                mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(result) \(LS(key: .CALORIES_UNIT))"))
             }
         }
         caloriesLabel.attributedText = mutableAttrString
@@ -77,8 +84,8 @@ class BasketCell: UITableViewCell {
     
     private func fillName(product: SecondProduct) { 
         let mutableAttrString = NSMutableAttributedString()
-        mutableAttrString.append(NSAttributedString(string: product.name, attributes: [.font: UIFont.sfProTextSemibold(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)]))
-        if let name = product.brand?.name {
+        mutableAttrString.append(NSAttributedString(string: product.name ?? "", attributes: [.font: UIFont.sfProTextSemibold(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)]))
+        if let name = product.brand?.name, name != "null" {
             mutableAttrString.append(NSAttributedString(string: " (\(name))", attributes: [.font: UIFont.sfProTextMedium(size: 13), .foregroundColor: #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)]))
         }
         productNameLabel.attributedText = mutableAttrString

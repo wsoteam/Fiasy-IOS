@@ -24,27 +24,12 @@ enum Gender: Int {
     }
 }
 
-//enum TargetType: String {
-//    case easy = "Легкая"
-//    case average = "Средняя"
-//    case high = "Высокая"
-//    
-//    var targetColor: UIColor {
-//        switch self {
-//        case .easy:
-//            return #colorLiteral(red: 0.5672869682, green: 0.782702148, blue: 0.2939775586, alpha: 1)
-//        case .average:
-//            return #colorLiteral(red: 1, greGender7656647563, blue: 0, alpha: 1)
-//        case .high:
-//            return #colorLiteral(red: 0.9309825301, green: 0.3653407693, blue: 0.1645739377, alpha: 1)
-//        }
-//    }
-//}
-
 class UserInfo {
 
     static var sharedInstance = UserInfo()
     internal var complition: (() -> Void)?
+    
+    var articleExpert: [Article] = []
     
     // MARK: - Measuring -
     var measuringList: [Measuring] = []
@@ -237,22 +222,22 @@ class UserInfo {
     }
     
     func getAllRecipes() {
-        var allRecipes: [Listrecipe] = []
-        if let path = Bundle.main.path(forResource: "diet-for-test", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-                let recipe = try? JSONDecoder().decode(Recipe.self, from: data)
-                
-                if let list = recipe?.listrecipes, !list.isEmpty {
-                    allRecipes = list
-                }
-            } catch let error {
-                print("parse error: \(error.localizedDescription)")
-            }
-        } else {
-            print("Invalid filename/path.")
-        }
-        self.allRecipes = allRecipes
+//        var allRecipes: [Listrecipe] = []
+//        if let path = Bundle.main.path(forResource: "diet-for-test", ofType: "json") {
+//            do {
+//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+//                let recipe = try? JSONDecoder().decode(Recipe.self, from: data)
+//                
+//                if let list = recipe?.listrecipes, !list.isEmpty {
+//                    allRecipes = list
+//                }
+//            } catch let error {
+//                print("parse error: \(error.localizedDescription)")
+//            }
+//        } else {
+//            print("Invalid filename/path.")
+//        }
+//        self.allRecipes = allRecipes
     }
     
     func getAllActivitys() -> [ActivityElement] {
@@ -263,15 +248,14 @@ class UserInfo {
         case "es":
             // испанский
             fileName = "activity_spain_list"
-//        case "pt":
+        case "pt":
 //            // португалия (бразилия)
-//            formatter.locale = Locale(identifier: "pt_BR")
-//        case "en":
-//            // английский
-//            formatter.locale = Locale(identifier: "en_US")
-//        case "de":
+            fileName = "activity_port_list"
+        case "en":
+            // английский
+            fileName = "activity_eng_list"
+        case "de":
 //            // немецикий
-            
             fileName = "activity_deut_list"
         default:
             break
@@ -325,27 +309,27 @@ class UserInfo {
     func getTitleMealtime(text: String) -> String {
         switch text {
         case "breakfasts":
-            return "Завтрак"
+            return LS(key: .BREAKFAST)
         case "lunches":
-            return "Обед"
+            return LS(key: .LUNCH)
         case "dinners":
-            return "Ужин"
+            return LS(key: .DINNER)
         case "snacks":
-            return "Перекус"
+            return LS(key: .SNACK)
         default:
-            return "Завтрак"
+            return LS(key: .BREAKFAST)
         }
     }
     
     func getAmplitudeTitle(text: String) -> String {
         switch text {
-        case "Завтрак":
+        case LS(key: .BREAKFAST):
             return "breakfasts"
-        case "Обед":
+        case LS(key: .LUNCH):
             return "lunches"
-        case "Ужин":
+        case LS(key: .DINNER):
             return "dinners"
-        case "Перекус":
+        case LS(key: .SNACK):
             return "snacks"
         default:
             return "snacks"

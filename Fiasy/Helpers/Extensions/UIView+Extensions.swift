@@ -18,24 +18,24 @@ extension UIView {
     /// Should the corner be as circle
     public var circleCorner: Bool {
         get {
-            return min(bounds.size.height, bounds.size.width) / 2 == cornerRadius
+            return min(bounds.size.height, bounds.size.width) / 2 == IBcornerRadius
         }
         set {
-            cornerRadius = newValue ? min(bounds.size.height, bounds.size.width) / 2 : cornerRadius
+            IBcornerRadius = newValue ? min(bounds.size.height, bounds.size.width) / 2 : IBcornerRadius
         }
     }
     
-    @IBInspectable
-    /// Corner radius of view; also inspectable from Storyboard.
-    public var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = circleCorner ? min(bounds.size.height, bounds.size.width) / 2 : newValue
-            //abs(CGFloat(Int(newValue * 100)) / 100)
-        }
-    }
+//    @IBInspectable
+//    /// Corner radius of view; also inspectable from Storyboard.
+//    public var cornerRadius: CGFloat {
+//        get {
+//            return layer.cornerRadius
+//        }
+//        set {
+//            layer.cornerRadius = circleCorner ? min(bounds.size.height, bounds.size.width) / 2 : newValue
+//            //abs(CGFloat(Int(newValue * 100)) / 100)
+//        }
+//    }
     
     @IBInspectable
     /// Border color of view; also inspectable from Storyboard.

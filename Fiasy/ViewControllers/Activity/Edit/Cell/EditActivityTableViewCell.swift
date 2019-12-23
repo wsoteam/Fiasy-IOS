@@ -13,6 +13,8 @@ import FirebaseDatabase
 class EditActivityTableViewCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var customSlider: CustomSlider!
     @IBOutlet weak var caloriesSpentLabel: UILabel!
@@ -21,6 +23,13 @@ class EditActivityTableViewCell: UITableViewCell {
     private var model: ActivityElement?
     private var selectedValue: Int = 0
     private var quantity: Int = 0
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        descriptionLabel.text = LS(key: .MOVE_SLIDER)
+        changeButton.setTitle("          \(LS(key: .TITLE_CHANGE1).capitalizeFirst)          ", for: .normal)
+    }
     
     // MARK: - Interface -
     func fillCell(_ model: ActivityElement?) {
@@ -56,7 +65,7 @@ class EditActivityTableViewCell: UITableViewCell {
     @IBAction func addDiaryClicked(_ sender: Any) {
         guard let model = self.model, self.quantity > 0 else {
             if let vc = UIApplication.getTopMostViewController() {
-                AlertComponent.sharedInctance.showAlertMessage(message: "Внесите изменения", vc: vc)
+                AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .DIARY_MES_15), vc: vc)
             }
             return
         }
@@ -80,12 +89,12 @@ class EditActivityTableViewCell: UITableViewCell {
         paragraphStyle.alignment = .center
         
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 17),
-                                                     color: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "Потрачено калорий"))
+                                                     color: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: LS(key: .CALORIES_SPENT)))
         
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 17),
                                                      color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: " = 0\n"))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 22),
-                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "за 0 минут"))
+                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "\(LS(key: .DIARY_MES_13)) 0 \(LS(key: .MINUTES))"))
         mutableAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, mutableAttrString.length))
         caloriesSpentLabel.attributedText = mutableAttrString
     }
@@ -97,12 +106,12 @@ class EditActivityTableViewCell: UITableViewCell {
         paragraphStyle.alignment = .center
         
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 17),
-                                                     color: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "Потрачено калорий"))
+                                                     color: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: LS(key: .CALORIES_SPENT)))
         
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 17),
                                                      color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: " = \(calories)\n"))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 22),
-                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "за"))
+                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: LS(key: .DIARY_MES_13)))
         
         if (time / 60 % 60) > 0 {
             let hours = time / 60 % 60
@@ -132,22 +141,37 @@ class EditActivityTableViewCell: UITableViewCell {
     }
 
     private func fetchMinutesSuffix(count: Int) -> String {
-        if count == 1 {
-            return " минута"
-        } else if count > 1 && count < 5 {
-            return " минуты"
+        if getPreferredLocale().languageCode == "ru" {
+            if count == 1 {
+                return " минута"
+            } else if count > 1 && count < 5 {
+                return " минуты"
+            } else {
+                return " минут"
+            }
         } else {
-            return " минут"
+            return " \(LS(key: .MINUTES))"
         }
     }
     
+    private func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
+        }
+        return Locale(identifier: preferredIdentifier)
+    }
+    
     private func fetchHoursSuffix(count: Int) -> String {
-        if count == 1 {
-            return " час"
-        } else if count > 4 {
-            return " часов"
+        if getPreferredLocale().languageCode == "ru" {
+            if count == 1 {
+                return " час"
+            } else if count > 4 {
+                return " часов"
+            } else {
+                return " часа"
+            }
         } else {
-            return " часа"
+            return " \(LS(key: .BLACK_PREM_HOURS))"
         }
     }
     

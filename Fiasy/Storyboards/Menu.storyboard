@@ -24,6 +24,7 @@
                         <segue destination="maY-OD-ZGo" kind="relationship" relationship="viewControllers" id="bsW-mb-qA0"/>
                         <segue destination="lUe-Bp-AnC" kind="relationship" relationship="viewControllers" id="48L-Nf-hQY"/>
                         <segue destination="QKW-ee-uAy" kind="show" identifier="sequeFillUserProfile" id="cwm-PX-PNt"/>
+                        <segue destination="wnQ-z4-Cig" kind="presentation" identifier="sequeNotificationScreen" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="kg3-iF-2s3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asZ-6i-mrz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,6 +40,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dw-UP-4Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="152" y="-741"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="6MD-No-wiM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notifications" id="wnQ-z4-Cig" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oYN-aN-1o1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189" y="-641"/>
         </scene>
         <!--Profile-->
         <scene sceneID="pCc-bS-MAy">

@@ -37,9 +37,6 @@ class ArticlesDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         addObserver(for: self, #selector(paymentComplete), Constant.PAYMENT_COMPLETE)
-//        DispatchQueue.global().async {
-//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-//        }
     }
     
     @objc func paymentComplete() {
@@ -52,6 +49,9 @@ class ArticlesDetailsViewController: UIViewController {
             let vc = segue.destination as? PremiumQuizViewController
             vc?.isAutorization = false
             vc?.trialFrom = "articles"
+        } else if segue.destination is ArticlesExpertsViewController {
+            let vc = segue.destination as? ArticlesExpertsViewController
+            vc?.hiddenBottomContainer()
         }
     }
     

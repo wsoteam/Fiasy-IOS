@@ -25,14 +25,14 @@ class DiaryClickedPicker: NSObject, UINavigationControllerDelegate {
                                  preferredStyle: .actionSheet)
         
 
-        refreshAlert.addAction(UIAlertAction(title: "Удалить",
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .DELETE),
                                           style: .default,
                                         handler: { [weak self] _ in
                                                 guard let `self` = self else { return }
                                                 self.removeMealtime?()
         }))
         
-        refreshAlert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .CANCEL), style: .cancel))
         target.present(refreshAlert, animated: true)
     }
 }
@@ -45,14 +45,14 @@ extension DiaryClickedPicker {
             UserInfo.sharedInstance.selectedDate = date
         }
         
-        alert.addAction(UIAlertAction(title: "Применить",
+        alert.addAction(UIAlertAction(title: LS(key: .APPLY),
                                    style: .default,
                                  handler: { [weak self] _ in
                                         guard let `self` = self else { return }
                                         self.changeDate?()
         }))
 
-        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: { [weak self]
+        alert.addAction(UIAlertAction(title: LS(key: .CANCEL), style: .cancel, handler: { [weak self]
             action in
             guard let `self` = self else { return }
             self.closeAction?()
@@ -85,8 +85,23 @@ final class DatePickerViewController: UIViewController {
     required init(mode: UIDatePicker.Mode, date: Date? = nil, minimumDate: Date? = nil, maximumDate: Date? = nil, action: Action?) {
         super.init(nibName: nil, bundle: nil)
         datePicker.datePickerMode = mode
-        
-        datePicker.locale = Locale(identifier: "ru_RU")
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            datePicker.locale = Locale(identifier: "es_ES")
+        case "pt":
+            // португалия (бразилия)
+            datePicker.locale = Locale(identifier: "pt_BR")
+        case "en":
+            // английский
+            datePicker.locale = Locale(identifier: "en_US")
+        case "de":
+            // немецикий
+            datePicker.locale = Locale(identifier: "de_DE")
+        default:
+            // русский
+            datePicker.locale = Locale(identifier: "ru_RU")
+        }
         datePicker.timeZone = TimeZone(abbreviation: "GMT")!
         
         datePicker.setDate(date ?? Date(), animated: false)

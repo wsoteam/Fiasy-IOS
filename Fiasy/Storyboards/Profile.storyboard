@@ -41,7 +41,7 @@
                 <navigationController navigationBarHidden="YES" id="k9B-U9-LTk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Профиль" id="Bd5-6p-3LW" customClass="MenuTabBarItem" customModule="Fiasy" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="imageItem" value="Exclude"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="imageItem" value="tab_1"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

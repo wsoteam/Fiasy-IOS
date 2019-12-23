@@ -10,4 +10,12 @@ import UIKit
 
 class DiaryMeasuringHeaderView: UITableViewHeaderFooterView {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        titleLabel.text = LS(key: .DIARY_MES_9)
+    }
+    
 }

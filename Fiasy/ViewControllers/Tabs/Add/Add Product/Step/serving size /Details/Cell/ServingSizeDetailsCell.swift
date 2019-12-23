@@ -29,27 +29,27 @@ class ServingSizeDetailsCell: UITableViewCell {
         switch indexPath.row {
         case 0:
             insertTextField.textColor = #colorLiteral(red: 0.1293928325, green: 0.1294226646, blue: 0.129390955, alpha: 1)
-            titleLabel.text = "Наименование порции"
+            titleLabel.text = LS(key: .CREATE_STEP_TITLE_23)
             insertTextField.text = selectedServing.name ?? ""
             insertTextField.keyboardType = .default
             insertTextField.tag = 0
-            errorLabel.text = "Введите имя порции"
+            errorLabel.text = LS(key: .CREATE_STEP_TITLE_24)
         case 1:
             clickedButton.isHidden = false
             insertTextField.isEnabled = false
             insertTextField.textColor = #colorLiteral(red: 0.2588235294, green: 0.2588235294, blue: 0.2588235294, alpha: 0.5047338453)
-            titleLabel.text = "Единица измерения"
+            titleLabel.text = LS(key: .CREATE_STEP_TITLE_25)
             errorLabel.text = ""
             insertTextField.tag = 1
             if let measurement = selectedServing.unitMeasurement, !measurement.isEmpty {
                 insertTextField.text = measurement
             } else {
-                insertTextField.text = "Грамм"
+                insertTextField.text = LS(key: .CREATE_STEP_TITLE_19)
             }
         case 2:
             insertTextField.textColor = #colorLiteral(red: 0.1293928325, green: 0.1294226646, blue: 0.129390955, alpha: 1)
-            titleLabel.text = "Размер порции"
-            errorLabel.text = "Введите размер порции"
+            titleLabel.text = LS(key: .CREATE_STEP_TITLE_26)
+            errorLabel.text = LS(key: .CREATE_STEP_TITLE_27)
             insertTextField.tag = 2
             if let size = selectedServing.servingSize, size != 0 {
                 insertTextField.text = "\(size)"

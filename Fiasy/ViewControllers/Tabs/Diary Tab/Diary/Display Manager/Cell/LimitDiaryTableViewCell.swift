@@ -11,6 +11,11 @@ import UIKit
 class LimitDiaryTableViewCell: UITableViewCell {
     
     // MARK: - Outlets -
+    @IBOutlet weak var proteinTitleLabel: UILabel!
+    @IBOutlet weak var carboTitleLabel: UILabel!
+    @IBOutlet weak var fatTitleLabel: UILabel!
+    @IBOutlet weak var burntTitleLabel: UILabel!
+    @IBOutlet weak var eatenTitleLabel: UILabel!
     @IBOutlet weak var wellLabel: UILabel!
     @IBOutlet weak var leftCaloriesLabel: UILabel!
     @IBOutlet weak var endedLabel: UILabel!
@@ -28,10 +33,21 @@ class LimitDiaryTableViewCell: UITableViewCell {
     private var date: Date = Date()
     private var delegate: DiaryDisplayManagerDelegate?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        eatenTitleLabel.text = LS(key: .EATEN_UP)
+        burntTitleLabel.text = LS(key: .BURNT)
+        fatTitleLabel.text = "\(LS(key: .FAT).capitalizeFirst) (\(LS(key: .GRAMS_UNIT)))"
+        carboTitleLabel.text = "\(LS(key: .CARBOHYDRATES).capitalizeFirst) (\(LS(key: .GRAMS_UNIT)))"
+        proteinTitleLabel.text = "\(LS(key: .PROTEIN).capitalizeFirst) (\(LS(key: .GRAMS_UNIT)))"
+    }
+    
     // MARK: - Interface -
     func fillCell(selectedDate: Date, delegate: DiaryDisplayManagerDelegate, activityCount: Int) {
         self.date = selectedDate
         self.delegate = delegate
+        
         setupTopContainer(date: selectedDate, activityCount: activityCount)
     }
     
@@ -86,7 +102,7 @@ class LimitDiaryTableViewCell: UITableViewCell {
             fillTargetLabel(target: (user.maxKcal ?? 0))
             let currentCalories = ((user.maxKcal ?? 0) - calories) + activityCount
             fatCountLabel.text = "\(fat) из \(user.maxFat ?? 0)"
-            endedLabel.text = (user.maxKcal ?? 0) >= calories ? "Осталось" : "Прeвышение"
+            endedLabel.text = (user.maxKcal ?? 0) >= calories ? LS(key: .LEFT).capitalizeFirst : LS(key: .EXCESS)
             leftCaloriesLabel.text = ((user.maxKcal ?? 0) + activityCount) >= calories ? "\(currentCalories)" : "+\(calories - ((user.maxKcal ?? 0) + activityCount))"
             carbohydratesCountLabel.text = "\(carbohydrates) из \(user.maxCarbo ?? 0)"
             proteinLabel.text = "\(protein) из \(user.maxProt ?? 0)"
@@ -107,9 +123,9 @@ class LimitDiaryTableViewCell: UITableViewCell {
     private func fillTargetLabel(target: Int) {
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 17),
-                                    color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "Ежедневная норма = ", underline: false))
+                                    color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "\(LS(key: .DIARY_DAILY_RATE)) = ", underline: false))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 20),
-                                    color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: "\(target) Ккал", underline: true))
+                                    color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: "\(target) \(LS(key: .CALORIES_UNIT).capitalizeFirst)", underline: true))
         targetLabel.attributedText = mutableAttrString
     }
     

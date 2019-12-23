@@ -16,6 +16,8 @@ protocol ServingSizeDetailsDelegate {
 class ServingSizeDetailsViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var titleNavigationLabel: UILabel!
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerContainerView: UIView!
     @IBOutlet weak var selectedPicker: UIPickerView!
@@ -24,8 +26,8 @@ class ServingSizeDetailsViewController: UIViewController {
     // MARK: - Properties -
     private var isEdit: Bool = false
     private var selectedIndex: Int = 1
-    private var selectedServing = Serving(name: "", unit: "Грамм", size: 0)
-    private var pickerData: [String] = ["Килограмм", "Грамм", "Литр", "Миллилитр"]
+    private var selectedServing = Serving(name: "", unit: LS(key: .CREATE_STEP_TITLE_19), size: 0)
+    private var pickerData: [String] = [LS(key: .CREATE_STEP_TITLE_18), LS(key: .CREATE_STEP_TITLE_19), LS(key: .CREATE_STEP_TITLE_20), LS(key: .CREATE_STEP_TITLE_21)]
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
@@ -34,6 +36,8 @@ class ServingSizeDetailsViewController: UIViewController {
         setupTableView()
         selectedPicker.delegate = self
         selectedPicker.dataSource = self
+        titleNavigationLabel.text = LS(key: .CREATE_STEP_TITLE_28)
+        finishButton.setTitle(LS(key: .DONE), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,7 +103,7 @@ class ServingSizeDetailsViewController: UIViewController {
             return
         }
         if name.replacingOccurrences(of: " ", with: "").isEmpty {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Наименование порции не может состоять только из пробелов", vc: self)
+            return AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .CREATE_STEP_TITLE_22), vc: self)
         }
         
         guard let size = selectedServing.servingSize, size != 0 else {
@@ -207,16 +211,16 @@ extension ServingSizeDetailsViewController: UIPickerViewDelegate, UIPickerViewDa
             switch row {
             case 0:
                 selectedIndex = 0
-                title = "Килограмм"
+                title = LS(key: .CREATE_STEP_TITLE_18)
             case 1:
                 selectedIndex = 1
-                title = "Грамм"
+                title = LS(key: .CREATE_STEP_TITLE_19)
             case 2:
                 selectedIndex = 2
-                title = "Литр"
+                title = LS(key: .CREATE_STEP_TITLE_20)
             case 3:
                 selectedIndex = 3
-                title = "Миллилитр"
+                title = LS(key: .CREATE_STEP_TITLE_21)
             default:
                 break
             }

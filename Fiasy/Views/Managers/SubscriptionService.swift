@@ -70,29 +70,6 @@ class SubscriptionService: NSObject {
     
     func checkValidPurchases(generalState: Bool) {
          checkSubscription(generalState)
-//        do {
-//            try checkSubscription(generalState)
-//            print("Receipt is valid")
-//            return true
-//        } catch ReceiptValidationError.receiptNotFound {
-//            // There is no receipt on the device
-//            print("There is no receipt on the device")
-//            return false
-//        } catch ReceiptValidationError.jsonResponseIsNotValid(let description) {
-//            // unable to parse the json
-//            print(description)
-//            return false
-//        } catch ReceiptValidationError.notBought {
-//            // the subscription hasn't being purchased
-//            print("the subscription hasn't being purchased")
-//            return false
-//        } catch ReceiptValidationError.expired {
-//            print("the subscription is expired")
-//            return false
-//        } catch {
-//            print("Unexpected error: \(error).")
-//            return false
-//        }
     }
     
     //MARK: - Receipt Validation -
@@ -111,10 +88,10 @@ class SubscriptionService: NSObject {
             let jsonObjectBody = ["receipt-data" : receiptString, "password" : "01ef8ea9c82046578c8e45b953c95652"]
             
             //#if DEBUG
-            let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+            //let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
 //            #else
-//            let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
-//            #endif
+            let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+            //#endif
 
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -129,44 +106,7 @@ class SubscriptionService: NSObject {
                     UserInfo.sharedInstance.purchaseIsValid = false
                     return
                 }
-                
-                if let dictionary = jsonResponse["latest_receipt_info"] as? [[AnyHashable: Any]], let first = dictionary.first, let state = first["is_trial_period"] {
-                    if self.getBoolFromAny(paramAny: state) {
-                        let identify = AMPIdentify()
-                        identify.set("premium_status", value: "trial" as NSObject)
-                        Amplitude.instance()?.identify(identify)
-                        AppEventsLogger.log(FBSDKAppEventNameStartTrial)
-                        
-                        //
-                        Adjust.trackEvent(ADJEvent.init(eventToken: "wxd2a7"))
-                        //
-                        if UserInfo.sharedInstance.trialFrom == "onboarding" {
-                            Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "trial"]) // +
-                        }
-                        
-                        if generalState {
-                            Amplitude.instance()?.logEvent("trial_success", withEventProperties: ["trial_from" : UserInfo.sharedInstance.trialFrom]) // +
-                        }
-                    } else {
-                        let identify = AMPIdentify()
-                        identify.set("premium_status", value: "premium" as NSObject)
-                        Amplitude.instance()?.identify(identify)
-                        
-                        if generalState {
-                            Amplitude.instance()?.logEvent("purchase_success") // +
-                            
-                            if Double(self.price) > 0.0 {
-                                FBSDKAppEvents.logPurchase(Double(self.price), currency: "RUB")
-                                let event = ADJEvent.init(eventToken: "xrf3ix")
-                                event?.setRevenue(Double(self.price), currency: "RUB")
-                                Adjust.trackEvent(event)
-                                
-                                Amplitude.instance()?.logRevenue(self.price)
-                            }
-                        }
-                    }
-                }
-                
+
                 guard let expirationDate = self.expirationDate(jsonResponse: jsonResponse) else {
                     UserInfo.sharedInstance.purchaseIsValid = false
                     return
@@ -193,9 +133,9 @@ class SubscriptionService: NSObject {
                 if let snapshotValue = snapshot.value as? String {
                     let jsonObjectBody = ["receipt-data" : snapshotValue, "password" : "01ef8ea9c82046578c8e45b953c95652"]
                     //#if DEBUG
-                    let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+                    //let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
 //                    #else
-//                    let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+                    let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
 //                    #endif
                     
                     var request = URLRequest(url: url)
@@ -214,44 +154,6 @@ class SubscriptionService: NSObject {
                             UserInfo.sharedInstance.purchaseIsValid = false
                             return
                         }
-                        
-                        if let dictionary = jsonResponse["latest_receipt_info"] as? [[AnyHashable: Any]], let first = dictionary.first, let state = first["is_trial_period"] {
-                            if self.getBoolFromAny(paramAny: state) {
-                                let identify = AMPIdentify()
-                                identify.set("premium_status", value: "trial" as NSObject)
-                                Amplitude.instance()?.identify(identify)
-                                AppEventsLogger.log(FBSDKAppEventNameStartTrial)
-                                
-                                //
-                                Adjust.trackEvent(ADJEvent.init(eventToken: "wxd2a7"))
-                                //
-                                if UserInfo.sharedInstance.trialFrom == "onboarding" {
-                                    Amplitude.instance()?.logEvent("onboarding_success", withEventProperties: ["from" : "trial"]) // +
-                                }
-                                
-                                if generalState {
-                                    Amplitude.instance()?.logEvent("trial_success", withEventProperties: ["trial_from" : UserInfo.sharedInstance.trialFrom]) // +
-                                }
-                            } else {
-                                let identify = AMPIdentify()
-                                identify.set("premium_status", value: "premium" as NSObject)
-                                Amplitude.instance()?.identify(identify)
-                                
-                                if generalState {
-                                    Amplitude.instance()?.logEvent("purchase_success") // +
-                                    
-                                    if Double(self.price) > 0.0 {
-                                        FBSDKAppEvents.logPurchase(Double(self.price), currency: "RUB")
-                                        let event = ADJEvent.init(eventToken: "xrf3ix")
-                                        event?.setRevenue(Double(self.price), currency: "RUB")
-                                        Adjust.trackEvent(event)
-                                        
-                                        Amplitude.instance()?.logRevenue(self.price)
-                                    }
-                                }
-                            }
-                        }
-                        
                         guard let expirationDate = self.expirationDate(jsonResponse: jsonResponse) else {
                             UserInfo.sharedInstance.purchaseIsValid = false
                             return
@@ -267,6 +169,8 @@ class SubscriptionService: NSObject {
                     task.resume()
                     
                     semaphore.wait()
+                } else {
+                    UserInfo.sharedInstance.purchaseIsValid = false
                 }
             }) { (error) in
                 UserInfo.sharedInstance.purchaseIsValid = false
@@ -356,16 +260,22 @@ extension SubscriptionService: SKPaymentTransactionObserver {
         }
         Amplitude.instance()?.identify(identify)
         
+        let identify2 = AMPIdentify()
+        identify2.set("premium_status", value: "premium" as NSObject)
+        Amplitude.instance()?.identify(identify)
+        
+        Amplitude.instance()?.logEvent("purchase_success") // +
+        if Double(self.price) > 0.0 {
+            FBSDKAppEvents.logPurchase(Double(self.price), currency: "RUB")
+            let event = ADJEvent.init(eventToken: "xrf3ix")
+            event?.setRevenue(Double(self.price), currency: "RUB")
+            Adjust.trackEvent(event)
+            Amplitude.instance()?.logRevenue(self.price)
+        }
+        
         NotificationCenter.default.post(name: Notification.Name("PaymentComplete"), object: nil)
         deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
-        
-//        guard let productToPurchase = products.first else { return }
-//        Amplitude.instance()?.logEvent("revenue", withEventProperties: ["quantuty" : productToPurchase.price])
-        
-//        let event = ADJEvent.init(eventToken: "xrf3ix")
-//        event?.setRevenue(Double(productToPurchase.price), currency: "RUB")
-//        Adjust.trackEvent(event)
     }
     
     private func restore(transaction: SKPaymentTransaction) {
@@ -393,7 +303,6 @@ extension SubscriptionService: SKPaymentTransactionObserver {
                 Amplitude.instance()?.logEvent("trial_error", withEventProperties: ["error" : transaction.error?.localizedDescription])
             }
         }
-
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     

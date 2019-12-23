@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6dm-VK-uRa">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -12,6 +12,9 @@
         <array key="SF-Pro-Text-Semibold.ttf">
             <string>SFProText-Semibold</string>
         </array>
+        <array key="SFProText-Bold.ttf">
+            <string>SFProText-Bold</string>
+        </array>
         <array key="SFProText-Medium.ttf">
             <string>SFProText-Medium</string>
         </array>
@@ -22,26 +25,83 @@
             <objects>
                 <viewController storyboardIdentifier="NotificationsAlertViewController" id="6dm-VK-uRa" customClass="NotificationsAlertViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wNq-wh-xJB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3la-Oh-V1p" userLabel="black">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mT-mO-LVT" customClass="VisualEffectView" customModule="VisualEffectView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="afK-2E-ms5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4Q-zk-DcP">
-                                <rect key="frame" x="12" y="73.5" width="351" height="520"/>
+                                <rect key="frame" x="12" y="57" width="296" height="454"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="0Z6-HG-W4w">
+                                        <rect key="frame" x="20" y="12.5" width="256" height="429"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_notify_88a4" translatesAutoresizingMaskIntoConstraints="NO" id="Gpg-yC-om0">
+                                                <rect key="frame" x="0.0" y="0.0" width="256" height="207"/>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="GiP-m2-w62">
+                                                <rect key="frame" x="0.0" y="242" width="256" height="108"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Включить уведомления?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-yX-cPE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="29"/>
+                                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="24"/>
+                                                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уведомление позволяют вам быстро реагировать, а так же помогают держать вас в курсе вашего прогресса!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-Jw-1Dd">
+                                                        <rect key="frame" x="0.0" y="41" width="256" height="67"/>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                                        <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErU-br-vz9">
+                                                <rect key="frame" x="0.0" y="385" width="256" height="44"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhh-sS-beC">
+                                                        <rect key="frame" x="13" y="0.0" width="230" height="44"/>
+                                                        <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="SYg-gk-nmk"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
+                                                        <state key="normal" title="      ВКЛЮЧИТЬ УВЕДОМЛЕНИЯ      ">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="notificationClicked:" destination="6dm-VK-uRa" eventType="touchUpInside" id="tMa-xa-okH"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="xhh-sS-beC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ErU-br-vz9" secondAttribute="leading" id="0fm-5B-mA3"/>
+                                                    <constraint firstItem="xhh-sS-beC" firstAttribute="top" secondItem="ErU-br-vz9" secondAttribute="top" id="2ha-KC-Yw4"/>
+                                                    <constraint firstItem="xhh-sS-beC" firstAttribute="centerX" secondItem="ErU-br-vz9" secondAttribute="centerX" id="KRo-cE-gCP"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xhh-sS-beC" secondAttribute="trailing" id="mgA-aI-R7z"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xhh-sS-beC" secondAttribute="bottom" id="tPh-1h-yDF"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGf-yE-mNm">
-                                        <rect key="frame" x="301" y="10" width="40" height="40"/>
+                                        <rect key="frame" x="246" y="10" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zGf-yE-mNm" secondAttribute="height" multiplier="1:1" id="Olz-ES-Xdd"/>
                                             <constraint firstAttribute="width" constant="40" id="vgy-s4-NlT"/>
@@ -51,65 +111,14 @@
                                             <action selector="closeModuleClicked:" destination="6dm-VK-uRa" eventType="touchUpInside" id="63w-Yg-F3j"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_notify_88a4" translatesAutoresizingMaskIntoConstraints="NO" id="Gpg-yC-om0">
-                                        <rect key="frame" x="30" y="60" width="291" height="207"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ut-uU-6e7">
-                                        <rect key="frame" x="158" y="267" width="35" height="35"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="0Ut-uU-6e7" secondAttribute="height" multiplier="1:1" id="r7m-JU-ohk"/>
-                                        </constraints>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="GiP-m2-w62">
-                                        <rect key="frame" x="20" y="302" width="311" height="89"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Включить уведомления?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-yX-cPE">
-                                                <rect key="frame" x="0.0" y="0.0" width="311" height="28"/>
-                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
-                                                <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Уведомление позволяют вам быстро реагировать, а так же помогают держать вас в курсе вашего прогресса!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8E-Jw-1Dd">
-                                                <rect key="frame" x="0.0" y="40" width="311" height="49"/>
-                                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
-                                                <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obo-qU-ZiU">
-                                        <rect key="frame" x="158" y="391" width="35" height="35"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="obo-qU-ZiU" secondAttribute="height" multiplier="1:1" id="Dik-qX-7fd"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhh-sS-beC">
-                                        <rect key="frame" x="34.5" y="426" width="282" height="74"/>
-                                        <state key="normal" image="Group (12)"/>
-                                        <connections>
-                                            <action selector="notificationClicked:" destination="6dm-VK-uRa" eventType="touchUpInside" id="tMa-xa-okH"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="obo-qU-ZiU" firstAttribute="top" secondItem="GiP-m2-w62" secondAttribute="bottom" id="8YP-o0-HKx"/>
-                                    <constraint firstAttribute="trailing" secondItem="GiP-m2-w62" secondAttribute="trailing" constant="20" id="9T8-Jm-9YH"/>
-                                    <constraint firstItem="0Ut-uU-6e7" firstAttribute="top" secondItem="Gpg-yC-om0" secondAttribute="bottom" id="BKd-am-IgC"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Z6-HG-W4w" secondAttribute="trailing" constant="20" id="2pA-kJ-902"/>
+                                    <constraint firstItem="0Z6-HG-W4w" firstAttribute="leading" secondItem="S4Q-zk-DcP" secondAttribute="leading" constant="20" id="7K1-nB-dMQ"/>
                                     <constraint firstAttribute="trailing" secondItem="zGf-yE-mNm" secondAttribute="trailing" constant="10" id="CuS-uK-Hg1"/>
-                                    <constraint firstItem="Gpg-yC-om0" firstAttribute="leading" secondItem="S4Q-zk-DcP" secondAttribute="leading" constant="30" id="QCu-CT-BNv"/>
-                                    <constraint firstItem="GiP-m2-w62" firstAttribute="top" secondItem="0Ut-uU-6e7" secondAttribute="bottom" id="S6C-Sj-tFv"/>
-                                    <constraint firstAttribute="trailing" secondItem="Gpg-yC-om0" secondAttribute="trailing" constant="30" id="TIf-IY-Uga"/>
-                                    <constraint firstItem="xhh-sS-beC" firstAttribute="centerX" secondItem="S4Q-zk-DcP" secondAttribute="centerX" id="Uuz-ic-eQ6"/>
-                                    <constraint firstItem="GiP-m2-w62" firstAttribute="leading" secondItem="S4Q-zk-DcP" secondAttribute="leading" constant="20" id="VzK-hQ-Bnw"/>
+                                    <constraint firstItem="0Z6-HG-W4w" firstAttribute="centerY" secondItem="S4Q-zk-DcP" secondAttribute="centerY" id="bw0-ox-4aX"/>
                                     <constraint firstItem="zGf-yE-mNm" firstAttribute="top" secondItem="S4Q-zk-DcP" secondAttribute="top" constant="10" id="ii4-z9-Qm5"/>
-                                    <constraint firstItem="xhh-sS-beC" firstAttribute="top" secondItem="obo-qU-ZiU" secondAttribute="bottom" id="noR-tb-gD1"/>
-                                    <constraint firstItem="obo-qU-ZiU" firstAttribute="centerX" secondItem="S4Q-zk-DcP" secondAttribute="centerX" id="oTj-7t-HTO"/>
-                                    <constraint firstAttribute="bottom" secondItem="xhh-sS-beC" secondAttribute="bottom" constant="20" id="pDt-rA-05u"/>
-                                    <constraint firstItem="Gpg-yC-om0" firstAttribute="top" secondItem="S4Q-zk-DcP" secondAttribute="top" constant="60" id="y5b-lq-OiU"/>
-                                    <constraint firstItem="0Ut-uU-6e7" firstAttribute="centerX" secondItem="S4Q-zk-DcP" secondAttribute="centerX" id="yAc-QD-tuh"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -127,10 +136,9 @@
                             <constraint firstItem="5mT-mO-LVT" firstAttribute="top" secondItem="3la-Oh-V1p" secondAttribute="top" id="Ar8-dL-9sg"/>
                             <constraint firstItem="S4Q-zk-DcP" firstAttribute="trailing" secondItem="3la-Oh-V1p" secondAttribute="trailing" constant="-12" id="E9a-74-uuk"/>
                             <constraint firstItem="t3d-5I-XYE" firstAttribute="trailing" secondItem="3la-Oh-V1p" secondAttribute="trailing" id="LDQ-LN-0tJ"/>
-                            <constraint firstItem="0Ut-uU-6e7" firstAttribute="width" secondItem="wNq-wh-xJB" secondAttribute="width" multiplier="0.09375" id="h5T-Ag-yys"/>
+                            <constraint firstItem="S4Q-zk-DcP" firstAttribute="height" secondItem="wNq-wh-xJB" secondAttribute="height" multiplier="0.8" id="Ve2-dq-aKT"/>
                             <constraint firstAttribute="bottom" secondItem="3la-Oh-V1p" secondAttribute="bottom" id="iXj-3h-b54"/>
                             <constraint firstItem="S4Q-zk-DcP" firstAttribute="leading" secondItem="3la-Oh-V1p" secondAttribute="leading" constant="12" id="j0I-TI-IFI"/>
-                            <constraint firstItem="obo-qU-ZiU" firstAttribute="width" secondItem="wNq-wh-xJB" secondAttribute="width" multiplier="0.09375" id="jZi-fR-llR"/>
                             <constraint firstItem="3la-Oh-V1p" firstAttribute="leading" secondItem="t3d-5I-XYE" secondAttribute="leading" id="of2-9X-Zub"/>
                             <constraint firstItem="5mT-mO-LVT" firstAttribute="trailing" secondItem="3la-Oh-V1p" secondAttribute="trailing" id="ymH-qF-r0H"/>
                         </constraints>
@@ -140,6 +148,7 @@
                         <outlet property="blurView" destination="5mT-mO-LVT" id="Mio-4M-Td1"/>
                         <outlet property="containerView" destination="S4Q-zk-DcP" id="Iot-wN-HGu"/>
                         <outlet property="messageLabel" destination="f8E-Jw-1Dd" id="Uh2-tE-bDi"/>
+                        <outlet property="notificationButton" destination="xhh-sS-beC" id="nYI-Ps-kXu"/>
                         <outlet property="titleLabel" destination="ht4-yX-cPE" id="YLZ-2Y-ycf"/>
                     </connections>
                 </viewController>
@@ -152,11 +161,11 @@
             <objects>
                 <viewController storyboardIdentifier="NotificationsListViewController" id="SEG-Zq-OAY" customClass="NotificationsListViewController" customModule="Fiasy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jvH-LF-p80">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="L3A-YV-fRd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SEG-Zq-OAY" id="no0-8Z-zml"/>
@@ -164,7 +173,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Eg-mG-FO7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xm-5U-RJv">
                                         <rect key="frame" x="5" y="0.0" width="44" height="44"/>
@@ -178,7 +187,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Уведомления  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUE-50-uAD">
-                                        <rect key="frame" x="120" y="12" width="135.5" height="20"/>
+                                        <rect key="frame" x="92.5" y="12" width="135.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -237,7 +246,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Group (12)" width="282" height="74"/>
         <image name="Union" width="23" height="23"/>
         <image name="back_icon" width="16" height="16"/>
         <image name="undraw_notify_88a4" width="288" height="207"/>

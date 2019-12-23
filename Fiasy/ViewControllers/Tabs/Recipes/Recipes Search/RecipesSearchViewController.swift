@@ -84,9 +84,9 @@ extension RecipesSearchViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeMealtimeCell") as? RecipeMealtimeCell else { fatalError() }
-        cell.fillCell(recipes: allRecipes,
-                    delegate: self,
-                   indexPath: indexPath)
+//        cell.fillCell(recipes: allRecipes,
+//                    delegate: self,
+//                   indexPath: indexPath)
         return cell
     }
     
@@ -108,6 +108,9 @@ extension RecipesSearchViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension RecipesSearchViewController: RecipeMealtimeDelegate {
+    func searchRecipes(name: String) {
+        //
+    }
     
     func showMealtimeDetails() {
         performSegue(withIdentifier: "sequeRecipeMealtime", sender: nil)

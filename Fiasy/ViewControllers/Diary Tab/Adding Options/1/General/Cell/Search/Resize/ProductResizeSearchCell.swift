@@ -54,8 +54,8 @@ class ProductResizeSearchCell: UITableViewCell {
     // MARK: - Private -
     private func fillName(product: SecondProduct) { 
         let mutableAttrString = NSMutableAttributedString()
-        mutableAttrString.append(NSAttributedString(string: product.name, attributes: [.font: UIFont.sfProTextSemibold(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)]))
-        if let name = product.brand?.name {
+        mutableAttrString.append(NSAttributedString(string: product.name ?? "", attributes: [.font: UIFont.sfProTextSemibold(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)]))
+        if let name = product.brand?.name, name != "null" {
             mutableAttrString.append(NSAttributedString(string: " (\(name))", attributes: [.font: UIFont.sfProTextMedium(size: 13), .foregroundColor: #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)]))
         }
         productNameLabel.attributedText = mutableAttrString
@@ -65,7 +65,7 @@ class ProductResizeSearchCell: UITableViewCell {
         let mutableAttrString = NSMutableAttributedString()
         var range: String = ""
         var calorie: String = ""
-        let unit = product.isLiquid == true ? "мл" : "г"
+        let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT)
         if product.measurementUnits.count > 1 {
             if let first = product.measurementUnits.first, let last = product.measurementUnits.last {
                 range = "\(first.amount) - \(last.amount) \(unit)."
@@ -73,13 +73,13 @@ class ProductResizeSearchCell: UITableViewCell {
             if let calor = product.calories {
                 let first = calor * Double(product.measurementUnits.first?.amount ?? 0)
                 let last = calor * Double(product.measurementUnits.last?.amount ?? 0)
-                calorie = "\(Int(first.rounded(toPlaces: 1).displayOnly(count: 0))) - \(Int(last.rounded(toPlaces: 1).displayOnly(count: 0))) ккал"
+                calorie = "\(Int(first.rounded(toPlaces: 1).displayOnly(count: 0))) - \(Int(last.rounded(toPlaces: 1).displayOnly(count: 0))) \(LS(key: .CALORIES_UNIT))"
             }
         } else {
             range = "\(product.measurementUnits.first?.amount ?? 0) \(unit)."
             if let calor = product.calories {
                 let count = calor * Double(product.measurementUnits.first?.amount ?? 0)
-                calorie = "\(Int(count.rounded(toPlaces: 1).displayOnly(count: 0))) ккал"
+                calorie = "\(Int(count.rounded(toPlaces: 1).displayOnly(count: 0))) \(LS(key: .CALORIES_UNIT))"
             }
         }
         mutableAttrString.append(NSAttributedString(string: "\(product.measurementUnits.count) \(getPrefixTitle(count: product.measurementUnits.count)): \(range) • \(calorie)", attributes: [.font: UIFont.sfProTextSemibold(size: 11), .foregroundColor: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1)]))
@@ -87,19 +87,32 @@ class ProductResizeSearchCell: UITableViewCell {
     }
     
     private func getPrefixTitle(count: Int) -> String {
+        var countText: String = ""
         switch count {
         case 1:
-            return "порция"
+            countText = LS(key: .PORTION)
         case 2,3,4:
-            return "порции"
+            countText = LS(key: .SERVINGS)
         default:
-            return "порций"
+            if getPreferredLocale().languageCode == "ru" {
+                countText = "порций" 
+            } else {
+                countText = LS(key: .SERVINGS)
+            }
         }
+        return countText
     }
     
     // MARK: - Actions -
     @IBAction func arrowClicked(_ sender: Any) {
         guard let index = self.indexCell else { return }
         delegate?.arrowClicked(by: index)
+    }
+    
+    private func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
+        }
+        return Locale(identifier: preferredIdentifier)
     }
 }

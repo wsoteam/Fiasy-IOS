@@ -53,13 +53,27 @@
                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a71-Sl-3FI">
+                                        <rect key="frame" x="331" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="a71-Sl-3FI" secondAttribute="height" multiplier="1:1" id="Xog-Rk-vcp"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="new_close"/>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="LmB-ap-19F" eventType="touchUpInside" id="rSi-Wy-L8k"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dWu-YT-g08" firstAttribute="centerY" secondItem="pfe-hK-Sch" secondAttribute="centerY" id="4Lr-L5-C1f"/>
                                     <constraint firstAttribute="bottom" secondItem="bsf-3l-sny" secondAttribute="bottom" id="4if-jx-Jh8"/>
+                                    <constraint firstItem="a71-Sl-3FI" firstAttribute="top" secondItem="pfe-hK-Sch" secondAttribute="top" id="6wz-Jh-mf0"/>
                                     <constraint firstItem="dWu-YT-g08" firstAttribute="centerX" secondItem="pfe-hK-Sch" secondAttribute="centerX" id="JC9-8d-NvY"/>
+                                    <constraint firstAttribute="bottom" secondItem="a71-Sl-3FI" secondAttribute="bottom" id="NpP-jh-xHc"/>
                                     <constraint firstAttribute="height" constant="44" id="S42-3a-2DD"/>
+                                    <constraint firstAttribute="trailing" secondItem="a71-Sl-3FI" secondAttribute="trailing" id="dp4-TG-dmZ"/>
                                     <constraint firstItem="bsf-3l-sny" firstAttribute="top" secondItem="pfe-hK-Sch" secondAttribute="top" id="jg5-M8-7kd"/>
                                     <constraint firstItem="bsf-3l-sny" firstAttribute="leading" secondItem="pfe-hK-Sch" secondAttribute="leading" constant="5" id="mvi-zT-0p3"/>
                                 </constraints>
@@ -98,6 +112,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="navigationTitleLabel" destination="dWu-YT-g08" id="Vqf-jf-aRi"/>
                         <outlet property="tableBottomConstraint" destination="59o-rA-dDe" id="vCD-e6-BFl"/>
                         <outlet property="tableView" destination="Hcj-wl-CJv" id="2hv-4I-ae6"/>
                         <segue destination="iHQ-uZ-jbs" kind="presentation" identifier="sequeBarcodeScannerScreen" id="aM0-6Z-Exy"/>
@@ -147,19 +162,31 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Питательные вещества" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kV-k0-WRG">
-                                        <rect key="frame" x="86" y="12" width="203.5" height="20"/>
+                                        <rect key="frame" x="94" y="12" width="187" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qH5-Bo-yrX">
+                                        <rect key="frame" x="331" y="0.0" width="44" height="44"/>
+                                        <color key="tintColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="new_close"/>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="uka-jU-tAy" eventType="touchUpInside" id="Nvh-0L-mvO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qH5-Bo-yrX" secondAttribute="trailing" id="9DR-ca-xid"/>
                                     <constraint firstItem="QFZ-Fo-wMX" firstAttribute="leading" secondItem="EdP-mg-8Cb" secondAttribute="leading" constant="5" id="J9A-kD-OzF"/>
                                     <constraint firstItem="2kV-k0-WRG" firstAttribute="centerY" secondItem="EdP-mg-8Cb" secondAttribute="centerY" id="K0S-eE-TWi"/>
                                     <constraint firstItem="2kV-k0-WRG" firstAttribute="centerX" secondItem="EdP-mg-8Cb" secondAttribute="centerX" id="MRL-Rb-tQp"/>
+                                    <constraint firstItem="qH5-Bo-yrX" firstAttribute="width" secondItem="qH5-Bo-yrX" secondAttribute="height" multiplier="1:1" id="Min-3u-8xl"/>
                                     <constraint firstAttribute="height" constant="44" id="gU9-xc-k3j"/>
                                     <constraint firstItem="QFZ-Fo-wMX" firstAttribute="top" secondItem="EdP-mg-8Cb" secondAttribute="top" id="k83-UZ-HsS"/>
+                                    <constraint firstAttribute="bottom" secondItem="qH5-Bo-yrX" secondAttribute="bottom" id="p8y-Ol-rbi"/>
+                                    <constraint firstItem="qH5-Bo-yrX" firstAttribute="top" secondItem="EdP-mg-8Cb" secondAttribute="top" id="pGf-Er-qtD"/>
                                     <constraint firstAttribute="bottom" secondItem="QFZ-Fo-wMX" secondAttribute="bottom" id="t6M-at-Mcz"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -197,6 +224,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="navigationTitleLabel" destination="2kV-k0-WRG" id="g5f-Ny-Rg7"/>
                         <outlet property="tableBottomConstraint" destination="NjB-Yk-8RK" id="wck-5E-777"/>
                         <outlet property="tableView" destination="n1T-D8-DJt" id="nXt-lg-Lj7"/>
                         <segue destination="nbq-fv-yiV" kind="show" identifier="sequeAddProductThirdStep" id="bPQ-em-M8d"/>
@@ -235,7 +263,6 @@
                                         <state key="normal" title="ГОТОВО"/>
                                         <connections>
                                             <action selector="finishClicked:" destination="nbq-fv-yiV" eventType="touchUpInside" id="a5a-tp-Bv6"/>
-                                            <action selector="nextClicked:" destination="IJZ-bg-Ekj" eventType="touchUpInside" id="TT8-2u-q4g"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -280,11 +307,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проверка информации" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9D3-9m-JSl">
-                                        <rect key="frame" x="86.5" y="12" width="202.5" height="20"/>
+                                        <rect key="frame" x="95" y="12" width="185.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEY-d2-0XQ">
+                                        <rect key="frame" x="331" y="0.0" width="44" height="44"/>
+                                        <color key="tintColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="new_close"/>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="nbq-fv-yiV" eventType="touchUpInside" id="Syy-Iv-YwP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -293,7 +328,11 @@
                                     <constraint firstItem="9D3-9m-JSl" firstAttribute="centerX" secondItem="v6I-rY-78M" secondAttribute="centerX" id="bwm-mi-BHn"/>
                                     <constraint firstItem="8DI-LR-Kyy" firstAttribute="top" secondItem="v6I-rY-78M" secondAttribute="top" id="cel-kr-dYC"/>
                                     <constraint firstItem="8DI-LR-Kyy" firstAttribute="leading" secondItem="v6I-rY-78M" secondAttribute="leading" constant="5" id="eiH-pC-SAB"/>
+                                    <constraint firstItem="mEY-d2-0XQ" firstAttribute="top" secondItem="v6I-rY-78M" secondAttribute="top" id="etf-u8-KAl"/>
+                                    <constraint firstAttribute="trailing" secondItem="mEY-d2-0XQ" secondAttribute="trailing" id="l9g-xb-07N"/>
                                     <constraint firstAttribute="bottom" secondItem="8DI-LR-Kyy" secondAttribute="bottom" id="sPM-k0-xx6"/>
+                                    <constraint firstAttribute="bottom" secondItem="mEY-d2-0XQ" secondAttribute="bottom" id="uA1-kc-bmI"/>
+                                    <constraint firstItem="mEY-d2-0XQ" firstAttribute="width" secondItem="mEY-d2-0XQ" secondAttribute="height" multiplier="1:1" id="z0k-2F-B29"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="IBshadowRadius">
@@ -333,6 +372,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="finishButton" destination="Eo0-Up-HWr" id="kJC-Z4-6JQ"/>
+                        <outlet property="navigationTitleLabel" destination="9D3-9m-JSl" id="oaC-1e-Kjm"/>
                         <outlet property="tableBottomConstraint" destination="ADY-F6-R5R" id="Ifs-yM-VZj"/>
                         <outlet property="tableView" destination="JeN-3T-nQI" id="uw5-3l-rgb"/>
                     </connections>
@@ -414,19 +455,31 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размер порции" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFH-y0-GgK">
-                                        <rect key="frame" x="120" y="12" width="135" height="20"/>
+                                        <rect key="frame" x="126.5" y="12" width="122.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZP-8c-ySh">
+                                        <rect key="frame" x="331" y="0.0" width="44" height="44"/>
+                                        <color key="tintColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="new_close"/>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="IJZ-bg-Ekj" eventType="touchUpInside" id="Noe-sK-XOS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4cb-Mg-ZC8"/>
+                                    <constraint firstItem="9ZP-8c-ySh" firstAttribute="top" secondItem="xJb-aM-dff" secondAttribute="top" id="EKa-nA-otV"/>
+                                    <constraint firstItem="9ZP-8c-ySh" firstAttribute="width" secondItem="9ZP-8c-ySh" secondAttribute="height" multiplier="1:1" id="I6g-Sa-d9H"/>
                                     <constraint firstAttribute="bottom" secondItem="Mld-UG-QrV" secondAttribute="bottom" id="RHb-jf-mj4"/>
                                     <constraint firstItem="Mld-UG-QrV" firstAttribute="top" secondItem="xJb-aM-dff" secondAttribute="top" id="WTp-se-xoe"/>
                                     <constraint firstItem="YFH-y0-GgK" firstAttribute="centerY" secondItem="xJb-aM-dff" secondAttribute="centerY" id="XfA-cI-Lku"/>
                                     <constraint firstItem="Mld-UG-QrV" firstAttribute="leading" secondItem="xJb-aM-dff" secondAttribute="leading" constant="5" id="bRL-4K-oRj"/>
+                                    <constraint firstAttribute="bottom" secondItem="9ZP-8c-ySh" secondAttribute="bottom" id="cEm-6r-17R"/>
+                                    <constraint firstAttribute="trailing" secondItem="9ZP-8c-ySh" secondAttribute="trailing" id="dOT-2f-bCD"/>
                                     <constraint firstItem="YFH-y0-GgK" firstAttribute="centerX" secondItem="xJb-aM-dff" secondAttribute="centerX" id="jd8-wv-tm1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -467,7 +520,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="LQ9-QE-S71" id="4ms-mJ-pPk"/>
                         <outlet property="tableView" destination="dFN-dc-ON5" id="Kf0-Vl-oGB"/>
+                        <outlet property="titleNavigationLabel" destination="YFH-y0-GgK" id="35Q-cU-A0Q"/>
                         <segue destination="Nrt-94-LWQ" kind="show" identifier="sequeServingSizeScreen" id="6wa-JJ-Gyx"/>
                         <segue destination="uka-jU-tAy" kind="show" identifier="sequeAddProductSecondStep" id="7kG-EI-6qt"/>
                     </connections>
@@ -507,13 +562,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавить порцию" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6N-7Q-IR6">
-                                        <rect key="frame" x="109.5" y="12" width="156.5" height="20"/>
+                                        <rect key="frame" x="116" y="12" width="143.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j2-Tn-kUL">
-                                        <rect key="frame" x="306" y="0.0" width="59" height="44"/>
+                                        <rect key="frame" x="309" y="0.0" width="56" height="44"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <state key="normal" title="Готово">
                                             <color key="titleColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -619,10 +674,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="finishButton" destination="6j2-Tn-kUL" id="Osm-bh-vqB"/>
                         <outlet property="pickerContainerView" destination="wE7-ay-khl" id="JUJ-7O-K75"/>
                         <outlet property="selectedPicker" destination="sLw-ge-XSu" id="g9m-Ru-AT0"/>
                         <outlet property="tableBottomConstraint" destination="6CP-Ep-FnU" id="LCz-Ra-WvR"/>
                         <outlet property="tableView" destination="jqV-Us-30G" id="5on-zw-1sF"/>
+                        <outlet property="titleNavigationLabel" destination="A6N-7Q-IR6" id="nTP-HG-gqD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvD-IJ-f1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -633,5 +690,6 @@
     <resources>
         <image name="arrow-right_nextButton" width="12" height="10"/>
         <image name="back_icon" width="16" height="16"/>
+        <image name="new_close" width="23" height="23"/>
     </resources>
 </document>

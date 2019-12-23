@@ -14,6 +14,9 @@ import Amplitude_iOS
 class DishDescriptionCell: UITableViewCell {
     
     //MARK: - Outlet -
+    @IBOutlet weak var ingridientLabel: UILabel!
+    @IBOutlet weak var cookingMethodButton: UIButton!
+    @IBOutlet weak var addInDiaryButton: UIButton!
     @IBOutlet weak var timeCookingButton: UIButton!
     @IBOutlet weak var cookingDifficultyLabel: UILabel!
     @IBOutlet weak var numberOfServingLabel: UILabel!
@@ -27,13 +30,15 @@ class DishDescriptionCell: UITableViewCell {
     @IBOutlet weak var ingredientsStackView: UIStackView!
     
     //MARK: - Properties -
+    private var screenTitle: String = ""
     private var servingCount: Int = 1
     private var delegate: RecipesDetailsDelegate?
     private var ownRecipe: Bool = false
-    private var recipe: Listrecipe?
+    private var recipe: SecondRecipe?
     
     //MARK: - Interface -
-    func fillCell(recipe: Listrecipe, delegate: RecipesDetailsDelegate, ownRecipe: Bool) {
+    func fillCell(recipe: SecondRecipe, delegate: RecipesDetailsDelegate, ownRecipe: Bool, title: String) {
+        self.screenTitle = title
         self.recipe = recipe
         self.ownRecipe = ownRecipe
         self.delegate = delegate
@@ -42,23 +47,31 @@ class DishDescriptionCell: UITableViewCell {
         fillName(recipe)
         fillCookingSteps(recipe)
         
+        ingridientLabel.text = LS(key: .INGREDIENTS_ON)
+        addInDiaryButton.setTitle("      \(LS(key: .ADD_TO_DIARY).uppercased())      ", for: .normal)
+        cookingMethodButton.setTitle("  \(LS(key: .СOOKING_METHOD))", for: .normal)
+        
         guard let time = recipe.time else {
             return
         }
         
         var diffical: String = ""
-        if let complexity = recipe.complexity {
-            diffical = complexity
+//        if let complexity = recipe.complexity {
+//            diffical = complexity
+//        } else {
+//            if time <= 20 {
+//                diffical = "легко"
+//            } else {
+//                diffical = "сложно"
+//            }
+//        }
+        if time <= 30 {
+            diffical = LS(key: .COMPLEXITY_TEXT1)
         } else {
-            if time <= 20 {
-                diffical = "легко"
-            } else {
-                diffical = "сложно"
-            }
-        }
-        
-        timeCookingButton.setTitle("  \(time) мин", for: .normal)
-        cookingDifficultyLabel.text = "Сложность: \(diffical)  •  "
+            diffical = LS(key: .COMPLEXITY_TEXT2)
+        }        
+        timeCookingButton.setTitle("  \(time) \(LS(key: .MIN))", for: .normal)
+        cookingDifficultyLabel.text = "\(LS(key: .COMPLEXITY_TEXT3)): \(diffical)  •  "
     }
     
     private func fillScreenServing() {
@@ -72,53 +85,57 @@ class DishDescriptionCell: UITableViewCell {
         fillProtein(recipe)
     }
     
-    private func fillCalories(_ recipe: Listrecipe) {
+    private func fillCalories(_ recipe: SecondRecipe) {
         caloriesStackView.subviews.forEach { $0.removeFromSuperview() }
         if let calories = recipe.calories {
-            insertViewInStackView(stackView: caloriesStackView, left: "Калорий", right: "\(calories * servingCount) Ккал", isTitle: true)
+            insertViewInStackView(stackView: caloriesStackView, left: LS(key: .CALORIES).capitalizeFirst, right: "\(calories * servingCount) \(LS(key: .CALORIES_UNIT).capitalizeFirst)", isTitle: true)
         }
     }
-    
-    private func fillProtein(_ recipe: Listrecipe) {
+
+    private func fillProtein(_ recipe: SecondRecipe) {
         proteinStackView.subviews.forEach { $0.removeFromSuperview() }
         if let proteins = recipe.proteins {
-            insertViewInStackView(stackView: proteinStackView, left: "Белки", right: "\((proteins * Double(servingCount)).displayOnly(count: 2)) г", isTitle: true)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .PROTEIN).capitalizeFirst, right: "\((proteins * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
+        
         if let cholesterol = recipe.cholesterol {
-            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * servingCount).displayOnly(count: 2)) мг", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .CHOLESTEROL).capitalizeFirst, right: "\(Double(cholesterol * servingCount).rounded(toPlaces: 1)) \(LS(key: .COMPLEXITY_TEXT4))", isTitle: false)
         }
         if let sodium = recipe.sodium {
-            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * servingCount).displayOnly(count: 2)) мг", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .SODIUM).capitalizeFirst, right: "\(Double(sodium * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .COMPLEXITY_TEXT4))", isTitle: false)
         }
+        
         if let potassium = recipe.potassium {
-            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * servingCount).displayOnly(count: 2)) мг", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .POTASSIUM).capitalizeFirst, right: "\(Double(potassium * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .COMPLEXITY_TEXT4))", isTitle: false)
         }
     }
 
-    private func fillFats(_ recipe: Listrecipe) {
+    private func fillFats(_ recipe: SecondRecipe) {
         fatStackView.subviews.forEach { $0.removeFromSuperview() }
         if let fats = recipe.fats {
-            insertViewInStackView(stackView: fatStackView, left: "Жиры", right: "\((fats * Double(servingCount)).displayOnly(count: 2)) г", isTitle: true)
+            insertViewInStackView(stackView: fatStackView, left: LS(key: .FAT).capitalizeFirst, right: "\((fats * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
+        
         if let saturatedFats = recipe.saturatedFats {
-            insertViewInStackView(stackView: fatStackView, left: "Насыщенные", right: "\((saturatedFats * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: fatStackView, left: LS(key: .COMPLEXITY_TEXT5).capitalizeFirst, right: "\((saturatedFats * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
         if let unSaturatedFats = recipe.unSaturatedFats {
-            insertViewInStackView(stackView: fatStackView, left: "Ненасыщенные", right: "\((unSaturatedFats * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: fatStackView, left: LS(key: .COMPLEXITY_TEXT6).capitalizeFirst, right: "\((unSaturatedFats * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
     }
 
-    private func fillCarbohydrates(_ recipe: Listrecipe) {
+    private func fillCarbohydrates(_ recipe: SecondRecipe) {
         carbohydrateStackView.subviews.forEach { $0.removeFromSuperview() }
         if let carbohydrates = recipe.carbohydrates {
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Углеводы", right: "\((carbohydrates * Double(servingCount)).displayOnly(count: 2)) г", isTitle: true)
+            insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .CARBOHYDRATES_INTAKE).capitalizeFirst, right: "\((carbohydrates * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
+        
         if let cellulose = recipe.cellulose {
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Клетчатка", right: "\((cellulose * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .СELLULOSE).capitalizeFirst, right: "\((cellulose * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
 
         if let sugar = recipe.sugar {
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Сахар", right: "\((sugar * Double(servingCount)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .SUGAR).capitalizeFirst, right: "\((sugar * Double(servingCount)).rounded(toPlaces: 1)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
     }
 
@@ -128,8 +145,8 @@ class DishDescriptionCell: UITableViewCell {
         stackView.addArrangedSubview(view)
     }
 
-    private func fillCookingSteps(_ recipe: Listrecipe) {
-        if let items = recipe.instruction {
+    private func fillCookingSteps(_ recipe: SecondRecipe) {
+        if let items = recipe.instructions {
             for (index, item) in items.enumerated() {
                 guard let view = InstructionInsertView.fromXib() else { return }
                 view.fillView(index: index, title: item)
@@ -138,15 +155,15 @@ class DishDescriptionCell: UITableViewCell {
         }
     }
 
-    private func fillIngredient(_ recipe: Listrecipe) {
+    private func fillIngredient(_ recipe: SecondRecipe) {
         ingredientsStackView.subviews.forEach { $0.removeFromSuperview() }
-        if !recipe.selectedProduct.isEmpty {
-            for item in recipe.selectedProduct {
-                guard let view = IngredientInsertView.fromXib() else { return }
-                view.fillOwnRecipeView(product: item, count: servingCount)
-                ingredientsStackView.addArrangedSubview(view)
-            }
-        } else {
+//        if !recipe.selectedProduct.isEmpty {
+//            for item in recipe.selectedProduct {
+//                guard let view = IngredientInsertView.fromXib() else { return }
+//                view.fillOwnRecipeView(product: item, count: servingCount)
+//                ingredientsStackView.addArrangedSubview(view)
+//            }
+//        } else {
             if let items = recipe.ingredients {
                 for item in items {
                     guard let view = IngredientInsertView.fromXib() else { return }
@@ -154,13 +171,13 @@ class DishDescriptionCell: UITableViewCell {
                     ingredientsStackView.addArrangedSubview(view)
                 }
             }
-        }
+       // }
     }
 
     private func fillNutrientsLabel() {
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoMedium(size: 17.0),
-                                                color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), text: "Питательные вещества на"))
+                                                color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), text: LS(key: .PRODUCT_ADD_NUTRIENTS).capitalizeFirst))
         mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoMedium(size: 17.0),
                                                 color: #colorLiteral(red: 0.9386262298, green: 0.4906092286, blue: 0.001925615128, alpha: 1), text: " \(servingCount) "))
         mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoMedium(size: 17.0),
@@ -178,14 +195,14 @@ class DishDescriptionCell: UITableViewCell {
         numberOfServingLabel.attributedText = mutableAttrString
     }
 
-    private func fillName(_ recipe: Listrecipe) {
+    private func fillName(_ recipe: SecondRecipe) {
         let mutableAttrString = NSMutableAttributedString()
-        mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 20.0),
-                                              color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), text: recipe.name ?? ""))
-        if let units = recipe.units, Int(recipe.weight ?? 0) != 0 {
-            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 20.0),
-                               color: #colorLiteral(red: 0.4666130543, green: 0.4666974545, blue: 0.4666077495, alpha: 1), text: " (\(Int(recipe.weight ?? 0))\(units))"))
-        }
+        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextBold(size: 24.0),
+                                              color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: recipe.recipeName ?? ""))
+//        if let units = recipe.units, Int(recipe.weight ?? 0) != 0 {
+//            mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 20.0),
+//                               color: #colorLiteral(red: 0.4666130543, green: 0.4666974545, blue: 0.4666077495, alpha: 1), text: " (\(Int(recipe.weight ?? 0))\(units))"))
+//        }
         nameLabel.attributedText = mutableAttrString
     }
 
@@ -197,26 +214,37 @@ class DishDescriptionCell: UITableViewCell {
         var countText: String = ""
         switch servingCount {
         case 1:
-            countText = "порцию"
+            countText = LS(key: .PORTION)
         case 2,3,4:
-            countText = "порции"
+            countText = LS(key: .SERVINGS)
         default:
-            countText = "порций"
+            if getPreferredLocale().languageCode == "ru" {
+                countText = "порций"
+            } else {
+                countText = LS(key: .SERVINGS)
+            }
         }
         return countText
     }
     
-    private func fetchTitle(title: Eating) -> String {
-        switch title {
-        case .breakfast:
-            return "breakfasts"
-        case .dinner:
-            return "dinners"
-        case .lunch:
-            return "lunches"
-        case .snack:
-            return "snacks"
+//    private func fetchTitle(title: Eating) -> String {
+//        switch title {
+//        case .breakfast:
+//            return "breakfasts"
+//        case .dinner:
+//            return "dinners"
+//        case .lunch:
+//            return "lunches"
+//        case .snack:
+//            return "snacks"
+//        }
+//    }
+    
+    private func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
         }
+        return Locale(identifier: preferredIdentifier)
     }
     
     @IBAction func minusClicked(_ sender: Any) {
@@ -231,13 +259,13 @@ class DishDescriptionCell: UITableViewCell {
     }
     
     @IBAction func addProductClicked(_ sender: Any) {
-        
-        if ownRecipe {
-            guard let name = recipe?.name else { return }
-            Amplitude.instance()?.logEvent("add_custom_recipe", withEventProperties: ["recipe_id" : name]) // +
-        }
+//        
+//        if ownRecipe {
+//            guard let name = recipe?.recipeName else { return }
+//            Amplitude.instance()?.logEvent("add_custom_recipe", withEventProperties: ["recipe_id" : name]) // +
+//        }
 
-        if let uid = Auth.auth().currentUser?.uid, let weight = recipe?.weight, let protein = recipe?.proteins, let fat = recipe?.fats, let carbohydrates = recipe?.carbohydrates, let calories = recipe?.calories, let name = recipe?.name, let date = UserInfo.sharedInstance.selectedDate {
+        if let uid = Auth.auth().currentUser?.uid, let protein = recipe?.proteins, let fat = recipe?.fats, let carbohydrates = recipe?.carbohydrates, let calories = recipe?.calories, let name = recipe?.recipeName, let date = UserInfo.sharedInstance.selectedDate {
             
             let ref = Database.database().reference()
             let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
@@ -250,25 +278,23 @@ class DishDescriptionCell: UITableViewCell {
             
             let state = currentDay == day && currentMonth == month && currentYear == year
             
-            let userData = ["day": day, "month": month, "year": year, "name": name, "weight": Int(weight * Double(servingCount).rounded(toPlaces: 1)), "protein": Int(protein * Double(servingCount).rounded(toPlaces: 1)), "fat": Int(fat * Double(servingCount).rounded(toPlaces: 1)), "carbohydrates": Int(carbohydrates * Double(servingCount).rounded(toPlaces: 1)), "calories": Int(calories * servingCount), "isRecipe" : true, "presentDay" : state] as [String : Any]
-            ref.child("USER_LIST").child(uid).child(getTitle()).childByAutoId().setValue(userData)
+            let userData = ["day": day, "month": month, "year": year, "name": name, "urlOfImages" : recipe?.imageUrl, "weight": servingCount, "protein": protein, "fat": fat, "carbohydrates": carbohydrates, "calories": calories, "isRecipe" : true, "presentDay" : state] as [String : Any]
+            ref.child("USER_LIST").child(uid).child(getNewTitle()).childByAutoId().setValue(userData)
             
             Amplitude.instance()?.logEvent("add_recipe_success", withEventProperties: ["recipe_intake" : getSecondTitle()]) // +
-            
-            FirebaseDBManager.reloadItems()
             delegate?.showAnimate()
         }
     }
     
-    private func getTitle() -> String {
-        switch UserInfo.sharedInstance.selectedMealtimeIndex {
-        case 0:
+    private func getNewTitle() -> String {
+        switch screenTitle {
+        case LS(key: .BREAKFAST):
             return "breakfasts"
-        case 1:
+        case LS(key: .LUNCH):
             return "lunches"
-        case 2:
+        case LS(key: .DINNER):
             return "dinners"
-        case 3:
+        case LS(key: .SNACK):
             return "snacks"
         default:
             return "snacks"

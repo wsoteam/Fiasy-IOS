@@ -18,6 +18,9 @@ protocol MeasuringDelegate {
 class MeasuringViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var cancelPickerButton: UIButton!
+    @IBOutlet weak var finishPickerButton: UIButton!
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var pickerContainerView: UIView!
     @IBOutlet weak var selectedPicker: UIPickerView!
@@ -45,6 +48,9 @@ class MeasuringViewController: UIViewController {
         showActivity()
         fetchMeasuring()
         setupPickerView()
+        navigationTitleLabel.text = LS(key: .LONG_PREM_MEASURE_TITLE).capitalizeFirst
+        cancelPickerButton.setTitle("     \(LS(key: .CANCEL).uppercased())     ", for: .normal)
+        finishPickerButton.setTitle("     \(LS(key: .DONE).uppercased())     ", for: .normal)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,16 +76,16 @@ class MeasuringViewController: UIViewController {
         var leftSide: [String] = []
         var secondLeftSide: [String] = []
         for index in 30...300 {
-            leftSide.append("\(index) кг")
+            leftSide.append("\(index) \(LS(key: .WEIGHT_UNIT))")
         }
-        for index in 1...100 {
-            secondLeftSide.append("\(index) см")
+        for index in 1...300 {
+            secondLeftSide.append("\(index) \(LS(key: .GROWTH_UNIT))")
         }
         var rightSide: [String] = []
         var secondRightSide: [String] = []
         for index in 0...9 {
-            rightSide.append("\(index * 100) гр")
-            secondRightSide.append("\(index) мм")
+            rightSide.append("\(index * 100) \(LS(key: .GRAM_UNIT))")
+            secondRightSide.append("\(index) \(LS(key: .MEASURING_TITLE8))")
         }
         pickerData.append(leftSide)
         pickerData.append(rightSide)
@@ -151,13 +157,13 @@ class MeasuringViewController: UIViewController {
         guard let value = count else { return }
         if isPremiumPicker {
             var type: MeasuringType = .chest
-            var title: String = "Грудь обновлена"
+            var title: String = "\(LS(key: .MEASURING_TITLE1)) \(LS(key: .MEASURING_TITLE9))"
             if premiumTag == 1 {
                 type = .waist
-                title = "Талия обновлена"
+                title = "\(LS(key: .MEASURING_TITLE2)) \(LS(key: .MEASURING_TITLE9))"
             } else if premiumTag == 2 {
                 type = .hips
-                title = "Бедра обновлена"
+                title = "\(LS(key: .MEASURING_TITLE3)) \(LS(key: .MEASURING_TITLE9))"
             }
             FirebaseDBManager.addMeasuring(date: Date(), measuring: self.selectedMeasuring, weight: value, type: type) { [weak self] (result) in
                 guard let strongSelf = self else { return }
@@ -180,12 +186,20 @@ class MeasuringViewController: UIViewController {
             }
         } else {
             guard let date = self.selectedDate else { return }
-            FirebaseDBManager.addMeasuring(date: date, measuring: self.selectedMeasuring, weight: value, type: .weight) { [weak self] (result) in
+            FirebaseDBManager.addMeasuring(date: date, measuring: self.selectedMeasuring, weight: value.rounded(toPlaces: 1), type: .weight) { [weak self] (result) in
                 guard let strongSelf = self else { return }
+                
+                if let nv = strongSelf.navigationController {
+                    for vc in nv.viewControllers where vc is DiaryViewController {
+                        if let diary = vc as? DiaryViewController {
+                            diary.reloadMeaseringList()
+                        }
+                    }  
+                }
                 strongSelf.closePicker()
                 if let measuring = strongSelf.selectedMeasuring {
                     if Calendar.current.component(.day, from: measuring.date ?? Date()) == Calendar.current.component(.day, from: Date()) && Calendar.current.component(.month, from: measuring.date ?? Date()) == Calendar.current.component(.month, from: Date()) && Calendar.current.component(.year, from: measuring.date ?? Date()) == Calendar.current.component(.year, from: Date()) {
-                        strongSelf.showProgress(title: "Вес обновлен")
+                        strongSelf.showProgress(title: "\(LS(key: .WEIGHT)) \(LS(key: .MEASURING_TITLE11))")
                     }
 
                     for (index, item) in strongSelf.allMeasurings.enumerated() where item.generalKey == measuring.generalKey {
@@ -214,8 +228,16 @@ class MeasuringViewController: UIViewController {
         FirebaseDBManager.removeMeasuring(measuring: measuring, type: .weight) {  [weak self] in
             guard let strongSelf = self else { return }
             for (index,item) in strongSelf.allMeasurings.enumerated() where item.generalKey == measuring.generalKey {
+                
+                if let nv = strongSelf.navigationController {
+                    for vc in nv.viewControllers where vc is DiaryViewController {
+                        if let diary = vc as? DiaryViewController {
+                            diary.reloadMeaseringList()
+                        }
+                    }  
+                }
                 strongSelf.closePicker()
-                strongSelf.showProgress(title: "Вес удален")                
+                strongSelf.showProgress(title: "\(LS(key: .WEIGHT)) \(LS(key: .MEASURING_TITLE10))")                
                 strongSelf.selectedMeasuring = nil
                 strongSelf.allMeasurings.remove(at: index)
                 strongSelf.delegate?.replaceMeasuringList(list: strongSelf.allMeasurings)
@@ -291,7 +313,7 @@ extension MeasuringViewController: MeasuringDelegate {
                 }
             }
         } else {
-            selectedPicker.selectRow(0, inComponent: 0, animated: false)
+            selectedPicker.selectRow(99, inComponent: 0, animated: false)
             selectedPicker.selectRow(0, inComponent: 1, animated: false)
         }
         
@@ -329,8 +351,22 @@ extension MeasuringViewController: MeasuringDelegate {
                 }
             }
         } else {
-            selectedPicker.selectRow(0, inComponent: 0, animated: false)
-            selectedPicker.selectRow(0, inComponent: 1, animated: false)
+            if let currentWeight = UserInfo.sharedInstance.currentUser?.weight?.rounded(toPlaces: 1) {
+                let fullNameArr : [String] = "\(currentWeight)".components(separatedBy: ".")
+                if fullNameArr.count == 2 {
+                    let left = (Int(fullNameArr[0]) ?? 0) - 30
+                    let right = Int(fullNameArr[1]) ?? 0
+                    if (left >= 0 && right >= 0) && (pickerData[0].indices.contains(left) && pickerData[1].indices.contains(right)) {
+                        selectedPicker.selectRow(left, inComponent: 0, animated: false)
+                        selectedPicker.selectRow(right, inComponent: 1, animated: false)
+                    } else {
+                        selectedPicker.selectRow(0, inComponent: 0, animated: false)
+                        selectedPicker.selectRow(0, inComponent: 1, animated: false)
+                    }
+                }
+            }
+//            selectedPicker.selectRow(0, inComponent: 0, animated: false)
+//            selectedPicker.selectRow(0, inComponent: 1, animated: false)
         }
         
         if let _ = measuring {

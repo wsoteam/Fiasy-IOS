@@ -29,8 +29,8 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
         switch indexPath.row {
         case 0:
             nameTextField.tag = 0
-            errorLabel.text = "Введите калорийность продукта"
-            titleLabel.text = "Калорийность (ккал)"
+            errorLabel.text = LS(key: .CREATE_STEP_TITLE_31)
+            titleLabel.text = "\(LS(key: .PRODUCT_CALORIES)) (\(LS(key: .CALORIES_UNIT)))"
             if let calories = flow.calories {
                 nameTextField.text = calories
             } else {
@@ -38,8 +38,8 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
             }
         case 1:
             nameTextField.tag = 1
-            errorLabel.text = "Введите жиры продукта"
-            titleLabel.text = "Жиры (г)"
+            errorLabel.text = LS(key: .CREATE_STEP_TITLE_32)
+            titleLabel.text = "\(LS(key: .FAT).capitalizeFirst) (\(LS(key: .GRAMS_UNIT)))"
             if let fats = flow.fat {
                 nameTextField.text = fats
             } else {
@@ -47,8 +47,8 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
             }
         case 2:
             nameTextField.tag = 2
-            errorLabel.text = "Введите углеводы продукта"
-            titleLabel.text = "Углеводы (г)"
+            errorLabel.text = LS(key: .CREATE_STEP_TITLE_33)
+            titleLabel.text = "\(LS(key: .CARBOHYDRATES_INTAKE)) (\(LS(key: .GRAMS_UNIT)))"
             if let carbohydrates = flow.carbohydrates {
                 nameTextField.text = carbohydrates
             } else {
@@ -56,8 +56,8 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
             }
         case 3:
             nameTextField.tag = 3
-            errorLabel.text = "Введите белки продукта"
-            titleLabel.text = "Белки (г)"
+            errorLabel.text = LS(key: .CREATE_STEP_TITLE_34)
+            titleLabel.text = "\(LS(key: .PROTEIN).capitalizeFirst) (\(LS(key: .GRAMS_UNIT)))"
             if let proteins = flow.protein {
                 nameTextField.text = proteins
             } else {
@@ -74,56 +74,56 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
         nameTextField.keyboardType = .decimalPad
         switch indexPath.row {
         case 0:
-            titleLabel.text = "Клетчатка (г)"
+            titleLabel.text = "\(LS(key: .СELLULOSE)) (\(LS(key: .GRAMS_UNIT)))"
             if let cellulose = flow.cellulose {
                 nameTextField.text = cellulose
             } else {
                 nameTextField.text?.removeAll()
             }
         case 1:
-            titleLabel.text = "Сахар (г)"
+            titleLabel.text = "\(LS(key: .SUGAR)) (\(LS(key: .GRAMS_UNIT)))"
             if let sugar = flow.sugar {
                 nameTextField.text = sugar
             } else {
                 nameTextField.text?.removeAll()
             }
         case 2:
-            titleLabel.text = "Насыщенные жиры (г)"
+            titleLabel.text = "\(LS(key: .SATURATED_FAT)) (\(LS(key: .GRAMS_UNIT)))"
             if let saturatedFats = flow.saturatedFats {
                 nameTextField.text = saturatedFats
             } else {
                 nameTextField.text?.removeAll()
             }
         case 3:
-            titleLabel.text = "Мононенасыщенные жиры (г)"
+            titleLabel.text = "\(LS(key: .MONOUNSATURATED_FAT)) (\(LS(key: .GRAMS_UNIT)))"
             if let monoUnSaturatedFats = flow.monounsaturatedFats {
                 nameTextField.text = monoUnSaturatedFats
             } else {
                 nameTextField.text?.removeAll()
             }
         case 4:
-            titleLabel.text = "Полиненасыщенные жиры (г)"
+            titleLabel.text = "\(LS(key: .POLYUNSATURATED_FATS)) (\(LS(key: .GRAMS_UNIT)))"
             if let polyUnSaturatedFats = flow.polyunsaturatedFats {
                 nameTextField.text = polyUnSaturatedFats
             } else {
                 nameTextField.text?.removeAll()
             }
         case 5:
-            titleLabel.text = "Холестерин (мг)"
+            titleLabel.text = "\(LS(key: .CHOLESTEROL)) (\(LS(key: .COMPLEXITY_TEXT4)))"
             if let cholesterol = flow.cholesterol {
                 nameTextField.text = cholesterol
             } else {
                 nameTextField.text?.removeAll()
             }
         case 6:
-            titleLabel.text = "Натрий (мг)"
+            titleLabel.text = "\(LS(key: .SODIUM)) (\(LS(key: .COMPLEXITY_TEXT4)))"
             if let sodium = flow.sodium {
                 nameTextField.text = sodium
             } else {
                 nameTextField.text?.removeAll()
             }
         case 7:
-            titleLabel.text = "Калий (мг)"
+            titleLabel.text = "\(LS(key: .POTASSIUM)) (\(LS(key: .COMPLEXITY_TEXT4)))"
             if let pottassium = flow.potassium {
                 nameTextField.text = pottassium
             } else {
@@ -140,7 +140,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                titleLabel.text = "Марка/производитель"
+                titleLabel.text = LS(key: .BRAND_MANUFACTURER)
                 var text: String = ""
                 let fullNameArr = (flow.brend ?? "").split{$0 == " "}.map(String.init)
                 for item in fullNameArr where !item.isEmpty {
@@ -148,7 +148,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                 }
                 nameTextField.text = text.isEmpty ? "-" : text
             case 1:
-                titleLabel.text = "Название продукта"
+                titleLabel.text = LS(key: .PRODUCT_NAME)
                 var text: String = ""
                 let fullNameArr = (flow.name ?? "").split{$0 == " "}.map(String.init)
                 for item in fullNameArr where !item.isEmpty {
@@ -156,7 +156,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                 }
                 nameTextField.text = text.isEmpty ? "-" : text
             case 2:
-                titleLabel.text = "Штрих-код"
+                titleLabel.text = LS(key: .BARCODE)
                 if let barCode = flow.barCode, !barCode.isEmpty {
                     nameTextField.text = barCode
                 } else {
@@ -176,7 +176,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
         } else {
             switch indexPath.row {
             case 0:
-                titleLabel.text = "Калорийность (ккал)"
+                titleLabel.text = "\(LS(key: .PRODUCT_CALORIES)) (\(LS(key: .CALORIES_UNIT)))"
                 if let calories = flow.calories, !calories.isEmpty {
                     if calories.contains(".") {
                         var fullNameArr = calories.components(separatedBy: ".")
@@ -191,7 +191,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 1:
-                titleLabel.text = "Жиры (г)"
+                titleLabel.text = "\(LS(key: .FATS_INTAKE)) (\(LS(key: .GRAMS_UNIT)))"
                 if let fat = flow.fat, !fat.isEmpty {
                     if fat.contains(".") {
                         var fullNameArr = fat.components(separatedBy: ".")
@@ -206,7 +206,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 2:
-                titleLabel.text = "Углеводы (г)"
+                titleLabel.text = "\(LS(key: .CARBOHYDRATES_INTAKE)) (\(LS(key: .GRAMS_UNIT)))"
                 if let carbohydrates = flow.carbohydrates, !carbohydrates.isEmpty {
                     if carbohydrates.contains(".") {
                         var fullNameArr = carbohydrates.components(separatedBy: ".")
@@ -221,7 +221,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 3:
-                titleLabel.text = "Белки (г)"
+                titleLabel.text = "\(LS(key: .PROTEIN_INTAKE)) (\(LS(key: .GRAMS_UNIT)))"
                 if let protein = flow.protein, !protein.isEmpty {
                     if protein.contains(".") {
                         var fullNameArr = protein.components(separatedBy: ".")
@@ -236,7 +236,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 4:
-                titleLabel.text = "Клетчатка (г)"
+                titleLabel.text = "\(LS(key: .СELLULOSE)) (\(LS(key: .GRAMS_UNIT)))"
                 if let cellulose = flow.cellulose, !cellulose.isEmpty {
                     if cellulose.contains(".") {
                         var fullNameArr = cellulose.components(separatedBy: ".")
@@ -251,7 +251,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 5:
-                titleLabel.text = "Сахар (мг)"
+                titleLabel.text = "\(LS(key: .SUGAR)) (\(LS(key: .COMPLEXITY_TEXT4)))"
                 if let sugar = flow.sugar, !sugar.isEmpty {
                     if sugar.contains(".") {
                         var fullNameArr = sugar.components(separatedBy: ".")
@@ -266,7 +266,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 6:
-                titleLabel.text = "Насыщенные жиры (г)"
+                titleLabel.text = "\(LS(key: .SATURATED_FAT)) (\(LS(key: .GRAMS_UNIT)))"
                 if let saturatedFats = flow.saturatedFats, !saturatedFats.isEmpty {
                     if saturatedFats.contains(".") {
                         var fullNameArr = saturatedFats.components(separatedBy: ".")
@@ -281,7 +281,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 7:
-                titleLabel.text = "Мононенасыщенные жиры (г)"
+                titleLabel.text = "\(LS(key: .MONOUNSATURATED_FAT)) (\(LS(key: .GRAMS_UNIT)))"
                 if let monounsaturatedFats = flow.monounsaturatedFats, !monounsaturatedFats.isEmpty {
                     if monounsaturatedFats.contains(".") {
                         var fullNameArr = monounsaturatedFats.components(separatedBy: ".")
@@ -296,7 +296,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 8:
-                titleLabel.text = "Полиненасыщенные жиры (г)"
+                titleLabel.text = "\(LS(key: .POLYUNSATURATED_FATS)) (\(LS(key: .GRAMS_UNIT)))"
                 if let polyunsaturatedFats = flow.polyunsaturatedFats, !polyunsaturatedFats.isEmpty {
                     if polyunsaturatedFats.contains(".") {
                         var fullNameArr = polyunsaturatedFats.components(separatedBy: ".")
@@ -311,7 +311,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 9:
-                titleLabel.text = "Холестерин (мг)"
+                titleLabel.text = "\(LS(key: .CHOLESTEROL)) (\(LS(key: .COMPLEXITY_TEXT4)))"
                 if let cholesterol = flow.cholesterol, !cholesterol.isEmpty {
                     if cholesterol.contains(".") {
                         var fullNameArr = cholesterol.components(separatedBy: ".")
@@ -326,7 +326,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 10:
-                titleLabel.text = "Натрий (мг)"
+                titleLabel.text = "\(LS(key: .SODIUM)) (\(LS(key: .COMPLEXITY_TEXT4)))"
                 if let sodium = flow.sodium, !sodium.isEmpty {
                     if sodium.contains(".") {
                         var fullNameArr = sodium.components(separatedBy: ".")
@@ -341,7 +341,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                     nameTextField.text = "-"
                 }
             case 11:
-                titleLabel.text = "Калий (мг)"
+                titleLabel.text = "\(LS(key: .POTASSIUM)) (\(LS(key: .COMPLEXITY_TEXT4)))"
                 if let potassium = flow.potassium, !potassium.isEmpty {
                     if potassium.contains(".") {
                         var fullNameArr = potassium.components(separatedBy: ".")
@@ -366,7 +366,7 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
         
         switch index {
         case 0:
-            titleLabel.text = "Название рецепта"
+            titleLabel.text = LS(key: .RECIPES_NAME)
     
             var recipeName: String = ""
             let fullNameArr = (flow.recipeName ?? "").split{$0 == " "}.map(String.init)
@@ -375,10 +375,10 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
             }
             nameTextField.text = recipeName
         case 1:
-            titleLabel.text = "Время приготовления"
-            nameTextField.text = "\(flow.time ?? "") мин."
+            titleLabel.text = LS(key: .TIME_FOR_PREPARING)
+            nameTextField.text = "\(flow.time ?? "") \(LS(key: .MIN))."
         case 2:
-            titleLabel.text = "Сложность"
+            titleLabel.text = LS(key: .COMPLEXITY)
             nameTextField.text = flow.complexity
         default:
             break

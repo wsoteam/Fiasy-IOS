@@ -38,23 +38,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Woh-BC-hBg">
-                                <rect key="frame" x="0.0" y="519" width="375" height="99"/>
+                                <rect key="frame" x="0.0" y="502" width="375" height="116"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bHj-3C-7ry">
-                                <rect key="frame" x="0.0" y="40" width="375" height="479"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="462"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2H-Mf-R4H">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дневник" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdU-Bn-Rvx">
-                                                <rect key="frame" x="20" y="20" width="305" height="97"/>
+                                                <rect key="frame" x="20" y="20" width="305" height="60"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="32"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ne3-iu-k6G">
-                                                <rect key="frame" x="306.5" y="44.5" width="48.5" height="48.5"/>
+                                                <rect key="frame" x="323" y="34" width="32" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ne3-iu-k6G" secondAttribute="height" multiplier="1:1" id="mra-w2-QdY"/>
                                                 </constraints>
@@ -67,22 +67,22 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="NdU-Bn-Rvx" secondAttribute="bottom" id="6WH-8I-6Cx"/>
-                                            <constraint firstItem="Ne3-iu-k6G" firstAttribute="height" secondItem="NdU-Bn-Rvx" secondAttribute="height" multiplier="0.5" id="MPa-u6-I8k"/>
                                             <constraint firstItem="NdU-Bn-Rvx" firstAttribute="leading" secondItem="U2H-Mf-R4H" secondAttribute="leading" constant="20" id="PJx-uF-tLf"/>
                                             <constraint firstItem="Ne3-iu-k6G" firstAttribute="centerY" secondItem="NdU-Bn-Rvx" secondAttribute="centerY" id="SUy-m0-g00"/>
                                             <constraint firstItem="NdU-Bn-Rvx" firstAttribute="top" secondItem="U2H-Mf-R4H" secondAttribute="top" constant="20" id="VKj-JR-SBu"/>
                                             <constraint firstAttribute="trailing" secondItem="Ne3-iu-k6G" secondAttribute="trailing" constant="20" id="kTA-3T-52c"/>
+                                            <constraint firstItem="Ne3-iu-k6G" firstAttribute="height" secondItem="U2H-Mf-R4H" secondAttribute="height" multiplier="0.4" id="knl-vS-3Lm"/>
                                             <constraint firstAttribute="trailing" secondItem="NdU-Bn-Rvx" secondAttribute="trailing" constant="50" id="wND-ZE-1i3"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xie-pE-WCi">
-                                        <rect key="frame" x="0.0" y="137" width="375" height="342"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="362"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NoQ-Jd-f9v">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="312"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="332"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2Mi-S2-QHl">
-                                                        <rect key="frame" x="20" y="0.0" width="335" height="312"/>
+                                                        <rect key="frame" x="20" y="0.0" width="335" height="332"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFg-q4-5Sx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -297,49 +297,49 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swB-VV-2RF">
-                                                                <rect key="frame" x="0.0" y="80" width="335" height="232"/>
+                                                                <rect key="frame" x="0.0" y="80" width="335" height="252"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXD-h9-7I9">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="232"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="252"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="пн" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DId-AW-ZEP">
-                                                                                <rect key="frame" x="11.5" y="0.0" width="17" height="232"/>
+                                                                                <rect key="frame" x="11.5" y="0.0" width="17" height="252"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uhH-XX-Sfc">
-                                                                                <rect key="frame" x="61.5" y="0.0" width="15" height="232"/>
+                                                                                <rect key="frame" x="61.5" y="0.0" width="15" height="252"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ср" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="awr-B3-Bta">
-                                                                                <rect key="frame" x="110" y="0.0" width="17" height="232"/>
+                                                                                <rect key="frame" x="110" y="0.0" width="17" height="252"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="чт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="50N-eK-WDZ">
-                                                                                <rect key="frame" x="160" y="0.0" width="15.5" height="232"/>
+                                                                                <rect key="frame" x="160" y="0.0" width="15.5" height="252"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="пт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jqz-d9-QH1">
-                                                                                <rect key="frame" x="208.5" y="0.0" width="16" height="232"/>
+                                                                                <rect key="frame" x="208.5" y="0.0" width="16" height="252"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="сб" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xtL-k5-69H">
-                                                                                <rect key="frame" x="257.5" y="0.0" width="17" height="232"/>
+                                                                                <rect key="frame" x="257.5" y="0.0" width="17" height="252"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="вс" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QkO-aK-4eE">
-                                                                                <rect key="frame" x="307" y="0.0" width="16" height="232"/>
+                                                                                <rect key="frame" x="307" y="0.0" width="16" height="252"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                                                                 <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -386,7 +386,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5G-pW-fj1">
-                                                <rect key="frame" x="0.0" y="312" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="332" width="375" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vE2-3v-hKc" userLabel="bottomShadow">
                                                         <rect key="frame" x="0.0" y="10" width="375" height="20"/>
@@ -512,6 +512,13 @@
                         <outletCollection property="dateLabels" destination="joy-Wn-PLG" collectionClass="NSMutableArray" id="zns-bl-rBx"/>
                         <outletCollection property="dateLabels" destination="9c0-w4-ja3" collectionClass="NSMutableArray" id="5kL-ZM-5y2"/>
                         <outletCollection property="dateLabels" destination="xea-gA-nrN" collectionClass="NSMutableArray" id="y9h-di-fHc"/>
+                        <outletCollection property="weekLabels" destination="DId-AW-ZEP" collectionClass="NSMutableArray" id="GhF-Mg-tQj"/>
+                        <outletCollection property="weekLabels" destination="uhH-XX-Sfc" collectionClass="NSMutableArray" id="dfc-oB-tAC"/>
+                        <outletCollection property="weekLabels" destination="awr-B3-Bta" collectionClass="NSMutableArray" id="qbQ-HA-8Qm"/>
+                        <outletCollection property="weekLabels" destination="50N-eK-WDZ" collectionClass="NSMutableArray" id="5BU-6T-JjA"/>
+                        <outletCollection property="weekLabels" destination="Jqz-d9-QH1" collectionClass="NSMutableArray" id="HZd-si-lNp"/>
+                        <outletCollection property="weekLabels" destination="xtL-k5-69H" collectionClass="NSMutableArray" id="UFD-oO-Oj2"/>
+                        <outletCollection property="weekLabels" destination="QkO-aK-4eE" collectionClass="NSMutableArray" id="6Xs-Xa-IV7"/>
                         <segue destination="qGV-dV-QGk" kind="show" identifier="sequeProductsList" id="sge-IJ-xFN"/>
                         <segue destination="nXg-VV-FfA" kind="show" identifier="sequeWaterDetailsScreen" id="v2V-hm-niU"/>
                         <segue destination="x1T-wK-zeV" kind="show" identifier="sequeActivityList" id="GbT-Ur-SXM"/>
@@ -570,7 +577,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="JcJ-mI-H79" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Дневник" id="s15-bk-bs8" customClass="MenuTabBarItem" customModule="Fiasy" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="imageItem" value="diary_tab"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="imageItem" value="tab_1"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
@@ -791,6 +798,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="fFj-es-kAz" id="xrF-mC-08M"/>
+                        <outlet property="titleNavigationLabel" destination="CSf-20-OW5" id="Opp-Yb-PP4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0d-We-GvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -975,6 +983,8 @@
                     <connections>
                         <outlet property="activity" destination="dhe-e9-FSP" id="okc-38-KwP"/>
                         <outlet property="emptyView" destination="e2O-z8-1WR" id="2dv-vf-8mc"/>
+                        <outlet property="navigationTitleLabel" destination="1IF-lD-wFW" id="Vfb-ke-oh9"/>
+                        <outlet property="searchTextField" destination="71q-9f-KUX" id="PNw-oq-fL1"/>
                         <outlet property="tableBottomConstraint" destination="sYc-if-hU0" id="ffZ-nD-9Vo"/>
                         <outlet property="tableView" destination="AeU-Qk-AaP" id="gBC-fc-JI4"/>
                         <segue destination="V0t-WJ-xd1" kind="show" identifier="sequeActivityDetails" id="cZw-sn-hvy"/>
@@ -1068,6 +1078,7 @@
                         <viewLayoutGuide key="safeArea" id="avI-SB-bkG"/>
                     </view>
                     <connections>
+                        <outlet property="navigationTitleLabel" destination="kcc-Mm-4WY" id="4Nw-37-oLD"/>
                         <outlet property="tableBottomConstraint" destination="n4M-Tc-gmF" id="Vt1-AE-wvr"/>
                         <outlet property="tableView" destination="STW-9d-ZMK" id="Ocj-Lj-DPb"/>
                     </connections>
@@ -1160,6 +1171,7 @@
                         <viewLayoutGuide key="safeArea" id="rcq-mJ-bPi"/>
                     </view>
                     <connections>
+                        <outlet property="navigationTitleLabel" destination="B3d-B4-BFU" id="gwg-n9-6aU"/>
                         <outlet property="tableBottomConstraint" destination="6zP-iC-NES" id="xPB-n0-weD"/>
                         <outlet property="tableView" destination="MI1-gW-x3H" id="CL9-7O-WXx"/>
                     </connections>
@@ -1252,6 +1264,7 @@
                         <viewLayoutGuide key="safeArea" id="SBA-0S-tvg"/>
                     </view>
                     <connections>
+                        <outlet property="navigationTitleLabel" destination="b0M-jn-vHU" id="Jfw-U9-AxO"/>
                         <outlet property="tableBottomConstraint" destination="kcN-hd-OPs" id="Jsb-pv-ms1"/>
                         <outlet property="tableView" destination="oEN-4K-vbc" id="bY9-gi-1rx"/>
                     </connections>
@@ -1454,7 +1467,7 @@
                                                         </constraints>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Shape (3)" translatesAutoresizingMaskIntoConstraints="NO" id="c99-Xm-Kxk">
-                                                        <rect key="frame" x="119" y="89" width="28" height="22"/>
+                                                        <rect key="frame" x="119" y="92" width="28" height="16"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Вес удален" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGy-7L-Yed">
                                                         <rect key="frame" x="0.0" y="160" width="266" height="18"/>
@@ -1528,6 +1541,9 @@
                     <connections>
                         <outlet property="activityIndicator" destination="D2s-Wj-QME" id="WzH-AG-50d"/>
                         <outlet property="activityView" destination="xPp-Hp-gF8" id="G6C-RC-LyI"/>
+                        <outlet property="cancelPickerButton" destination="M1E-To-KNC" id="VgT-Vt-zTU"/>
+                        <outlet property="finishPickerButton" destination="ksM-1h-VdD" id="MUe-Jz-4Mr"/>
+                        <outlet property="navigationTitleLabel" destination="73t-Ah-i8W" id="ZP2-6Z-bJq"/>
                         <outlet property="pickerContainerView" destination="UDF-1V-ZPB" id="hti-CP-J5I"/>
                         <outlet property="progressContainerView" destination="OCp-ww-jq3" id="OJM-ll-3xK"/>
                         <outlet property="progressTitleLabel" destination="hGy-7L-Yed" id="lfY-eL-FvY"/>
@@ -1632,6 +1648,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="uFn-az-jJU" id="6Yw-gs-vRQ"/>
+                        <outlet property="titleDescriptionLabel" destination="eRP-Q6-wmX" id="xZU-7v-zkR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMD-bo-4EM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1847,13 +1864,13 @@
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="cOv-ig-ldX">
-                                        <rect key="frame" x="79" y="133.5" width="217" height="276.5"/>
+                                        <rect key="frame" x="79" y="201" width="217" height="141.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 133" translatesAutoresizingMaskIntoConstraints="NO" id="pai-c6-NbE">
-                                                <rect key="frame" x="0.0" y="0.0" width="217" height="151"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="217" height="16"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aVk-QF-UB7">
-                                                <rect key="frame" x="0.0" y="181" width="217" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="46" width="217" height="95.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71Y-sL-5tq">
                                                         <rect key="frame" x="0.0" y="0.0" width="217" height="26.5"/>
@@ -1969,12 +1986,19 @@
                     <connections>
                         <outlet property="activityIndicator" destination="WCF-tJ-Gwf" id="Iav-K0-HZv"/>
                         <outlet property="activityView" destination="28p-bv-HoF" id="0PH-8N-mmo"/>
+                        <outlet property="emptyMessageLabel" destination="ElW-Gq-Afn" id="j1e-6P-3sp"/>
                         <outlet property="emptySectionsView" destination="igt-7B-mb9" id="FTf-NO-rUP"/>
+                        <outlet property="emptyTitleLabel" destination="71Y-sL-5tq" id="wlI-eg-bhE"/>
+                        <outlet property="navigationTitleLabel" destination="sKn-pN-JjD" id="j4M-vb-thf"/>
                         <outlet property="tableView" destination="Paz-CT-XgN" id="urv-FA-pD9"/>
                         <outletCollection property="backgroundListVIews" destination="3UY-cJ-Q7Z" collectionClass="NSMutableArray" id="14q-cc-1MR"/>
                         <outletCollection property="backgroundListVIews" destination="Rx5-hu-pP2" collectionClass="NSMutableArray" id="btT-rq-gMq"/>
                         <outletCollection property="backgroundListVIews" destination="pw7-aC-EYx" collectionClass="NSMutableArray" id="SY3-wT-ujG"/>
                         <outletCollection property="backgroundListVIews" destination="rxs-Qc-Ad3" collectionClass="NSMutableArray" id="P9b-D4-Umf"/>
+                        <outletCollection property="navigationLabels" destination="7UH-aI-UIR" collectionClass="NSMutableArray" id="S9e-KU-o9l"/>
+                        <outletCollection property="navigationLabels" destination="JZd-VK-EIp" collectionClass="NSMutableArray" id="b5J-uj-8jO"/>
+                        <outletCollection property="navigationLabels" destination="JPU-8f-692" collectionClass="NSMutableArray" id="Vcg-YP-Vcf"/>
+                        <outletCollection property="navigationLabels" destination="n2T-GA-uiw" collectionClass="NSMutableArray" id="8eh-yF-IDv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4T-9p-ywr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2074,7 +2098,6 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="closePickerClicked:" destination="9TG-WV-taE" eventType="touchUpInside" id="QQM-FP-CNI"/>
-                                                    <action selector="closePickerClicked:" destination="fLF-DP-rrY" eventType="touchUpInside" id="qjl-i9-2my"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lje-4G-I4p">
@@ -2093,7 +2116,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="addMeasuringClicked:" destination="fLF-DP-rrY" eventType="touchUpInside" id="7fU-N9-JzA"/>
                                                     <action selector="addWeightClicked:" destination="9TG-WV-taE" eventType="touchUpInside" id="t2B-kH-dc7"/>
                                                 </connections>
                                             </button>
@@ -2238,6 +2260,8 @@
                     </view>
                     <connections>
                         <outlet property="blurView" destination="Zpd-dh-Y15" id="YO8-wF-WUp"/>
+                        <outlet property="cancelButton" destination="VJJ-0U-bPn" id="oGo-Si-qqh"/>
+                        <outlet property="finishButton" destination="lje-4G-I4p" id="ZZI-dP-ozd"/>
                         <outlet property="listContainerView" destination="Rzo-p2-Ofl" id="Sbo-Mr-c3o"/>
                         <outlet property="menuTableView" destination="zb0-2y-4ak" id="nFS-gA-1WQ"/>
                         <outlet property="pickerContainerView" destination="I3t-ks-0Ug" id="hpr-j5-EfY"/>

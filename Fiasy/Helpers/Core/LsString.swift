@@ -10,12 +10,24 @@ import Foundation
 
 public enum LS_STRING: String {
     
+    case TAB_TITLE1 = "tab_title1"
+    case TAB_TITLE2 = "tab_title2"
+    case TAB_TITLE3 = "tab_title3"
+    case TAB_TITLE4 = "tab_title4"
+    
     case UNBOARDING_WELCOME = "unboarding_welcome"
     case UNBOARDING_FIRST_SCREEN = "unboarding_first_screen"
     case UNBOARDING_SECOND_SCREEN = "unboarding_second_screen"
     case UNBOARDING_THIRD_SCREEN = "unboarding_third_screen"
     case UNBOARDING_SKEEP = "unboarding_skeep"
     case UNBOARDING_NEXT = "unboarding_next"
+    
+    /*    Barcode Screen    */
+    case BARCODE_TITLE_1 = "barcode_title_1"
+    case BARCODE_TITLE_2 = "barcode_title_2"
+    case BARCODE_TITLE_3 = "barcode_title_3"
+    case BARCODE_TITLE_4 = "barcode_title_4"
+    case BARCODE_TITLE_5 = "barcode_title_5"
     
     /*    Setting Screen    */
     case SETTINGS_HELP = "settings_items_help"
@@ -55,6 +67,7 @@ public enum LS_STRING: String {
     
     /*    Privacy Policy Screen    */
     case PRIVACY_DESCRIPTION = "privacy_description"
+    case SELECTED_PRODUCT_TITLE = "selected_products"
     
     /*    Reset Password Screen    */
     case RESET_SEND = "reset_send"
@@ -69,6 +82,19 @@ public enum LS_STRING: String {
     case USER_DOES_NOT_EXIST = "user_does_not_exist"
     case CHECK_MAIL = "check_mail"
     case SENDED = "sended"
+    
+    case DIARY_MES_1 = "diary_mes_1"
+    case DIARY_MES_2 = "diary_mes_2"
+    case DIARY_MES_3 = "diary_mes_3"
+    case DIARY_MES_4 = "diary_mes_4"
+    case DIARY_MES_5 = "diary_mes_5"
+    case DIARY_MES_6 = "diary_mes_6"
+    case DIARY_MES_7 = "diary_mes_7" 
+    case DIARY_MES_8 = "diary_mes_8"
+    case DIARY_MES_9 = "diary_mes_9"
+    case DIARY_MES_11 = "diary_mes_11"
+    case DIARY_MES_12 = "diary_mes_12"
+    
     
     /*    Interrogation Screen    */
     case SELECT_YOUR_GENDER = "select_your_gender"
@@ -94,6 +120,17 @@ public enum LS_STRING: String {
     case THIRD_TARGET = "third_target"
     case FOURTH_TARGET = "fourth_target"
     
+    case ART_SERIES_TITLE = "art_series_series_title"
+    case ART_SERIES_DAY = "art_series_day"
+    case ART_SERIES_INFO = "art_series_series_info"
+    case ART_SERIES_AUTHOR_TITLE = "art_series_author_title"
+    case ART_SERIES_AUTHOR_BURLAKOV = "art_series_author_burlakov"
+    case ART_SERIES_AUTHOR_BURLAKOV_BIO = "art_series_author_burlakov_bio"
+    case ART_SERIES_AUTHOR_BURLAKOV_BIO2 = "art_series_author_burlakov_bio2"
+    case ART_SERIES_AUTHOR_BURLAKOV_ACHIV1 = "art_series_author_burlakov_achiv1"
+    case ART_SERIES_AUTHOR_BURLAKOV_ACHIV2 = "art_series_author_burlakov_achiv2"
+    case ART_SERIES_AUTHOR_BURLAKOV_ACHIV3 = "art_series_author_burlakov_achiv3"
+    
     /*    Interrogation Finish Screen    */
     case WAIT_A_WHILE = "wait_a_while"
     case WAIT_A_WHILE_DESCRIPTION = "wait_a_while_description"
@@ -107,11 +144,19 @@ public enum LS_STRING: String {
     case IN_A_MONTH = "in_a_month"
     case FIRST_PIECE_DESCRIPTION = "first_piece_description"
     case SECOND_PIECE_DESCRIPTION = "second_piece_description"
+    case TEXT_START_SEARCH = "text_start_search"
+    case BARCODE_TITLE = "barCode_title"
+    case PATTERNS_TITLE = "patterns_title"
+    case MY_DISHES_TITLE = "my_dishes_title"
+    case MY_PRODUCTS_TITLE = "my_products_title"
 
     /*    Premium Screen    */
+    case PAY_DESCRIPTION_1 = "pay_description_1"
+    case PAY_DESCRIPTION_2 = "pay_description_2"
     case LONG_PREM_OPEN = "long_prem_open"
     case MANY_MOUNTH = "many_mounth"
     case TITLE_SAVE_PERCENT = "title_save_percent"
+    case TITLE_SAVE_PERCENT2 = "title_save_percent2"
     case BLACK_PREM_HOURS = "black_prem_hours"
     case BLACK_PREM_MINUTES = "black_prem_minutes"
     case BLACK_PREM_SECONDS = "black_prem_seconds"
@@ -124,6 +169,8 @@ public enum LS_STRING: String {
     case LONG_PREM_FEATURES_STATISTIC = "long_prem_features_statistic"
     case LONG_PREM_FEATURES_BODY = "long_prem_features_body"
     case LONG_PREM_FEATURES_BUY = "buy"
+    case PREMIUM_TITLE_NEW_1 = "premium_title_new_1"
+    case PREMIUM_TITLE_NEW_2 = "premium_title_new_2"
 
     case LONG_PREM_EASY = "long_prem_easy"
     case LONG_PREM_ARTICLE_TITLE = "long_prem_article_title"
@@ -136,6 +183,26 @@ public enum LS_STRING: String {
     case LONG_PREM_PLANS_TXT = "long_prem_plans_txt"
     case LONG_PREM_MEASURE_TITLE = "long_prem_measure_title"
     case LONG_PREM_MEASURE_TXT = "long_prem_measure_txt"
+    
+    case MEASURING_TITLE1 = "measuring_title_1"
+    case MEASURING_TITLE2 = "measuring_title_2"
+    case MEASURING_TITLE3 = "measuring_title_3"
+    case MEASURING_TITLE4 = "measuring_title_4"
+    case MEASURING_TITLE5 = "measuring_title_5"
+    case MEASURING_TITLE6 = "measuring_title_6"
+    case MEASURING_TITLE7 = "meas_future_day"
+    case MEASURING_TITLE8 = "measuring_title_7"
+    case MEASURING_TITLE9 = "measuring_title_9"
+    case MEASURING_TITLE10 = "measuring_title_10"
+    case MEASURING_TITLE11 = "measuring_title_11"
+    case MEASURING_TITLE12 = "measuring_title_12"
+    case MEASURING_TITLE13 = "measuring_title_13"
+    case MEAS_TITLE_BOTTOM = "meas_title_bottom"
+    case HELP_MEAS_FIRST_TITLE = "help_meas_first_title"
+    case HELP_MEAS_FIRST_TEXT = "help_meas_first_text"
+    case HELP_MEAS_SECOND_TITLE = "help_meas_second_title"
+    case HELP_MEAS_SECOND_TEXT = "help_meas_second_text"
+    case HELP_MEAS_THIRD_TEXT = "help_meas_third_text"
     
     case PREMIUM_TITLE_2 = "premium_title_2"
     case PREMIUM_TITLE = "premium_title"
@@ -154,6 +221,8 @@ public enum LS_STRING: String {
     case PAYMENT_BOTTOM_DESCRIPTION = "payment_bottom_description"
     case PRIVACY_TITLE = "privacy_title"
     case PAY_DESCRIPTION = "pay_description"
+    case PREM_DESCRIPTION_1 = "premium_description_Label"
+    case PREM_VERSION_1 = "premium_version"
     
     /*    Premium purchase success Screen    */
     case CONGRATULATIONS = "congratulations"
@@ -200,6 +269,12 @@ public enum LS_STRING: String {
     case EXIT = "exit"
     case LOG_OFF = "log_off"
     case CANCEL = "cancel"
+    case APPLY = "apply"
+    case DELETE = "remove"
+    
+    case RECIPE_DETAILS_SUBSC_BTN = "subsc_btn_bay"
+    case RECIPE_DETAILS_TITLE_1 = "recipe_details_title_1"
+    case RECIPE_DETAILS_TITLE_2 = "recipe_details_title_2"
     
     /*    Promotional Code Screen    */
     case PROMOTIONAL_NAVIGATION = "promotional_navigation"
@@ -243,6 +318,7 @@ public enum LS_STRING: String {
     case EATEN_UP = "eaten_up"
     case BURNT = "burnt"
     case LEFT = "left"
+    case EXCESS = "excess"
     case WATER = "water"
     case WATER_UNIT = "water_unit"
     case NORM_ESTABLISHED_FIRST = "norm_established_first"
@@ -254,6 +330,12 @@ public enum LS_STRING: String {
     //case ACTIVITY = "activity"
     case ALL = "all"
     case WATER_SETTINGS = "water_settings"
+    case LIG_PRODUCT = "lig_product"
+    case GRAM_UNIT = "gram_unit"
+    case TITLE_CHANGE1 = "title_change_1"
+    case DIARY_MES_17 = "diary_mes_17"
+    case PRODUCT_CHANGED_IN_BUSKET = "product_changed_in_busket"
+    case PRODUCT_ADDED_IN_DIARY = "product_changed_in_diary"
     
     /*    Water Screen    */
     case BENEFIT_WATER_TITLE = "benefit_water_title"
@@ -265,10 +347,12 @@ public enum LS_STRING: String {
     case LITER = "liter"
     case YOUR_DAILY_RATE = "your_daily_rate"
     case MAKE_DEFAULT = "make_default"
+    case WATER_ALERT = "water_alert"
     
     /*    Activity Screen    */
     case ALERT_YES = "alert_yes"
     case ALERT_NO = "alert_no"
+    case ALERT_CONFIRM2 = "alert_dialog_confirm_question2"
     case ACTIVITY_REMOVE_ALERT = "alert_dialog_confirm_question"
     case ACTIVITY_NAVIGATION = "activity_navigation"
     case MY_ACTIVITY = "my_activity"
@@ -287,21 +371,90 @@ public enum LS_STRING: String {
     case CALORIES_COUNT_DESCRIPTION = "calories_count_description"
     case CALORIES = "calories"
     case ATTENTION = "attention"
+    case ADD_PRODUCT_NEW = "add_product_new"
     case ATTENTION_DESCRIPTION = "attention_description"
     case CALORIES_SPENT = "calories_spent"
+    case DIARY_MES_13 = "diary_mes_13"
+    case DIARY_MES_14 = "diary_mes_14"
+    case DIARY_MES_15 = "diary_mes_15"
+    case DIARY_MES_16 = "diary_mes_16"
     case FOR = "for"
     case MOVE_SLIDER = "move_slider"
     case ADD_TO_DIARY = "add_to_diary"
+    case ALERT_ADD = "alert_add"
+    case RESULT_SEARCH = "result_search"
+    case SELECTED_BASKET = "selected_basket"
+    case COUNT_PRODUCTS = "count_products"
+    case ADD_USER_ACTIVITY_HINT = "add_user_activity_hint"
+    case MINIMAL_CALORIES_COUNT = "minimal_calories_count"
+    
+    case COMPLEXITY_TEXT1 = "complexity_text1"
+    case COMPLEXITY_TEXT2 = "complexity_text2"
+    case COMPLEXITY_TEXT3 = "complexity_text3"
+    case COMPLEXITY_TEXT4 = "complexity_text4"
+    case COMPLEXITY_TEXT5 = "complexity_text5"
+    case COMPLEXITY_TEXT6 = "complexity_text6"
+    
+    case ALERT_DEVELOPMENT = "alert_development"
+    case ALERT_BASKET = "alert_basket"
     
     /*    Search Product Screen    */
     case SEARCH_EMPTY = "search_empty"
+    
+    /*    Create Product Step Screen    */
+    case CREATE_STEP_TITLE_1 = "create_step_title_1"
+    case CREATE_STEP_TITLE_2 = "create_step_title_2"
+    case CREATE_STEP_TITLE_3 = "create_step_title_3"
+    case CREATE_STEP_TITLE_4 = "create_step_title_4"
+    case CREATE_STEP_TITLE_5 = "create_step_title_5"
+    case CREATE_STEP_TITLE_6 = "create_step_title_6"
+    case CREATE_STEP_TITLE_7 = "create_step_title_7"
+    case CREATE_STEP_TITLE_8 = "create_step_title_8"
+    case CREATE_STEP_TITLE_9 = "create_step_title_9"
+    case CREATE_STEP_TITLE_10 = "create_step_title_10"
+    case CREATE_STEP_TITLE_11 = "create_step_title_11"
+    case CREATE_STEP_TITLE_12 = "create_step_title_12"
+    case CREATE_STEP_TITLE_13 = "create_step_title_13"
+    case CREATE_STEP_TITLE_14 = "create_step_title_14"
+    case CREATE_STEP_TITLE_15 = "create_step_title_15"
+    case CREATE_STEP_TITLE_16 = "create_step_title_16"
+    case CREATE_STEP_TITLE_17 = "create_step_title_17"
+    case CREATE_STEP_TITLE_18 = "create_step_title_18"
+    case CREATE_STEP_TITLE_19 = "create_step_title_19"
+    case CREATE_STEP_TITLE_20 = "create_step_title_20"
+    case CREATE_STEP_TITLE_21 = "create_step_title_21"
+    case CREATE_STEP_TITLE_22 = "create_step_title_22"
+    case CREATE_STEP_TITLE_23 = "create_step_title_23"
+    case CREATE_STEP_TITLE_24 = "create_step_title_24"
+    case CREATE_STEP_TITLE_25 = "create_step_title_25"
+    case CREATE_STEP_TITLE_26 = "create_step_title_26"
+    case CREATE_STEP_TITLE_27 = "create_step_title_27"
+    case CREATE_STEP_TITLE_28 = "create_step_title_28"
+    case CREATE_STEP_TITLE_29 = "create_step_title_29"
+    case CREATE_STEP_TITLE_30 = "create_step_title_30"
+    case CREATE_STEP_TITLE_31 = "create_step_title_31"
+    case CREATE_STEP_TITLE_32 = "create_step_title_32"
+    case CREATE_STEP_TITLE_33 = "create_step_title_33"
+    case CREATE_STEP_TITLE_34 = "create_step_title_34"
+    case CREATE_STEP_TITLE_35 = "create_step_title_35"
+    case CREATE_STEP_TITLE_36 = "create_step_title_36"
+    case CREATE_STEP_TITLE_37 = "create_step_title_37"
+    case CREATE_STEP_TITLE_38 = "create_step_title_38"
+    
+    
+    
+    
+    
+    
     
     /*    My Product List Screen    */
     case ADD_PRODUCT = "add_product"
     case PRODUCT_NOT_FOUND = "product_not_found"
     case PRODUCT_LIST_EMPTY = "product_list_empty"
+    case MY_PRODUCT_TITLE_1 = "my_product_title_1"
     
     /*    My Recipes List Screen    */
+    case SEARCH_FIELD_PLACEHOLDER = "search_field_placeholder"
     case ADD_RECIPES = "add_recipes"
     case RECIPES_NOT_FOUND = "recipes_not_found"
     case RECIPES_LIST_EMPTY = "recipes_list_empty"
@@ -351,6 +504,7 @@ public enum LS_STRING: String {
     case PRODUCT_INFO = "product_info"
     case NUTRITIONAL_VALUE = "nutritional_value"
     case PRODUCT_ADDED_TO_YOUR_PRODUCTS = "product_added_to_your_products"
+    case PRODUCT_DETAILS_DESC = "product_details_desc"
     
     /*    Product Details Screen    */
     case PRODUCT_CALCULATION = "product_calculation"
@@ -364,6 +518,30 @@ public enum LS_STRING: String {
     case INGREDIENTS_ON = "ingredients_on"
     case СOOKING_METHOD = "сooking_method"
     case RECIPE_ADDED = "recipe_added"
+    
+    /*    Calories Intake Screen    */
+    case WRITE_GROWTH = "write_growth"
+    case WRITE_WEIGHT = "write_weight"
+    case WRITE_AGE = "write_age"
+    case CHECK_YOUR_AGE = "check_your_age"
+    case CHECK_WRITTEN_WEIGHT = "check_written_weight"
+    case CHECK_WRITTEN_AGE = "check_written_age"
+    case CHECK_WRITTEN_CALORIES = "check_written_calories"
+    case CHECK_WRITTEN_PROTEIN_DESCRIPTION = "check_written_protein_description"
+    case CHECK_WRITTEN_CARBOHYDRATES_DESCRIPTION = "check_written_carbohydrates_description"
+    case CHECK_WRITTEN_FATS_DESCRIPTION = "check_written_fats_description"
+    case WRITE_YOUR_NAME = "write_your_name"
+    case CHECK_YOUR_NAME = "check_your_name"
+    case CHECK_YOUR_LAST_NAME = "check_your_last_name"
+    case CHECK_YOUR_EMAIL = "check_your_email"
+    
+    case ARTICLE_PREMIUM_DESCRIPTION = "article_premium_description"
+    case ARTICLE_PREMIUM_BUTTON = "article_premium_button"
+    case ADD_PRODUCT_IN_JOURNAL = "add_product_in_journal"
+    case REMOVE_PRODUCT = "remove_product"
+    
+    case ACTIVITY_DESCRIPTION_1 = "activiti_description_1"
+    case ACTIVITY_DESCRIPTION_2 = "activiti_description_2"
     
     /*    Default Activity  List  */
     case AIKIDO = "aikido"
@@ -562,6 +740,27 @@ public enum LS_STRING: String {
 
 public func LS(key: LS_STRING) -> String {
     return key.rawValue.Localized()
+}
+
+public func LS_WEEK(index: Int) -> String {
+    switch index {
+    case 0:
+        return LS(key: .MONDAY)
+    case 1:
+        return LS(key: .TUESDAY)
+    case 2:
+        return LS(key: .WEDNESDAY)
+    case 3:
+        return LS(key: .THURSDAY)
+    case 4:
+        return LS(key: .FRIDAY)
+    case 5:
+        return LS(key: .SATURDAY)
+    case 6:
+        return LS(key: .SUNDAY)
+    default:
+        return ""
+    }
 }
 
 public extension String {

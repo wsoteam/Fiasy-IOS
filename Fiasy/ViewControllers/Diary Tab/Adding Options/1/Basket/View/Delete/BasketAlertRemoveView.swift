@@ -12,6 +12,8 @@ import UICircularProgressRing
 class BasketAlertRemoveView: UIView {
     
     // MARK: - Outlet -
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var progressView: UICircularTimerRing!
     @IBOutlet weak var timerLabel: CountdownLabel!
     
@@ -20,6 +22,14 @@ class BasketAlertRemoveView: UIView {
     private var delegate: BasketDelegate?
     private var startTimer: Bool = true
     private var isFinished: Bool = false
+    
+    // MARK: - Life Cicle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        cancelButton.setTitle(LS(key: .CANCEL).capitalizeFirst, for: .normal)
+        removeButton.setTitle(" \(LS(key: .REMOVE_PRODUCT))", for: .normal)
+    }
     
     // MARK: - Interface -
     func fillView(delegate: BasketDelegate, index: IndexPath) {

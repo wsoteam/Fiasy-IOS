@@ -16,7 +16,7 @@ class Product: NSObject {
     var day: Int?
     var month: Int?
     var year: Int?
-    var name: String!
+    var name: String?
     var brend: String?
     var portion: Double?
     var isLiquid: Bool?

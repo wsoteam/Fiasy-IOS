@@ -21,19 +21,19 @@ class ProductAddingOptionsCell: UITableViewCell {
         switch indexPath.row {
         case 0:
             topConstraint.constant = 6
-            titleLabel.text = "Найти продукт по штрих-коду"
+            titleLabel.text = LS(key: .BARCODE_TITLE)
             listImageView.image = #imageLiteral(resourceName: "price-scan-scanner-bar-barcode-code-2 (1)")
         case 1:
-            titleLabel.text = "Избранное"
+            titleLabel.text = LS(key: .FAVORITES)
             listImageView.image = #imageLiteral(resourceName: "like_addprod")
         case 2:
-            titleLabel.text = "Шаблоны"
+            titleLabel.text = LS(key: .PATTERNS_TITLE)
             listImageView.image = #imageLiteral(resourceName: "Group 43")
         case 3:
-            titleLabel.text = "Мои блюда"
+            titleLabel.text = LS(key: .MY_DISHES_TITLE)
             listImageView.image = #imageLiteral(resourceName: "test_34")
         case 4:
-            titleLabel.text = "Мои продукты"
+            titleLabel.text = LS(key: .MY_PRODUCTS_TITLE)
             listImageView.image = #imageLiteral(resourceName: "my_prod")
         default:
             break

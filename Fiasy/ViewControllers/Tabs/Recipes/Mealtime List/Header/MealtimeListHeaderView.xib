@@ -1,45 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
+        <array key="SFProText-Medium.ttf">
+            <string>SFProText-Medium</string>
         </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MealtimeListHeaderView" customModule="Fiasy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+        <view contentMode="scaleToFill" id="6rZ-7S-EqX" customClass="MealtimeListHeaderView" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Завтрак" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbE-Kt-Hpc">
-                    <rect key="frame" x="157" y="32" width="61.5" height="28"/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGj-fA-qoq" userLabel="search Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SZA-8J-IS0">
+                            <rect key="frame" x="16" y="20" width="343" height="43"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="017-tJ-ar6">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Поиск по рецептам" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wpa-nh-MMi" customClass="DesignableUITextField" customModule="Fiasy" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.24310663339999999" green="0.24315488339999999" blue="0.24310365319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Search_suggest"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                    <color key="value" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                    <color key="value" red="0.72933274510000001" green="0.72923868889999999" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="valueChange:" destination="6rZ-7S-EqX" eventType="editingChanged" id="qpR-Dl-2nY"/>
+                                                <outlet property="delegate" destination="6rZ-7S-EqX" id="JVs-YK-u90"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="wpa-nh-MMi" firstAttribute="leading" secondItem="017-tJ-ar6" secondAttribute="leading" id="4g1-40-Cik"/>
+                                        <constraint firstAttribute="bottom" secondItem="wpa-nh-MMi" secondAttribute="bottom" id="K1s-pP-N8L"/>
+                                        <constraint firstAttribute="trailing" secondItem="wpa-nh-MMi" secondAttribute="trailing" id="YwH-Vs-S9Z"/>
+                                        <constraint firstItem="wpa-nh-MMi" firstAttribute="top" secondItem="017-tJ-ar6" secondAttribute="top" id="d0t-WZ-C5e"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
+                                            <real key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="IBshadowRadius">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="IBshadowOpacity">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="size" keyPath="IBshadowOffset">
+                                            <size key="value" width="1" height="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
+                                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.20350569390000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aY6-OM-Axi">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="43"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                                    <state key="normal" title="Отмена">
+                                        <color key="titleColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelClicked:" destination="6rZ-7S-EqX" eventType="touchUpInside" id="Lgs-MY-ADb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="SZA-8J-IS0" secondAttribute="trailing" constant="16" id="4bB-lp-40P"/>
+                        <constraint firstItem="SZA-8J-IS0" firstAttribute="leading" secondItem="YGj-fA-qoq" secondAttribute="leading" constant="16" id="DDT-7T-SQJ"/>
+                        <constraint firstItem="SZA-8J-IS0" firstAttribute="top" secondItem="YGj-fA-qoq" secondAttribute="top" constant="20" id="HA8-UD-0Tg"/>
+                        <constraint firstAttribute="bottom" secondItem="SZA-8J-IS0" secondAttribute="bottom" constant="20" id="KWM-g5-ePo"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="IBshadowRadius">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="IBshadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="IBshadowOffset">
+                            <size key="value" width="0.0" height="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="wbE-Kt-Hpc" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Dd1-Hk-JNe"/>
-                <constraint firstItem="wbE-Kt-Hpc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="L6T-ev-GD8"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wbE-Kt-Hpc" secondAttribute="bottom" constant="10" id="man-hm-WKF"/>
+                <constraint firstAttribute="bottom" secondItem="YGj-fA-qoq" secondAttribute="bottom" id="0bu-VQ-Jfz"/>
+                <constraint firstItem="YGj-fA-qoq" firstAttribute="leading" secondItem="6rZ-7S-EqX" secondAttribute="leading" id="5sZ-yD-98S"/>
+                <constraint firstAttribute="trailing" secondItem="YGj-fA-qoq" secondAttribute="trailing" id="O98-rQ-QkW"/>
+                <constraint firstItem="YGj-fA-qoq" firstAttribute="top" secondItem="6rZ-7S-EqX" secondAttribute="top" id="dwU-uz-aK6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="Eu0-EH-D8Z"/>
             <connections>
-                <outlet property="titleLabel" destination="wbE-Kt-Hpc" id="1Mu-QN-sYD"/>
+                <outlet property="cancelSearchButton" destination="aY6-OM-Axi" id="CxH-Kr-avH"/>
+                <outlet property="generalStackView" destination="SZA-8J-IS0" id="DkO-n7-NT6"/>
+                <outlet property="rightConstraint" destination="4bB-lp-40P" id="X0S-YX-3nQ"/>
+                <outlet property="searchContainerView" destination="YGj-fA-qoq" id="c5T-Zh-WbI"/>
+                <outlet property="textField" destination="wpa-nh-MMi" id="gbK-g9-sD0"/>
             </connections>
-            <point key="canvasLocation" x="138.40000000000001" y="-125.93703148425789"/>
+            <point key="canvasLocation" x="132.60869565217394" y="171.76339285714286"/>
         </view>
     </objects>
+    <resources>
+        <image name="Search_suggest" width="15" height="15"/>
+    </resources>
 </document>

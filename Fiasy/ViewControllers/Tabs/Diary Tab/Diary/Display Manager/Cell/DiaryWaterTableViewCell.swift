@@ -36,6 +36,24 @@ class DiaryWaterTableViewCell: UITableViewCell {
         
         fillDropDown()
         setupCollectionView()
+        
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            waterFiledImageView.image = #imageLiteral(resourceName: "water_es")
+        case "pt":
+            // португалия (бразилия)
+            waterFiledImageView.image = #imageLiteral(resourceName: "water_pt")
+        case "en":
+            // английский
+            waterFiledImageView.image = #imageLiteral(resourceName: "water_eng")
+        case "de":
+            // немецикий
+            waterFiledImageView.image = #imageLiteral(resourceName: "water_de")
+        default:
+            // русский
+            waterFiledImageView.image = #imageLiteral(resourceName: "water_iconLimit")
+        }
     }
     
     // MARK: - Interface -
@@ -45,9 +63,9 @@ class DiaryWaterTableViewCell: UITableViewCell {
         
         if let user = UserInfo.sharedInstance.currentUser, let waterCount = user.maxWater {
             let count = "\(waterCount)".replacingOccurrences(of: ".0", with: "")
-            descriptionLabel.text = "Норма установлена на \(count)л. Чтобы изменить\nэто значение нажмите • • •"
+            descriptionLabel.text = "\(LS(key: .NORM_ESTABLISHED_FIRST).capitalizeFirst) \(count)\(LS(key: .WATER_UNIT)). \(LS(key: .NORM_ESTABLISHED_SECOND).capitalizeFirst) • • •"
         } else {
-            descriptionLabel.text = "Норма установлена на \(2)л. Чтобы изменить\nэто значение нажмите • • •"
+            descriptionLabel.text = "\(LS(key: .NORM_ESTABLISHED_FIRST).capitalizeFirst) \(2)\(LS(key: .WATER_UNIT)). \(LS(key: .NORM_ESTABLISHED_SECOND).capitalizeFirst) • • •"
         }
         
         if !UserInfo.sharedInstance.allWaters.isEmpty {
@@ -91,9 +109,9 @@ class DiaryWaterTableViewCell: UITableViewCell {
     private func setupTopLabel(count: String) {
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 20),
-                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "Вода - "))
+                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "\(LS(key: .WATER).capitalizeFirst) - "))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 20),
-                                                     color: #colorLiteral(red: 0.1752049029, green: 0.6115815043, blue: 0.8576936722, alpha: 1), text: "\(count) л."))
+                                                     color: #colorLiteral(red: 0.1752049029, green: 0.6115815043, blue: 0.8576936722, alpha: 1), text: "\(count) \(LS(key: .WATER_UNIT))."))
         topLabel.attributedText = mutableAttrString
     }
     
@@ -138,7 +156,7 @@ class DiaryWaterTableViewCell: UITableViewCell {
     private func fillDropDown() {
         DropDown.appearance().textFont = UIFont.sfProTextMedium(size: 15)
         if dropDown.dataSource.isEmpty {
-            dropDown.dataSource.append("  Настройки воды  ")
+            dropDown.dataSource.append("  \(LS(key: .WATER_SETTINGS))  ")
         }
         
         offsetView.layoutIfNeeded()

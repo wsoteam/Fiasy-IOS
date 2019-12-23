@@ -15,6 +15,7 @@ import Amplitude_iOS
 class ErrorViewController: UIViewController {
     
     // MARK: - Outlet's -
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var messageStackView: UIStackView!
     @IBOutlet weak var progressContainerView: UIView!
@@ -28,6 +29,8 @@ class ErrorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        descriptionLabel.text = LS(key: .REPORT_BUG)
+        sendButton.setTitle(LS(key: .RESET_SEND).lowercased().capitalizeFirst, for: .normal)
         Amplitude.instance().logEvent("product_page_bugsend") // +
         setupInitialState()
         sendTextView.configureGrowingTextView()

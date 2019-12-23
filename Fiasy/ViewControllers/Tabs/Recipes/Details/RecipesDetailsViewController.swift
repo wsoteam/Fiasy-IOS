@@ -22,6 +22,8 @@ protocol RecipesDetailsDelegate {
 class RecipesDetailsViewController: UIViewController {
     
     //MARK: - Outlet's -
+    @IBOutlet weak var alertTitleLabel: UILabel!
+    @IBOutlet weak var updatePremiumButton: UIButton!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak private var containerView: UIView!
     @IBOutlet weak var backButton: UIButton!
@@ -34,27 +36,27 @@ class RecipesDetailsViewController: UIViewController {
     
     //MARK: - Properties -
     private var ownRecipe: Bool = false
-    private let selectedRecipe = UserInfo.sharedInstance.selectedRecipes
+    private var screenTitle: String = LS(key: .BREAKFAST)
+    private var selectedRecipe: SecondRecipe?
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    //MARK: - Life Cicle -
+    // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        alertTitleLabel.text = LS(key: .RECIPE_ADDED).capitalizeFirst
         setupTableView()
-        ownRecipe = ((backViewController() as? GeneralTabBarViewController) != nil)
+        updatePremiumButton.setTitle("        \(LS(key: .RECIPE_DETAILS_SUBSC_BTN).uppercased())        ", for: .normal)
+        //ownRecipe = ((backViewController() as? GeneralTabBarViewController) != nil)
 
-        Amplitude.instance()?.logEvent("view_recipe", withEventProperties: ["recipe_item" : selectedRecipe?.name]) // +
+        Amplitude.instance()?.logEvent("view_recipe", withEventProperties: ["recipe_item" : selectedRecipe?.recipeName]) // +
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        DispatchQueue.global().async {
-//            UserInfo.sharedInstance.purchaseIsValid = SubscriptionService.shared.checkValidPurchases()
-//        }
         setupInitialState()
     }
     
@@ -62,6 +64,12 @@ class RecipesDetailsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         tableView.contentInset = UIEdgeInsets(top: -UIApplication.shared.statusBarFrame.size.height, left: 0, bottom: 0, right: 0)
+    }
+    
+    // MARK: - Interface -
+    func fillScreen(by recipe: SecondRecipe, title: String) {
+        self.screenTitle = title
+        self.selectedRecipe = recipe
     }
     
     //MARK: - Privates -
@@ -73,15 +81,15 @@ class RecipesDetailsViewController: UIViewController {
     }
     
     private func setupInitialState() {
-        if ownRecipe {
-            premiumView.isHidden = true
-        } else {
+//        if ownRecipe {
+//            premiumView.isHidden = true
+//        } else {
             if UserInfo.sharedInstance.purchaseIsValid {
                 premiumView.isHidden = true
                 tableView.reloadData()
             } else {
                 premiumView.isHidden = false
-                if let path = selectedRecipe?.url, let url = try? path.asURL() {
+                if let path = selectedRecipe?.imageUrl, let url = try? path.asURL() {
                     premiumImageView.kf.indicatorType = .activity
                     let resource = ImageResource(downloadURL: url)
                     premiumImageView.kf.setImage(with: resource)
@@ -89,12 +97,12 @@ class RecipesDetailsViewController: UIViewController {
                 
                 let mutableAttrString = NSMutableAttributedString()
                 mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoLight(size: 32.0),
-                                                             color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "Получите доступ\n"))
+                                                             color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "\(LS(key: .RECIPE_DETAILS_TITLE_1))\n"))
                 mutableAttrString.append(configureAttrString(by: UIFont.fontRobotoBold(size: 32.0),
-                                                             color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "к сотням полезных\nрецептов"))
+                                                             color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), text: "\(LS(key: .RECIPE_DETAILS_TITLE_2))"))
                 premiumTitleLabel.attributedText = mutableAttrString
             }
-        }
+        //}
     }
     
     private func configureAttrString(by font: UIFont, color: UIColor, text: String) -> NSAttributedString {
@@ -129,7 +137,7 @@ extension RecipesDetailsViewController: UITableViewDataSource, UITableViewDelega
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DishDescriptionCell") as? DishDescriptionCell else { fatalError() }
 
         if let recipe = selectedRecipe {
-            cell.fillCell(recipe: recipe, delegate: self, ownRecipe: ownRecipe)
+            cell.fillCell(recipe: recipe, delegate: self, ownRecipe: ownRecipe, title: screenTitle)
         }
         
         return cell
@@ -139,7 +147,7 @@ extension RecipesDetailsViewController: UITableViewDataSource, UITableViewDelega
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecipesHeaderDetailsView.reuseIdentifier) as? RecipesHeaderDetailsView else {
             return UITableViewHeaderFooterView()
         }
-        header.fillHeader(imageUrl: selectedRecipe?.url)
+        header.fillHeader(imageUrl: selectedRecipe?.imageUrl)
         return header
     }
     
@@ -180,6 +188,13 @@ extension RecipesDetailsViewController: RecipesDetailsDelegate {
         loaderView.isHidden = false
         containerView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         containerView.alpha = 0.0
+        
+        if let tab = tabBarController, let first = tab.viewControllers?.first as? UINavigationController {
+            if first.topViewController is DiaryViewController {
+                let diary = first.topViewController as? DiaryViewController
+                diary?.getItemsInDataBase()
+            }
+        }
         
         UIView.animate(withDuration: 0.2) { [weak self] in
             self?.containerView.alpha = 1.0

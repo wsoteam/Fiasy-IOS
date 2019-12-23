@@ -23,10 +23,11 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
     func fillCell(index: Int, delegate: MeasuringDelegate, allMeasurings: [Measuring]) {
         self.delegate = delegate
         
+        premiumButton.setTitle("     \(LS(key: .PREMIUM_TITLE).uppercased())     ", for: .normal)
         switch index {
         case 0:
             addButton.tag = 0
-            titleLabel.text = "Грудь"
+            titleLabel.text = LS(key: .MEASURING_TITLE1)
             
             var list: [Measuring] = []
             for secondItem in allMeasurings where secondItem.type == .chest {
@@ -36,7 +37,7 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
             if list.isEmpty {
                 measuring = nil
                 addButton.setImage(UIImage(), for: .normal)
-                addButton.setTitle("Добавить", for: .normal)
+                addButton.setTitle(LS(key: .ALERT_ADD), for: .normal)
             } else {
                 if let first = list.first, list.count > 1 {
                     let components = Calendar.current.dateComponents([.day], from: first.date ?? Date(), to: Date())
@@ -47,7 +48,7 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                     }
                     
                     let mutableAttrString = NSMutableAttributedString()
-                    mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) см ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
+                    mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) \(LS(key: .GROWTH_UNIT)) ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
                     let current: CGFloat = CGFloat(list[0].weight ?? 0.0)
                     let old: CGFloat = CGFloat(list[1].weight ?? 0.0)
                     if current > 0.0 && old > 0.0 {
@@ -68,12 +69,12 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                         addButton.setImage(UIImage(), for: .normal)
                     }
                     measuring = list.first
-                    addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) см", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
+                    addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) \(LS(key: .GROWTH_UNIT))", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
                 }
             }
         case 1:
             addButton.tag = 1
-            titleLabel.text = "Талия"
+            titleLabel.text = LS(key: .MEASURING_TITLE2)
             
             var list: [Measuring] = []
             for secondItem in allMeasurings where secondItem.type == .waist {
@@ -83,7 +84,7 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
             if list.isEmpty {
                 measuring = nil
                 addButton.setImage(UIImage(), for: .normal)
-                addButton.setTitle("Добавить", for: .normal)
+                addButton.setTitle(LS(key: .ALERT_ADD), for: .normal)
             } else {
                 if let first = list.first, list.count > 1 {
                     let components = Calendar.current.dateComponents([.day], from: first.date ?? Date(), to: Date())
@@ -94,7 +95,7 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                     }
                     
                     let mutableAttrString = NSMutableAttributedString()
-                    mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) см ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
+                    mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) \(LS(key: .GROWTH_UNIT)) ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
                     let current: CGFloat = CGFloat(list[0].weight ?? 0.0)
                     let old: CGFloat = CGFloat(list[1].weight ?? 0.0)
                     if current > 0.0 && old > 0.0 {
@@ -116,12 +117,12 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                     }
                     
                     measuring = list.first
-                    addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) см", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
+                    addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) \(LS(key: .GROWTH_UNIT))", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
                 }
             }
         case 2:
             addButton.tag = 2
-            titleLabel.text = "Бедра"
+            titleLabel.text = LS(key: .MEASURING_TITLE3)
             
             var list: [Measuring] = []
             for secondItem in allMeasurings where secondItem.type == .hips {
@@ -131,7 +132,7 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
             if list.isEmpty {
                 measuring = nil
                 addButton.setImage(UIImage(), for: .normal)
-                addButton.setTitle("Добавить", for: .normal)
+                addButton.setTitle(LS(key: .ALERT_ADD), for: .normal)
             } else {
                 if let first = list.first, list.count > 1 {
                     let components = Calendar.current.dateComponents([.day], from: first.date ?? Date(), to: Date())
@@ -142,7 +143,7 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                     }
 
                     let mutableAttrString = NSMutableAttributedString()
-                    mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) см ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
+                    mutableAttrString.append(NSAttributedString(string: " \(first.weight ?? 0.0) \(LS(key: .GROWTH_UNIT)) ", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]))
                     let current: CGFloat = CGFloat(list[0].weight ?? 0.0)
                     let old: CGFloat = CGFloat(list[1].weight ?? 0.0)
                     if current > 0.0 && old > 0.0 {
@@ -164,7 +165,7 @@ class MeasuringPremiumTableViewCell: UITableViewCell {
                     }
                     
                     measuring = list.first
-                    addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) см", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
+                    addButton.setAttributedTitle(NSAttributedString(string: " \(list.first?.weight ?? 0.0) \(LS(key: .GROWTH_UNIT))", attributes: [.font: UIFont.sfProTextMedium(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), .underlineStyle : NSUnderlineStyle.single.rawValue]), for: .normal)
                 }
             }
         default:

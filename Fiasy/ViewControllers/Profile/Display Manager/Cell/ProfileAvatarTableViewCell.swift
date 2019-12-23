@@ -54,8 +54,12 @@ class ProfileAvatarTableViewCell: UITableViewCell {
             }
         }
 
-        if let first = profile.firstName, let last = profile.lastName, first != "default" && last != "default" {
-            nameLabel.text = "\(first)\n\(last)"
+        if let first = profile.firstName, first != "default" && !first.isEmpty {
+            if let last = profile.lastName, last != "default" && !last.isEmpty {
+                nameLabel.text = "\(first)\n\(last)"
+            } else {
+                nameLabel.text = "\(first)"
+            }
         } else {
             nameLabel.text = LS(key: .YOUR_NAME)
         }

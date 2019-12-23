@@ -13,6 +13,11 @@ import VisualEffectView
 class ArticlesDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Outlet's -
+    @IBOutlet weak var premiumButton: UIButton!
+    @IBOutlet weak var premiumDescriptionLabel: UILabel!
+    @IBOutlet weak var expertDescriptionLabel: UILabel!
+    @IBOutlet weak var expertNameLabel: UILabel!
+    @IBOutlet weak var expertContainerView: UIView!
     @IBOutlet weak var secondPremContainerView: UIView!
     @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var premiumContainerView: UIView!
@@ -28,6 +33,9 @@ class ArticlesDetailsTableViewCell: UITableViewCell {
         blurView.colorTintAlpha = 0.1
         blurView.blurRadius = 5
         blurView.scale = 1
+        
+        premiumDescriptionLabel.text = LS(key: .ARTICLE_PREMIUM_DESCRIPTION)
+        premiumButton.setTitle("          \(LS(key: .ARTICLE_PREMIUM_BUTTON))          ", for: .normal)
     }
     
     // MARK: - Properties -
@@ -39,13 +47,54 @@ class ArticlesDetailsTableViewCell: UITableViewCell {
         self.article = article
         self.delegate = delegate
         
+        if let id = article.category?.id {
+            if id == 4 {
+                expertNameLabel.text = LS(key: .ART_SERIES_AUTHOR_BURLAKOV)
+                expertDescriptionLabel.text = LS(key: .ART_SERIES_AUTHOR_BURLAKOV_BIO2)
+                expertContainerView.isHidden = false
+            } else {
+                expertContainerView.isHidden = true
+            }
+        }
+        
         if let path = article.image, let url = try? path.asURL() {
             articleImageView.kf.indicatorType = .activity
             let resource = ImageResource(downloadURL: url)
             articleImageView.kf.setImage(with: resource)
         }
-        articleNameLabel.text = article.titleRU?.stripOutHtml()
-        if let text = article.bodyRU {
+        
+        var titleLocalized: String?
+        var bodyLocalized: String?
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            titleLocalized = article.titleES
+            bodyLocalized = article.bodyES
+        case "pt":
+            // португалия (бразилия)
+            titleLocalized = article.titlePT
+            bodyLocalized = article.bodyPT
+        case "en":
+            // английский
+            titleLocalized = article.titleENG
+            bodyLocalized = article.bodyENG
+        case "de":
+            // немецикий
+            titleLocalized = article.titleDE
+            bodyLocalized = article.bodyDE
+        default:
+            // русский
+            titleLocalized = article.titleRU
+            bodyLocalized = article.bodyRU
+        }
+        
+        if let title = titleLocalized?.stripOutHtml() {
+            let lines = title.split { $0.isNewline }
+            let result = lines.joined(separator: "\n")
+            articleNameLabel.text = result
+        }
+
+        if let text = bodyLocalized {
             let attr = try? NSAttributedString(htmlString: text, font: UIFont.sfProTextMedium(size: 15))
             messageLabel.attributedText = attr
         }
@@ -68,22 +117,11 @@ class ArticlesDetailsTableViewCell: UITableViewCell {
         self.delegate?.showPremiumScreen()
     }
     
-    
-    
-    // MARK: - Private -
-//    private func stringFromHtml(string: String) -> NSAttributedString? {
-//        do {
-//            let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
-//            if let d = data {
-//                let str = try NSAttributedString(data: d,
-//                                                 options: [NSAttributedString.DocumentReadingOptionKey: NSHTMLTextDocumentType],
-//                                                 documentAttributes: nil)
-//                return str
-//            }
-//        } catch {
-//        }
-//        return nil
-//    }
+    @IBAction func showExpertInfoClicked(_ sender: Any) {
+        if let vc = UIApplication.getTopMostViewController() as? ArticlesDetailsViewController {
+            vc.performSegue(withIdentifier: "sequeExpertInfo", sender: nil)
+        }
+    }
 }
 
 extension NSAttributedString {
@@ -108,11 +146,15 @@ extension NSAttributedString {
                 var descrip = htmlFont.fontDescriptor.withFamily(fontFamily)
                 
                 if (traits.rawValue & UIFontDescriptor.SymbolicTraits.traitBold.rawValue) != 0 {
-                    descrip = descrip.withSymbolicTraits(.traitBold)!
+                    if let des = descrip.withSymbolicTraits(.traitBold) {
+                        descrip = des
+                    }
                 }
                 
                 if (traits.rawValue & UIFontDescriptor.SymbolicTraits.traitItalic.rawValue) != 0 {
-                    descrip = descrip.withSymbolicTraits(.traitItalic)!
+                    if let des = descrip.withSymbolicTraits(.traitItalic) {
+                        descrip = des
+                    }
                 }
                 
                 attr.addAttribute(.font, value: UIFont(descriptor: descrip, size: fontSize ?? htmlFont.pointSize), range: range)

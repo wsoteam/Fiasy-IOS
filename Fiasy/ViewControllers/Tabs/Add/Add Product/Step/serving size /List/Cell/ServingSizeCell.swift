@@ -19,6 +19,13 @@ class ServingSizeCell: SwipeTableViewCell {
     private var screenDelegate: ServingSizeDelegate?
     private var index: Int = 0
     
+    // MARK: - Life cicle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        changeButton.setTitle(LS(key: .CREATE_STEP_TITLE_29), for: .normal)
+    }
+    
     // MARK: - Interface -
     func fillCell(serving: Serving, screenDelegate: ServingSizeDelegate, index: Int) {
         self.index = index

@@ -112,6 +112,7 @@
             <viewLayoutGuide key="safeArea" id="lFH-uv-Sgv"/>
             <connections>
                 <outlet property="centerArrowConstraint" destination="LTL-CX-Dzb" id="OWh-Gh-M2u"/>
+                <outlet property="titleLabel" destination="noJ-pO-hBg" id="AdM-7y-raI"/>
             </connections>
             <point key="canvasLocation" x="133.59999999999999" y="-186.65667166416793"/>
         </view>

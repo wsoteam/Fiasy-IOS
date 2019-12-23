@@ -19,6 +19,8 @@ protocol BasketDelegate {
 class BasketViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var addProductTitleLabel: UILabel!
+    @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var blockedView: UIView!
     @IBOutlet weak var listContainerView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -43,6 +45,8 @@ class BasketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addProductTitleLabel.text = LS(key: .ADD_PRODUCT_IN_JOURNAL)
+        titleButton.setTitle(LS(key: .SELECTED_PRODUCT_TITLE), for: .normal)
         blockedView.isHidden = true
         tableView.tag = 0
         setupTableView()
@@ -109,43 +113,7 @@ class BasketViewController: UIViewController {
 //            }
 //        }
     }
-    
-    private func showСonfirmationOfDeletion(indexPath: IndexPath) {
-        SwiftEntryKit.dismiss()
-//        let alertController = UIAlertController(title: "\n\n\n\n", message: nil, preferredStyle: .actionSheet)
-//        guard let view = BasketAlertView.fromXib() else { return }
-//        alertController.view.addSubview(view)
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 15).isActive = true
-//        view.rightAnchor.constraint(equalTo: alertController.view.rightAnchor, constant: -10).isActive = true
-//        view.leftAnchor.constraint(equalTo: alertController.view.leftAnchor, constant: 10).isActive = true
-//        view.heightAnchor.constraint(equalToConstant: 70).isActive = true
-//        
-//        let removeAction = UIAlertAction(title: "Удалить", style: .default) { [weak self] (alert) in
-//            guard let strongSelf = self else { return }
-//            for (index, product) in strongSelf.selectedProduct.enumerated() where index == indexPath.row {
-//                strongSelf.selectedProduct.remove(at: index)
-//                strongSelf.showPresetsView()
-//                strongSelf.delegate?.removeBasketProduct(product: product)
-//                strongSelf.removeRow(indexPath)
-//                if strongSelf.selectedProduct.isEmpty {
-//                    strongSelf.navigationController?.popViewController(animated: true)
-//                }
-//            }
-//        }
-//        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { [weak self] (alert) in
-//            guard let strongSelf = self else { return }
-//            strongSelf.showPresetsView()
-//        }
-//        cancelAction.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
-//        removeAction.setValue(#colorLiteral(red: 0.9231546521, green: 0.3429711461, blue: 0.342156291, alpha: 1), forKey: "titleTextColor")
-//        
-//        alertController.addAction(removeAction)
-//        alertController.addAction(cancelAction)
-//        
-//        present(alertController, animated: true)
-    }
-    
+        
     private func removeRow(_ indexPath: IndexPath) {
         CATransaction.begin()
         CATransaction.setCompletionBlock({

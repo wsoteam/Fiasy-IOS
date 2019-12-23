@@ -29,27 +29,27 @@ class DiaryMeasuringTableViewCell: UITableViewCell {
             list.append(item)
         }
 
-        weightLabel.text = "\(UserInfo.sharedInstance.currentUser?.weight ?? 0.0) кг".replacingOccurrences(of: ".0", with: "")
+        weightLabel.text = "\(UserInfo.sharedInstance.currentUser?.weight ?? 0.0) \(LS(key: .WEIGHT_UNIT))".replacingOccurrences(of: ".0", with: "")
         if Calendar.current.component(.day, from: selectedDate) == Calendar.current.component(.day, from: Date()) && Calendar.current.component(.month, from: selectedDate) == Calendar.current.component(.month, from: Date()) && Calendar.current.component(.year, from: selectedDate) == Calendar.current.component(.year, from: Date()) {
             if !isContains {
-                descriptionLabel.text = "Вы еще не заносили данные"
-                selectedButton.setTitle("Добавить вес", for: .normal)
+                descriptionLabel.text = LS(key: .DIARY_MES_1)
+                selectedButton.setTitle(LS(key: .DIARY_MES_2), for: .normal)
             } else {
                 list = list.sorted (by: {$0.timeInMillis > $1.timeInMillis})
                 if let first = list.first, let date = first.date {
                     if let diffInDays = Calendar.current.dateComponents([.day], from: date, to: Date()).day {
                         weightLabel.text = "\(first.weight ?? 0.0)"
-                        descriptionLabel.text = "Вы обновляли вес \(diffInDays) \(fetcPrefix(count: diffInDays)) назад"
-                        selectedButton.setTitle("Обновить", for: .normal)
+                        descriptionLabel.text = "\(LS(key: .DIARY_MES_5)) \(diffInDays) \(fetcPrefix(count: diffInDays)) \(LS(key: .DIARY_MES_6))"
+                        selectedButton.setTitle(LS(key: .DIARY_MES_7), for: .normal)
                     }
                 }
             }
             
             if !allMeasurings.isEmpty {
                 for item in allMeasurings where item.type == .weight && (Calendar.current.component(.day, from: selectedDate) == Calendar.current.component(.day, from: item.date ?? Date()) && Calendar.current.component(.month, from: selectedDate) == Calendar.current.component(.month, from: item.date ?? Date()) && Calendar.current.component(.year, from: selectedDate) == Calendar.current.component(.year, from: item.date ?? Date())) {
-                    weightLabel.text = "\(item.weight ?? 0.0) кг"
-                    descriptionLabel.text = "Вес за сегодня"
-                    selectedButton.setTitle("Изменить", for: .normal)
+                    weightLabel.text = "\(item.weight ?? 0.0) \(LS(key: .WEIGHT_UNIT))"
+                    descriptionLabel.text = LS(key: .DIARY_MES_4)
+                    selectedButton.setTitle(LS(key: .TITLE_CHANGE1).capitalizeFirst, for: .normal)
                     break
                 }
             }
@@ -57,15 +57,15 @@ class DiaryMeasuringTableViewCell: UITableViewCell {
             var contains: Bool = false
             for item in allMeasurings where item.type == .weight && (Calendar.current.component(.day, from: selectedDate) == Calendar.current.component(.day, from: item.date ?? Date()) && Calendar.current.component(.month, from: selectedDate) == Calendar.current.component(.month, from: item.date ?? Date()) && Calendar.current.component(.year, from: selectedDate) == Calendar.current.component(.year, from: item.date ?? Date())) {
                 contains = true
-                weightLabel.text = "\(item.weight ?? 0.0) кг"
-                descriptionLabel.text = "Вес по выбранной дате"
-                selectedButton.setTitle("Изменить", for: .normal)
+                weightLabel.text = "\(item.weight ?? 0.0) \(LS(key: .WEIGHT_UNIT))"
+                descriptionLabel.text = LS(key: .DIARY_MES_3)
+                selectedButton.setTitle(LS(key: .TITLE_CHANGE1).capitalizeFirst, for: .normal)
                 break
             }
             if !contains {
-                weightLabel.text = "\(UserInfo.sharedInstance.currentUser?.weight ?? 0.0) кг".replacingOccurrences(of: ".0", with: "")
-                descriptionLabel.text = "Вы еще не заносили данные"
-                selectedButton.setTitle("Добавить вес", for: .normal)
+                weightLabel.text = "\(UserInfo.sharedInstance.currentUser?.weight ?? 0.0) \(LS(key: .WEIGHT_UNIT))".replacingOccurrences(of: ".0", with: "")
+                descriptionLabel.text = LS(key: .DIARY_MES_1)
+                selectedButton.setTitle(LS(key: .DIARY_MES_2), for: .normal)
             }
         }
     }
@@ -77,13 +77,25 @@ class DiaryMeasuringTableViewCell: UITableViewCell {
     
     // MARK: - Private -
     private func fetcPrefix(count: Int) -> String {
-        switch count {
-        case 1:
-            return "день"
-        case 2,3,4:
-            return "дня"
-        default:
-            return "дней"
+        
+        if getPreferredLocale().languageCode == "ru" {
+            switch count {
+            case 1:
+                return "день"
+            case 2,3,4:
+                return "дня"
+            default:
+                return "дней"
+            }
+        } else {
+            return LS(key: .DIARY_MES_8)
         }
+    }
+    
+    private func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
+        }
+        return Locale(identifier: preferredIdentifier)
     }
 }

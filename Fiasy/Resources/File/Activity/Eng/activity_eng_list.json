@@ -1,236 +1,236 @@
 [
     {
-        "name" : "Айкидо",
+        "name" : "Aikido",
         "count" : 9
     },
     
     {
-        "name" : "Аква-бег",
+        "name" : "Aquajogging",
         "count" : 7
     },
     
     {
-        "name" : "Аквааэробика",
+        "name" : "Water aerobics",
         "count" : 5
     },
     
     {
-        "name" : "Альпинизм",
+        "name" : "Mountain climbing",
         "count" : 11
     },
     
     {
-        "name" : "Американский футбол",
+        "name" : "Football",
         "count" : 8
     },
     
     {
-        "name" : "Армейский жим",
+        "name" : "Army bench press",
         "count" : 1
     },
     
     {
-        "name" : "Аэробика, высокая нагрузка",
+        "name" : "Aerobics, high intensity",
         "count" : 7
     },
     
     {
-        "name" : "Аэробика,средняя нагрузка",
+        "name" : "Aerobics, medium intensity",
         "count" : 4
     },
     
     {
-        "name" : "Бадминтон,высокая нагрузка",
+        "name" : "Badminton, high intensity",
         "count" : 6
     },
     
     {
-        "name" : "Бадминтон,средняя нагрузка",
+        "name" : "Badminton, medium intensity",
         "count" : 4
     },
     
     {
-        "name" : "Баскетбол, высокая нагрузка",
+        "name" : "Basketball, high intensity",
         "count" : 7
     },
     
     {
-        "name" : "Баскетбол,средняя нагрузка",
+        "name" : "Basketball, medium intensity",
         "count" : 4
     },
     
     {
-        "name" : "Бег 11,3 км/ч",
+        "name" : "Running, 11.3 kph",
         "count" : 12
     },
     
     {
-        "name" : "Бег 12,1 км/ч",
+        "name" : "Running, 12.1 kph",
         "count" : 12
     },
     
     {
-        "name" : "Бег 12,9 км/ч",
+        "name" : "Running, 12.9 kph",
         "count" : 13
     },
     
     {
-        "name" : "Бег 14,5км/ч",
+        "name" : "Running, 14.5 kph",
         "count" : 15
     },
     
     {
-        "name" : "Бег 16,09 км/ч",
+        "name" : "Running, 16.09 kph",
         "count" : 17
     },
     
     {
-        "name" : "Бег 17,7 км/ч",
+        "name" : "Running, 17.7 kph",
         "count" : 17
     },
     
     {
-        "name" : "Бег 6,4 км/ч",
+        "name" : "Running, 6.4 kph",
         "count" : 6
     },
     
     {
-        "name" : "Бег 8 км/ч",
+        "name" : "Running, 8 kph",
         "count" : 8
     },
     
     {
-        "name" : "Бег 9,7 км/ч",
+        "name" : "Running, 9.7 kph",
         "count" : 10
     },
     
     {
-        "name" : "Бег вверх по лестнице",
+        "name" : "Running up the stairs",
         "count" : 15
     },
     
     {
-        "name" : "Бег по пересеченной местности",
+        "name" : "Cross-country running",
         "count" : 12
     },
     
     {
-        "name" : "Бег по песку",
+        "name" : "Running on sand",
         "count" : 9
     },
     
     {
-        "name" : "Бег трусцой",
+        "name" : "Jogging",
         "count" : 8
     },
     
     {
-        "name" : "Беговая дорожка",
+        "name" : "Treadmill",
         "count" : 6
     },
     
     {
-        "name" : "Бейсбол",
+        "name" : "Baseball",
         "count" : 3
     },
     
     {
-        "name" : "Биатлон",
+        "name" : "Biathlon",
         "count" : 10
     },
     
     {
-        "name" : "Бикрам-Йога",
+        "name" : "Bikram yoga",
         "count" : 7
     },
     
     {
-        "name" : "Бильярд",
+        "name" : "Billiards",
         "count" : 3
     },
     
     {
-        "name" : "Сгибание рук(бицепс)",
+        "name" : "Bicep curls",
         "count" : 3
     },
     
     {
-        "name" : "Боди Степ",
+        "name" : "Body step",
         "count" : 8
     },
     
     {
-        "name" : "Боевые искусстав",
+        "name" : "Martial arts",
         "count" : 9
     },
     
     {
-        "name" : "Бокс",
+        "name" : "Boxing",
         "count" : 9
     },
     
     {
-        "name" : "Бокс, высокая нагрузка",
+        "name" : "Boxing, high intensity",
         "count" : 12
     },
     
     {
-        "name" : "Бокс, тренировочный",
+        "name" : "Boxing, practice",
         "count" : 9
     },
     
     {
-        "name" : "Бокс: груша",
+        "name" : "Boxing, punching bag",
         "count" : 9
     },
     
     {
-        "name" : "Боулинг",
+        "name" : "Bowling",
         "count" : 2
     },
     
     {
-        "name" : "Быстрая пробежка вверх по лестнице",
+        "name" : "Running quickly up the stairs",
         "count" : 13
     },
     
     {
-        "name" : "Быстрая ходьба пешком 6,5 км/ч",
+        "name" : "Brisk walking, 6.5 kph",
         "count" : 4
     },
     
     {
-        "name" : "Вейкбординг",
+        "name" : "Wakeboarding",
         "count" : 10
     },
     
     {
-        "name" : "Велоаэробика, высокая нагрузка",
+        "name" : "Spinning, high intensity",
         "count" : 9
     },
     
     {
-        "name" : "Велоаэробика, средняя нагрузка",
+        "name" : "Spinning, medium intensity",
         "count" : 6
     },
     
     {
-        "name" : "Велоспорт, высокая нагрузка",
+        "name" : "Cycling, high intensity",
         "count" : 9
     },
     
     {
-        "name" : "Велоспорт,средняя нагрузка",
+        "name" : "Cycling, medium intensity",
         "count" : 6
     },
     
     {
-        "name" : "Верховая езда",
+        "name" : "Horseback riding",
         "count" : 3
     },
     
     {
-        "name" : "Верховая езда: выездка",
+        "name" : "Horseback riding, Dressage",
         "count" : 3
     },
     
@@ -240,712 +240,712 @@
     },
     
     {
-        "name" : "Верховая езда: препятствия",
+        "name" : "Horseback riding, obstacles",
         "count" : 4
     },
     
     {
-        "name" : "Верховая езда: рысь",
+        "name" : "Horseback riding, trotting",
         "count" : 7
     },
     
     {
-        "name" : "Виндсерфинг",
+        "name" : "Windsurfing",
         "count" : 6
     },
     
     {
-        "name" : "Водная гимнастика",
+        "name" : "Water gymnastics",
         "count" : 4
     },
     
     {
-        "name" : "Водное поло",
+        "name" : "Water polo",
         "count" : 13
     },
     
     {
-        "name" : "Волейбол, высокая нагрузка",
+        "name" : "Volleyball, high intensity",
         "count" : 9
     },
     
     {
-        "name" : "Волейбол, легкая нагрузка",
+        "name" : "Volleyball, low intensity",
         "count" : 3
     },
     
     {
-        "name" : "Гандбол",
+        "name" : "Handball",
         "count" : 12
     },
     
     {
-        "name" : "Гимнастика",
+        "name" : "Gymnastics",
         "count" : 8
     },
     
     {
-        "name" : "Гимнастика, интенсив",
+        "name" : "Gymnastics, intense",
         "count" : 8
     },
     
     {
-        "name" : "Гимнастика, средняя нагрузка",
+        "name" : "Gymnastics, medium intensity",
         "count" : 4
     },
     
     {
-        "name" : "Гиревая тренировка",
+        "name" : "Kettlebell training",
         "count" : 10
     },
     
     {
-        "name" : "Глажка белья",
+        "name" : "Ironing clothes",
         "count" : 2
     },
     
     {
-        "name" : "Гольф (обычный)",
+        "name" : "Gold (regular)",
         "count" : 5
     },
     
     {
-        "name" : "Горные лыжи, высокая нагрузка",
+        "name" : "Downhill skiing, low intensity",
         "count" : 8
     },
     
     {
-        "name" : "Горные лыжи, средняя нагрузка",
+        "name" : "Downhill skiing, medium intensity",
         "count" : 5
     },
     
     {
-        "name" : "Горные лыжи, умеренная нагрузка",
+        "name" : "Downhill skiing, moderate intensity",
         "count" : 4
     },
     
     {
-        "name" : "Гребля на байдарках",
+        "name" : "Kayaking",
         "count" : 5
     },
     
     {
-        "name" : "Гребля на каноэ",
+        "name" : "Canoeing",
         "count" : 9
     },
     
     {
-        "name" : "Гребля, высокая нагрузка",
+        "name" : "Rowing, high intensity",
         "count" : 10
     },
     
     {
-        "name" : "Гребля, низкая нагрузка",
+        "name" : "Rowing, low intensity",
         "count" : 3
     },
     
     {
-        "name" : "Гребля, средняя нагрузка",
+        "name" : "Rowing, medium intensity",
         "count" : 7
     },
     
     {
-        "name" : "Дайвинг",
+        "name" : "Diving",
         "count" : 3
     },
     
     {
-        "name" : "Дайвинг с аквалангом",
+        "name" : "SCUBA diving",
         "count" : 6
     },
     
     {
-        "name" : "Дзюдо",
+        "name" : "Judo",
         "count" : 9
     },
     
     {
-        "name" : "Жим лежа",
+        "name" : "Bench press",
         "count" : 3
     },
     
     {
-        "name" : "Жим ногами",
+        "name" : "Leg press",
         "count" : 5
     },
     
     {
-        "name" : "Зимний кайтинг",
+        "name" : "Winter kiting",
         "count" : 8
     },
     
     {
-        "name" : "Зумба",
+        "name" : "Zumba",
         "count" : 9
     },
     
     {
-        "name" : "Игра на барабанах",
+        "name" : "Drumming",
         "count" : 3
     },
     
     {
-        "name" : "Интенсивная прогулка",
+        "name" : "Speed-walking",
         "count" : 5
     },
     
     {
-        "name" : "Интервальная тренировка HIIT, высокая интенсивность",
+        "name" : "HIIT interval training, high intensity",
         "count" : 10
     },
     
     {
-        "name" : "Йога",
+        "name" : "Yoga",
         "count" : 3
     },
     
     {
-        "name" : "Кайтсерфинг",
+        "name" : "Kitesurfing",
         "count" : 8
     },
     
     {
-        "name" : "Карате",
+        "name" : "Karate",
         "count" : 9
     },
     
     {
-        "name" : "Кардиотренажеры",
+        "name" : "Cardio equipment",
         "count" : 9
     },
     
     {
-        "name" : "Катание на беговых лыжах",
+        "name" :"Cross-country skiing",
         "count" : 18
     },
     
     {
-        "name" : "Катание на велосипеде",
+        "name" : "Cycling",
         "count" : 10
     },
     
     {
-        "name" : "Катание на водных лыжах",
+        "name" : "Waterskiing",
         "count" : 6
     },
     
     {
-        "name" : "Катание на горном велосипеде",
+        "name" : "Mountain biking",
         "count" : 9
     },
     
     {
-        "name" : "Катание на коньках",
+        "name" : "Ice skating",
         "count" : 7
     },
     
     {
-        "name" : "Катание на коньках,высокая нагрузка",
+        "name" : "Ice skating, high intensity",
         "count" : 11
     },
     
     {
-        "name" : "Катание на лыжах по пересеченной местности, высокая нагрузка",
+        "name" : "Cross-country skiing, high intensity",
         "count" : 11
     },
     
     {
-        "name" : "Катание на лыжах по пересеченной местности, умеренная нагрузка",
+        "name" :"Cross-country skiing, moderate intensity",
         "count" : 8
     },
     
     {
-        "name" : "Катание на лыжах, средняя нагрузка",
+        "name" : "Skiing, medium intensity",
         "count" : 8
     },
     
     {
-        "name" : "Катание на роликовых каньках",
+        "name" : "Roller skating",
         "count" : 6
     },
     
     {
-        "name" : "Катание на роликовых лыжах",
+        "name" : "In-line skating",
         "count" : 7
     },
     
     {
-        "name" : "Катание на самокате",
+        "name" : "Riding a scooter",
         "count" : 5
     },
     
     {
-        "name" : "Катание на санках",
+        "name" : "Sledding",
         "count" : 4
     },
     
     {
-        "name" : "Катание на скейтборде",
+        "name" : "Skateboarding",
         "count" : 5
     },
     
     {
-        "name" : "Катание на сноуборде",
+        "name" : "Snowboarding",
         "count" : 7
     },
     
     {
-        "name" : "Качание пресса",
+        "name" : "Crunches",
         "count" : 4
     },
     
     {
-        "name" : "Керлинг",
+        "name" : "Curling",
         "count" : 4
     },
     
     {
-        "name" : "Кикбоксинг",
+        "name" : "Kickboxing",
         "count" : 7
     },
     
     {
-        "name" : "Копание земли",
+        "name" : "Digging",
         "count" : 5
     },
     
     {
-        "name" : "Кошение травы",
+        "name" : "Moving the lawn",
         "count" : 4
     },
     
     {
-        "name" : "Кросс-конькобежный спорт",
+        "name" : "Cross-skating",
         "count" : 11
     },
     
     {
-        "name" : "Кросс-тренажер",
+        "name" : "Cross trainer",
         "count" : 9
     },
     
     {
-        "name" : "Кроссфит",
+        "name" : "Crossfit",
         "count" : 10
     },
     
     {
-        "name" : "Круговая тренировка",
+        "name" : "Circular training",
         "count" : 8
     },
     
     {
-        "name" : "Кручение обруча",
+        "name" : "Working out with a hula hoop",
         "count" : 6
     },
     
     {
-        "name" : "Культуризм (Бодибилдинг)",
+        "name" : "Bodybuilding",
         "count" : 3
     },
     
     {
-        "name" : "Лакросс",
+        "name" : "Lacrosse",
         "count" : 8
     },
     
     {
-        "name" : "Медленная ходба пешком 4,5 км/ч",
+        "name" : "Slow walking, 4.5 kph",
         "count" : 2
     },
     
     {
-        "name" : "Мойка окон",
+        "name" : "Washing windows",
         "count" : 3
     },
     
     {
-        "name" : "Мотокросс",
+        "name" : "Motocross",
         "count" : 4
     },
     
     {
-        "name" : "Мытье машины",
+        "name" : "Washing a car",
         "count" : 3
     },
     
     {
-        "name" : "Наклоны",
+        "name" : "Dips",
         "count" : 3
     },
     
     {
-        "name" : "Настольный тенис",
+        "name" : "Table tennis",
         "count" : 3
     },
     
     {
-        "name" : "Отжимания",
+        "name" : "Pushups",
         "count" : 4
     },
     
     {
-        "name" : "Пауэрлифтинг (силовое троеборье)",
+        "name" : "Powerlifting",
         "count" : 8
     },
     
     {
-        "name" : "Пеший туризм",
+        "name" : "Hiking",
         "count" : 7
     },
     
     {
-        "name" : "Пеший туризм, с рюкзаком",
+        "name" : "Hiking with backpack",
         "count" : 8
     },
     
     {
-        "name" : "Пилатес",
+        "name" :"Pilates",
         "count" : 3
     },
     
     {
-        "name" : "Плавание баттерфляем",
+        "name" : "Swimming, butterfly",
         "count" : 13
     },
     
     {
-        "name" : "Плавание брассом",
+        "name" : "Swimming, breaststroke",
         "count" : 6
     },
     
     {
-        "name" : "Плавание на спине",
+        "name" : "Swimming, backstroke",
         "count" : 7
     },
     
     {
-        "name" : "Плавание под парусом",
+        "name" : "Sailing",
         "count" : 5
     },
     
     {
-        "name" : "Плавание с маской (Снорклинг)",
+        "name" : "Snorkeling",
         "count" : 5
     },
     
     {
-        "name" : "Плавание, высокая нагрузка",
+        "name" : "Swimming, high intensity",
         "count" : 12
     },
     
     {
-        "name" : "Плавание, низкая нагрузка",
+        "name" : "Swimming, low intensity",
         "count" : 5
     },
     
     {
-        "name" : "Плавание, свободное",
+        "name" : "Swimming, freestyle",
         "count" : 4
     },
     
     {
-        "name" : "Плавание, средняя нагрузка",
+        "name" : "Swimming, medium intensity",
         "count" : 7
     },
     
     {
-        "name" : "Поднятие бедер из положения лежа",
+        "name" :"Hip lifts from a lying position",
         "count" : 4
     },
     
     {
-        "name" : "Подтягивания",
+        "name" : "Pull-ups",
         "count" : 5
     },
     
     {
-        "name" : "Подъем по лестнице",
+        "name" : "Stair climbing",
         "count" : 9
     },
     
     {
-        "name" : "Поло",
+        "name" : "Polo",
         "count" : 7
     },
     
     {
-        "name" : "Полоса препятствий",
+        "name" : "Obstacle course",
         "count" : 4
     },
     
     {
-        "name" : "Приседание на одной ноге",
+        "name" : "One-legged squats",
         "count" : 3
     },
     
     {
-        "name" : "Приседание со штангой на плечах",
+        "name" : "Shoulder squats",
         "count" : 3
     },
     
     {
-        "name" : "Прогулка",
+        "name" : "Walking",
         "count" : 2
     },
     
     {
-        "name" : "Прогулка не торопливым шагом",
+        "name" : "Walking, slow",
         "count" : 2
     },
     
     {
-        "name" : "Прогулка по лесу",
+        "name" : "Walking in the woods",
         "count" : 4
     },
     
     {
-        "name" : "Профессиональный футбол",
+        "name" : "Professional soccer",
         "count" : 10
     },
     
     {
-        "name" : "Прыжки в длину",
+        "name" : "Long jump",
         "count" : 9
     },
     
     {
-        "name" : "Прыжки на батуте, любительские",
+        "name" : "Trampoline jumping, amateur",
         "count" : 3
     },
     
     {
-        "name" : "Прыжки со скакалкой",
+        "name" : "Rope jumping",
         "count" : 7
     },
     
     {
-        "name" : "Пылесошение",
+        "name" : "Vacuuming",
         "count" : 3
     },
     
     {
-        "name" : "Работа с граблями",
+        "name" : "Raking",
         "count" : 4
     },
     
     {
-        "name" : "Растяжка",
+        "name" : "Stretching",
         "count" : 2
     },
     
     {
-        "name" : "Регби",
+        "name" : "Rugby",
         "count" : 11
     },
     
     {
-        "name" : "Садоводство",
+        "name" : "Gardening",
         "count" : 11
     },
     
     {
-        "name" : "Сальса",
+        "name" : "Salsa",
         "count" : 6
     },
     
     {
-        "name" : "Секс",
+        "name" : "Sex",
         "count" : 4
     },
     
     {
-        "name" : "Серфинг",
+        "name" : "Surfing",
         "count" : 3
     },
     
     {
-        "name" : "Силовая йога",
+        "name" : "Power yoga",
         "count" : 7
     },
     
     {
-        "name" : "Силовые тренировки",
+        "name" : "Power training",
         "count" : 8
     },
     
     {
-        "name" : "Силовые упражнения",
+        "name" : "Strength exercises",
         "count" : 3
     },
     
     {
-        "name" : "Синхронное плавание",
+        "name" : "Synchronized swimming",
         "count" : 6
     },
     
     {
-        "name" : "Скалолазание",
+        "name" : "Rock climbing",
         "count" : 11
     },
     
     {
-        "name" : "Скандинавская ходьба",
+        "name" : "Nordic walking",
         "count" : 5
     },
     
     {
-        "name" : "Скручивание",
+        "name" : "Twists ",
         "count" : 5
     },
     
     {
-        "name" : "Смешанные единоборства",
+        "name" : "Mixed martial arts",
         "count" : 9
     },
     
     {
-        "name" : "Спортивное ориентирование",
+        "name" : "Orienteering",
         "count" : 7
     },
     
     {
-        "name" : "Становая тяга",
+        "name" : "Deadlifts",
         "count" : 4
     },
     
     {
-        "name" : "Степ",
+        "name" : "Step aerobics",
         "count" : 6
     },
     
     {
-        "name" : "Степ-платформа",
+        "name" : "Step platform",
         "count" : 8
     },
     
     {
-        "name" : "Табата",
+        "name" :"Tabata training",
         "count" : 10
     },
     
     {
-        "name" : "Тайский бокс",
+        "name" : "Thai boxing",
         "count" : 10
     },
     
     {
-        "name" : "Танцевальная аэробика",
+        "name" : "Dance aerobics",
         "count" : 9
     },
     
     {
-        "name" : "Танцы",
+        "name" : "Dancing",
         "count" : 4
     },
     
     {
-        "name" : "Танцы у шеста",
+        "name" : "Pole dancing",
         "count" : 5
     },
     
     {
-        "name" : "Твист",
+        "name" : "Dancing, twist",
         "count" : 5
     },
     
     {
-        "name" : "Теннис",
+        "name" : "Tennis",
         "count" : 7
     },
     
     {
-        "name" : "Уборка",
+        "name" :"Housecleaning",
         "count" : 2
     },
     
     {
-        "name" : "Уборка снега лопатой",
+        "name" : "Shoveling snow",
         "count" : 6
     },
     
     {
-        "name" : "Упражнение Burpee",
+        "name" : "Burpees",
         "count" : 10
     },
     
     {
-        "name" : "Упражнение планка",
+        "name" : "Plank",
         "count" : 3
     },
     
     {
-        "name" : "Упражнение выпады",
+        "name" : "Lunges",
         "count" : 8
     },
     
     {
-        "name" : "Фехтование",
+        "name" : "Fencing",
         "count" : 8
     },
     
     {
-        "name" : "Фрисби",
+        "name" : "Frisbee",
         "count" : 3
     },
     
     {
-        "name" : "Футбол",
+        "name" : "Soccer",
         "count" : 10
     },
     
     {
-        "name" : "Хотьба вверх по лестнице",
+        "name" : "Walking up the stairs",
         "count" : 8
     },
     
     {
-        "name" : "Ходьба внутри помещения",
+        "name" : "Walking inside a building",
         "count" : 5
     },
     
     {
-        "name" : "Ходьба пешком, 5 км/ч",
+        "name" : "Walking, 5 kph",
         "count" : 3
     },
     
     {
-        "name" : "Хоккей",
+        "name" : "Hockey",
         "count" : 8
     },
     
     {
-        "name" : "Ходьба с палками",
+        "name" : "Walking with sticks",
         "count" : 4
     },
     
     {
-        "name" : "Художественная гимнастика",
+        "name" : "Gymnastics",
         "count" : 8
     },
     
     {
-        "name" : "Шопинг",
+        "name" : "Shopping",
         "count" : 3
     },
     
     {
-        "name" : "Эллиптический тренажер, высокая нагрузка",
+        "name" : "Elliptical machine, high intensity",
         "count" : 9
     },
     
     {
-        "name" : "Эллиптический тренажер, средняя нагрузка",
+        "name" : "Elliptical machine, medium intensity",
         "count" : 6
     },
     
     {
-        "name" : "Эллиптический тренажер, низкая нагрузка",
+        "name" : "Elliptical machine, low intensity",
         "count" : 5
     }
 ]

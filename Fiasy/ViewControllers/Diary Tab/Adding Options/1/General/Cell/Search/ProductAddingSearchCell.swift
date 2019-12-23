@@ -12,6 +12,7 @@ import BEMCheckBox
 class ProductAddingSearchCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -25,6 +26,7 @@ class ProductAddingSearchCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        resultTitleLabel.text = LS(key: .RESULT_SEARCH)
         setupCheckMark()
     }
     
@@ -41,13 +43,13 @@ class ProductAddingSearchCell: UITableViewCell {
 
         var productList: [SecondProduct] = []
         switch title {
-        case "Завтрак":
+        case LS(key: .BREAKFAST):
             productList = selectedProduct[0]
-        case "Обед":
+        case LS(key: .LUNCH):
             productList = selectedProduct[1]
-        case "Ужин":
+        case LS(key: .DINNER):
             productList = selectedProduct[2]
-        case "Перекус":
+        case LS(key: .SNACK):
             productList = selectedProduct[3]
         default:
             productList = selectedProduct[0]
@@ -64,17 +66,17 @@ class ProductAddingSearchCell: UITableViewCell {
     }
     
     private func fillCalories(count: Double, product: SecondProduct) { 
-        let unit = product.isLiquid == true ? "мл" : "грамм"
+        let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "100 \(unit) • "))
-        mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(Double(count * 100).displayOnly(count: 2)) ккал"))
+        mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(Double(count * 100).displayOnly(count: 2)) \(LS(key: .CALORIES_UNIT))"))
         caloriesLabel.attributedText = mutableAttrString
     }
     
     private func fillName(product: SecondProduct) { 
         let mutableAttrString = NSMutableAttributedString()
-        mutableAttrString.append(NSAttributedString(string: product.name, attributes: [.font: UIFont.sfProTextSemibold(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)]))
-        if let name = product.brand?.name {
+        mutableAttrString.append(NSAttributedString(string: product.name ?? "", attributes: [.font: UIFont.sfProTextSemibold(size: 15), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1)]))
+        if let name = product.brand?.name, name != "null" {
             mutableAttrString.append(NSAttributedString(string: " (\(name))", attributes: [.font: UIFont.sfProTextMedium(size: 13), .foregroundColor: #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)]))
         }
         productNameLabel.attributedText = mutableAttrString

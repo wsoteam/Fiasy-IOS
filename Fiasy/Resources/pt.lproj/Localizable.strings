@@ -6,6 +6,15 @@
   Copyright © 2019 Eugen Lipatov. All rights reserved.
 */
 
+/*    Tab Bar    */
+"tab_title1" = "Diário";
+"tab_title2" = "Artigos";
+"tab_title3" = "Receitas";
+"tab_title4" = "Perfil";
+"apply" = "Aplicar";
+"remove" = "Excluir";
+"excess" = "Excesso";
+
 /*    Unboarding Screen    */
 "unboarding_welcome" = "Boas-vindas a";
 "unboarding_first_screen" = "Muitos artigos científicos sobre alimentação saudável";
@@ -14,7 +23,29 @@
 "unboarding_skeep" = "Ignorar";
 "unboarding_next" = "AVANÇAR";
 
+/*    Barcode Screen    */
+"barcode_title_1" = "TUDO É EXPRESSO!";
+"barcode_title_2" = "Use um scanner\nde código de barras";
+"barcode_title_3" = "Adicione produtos instantaneamente à sua base! Graças a isso, você pode conhecer o valor da CBJU automaticamente!";
+"barcode_title_4" = "Para que serve um\ncódigo de barras?";
+"barcode_title_5" = "Nada foi encontrado.\nContinue a digitalizar ou\npegar outro produto";
+
+/*    Recipe Screen    */
+"art_series_series_title" = "Oito artigos para ter um começo fácil!";
+"art_series_day" = "Dia";
+"art_series_series_info" = "Você precisa concluir o dia anterior\npara poder ir para o próximo";
+"art_series_author_title" = "Artigos exclusivos\nde um nutricionista profissional!";
+"art_series_author_burlakov" = "Alexander Burlakov";
+"art_series_author_burlakov_bio2" = "Médico de medicina esportiva e nutricionista";
+"art_series_author_burlakov_bio" = "Médico de medicina esportiva e nutricionista, o Dr. Burlakov se formou na Kuban State Medical University. Ele é o fundador da Bodycoach School e administra um blog de bem-estar baseado em ciência médica.";
+"art_series_author_burlakov_achiv1" = "18.800\nseguidores no\nInstagram";
+"art_series_author_burlakov_achiv2" = "Ciência\nmédica";
+"art_series_author_burlakov_achiv3" = "Treinou atletas\ndo UFC,\nACA e RCC";
+
 /*    Setting Screen    */
+"settings_items_premium" = "Conta Premium";
+"settings_items_personal" = "Informações pessoais";
+"settings_items_intake" = "Ingestão de calorias";
 "settings_items_help" = "Ajuda";
 "activity_profile_settings_settings" = "Configurações";
 
@@ -83,7 +114,7 @@
 "six_activity" = "Eu me exercito duas vezes por dia, 5-7 dias por semana.";
 "seven_activity" = "Meu trabalho é fisicamente intenso ou faço exercícios intensos duas vezes por dia, todos os dias.";
 "select_your_target" = "Escolha seu objetivo";
-"first_target" = "Ficar em\nforma";
+"first_target" = "Ficar em forma";
 "second_target" = "Perder peso";
 "third_target" = "Ganhar massa\nmuscular";
 "fourth_target" = "Manter a musculatura\ne queimar gordura";
@@ -100,9 +131,53 @@
 "carbohydrates" = "carboidratos";
 "in_a_month" = "em apenas um mês";
 "first_piece_description" = "Você alcançará seu objetivo";
-"second_piece_description" = ", e obterá acesso a artigos exclusivos sobre alimentação saudável e centenas de receitas.";
+"second_piece_description" = ", e obterá acesso a artigos\nexclusivos sobre alimentação saudável\ne centenas de receitas.";
+"premium_title_new_1" = "3 dias de graça";
+"premium_title_new_2" = "Assinatura de três meses 10.49 $";
+"add_product_new" = "Verificar quantidade inserida";
 
 /*    Premium Screen    */
+"pay_description_1" = "Ao adquirir o Fiasy PRO, você ganha acesso a todas as funções premium. O PRO será debitado diretamente na sua conta iTunes. Você pode administrar ou cancelar sua assinatura PRO nas configurações da sua conta iTunes a qualquer momento. O PRO será automaticamente renovado, pelo mesmo preço, ao menos que você tenha cancelado o PRO pelo menos 24 horas antes da data de renovação. No período de compra ou renovação da assinatura, um método de pagamento válido deve ser depositado. Você também pode pagar por sua assinatura com o Cartão Presente da App Store. Qualquer porção de um período de teste que não tenha sido usada, se oferecido, será perdida ao adquirir a assinatura. Ao assinar o PRO , você concorda com os termos da App Store e do ";
+"pay_description_2" = "Termos de Serviço e Política de Privacidade";
+"long_prem_open" = "Desbloquear mais\nopções";
+"one_mounth" = "mês";
+"few_mounth" = "mês";
+"many_mounth" = "meses";
+"title_save_percent" = "salvar";
+"title_save_percent2" = "salvar";
+"title_change_1" = "mudar";
+"product_details_desc" = "Escolha a quantidade de conteúdo\ne a unidade de medida";
+"product_changed_in_busket" = "Produto alterado na cesta";
+"product_changed_in_diary" = "Produto adicionado ao diário";
+"selected_products" = "Produtos seleccionados";
+"black_prem_hours" = "horas";
+"black_prem_minutes" = "minutos";
+"black_prem_seconds" = "segundos";
+"black_prem_end" = "A oferta especial terminará em";
+"long_prem_titl_1" = "Perca peso sem estresse\nou dietas rigorosas com\n";
+"long_prem_features_diary" = "Diário de nutrição e exercícios";
+"long_prem_features_elements" = "Acompanhamento de\nmacronutrientes";
+"long_prem_features_recipe" = "Receitas";
+"long_prem_features_articles" = "Artigos exclusivos\nde um nutricionista";
+"long_prem_plans_title" = "Planos de refeições";
+"long_prem_features_statistic" = "Todas as\nestatísticas";
+"long_prem_features_body" = "Acompanhamento da\nmorfologia corporal";
+"buy" = "Comprar";
+
+"long_prem_easy" = "TUDO É MAIS FÁCIL COM";
+"long_prem_article_title" = "Artigos exclusivos";
+"long_prem_article_txt" = "Você obterá acesso a artigos de um famoso nutricionista e instrutor fitness";
+"long_prem_recipe_title" = "Banco de dados de receitas";
+"long_prem_recipe_txt" = "Receitas deliciosas, fáceis de preparar, acessíveis e com dados de CPFC";
+"long_prem_settings_title" = "Configurações personalizadas";
+"long_prem_settings_txt" = "Veja e ajuste seu nível de CPFC";
+"long_prem_plans_title" = "Planos de refeições";
+"long_prem_plans_txt" = "Planos de refeições prontas para todos os gostos e objetivos";
+"long_prem_measure_title" = "Medidas do corpo";
+"long_prem_measure_txt" = "Acompanhe seu progresso com uma análise detalhada de medição corporal";
+
+"premium_title" = "Premium";
+"premium_title_2" = "CLIENTES SATISFEITOS";
 "reach_goal_faster" = "Alcance seu objetivo mais rapidamente";
 "everyday_recipes" = "Receitas diárias";
 "science_articles" = "Artigos científicos úteis";
@@ -182,6 +257,8 @@
 "email" = "Endereço de e-mail";
 
 /*    Calorie Intake Screen    */
+"sex_male" = "Masculino";
+"sex_female" = "Feminino";
 "calorie_intake_navigation" = "Ingestão de calorias";
 "gender" = "Gênero";
 "growth" = "Altura";
@@ -208,7 +285,7 @@
 "water" = "Água";
 "water_unit" = "l";
 "norm_established_first" = "Ingestão definida como";
-"norm_established_second" = "Para alterar esse valor, toque em";
+"norm_established_second" = "Para alterar esse valor,\ntoque em";
 "breakfast" = "Café da manhã";
 "lunch" = "Almoço";
 "dinner" = "Jantar";
@@ -216,6 +293,22 @@
 "activity" = "Atividades";
 "all" = "Tudo";
 "water_settings" = "Configurações de água";
+"water_alert" = "Todos os valores da água serão definidos por padrão.";
+"lig_product" = "ml";
+"gram_unit" = "grama";
+"text_start_search" = "Comece digitando o nome de um alimento\nno campo de pesquisa";
+"barCode_title" = "Encontre um produto por código de barras";
+"patterns_title" = "Modelos";
+"my_dishes_title" = "As minhas refeições";
+"my_products_title" = "A minha comida";
+"alert_development" = "Secção do desenvolvimento";
+"alert_basket" = "Adicione produtos selecionados da cesta ao diário?";
+"alert_add" = "Adicionar";
+"result_search" = "Pesquisa";
+"selected_basket" = "Seleccionado";
+"count_products" = "produtos";
+"premium_description_Label" = "Quer saber quantas vitaminas e minerais toma com alimentos?\nEm seguida, junte-se à versão";
+"premium_version" = "versão";
 
 /*    Water Screen    */
 "benefit_water_title" = "Benefícios da água";
@@ -229,11 +322,49 @@
 "make_default" = "Definir como padrão";
 
 /*    Activity Screen    */
+
+"diary_mes_1" = "Você ainda não inseriu dados";
+"diary_mes_2" = "Adicione peso";
+"diary_mes_3" = "Peso por data selecionada";
+"diary_mes_4" = "Peso para hoje";
+"diary_mes_5" = "Você atualizou o peso";
+"diary_mes_6" = "de volta";
+"diary_mes_7" = "Atualizar";
+"diary_mes_8" = "dias";
+"diary_mes_9" = "Medidas do corpo";
+"measuring_title_1" = "Peito";
+"measuring_title_2" = "Cintura";
+"measuring_title_3" = "Quadris";
+"measuring_title_4" = "peso médio por semana";
+"measuring_title_5" = "Find out what";
+"measuring_title_6" = "average weight";
+"meas_future_day" = "Este dia ainda não\nchegou";
+"meas_title_bottom" = "Medidas (cm)";
+"diary_mes_11" = "Hoje atualizado";
+"diary_mes_12" = "volta atualizado";
+"measuring_title_7" = "mm";
+"measuring_title_9" = "atualizado";
+"measuring_title_10" = "excluído";
+"measuring_title_11" = "atualizado";
+"measuring_title_12" = "Sem dados";
+"measuring_title_13" = "Para adicionar dados,\nadicione-os à tela de\nmedição do corpo.";
+"add_user_activity_hint" = "Digite um nome para a Atividades";
+"minimal_calories_count" = "O número mínimo de calorias é";
+"help_meas_first_title" = "Informações sobre o cálculo do peso médio da \nsemana";
+"help_meas_first_text" = "\n\nSe você se pesar todos os dias e inserir as informações na seção Medidas do corpo em seu diário, o programa calculará automaticamente seu peso médio da semana.";
+"help_meas_second_title" = "\n\nPor que isso é importante?";
+"help_meas_second_text" = "\n\nSeu peso pode variar de acordo com as fases de seu ciclo menstrual (se você for mulher) ou com a ingestão de alimentos que causam a retenção de água. Portanto, se você se pesar uma vez por semana ou mesmo uma vez por mês e se focar na diferença entre os números, a mudança real no seu peso pode ser ocultada por fatores incidentais que causam desvios no seu peso. Em outras palavras, o número pode não ser preciso.";
+"help_meas_third_text" = "\n\nAcompanhe o seu peso médio da semana para obter uma imagem clara de como o seu peso mudou. Se você não fizer medições regularmente, será difícil ver seu progresso. Certifique-se de fazer pausas de duas semanas para manter seu peso após cada quatro semanas de dieta. Isso impedirá que seu corpo sofra estresse intenso e reduzirá a probabilidade de você voltar aos seus antigos hábitos alimentares.";
+
+"alert_yes" = "Sim";
+"alert_no" = "Não";
+"alert_dialog_confirm_question2" = "Tem certeza de que deseja excluir o item selecionado?";
+"alert_dialog_confirm_question" = "Tem certeza de que deseja excluir o item selecionado?";
 "activity_navigation" = "Atividades";
 "my_activity" = "Minhas atividades";
 "search" = "Procurar";
-"empty_my_activity_first" = "Você ainda não adicionou nenhuma atividade. Para adicionar uma atividade, toque em";
-"empty_my_activity_second" = " toque em ➕";
+"empty_my_activity_first" = "Você ainda não adicionou\nnenhuma atividade. Para adicionar\numa atividade,";
+"empty_my_activity_second" = " toque em +";
 "favorites" = "Favoritos";
 "empty_favorites" = "Você ainda não adicionou atividades aos seus favoritos. Para adicionar uma atividade, deslize para a esquerda etoque no coração.";
 "standard_activities" = "Atividades padrão";
@@ -249,23 +380,105 @@
 "attention_description" = "A inserção incorreta de uma atividade pode fazer com que os dados sobre sua ingestão diária de CPGC sejam exibidos demaneira imprecisa.";
 "calories_spent" = "Calorias queimadas";
 "for" = "para";
-"move_slider" = "Arraste a barra deslizante para alterar a quantidade de tempo";
+"move_slider" = "Arraste a barra deslizante para\nalterar a quantidade de tempo";
 "add_to_diary" = "Adicionar ao diário";
+"diary_mes_13" = "para";
+"diary_mes_14" = "Atividade adicionada ao seu diário";
+"diary_mes_15" = "Você precisa adicionar o tempo de atividade";
+"diary_mes_16" = "Alterar atividade";
+"diary_mes_17" = "Minhas atividades";
+
+/*    Calories Intake Screen    */
+"write_growth" = "Digite sua altura";
+"write_weight" = "Digite seu peso";
+"write_age" = "Digite sua idade";
+"check_your_age" = "Verifique sua idade";
+"check_written_weight" = "Verificar peso inserido";
+"check_written_age" = "Verifique o crescimento inserido";
+"check_written_calories" = "Verifique as calorias inseridas";
+"check_written_protein_description" = "As proteínas não podem estar vazias ou consistir em zeros";
+"check_written_carbohydrates_description" = "Os carboidratos não podem estar vazios ou consistir em zeros";
+"check_written_fats_description" = "As gorduras não podem estar vazias ou consistir em zeros";
+"write_your_name" = "Digite seu nome";
+"check_your_name" = "Verifique seu nome";
+"check_your_last_name" = "Verifique seu sobrenome";
+"check_your_email" = "Verifique seu e-mail";
+
+"article_premium_description" = "ACESSE CENTENAS\nDE ARTIGOS ÚTEIS AO\nASSINAR AO PREMIUM";
+"article_premium_button" = "ATUALIZAÇÃO PARA PREMIUM";
+"add_product_in_journal" = "Adicionando ao diário";
+"remove_product" = "Remoção do produto";
+"activiti_description_1" = "Esta atividade já foi adicionada aos favoritos";
+"activiti_description_2" = "Atividade adicionada aos favoritos";
 
 /*    Search Product Screen    */
 "search_empty" = "Resultados não encontrados. Tente novamente oucrie seu próprio alimento.";
+
+/*    Create Product Step Screen    */
+"create_step_title_1" = "Deseja sair sem salvar?";
+"create_step_title_2" = "O nome não pode consistir apenas em espaços";
+"create_step_title_3" = "'Marca / fabricante' não pode consistir apenas em espaços";
+"create_step_title_4" = "Marca/fabricante";
+"create_step_title_5" = "Nome do produto";
+"create_step_title_6" = "Código de barras";
+"create_step_title_7" = "Tipo de produto: Alimentos";
+"create_step_title_8" = "Tipo de produto: Bebida";
+"create_step_title_9" = "Adicionando";
+"create_step_title_10" = "Alimento";
+"create_step_title_11" = "Drink";
+"create_step_title_12" = "Digite o nome do alimento";
+"create_step_title_13" = "Tem certeza de que deseja excluir?";
+"create_step_title_14" = "Adicionar tamanho da porção";
+"create_step_title_15" = "Escolha um tamanho da porção. Você também pode adicionar seus próprios tamanhos de porção e alterá-los.";
+"create_step_title_16" = "Serviço padrão";
+"create_step_title_17" = "Tamanho da dose";
+"create_step_title_18" = "Quilograma";
+"create_step_title_19" = "Gram";
+"create_step_title_20" = "Litro";
+"create_step_title_21" = "Mililitro";
+"create_step_title_22" = "O nome da parte não pode consistir apenas em espaços";
+"create_step_title_23" = "Nome da veiculação";
+"create_step_title_24" = "Digite o nome da parte";
+"create_step_title_25" = "Unidade";
+"create_step_title_26" = "Tamanho da dose";
+"create_step_title_27" = "Digite o tamanho da porção";
+"create_step_title_28" = "Adicionar parte";
+"create_step_title_29" = "Editar";
+"create_step_title_30" = "Nutrientes";
+"create_step_title_31" = "Digite o teor calórico do produto";
+"create_step_title_32" = "Introduzir gorduras de produtos";
+"create_step_title_33" = "Inserir produto Carboidratos";
+"create_step_title_34" = "Digite as proteínas do produto";
+"create_step_title_35" = "Seu produto foi adicionado a Meus produtos";
+"create_step_title_36" = "Editar";
+"create_step_title_37" = "Esta seção armazenará receitas e produtos que você gosta ou salva";
+"create_step_title_38" = "Para adicionar um produto aos seus favoritos,\nclique no cartão do produto ";
+
+
 
 /*    My Product List Screen    */
 "add_product" = "Adicionar alimento";
 "product_not_found" = "Alimento não encontrado";
 "product_list_empty" = "Receitas e alimentos curtidos ou salvos serão armazenados nesta seção.";
+"my_product_title_1" = "Os produtos que você adicionou serão armazenados aqui";
 
 /*    My Recipes List Screen    */
+"complexity_text1" = "fácil";
+"complexity_text2" = "difícil";
+"complexity_text3" = "Dificuldade";
+"complexity_text4" = "mg";
+"complexity_text5" = "Saturada";
+"complexity_text6" = "Insaturado";
+"search_field_placeholder" = "Procurar";
 "add_recipes" = "Adicionar receita";
 "recipes_not_found" = "Receita não encontrada";
 "recipes_list_empty" = "Aqui você pode criar e salvar um conjunto de alimentos que você come todos os dias em determinadas refeições.";
 "create_product" = "Criar alimento";
 "create_recipes" = "Criar receita";
+
+"subsc_btn_bay" = "atualizar para Premium";
+"recipe_details_title_1" = "Tenha acesso";
+"recipe_details_title_2" = "a centenas de receitas úteis";
 
 /*    Recipe Creation Screen    */
 "recipes_name" = "Nome da receita";
@@ -436,7 +649,6 @@
 "hoop_torsion" = "Malhação com bambolê";
 "bodybuilding" = "Musculação";
 "lacrosse" = "Lacrosse";
-"portion" = "parte";
 "slow_walking_4.5_km/h" = "Caminhada lenta, 4,5 km/h";
 "window_cleaning" = "Limpar janelas";
 "motocross" = "Motocross";
@@ -516,3 +728,4 @@
 "elliptical_trainer_high_load" = "Máquina elíptica, alta intensidade";
 "elliptical_trainer_medium_load" = "Máquina elíptica, média intensidade";
 "elliptical_trainer_low_load" = "Máquina elíptica, baixa intensidade";
+

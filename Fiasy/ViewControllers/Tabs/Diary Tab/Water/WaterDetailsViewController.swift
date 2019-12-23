@@ -11,6 +11,7 @@ import UIKit
 class WaterDetailsViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
@@ -21,6 +22,7 @@ class WaterDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        titleNavigationLabel.text = LS(key: .WATER)
     }
     
     // MARK: - Private -

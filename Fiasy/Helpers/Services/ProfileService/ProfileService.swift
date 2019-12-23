@@ -39,4 +39,8 @@ class ProfileService : ProfileServiceProtocol {
     func loadArticles() -> Observable<PaginationArticle> {
         return profileProvider.rx.request(.loadArticles).mapObject(PaginationArticle.self).asObservable()
     }
+    
+    func sendSendsay(_ mail: String) -> Observable<Suggest> {
+        return profileProvider.rx.request(.sendSendsay(mail)).mapObject(Suggest.self).asObservable()
+    }
 }

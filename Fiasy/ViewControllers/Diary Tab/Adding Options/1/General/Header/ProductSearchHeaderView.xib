@@ -88,7 +88,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66E-H3-PU4">
-                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="68.5" height="43"/>
                                     <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
                                     <state key="normal" title="Отмена">
                                         <color key="titleColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,6 +98,9 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="66E-H3-PU4" firstAttribute="width" secondItem="NJw-QY-ZfG" secondAttribute="width" multiplier="0.2" id="MsH-3b-1Pi"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

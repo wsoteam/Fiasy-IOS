@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Swinject
 import SwiftEntryKit
 
 class FavoriteProductViewController: UIViewController {
     
+    enum FavoriteProductState {
+        case list
+        case search
+    }
+    
     // MARK: - Outlet -
-    @IBOutlet weak var searchContainerView: UIView!
+    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var emptyContainerView: UIView!
     @IBOutlet weak var generalStackView: UIStackView!
+    @IBOutlet weak var emptyBottomLabel: UILabel!
+    @IBOutlet weak var emptyTopLabel: UILabel!
+    @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var addProductTitleLabel: UILabel!
     @IBOutlet weak var cancelSearchButton: UIButton!
     @IBOutlet weak var textField: DesignableUITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -23,15 +34,39 @@ class FavoriteProductViewController: UIViewController {
     
     // MARK: - Properties -
     var keyboardHeight: CGFloat = 80.0
+    private var searchProducts: [SecondProduct] = []
+    private var pagination: PaginationProduct?
+    private var screenState: FavoriteProductState = .list
+    private var interactor: SearchProductInteractorInput?
+    private var selectedProducts: [SecondProduct] = []
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
+    private lazy var productPresetsView: ProductPresetsView = {
+        guard let view = ProductPresetsView.fromXib() else { return ProductPresetsView() }
+        view.delegate = self
+        return view
+    }()
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupTableView()
+        setupInteractor()
+        navigationTitleLabel.text = LS(key: .FAVORITES)
+        addProductTitleLabel.text = LS(key: .ADD_PRODUCT_IN_JOURNAL)
+        textField.placeholder = LS(key: .SEARCH)
+        
+        emptyTopLabel.text = LS(key: .CREATE_STEP_TITLE_37)
+        
+        let fullString = NSMutableAttributedString(string: LS(key: .CREATE_STEP_TITLE_38))
+        let image1Attachment = NSTextAttachment()
+        image1Attachment.image = #imageLiteral(resourceName: "favorite_button")
+        let image1String = NSAttributedString(attachment: image1Attachment)
+        fullString.append(image1String)
+        emptyBottomLabel.attributedText = fullString
+        edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,26 +91,39 @@ class FavoriteProductViewController: UIViewController {
         cancelSearchButton.hideAnimated(in: generalStackView)
     }
     
-    @IBAction func createProductClicked(_ sender: Any) {
-        UserInfo.sharedInstance.productFlow = AddProductFlow()
-        performSegue(withIdentifier: "sequeProductCreate", sender: nil)
+    @IBAction func searchValueChange(_ sender: Any) {
+        guard let text = textField.text else { return }
+        interactor?.searchProduct(search: text)
     }
     
     // MARK: - Privates -
     private func setupTableView() {
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
-        tableView.register(type: ProductAddingSearchCell.self)
+//        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        tableView.register(type: FavoriteProductTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.reloadData()
     }
     
-    func reloadBottomView() {
-        if SwiftEntryKit.isCurrentlyDisplaying() {
-//            var attributes = EKAttributes()
-//            attributes.fillAppConfigure(height: keyboardHeight)
-//            productPresetsView.fillView(count: selectedProduct.count)
-//            SwiftEntryKit.display(entry: productPresetsView, using: attributes)
+    private func setupInteractor() {
+        let container = assembler.resolver as! Container
+        let profileService = container.resolve(ProfileServiceProtocol.self)!
+        let interactor = SearchProductInteractor(profileService: profileService)
+        interactor.output = self
+        self.interactor = interactor
+    }
+    
+    private func displayPresets() {
+        if selectedProducts.isEmpty {
+            SwiftEntryKit.dismiss()
+        } else {
+            if SwiftEntryKit.isCurrentlyDisplaying() {
+                productPresetsView.fillView(count: selectedProducts.count)
+            } else {
+                var attributes = EKAttributes()
+                attributes.fillAppConfigure(height: keyboardHeight)
+                productPresetsView.fillView(count: selectedProducts.count)
+                SwiftEntryKit.display(entry: productPresetsView, using: attributes)
+            }
         }
     }
 }
@@ -83,14 +131,21 @@ class FavoriteProductViewController: UIViewController {
 extension FavoriteProductViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return searchProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductAddingSearchCell") as? ProductAddingSearchCell else { fatalError() }
-//        cell.fillCell(product: selectedProduct[indexPath.row])
-//        cell.delegate = self
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteProductTableViewCell") as? FavoriteProductTableViewCell else { fatalError() }
+        cell.fillCell(product: searchProducts[indexPath.row], delegate: self, selectedProducts)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0001
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.0001
     }
 }
 
@@ -103,6 +158,60 @@ extension FavoriteProductViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         cancelSearchButton.showAnimated(in: generalStackView)
-        //self.delegate?.changeScreenState(state: .search)
+    }
+}
+
+extension FavoriteProductViewController: SearchProductInteractorOutput {
+    
+    func didLoadSuggest(list: [ProductInfo]) {}
+    func didLoadBySearch(_ pagination: PaginationProduct) {
+        self.screenState = .search
+        self.pagination = pagination
+        
+        self.searchProducts = pagination.secondResults
+        self.separatorView.isHidden = self.searchProducts.isEmpty
+        self.emptyContainerView.isHidden = !self.searchProducts.isEmpty
+        self.tableView.reloadData()
+    }
+    
+    func didLoadMoreProducts(_ products: [SecondProduct]) {
+        //
+    }
+}
+
+extension FavoriteProductViewController: ProductAddingDelegate {
+    
+    func showBasket() {
+        //
+    }
+    
+    func arrowClicked(by index: IndexPath) {
+        //
+    }
+    
+    func showProgress(back: Bool) {
+        //
+    }
+    
+    func portionClicked(portion: MeasurementUnits, product: SecondProduct, state: Bool) {
+        //
+    }
+    
+    func openPortionDetails(by product: SecondProduct) {
+        //
+    }
+    
+    func productSelected(_ item: SecondProduct, state: Bool) {
+        let filled = SecondProduct(second: item)
+        if state {
+            selectedProducts.append(filled)
+        } else {
+            for (index, second) in selectedProducts.enumerated() where second.id == filled.id {
+                if selectedProducts.indices.contains(index) {
+                    selectedProducts.remove(at: index)
+                }
+            }
+        }
+        displayPresets()
     }
 }

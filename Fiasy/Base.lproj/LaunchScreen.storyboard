@@ -17,13 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fiasy_text_load-1" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-Ll-uAo">
-                                <rect key="frame" x="108.5" y="251" width="158" height="185"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-Ll-uAo">
+                                <rect key="frame" x="135" y="272" width="105" height="143"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IA7-bD-OZ6">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 28333" translatesAutoresizingMaskIntoConstraints="NO" id="LOb-H9-Lut">
+                                        <rect key="frame" x="135" y="252" width="105" height="143"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="LOb-H9-Lut" firstAttribute="centerY" secondItem="IA7-bD-OZ6" secondAttribute="centerY" id="CGZ-I7-aZz"/>
+                                    <constraint firstItem="LOb-H9-Lut" firstAttribute="centerX" secondItem="IA7-bD-OZ6" secondAttribute="centerX" id="xUU-oN-Zip"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nfL-Ll-uAo" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Ea4-kz-6Xh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IA7-bD-OZ6" secondAttribute="trailing" id="Idh-Ke-P7i"/>
+                            <constraint firstItem="IA7-bD-OZ6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aQg-JR-Wux"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IA7-bD-OZ6" secondAttribute="bottom" id="fKR-Rf-Har"/>
+                            <constraint firstItem="IA7-bD-OZ6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pc5-43-NAn"/>
                             <constraint firstItem="nfL-Ll-uAo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qml-0T-rNf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -35,6 +52,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fiasy_text_load-1" width="158" height="185"/>
+        <image name="Group 28333" width="105" height="143"/>
+        <image name="LaunchImage" width="105" height="143"/>
     </resources>
 </document>

@@ -11,6 +11,7 @@ import UIKit
 class DetailsActivityViewController: UIViewController {
 
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,6 +22,7 @@ class DetailsActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationTitleLabel.text = LS(key: .ADD_ACTIVITIE)
         setupTableView()
     }
     

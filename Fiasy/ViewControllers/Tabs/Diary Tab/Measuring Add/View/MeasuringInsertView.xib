@@ -332,6 +332,13 @@
                 <outletCollection property="weekNumberButtons" destination="Rgf-ip-2sc" collectionClass="NSMutableArray" id="Sej-tT-W5f"/>
                 <outletCollection property="weekNumberButtons" destination="H09-dm-6Zi" collectionClass="NSMutableArray" id="9rr-lz-tZd"/>
                 <outletCollection property="weekNumberButtons" destination="XKb-UE-OK9" collectionClass="NSMutableArray" id="iYA-dp-we0"/>
+                <outletCollection property="weekNameLabels" destination="sjH-Ao-C5h" collectionClass="NSMutableArray" id="8nh-gB-s44"/>
+                <outletCollection property="weekNameLabels" destination="hOe-3j-sx0" collectionClass="NSMutableArray" id="efc-Wa-Ib2"/>
+                <outletCollection property="weekNameLabels" destination="NnR-nB-TFl" collectionClass="NSMutableArray" id="bty-Dp-oFv"/>
+                <outletCollection property="weekNameLabels" destination="jkV-Cc-imE" collectionClass="NSMutableArray" id="ouN-ek-iGe"/>
+                <outletCollection property="weekNameLabels" destination="7aN-Pp-I3X" collectionClass="NSMutableArray" id="QZJ-Fc-adO"/>
+                <outletCollection property="weekNameLabels" destination="5yA-kA-N2K" collectionClass="NSMutableArray" id="Lo7-qH-jZh"/>
+                <outletCollection property="weekNameLabels" destination="3bY-Py-j01" collectionClass="NSMutableArray" id="MKf-c1-xow"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="-233.03571428571428"/>
         </view>

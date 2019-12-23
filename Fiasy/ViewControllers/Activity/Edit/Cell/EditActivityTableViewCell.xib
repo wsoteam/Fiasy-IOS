@@ -114,7 +114,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="caloriesSpentLabel" destination="9qG-Sf-CJf" id="51c-CN-8nQ"/>
+                <outlet property="changeButton" destination="lvy-Rb-hDA" id="WUM-dv-8NC"/>
                 <outlet property="customSlider" destination="Tb8-ob-Z2K" id="O4n-Qc-xp8"/>
+                <outlet property="descriptionLabel" destination="7ma-Fx-nhM" id="en6-gI-aBp"/>
                 <outlet property="nameLabel" destination="zwn-Xk-uyI" id="QTK-4p-tIu"/>
             </connections>
             <point key="canvasLocation" x="95.652173913043484" y="207.92410714285714"/>

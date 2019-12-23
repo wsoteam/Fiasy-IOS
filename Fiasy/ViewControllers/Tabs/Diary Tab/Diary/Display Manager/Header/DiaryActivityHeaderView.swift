@@ -29,8 +29,8 @@ class DiaryActivityHeaderView: UITableViewHeaderFooterView {
         self.section = section
         
         leftButton.isHidden = false
-        
-        titleLabel.text = "Активности"
+        rightButton.setTitle("\(LS(key: .ALL)) ", for: .normal)
+        titleLabel.text = LS(key: .ACTIVITY)
         if isEmpty {
             arrowImageView.isHidden = true
         } else {
@@ -42,7 +42,7 @@ class DiaryActivityHeaderView: UITableViewHeaderFooterView {
     func fillHeaderByMeasurement() {
         rightButton.isHidden = true
 
-        titleLabel.text = "Измерение тела"
+        titleLabel.text = LS(key: .DIARY_MES_9)
         leftButton.isHidden = true
         arrowImageView.isHidden = true
     }

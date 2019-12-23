@@ -23,14 +23,14 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uX-Fm-8xN">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размеры (см)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uix-xj-cqj">
-                            <rect key="frame" x="20" y="143" width="124" height="18"/>
-                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размеры (см)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uix-xj-cqj">
+                            <rect key="frame" x="20" y="144" width="124" height="17"/>
+                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                             <color key="textColor" red="0.74109476804733276" green="0.74122363328933716" blue="0.74108666181564331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы еще не заносили данные" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hb3-AB-QE8">
-                            <rect key="frame" x="144" y="145" width="255" height="14.5"/>
+                            <rect key="frame" x="144" y="145.5" width="255" height="14.5"/>
                             <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
                             <color key="textColor" red="0.74109476799999996" green="0.74122363329999996" blue="0.74108666180000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -69,6 +69,7 @@
             <viewLayoutGuide key="safeArea" id="RLd-Hb-ai0"/>
             <connections>
                 <outlet property="descriptionLabel" destination="hb3-AB-QE8" id="ZSN-RT-uPS"/>
+                <outlet property="leftTitleLabel" destination="uix-xj-cqj" id="Oai-R3-jcU"/>
             </connections>
             <point key="canvasLocation" x="136.23188405797103" y="-242.07589285714283"/>
         </view>

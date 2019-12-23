@@ -11,6 +11,7 @@ import UIKit
 class RecipesHeaderView: UITableViewHeaderFooterView {
 
     //MARK: - Outlet's -
+    @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     //MARK: - Properties -
@@ -20,15 +21,17 @@ class RecipesHeaderView: UITableViewHeaderFooterView {
     //MARK: - Interface -
     func fillHeader(by section: Int, delegate: RecipesDelegate) {
         self.delegate = delegate
+        
+        allButton.setTitle("\(LS(key: .ALL)) ", for: .normal)
         switch section {
         case 0:
-            titleLabel.text = "Завтрак"
+            titleLabel.text = LS(key: .BREAKFAST)
         case 1:
-            titleLabel.text = "Обед"
+            titleLabel.text = LS(key: .LUNCH)
         case 2:
-            titleLabel.text = "Ужин"
+            titleLabel.text = LS(key: .DINNER)
         case 3:
-            titleLabel.text = "Перекус"
+            titleLabel.text = LS(key: .SNACK)
         default:
             break
         }

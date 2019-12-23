@@ -11,6 +11,7 @@ import UIKit
 class AddProductSecondStepViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
@@ -19,6 +20,7 @@ class AddProductSecondStepViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        navigationTitleLabel.text = LS(key: .CREATE_STEP_TITLE_30)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,10 +41,30 @@ class AddProductSecondStepViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func closeClicked(_ sender: Any) {
+        showCloseAlert()
+    }
+    
     // MARK: - Private -
     private func setupTableView() {
         tableView.register(type: AddProductSecondStepCell.self)
         tableView.register(AddProductFooterTableView.nib, forHeaderFooterViewReuseIdentifier: AddProductFooterTableView.reuseIdentifier)
+    }
+    
+    private func showCloseAlert() {
+        let refreshAlert = UIAlertController(title: LS(key: .CREATE_STEP_TITLE_1), message: "", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard let strongSelf = self else { return }
+            let viewControllers: [UIViewController] = strongSelf.navigationController!.viewControllers
+            for aViewController in viewControllers {
+                if aViewController is MyСreatedProductsViewController {
+                    strongSelf.navigationController?.popToViewController(aViewController, animated: true)
+                }
+            }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
+        present(refreshAlert, animated: true)
     }
 }
 

@@ -15,6 +15,8 @@ protocol ServingSizeDelegate {
 class ServingSizeViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Life Cicle -
@@ -22,6 +24,8 @@ class ServingSizeViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        nextButton.setTitle("\(LS(key: .UNBOARDING_NEXT)) ", for: .normal)
+        titleNavigationLabel.text = LS(key: .CREATE_STEP_TITLE_17)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +49,10 @@ class ServingSizeViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func closeClicked(_ sender: Any) {
+        showCloseAlert()
+    }
+    
     @IBAction func nextClicked(_ sender: Any) {
         performSegue(withIdentifier: "sequeAddProductSecondStep", sender: nil)
     }
@@ -56,10 +64,26 @@ class ServingSizeViewController: UIViewController {
         tableView.register(IngredientsFooterView.nib, forHeaderFooterViewReuseIdentifier: IngredientsFooterView.reuseIdentifier)
     }
     
+    private func showCloseAlert() {
+        let refreshAlert = UIAlertController(title: LS(key: .CREATE_STEP_TITLE_1), message: "", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard let strongSelf = self else { return }
+            let viewControllers: [UIViewController] = strongSelf.navigationController!.viewControllers
+            for aViewController in viewControllers {
+                if aViewController is MyСreatedProductsViewController {
+                    strongSelf.navigationController?.popToViewController(aViewController, animated: true)
+                }
+            }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
+        present(refreshAlert, animated: true)
+    }
+    
     private func showСonfirmationOfDeletion(indexPath: IndexPath) {
         let alertController = UIAlertController(title: "\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         guard let view = BasketAlertView.fromXib() else { return }
-        view.descriptionLabel.text = "Вы точно хотите удалить?"
+        view.descriptionLabel.text = LS(key: .CREATE_STEP_TITLE_13)
         alertController.view.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 15).isActive = true
@@ -67,12 +91,12 @@ class ServingSizeViewController: UIViewController {
         view.leftAnchor.constraint(equalTo: alertController.view.leftAnchor, constant: 10).isActive = true
         view.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
-        let removeAction = UIAlertAction(title: "Удалить", style: .default) { [weak self] (alert) in
+        let removeAction = UIAlertAction(title: LS(key: .DELETE), style: .default) { [weak self] (alert) in
             guard let strongSelf = self else { return }
             UserInfo.sharedInstance.productFlow.allServingSize.remove(at: indexPath.row - 2)
             strongSelf.removeRow(indexPath)
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: LS(key: .CANCEL), style: .cancel)
         cancelAction.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
         removeAction.setValue(#colorLiteral(red: 0.9231546521, green: 0.3429711461, blue: 0.342156291, alpha: 1), forKey: "titleTextColor")
         
@@ -130,7 +154,7 @@ extension ServingSizeViewController: UITableViewDelegate, UITableViewDataSource,
         guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: IngredientsFooterView.reuseIdentifier) as? IngredientsFooterView else {
             return UITableViewHeaderFooterView()
         }
-        footer.fillFooter(delegate: self, title: "Добавить размер порции")
+        footer.fillFooter(delegate: self, title: LS(key: .CREATE_STEP_TITLE_14))
         return footer
     }
     

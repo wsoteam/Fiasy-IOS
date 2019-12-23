@@ -11,12 +11,14 @@ import UIKit
 class MeasuringWeightDescriptionViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var titleDescriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleDescriptionLabel.text = LS(key: .MEASURING_TITLE6).capitalizeFirst
         setupTableView()
     }
     

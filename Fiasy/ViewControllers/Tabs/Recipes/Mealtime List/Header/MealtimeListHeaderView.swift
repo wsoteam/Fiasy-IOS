@@ -8,16 +8,55 @@
 
 import UIKit
 
-class MealtimeListHeaderView: UITableViewHeaderFooterView {
+class MealtimeListHeaderView: UITableViewHeaderFooterView, UITextFieldDelegate {
 
-    //MARK: - Outlet -
-    @IBOutlet weak var titleLabel: UILabel!
+    // MARK: - Outlet -
+    @IBOutlet weak var rightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchContainerView: UIView!
+    @IBOutlet weak var generalStackView: UIStackView!
+    @IBOutlet weak var cancelSearchButton: UIButton!
+    @IBOutlet weak var textField: DesignableUITextField!
     
-    //MARK: - Properties -
-    static let headerHeight: CGFloat = 70.0
+    // MARK: - Properties -
+    static let height: CGFloat = 76.0
+    private var delegate: RecipeMealtimeDelegate?
     
     //MARK: - Interface -
-    func fillHeader() {
-        titleLabel.text = UserInfo.sharedInstance.selectedMealtimeHeaderTitle
+    func fillHeader(delegate: RecipeMealtimeDelegate) {
+        self.delegate = delegate
+        
+        textField.placeholder = LS(key: .SEARCH_FIELD_PLACEHOLDER)
+        cancelSearchButton.setTitle(LS(key: .CANCEL), for: .normal)
+    }
+    
+    //MARK: - Action -
+    @IBAction func valueChange(_ sender: Any) {
+        guard let text = self.textField.text else { return }
+        delegate?.searchRecipes(name: text)
+    }
+    
+    @IBAction func cancelClicked(_ sender: Any) {
+        if !cancelSearchButton.isHidden {
+            UIView.animate(withDuration: 0.35, animations: {
+                self.textField.text?.removeAll()
+                self.rightConstraint.constant = 16
+                self.cancelSearchButton.isHidden = true
+                self.generalStackView.layoutIfNeeded()
+            }) { (_) in
+                self.endEditing(true)
+                guard let text = self.textField.text else { return }
+                self.delegate?.searchRecipes(name: text)
+            }
+        }
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        rightConstraint.constant = 8
+        cancelSearchButton.showAnimated(in: generalStackView)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        rightConstraint.constant = 16
+        cancelSearchButton.hideAnimated(in: generalStackView)
     }
 }

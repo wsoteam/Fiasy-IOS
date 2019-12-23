@@ -2,12 +2,9 @@
 
 import UIKit
 import Foundation
-import NVActivityIndicatorView
 import SystemConfiguration
 class BaseViewController: UIViewController {
    
-    var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x:  0, y: 0, width: 150, height: 150))
-    var isShowPlaceholder = false
     //let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
 
 
@@ -26,50 +23,8 @@ class BaseViewController: UIViewController {
         
     }
     
-    func showPreloader(isShow: Bool)
-   {
-
-        if isShow == true && isShowPlaceholder == false
-        {
-            isShowPlaceholder = true
-            self.view.isUserInteractionEnabled = false
-            let frame = CGRect(x:  0, y: 0, width: 80, height: 80)
-
-            
-           let activityIndicatorView = NVActivityIndicatorView(frame: frame)
-         
-            activityIndicatorView.type = . ballScale // add your type
-            activityIndicatorView.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2)
-            activityIndicatorView.padding = 20
-            activityIndicatorView.layer.zPosition = 11
-            activityIndicatorView.backgroundColor = UIColor.lightGray
-            activityIndicatorView.layer.cornerRadius = 10
-
-            if !activityIndicatorView.isAnimating
-            {
-                self.view.addSubview(activityIndicatorView)
-                activityIndicatorView.startAnimating()
-            }
-        } else if isShow == false && isShowPlaceholder == true {
-            isShowPlaceholder = false
-
-            for subview in self.view.subviews
-            {
-                if let item = subview as? NVActivityIndicatorView
-                {
-                    item.stopAnimating()
-                    item.removeFromSuperview()
-
-                }
-            }
-
-            self.view.isUserInteractionEnabled = true
-            activityIndicatorView.stopAnimating()
-            activityIndicatorView.removeFromSuperview()
-
-        }
-    
-    }
+   
+   
     
     // MARK: - DismissKeyboard
 //    @objc func dismissKeyboard() {

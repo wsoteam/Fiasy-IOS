@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import OneSignal
 import VisualEffectView
 import UserNotifications
 
 class NotificationsAlertViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var notificationButton: UIButton!
     @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -82,6 +84,18 @@ class NotificationsAlertViewController: UIViewController {
     }
     
     @IBAction func notificationClicked(_ sender: Any) {
-        removeSomeAnimate()
+//        removeSomeAnimate()
+        
+//        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+//        
+//        OneSignal.initWithLaunchOptions(launchOptions,
+//                                        appId: "9fda9c37-f81a-4fc2-b4a9-b6b5084445e7",
+//                                        handleNotificationAction: nil,
+//                                        settings: onesignalInitSettings)
+        
+//        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+//        OneSignal.promptForPushNotifications(userResponse: { accepted in
+//            print("User accepted notifications: \(accepted)")
+//        })
     }
 }

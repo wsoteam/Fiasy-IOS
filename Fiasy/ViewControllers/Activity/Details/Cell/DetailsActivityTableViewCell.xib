@@ -42,8 +42,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GNW-m8-PS2">
-                                <rect key="frame" x="0.0" y="299.5" width="374" height="167"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GNW-m8-PS2">
+                                <rect key="frame" x="0.0" y="299.5" width="374" height="197"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLX-ra-H8f">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
@@ -51,31 +51,36 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jaJ-ud-s0M" customClass="CustomSlider" customModule="Fiasy" customModuleProvider="target">
-                                        <rect key="frame" x="-2" y="20" width="378" height="94.5"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jaJ-ud-s0M" customClass="CustomSlider" customModule="Fiasy" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="20" width="378" height="124.5"/>
                                         <color key="minimumTrackTintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="thumbTintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="sliderValueChange:" destination="EnI-rq-1iU" eventType="valueChanged" id="G6o-wf-LMr"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Передвигайте ползунок, чтобы изменить время" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-2E-3kH">
-                                        <rect key="frame" x="0.0" y="133.5" width="374" height="33.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Передвигайте ползунок, чтобы изменить время" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-2E-3kH">
+                                        <rect key="frame" x="0.0" y="163.5" width="374" height="33.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                         <color key="textColor" red="0.59993284940719604" green="0.60003876686096191" blue="0.5999261736869812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4GG-6E-zIG">
-                                <rect key="frame" x="0.0" y="506.5" width="374" height="74"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4GG-6E-zIG">
+                                <rect key="frame" x="0.0" y="536.5" width="374" height="44"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xM-76-cor">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="74"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xM-76-cor">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                         <subviews>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxP-Xk-OTp">
-                                                <rect key="frame" x="68" y="0.0" width="238" height="44"/>
-                                                <state key="normal" image="some_10">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxP-Xk-OTp">
+                                                <rect key="frame" x="172" y="0.0" width="30" height="44"/>
+                                                <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="1DM-Q4-vk7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
+                                                <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -108,15 +113,16 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addButton" destination="hxP-Xk-OTp" id="8tm-vs-EAy"/>
                 <outlet property="caloriesSpentLabel" destination="wLX-ra-H8f" id="JCI-s3-hh3"/>
                 <outlet property="customSlider" destination="jaJ-ud-s0M" id="Yjo-HW-fgv"/>
+                <outlet property="descriptionLabel" destination="dAC-2E-3kH" id="BPT-H4-Ec3"/>
                 <outlet property="nameLabel" destination="P73-i4-g8t" id="5MI-8X-diD"/>
             </connections>
             <point key="canvasLocation" x="95.652173913043484" y="207.92410714285714"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="some_10" width="238" height="74"/>
         <image name="some_6" width="229" height="186"/>
     </resources>
 </document>

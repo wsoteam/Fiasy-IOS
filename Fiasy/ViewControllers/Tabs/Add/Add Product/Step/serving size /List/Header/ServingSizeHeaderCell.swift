@@ -10,4 +10,13 @@ import UIKit
 
 class ServingSizeHeaderCell: UITableViewCell {
     
+    // MARK: - Outlet -
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    // MARK: - Life cicle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        titleLabel.text = LS(key: .CREATE_STEP_TITLE_15)
+    }
 }

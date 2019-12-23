@@ -26,11 +26,11 @@ class ActivityHeaderTableView: UITableViewHeaderFooterView {
         
         switch section {
         case 0:
-            titleNameLabel.text = "Мои активности"
+            titleNameLabel.text = LS(key: .DIARY_MES_17).capitalizeFirst
         case 1:
-            titleNameLabel.text = "Избранное"
+            titleNameLabel.text = LS(key: .FAVORITES)
         case 2:
-            titleNameLabel.text = "Стандартные активности"
+            titleNameLabel.text = LS(key: .STANDARD_ACTIVITIES)
         default:
             break
         }

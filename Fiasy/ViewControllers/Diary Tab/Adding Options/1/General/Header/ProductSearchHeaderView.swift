@@ -19,11 +19,14 @@ class ProductSearchHeaderView: UITableViewHeaderFooterView, UITextFieldDelegate 
     @IBOutlet weak var textField: DesignableUITextField!
     
 //    // MARK: - Interface -
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        
-//        setupSearcBar()
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        cancelSearchButton.titleLabel?.minimumScaleFactor = 0.5
+        cancelSearchButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        textField.placeholder = LS(key: .SEARCH)
+        cancelSearchButton.setTitle(LS(key: .CANCEL), for: .normal)
+    }
     
     // MARK: - Properties -
     static let height: CGFloat = 76.0

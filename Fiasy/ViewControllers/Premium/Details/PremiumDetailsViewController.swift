@@ -27,9 +27,9 @@ class PremiumDetailsViewController: UIViewController {
     // MARK: - Properties -
     var isAutorization: Bool = true
     var trialFrom: String = "onboarding"
-    var state: PremiumColorState = .black
+    var state: PremiumColorState = .white
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
-        return state == .black ? .lightContent : .default
+        return .default
     }
     
     deinit {
@@ -41,7 +41,7 @@ class PremiumDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        applyColorState(state: .black)
+        applyColorState(state: state)
         closeButton.isHidden = !isAutorization
     }
     

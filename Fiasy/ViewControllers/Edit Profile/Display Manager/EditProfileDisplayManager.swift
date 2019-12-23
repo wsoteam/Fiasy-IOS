@@ -87,18 +87,18 @@ class EditProfileDisplayManager: NSObject {
         for item in fullNameLastArr where !item.isEmpty {
             lastName = lastName.isEmpty ? item : lastName + " \(item)"
         }
-//        if firstName.isEmpty {
-//            delegate.showAlert(message: "Введите вашe имя")
-//        }
-//
-//        guard !allFields[0].hasSpecialCharacters() else {
-//            return delegate.showAlert(message: "Проверьте ваше имя")
-//        }
-//        guard !allFields[1].hasSpecialCharacters() else {
-//            return delegate.showAlert(message: "Проверьте вашу фамилию")
-//        }
+        if firstName.isEmpty {
+            delegate.showAlert(message: LS(key: .WRITE_YOUR_NAME).capitalizeFirst)
+        }
+
+        guard !allFields[0].hasSpecialCharacters() else {
+            return delegate.showAlert(message: LS(key: .CHECK_YOUR_NAME).capitalizeFirst)
+        }
+        guard !allFields[1].hasSpecialCharacters() else {
+            return delegate.showAlert(message: LS(key: .CHECK_YOUR_LAST_NAME).capitalizeFirst)
+        }
         guard isValidEmail(emailStr: allFields[2]) else {
-            return delegate.showAlert(message: "Проверьте вашу почту")
+            return delegate.showAlert(message: LS(key: .CHECK_YOUR_EMAIL).capitalizeFirst)
         }
 
         let ref = Database.database().reference()
@@ -107,8 +107,8 @@ class EditProfileDisplayManager: NSObject {
             ref.child("USER_LIST").child(uid).child("profile").child("lastName").setValue(lastName)
             ref.child("USER_LIST").child(uid).child("profile").child("email").setValue(allFields[2])
 
-            UserInfo.sharedInstance.currentUser?.firstName = allFields[0]
-            UserInfo.sharedInstance.currentUser?.lastName = allFields[1]
+            UserInfo.sharedInstance.currentUser?.firstName = firstName
+            UserInfo.sharedInstance.currentUser?.lastName = lastName
             UserInfo.sharedInstance.currentUser?.email = allFields[2]
         }
         guard let image = temporaryPicture else { return delegate.closeModule() }

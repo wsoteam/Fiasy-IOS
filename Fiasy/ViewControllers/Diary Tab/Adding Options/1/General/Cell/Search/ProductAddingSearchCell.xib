@@ -131,6 +131,7 @@
                 <outlet property="caloriesLabel" destination="aWn-vO-f88" id="L5i-Do-I7i"/>
                 <outlet property="checkMark" destination="Irz-qr-9Tt" id="9QT-Pi-Hfz"/>
                 <outlet property="productNameLabel" destination="tmu-mF-CZy" id="BJn-RX-gQ0"/>
+                <outlet property="resultTitleLabel" destination="VVF-iL-evt" id="7vV-wW-lTI"/>
                 <outlet property="topViewHeight" destination="050-mb-Osa" id="qRq-OA-WRj"/>
             </connections>
             <point key="canvasLocation" x="15.942028985507248" y="47.879464285714285"/>

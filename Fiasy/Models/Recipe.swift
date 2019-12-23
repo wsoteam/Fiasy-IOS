@@ -8,6 +8,81 @@
 
 import UIKit
 
+enum RecipeType {
+    case lunch
+    case snack
+    case dinner
+    case breakfast
+}
+
+class SecondRecipe {
+    
+    var cholesterol: Int?
+    var time: Int?
+    var potassium: Double?
+    var calories: Int?
+    var sugar: Double?
+    var percentProteins: Double?
+    var percentCarbohydrates: Double?
+    var percentFats: Double?
+    var recipeName: String?
+    var unSaturatedFats: Double?
+    var portions: Int?
+    var imageUrl: String?
+    var instructions: [String]?
+    var ingredients: [String]?
+    var cellulose: Double?
+    var carbohydrates: Double?
+    var fats: Double?
+    var proteins: Double?
+    var sodium: Double? 
+    var saturatedFats: Double? 
+    var description: String?
+    var isDinner: Bool = false
+    var isLunch: Bool = false
+    var isSnack: Bool = false
+    var isBreakfast: Bool = false
+    
+    init(dictionary: [String : AnyObject]) {
+        potassium = dictionary["potassium"] as? Double
+        cholesterol = dictionary["cholesterol"] as? Int
+        time = dictionary["time"] as? Int
+        cellulose = dictionary["cellulose"] as? Double
+        calories = dictionary["calories"] as? Int
+        sugar = dictionary["sugar"] as? Double
+        percentCarbohydrates = dictionary["percentCarbohydrates"] as? Double
+        percentProteins = dictionary["percentProteins"] as? Double
+        percentFats = dictionary["percentFats"] as? Double
+        recipeName = dictionary["name"] as? String
+        unSaturatedFats = dictionary["unSaturatedFats"] as? Double
+        portions = dictionary["portions"] as? Int
+        imageUrl = dictionary["url"] as? String
+        instructions = dictionary["instruction"] as? [String]
+        ingredients = dictionary["ingredients"] as? [String]
+        carbohydrates = dictionary["carbohydrates"] as? Double
+        fats = dictionary["fats"] as? Double
+        proteins = dictionary["proteins"] as? Double
+        sodium = dictionary["sodium"] as? Double
+        saturatedFats = dictionary["saturatedFats"] as? Double
+        description = dictionary["description"] as? String
+        
+        if let lunch = dictionary["lunch"] as? [String], let first = lunch.first, !first.isEmpty {
+            isLunch = true
+        }
+        
+        if let breakfast = dictionary["breakfast"] as? [String], let first = breakfast.first, !first.isEmpty {
+            isBreakfast = true
+        } 
+        if let snack = dictionary["snack"] as? [String], let first = snack.first, !first.isEmpty {
+            isSnack = true
+        }
+        
+        if let dinner = dictionary["dinner"] as? [String], let first = dinner.first, !first.isEmpty {
+            isDinner = true
+        }
+    }
+}
+
 // MARK: - Recipe
 class Recipe: Codable {
     let listrecipes: [Listrecipe]?
@@ -147,5 +222,3 @@ enum Units: String, Codable {
     case г = "г"
     case мл = "мл"
 }
-
-

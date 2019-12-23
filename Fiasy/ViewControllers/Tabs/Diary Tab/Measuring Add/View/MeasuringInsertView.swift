@@ -11,6 +11,7 @@ import UIKit
 class MeasuringInsertView: UIView {
     
     // MARK: - Outlet's -
+    @IBOutlet var weekNameLabels: [UILabel]!
     @IBOutlet var weekNumberButtons: [UIButton]!
     @IBOutlet var weekNumberLabels: [UILabel]!
     @IBOutlet weak var backgroundView: UIView!
@@ -20,6 +21,31 @@ class MeasuringInsertView: UIView {
     private var measurings: [Measuring] = []
     private var sortedArray: [Measuring?] = [nil, nil, nil, nil, nil, nil, nil]
     private var filledDate: Date = Date()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        for (index, item) in weekNameLabels.enumerated() {
+            switch index {
+            case 0:
+                item.text = LS(key: .MONDAY)
+            case 1:
+                item.text = LS(key: .TUESDAY)
+            case 2:
+                item.text = LS(key: .WEDNESDAY)
+            case 3:
+                item.text = LS(key: .THURSDAY)
+            case 4:
+                item.text = LS(key: .FRIDAY)
+            case 5:
+                item.text = LS(key: .SATURDAY)
+            case 6:
+                item.text = LS(key: .SUNDAY)
+            default:
+                break
+            }
+        }
+    }
     
     // MARK: - Interface -
     func fillView(_ date: Date, _ measurings: [Measuring], _ delegate: MeasuringCellDelegate?) {

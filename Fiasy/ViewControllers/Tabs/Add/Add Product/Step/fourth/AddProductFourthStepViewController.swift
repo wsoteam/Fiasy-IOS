@@ -13,6 +13,7 @@ import Amplitude_iOS
 class AddProductFourthStepViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
@@ -25,6 +26,8 @@ class AddProductFourthStepViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        finishButton.setTitle(LS(key: .DONE).uppercased(), for: .normal)
+        navigationTitleLabel.text = LS(key: .VERIFICATION_OF_INFORMATION)
 //        if let _ = UserInfo.sharedInstance.productFlow.selectedFavorite {
 //           finishButton.setImage(#imageLiteral(resourceName: "Group (16)"), for: .normal)
 //        } else {
@@ -35,6 +38,10 @@ class AddProductFourthStepViewController: UIViewController {
     // MARK: - Action -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func closeClicked(_ sender: Any) {
+        showCloseAlert()
     }
 
     @IBAction func finishClicked(_ sender: Any) {
@@ -116,7 +123,7 @@ class AddProductFourthStepViewController: UIViewController {
     
             var listDictionary: [Any] = []
             if !flow.allServingSize.isEmpty {
-                for item in flow.allServingSize where item.name != "Стандартная порция" && item.servingSize != 100 {
+                for item in flow.allServingSize where item.name != LS(key: .CREATE_STEP_TITLE_16) && item.servingSize != 100 {
                     let dictionary: [String : Any] = ["name": "\(item.name ?? "")", "amount": "\(Int(item.servingSize ?? 0))", "unit" : "\(item.unitMeasurement ?? "0")"]
                     listDictionary.append(dictionary)
                 }
@@ -151,9 +158,25 @@ class AddProductFourthStepViewController: UIViewController {
         tableView.register(AddProductFourthStepHeaderView.nib, forHeaderFooterViewReuseIdentifier: AddProductFourthStepHeaderView.reuseIdentifier)
     }
     
+    private func showCloseAlert() {
+        let refreshAlert = UIAlertController(title: LS(key: .CREATE_STEP_TITLE_1), message: "", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard let strongSelf = self else { return }
+            let viewControllers: [UIViewController] = strongSelf.navigationController!.viewControllers
+            for aViewController in viewControllers {
+                if aViewController is MyСreatedProductsViewController {
+                    strongSelf.navigationController?.popToViewController(aViewController, animated: true)
+                }
+            }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
+        present(refreshAlert, animated: true)
+    }
+    
     private func showConfirmAlert() {
-        let refreshAlert = UIAlertController(title: "Ваш продукт добавлен в Мои продукты", message: "", preferredStyle: UIAlertController.Style.alert)
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] (action: UIAlertAction!) in
+        let refreshAlert = UIAlertController(title: LS(key: .CREATE_STEP_TITLE_35), message: "", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { [weak self] (action: UIAlertAction!) in
             guard let strongSelf = self else { return }
             
             var productName: String = ""

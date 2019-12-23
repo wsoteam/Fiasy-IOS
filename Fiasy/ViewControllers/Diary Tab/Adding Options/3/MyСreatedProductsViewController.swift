@@ -17,6 +17,11 @@ protocol MyСreatedProductsDelegate {
 class MyСreatedProductsViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var addProductButton: UIButton!
+    @IBOutlet weak var emptyProductsLabel: UILabel!
+    @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var searchSeparatorView: UIView!
+    @IBOutlet weak var addProductTitleLabel: UILabel!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var searchContainerView: UIView!
     @IBOutlet weak var generalStackView: UIStackView!
@@ -46,6 +51,12 @@ class MyСreatedProductsViewController: UIViewController {
         showActivity()
         setupTableView()
         fetchItemsInDataBase()
+        addProductTitleLabel.text = LS(key: .ADD_PRODUCT_IN_JOURNAL)
+        navigationTitleLabel.text = LS(key: .MY_PRODUCTS_TITLE)
+        textField.placeholder = LS(key: .SEARCH)
+        cancelSearchButton.setTitle(LS(key: .CANCEL), for: .normal)
+        emptyProductsLabel.text = LS(key: .MY_PRODUCT_TITLE_1)
+        addProductButton.setTitle("          \(LS(key: .ADD_PRODUCT).uppercased())          ", for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,6 +157,7 @@ class MyСreatedProductsViewController: UIViewController {
             self.allProducts = allFavorites
             self.filteredProducts = allFavorites
             self.emptyView.isHidden = !allFavorites.isEmpty
+            self.searchSeparatorView.isHidden = allFavorites.isEmpty
             self.tableView.reloadData()
             self.hideActivity()
         }
@@ -166,6 +178,7 @@ class MyСreatedProductsViewController: UIViewController {
                     self.tableView.deleteRows(at: [index], with: .right)
                     self.tableView.endUpdates()
                     self.emptyView.isHidden = !self.allProducts.isEmpty
+                    self.searchSeparatorView.isHidden = self.allProducts.isEmpty
                 })
                 CATransaction.commit()
             }
@@ -185,6 +198,7 @@ class MyСreatedProductsViewController: UIViewController {
                     self.tableView.deleteRows(at: [index], with: .right)
                     self.tableView.endUpdates()
                     self.emptyView.isHidden = !self.allProducts.isEmpty
+                    self.searchSeparatorView.isHidden = self.allProducts.isEmpty
                 })
                 CATransaction.commit()
             }
@@ -222,7 +236,6 @@ extension MyСreatedProductsViewController: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         cancelSearchButton.showAnimated(in: generalStackView)
-        //self.delegate?.changeScreenState(state: .search)
     }
 }
 
@@ -234,10 +247,13 @@ extension MyСreatedProductsViewController: MyСreatedProductsDelegate {
     }
     
     func removeProduct(_ indexPath: IndexPath) {
-        if let key = filteredProducts[indexPath.row].key {
-            FirebaseDBManager.removeFavorite(key: key, handler: {
+        if filteredProducts.indices.contains(indexPath.row) {
+            if let key = filteredProducts[indexPath.row].key {
                 self.removeProduct(by: key)
-            })
+                FirebaseDBManager.removeFavorite(key: key, handler: {
+                    //self.removeProduct(by: key)
+                })
+            }
         }
     }
 }

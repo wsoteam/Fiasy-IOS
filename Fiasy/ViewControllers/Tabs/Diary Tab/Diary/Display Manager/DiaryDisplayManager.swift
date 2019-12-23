@@ -193,7 +193,23 @@ class DiaryDisplayManager: NSObject {
     private func getMount(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            dateFormatter.locale = Locale(identifier: "es_ES")
+        case "pt":
+            // португалия (бразилия)
+            dateFormatter.locale = Locale(identifier: "pt_BR")
+        case "en":
+            // английский
+            dateFormatter.locale = Locale(identifier: "en_US")
+        case "de":
+            // немецикий
+            dateFormatter.locale = Locale(identifier: "de_DE")
+        default:
+            // русский
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+        }
         return dateFormatter.string(from: date)
     }
 }
@@ -330,6 +346,7 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
                     if self.mealTime.indices.contains(indexPath.section - 2) {
                         if self.mealTime[indexPath.section - 2].indices.contains(indexPath.row) {
                             let product = self.mealTime[indexPath.section - 2][indexPath.row]
+                            UserInfo.sharedInstance.selectedMealtimeIndex = indexPath.section - 2
                             self.delegate.editMealTime(mealTime: product)
                         }
                     }
@@ -373,13 +390,18 @@ extension DiaryDisplayManager: UITableViewDelegate, UITableViewDataSource, Swipe
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (self.lastContentOffset > scrollView.contentOffset.y) {
-            UIView.animate(withDuration: 0.5) {
-                self.topView.isHidden = false
+        print(scrollView.contentOffset.y)
+        if (scrollView.contentOffset.y < 20) {
+            if self.topView.isHidden == true {
+                UIView.animate(withDuration: 0.4) {
+                    self.topView.isHidden = false
+                }
             }
-        } else if (self.lastContentOffset < scrollView.contentOffset.y) {
-            UIView.animate(withDuration: 0.5) {
-                self.topView.isHidden = true
+        } else if (scrollView.contentOffset.y > 20) {
+            if self.topView.isHidden == false {
+                UIView.animate(withDuration: 0.4) {
+                    self.topView.isHidden = true
+                }
             }
         }
     }

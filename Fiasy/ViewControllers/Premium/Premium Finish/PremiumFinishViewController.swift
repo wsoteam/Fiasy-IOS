@@ -21,6 +21,14 @@ class PremiumFinishViewController: UIViewController {
     // MARK: - Properties -
     var isAutorization: Bool = true
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        topLabel.text = LS(key: .CONGRATULATIONS)
+        middleLabel.text = LS(key: .PREMIUM_COURAGE_DESCRIPTION)
+        nextButton.setTitle(LS(key: .RESET_CLOSE_CONTINUE).uppercased(), for: .normal)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

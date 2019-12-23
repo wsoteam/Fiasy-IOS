@@ -26,7 +26,7 @@ class PremiumViewController: UIViewController, UIScrollViewDelegate {
         setupSlideScrollView(slides: slides)
 
         if isIphone5 {
-            nextButton.cornerRadius = 17.5
+            nextButton.IBcornerRadius = 17.5
             buttonHeight.constant = 35
             premiumTitleLabel.font = premiumTitleLabel.font.withSize(19)
         }

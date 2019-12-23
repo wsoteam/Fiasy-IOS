@@ -14,6 +14,13 @@ import NextGrowingTextView
 class AddActivityTableViewCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet weak var thirdDescriptionLabel: UILabel!
+    @IBOutlet weak var thirdTitleLabel: UILabel!
+    @IBOutlet weak var secondDescriptionLabel: UILabel!
+    @IBOutlet weak var secondTitleLabel: UILabel!
+    @IBOutlet weak var titleDescriptionLabel: UILabel!
     @IBOutlet weak var customSlider: TGPDiscreteSlider!
     @IBOutlet weak var caloriesFieldWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var caloriesTextField: UITextField!
@@ -36,6 +43,13 @@ class AddActivityTableViewCell: UITableViewCell {
         growingTextView.configureSecondGrowingTextView()
         growingTextView.textView.delegate = self
         
+        titleDescriptionLabel.text = LS(key: .ADD_NAME_ACTIVITIE)
+        secondTitleLabel.text = LS(key: .TRAINING_TIME)
+        secondDescriptionLabel.text = LS(key: .TRAINING_TIME_DESCRIPTION)
+        thirdTitleLabel.text = LS(key: .CALORIES_COUNT)
+        thirdDescriptionLabel.text = LS(key: .CALORIES_COUNT_DESCRIPTION)
+        caloriesLabel.text = " \(LS(key: .CALORIES).uppercased())"
+        doneButton.setTitle("            \(LS(key: .DONE).uppercased())            ", for: .normal)
         let fontAttributes = [NSAttributedString.Key.font: UIFont.sfProTextBold(size: 24)]
         let myText = "0"
         let size = (myText as NSString).size(withAttributes: fontAttributes)
@@ -73,7 +87,7 @@ class AddActivityTableViewCell: UITableViewCell {
     
     @IBAction func finishClicked(_ sender: Any) {
         guard let field = self.caloriesTextField.text, (Int(field) ?? 0) >= 10 else {
-            return showAlert(message: "Минимальное количество калорий равно 10")
+            return showAlert(message: "\(LS(key: .MINIMAL_CALORIES_COUNT)) 10")
         }
         
         var text: String = ""
@@ -83,7 +97,7 @@ class AddActivityTableViewCell: UITableViewCell {
         }
         
         guard !text.isEmpty else {
-            return showAlert(message: "Введите название активности")
+            return showAlert(message: LS(key: .ADD_USER_ACTIVITY_HINT))
         }
         
         if let uid = Auth.auth().currentUser?.uid {
@@ -161,7 +175,7 @@ class AddActivityTableViewCell: UITableViewCell {
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 20),
                                                      color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: "\(time) "))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 20),
-                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: "минут"))
+                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: LS(key: .MINUTES)))
         sliderLabel.attributedText = mutableAttrString
     }
     
@@ -185,23 +199,38 @@ class AddActivityTableViewCell: UITableViewCell {
     }
     
     private func fetchMinutesSuffix(count: Int) -> String {
-        if count == 1 {
-            return " минута"
-        } else if count > 1 && count < 5 {
-            return " минуты"
+        if getPreferredLocale().languageCode == "ru" {
+            if count == 1 {
+                return " минута"
+            } else if count > 1 && count < 5 {
+                return " минуты"
+            } else {
+                return " минут"
+            }
         } else {
-            return " минут"
+            return LS(key: .MINUTES)
         }
     }
     
     private func fetchHoursSuffix(count: Int) -> String {
-        if count == 1 {
-            return " час"
-        } else if count > 4 {
-            return " часов"
+        if getPreferredLocale().languageCode == "ru" {
+            if count == 1 {
+                return " час"
+            } else if count > 4 {
+                return " часов"
+            } else {
+                return " часа"
+            }
         } else {
-            return " часа"
+            return LS(key: .BLACK_PREM_HOURS)
         }
+    }
+    
+    private func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
+        }
+        return Locale(identifier: preferredIdentifier)
     }
     
     private func configureAttrString(by font: UIFont, color: UIColor, text: String) -> NSAttributedString {

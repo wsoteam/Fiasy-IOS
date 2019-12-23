@@ -35,21 +35,36 @@ class ArticlesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-        setupInteractor()
-        
-        if isIphone5 {
-            tabTitleLable.font = tabTitleLable.font.withSize(25)
+        if getPreferredLocale().languageCode != "ru" {
+            if let _ = UserDefaults.standard.value(forKey: "showedExpert") {
+                performSegue(withIdentifier: "sequeSecondArticleExpertAnotherLanguage", sender: nil)
+            } else {
+                performSegue(withIdentifier: "sequeArticleExpertAnotherLanguage", sender: nil)
+            }
+        } else {
+            setupTableView()
+            setupInteractor()
+            
+            if isIphone5 {
+                tabTitleLable.font = tabTitleLable.font.withSize(25)
+            }
         }
+    }
+    
+    private func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
+        }
+        return Locale(identifier: preferredIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        allRows[0] = allRows[0].shuffled()
-        allRows[1] = allRows[1].shuffled()
-        tableView.reloadData()
-        
+//        allRows[0] = allRows[0].shuffled()
+//        allRows[1] = allRows[1].shuffled()
+//        tableView.reloadData()
+//        
         Amplitude.instance()?.logEvent("choose_articles") // +
     }
     
@@ -132,7 +147,11 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            performSegue(withIdentifier: "sequeExpertScreen", sender: nil)
+            if let _ = UserDefaults.standard.value(forKey: "showedExpert") {
+                performSegue(withIdentifier: "sequeSecondArticleExpertAnotherLanguage2", sender: nil)
+            } else {
+                performSegue(withIdentifier: "sequeExpertScreen", sender: nil)
+            }
         }
     }
 }
@@ -168,6 +187,7 @@ extension ArticlesViewController: ArticleTabInteractorOutput {
                 }
             }
         }
+        UserInfo.sharedInstance.articleExpert = articlesExpert
         tableView.reloadData()
     }
 }

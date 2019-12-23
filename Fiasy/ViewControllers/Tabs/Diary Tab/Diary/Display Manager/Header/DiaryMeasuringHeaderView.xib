@@ -32,6 +32,9 @@
                 <constraint firstItem="M3U-U9-D4f" firstAttribute="leading" secondItem="N59-hQ-QtX" secondAttribute="leading" constant="20" id="wpn-c4-i2L"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="M3U-U9-D4f" id="2tb-C6-H0k"/>
+            </connections>
             <point key="canvasLocation" x="136.23188405797103" y="-266.18303571428572"/>
         </view>
     </objects>

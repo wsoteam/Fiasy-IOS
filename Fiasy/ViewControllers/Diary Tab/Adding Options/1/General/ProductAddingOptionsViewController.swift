@@ -40,6 +40,7 @@ protocol ProductAddingDelegate {
 class ProductAddingOptionsViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var addProductTitleLabel: UILabel!
     @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var progressView: CircularProgress!
     @IBOutlet weak var listContainerView: UIView!
@@ -76,6 +77,7 @@ class ProductAddingOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addProductTitleLabel.text = LS(key: .ADD_PRODUCT_IN_JOURNAL)
         tableView.tag = 0
         menuTableView.tag = 1
         setupTableView()
@@ -107,7 +109,7 @@ class ProductAddingOptionsViewController: UIViewController {
         if !SwiftEntryKit.isCurrentlyDisplaying() && selectedProducts.joined().count > 0 {
             if dontShowView { return }
             var attributes = EKAttributes()
-            attributes.fillAppConfigure(height: 50.0)
+            attributes.fillAppConfigure(height: keyboardHeight)
             self.productPresetsView.fillView(count: selectedProducts.joined().count)
             SwiftEntryKit.display(entry: self.productPresetsView, using: attributes)
         }
@@ -162,15 +164,21 @@ class ProductAddingOptionsViewController: UIViewController {
     // MARK: - Privates -
     private func showBackAlert() {
         SwiftEntryKit.dismiss()
-        let alert = UIAlertController(title: "Внимание", message: "Cохранить продукты добавленные в корзину в дневник или не сохранять?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Добавить", style: .default, handler: { action in
+        let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ALERT_BASKET), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_ADD), style: .default, handler: { action in
             SwiftEntryKit.dismiss()
             self.showProgress(back: true)
         }))
-        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: { action in
             SwiftEntryKit.dismiss()
             self.navigationController?.popViewController(animated: true)
         }))
+        present(alert, animated: true)
+    }
+    
+    private func showDevelopmentAlert() {
+        let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ALERT_DEVELOPMENT), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true)
     }
     
@@ -231,13 +239,13 @@ class ProductAddingOptionsViewController: UIViewController {
     private func fillTitleNavigation(index: Int) {
         switch index {
         case 0:
-            selectedTitle = "Завтрак"
+            selectedTitle = LS(key: .BREAKFAST)
         case 1:
-            selectedTitle = "Обед"
+            selectedTitle = LS(key: .LUNCH)
         case 2:
-            selectedTitle = "Ужин"
+            selectedTitle = LS(key: .DINNER)
         case 3:
-            selectedTitle = "Перекус"
+            selectedTitle = LS(key: .SNACK)
         default:
             break
         }
@@ -300,26 +308,19 @@ extension ProductAddingOptionsViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.tag == 1 {
             fillTitleNavigation(index: indexPath.row)
-//            for (index, item) in tableView.visibleCells.enumerated() {
-//                if let cell = item as? MenuCell {
-//                    if index == indexPath.row {
-//                        cell.radioButton.isOn = true
-//                        fillTitleNavigation(index: indexPath.row)
-//                    } else {
-//                        cell.radioButton.isOn = false
-//                    }
-//                }
-//            }
             if dropdownView.isOpen {
                 dropdownView.hide()
             }
             self.tableView.reloadData()
         } else if screenState == .list {
+            //showDevelopmentAlert()
             switch indexPath.row {
             case 0:
                 performSegue(withIdentifier: "showBarCodeScreen", sender: nil)
             case 1:
                 performSegue(withIdentifier: "showFavoriteProductScreen", sender: nil)
+            case 2,3:
+                showDevelopmentAlert()
             case 4:
                 performSegue(withIdentifier: "sequeMyСreatedProductsScreen", sender: nil)
             default:
@@ -500,13 +501,13 @@ extension ProductAddingOptionsViewController: ProductAddingDelegate  {
         if state {
             filled.divisionBasketTitle = selectedTitle
             switch selectedTitle {
-            case "Завтрак":
+            case LS(key: .BREAKFAST):
                 selectedProducts[0].append(filled)
-            case "Обед":
+            case LS(key: .LUNCH):
                 selectedProducts[1].append(filled)
-            case "Ужин":
+            case LS(key: .DINNER):
                 selectedProducts[2].append(filled)
-            case "Перекус":
+            case LS(key: .SNACK):
                 selectedProducts[3].append(filled)
             default:
                 selectedProducts[0].append(filled)
@@ -515,16 +516,16 @@ extension ProductAddingOptionsViewController: ProductAddingDelegate  {
             var findIndex: Int?
             var productList: [SecondProduct] = []
             switch selectedTitle {
-            case "Завтрак":
+            case LS(key: .BREAKFAST):
                 findIndex = 0
                 productList = selectedProducts[0]
-            case "Обед":
+            case LS(key: .LUNCH):
                 findIndex = 1
                 productList = selectedProducts[1]
-            case "Ужин":
+            case LS(key: .DINNER):
                 findIndex = 2
                 productList = selectedProducts[2]
-            case "Перекус":
+            case LS(key: .SNACK):
                 findIndex = 3
                 productList = selectedProducts[3]
             default:
@@ -595,13 +596,13 @@ extension ProductAddingOptionsViewController: ProductAddingDelegate  {
         if state {
             filled.divisionBasketTitle = selectedTitle
             switch selectedTitle {
-            case "Завтрак":
+            case LS(key: .BREAKFAST):
                 selectedProducts[0].append(filled)
-            case "Обед":
+            case LS(key: .LUNCH):
                 selectedProducts[1].append(filled)
-            case "Ужин":
+            case LS(key: .DINNER):
                 selectedProducts[2].append(filled)
-            case "Перекус":
+            case LS(key: .SNACK):
                 selectedProducts[3].append(filled)
             default:
                 selectedProducts[0].append(filled)
@@ -610,16 +611,16 @@ extension ProductAddingOptionsViewController: ProductAddingDelegate  {
             var findIndex: Int?
             var productList: [SecondProduct] = []
             switch selectedTitle {
-            case "Завтрак":
+            case LS(key: .BREAKFAST):
                 findIndex = 0
                 productList = selectedProducts[0]
-            case "Обед":
+            case LS(key: .LUNCH):
                 findIndex = 1
                 productList = selectedProducts[1]
-            case "Ужин":
+            case LS(key: .DINNER):
                 findIndex = 2
                 productList = selectedProducts[2]
-            case "Перекус":
+            case LS(key: .SNACK):
                 findIndex = 3
                 productList = selectedProducts[3]
             default:

@@ -290,16 +290,21 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="burntTitleLabel" destination="2xX-rS-Z8M" id="JLW-PW-uBM"/>
                 <outlet property="caloriesProgress" destination="yXr-Jz-mWx" id="0O5-SB-JMJ"/>
+                <outlet property="carboTitleLabel" destination="txT-nA-sk7" id="A07-Xm-sfL"/>
                 <outlet property="carbohydratesCountLabel" destination="Gjx-ae-b5c" id="bIo-Tx-Zwq"/>
                 <outlet property="carbohydratesProgress" destination="utr-HI-sI7" id="9gk-h2-aeL"/>
                 <outlet property="eatenLabel" destination="vpE-0D-XZh" id="Y90-HU-qN3"/>
+                <outlet property="eatenTitleLabel" destination="Ic3-dg-n4h" id="fXQ-DZ-8sV"/>
                 <outlet property="endedLabel" destination="7GY-xM-XVH" id="hTs-DE-lQT"/>
                 <outlet property="fatCountLabel" destination="iYG-Ya-Znv" id="TJH-gh-mMp"/>
                 <outlet property="fatProgress" destination="61h-vV-xwS" id="1Du-Ja-Ifm"/>
+                <outlet property="fatTitleLabel" destination="xtd-Zw-8bY" id="NRB-KA-83Y"/>
                 <outlet property="leftCaloriesLabel" destination="Pyh-d0-JRT" id="qHc-4i-AIv"/>
                 <outlet property="proteinLabel" destination="uCa-Va-buy" id="shH-yJ-seC"/>
                 <outlet property="proteinProgress" destination="ijh-UI-rlg" id="OOj-Sp-6r8"/>
+                <outlet property="proteinTitleLabel" destination="vyR-0f-tfz" id="5LP-iw-ctx"/>
                 <outlet property="targetLabel" destination="SiV-ZR-OOx" id="Rdh-kf-Ux5"/>
                 <outlet property="wellLabel" destination="tXh-WY-ud3" id="QzT-Ob-Gmq"/>
             </connections>

@@ -163,6 +163,7 @@
                 <outlet property="articleImageView" destination="27S-G0-nPc" id="oOj-My-Vit"/>
                 <outlet property="blurView" destination="WJ8-BR-61j" id="huF-Sm-F6B"/>
                 <outlet property="nameLabel" destination="OGz-gk-rsY" id="ane-q3-fP7"/>
+                <outlet property="premTitleLabel" destination="XCk-ET-NRG" id="Hzl-BY-Jdp"/>
                 <outlet property="premiumContainerView" destination="G7v-hk-flo" id="q35-rL-4hs"/>
             </connections>
             <point key="canvasLocation" x="311.59420289855075" y="119.19642857142857"/>

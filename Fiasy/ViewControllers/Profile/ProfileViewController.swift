@@ -43,7 +43,8 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func reloadContent() {
-        displayManager?.reloadCells()
+        tableView.reloadData()
+        //displayManager?.reloadCells()
     }
     
     @objc func reloadProfile() {

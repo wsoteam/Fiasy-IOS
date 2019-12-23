@@ -40,25 +40,6 @@ class PremiumBottomTableViewCell: UITableViewCell, UIScrollViewDelegate {
         super.layoutSubviews()
         
         pageControll.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
-        
-//        if slides.isEmpty {
-//            slides = createSlides()
-//            fillTextViewDescription()
-//            setupSlideScrollView(slides: slides)
-//            
-//            eazyImageView.image = state == .black ? #imageLiteral(resourceName: "eazy_prem") : #imageLiteral(resourceName: "ВСЕ ПРОЩЕ С PREMIUM")
-//            titleLabel.textColor = state == .black ? #colorLiteral(red: 0.866572082, green: 0.8667211533, blue: 0.8665626645, alpha: 1) : #colorLiteral(red: 0.3450569212, green: 0.3451216519, blue: 0.3450528979, alpha: 1)
-//            let color = state == .black ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.2509489655, green: 0.2509984672, blue: 0.2509458363, alpha: 1)
-//            leftButton.setTitleColor(color, for: .normal)
-//            rightButton.setTitleColor(color, for: .normal)
-//            pageControll.pageIndicatorTintColor = state == .black ? #colorLiteral(red: 0.3254516125, green: 0.3254397511, blue: 0.3295465112, alpha: 1) : #colorLiteral(red: 0.8155969381, green: 0.8157377839, blue: 0.815588057, alpha: 1)
-//            pageControll.currentPageIndicatorTintColor = state == .black ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1): #colorLiteral(red: 0.2587913275, green: 0.2588421106, blue: 0.2587881684, alpha: 1)
-//            basicLabel.textColor = color
-//            premiumLabel.textColor = color
-//            payButton.setImage(state == .black ? #imageLiteral(resourceName: "pay_black") : #imageLiteral(resourceName: "refergerrefer34"), for: .normal)
-//            
-//            fillDescription()
-//        }
     }
     
     func fillCell(delegate: PremiumQuizDelegate, state: PremiumColorState) {
@@ -84,7 +65,7 @@ class PremiumBottomTableViewCell: UITableViewCell, UIScrollViewDelegate {
         basicLabel.textColor = color
         premiumLabel.textColor = color
         payButton.backgroundColor = state == .black ? #colorLiteral(red: 0.8516539931, green: 0.6581981182, blue: 0.267614007, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
-        payButton.setTitle(LS(key: .LONG_PREM_FEATURES_BUY).uppercased(), for: .normal)
+        payButton.setTitle(LS(key: .CONNECT_PREMIUM).uppercased(), for: .normal)
         
         fillDescription()
     }
@@ -138,10 +119,10 @@ class PremiumBottomTableViewCell: UITableViewCell, UIScrollViewDelegate {
         paragraphStyle.lineSpacing = 5
         paragraphStyle.alignment = .center
         
-        let text = NSMutableAttributedString(string: "Покупая Fiasy PRO, вы получаете доступ ко всем премиум-функциям. Стоимость PRO-подписки снимается с вашего аккаунта iTunes. Вы сможете управлять своей PRO-подпиской или отменить ее в любой момент через настройки своего аккаунта iTunes. Подписка PRO автоматически продлевается, если она не была не отменена, как минимум, за 24 часа до момента ее истечения, стоимость подписки при этом остается прежней. В момент покупки или продления на вашем аккаунте должно быть достаточно средств. Вы можете оплатить подписку с помощью подарочных карт App Store. При покупке подписки любая неиспользованная часть подписки или периода бесплатного использования будет аннулирована. Подписываясь на PRO, вы принимаете условия использования App Store и ")
+        let text = NSMutableAttributedString(string: LS(key: .PAY_DESCRIPTION_1))
         text.addAttributes([.font: UIFont.sfProTextRegular(size: 12), .foregroundColor: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1)], range: NSRange(location: 0, length: text.length))
         
-        let interactableText = NSMutableAttributedString(string: "условия использования и политику конфиденциальности")
+        let interactableText = NSMutableAttributedString(string: LS(key: .PAY_DESCRIPTION_2))
         interactableText.addAttributes([.font: UIFont.sfProTextRegular(size: 12), .foregroundColor: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue], range: NSRange(location: 0, length: interactableText.length))
         
         // Adding the link interaction to the interactable text

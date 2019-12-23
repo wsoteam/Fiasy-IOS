@@ -15,7 +15,7 @@ extension FavoriteProductViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.keyboardHeight = keyboardHeight + 20
-            reloadBottomView()
+            //reloadBottomView()
             self.tableBottomConstraint.constant = keyboardHeight - (tabBarController?.tabBar.frame.height ?? 49.0)
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
@@ -26,7 +26,7 @@ extension FavoriteProductViewController {
     @objc override func keyboardWillHide(notification: NSNotification) {
         self.tableBottomConstraint.constant = 0
         self.keyboardHeight = 80
-        reloadBottomView()
+        //reloadBottomView()
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }

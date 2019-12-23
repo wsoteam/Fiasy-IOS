@@ -8,71 +8,97 @@
 
 import UIKit
 import Kingfisher
+import VisualEffectView
 
 class RecipeMealtimeCell: UITableViewCell {
     
-    //MARK: - Outlet -
-    @IBOutlet weak var leftView: UIView!
-    @IBOutlet weak var rightView: UIView!
-    @IBOutlet var recipeImages: [UIImageView]!
-    @IBOutlet var recipeNameLabels: [UILabel]!
-    @IBOutlet var caloriesLabels: [UILabel]!
+    // MARK: - Outlet's -
+    @IBOutlet weak var unitLabel: UILabel!
+    @IBOutlet weak var premTitleLabel: UILabel!
+    @IBOutlet weak var caloriesButton: UIButton!
+    @IBOutlet weak var premiumContainerView: UIView!
+    @IBOutlet weak var blurView: VisualEffectView!
+    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var alphaView: UIView!
     
-    //MARK: - Properties -
-    private var delegate: RecipeMealtimeDelegate?
-    private var indexCell: IndexPath?
+    // MARK: - Properties -
+    private var recipe: SecondRecipe?
+    
+    // MARK: - Life Cicle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        blurView.colorTint = .gray
+        blurView.colorTintAlpha = 0.1
+        blurView.blurRadius = 5
+        blurView.scale = 1
+        
+        premiumContainerView.clipsToBounds = true
+        premiumContainerView.layer.cornerRadius = 8
+        premiumContainerView.layer.maskedCorners = [.layerMinXMaxYCorner]
+        
+        premTitleLabel.text = LS(key: .PREMIUM_TITLE)
+        unitLabel.text = LS(key: .CALORIES_UNIT)
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        leftView.isUserInteractionEnabled = false
-        rightView.isUserInteractionEnabled = false
+        articleImageView.image = nil
     }
     
-    //MARK: - Interface -
-    func fillCell(recipes: [Listrecipe], delegate: RecipeMealtimeDelegate, indexPath: IndexPath) {
-        self.indexCell = indexPath
-        self.delegate = delegate
-        
-        let index = indexPath.row * 2
-        if recipes.indices.contains(index) {
-            recipeNameLabels[0].text = recipes[index].name
-            caloriesLabels[0].text = "\(recipes[index].calories ?? 0) Ккал"
-            if let path = recipes[index].url, let url = try? path.asURL() {
-                recipeImages[0].kf.indicatorType = .activity
-                let resource = ImageResource(downloadURL: url)
-                recipeImages[0].kf.setImage(with: resource)
-            }
-            leftView.isUserInteractionEnabled = true
+    // MARK: - Interface -
+    func fillRow(recipe: SecondRecipe) {
+        self.recipe = recipe
+
+        if let calor = recipe.calories {
+            caloriesButton.setTitle(" \(calor)", for: .normal)
         }
-        
-        if recipes.indices.contains(index + 1) {
-            rightView.alpha = 1
-            recipeNameLabels[1].text = recipes[index + 1].name
-            caloriesLabels[1].text = "\(recipes[index + 1].calories ?? 0) Ккал"
-            if let path = recipes[index + 1].url, let url = try? path.asURL() {
-                recipeImages[1].kf.indicatorType = .activity
-                let resource = ImageResource(downloadURL: url)
-                recipeImages[1].kf.setImage(with: resource)
+        nameLabel.text = recipe.recipeName
+        if let path = recipe.imageUrl, let url = try? path.asURL() {
+            articleImageView.kf.indicatorType = .activity
+            let resource = ImageResource(downloadURL: url)
+            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+                switch result {
+                case .success(let value):
+                    self.articleImageView.image = value.image
+                    let color = self.getPixelColor(value.image, CGPoint(x: 2, y: 2))
+                    self.blurView.colorTint = color
+                    self.alphaView.backgroundColor = color
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
             }
-            rightView.isUserInteractionEnabled = true
-        } else {
-            rightView.alpha = 0
         }
     }
     
-    //MARK: - Actions -
-    @IBAction func leftRecipeClicked(_ sender: UIButton) {
-        guard let index = indexCell,
-            UserInfo.sharedInstance.selectedMealtimeData.indices.contains(index.row * 2) else { return }
-        UserInfo.sharedInstance.selectedRecipes = UserInfo.sharedInstance.selectedMealtimeData[index.row * 2]
-        delegate?.showMealtimeDetails()
-    }
-    
-    @IBAction func rightRecipeClicked(_ sender: UIButton) {
-        guard let index = indexCell,
-            UserInfo.sharedInstance.selectedMealtimeData.indices.contains((index.row * 2) + 1) else { return }
-        UserInfo.sharedInstance.selectedRecipes = UserInfo.sharedInstance.selectedMealtimeData[(index.row * 2) + 1]
-        delegate?.showMealtimeDetails()
+    // MARK: - Private -
+    private func getPixelColor(_ image: UIImage, _ point: CGPoint) -> UIColor {
+        let cgImage : CGImage = image.cgImage!
+        guard let pixelData = CGDataProvider(data: (cgImage.dataProvider?.data)!)?.data else {
+            return UIColor.clear
+        }
+        let data = CFDataGetBytePtr(pixelData)!
+        let x = Int(point.x)
+        let y = Int(point.y)
+        let index = Int(image.size.width) * y + x
+        let expectedLengthA = Int(image.size.width * image.size.height)
+        let expectedLengthGrayScale = 2 * expectedLengthA
+        let expectedLengthRGB = 3 * expectedLengthA
+        let expectedLengthRGBA = 4 * expectedLengthA
+        let numBytes = CFDataGetLength(pixelData)
+        switch numBytes {
+        case expectedLengthA:
+            return UIColor(red: 0, green: 0, blue: 0, alpha: CGFloat(data[index])/255.0)
+        case expectedLengthGrayScale:
+            return UIColor(white: CGFloat(data[2 * index]) / 255.0, alpha: CGFloat(data[2 * index + 1]) / 255.0)
+        case expectedLengthRGB:
+            return UIColor(red: CGFloat(data[3*index])/255.0, green: CGFloat(data[3*index+1])/255.0, blue: CGFloat(data[3*index+2])/255.0, alpha: 1.0)
+        case expectedLengthRGBA:
+            return UIColor(red: CGFloat(data[4*index])/255.0, green: CGFloat(data[4*index+1])/255.0, blue: CGFloat(data[4*index+2])/255.0, alpha: CGFloat(data[4*index+3])/255.0)
+        default:
+            return UIColor.clear
+        }
     }
 }

@@ -11,10 +11,11 @@ import UIKit
 class ArticlesExpertsViewController: UIViewController {
     
     // MARK: - Outlet -
-    @IBOutlet weak var navigationView: UIView!
+    @IBOutlet weak var navigationView: UIView?
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties -
+    private var showBottomContainer: Bool = true
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
@@ -24,15 +25,34 @@ class ArticlesExpertsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        guard let _ = self.navigationView else { 
+            if let _ = navigationController?.viewControllers.first as? ArticlesViewController {
+                self.navigationController?.viewControllers.remove(at: 0)
+            }
+            return 
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ListExpertArticlesViewController, (segue.identifier == "sequeListExpertArticles") {
+            vc.hiddenBackButton(hidden: true)
+        }
+    }
+    
+    func hiddenBottomContainer() {
+        self.showBottomContainer = false
     }
     
     // MARK: - Privates -
     private func setupTableView() {
-        //tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         tableView.register(type: ArticlesExpertsTableCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
+        guard let _ = self.navigationView else {
+            tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+            return 
+        }
     }
     
     private func addShadow(_ view: UIView) {
@@ -61,6 +81,7 @@ extension ArticlesExpertsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticlesExpertsTableCell") as? ArticlesExpertsTableCell else { fatalError() }
+        cell.fillCell(show: showBottomContainer)
         return cell
     }
     
@@ -73,10 +94,11 @@ extension ArticlesExpertsViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let navigation = self.navigationView else { return }
         if scrollView.contentOffset.y > 0 {
-            addShadow(navigationView)
+            addShadow(navigation)
         } else {
-            deleteShadow(navigationView)
+            deleteShadow(navigation)
         }
     }
 }

@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class MyProductViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var titleNavigationView: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var emptyView: UIView!

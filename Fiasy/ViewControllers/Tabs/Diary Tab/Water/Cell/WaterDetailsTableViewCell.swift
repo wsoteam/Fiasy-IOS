@@ -14,6 +14,13 @@ import FirebaseStorage
 class WaterDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var makeDefaultButton: UIButton!
+    @IBOutlet weak var bottomTitleLabel: UILabel!
+    @IBOutlet weak var generalLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var message1Label: UILabel!
+    @IBOutlet weak var message2Label: UILabel!
+    @IBOutlet weak var message3Label: UILabel!
     @IBOutlet weak var slider: TGPDiscreteSlider!
     @IBOutlet weak var descriptionLabel: UILabel!
     
@@ -26,6 +33,13 @@ class WaterDetailsTableViewCell: UITableViewCell {
         
         setupSlider()
         
+        makeDefaultButton.setTitle(LS(key: .MAKE_DEFAULT).capitalizeFirst, for: .normal)
+        bottomTitleLabel.text = LS(key: .YOUR_DAILY_RATE).capitalizeFirst
+        generalLabel.text = LS(key: .GENERAL).capitalizeFirst
+        titleLabel.text = LS(key: .BENEFIT_WATER_TITLE).capitalizeFirst
+        message1Label.text = LS(key: .BENEFIT_WATER_DESCRIPTION_FIRST).capitalizeFirst
+        message2Label.text = LS(key: .BENEFIT_WATER_DESCRIPTION_SECOND).capitalizeFirst
+        message3Label.text = LS(key: .BENEFIT_WATER_DESCRIPTION_THIRD).capitalizeFirst
         if let user = UserInfo.sharedInstance.currentUser, let waterCount = user.maxWater {
             setupDescriptionLabel(count: waterCount)
             slider.value = fetchSliderIndex(value: waterCount)
@@ -99,7 +113,7 @@ class WaterDetailsTableViewCell: UITableViewCell {
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 20),
                                                      color: #colorLiteral(red: 0.1752049029, green: 0.6115815043, blue: 0.8576936722, alpha: 1), text: "\(count)".replacingOccurrences(of: ".0", with: "")))
         mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 20),
-                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: " литра"))
+                                                     color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: " \(LS(key: .LITER))"))
         descriptionLabel.attributedText = mutableAttrString
     }
     
@@ -109,9 +123,9 @@ class WaterDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Actions -
     @IBAction func defaultClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "Сделать по умолчанию?", message: "\nВсе значения воды буду настроены по умолчанию!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(LS(key: .MAKE_DEFAULT))?", message: "\n\(LS(key: .WATER_ALERT))!", preferredStyle: .alert)
         
-        let close = UIAlertAction(title: "Ок", style: .default) { [weak self] (alert) in
+        let close = UIAlertAction(title: LS(key: .APPLY), style: .default) { [weak self] (alert) in
             guard let strongSelf = self else { return }
             strongSelf.changeState(value: 2.0)
             strongSelf.slider.value = 2.0
@@ -125,7 +139,7 @@ class WaterDetailsTableViewCell: UITableViewCell {
         close.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
         alert.addAction(close)
         
-        let continueAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        let continueAction = UIAlertAction(title: LS(key: .CANCEL), style: .cancel, handler: nil)
         continueAction.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
         alert.addAction(continueAction)
         alert.setValue(NSAttributedString(string: alert.title ?? "", attributes: [.font : UIFont.sfProTextSemibold(size: 17), .foregroundColor : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)]), forKey: "attributedTitle")

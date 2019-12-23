@@ -18,6 +18,7 @@ protocol AddProductDelegate {
 class AddProductViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
@@ -30,6 +31,7 @@ class AddProductViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        navigationTitleLabel.text = LS(key: .CREATE_STEP_TITLE_9)
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
     }
     
@@ -103,19 +105,27 @@ class AddProductViewController: UIViewController {
     
     // MARK: - Action -
     @IBAction func backClicked(_ sender: Any) {
-        let refreshAlert = UIAlertController(title: "Хотите выйти без сохранения?", message: "", preferredStyle: UIAlertController.Style.alert)
-        refreshAlert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] (action: UIAlertAction!) in
-            guard let strongSelf = self else { return }
-            strongSelf.navigationController?.popViewController(animated: true)
-        }))
-        refreshAlert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
-        present(refreshAlert, animated: true)
+        showCloseAlert()
+    }
+    
+    @IBAction func closeClicked(_ sender: Any) {
+        showCloseAlert()
     }
     
     // MARK: - Private -
     private func setupTableView() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         tableView.register(type: AddProductTableViewCell.self)
+    }
+    
+    private func showCloseAlert() {
+        let refreshAlert = UIAlertController(title: LS(key: .CREATE_STEP_TITLE_1), message: "", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { [weak self] (action: UIAlertAction!) in
+            guard let strongSelf = self else { return }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }))
+        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
+        present(refreshAlert, animated: true)
     }
     
     private func fillBarCode(code: String) {
@@ -174,12 +184,12 @@ extension AddProductViewController: AddProductDelegate {
             return
         }
         if name.replacingOccurrences(of: " ", with: "").isEmpty {
-            return AlertComponent.sharedInctance.showAlertMessage(message: "Имя не может состоять только из пробелов", vc: self)
+            return AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .CREATE_STEP_TITLE_2), vc: self)
         }
         if let brand = UserInfo.sharedInstance.productFlow.brend {
             if !brand.isEmpty {
                 if brand.replacingOccurrences(of: " ", with: "").isEmpty {
-                    return AlertComponent.sharedInctance.showAlertMessage(message: "'Марка/Производитель' не может состоять только из пробелов", vc: self)
+                    return AlertComponent.sharedInctance.showAlertMessage(message: LS(key: .CREATE_STEP_TITLE_3), vc: self)
                 }
             } else {
                 UserInfo.sharedInstance.productFlow.brend = nil

@@ -40,31 +40,32 @@ class PremiumQuizViewController: UIViewController {
     private let isIphone5 = Display.typeIsLike == .iphone5
     private let cells = [PremiumTopTableViewCell.self, PremiumMiddleTableViewCell.self, PremiumBottomTableViewCell.self]
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
-        return state == .black ? .lightContent : .default
+        return .default
     }
     
     // MARK: - Life cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dcf = DateComponentsFormatter()
-        dcf.allowedUnits = [.day, .hour, .minute]
-        dcf.unitsStyle = .full
-        
-        let df = ISO8601DateFormatter()
-        df.formatOptions = [.withFullDate, .withDashSeparatorInDate]
-        
-        if let future = df.date(from: "2019-12-01") {
-            let component = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: future)
-            
-            if let day = component.day, let hour = component.hour, let minute = component.minute, let second = component.second {
-                if day <= 0 && hour <= 0 && minute <= 0 && second <= 0 {
-                    state = .white
-                } else {
-                    state = .black
-                }
-            }
-        }
+        state = .white
+//        let dcf = DateComponentsFormatter()
+//        dcf.allowedUnits = [.day, .hour, .minute]
+//        dcf.unitsStyle = .full
+//        
+//        let df = ISO8601DateFormatter()
+//        df.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+//        
+//        if let future = df.date(from: "2019-12-02") {
+//            let component = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: future)
+//            
+//            if let day = component.day, let hour = component.hour, let minute = component.minute, let second = component.second {
+//                if day <= 0 && hour <= 0 && minute <= 0 && second <= 0 {
+//                    state = .white
+//                } else {
+//                    state = .black
+//                }
+//            }
+//        }
         
         setupTableView()
         applyColorState(state: state)
@@ -184,7 +185,7 @@ extension PremiumQuizViewController: PremiumQuizDelegate {
     func purchedClicked() {
         UserInfo.sharedInstance.trialFrom = trialFrom
         Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "next", "from" : trialFrom]) // +
-        SubscriptionService.shared.purchase(index: self.subscriptionIndex)
+        SubscriptionService.shared.purchase(index: 2)
     }
     
     func changeSubscriptionIndex(index: Int) {
@@ -192,6 +193,9 @@ extension PremiumQuizViewController: PremiumQuizDelegate {
     }
     
     func showPremiumList() {
-        performSegue(withIdentifier: "sequePremiumDetailsList", sender: nil)
+        UserInfo.sharedInstance.trialFrom = trialFrom
+        Amplitude.instance()?.logEvent("premium_next", withEventProperties: ["push_button" : "next", "from" : trialFrom]) // +
+        SubscriptionService.shared.purchase(index: 2)
+        //performSegue(withIdentifier: "sequePremiumDetailsList", sender: nil)
     }
 }

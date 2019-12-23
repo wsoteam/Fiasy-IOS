@@ -42,20 +42,15 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77a-kY-GBy">
                                 <rect key="frame" x="0.0" y="20" width="414" height="242"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expert_4" translatesAutoresizingMaskIntoConstraints="NO" id="kJL-O3-We6">
-                                        <rect key="frame" x="130" y="20" width="154" height="154"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_dietolog" translatesAutoresizingMaskIntoConstraints="NO" id="kJL-O3-We6">
+                                        <rect key="frame" x="147" y="20" width="120" height="120"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="154" id="ICx-rE-kUa"/>
+                                            <constraint firstAttribute="width" constant="120" id="ICx-rE-kUa"/>
                                             <constraint firstAttribute="width" secondItem="kJL-O3-We6" secondAttribute="height" multiplier="1:1" id="vg7-A1-AEK"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
-                                                <real key="value" value="77"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-DL-Snf">
-                                        <rect key="frame" x="151.5" y="179" width="111" height="12"/>
+                                        <rect key="frame" x="151.5" y="150" width="111" height="17"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-2"/>
                                         <state key="normal" title="  @dr.burlakov" image="instagramm">
@@ -63,30 +58,42 @@
                                         </state>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WxQ-HV-uRr">
-                                        <rect key="frame" x="0.0" y="201" width="414" height="31"/>
+                                        <rect key="frame" x="0.0" y="177" width="414" height="82"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Петр Петров" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJG-gb-sgh">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
                                                 <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-Gv-oJx">
-                                                <rect key="frame" x="0.0" y="31" width="414" height="0.0"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment>
-                                                        <string key="content">Меня зовут Петр, я онлайн-диетолог. 
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7vF-ym-uGu">
+                                                <rect key="frame" x="0.0" y="32" width="414" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-Gv-oJx">
+                                                        <rect key="frame" x="15" y="10.5" width="384" height="0.0"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment>
+                                                                <string key="content">Меня зовут Петр, я онлайн-диетолог. 
 Уже более 6 лет помогаю достичь 
 желаемого результата. </string>
-                                                        <attributes>
-                                                            <color key="NSColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="14" name="SFProText-Medium"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="14" name="SFProText-Medium"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Gu2-Gv-oJx" firstAttribute="top" secondItem="7vF-ym-uGu" secondAttribute="top" id="HKd-UC-43R"/>
+                                                    <constraint firstItem="Gu2-Gv-oJx" firstAttribute="leading" secondItem="7vF-ym-uGu" secondAttribute="leading" constant="15" id="Ilb-QH-0PG"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Gu2-Gv-oJx" secondAttribute="bottom" id="q6D-yn-g5Y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Gu2-Gv-oJx" secondAttribute="trailing" constant="15" id="u8M-Mi-P40"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -294,6 +301,17 @@
                     <constraint firstAttribute="bottom" secondItem="adT-eg-vbF" secondAttribute="bottom" id="ucZ-ZD-v8M"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="bottomContainerView" destination="Lfa-5J-4Km" id="qft-6A-Yq3"/>
+                <outlet property="dietologDescriptionLabel" destination="Gu2-Gv-oJx" id="gt7-dU-UaP"/>
+                <outlet property="dietologNameLabel" destination="JJG-gb-sgh" id="kU5-Ui-kcx"/>
+                <outlet property="firstContainerLabel" destination="ilO-jt-vAH" id="c2w-am-iJh"/>
+                <outlet property="imageWidthConstraint" destination="ICx-rE-kUa" id="7dM-An-3in"/>
+                <outlet property="nextButton" destination="zmF-y1-K2O" id="qKt-CI-plS"/>
+                <outlet property="secondContainerLabel" destination="fT5-lQ-YjW" id="iFR-kT-qr6"/>
+                <outlet property="thirdContainerLabel" destination="Smw-1R-SIa" id="B5J-IC-A2G"/>
+                <outlet property="titleLabel" destination="BT4-kV-duc" id="8Ig-YM-3YZ"/>
+            </connections>
             <point key="canvasLocation" x="-33.333333333333336" y="179.12946428571428"/>
         </tableViewCell>
     </objects>
@@ -302,7 +320,7 @@
         <image name="expert_1" width="32" height="24"/>
         <image name="expert_2" width="24" height="30"/>
         <image name="expert_3" width="27" height="27"/>
-        <image name="expert_4" width="154" height="154"/>
+        <image name="img_dietolog" width="408" height="408"/>
         <image name="instagramm" width="14" height="14"/>
     </resources>
 </document>

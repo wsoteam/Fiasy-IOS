@@ -11,10 +11,17 @@ import UIKit
 class MeasuringSecondAlertView: UIView {
 
     // MARK: - Outlet -
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var centerArrowConstraint: NSLayoutConstraint!
     
     // MARK: - Properties -
     private let isIphone5 = Display.typeIsLike == .iphone5
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        titleLabel.text = LS(key: .MEASURING_TITLE7)
+    }
     
     // MARK: - Interface -
     func fillView(tag: Int) {

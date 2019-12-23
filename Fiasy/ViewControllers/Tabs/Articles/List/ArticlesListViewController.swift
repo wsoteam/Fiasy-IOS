@@ -69,7 +69,7 @@ class ArticlesListViewController: UIViewController {
     private func setupTableView() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         tableView.register(type: ArticlesListTableViewCell.self)
-        tableView.register(RecipesSearchHeaderView.nib, forHeaderFooterViewReuseIdentifier: RecipesSearchHeaderView.reuseIdentifier)
+        tableView.register(ArticlesListHeaderView.nib, forHeaderFooterViewReuseIdentifier: ArticlesListHeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
@@ -109,7 +109,7 @@ extension ArticlesListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecipesSearchHeaderView.reuseIdentifier) as? RecipesSearchHeaderView else {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ArticlesListHeaderView.reuseIdentifier) as? ArticlesListHeaderView else {
             return UITableViewHeaderFooterView()
         }
         header.fillHeader(delegate: self)
@@ -132,25 +132,25 @@ extension ArticlesListViewController: RecipesSearchDelegate {
     func changeScreenState(state: ProductAddingState) {}
     
     func searchItem(text: String) {
-//        guard !text.isEmpty else {
-//            filteredModels = models
-//            emptySearchStackView.isHidden = true
-//            tableView.isScrollEnabled = true
-//            return tableView.reloadData()
-//        }
-//        
-//        var firstItems: [ArticleModel] = []
-//        for item in models where self.isContains(pattern: text, in: item.name) {
-//            firstItems.append(item)
-//        }
-//        filteredModels = firstItems
-//        emptySearchStackView.isHidden = !filteredModels.isEmpty
-//        
-//        if filteredModels.isEmpty {
-//            tableView.isScrollEnabled = false
-//        } else {
-//            tableView.isScrollEnabled = true
-//        }
-//        tableView.reloadData()
+        guard !text.isEmpty else {
+            filteredArticles = articles
+            emptySearchStackView.isHidden = true
+            tableView.isScrollEnabled = true
+            return tableView.reloadData()
+        }
+        
+        var firstItems: [Article] = []
+        for item in articles where self.isContains(pattern: text, in: item.titleRU?.stripOutHtml()) {
+            firstItems.append(item)
+        }
+        filteredArticles = firstItems
+        emptySearchStackView.isHidden = !filteredArticles.isEmpty
+        
+        if filteredArticles.isEmpty {
+            tableView.isScrollEnabled = false
+        } else {
+            tableView.isScrollEnabled = true
+        }
+        tableView.reloadData()
     }
 }

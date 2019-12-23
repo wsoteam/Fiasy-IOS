@@ -137,37 +137,37 @@ class CalorieIntakeViewController: UIViewController {
     
     private func saveFields() {
         if allFields[0].isEmpty {
-            showAlert(message: "Введите ваш рост")
+            showAlert(message: LS(key: .WRITE_GROWTH).capitalizeFirst)
         } else if allFields[1].isEmpty {
-            showAlert(message: "Введите ваш вес")
+            showAlert(message: LS(key: .WRITE_WEIGHT).capitalizeFirst)
         } else if allFields[2].isEmpty {
-            showAlert(message: "Введите ваш возраст")
+            showAlert(message: LS(key: .WRITE_AGE).capitalizeFirst)
         }
         
         guard let age = Int(allFields[2]), !allFields[2].hasSpecialCharacters(), age <= 200 && age >= 12, age != 0 else {
-            return showAlert(message: "Проверьте ваш возраст")
+            return showAlert(message: LS(key: .CHECK_YOUR_AGE).capitalizeFirst)
         }
         guard let weight = Double(allFields[1].replacingOccurrences(of: ",", with: ".")), weight <= 200.0 && weight > 30.0 else {
-            return showAlert(message: "Проверьте введенный вес")
+            return showAlert(message: LS(key: .CHECK_WRITTEN_WEIGHT).capitalizeFirst)
         }
         guard let growth = Int(allFields[0]), !allFields[0].hasSpecialCharacters(), growth <= 300 && growth >= 100, growth != 0 else {
-            return showAlert(message: "Проверьте введенный рост")
+            return showAlert(message: LS(key: .CHECK_WRITTEN_AGE).capitalizeFirst)
         }
         
         let ref = Database.database().reference()
         var fillCustom: Bool = false
         if !allPremiumFields.isEmpty && allPremiumFields.count == 4 {
             guard let customCalories = Int("\(allPremiumFields[0])") else {
-                return showAlert(message: "Проверьте введенные калории")
+                return showAlert(message: LS(key: .CHECK_WRITTEN_CALORIES).capitalizeFirst)
             }
             guard let customProtein = Int("\(allPremiumFields[1])") else {
-                return showAlert(message: "Белки не могут быть пустыми или состоять из нулей")
+                return showAlert(message: LS(key: .CHECK_WRITTEN_PROTEIN_DESCRIPTION).capitalizeFirst)
             }
             guard let customCarbohydrates = Int("\(allPremiumFields[2])") else {
-                return showAlert(message: "Углеводы не могут быть пустыми или состоять из нулей")
+                return showAlert(message: LS(key: .CHECK_WRITTEN_CARBOHYDRATES_DESCRIPTION).capitalizeFirst)
             }
             guard let customFat = Int("\(allPremiumFields[3])") else {
-                return showAlert(message: "Жиры не могут быть пустыми или состоять из нулей")
+                return showAlert(message: LS(key: .CHECK_WRITTEN_FATS_DESCRIPTION).capitalizeFirst)
             }
             if let uid = Auth.auth().currentUser?.uid {
                 fillCustom = true

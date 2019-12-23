@@ -6,6 +6,20 @@
   Copyright © 2019 Eugen Lipatov. All rights reserved.
 */
 
+
+/*    Tab Bar    */
+"tab_title1" = "Дневник";
+"tab_title2" = "Статьи";
+"tab_title3" = "Рецепты";
+"tab_title4" = "Профиль";
+
+/*    Barcode Screen    */
+"barcode_title_1" = "ВСЕ ПОНЯТНО!";
+"barcode_title_2" = "Пользуйтесь сканером\nштрих-кода";
+"barcode_title_3" = "Мгоновенно занасите продукты в свою базу! Благодаря этому вы можете узнать значение КБЖУ автоматически!";
+"barcode_title_4" = "Для чего нужен\nштрих-код?";
+"barcode_title_5" = "Ничего не найдено.\nПродолжите сканировать или\nвозьмите другой продукт";
+
 /*    Unboarding Screen    */
 "unboarding_welcome" = "Добро пожаловать в";
 "unboarding_first_screen" = "Множество научных статей о правильном питании";
@@ -21,7 +35,27 @@
 "settings_items_help" = "Помощь";
 "activity_profile_settings_settings" = "Настройки";
 
+/*    Recipe Screen    */
+"complexity_text1" = "легко";
+"complexity_text2" = "сложно";
+"complexity_text3" = "Сложность";
+"complexity_text4" = "мг";
+"complexity_text5" = "Насыщенные";
+"complexity_text6" = "Ненасыщенные";
+
+"art_series_series_title" = "8 статей для легко старта!";
+"art_series_day" = "День";
+"art_series_series_info" = "Чтобы перейти к следующему дню, Вам нужно\nбудет пройти предыдущий";
+"art_series_author_title" = "Эксклюзивные статьи\nот профессионального диетолога!";
+"art_series_author_burlakov" = "Александр Бурлаков";
+"art_series_author_burlakov_bio2" = "Спортивный врач-диетолог";
+"art_series_author_burlakov_bio" = "Спортивный врач-диетолог, окончил Кубанский государственный медицинский университет. Основатель образовательного центра Bodycoach school, ведет блог о здоровом образе жизни основываясь на доказательной медицине.";
+"art_series_author_burlakov_achiv1" = "18.8 тыс.\nподписчиков в\ninstagramm";
+"art_series_author_burlakov_achiv2" = "Доказательная\nмедицина";
+"art_series_author_burlakov_achiv3" = "Подготовка спортсменов\nUFC, ACA, RCC";
+
 /*    Authorization Screen    */
+"premium_version" = "версии";
 "or" = "ИЛИ";
 "signIn" = "ВОЙТИ";
 "authorization_with" = "ЗАРЕГИСТРИРОВАТЬСЯ С ПОМОЩЬЮ";
@@ -36,6 +70,29 @@
 "forgot_password" = "Забыли пароль?";
 "or_signIn_by" = "или войти с помощью";
 "wrong_data" = "Неверные данные";
+
+/*    Calories Intake Screen    */
+"write_growth" = "Введите ваш рост";
+"write_weight" = "Введите ваш вес";
+"write_age" = "Введите ваш возраст";
+"check_your_age" = "Проверьте ваш возраст";
+"check_written_weight" = "Проверьте введенный вес";
+"check_written_age" = "Проверьте введенный рост";
+"check_written_calories" = "Проверьте введенные калории";
+"check_written_protein_description" = "Белки не могут быть пустыми или состоять из нулей";
+"check_written_carbohydrates_description" = "Углеводы не могут быть пустыми или состоять из нулей";
+"check_written_fats_description" = "Жиры не могут быть пустыми или состоять из нулей";
+"write_your_name" = "Введите вашe имя";
+"check_your_name" = "Проверьте ваше имя";
+"check_your_last_name" = "Проверьте вашу фамилию";
+"check_your_email" = "Проверьте вашу почту";
+
+"article_premium_description" = "ПОЛУЧИТЕ ДОСТУП К СОТНЯМ\nПОЛЕЗНЫХ СТАТЕЙ ПРИ\nПОДПИСКЕ НА PREMIUM";
+"article_premium_button" = "ОБНОВЛЕНИЕ ДО PREMIUM";
+"add_product_in_journal" = "Добавление в дневник";
+"remove_product" = "Удаление продукта";
+"activiti_description_1" = "Данная активность уже добавлена в избранное";
+"activiti_description_2" = "Активность добавлена в Избранное";
 
 /*    Sign Up Screen    */
 "signUp_title" = "Регистрация";
@@ -54,18 +111,39 @@
 "privacy_description" = "Условия использования и Политика Конфиденциальности";
 
 /*    Reset Password Screen    */
+"selected_products" = "Выбранные продукты";
 "reset_send" = "ОТПРАВИТЬ";
 "reset_close_screen" = "Закрыть форму?";
 "reset_close_title" = "Закрыть";
 "reset_close_continue" = "Продолжить";
 "reset_close_description" = "Закрывая форму, вы не сожете восстановить пароль";
 "wrong_mail_error" = "Неверный формат почты";
-"reset_password_title" = "Восстановить пароль";
+"reset_password_title" = "Восстановить\nпароль";
 "we_send_email" = "Мы отправим вам письмо на почту";
 "enter_mail_description" = "Введите Email для восстановления";
 "user_does_not_exist" = "Данного пользователя не существует";
 "check_mail" = "Проверьте почту";
 "sended" = "ОТПРАВЛЕНО";
+
+"diary_mes_1" = "Вы еще не заносили данные";
+"diary_mes_2" = "Добавить вес";
+"diary_mes_3" = "Вес по выбранной дате";
+"diary_mes_4" = "Вес за сегодня";
+"diary_mes_5" = "Вы обновляли вес";
+"diary_mes_6" = "назад";
+"diary_mes_7" = "Обновить";
+"diary_mes_8" = "дней";
+"diary_mes_9" = "Измерение тела";
+"diary_mes_11" = "Сегодня обновляли";
+"diary_mes_12" = "назад обновляли";
+"diary_mes_13" = "за";
+"diary_mes_14" = "Активность добавлена в ваш дневник";
+"diary_mes_15" = "Вам нужно добавить время активности";
+"diary_mes_16" = "Изменить активность";
+"diary_mes_17" = "Мои активности";
+
+"meas_future_day" = "Этот день еще\nне наступил";
+"meas_title_bottom" = "Размеры (см)";
 
 /*    Interrogation Screen    */
 "select_your_gender" = "Выберите ваш пол";
@@ -106,17 +184,21 @@
 "second_piece_description" = ", получив доступ к\nуникальным статьям о здоровом\nпитании и сотни рецептов";
 
 /*    Premium Screen    */
+"pay_description_1" = "Покупая Fiasy PRO, вы получаете доступ ко всем премиум-функциям. Стоимость PRO-подписки снимается с вашего аккаунта iTunes. Вы сможете управлять своей PRO-подпиской или отменить ее в любой момент через настройки своего аккаунта iTunes. Подписка PRO автоматически продлевается, если она не была не отменена, как минимум, за 24 часа до момента ее истечения, стоимость подписки при этом остается прежней. В момент покупки или продления на вашем аккаунте должно быть достаточно средств. Вы можете оплатить подписку с помощью подарочных карт App Store. При покупке подписки любая неиспользованная часть подписки или периода бесплатного использования будет аннулирована. Подписываясь на PRO, вы принимаете условия использования App Store и ";
+"pay_description_2" = "условия использования и политику конфиденциальности";
 "long_prem_open" = "Открой новые\nвозможности";
 "currency_symbol_pay" = "₽";
 "one_mounth" = "месяц";
 "few_mounth" = "месяца";
 "many_mounth" = "месяцев";
 "title_save_percent" = "save";
+"title_save_percent2" = "сохранить";
+"title_change_1" = "изменить";
 "black_prem_hours" = "часы";
 "black_prem_minutes" = "минуты";
 "black_prem_seconds" = "секунды";
 "black_prem_end" = "До конца акции осталось";
-"long_prem_titl_1" = "Сбрасывайте вес\nбез стресса и жестких диет с\n";
+"long_prem_titl_1" = "Сбрасывайте вес без\nстресса и жестких диет с\n";
 "long_prem_features_diary" = "Дневник питания и\nнагрузок";
 "long_prem_features_elements" = "Учет\nмакроэлементов";
 "long_prem_features_recipe" = "Рецепты";
@@ -124,18 +206,40 @@
 "long_prem_features_statistic" = "Вся статистика";
 "long_prem_features_body" = "Учет морфологии тела";
 "buy" = "КУПИТЬ";
-
+ 
+"subsc_btn_bay" = "ОБНОВИТЬ ДО PREMIUM";
+"recipe_details_title_1" = "Получите доступ";
+"recipe_details_title_2" = "к сотням полезных рецептов";
 "long_prem_easy" = "ВСЕ ПРОЩЕ С";
 "long_prem_article_title" = "Эксклюзивные статьи";
 "long_prem_article_txt" = "Вы получите доступ к статьям от\nпопулярного диетолога и\nфитнес-тренера";
 "long_prem_recipe_title" = "База рецептов";
-"long_prem_recipe_txt" = "Легие в приготовление рецепты с\nданными КБЖУ с недорогими, но\nвкусными продуктами";
+"long_prem_recipe_txt" = "Легкие в приготовлении рецепты с\nданными КБЖУ с недорогими, но\nвкусными продуктами";
 "long_prem_settings_title" = "Персональные настройки";
 "long_prem_settings_txt" = "Вы сможете просматривать и\nрегулировать уровень своего КБЖУ";
 "long_prem_plans_title" = "Планы питания";
 "long_prem_plans_txt" = "Готовые планы питания на любой вкус\nи для любой цели";
 "long_prem_measure_title" = "Измерения тела";
 "long_prem_measure_txt" = "Отслеживайте динамику прогресса с\nпомощью подробного анализа\nпараметров своего тела";
+"measuring_title_1" = "Грудь";
+"measuring_title_2" = "Талия";
+"measuring_title_3" = "Бедра";
+"measuring_title_4" = "средний вес за неделю";
+"measuring_title_5" = "Узнайте, что такое";
+"measuring_title_6" = "средний вес";
+"measuring_title_7" = "мм";
+"measuring_title_9" = "обновлена";
+"measuring_title_10" = "удален";
+"measuring_title_11" = "обновлен";
+"measuring_title_12" = "Нет данных";
+"measuring_title_13" = "Чтобы добавить данные,\nдобавьте их на экране\nизмерения тела";
+
+
+"help_meas_first_title" = "Информация о расчете среднего веса\nза неделю";
+"help_meas_first_text" = "\n\nЕсли вы будете взвешиваться каждый день и заносить данные в дневник в раздел “Измерения тела”, то программа автоматически будет высчитывать ваш средний вес за неделю.";
+"help_meas_second_title" = "\n\nЗачем это нужно?";
+"help_meas_second_text" = "\n\nВес может колебаться в зависимости от фазы менструального цикла у женщин или употребления продуктов способных удерживать жидкость в организме, поэтому взвешиваясь раз в неделю или даже месяц и ориентируясь на разницу в полученных цифрах, реальное изменение веса может оказаться замаскированным случайными факторами, вызвавшими отклонение веса, то есть показатели будут не точными.";
+"help_meas_third_text" = "\n\nОтслеживайте средний вес за неделю, чтобы наглядно увидеть, как меняется ваш вес. Если делать замеры не регулярно, будет сложно увидеть прогресс. Обязательно делайте 2-х недельные перерывы на поддержание веса, после 4 недель диеты. Так ваш организм не будет испытывать сильного стресса. Снизиться вероятность вернуться к старым пищевым привычкам.";
 
 "premium_title_1" = "ВАШ БИЛЕТ К УСПЕХУ";
 "premium_title_2" = "ДОВОЛЬНЫЕ КЛИЕНТЫ";
@@ -148,6 +252,7 @@
 "count_day_trial" = "7 дней бесплатно";
 "amount_per_month" = "Затем 199р. в месяц";
 "connect_premium" = "Подключить Premium";
+"premium_description_Label" = "Хотите знать достаточно ли витаминов и\nминералов вы потребляете с пищей? Тогда \n присоединяйтесь к";
 "privacy_title" = "Условия использования & Политика конфиденциальности";
 "special_offer" = "Специальное предложение";
 "payment_top_description" = "Станьте участником";
@@ -201,6 +306,7 @@
 "exit" = "Выход";
 "log_off" = "Выйти";
 "cancel" = "Отмена";
+"apply" = "Применить";
 
 /*    Promotional Code Screen    */
 "promotional_navigation" = "Промокоды";
@@ -217,6 +323,8 @@
 "name" = "Имя";
 "surname" = "Фамилия";
 "email" = "Почта";
+"add_user_activity_hint" = "Введите название активности";
+"minimal_calories_count" = "Минимальное количество калорий равно";
 
 /*    Calorie Intake Screen    */
 "sex_male" = "Мужской";
@@ -247,14 +355,16 @@
 "water" = "Вода";
 "water_unit" = "л";
 "norm_established_first" = "Норма установлена на";
-"norm_established_second" = "Чтобы изменить это значение нажмите";
+"norm_established_second" = "Чтобы изменить\nэто значение нажмите";
 "breakfast" = "Завтрак";
 "lunch" = "Обед";
 "dinner" = "Ужин";
+"excess" = "Прeвышение";
 "snack" = "Перекус";
 "activity" = "Активности";
 "all" = "Все";
 "water_settings" = "Настройки воды";
+"text_start_search" = "Начните вводить в строку поиска\nназвание продукта";
 
 /*    Water Screen    */
 "benefit_water_title" = "Польза воды";
@@ -266,18 +376,26 @@
 "liter" = "литра";
 "your_daily_rate" = "Ваша норма на каждый день";
 "make_default" = "Сделать по умолчанию";
+"water_alert" = "Все значения воды буду настроены по умолчанию";
+"barCode_title" = "Найти продукт по штрих-коду";
+"patterns_title" = "Шаблоны";
+"my_dishes_title" = "Мои блюда";
+"my_products_title" = "Мои продукты";
 
 /*    Activity Screen    */
+"remove" = "Удалить";
 "alert_yes" = "Да";
 "alert_no" = "Нет";
+"alert_add" = "Добавить";
 "alert_dialog_confirm_question" = "Вы уверены, что хотите удалить активность?";
+"alert_dialog_confirm_question2" = "Вы уверены, что хотите удалить продукт?";
 "activity_navigation" = "Активность";
 "my_activity" = "Мои aктивности";
 "search" = "Поиск";
-"empty_my_activity_first" = "Вы пока не добавили ни одну активность. Для того, чтобы добавить активность нажмите на";
-"empty_my_activity_second" = " нажмите на ➕";
+"empty_my_activity_first" = "Вы пока не добавили ни одну активность.\nДля того, чтобы добавить\nактивность";
+"empty_my_activity_second" = " нажмите на +";
 "favorites" = "Избранное";
-"empty_favorites" = "Вы пока не добавили активность в избранное. Чтобы добавить активность, сделайте свайп влево и нажмите на сердечко";
+"empty_favorites" = "Вы пока не добавили активность в избранное.\nЧтобы добавить активность, сделайте свайп\nвлево и нажмите на сердечко";
 "standard_activities" = "Стандартные активности";
 "add_activitie" = "Добавить активность";
 "add_name_activitie" = "Напишите название активности";
@@ -291,18 +409,70 @@
 "attention_description" = "Неправильно добавленная активность, может показывать недостоверные данные по дневной норме КБЖУ";
 "calories_spent" = "Потрачено калорий";
 "for" = "за";
-"move_slider" = "Передвигайте ползунок, чтобы изменить время";
+"move_slider" = "Передвигайте ползунок,\nчтобы изменить время";
 "add_to_diary" = "Добавить в дневник";
+"alert_development" = "Раздел в разработке";
+"alert_basket" = "Добавить выбранные продукты из корзины в дневник?";
+"premium_title_new_1" = "3 дня бесплатно";
+"premium_title_new_2" = "Подписка за три месяца 699 ₽";
+
+"add_product_new" = "Проверьте введенное количество";
 
 /*    Search Product Screen    */
+"selected_basket" = "Выбрано";
+"result_search" = "Результаты поиска";
 "search_empty" = "Результаты не найдены. Попробуйте еще раз или создайте свой продукт";
+
+/*    Create Product Step Screen    */
+"create_step_title_1" = "Хотите выйти без сохранения?";
+"create_step_title_2" = "Имя не может состоять только из пробелов";
+"create_step_title_3" = "'Марка/Производитель' не может состоять только из пробелов";
+"create_step_title_4" = "Марка/производитель";
+"create_step_title_5" = "Название продукта";
+"create_step_title_6" = "Штрих-код";
+"create_step_title_7" = "Тип продукта: Eда";
+"create_step_title_8" = "Тип продукта: Напиток";
+"create_step_title_9" = "Добавление";
+"create_step_title_10" = "Еда";
+"create_step_title_11" = "Напиток";
+"create_step_title_12" = "Введите название продукта";
+"create_step_title_13" = "Вы точно хотите удалить?";
+"create_step_title_14" = "Добавить размер порции";
+"create_step_title_15" = "Выберите размер порции. Вы так же можете добавлять собственные размеры порций и их изменять.";
+"create_step_title_16" = "Стандартная порция";
+"create_step_title_17" = "Размер порции";
+"create_step_title_18" = "Килограмм";
+"create_step_title_19" = "Грамм";
+"create_step_title_20" = "Литр";
+"create_step_title_21" = "Миллилитр";
+"create_step_title_22" = "Наименование порции не может состоять только из пробелов";
+"create_step_title_23" = "Наименование порции";
+"create_step_title_24" = "Введите имя порции";
+"create_step_title_25" = "Единица измерения";
+"create_step_title_26" = "Размер порции";
+"create_step_title_27" = "Введите размер порции";
+"create_step_title_28" = "Добавить порцию";
+"create_step_title_29" = "Изм.";
+"create_step_title_30" = "Питательные вещества";
+"create_step_title_31" = "Введите калорийность продукта";
+"create_step_title_32" = "Введите жиры продукта";
+"create_step_title_33" = "Введите углеводы продукта";
+"create_step_title_34" = "Введите белки продукта";
+"create_step_title_35" = "Ваш продукт добавлен в Мои продукты";
+"create_step_title_36" = "Редактировать";
+"create_step_title_37" = "В этом разделе будут храниться понравившиеся или сохраненные вами рецепты и продукты";
+"create_step_title_38" = "Чтобы добавить продукт в избранное,\nнажмите на карточке продукта ";
+
+
 
 /*    My Product List Screen    */
 "add_product" = "Добавить продукт";
 "product_not_found" = "Продукт не найден";
 "product_list_empty" = "В этом разделе будут храниться понравившиеся или сохраненные вами рецепты и продукты";
+"my_product_title_1" = "Здесь будут храниться продукты,\nкоторые вы сами добавили";
 
 /*    My Recipes List Screen    */
+"search_field_placeholder" = "Поиск по рецептам";
 "add_recipes" = "Добавить рецепт";
 "recipes_not_found" = "Рецепт не найден";
 "recipes_list_empty" = "Здесь вы можете создать и сохранить набор продуктов, который употребляете ежедневно в определенный прием пищи";
@@ -352,8 +522,13 @@
 "product_info" = "Информация о продукте";
 "nutritional_value" = "Пищевая ценность на 100 г.";
 "product_added_to_your_products" = "Ваш продукт добавлен в Свои продукты";
+"product_details_desc" = "Выберете количество содержимого и\nединицу измерения";
 
 /*    Product Details Screen    */
+"product_changed_in_busket" = "Продукт изменен в корзине";
+"product_changed_in_diary" = "Продукт добавлен в дневник";
+"lig_product" = "мл";
+"gram_unit" = "грамм";
 "product_calculation" = "Расчет продукта";
 "product_weighs" = "Продукт весит";
 "product_add_nutrients" = "Питательные вещества на";
@@ -478,7 +653,6 @@
 "hoop_torsion" = "Кручение обруча";
 "bodybuilding" = "Культуризм (Бодибилдинг)";
 "lacrosse" = "Лакросс";
-"portion" = "Медленная ходба пешком 4,5 км/ч";
 "slow_walking_4.5_km/h" = "Медленная ходба пешком 4,5 км/ч";
 "window_cleaning" = "Мойка окон";
 "motocross" = "Мотокросс";

@@ -29,9 +29,10 @@ protocol DiaryViewDelegate {
     func reloadAfterRemoveActivity()
 }
 
-class DiaryViewController: BaseViewController {
+class DiaryViewController: UIViewController {
     
     //MARK: - Outlets -
+    @IBOutlet var weekLabels: [UILabel]!
     @IBOutlet weak var topTitleConstraint: NSLayoutConstraint!
     @IBOutlet weak var tabTitleLable: UILabel!
     @IBOutlet weak var intercomButton: UIButton!
@@ -82,6 +83,7 @@ class DiaryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        localizeScreen()
         calendarView.commitCalendarViewUpdate()
         setupInitialState()
         getItemsInDataBase()
@@ -148,15 +150,7 @@ class DiaryViewController: BaseViewController {
                     guard let `self` = self else { return }
                     self.displayManager.reloadWater()
                 }
-                FirebaseDBManager.fetchMyMeasuringInDataBase { [weak self] (list) in
-                    guard let strongSelf = self else { return }
-                    strongSelf.displayManager.reloadMeasuringsContent(allMeasurings: list)
-                    if !strongSelf.tableView.visibleCells.isEmpty {
-                        UIView.performWithoutAnimation {
-                            strongSelf.tableView.reloadSections(IndexSet(integer: 7), with: .none)
-                        }
-                    }
-                }
+                self.reloadMeaseringList()
                 self.post("reloadContent")
             })
         }
@@ -166,6 +160,25 @@ class DiaryViewController: BaseViewController {
         FirebaseDBManager.fetchDiaryActivityInDataBase { [weak self] (list) in
             guard let strongSelf = self else { return }
             strongSelf.displayManager.reloadActivity(list, selectedDate: strongSelf.selectedDate)
+        }
+    }
+    
+    private func localizeScreen() {
+        tabTitleLable.text = LS(key: .TAB_TITLE1)
+        for (index, item) in weekLabels.enumerated() {
+            item.text = LS_WEEK(index: index)
+        }
+    }
+    
+    func reloadMeaseringList() {
+        FirebaseDBManager.fetchMyMeasuringInDataBase { [weak self] (list) in
+            guard let strongSelf = self else { return }
+            strongSelf.displayManager.reloadMeasuringsContent(allMeasurings: list)
+            if !strongSelf.tableView.visibleCells.isEmpty {
+                UIView.performWithoutAnimation {
+                    strongSelf.tableView.reloadSections(IndexSet(integer: 6), with: .none)
+                }
+            }
         }
     }
     
@@ -216,13 +229,13 @@ class DiaryViewController: BaseViewController {
     private func fillTitleNavigation() -> String {
         switch UserInfo.sharedInstance.selectedMealtimeIndex {
         case 0:
-            return "Завтрак"
+            return LS(key: .BREAKFAST)
         case 1:
-            return "Обед"
+            return LS(key: .LUNCH)
         case 2:
-            return "Ужин"
+            return LS(key: .DINNER)
         case 3:
-            return "Перекус"
+            return LS(key: .SNACK)
         default:
             return ""
         }
@@ -263,12 +276,12 @@ extension DiaryViewController: DiaryViewDelegate {
     }
     
     func removeActivity() {
-        let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить активность?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
+        let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ACTIVITY_REMOVE_ALERT), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { action in
             self.displayManager.removeActivity()
             self.getItemsInDataBase()
         }))
-        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
         present(alert, animated: true)
     }
     
@@ -290,13 +303,13 @@ extension DiaryViewController: DiaryViewDelegate {
     }
     
     func removeMealTime() {
-        let alert = UIAlertController(title: "Внимание", message: "Вы уверены, что хотите удалить продукт?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { action in
+        let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ALERT_CONFIRM2), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { action in
             Amplitude.instance().logEvent("delete_food") // +
             self.displayManager.removeMealTime()
             self.getItemsInDataBase()
         }))
-        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
         present(alert, animated: true)
     }
     

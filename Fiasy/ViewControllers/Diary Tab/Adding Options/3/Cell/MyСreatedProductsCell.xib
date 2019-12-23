@@ -47,10 +47,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZf-xC-0Sw">
-                        <rect key="frame" x="352" y="0.0" width="1" height="86.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="199" y="0.0" width="200" height="86.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="1" id="N6o-AQ-1Ef"/>
+                            <constraint firstAttribute="width" constant="200" id="N6o-AQ-1Ef"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM7-nu-knQ">
@@ -66,10 +66,10 @@
                     <constraint firstItem="nhD-4f-0rN" firstAttribute="trailing" secondItem="iM7-nu-knQ" secondAttribute="leading" id="Cph-B3-1z3"/>
                     <constraint firstItem="sZf-xC-0Sw" firstAttribute="bottom" secondItem="iM7-nu-knQ" secondAttribute="bottom" id="GvI-gF-5aW"/>
                     <constraint firstAttribute="trailing" secondItem="iM7-nu-knQ" secondAttribute="trailing" id="JHx-2u-jCq"/>
+                    <constraint firstAttribute="trailing" secondItem="sZf-xC-0Sw" secondAttribute="trailing" constant="15" id="OD1-9x-qtj"/>
                     <constraint firstAttribute="bottom" secondItem="Ilt-yJ-pXT" secondAttribute="bottom" id="PSE-TS-KiT"/>
                     <constraint firstItem="iM7-nu-knQ" firstAttribute="width" secondItem="QLE-z6-9d0" secondAttribute="width" multiplier="0.15" id="XO9-NB-pYS"/>
                     <constraint firstItem="Ilt-yJ-pXT" firstAttribute="leading" secondItem="QLE-z6-9d0" secondAttribute="leading" id="aMs-Eh-Ku2"/>
-                    <constraint firstItem="sZf-xC-0Sw" firstAttribute="leading" secondItem="iM7-nu-knQ" secondAttribute="leading" id="c6I-Bg-icB"/>
                     <constraint firstItem="iM7-nu-knQ" firstAttribute="top" secondItem="QLE-z6-9d0" secondAttribute="top" id="ekb-be-ies"/>
                     <constraint firstAttribute="trailing" secondItem="Ilt-yJ-pXT" secondAttribute="trailing" id="fHo-c9-atC"/>
                     <constraint firstItem="sZf-xC-0Sw" firstAttribute="top" secondItem="iM7-nu-knQ" secondAttribute="top" id="fOD-H7-AEL"/>

@@ -58,10 +58,10 @@ class PremiumDetailsCell: UITableViewCell {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5
         paragraphStyle.alignment = .center
-        let text = NSMutableAttributedString(string: "Покупая Fiasy PRO, вы получаете доступ ко всем премиум-функциям. Стоимость PRO-подписки снимается с вашего аккаунта iTunes. Вы сможете управлять своей PRO-подпиской или отменить ее в любой момент через настройки своего аккаунта iTunes. Подписка PRO автоматически продлевается, если она не была не отменена, как минимум, за 24 часа до момента ее истечения, стоимость подписки при этом остается прежней. В момент покупки или продления на вашем аккаунте должно быть достаточно средств. Вы можете оплатить подписку с помощью подарочных карт App Store. При покупке подписки любая неиспользованная часть подписки или периода бесплатного использования будет аннулирована. Подписываясь на PRO, вы принимаете условия использования App Store и ")
+        let text = NSMutableAttributedString(string: LS(key: .PAY_DESCRIPTION_1))
         text.addAttributes([.font: UIFont.sfProTextRegular(size: 12), .foregroundColor: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1)], range: NSRange(location: 0, length: text.length))
         
-        let interactableText = NSMutableAttributedString(string: "условия использования и политику конфиденциальности")
+        let interactableText = NSMutableAttributedString(string: LS(key: .PAY_DESCRIPTION_2))
         interactableText.addAttributes([.font: UIFont.sfProTextRegular(size: 12), .foregroundColor: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue], range: NSRange(location: 0, length: interactableText.length))
         
         // Adding the link interaction to the interactable text

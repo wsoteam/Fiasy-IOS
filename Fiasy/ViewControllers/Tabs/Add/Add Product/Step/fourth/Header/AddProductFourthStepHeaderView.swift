@@ -18,17 +18,17 @@ class AddProductFourthStepHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Interface -
     func fillHeader(section: Int) {
-        titleLabel.text = section == 0 ? "Информация о продукте" : "Пищевая ценность на 100 г."
+        titleLabel.text = section == 0 ? LS(key: .PRODUCT_INFO) : LS(key: .NUTRITIONAL_VALUE)
     }
     
     func fillRecipeHeader(section: Int) {
         switch section {
         case 0:
-            titleLabel.text = "Информация о рецепте"
+            titleLabel.text = LS(key: .RECIPES_INFO)
         case 1:
-            titleLabel.text = "Ингредиенты"
+            titleLabel.text = LS(key: .INGREDIENTS)
         case 2:
-            titleLabel.text = "Инструкция"
+            titleLabel.text = LS(key: .INSTRUCTION)
         default:
             break
         }

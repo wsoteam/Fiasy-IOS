@@ -10,4 +10,13 @@ import UIKit
 
 class ProductSearchEmptyCell: UITableViewCell {
     
+    // MARK: - Outlet -
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    // MARK: - Life Cicle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        titleLabel.text = LS(key: .TEXT_START_SEARCH).capitalizeFirst
+    }
 }

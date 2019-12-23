@@ -22,11 +22,23 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
-        if Locale.current.languageCode == "en" {
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            formatter.locale = Locale(identifier: "es_ES")
+        case "pt":
+            // португалия (бразилия)
+            formatter.locale = Locale(identifier: "pt_BR")
+        case "en":
+            // английский
             formatter.locale = Locale(identifier: "en_US")
-        } else {
+        case "de":
+            // немецикий
+            formatter.locale = Locale(identifier: "de_DE")
+        default:
+            // русский
             formatter.locale = Locale(identifier: "ru_RU")
-        }        
+        }       
         return formatter
     }()
     
@@ -56,11 +68,23 @@ class DateOfBirthSelectionCell: UICollectionViewCell {
     
     // MARK: - Private -
     private func setupInitialState() {
-        if Locale.current.languageCode == "en" {
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            datePicker.locale = Locale(identifier: "es_ES")
+        case "pt":
+            // португалия (бразилия)
+            datePicker.locale = Locale(identifier: "pt_BR")
+        case "en":
+            // английский
             datePicker.locale = Locale(identifier: "en_US")
-        } else {
+        case "de":
+            // немецикий
+            datePicker.locale = Locale(identifier: "de_DE")
+        default:
+            // русский
             datePicker.locale = Locale(identifier: "ru_RU")
-        }
+        } 
     }
     
     // MARK: - Actions -

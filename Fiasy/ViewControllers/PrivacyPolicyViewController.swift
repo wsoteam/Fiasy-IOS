@@ -4,6 +4,7 @@ import Amplitude_iOS
 class PrivacyPolicyViewController: UIViewController {
     
     //MARK: - Outlet -
+    @IBOutlet weak var secondTextView: UITextView!
     @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
@@ -15,6 +16,14 @@ class PrivacyPolicyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if getPreferredLocale().languageCode == "ru" {
+            secondTextView.isHidden = true
+            textView.isHidden = false
+        } else {
+            secondTextView.isHidden = false
+            textView.isHidden = true
+        }
+        
         titleNavigationLabel.text = LS(key: .PRIVACY_DESCRIPTION)
         textView.setContentOffset(.zero, animated: false)
         textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
@@ -23,6 +32,13 @@ class PrivacyPolicyViewController: UIViewController {
     //MARK: - Actions -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    private func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
+        }
+        return Locale(identifier: preferredIdentifier)
     }
 }
 //

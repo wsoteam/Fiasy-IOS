@@ -17,32 +17,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="212.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="some_1" translatesAutoresizingMaskIntoConstraints="NO" id="j07-Xd-evQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubU-md-Auv">
                         <rect key="frame" x="15" y="20" width="384" height="152.5"/>
-                    </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgS-qU-jQ9">
-                        <rect key="frame" x="207" y="111.5" width="192" height="61"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iER-vE-WUt">
+                        <rect key="frame" x="15" y="20" width="384" height="152.5"/>
                         <connections>
-                            <action selector="addNewActivityClicked:" destination="JxK-fZ-thW" eventType="touchUpInside" id="s96-XL-TIW"/>
+                            <action selector="addNewActivityClicked:" destination="JxK-fZ-thW" eventType="touchUpInside" id="vut-V4-kCU"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="jgS-qU-jQ9" firstAttribute="width" secondItem="j07-Xd-evQ" secondAttribute="width" multiplier="0.5" id="1GM-T5-e5H"/>
-                    <constraint firstItem="j07-Xd-evQ" firstAttribute="leading" secondItem="otP-P5-8UM" secondAttribute="leading" constant="15" id="DTw-nU-WJm"/>
-                    <constraint firstItem="j07-Xd-evQ" firstAttribute="top" secondItem="otP-P5-8UM" secondAttribute="top" constant="20" id="M7Q-tw-vDh"/>
-                    <constraint firstAttribute="trailing" secondItem="j07-Xd-evQ" secondAttribute="trailing" constant="15" id="SEn-Fs-mgO"/>
-                    <constraint firstAttribute="bottom" secondItem="j07-Xd-evQ" secondAttribute="bottom" constant="40" id="apG-IT-ND1"/>
-                    <constraint firstItem="jgS-qU-jQ9" firstAttribute="height" secondItem="j07-Xd-evQ" secondAttribute="height" multiplier="0.4" id="c0D-Hs-rph"/>
-                    <constraint firstItem="jgS-qU-jQ9" firstAttribute="trailing" secondItem="j07-Xd-evQ" secondAttribute="trailing" id="qr3-SV-gtn"/>
-                    <constraint firstItem="jgS-qU-jQ9" firstAttribute="bottom" secondItem="j07-Xd-evQ" secondAttribute="bottom" id="vfj-De-qIr"/>
+                    <constraint firstItem="iER-vE-WUt" firstAttribute="top" secondItem="ubU-md-Auv" secondAttribute="top" id="3ai-yR-Oet"/>
+                    <constraint firstItem="ubU-md-Auv" firstAttribute="top" secondItem="otP-P5-8UM" secondAttribute="top" constant="20" id="3oc-mr-R5d"/>
+                    <constraint firstItem="ubU-md-Auv" firstAttribute="leading" secondItem="otP-P5-8UM" secondAttribute="leading" constant="15" id="3zC-gd-jyM"/>
+                    <constraint firstItem="iER-vE-WUt" firstAttribute="trailing" secondItem="ubU-md-Auv" secondAttribute="trailing" id="9SS-V9-boh"/>
+                    <constraint firstItem="iER-vE-WUt" firstAttribute="leading" secondItem="ubU-md-Auv" secondAttribute="leading" id="9gU-CI-wu1"/>
+                    <constraint firstAttribute="bottom" secondItem="ubU-md-Auv" secondAttribute="bottom" constant="40" id="ZqY-AN-mh5"/>
+                    <constraint firstAttribute="trailing" secondItem="ubU-md-Auv" secondAttribute="trailing" constant="15" id="hLO-nt-jPp"/>
+                    <constraint firstItem="iER-vE-WUt" firstAttribute="bottom" secondItem="ubU-md-Auv" secondAttribute="bottom" id="zo5-kc-Tn7"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="ubU-md-Auv" id="sbB-E9-KL6"/>
+            </connections>
             <point key="canvasLocation" x="-13.043478260869566" y="119.53125"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="some_1" width="280" height="58"/>
-    </resources>
 </document>

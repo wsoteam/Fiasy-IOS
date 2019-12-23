@@ -54,6 +54,33 @@ class FirebaseDBManager {
             }
         }
     }
+    
+    static func fetchExpertInfoInDataBase(handler: @escaping ((Expert?) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("articleSeries").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                if let snapshotValue = snapshot.value as? [String: [String:AnyObject]] {
+                    if let first = snapshotValue["burlakov"] {
+                        handler(Expert(dictionary: first))
+                    }
+                } else {
+                    handler(nil)
+                }
+            }) { (error) in
+                handler(nil)
+            }
+        }
+    }
+    
+    static func saveExpertInfoInDataBase(id: String, count: Int, milisecond: Int) {
+        if let uid = Auth.auth().currentUser?.uid {
+           
+            let ref: DatabaseReference = Database.database().reference()
+            let table = ref.child("USER_LIST").child(uid).child("articleSeries").child(id)
+            table.child("date").setValue(milisecond)
+            table.child("unlockedArticles").setValue(count)
+        }
+    }
 
     static func fetchMyMeasuringInDataBase(handler: @escaping (([Measuring]) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
@@ -120,6 +147,86 @@ class FirebaseDBManager {
         }
     }
     
+    static func fetchNewRecipesInDataBase(handler: @escaping (([[SecondRecipe]], [SecondRecipe]) -> ())) {
+        var childLanguage: String = "RECIPES_PLANS_NEW"
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            childLanguage = "ES"
+        case "pt":
+            // португалия (бразилия)
+            childLanguage = "ES"
+        case "en":
+            // английский
+            childLanguage = "EN"
+        case "de":
+            // немецикий
+            childLanguage = "DE"
+        default:
+            break
+        }
+        Database.database().reference().child(childLanguage).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var all: [SecondRecipe] = []
+            var allRecipes: [[SecondRecipe]] = [[],[],[],[]]
+            if childLanguage == "RECIPES_PLANS_NEW" {
+                if let snapshotValue = snapshot.value as? [String: AnyObject], let list = snapshotValue["listrecipes"] as? NSMutableArray {
+                    for item in list {
+                        if let dictionary = item as? [String : AnyObject], let name = dictionary["name"] as? String, name != "name" {
+                            let recipe = SecondRecipe(dictionary: dictionary)
+                            all.append(recipe)
+                            if recipe.isBreakfast {
+                                allRecipes[0].append(recipe)
+                            }
+                            if recipe.isLunch {
+                                allRecipes[1].append(recipe)
+                            }
+                            if recipe.isDinner {
+                                allRecipes[2].append(recipe)
+                            }
+                            if recipe.isSnack {
+                                allRecipes[3].append(recipe)
+                            }
+                        }
+                    }
+                    allRecipes[0].shuffle()
+                    allRecipes[1].shuffle()
+                    allRecipes[2].shuffle()
+                    allRecipes[3].shuffle()
+                    handler(allRecipes, all)
+                }
+            } else {
+                if let snapshotValue = snapshot.value as? [String: AnyObject], let items = snapshotValue["recipes"] as? [String: AnyObject], let list = items["listrecipes"] as? NSMutableArray {
+                    for item in list {
+                        if let dictionary = item as? [String : AnyObject], let name = dictionary["name"] as? String, name != "name" {
+                            let recipe = SecondRecipe(dictionary: dictionary)
+                            all.append(recipe)
+                            if recipe.isBreakfast {
+                                allRecipes[0].append(recipe)
+                            }
+                            if recipe.isLunch {
+                                allRecipes[1].append(recipe)
+                            }
+                            if recipe.isDinner {
+                                allRecipes[2].append(recipe)
+                            }
+                            if recipe.isSnack {
+                                allRecipes[3].append(recipe)
+                            }
+                        }
+                    }
+                    allRecipes[0].shuffle()
+                    allRecipes[1].shuffle()
+                    allRecipes[2].shuffle()
+                    allRecipes[3].shuffle()
+                    handler(allRecipes, all)
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     static func saveProductList(_ list: [[SecondProduct]]) {
         for section in list {
             for product in section {
@@ -147,8 +254,8 @@ class FirebaseDBManager {
                     var portionId: Int?
                     if let weight = product.weight {
                         count = weight
-                        if let port = product.selectedPortion {
-                            portionId = port.id
+                        if let id = product.portionId {
+                            portionId = id
                         }
                     } else {
                         if let port = product.selectedPortion {
@@ -159,13 +266,13 @@ class FirebaseDBManager {
 
                     var listDictionary: [Any] = []
                     if !product.measurementUnits.isEmpty {
-                        for item in product.measurementUnits where item.name != "Стандартная порция" && item.amount != 100 {
+                        for item in product.measurementUnits where item.name != "Стандартная порция" {
                             let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
                             listDictionary.append(dictionary)
                         }
                     }
 
-                    let userData = ["day": day, "month": month, "year": year, "name": product.name, "weight": count, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "brand": product.brend ?? "", "is_Liquid" : product.isLiquid, "selectedUnit" : product.selectedUnit, "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "product_id" : product.id, "measurement_units" : listDictionary, "portionId" : portionId] as [String : Any]
+                    let userData = ["day": day, "month": month, "year": year, "name": product.name, "weight": count, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "brand": product.brend != "null" ? product.brend : "", "is_Liquid" : product.isLiquid, "selectedUnit" : product.selectedUnit, "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "product_id" : product.id, "measurement_units" : listDictionary, "portionId" : portionId] as [String : Any]
                     
                     Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getAmplitudeTitle(text: product.divisionBasketTitle ?? "Завтрак"), "food_category" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
                     Database.database().reference().child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getAmplitudeTitle(text: product.divisionBasketTitle ?? "Завтрак")).childByAutoId().setValue(userData)
@@ -233,7 +340,6 @@ class FirebaseDBManager {
                 let child = Database.database().reference().child("USER_LIST").child(uid).child("profile")
                 child.child("weight").setValue(weight)
                 UserInfo.sharedInstance.currentUser?.weight = weight
-                UserInfo.sharedInstance.reloadDiariContent = true
                 
                 var findMeasurings: Measuring?
                 for secondItem in UserInfo.sharedInstance.measuringList where (Calendar.current.component(.day, from: secondItem.date ?? Date()) == Calendar.current.component(.day, from: Date()) && Calendar.current.component(.month, from: secondItem.date ?? Date()) == Calendar.current.component(.month, from: Date()) && Calendar.current.component(.year, from: secondItem.date ?? Date()) == Calendar.current.component(.year, from: Date())) {
@@ -406,8 +512,9 @@ class FirebaseDBManager {
     }
 
     static func checkFilledProfile(handler: @escaping ((Bool) -> ())) {
+        let ref = Database.database().reference()
         if let uid = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("USER_LIST").child(uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("USER_LIST").child(uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let snapshotValue = snapshot.value as? [String:AnyObject] {
                     UserDefaults.standard.set(true, forKey: "firstLoadComplete")
                     UserDefaults.standard.synchronize()

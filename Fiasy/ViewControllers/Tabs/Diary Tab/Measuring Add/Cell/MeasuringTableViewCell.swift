@@ -18,6 +18,7 @@ protocol MeasuringCellDelegate {
 class MeasuringTableViewCell: UITableViewCell {
     
     // MARK: - Outlet's -
+    @IBOutlet weak var middleWeightLabel: UILabel!
     @IBOutlet weak var averageWeightLabel: UILabel!
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var leftButton: UIButton!
@@ -62,6 +63,12 @@ class MeasuringTableViewCell: UITableViewCell {
             fillPopTip()
             leftButton.imageView?.transform = CGAffineTransform(scaleX: -1, y: 1)
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        middleWeightLabel.text = LS(key: .MEASURING_TITLE4)
     }
     
     // MARK: - Interface -
@@ -132,7 +139,7 @@ class MeasuringTableViewCell: UITableViewCell {
         }
         
         if average > 0.0 {
-            averageWeightLabel.text = "\((average/Double(count)).rounded(toPlaces: 1)) кг"
+            averageWeightLabel.text = "\((average/Double(count)).rounded(toPlaces: 1)) \(LS(key: .WEIGHT_UNIT))"
         } else {
             averageWeightLabel.text = "--"
         }

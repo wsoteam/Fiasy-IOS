@@ -115,8 +115,8 @@ class FirstQuizFinishCell: UICollectionViewCell {
             carbohydrates = (Int((result * 0.35).displayOnly(count: 0))/4) - 36
         }
         fillRecommendedCalories(count: Int(result))
-        proteinLabel.text = "\(protein) г"
-        fatLabel.text = "\(fat) г"
-        carbohydratesLabel.text = "\(carbohydrates) г"
+        proteinLabel.text = "\(protein) \(LS(key: .GRAMS_UNIT))"
+        fatLabel.text = "\(fat) \(LS(key: .GRAMS_UNIT))"
+        carbohydratesLabel.text = "\(carbohydrates) \(LS(key: .GRAMS_UNIT))"
     }
 }

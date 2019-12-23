@@ -14,6 +14,11 @@ import Amplitude_iOS
 class ProductDetailsCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var caloriesCountTextField: UITextField!
+    @IBOutlet weak var errorButton: UIButton!
+    @IBOutlet weak var premiumButton: UIButton!
+    @IBOutlet weak var premDescriptionLabel: UILabel!
+    @IBOutlet weak var topSelectDescriptionLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var nutrientLabel: UILabel!
     @IBOutlet weak var premiumContainerView: UIView!
@@ -29,7 +34,7 @@ class ProductDetailsCell: UITableViewCell {
     @IBOutlet weak var carbohydrateStackView: UIStackView!
     @IBOutlet weak var fatStackView: UIStackView!
     
-    //MARK: - Properties -
+    // MARK: - Properties -
     private var servingCount: Double = 0.0
     private var product: Product?
     private var isEditState: Bool = false
@@ -38,6 +43,21 @@ class ProductDetailsCell: UITableViewCell {
     private var isBasketProduct: Bool = false
     private var delegate: ProductDetailsDelegate?
     private let ref: DatabaseReference = Database.database().reference()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        errorButton.setTitle(LS(key: .REPORT_BUG), for: .normal)
+        premiumButton.setTitle(LS(key: .CONNECT_PREMIUM).uppercased(), for: .normal)
+                
+        let mutableAttrString = NSMutableAttributedString()
+        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 15.0),
+                                                     color: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: LS(key: .PREM_DESCRIPTION_1)))
+        mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 15.0),
+                                                     color: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), text: " \(LS(key: .PREMIUM_TITLE).uppercased()) \(LS(key: .PREM_VERSION_1))"))
+        premDescriptionLabel.attributedText = mutableAttrString
+        topSelectDescriptionLabel.text = LS(key: .PRODUCT_DETAILS_DESC)
+    }
     
     // MARK: - Interface -
     func fillCell(_ product: Product?, _ delegate: ProductDetailsDelegate, _ count: Int, _ selectedPortionId: Int?, _ isEditState: Bool, _ basketProduct: Bool) {
@@ -61,15 +81,30 @@ class ProductDetailsCell: UITableViewCell {
         }
 
         if basketProduct {
-            addButton.setTitle("СОХРАНИТЬ", for: .normal)
+            addButton.setTitle(LS(key: .TITLE_SAVE_PERCENT2).uppercased(), for: .normal)
             
             if let weight = product?.weight, weight > 0 {
                 if let amount = findedPortion?.amount, let sel = product?.selectedPortion?.amount, weight == count {
-                    addButton.backgroundColor = amount == sel ? #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
-                    addButton.isEnabled = amount == sel ? false : true
+                    if let por = product?.portionId {
+                        addButton.backgroundColor = amount == sel ? #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+                        addButton.isEnabled = amount == sel ? false : true
+                    } else {
+                        addButton.backgroundColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+                        addButton.isEnabled = true 
+                    }
                 } else {
-                    addButton.backgroundColor = weight == count ? #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
-                    addButton.isEnabled = weight == count ? false : true 
+                    if let _ = product?.portionId {
+                        if let _ = findedPortion {
+                            addButton.backgroundColor = weight == count ? #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+                            addButton.isEnabled = weight == count ? false : true 
+                        } else {
+                            addButton.backgroundColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+                            addButton.isEnabled = true 
+                        }
+                    } else {
+                        addButton.backgroundColor = weight == count ? #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+                        addButton.isEnabled = weight == count ? false : true 
+                    }
                 }
             } else {
                 if let amount = findedPortion?.amount {
@@ -103,15 +138,17 @@ class ProductDetailsCell: UITableViewCell {
                 if !somePortion.unit.isEmpty {
                     title = "\(somePortion.name ?? "") (\(somePortion.amount) \(somePortion.unit))"
                 } else {
-                    title = "\(somePortion.name ?? "") (\(somePortion.amount) \(selectedProduct.isLiquid == true ? "мл" : "г"))"
+                    title = "\(somePortion.name ?? "") (\(somePortion.amount) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT)))"
                 }
-                pickerButton.setTitle("\(count)   \(title)", for: .normal)
+                caloriesCountTextField.text = "\(count)"
+                pickerButton.setTitle(title, for: .normal)
             } else {
-                pickerButton.setTitle("\(count)   \(selectedProduct.isLiquid == true ? "мл" : "грамм")", for: .normal)
+                caloriesCountTextField.text = "\(count)"
+                pickerButton.setTitle("\(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))", for: .normal)
             }
         } else {
             if isEditState {
-                addButton.setTitle("ИЗМЕНИТЬ", for: .normal)
+                addButton.setTitle(LS(key: .TITLE_CHANGE1).uppercased(), for: .normal)
                 
                 if let find = findedPortion {
                     if let portId = product?.portionId, count == product?.weight {
@@ -126,7 +163,7 @@ class ProductDetailsCell: UITableViewCell {
                     addButton.isEnabled = count == product?.weight ? false : true  
                 }
             } else {
-                addButton.setTitle("ДОБАВИТЬ", for: .normal)
+                addButton.setTitle(LS(key: .ALERT_ADD).uppercased(), for: .normal)
                 addButton.backgroundColor = count > 0 ? #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1) : #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)
                 addButton.isEnabled = count > 0 ? true : false 
             }
@@ -135,11 +172,13 @@ class ProductDetailsCell: UITableViewCell {
                 if !somePortion.unit.isEmpty {
                     title = "\(somePortion.name ?? "") (\(somePortion.amount) \(somePortion.unit))"
                 } else {
-                    title = "\(somePortion.name ?? "") (\(somePortion.amount) \(selectedProduct.isLiquid == true ? "мл" : "г"))"
+                    title = "\(somePortion.name ?? "") (\(somePortion.amount) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT)))"
                 }
-                pickerButton.setTitle("\(count)   \(title)", for: .normal)
+                caloriesCountTextField.text = "\(count)"
+                pickerButton.setTitle(title, for: .normal)
             } else {
-                pickerButton.setTitle("\(count)   \(selectedProduct.isLiquid == true ? "мл" : "грамм")", for: .normal)
+                caloriesCountTextField.text = "\(count)"
+                pickerButton.setTitle("\(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))", for: .normal)
             }
         }
 
@@ -147,7 +186,7 @@ class ProductDetailsCell: UITableViewCell {
             let mutableAttrString = NSMutableAttributedString()
             mutableAttrString.append(configureAttrString(by: UIFont.sfProTextSemibold(size: 24.0),
                                                       color: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1), text: name))
-            if let brand = product?.brend, !brand.isEmpty {
+            if let brand = product?.brend, !brand.isEmpty &&  brand != "null" {
                 mutableAttrString.append(configureAttrString(by: UIFont.sfProTextMedium(size: 20.0),
                                                       color: #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1), text: "\n(\(brand))"))
             } 
@@ -156,39 +195,39 @@ class ProductDetailsCell: UITableViewCell {
         
         if let calories = product?.calories, Double(servingCount * calories).rounded(toPlaces: 0) > 0.0 {
             let count = Int(Double(servingCount * calories).rounded(toPlaces: 0))
-            fillScreenServing(count: count, unit: "", title: "ккал", label: caloriesLabel)
+            fillScreenServing(count: count, unit: "", title: LS(key: .CALORIES_UNIT), label: caloriesLabel)
         } else {
-            fillScreenServing(count: 0, unit: "", title: "ккал", label: caloriesLabel)
+            fillScreenServing(count: 0, unit: "", title: LS(key: .CALORIES_UNIT), label: caloriesLabel)
         }
         
         if let proteins = product?.proteins, Double(servingCount * proteins).rounded(toPlaces: 0) > 0.0 {
             let count = Int(Double(servingCount * proteins).rounded(toPlaces: 0))
-            fillScreenServing(count: count, unit: "г", title: "белка", label: proteinLabel)
+            fillScreenServing(count: count, unit: LS(key: .GRAMS_UNIT), title: LS(key: .PROTEIN), label: proteinLabel)
         } else {
-            fillScreenServing(count: 0, unit: "", title: "белка", label: proteinLabel)
+            fillScreenServing(count: 0, unit: "", title: LS(key: .PROTEIN), label: proteinLabel)
         }
         
         if let carbohydrates = product?.carbohydrates, Double(servingCount * carbohydrates).rounded(toPlaces: 0) > 0.0 {
             let count = Int(Double(servingCount * carbohydrates).rounded(toPlaces: 0))
-            fillScreenServing(count: count, unit: "г", title: "углеводов", label: carbohydratesLabel)
+            fillScreenServing(count: count, unit: LS(key: .GRAMS_UNIT), title: LS(key: .CARBOHYDRATES), label: carbohydratesLabel)
         } else {
-            fillScreenServing(count: 0, unit: "", title: "углеводов", label: carbohydratesLabel)
+            fillScreenServing(count: 0, unit: "", title: LS(key: .CARBOHYDRATES), label: carbohydratesLabel)
         }
         
         if let fats = product?.fats, Double(servingCount * fats).rounded(toPlaces: 0) > 0.0 {
             let count = Int(Double(servingCount * fats).rounded(toPlaces: 0))
-            fillScreenServing(count: count, unit: "г", title: "жиров", label: fatLabel)
+            fillScreenServing(count: count, unit: LS(key: .GRAMS_UNIT), title: LS(key: .FAT), label: fatLabel)
         } else {
-            fillScreenServing(count: 0, unit: "", title: "жиров", label: fatLabel)
+            fillScreenServing(count: 0, unit: "", title: LS(key: .FAT), label: fatLabel)
         }
         
         if let somePortion = findedPortion, somePortion.amount > 0 {
-            nutrientLabel.text = "Питательные вещества на \(count * somePortion.amount) \(selectedProduct.isLiquid == true ? "мл" : "г")."
+            nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count * somePortion.amount) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
         } else {
             if count > 0 {
-                nutrientLabel.text = "Питательные вещества на \(count) \(selectedProduct.isLiquid == true ? "мл" : "г")."
+                nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
             } else {
-                nutrientLabel.text = "Питательные вещества на 100 \(selectedProduct.isLiquid == true ? "мл" : "г")."
+                nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) 100 \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
             }            
         }
         
@@ -238,16 +277,16 @@ class ProductDetailsCell: UITableViewCell {
         carbohydrateStackView.subviews.forEach { $0.removeFromSuperview() }
         if var carbohydrates = product.carbohydrates {
             carbohydrates = carbohydrates <= 0.0 ? 0.0 : carbohydrates
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Углеводы", right: "\(Double(carbohydrates * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) г", isTitle: true)
+            insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .CARBOHYDRATES_INTAKE), right: "\(Double(carbohydrates * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
         if var cellulose = product.cellulose, cellulose != -1.0 && cellulose != 0.0 {
             cellulose = cellulose <= 0.0 ? 0.0 : cellulose
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Клетчатка", right: "\(Double(cellulose * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .СELLULOSE), right: "\(Double(cellulose * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
         
         if var sugar = product.sugar, sugar != -1.0 && sugar != 0.0 {
             sugar = sugar <= 0.0 ? 0.0 : sugar
-            insertViewInStackView(stackView: carbohydrateStackView, left: "Сахар", right: "\(Double(sugar * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .SUGAR), right: "\(Double(sugar * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
     }
     
@@ -262,15 +301,15 @@ class ProductDetailsCell: UITableViewCell {
         fatStackView.subviews.forEach { $0.removeFromSuperview() }
         if var fats = product.fats {
             fats = fats <= 0.0 ? 0.0 : fats
-            insertViewInStackView(stackView: fatStackView, left: "Жиры", right: "\(Double(fats * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) г", isTitle: true)
+            insertViewInStackView(stackView: fatStackView, left: LS(key: .FAT), right: "\(Double(fats * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
         if var saturatedFats = product.saturatedFats, saturatedFats != -1.0 && saturatedFats != 0.0 {
             saturatedFats = saturatedFats <= 0.0 ? 0.0 : saturatedFats
-            insertViewInStackView(stackView: fatStackView, left: "Насыщенные", right: "\(Double(saturatedFats * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: fatStackView, left: LS(key: .COMPLEXITY_TEXT5), right: "\(Double(saturatedFats * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
         if var unSaturatedFats = product.polyUnSaturatedFats, unSaturatedFats != -1.0 && unSaturatedFats != 0.0 {
             unSaturatedFats = unSaturatedFats <= 0.0 ? 0.0 : unSaturatedFats
-            insertViewInStackView(stackView: fatStackView, left: "Ненасыщенные", right: "\(Double(unSaturatedFats * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) г", isTitle: false)
+            insertViewInStackView(stackView: fatStackView, left: LS(key: .COMPLEXITY_TEXT6), right: "\(Double(unSaturatedFats * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
         }
     }
     
@@ -285,24 +324,29 @@ class ProductDetailsCell: UITableViewCell {
         proteinStackView.subviews.forEach { $0.removeFromSuperview() }
         if var proteins = product.proteins {
             proteins = proteins <= 0.0 ? 0.0 : proteins
-            insertViewInStackView(stackView: proteinStackView, left: "Белки", right: "\(Double(proteins * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) г", isTitle: true)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .PROTEIN), right: "\(Double(proteins * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
         if var cholesterol = product.cholesterol, cholesterol != -1.0 && cholesterol != 0.0 {
             cholesterol = cholesterol <= 0.0 ? 0.0 : cholesterol
-            insertViewInStackView(stackView: proteinStackView, left: "Холестерин", right: "\(Double(cholesterol * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) мг", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .CHOLESTEROL), right: "\(Double(cholesterol * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .COMPLEXITY_TEXT4))", isTitle: false)
         }
         if var sodium = product.sodium, sodium != -1.0 && sodium != 0.0 {
             sodium = sodium <= 0.0 ? 0.0 : sodium
-            insertViewInStackView(stackView: proteinStackView, left: "Натрий", right: "\(Double(sodium * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) мг", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .SODIUM), right: "\(Double(sodium * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .COMPLEXITY_TEXT4))", isTitle: false)
         }
         if var potassium = product.pottassium, potassium != -1.0 && potassium != 0.0 {
             potassium = potassium <= 0.0 ? 0.0 : potassium
-            insertViewInStackView(stackView: proteinStackView, left: "Калий", right: "\(Double(potassium * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) мг", isTitle: false)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .POTASSIUM), right: "\(Double(potassium * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .COMPLEXITY_TEXT4))", isTitle: false)
         }
     }
     
     private func saveProductInDataBase() {
         guard let product = self.product else { return }   
+        
+        if self.serverCount <= 0 {
+            delegate?.showWrongErrorCount()
+            return
+        }
         
         if isBasketProduct {
             delegate?.changeBasketProduct(product: product)
@@ -349,7 +393,7 @@ class ProductDetailsCell: UITableViewCell {
                                 let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
                                 listDictionary.append(dictionary)
                             } else {
-                                let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : product.isLiquid == true ? "мл" : "грамм"]
+                                let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)]
                                 listDictionary.append(dictionary)
                             }
                         }
@@ -383,5 +427,30 @@ class ProductDetailsCell: UITableViewCell {
     
     @IBAction func showErrorClicked(_ sender: Any) {
         self.delegate?.showSendError()
+    }
+    
+    @IBAction func caloriesChanged(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        
+        if text.isEmpty {
+            addButton.isEnabled = false
+        } else {
+            addButton.isEnabled = true
+            self.delegate?.caloriesChanged(Int(text) ?? 1)
+        }
+    }
+}
+
+extension ProductDetailsCell: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        
+        return count < 4
     }
 }

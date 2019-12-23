@@ -1811,10 +1811,107 @@ Fiasy – онлайн-сервис, который предоставляет �
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abX-EV-IrO">
+                                <rect key="frame" x="15" y="150" width="290" height="418"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Fiasy Privacy Policy
+By installing our mobile application or in any way using or accessing our Services, you accept the terms and conditions of this Privacy Policy and the Terms of Use (hereafter together the Policy) and the processing of your personal data. 
+1.	Personal data controller 
+Responsible for the processing of your personal data is:
+COMPANY NAME Fiasy
+IP Salamov Alexander
+CORPORATE IDENTITY NO:
+319500700005522
+ADDRESS
+141551, Russia, Moscow obl., Solnechnogorskii, Andreevka, Staroandreevskaka street 43-231
+E-MAIL
+sav@wsoteam.com 
+2.	General Provisions 
+	1.	The Company offers an Internet user (hereinafter referred to as the User) to use its services in accordance with the current Policy. The Policy takes effect from the moment the User agrees to the terms of the Policy as provided in paragraph 1.4. 
+	2.	Fiasy is an online service that helps Users to record what they eat, how they exercise, and to track their health, weight and fitness progress, and receive other services. All existing services, including but not limited to mobile app Fiasy, as well as all planned future services and their refinement are part of this Policy. 
+	3.	The latest version of the Policy is available in Userâ€™s profile and at http://fiasy.com/privacypolice/en. The Policy can be amended any time without any prior notice, new version of the Policy takes effect after it was published at http://fiasy.com/privacypolice/en, if not otherwise specified. 
+	4.	By starting to use the Service/its individual functions, the User shall be understood to have accepted this Policy to the full extent and without reservations and exceptions. If the User does not accept any of the terms and conditions of the Policy, the User may not use the Service. If the User disagrees to any amendments to the Policy, the User should stop using the Fiasy services. If the User continues to use Fiasy services after the Policy was amended, the User automatically agrees to the amended Policy. 
+3. Who May Use Our Services
+	1.	Fiasy services are intended for the use of the Users that are at least 18 years old. Younger Users can use Fiasy services only after receiving the agreement of their legal representative(s). 
+	2.	All diet plans, marathons, fasting functions and other health and fitness information are intended strictly for the Users of at least 18 years old.Â  
+	3.	The Users with eating disorders, diabetes and other health and eating problems, as well as pregnant and lactating women must consult with the doctor before using diet plans, marathons, fasting functions and/or other Fiasy services and recommendations. 
+	4.	The Users bear all responsibility for consequences of using diet plans, marathons, fasting functions and/or other Fiasy services and recommendations. 
+4. User Registration and Profile
+	1.	To use certain Fiasy services or certain specific functions of services, the User shall complete registration to create a unique account.Â  
+	2.	Upon registration the User shall provide valid and complete information requested in the registration form and shall regularly update such information.Â  
+	3.	The User bears all responsibility for the data provided to the Company, its validity and completeness. The Company does not validate the data provided by the User, and bears no such responsibility. 
+	4.	If the User provides invalid information or Fiasy has reasons to believe that any information provided by the User is incomplete or invalid, Fiasy may at its discretion block or delete the Userâ€™s account or deny the User the use of any services (or certain functions). 
+	5.	Any personal information of the User contained in the User account shall be stored and processed by Fiasy according to the present Policy. 
+	6.	The User may not reproduce, duplicate or copy, sell, resell or use for any commercial purposes any parts of Fiasy services (including content available to the User through services) or access to Fiasy services, except when authorized by Fiasy or it is directly stated in the user agreement for any service. 
+	7.	The Company has the right to delete information and/or the Userâ€™s profile if the Company finds out that the User provided the false information and / or the information provided may harm other Users and/or is prohibited or illegal in country of operation. 
+5. Content
+	1.	The User shall be responsible for compliance of any content posted by the User with applicable legal requirements including responsibility to third parties in case posting by the User of any content or its subject matter infringes on rights and legitimate interests of third parties including personal non-property rights of authors, any other intellectual property rights of third parties and/or encroaches on other intangible assets. 
+	2.	The User acknowledges and agrees that Fiasy is not under obligation to review any content posted and/or distributed by the User through Fiasy services and that Fiasy has the right (but shall not be obliged to) at its discretion to prohibit the User from posting and/or distributing content or may remove any content available through Fiasy services. The User acknowledges and agrees that the User shall independently assess any risks related to using content including its reliability, validity or usefulness. 
+	3.	The User acknowledges and agrees that technologies of service operation may require reproduction (replication) of User content by Fiasy as well as its processing by Fiasy for compliance with technical requirements of a particular service. 
+6. About Using the App for Health
+	1.	You are responsible for your own health. Fiasy is not a medical organization and we will not provide you with any medical advice or diagnosis.Â  
+	2.	The purpose of the Fiasy services is solely to help our users to record what they eat, how they exercise and to track their health, weight and fitness progress. Information made available through the services and by our partners and affiliates shall solely be used for recreational and educational purposes.Â  
+	3.	Always consult with your doctor before starting a diet or fitness program or if you experience any pain or discomfort. Fiasy cannot guarantee any health, weight and/or fitness results or improvements.Â  
+	4.	Our services are only intended for healthy adults, and please do not use our services if you suffer from, or might suffer from, any medical condition that may be impaired by diet or exercise.Â  
+	5.	Nutritional information found in our database has not been verified, investigated or reviewed by Fiasy. Fiasy cannot guarantee that the nutritional information provided in our database is accurate, reliant or complete. Fiasy is not responsible for any personal injury or any other damages that may have been the result, direct or indirect, of any use or misuse of the services. 
+
+
+7. Third Party Websites and Content
+	1.	Fiasy services may content links to other websites (third party websites). Such third parties and their content are not verified by Fiasy for compliance with any requirements (validity, completeness, accuracy, etc.). The Company shall not be responsible for any information or materials posted at third party websites that the User may access through the services including any opinions or statements at third party websites, advertising, etc. as well as availability of such websites or content and consequences of their use by the User. 
+	2.	A link (in any format) to any website, product, service, any commercial or non-commercial information published on the Website shall not be considered as approval or recommendation of such products (services, activities) by Yandex, unless directly stated at Fiasy resources. 
+
+8. Exclusive Rights to Services and Content
+	1.	Any objects available through Fiasy services including design elements, text, graphics, illustrations, video, software, databases, music, soundtracks and other objects (hereinafter â€“ service content) as well as any content posted at Fiasy services are exclusive property of the Company, Users and other right holders. 
+	2.	Any content and service elements may be used only within functions offered by a particular service. No elements of Fiasy service content as well as any content posted at Fiasy services may be used in any other way without the right holderâ€™s prior consent. The term â€œuseâ€ shall include reproduction, duplication, processing and distribution on any basis, representation on frame, etc. The exception shall be any cases prescribed by Russian laws or terms of use of a certain Fiasy service. 
+	3.	The personal non-commercial use by the User of service content elements and any content is authorized upon preservation of all marks of copyright, associated rights, trademarks, other notices of copyright, preservation of the name (pseudonym) of the author/right holderâ€™s name unchanged and preservation of corresponding object unchanged. The exception shall be cases directly stated by Russian laws or user agreements of certain Fiasy services. 
+
+9. Subscription and Payment
+	1.	This section only applies when you purchase and/or subscribe to Fiasy Premium or other paid products. By paying the subscription fee, you get access to Fiasy Premium during the time your subscription is valid, subject to this Policy. 
+	2.	All subscriptions with Fiasy Premium are paid in advance. 
+	3.	You may at any time terminate your membership, in which case your membership will still be valid for the subscription time you have already paid for. If you have subscribed to Fiasy through the use of App Store, Google Play Store or any other such service provider, using in-app purchase, you can only cancel your subscription through the use of their services. Subscription fees can be found in the Fiasy mobile application. Fiasy accepts a variety of different methods of payment, such as PayPal, Apple iTunes, Google Play and credit card payment. Special terms and conditions may apply. Fiasy reserves the right to change the subscription fees from time to time. 
+	4.	You hereby consent to start using the services immediately upon subscribing with Fiasy Premium or other paid products. This means that you will only have 14 days to withdraw from the contract with Fiasy from the date you receive confirmation of your subscription via email if you do not start using the Services during that period. To use your right of withdrawal, you must send an email to Fiasy (you will find our contact details at the bottom of this document). Any prepaid fees will be refunded within 30 days.Â  
+	5.	All payments handled by Apple, such as in-app purchases, can only be refunded by Apple and with Appleâ€™s consent. If you would like to contact Apple, please click here. Default in payment shall not be deemed as a termination of a Fiasy Premium subscription. 
+10. Userâ€™s obligations
+	1.	The User shall be responsible to third parties for any actions related to the use of service including any actions resulting in violation of rights and legitimate interests of third parties as well as compliance with laws upon using the service. 
+	2.	Upon using Fiasy service, the User shall not: 
+	1.	download, send, transmit or in any other way post and/or distribute any content that is illegal, harmful, slanderous, unethical or violates intellectual property rights, promotes hatred and/or racial, ethnic, sexual, religious or social discrimination or is insulting to any persons and/or organizations; 
+	2.	violate third party rights including underage people and/or cause harm in any way; 
+	3.	impersonate any other person or representative of an organization and/or community without being authorized to do so, including employees of Fiasy, forum moderators, website owners and apply any other forms and methods of unlawful representation of other persons online as well as mislead other users and Fiasy regarding features and characteristics of any subjects or objects; 
+	4.	download, send, transmit or otherwise post and/or distribute content if not authorized to do so by law or contract; 
+	5.	download, send, transmit or otherwise post and/or distribute unauthorized advertising information, spam (including spamdexing), lists of e-mail addresses of other people, pyramid schemes, multilevel marketing (MLM), Internet earning systems and e-mail businesses, chain letters as well as use Fiasy service for participation in any of the above; 
+	6.	download, send, transmit or otherwise post and/or distribute any materials containing viruses or other computer codes, files or programs designed to breach, destroy or limit the operation of any computer or telecommunication equipment or software, for unauthorized access as well as serial numbers to commercial software and generation programs, logins, passwords and other means to receive authorized access to fee-based online resources, or post links to such information; 
+	7.	collect and store personal information of other persons without proper authorization; 
+	8.	interfere with regular operation of Yandex websites and services; 
+	9.	assist any actions to violate any restrictions and prohibitions imposed by this Agreement; 
+	10.	otherwise violate legal standards including international law. 
+11. Marketing information
+	3.	Fiasy may use your personal data for profiling and marketing purposes via emails, notifications, or other messages, by Fiasy or Fiasyâ€™s selected business partners. Profiling will be used for marketing purposes to enable personalized and relevant offers to you, based on your preferences. 
+	4.	The use of personal data for marketing purposes will only concern such offers that have a close relation to your use of the service and the offers will be sent to you by Fiasy; no personal data will be transferred to third parties for marketing purposes. This processing is based on a legitimate interest, on our side the interest to offer you the best possible service, on your side the possibility to be offered relevant products and services relevant to your use of the service and for third parties to reach you with such offers. In other words we are of the conclusion that consent is not required. If this should be the case, i.e. if, under relevant personal data regulation, consent is required for the use as described above, you hereby give your consent to us using your personal data as defined above. 
+	5.	In case you do not want Fiasy to use your personal data for the purpose of marketing, you may at any time unsubscribe from any further messages by using such opt-out features as are available in the app settings in the services. 
+12. No Guarantees, Limitation of Liability
+	1.	The User uses Fiasy services at his own risk. Services are provided as is. The Company accepts no responsibility including for compliance of services with the User's goals; 
+	2.	Fiasy does not guarantee that services comply/will comply with User's requirements; that services will be provided without interruptions, promptly, sustainably and without errors; that results received with the use of services are accurate and reliable and may be used for any purposes or in any capacity (for instance, for identification and/or verification of any facts); that the quality of any product, service, information, etc. received through the services will meet the User's expectations; 
+	3.	Any information and/or materials (including downloadable software, messages, any instructions and guidelines, etc.) which the User accesses through Fiasy services may be used by the User at his own risk and the User shall be responsible for any potential consequences of the use of such information and/or materials including any damage to the Userâ€™s computer or third parties, loss of information or any other damage; 
+	4.	Fiasy shall not be liable for any losses resulting from the User using Fiasy services or separate parts/ functions of services; 
+	5.	Under any circumstances, Fiasyâ€™s liability is limited to 10,000 (ten thousand) RF rubles and shall be imposed in case of guilty actions. 
+
+13. Other Provisions
+	1.	This Agreement shall be regulated and interpreted according to laws of the Russian Federation. Any issues not regulated hereby shall be settled according to Russian law. Any disputes arising out of relations regulated by this Agreement shall be settled as prescribed by applicable Russian laws according to Russian legal standards. In any part of this Agreement, unless otherwise stated, the term â€œlawâ€ shall mean laws of the Russian Federation as well as laws of the country of the Userâ€™s location. 
+	2.	When services under this Policy are provided free of charge, standards on consumer rights' protection under Russian laws shall not apply to relations between the User and the Company. 
+	3.	Nothing in this Agreement shall be interpreted as agency, partnership, mutual activities, employment or any other relations not directly stated in this Policy. 
+	4.	If for any reasons one or several provisions of this Policy are declared invalid or unenforceable, it shall not affect the validity or enforceability of the remaining provisions hereof. 
+	5.	Failure by Fiasy to act in case of violation by the User or any other users of the provisions of this Policy shall not deprive Fiasy of the right to take action to protect its interests in the future and shall not be interpreted as waiver by Fiasy of its rights in case of any future similar or identical violations. 
+</mutableString>
+                                <color key="textColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="abX-EV-IrO" firstAttribute="trailing" secondItem="uMr-H3-cb6" secondAttribute="trailing" id="0MO-Ob-qGc"/>
                             <constraint firstItem="7TP-yq-oLI" firstAttribute="top" secondItem="YCl-Eg-fFd" secondAttribute="top" id="4he-7x-DZV"/>
+                            <constraint firstItem="abX-EV-IrO" firstAttribute="leading" secondItem="uMr-H3-cb6" secondAttribute="leading" id="Jzj-O3-xPf"/>
                             <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="STD-bR-77a" secondAttribute="trailing" constant="15" id="ORs-hP-oLx"/>
                             <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="uMr-H3-cb6" secondAttribute="trailing" constant="15" id="QcN-CY-RtM"/>
                             <constraint firstItem="YCl-Eg-fFd" firstAttribute="trailing" secondItem="7TP-yq-oLI" secondAttribute="trailing" id="QnL-yb-PPU"/>
@@ -1823,12 +1920,15 @@ Fiasy – онлайн-сервис, который предоставляет �
                             <constraint firstItem="uMr-H3-cb6" firstAttribute="top" secondItem="STD-bR-77a" secondAttribute="bottom" constant="20" id="Yn0-Rk-45f"/>
                             <constraint firstItem="7TP-yq-oLI" firstAttribute="leading" secondItem="YCl-Eg-fFd" secondAttribute="leading" id="Zdj-p5-eJZ"/>
                             <constraint firstItem="STD-bR-77a" firstAttribute="leading" secondItem="YCl-Eg-fFd" secondAttribute="leading" constant="15" id="gQL-f4-Ihn"/>
+                            <constraint firstItem="abX-EV-IrO" firstAttribute="top" secondItem="uMr-H3-cb6" secondAttribute="top" id="l2w-kV-Q3a"/>
                             <constraint firstItem="uMr-H3-cb6" firstAttribute="leading" secondItem="YCl-Eg-fFd" secondAttribute="leading" constant="15" id="vtY-cz-jTq"/>
+                            <constraint firstItem="abX-EV-IrO" firstAttribute="bottom" secondItem="uMr-H3-cb6" secondAttribute="bottom" id="wQg-e5-Pdz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YCl-Eg-fFd"/>
                     </view>
                     <navigationItem key="navigationItem" id="lOj-rm-PcU"/>
                     <connections>
+                        <outlet property="secondTextView" destination="abX-EV-IrO" id="TDs-JW-XV9"/>
                         <outlet property="textView" destination="uMr-H3-cb6" id="9V3-mm-6gq"/>
                         <outlet property="titleNavigationLabel" destination="STD-bR-77a" id="SOp-rG-tzU"/>
                     </connections>

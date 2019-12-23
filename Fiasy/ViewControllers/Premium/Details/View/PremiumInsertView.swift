@@ -28,20 +28,18 @@ class PremiumInsertView: UIView {
     // MARK: - Interface -
     func fillCell(index: Int, state: PremiumColorState, delegate: PremiumDetailsCellDelegate) {
         self.delegate = delegate
-        blackFirstSlideImage.isHidden = true
         discountContainerView.backgroundColor = state == .black ? #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
         switch index {
         case 0:
-            var price1 = "949₽"
-            var price2 = "79,08₽"
-            var price3 = "316,33₽"
+            var price1 = "2290₽"
+            var price2 = "190₽"
+            var price3 = "763₽"
             if Locale.current.languageCode != "ru" {
-                price1 = "14.99$"
-                price2 = "1.23$"
-                price3 = "4.94$"
+                price1 = "34.99$"
+                price2 = "2.92$"
+                price3 = "11.92$"
             }
             tag = 0
-            blackFirstSlideImage.isHidden = false
             backgroundSlideView.backgroundColor = state == .black ? .clear : #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1)
             brilliantImageView.image = state == .black ? #imageLiteral(resourceName: "Group 15rrrr8") : #imageLiteral(resourceName: "brilliant1")
             intervalLabel.text = "1 \(LS(key: .YEAR))"
@@ -60,13 +58,13 @@ class PremiumInsertView: UIView {
             crossedOutLabel.attributedText = attributeString
             crossedOutLabel.isHidden = false
         case 1:
-            var price1 = "1450₽"
-            var price2 = "241,67₽"
-            var price3 = "316,33₽"
+            var price1 = "3490₽"
+            var price2 = "582₽"
+            var price3 = "763₽"
             if Locale.current.languageCode != "ru" {
-                price1 = "22.75$"
-                price2 = "3.76$"
-                price3 = "4.94$"
+                price1 = "53.99$"
+                price2 = "8.99$"
+                price3 = "11.92$"
             }
             tag = 1
             backgroundSlideView.backgroundColor = state == .black ? #colorLiteral(red: 0.1725074947, green: 0.1764294505, blue: 0.1805890203, alpha: 1) : #colorLiteral(red: 0.9998915792, green: 1, blue: 0.9998809695, alpha: 1)
@@ -88,10 +86,10 @@ class PremiumInsertView: UIView {
             crossedOutLabel.attributedText = attributeString
             crossedOutLabel.isHidden = false
         case 2:
-            var price1 = "949₽"
-            var price2 = "316,33₽"
+            var price1 = "2290₽"
+            var price2 = "763₽"
             if Locale.current.languageCode != "ru" {
-                price1 = "14.99$"
+                price1 = "34.99$"
                 price2 = "4.94$"
             }
             tag = 2

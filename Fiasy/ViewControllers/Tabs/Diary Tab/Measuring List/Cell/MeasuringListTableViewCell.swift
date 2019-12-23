@@ -24,7 +24,23 @@ class MeasuringListTableViewCell: UITableViewCell {
         if let date = measuring.date {
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = TimeZone(identifier: "GMT")
-            dateFormatter.locale = Locale(identifier: "ru_RU")
+            switch Locale.current.languageCode {
+            case "es":
+                // испанский
+                dateFormatter.locale = Locale(identifier: "es_ES")
+            case "pt":
+                // португалия (бразилия)
+                dateFormatter.locale = Locale(identifier: "pt_BR")
+            case "en":
+                // английский
+                dateFormatter.locale = Locale(identifier: "en_US")
+            case "de":
+                // немецикий
+                dateFormatter.locale = Locale(identifier: "de_DE")
+            default:
+                // русский
+                dateFormatter.locale = Locale(identifier: "ru_RU")
+            }
             dateFormatter.dateFormat = "dd MMMM yyyy"
             dateLabel.text =  dateFormatter.string(from: date)
         }        
@@ -33,7 +49,7 @@ class MeasuringListTableViewCell: UITableViewCell {
     
     // MARK: - Private -
     private func fillAmount(count: Double, type: MeasuringType) {
-        let weightType = type == .weight ? " кг" : " см"
+        let weightType = type == .weight ? " \(LS(key: .WEIGHT_UNIT))" : " \(LS(key: .GROWTH_UNIT))"
         let mutableAttrString = NSMutableAttributedString()
         mutableAttrString.append(NSAttributedString(string: "\(count)", attributes: [ .foregroundColor: #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)]))
         mutableAttrString.append(NSAttributedString(string: weightType, attributes: [ .foregroundColor: #colorLiteral(red: 0.3764262497, green: 0.3764960766, blue: 0.3764218688, alpha: 1)]))

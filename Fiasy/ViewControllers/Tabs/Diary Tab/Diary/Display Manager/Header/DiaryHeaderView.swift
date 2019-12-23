@@ -29,16 +29,16 @@ class DiaryHeaderView: UITableViewHeaderFooterView {
         switch section {
         case 2:
             tagIndex = 0
-            titleNameLabel.text = "Завтрак"
+            titleNameLabel.text = LS(key: .BREAKFAST)
         case 3:
             tagIndex = 1
-            titleNameLabel.text = "Обед"
+            titleNameLabel.text = LS(key: .LUNCH)
         case 4:
             tagIndex = 2
-            titleNameLabel.text = "Ужин"
+            titleNameLabel.text = LS(key: .DINNER)
         case 5:
             tagIndex = 3
-            titleNameLabel.text = "Перекус"
+            titleNameLabel.text = LS(key: .SNACK)
         default:
             break
         }

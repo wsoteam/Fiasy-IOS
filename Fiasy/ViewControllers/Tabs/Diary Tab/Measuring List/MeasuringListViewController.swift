@@ -18,6 +18,10 @@ class MeasuringListViewController: UIViewController {
     }
     
     // MARK: - Outlet -
+    @IBOutlet var navigationLabels: [UILabel]!
+    @IBOutlet weak var emptyMessageLabel: UILabel!
+    @IBOutlet weak var emptyTitleLabel: UILabel!
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var emptySectionsView: UIView!
     @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -38,6 +42,23 @@ class MeasuringListViewController: UIViewController {
         showActivity()
         setupTableView()
         fetchMeasuring()
+        navigationTitleLabel.text = LS(key: .LONG_PREM_MEASURE_TITLE).capitalizeFirst
+        emptyTitleLabel.text = LS(key: .MEASURING_TITLE12).capitalizeFirst
+        emptyMessageLabel.text = LS(key: .MEASURING_TITLE13).capitalizeFirst
+        for (index, item) in navigationLabels.enumerated() {
+            switch index {
+            case 0:
+                item.text = LS(key: .WEIGHT)
+            case 1:
+                item.text = LS(key: .MEASURING_TITLE2)
+            case 2:
+                item.text = LS(key: .MEASURING_TITLE1)
+            case 3:
+                item.text = LS(key: .MEASURING_TITLE3)
+            default:
+                break
+            }
+        }
     }
     
     // MARK: - Actions -

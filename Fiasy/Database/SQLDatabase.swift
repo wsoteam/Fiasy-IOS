@@ -87,7 +87,7 @@ class SQLDatabase {
             }
             
             if fullNameArr.count > 1 {
-                for (index,item) in allProducts.enumerated() where item.name.lowercased().contains(fullNameArr[0].lowercased()) && item.name.lowercased().contains(fullNameArr[1].lowercased()) {
+                for (index,item) in allProducts.enumerated() where (item.name ?? "").lowercased().contains(fullNameArr[0].lowercased()) && (item.name ?? "").lowercased().contains(fullNameArr[1].lowercased()) {
                     allProducts.remove(at: index)
                     allProducts.insert(item, at: 0)
                 }

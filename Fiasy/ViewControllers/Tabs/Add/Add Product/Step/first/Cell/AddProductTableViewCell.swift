@@ -11,6 +11,7 @@ import UIKit
 class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     // MARK: - Outlet -
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var typeProductTitleLabel: UILabel!
     @IBOutlet var stateProductLabels: [UILabel]!
@@ -24,9 +25,20 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var bottomContainerView: UIView!
     
-    //MARK: - Properties -
+    // MARK: - Properties -
     private var indexCell: IndexPath?
     private var delegate: AddProductDelegate?
+    
+    // MARK: - Life Cicle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        stateProductLabels[0].text = LS(key: .CREATE_STEP_TITLE_10)
+        stateProductLabels[1].text = LS(key: .CREATE_STEP_TITLE_11)
+        typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_7)
+        errorLabel.text = LS(key: .CREATE_STEP_TITLE_12)
+        nextButton.setTitle("\(LS(key: .UNBOARDING_NEXT)) ", for: .normal)
+    }
     
     // MARK: - Interface -
     func fillCell(indexCell: IndexPath, delegate: AddProductDelegate, barCode: String?, _ selectedFavorite: Favorite?) {
@@ -37,7 +49,7 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
         nameTextField.tag = indexCell.row
         switch indexCell.row {
         case 0:
-            titleLabel.text = "Марка/производитель"
+            titleLabel.text = LS(key: .CREATE_STEP_TITLE_4)
             nameButton.isHidden = true
             cameraIconImageView.isHidden = true
             nameTextField.keyboardType = .default
@@ -46,7 +58,7 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
             nameTextField.tag = 0
         case 1:
-            titleLabel.text = "Название продукта"
+            titleLabel.text = LS(key: .CREATE_STEP_TITLE_5)
             nameButton.isHidden = true
             cameraIconImageView.isHidden = true
             nameTextField.keyboardType = .default
@@ -57,7 +69,7 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
         case 2:
             fillDescription()
             middleContainerView.isHidden = false
-            titleLabel.text = "Штрих-код"
+            titleLabel.text = LS(key: .CREATE_STEP_TITLE_6)
             nameButton.isHidden = false
             cameraIconImageView.isHidden = false
             nameTextField.keyboardType = .numberPad
@@ -88,7 +100,7 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
-        return count <= 30
+        return textField.tag == 2 ? count <= 20 : count <= 30
     }
     
     // MARK: - Private -
@@ -123,14 +135,14 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
         UserInfo.sharedInstance.productFlow.productType = TypeProduct(rawValue: sender.tag) ?? .product
         switch UserInfo.sharedInstance.productFlow.productType {
         case .product:
-            typeProductTitleLabel.text = "Тип продукта: Eда"
+            typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_7)
             stateProductLabels[0].alpha = 1.0
             stateProductLabels[1].alpha = 0.5
             
             stateProductImages[0].alpha = 1.0
             stateProductImages[1].alpha = 0.5
         default:
-            typeProductTitleLabel.text = "Тип продукта: Напиток"
+            typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_8)
             stateProductLabels[0].alpha = 0.5
             stateProductLabels[1].alpha = 1.0
             

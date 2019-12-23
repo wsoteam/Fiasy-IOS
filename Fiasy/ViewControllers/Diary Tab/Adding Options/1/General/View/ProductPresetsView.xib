@@ -73,6 +73,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="addDiaryButton" destination="JZT-nf-ztX" id="b1W-Ej-Ka6"/>
                 <outlet property="basketButton" destination="c5N-Te-rSl" id="Cef-hh-nbd"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="-193.85307346326837"/>

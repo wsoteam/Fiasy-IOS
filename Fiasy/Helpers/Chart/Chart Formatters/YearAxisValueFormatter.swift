@@ -20,29 +20,29 @@ public class YearAxisValueFormatter: NSObject, IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         switch Int(value) {
         case 0:
-            return LS(key: .JANUARY)
+            return String(LS(key: .JANUARY).prefix(3)) 
         case 1:
-            return "фев"
+            return String(LS(key: .FEBRUARY).prefix(3)) 
         case 2:
-            return "мар"
+            return String(LS(key: .MARCH).prefix(3)) 
         case 3:
-            return "апр"
+            return String(LS(key: .APRIL).prefix(3)) 
         case 4:
-            return "май"
+            return String(LS(key: .MAY).prefix(3)) 
         case 5:
-            return "июн"
+            return String(LS(key: .JUNE).prefix(3)) 
         case 6:
-            return "июл"
+            return String(LS(key: .JULY).prefix(3)) 
         case 7:
-            return "авг"
+            return String(LS(key: .AUGUST).prefix(3)) 
         case 8:
-            return "сен"
+            return String(LS(key: .SEPTEMBER).prefix(3)) 
         case 9:
-            return "окт"
+            return String(LS(key: .OCTOBER).prefix(3)) 
         case 10:
-            return "ноя"
+            return String(LS(key: .NOVEMBER).prefix(3)) 
         case 11:
-            return "дек"
+            return String(LS(key: .DECEMBER).prefix(3)) 
         default:
             return ""
         }

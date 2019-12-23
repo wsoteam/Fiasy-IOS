@@ -11,6 +11,7 @@ import UIKit
 class EditActivityViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,6 +23,7 @@ class EditActivityViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        navigationTitleLabel.text = LS(key: .DIARY_MES_16)
     }
     
     override func viewWillAppear(_ animated: Bool) {

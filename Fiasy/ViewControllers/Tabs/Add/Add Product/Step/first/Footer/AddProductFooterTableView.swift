@@ -18,6 +18,13 @@ class AddProductFooterTableView: UITableViewHeaderFooterView {
     static var height: CGFloat = 100.0
     private var delegate: AddProductDelegate?
     
+    // MARK: - Life cicle -
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        nextButton.setTitle("\(LS(key: .UNBOARDING_NEXT)) ", for: .normal)
+    }
+    
     // MARK: - Interface -
     func fillFooter(delegate: AddProductDelegate) {
         self.delegate = delegate

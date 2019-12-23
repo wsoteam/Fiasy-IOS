@@ -11,6 +11,8 @@ import UIKit
 class PremiumTopTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     // MARK: - Outlet -
+    @IBOutlet weak var newTopLabel: UILabel!
+    @IBOutlet weak var newBottomLabel: UILabel!
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var endTimerLabel: UILabel!
@@ -35,41 +37,48 @@ class PremiumTopTableViewCell: UITableViewCell, UIScrollViewDelegate {
     override open func layoutSubviews() {
         super.layoutSubviews()
         
-        if slides.isEmpty {     
-            let dcf = DateComponentsFormatter()
-            dcf.allowedUnits = [.day, .hour, .minute]
-            dcf.unitsStyle = .full
+        if slides.isEmpty {   
+            state = .white
+            timerStackView.isHidden = true
+            slides = createSlides()
+            applyColorState(state: state)
+
+            newTopLabel.text = LS(key: .PREMIUM_TITLE_NEW_1)
+            newBottomLabel.text = LS(key: .PREMIUM_TITLE_NEW_2)
+//            let dcf = DateComponentsFormatter()
+//            dcf.allowedUnits = [.day, .hour, .minute]
+//            dcf.unitsStyle = .full
+//            
+//            let df = ISO8601DateFormatter()
+//            df.formatOptions = [.withFullDate, .withDashSeparatorInDate]
             
-            let df = ISO8601DateFormatter()
-            df.formatOptions = [.withFullDate, .withDashSeparatorInDate]
-            
-            if let future = df.date(from: "2019-12-01") {
-//                let tomorrow = Calendar.current.date(byAdding: .hour, value: 23, to: future)!
-//                let second = Calendar.current.date(byAdding: .minute, value: 03, to: tomorrow)!
-                
-                let component = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: future)
-                if let day = component.day, let hour = component.hour, let minute = component.minute, let second = component.second {
-                    if day <= 0 && hour <= 0 && minute <= 0 && second <= 0 {
-                        state = .white
-                        timerStackView.isHidden = true
-                    } else {
-                        state = .black
-                        timerStackView.isHidden = false
-                    }
-                }
-                slides = createSlides()
-                applyColorState(state: state)
-                
-                if let day = component.day, day < 3 {
-                    timerStackView.isHidden = false
-                    countDownDate()
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-                        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDownDate), userInfo: nil, repeats: true)
-                    }
-                } else {
-                    timerStackView.isHidden = true
-                }
-            }
+//            if let future = df.date(from: "2019-12-02") {
+////                let tomorrow = Calendar.current.date(byAdding: .hour, value: 23, to: future)!
+////                let second = Calendar.current.date(byAdding: .minute, value: 03, to: tomorrow)!
+//                
+//                let component = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: future)
+//                if let day = component.day, let hour = component.hour, let minute = component.minute, let second = component.second {
+//                    if day <= 0 && hour <= 0 && minute <= 0 && second <= 0 {
+//                        state = .white
+//                        timerStackView.isHidden = true
+//                    } else {
+//                        state = .black
+//                        timerStackView.isHidden = false
+//                        
+//                        if let day = component.day, day < 3 {
+//                            timerStackView.isHidden = false
+//                            countDownDate()
+//                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+//                                self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDownDate), userInfo: nil, repeats: true)
+//                            }
+//                        } else {
+//                            timerStackView.isHidden = true
+//                        }
+//                    }
+//                }
+//                slides = createSlides()
+//                applyColorState(state: state)
+//            }
             setupSlideScrollView(slides: slides)
         }
     }
@@ -88,22 +97,28 @@ class PremiumTopTableViewCell: UITableViewCell, UIScrollViewDelegate {
         self.state = state
         self.delegate = delegate
         applyColorState(state: state)
+        timerStackView.isHidden = true
         
-        let dcf = DateComponentsFormatter()
-        dcf.allowedUnits = [.day, .hour, .minute]
-        dcf.unitsStyle = .full
-        
-        let df = ISO8601DateFormatter()
-        df.formatOptions = [.withFullDate, .withDashSeparatorInDate]
-        
-        if let future = df.date(from: "2019-12-01") {
-            let component = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: future)
-            if let day = component.day, day < 3 {
-                timerStackView.isHidden = false
-            } else {
-                timerStackView.isHidden = true
-            }
-        }
+//        let dcf = DateComponentsFormatter()
+//        dcf.allowedUnits = [.day, .hour, .minute]
+//        dcf.unitsStyle = .full
+//        
+//        let df = ISO8601DateFormatter()
+//        df.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+//
+//        if let future = df.date(from: "2019-12-02") {
+//            let component = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: future)
+//            
+//            if day <= 0 && hour <= 0 && minute <= 0 && second <= 0 {
+//                timerStackView.isHidden = true
+//            } else {
+//                if let day = component.day, day < 3 {
+//                    timerStackView.isHidden = false
+//                } else {
+//                    timerStackView.isHidden = true
+//                }
+//            }
+//        }
     }
     
     // MARK: - Actions -
@@ -132,7 +147,7 @@ class PremiumTopTableViewCell: UITableViewCell, UIScrollViewDelegate {
             let df = ISO8601DateFormatter()
             df.formatOptions = [.withFullDate, .withDashSeparatorInDate]
             //"2019-12-01"
-            if let future = df.date(from: "2019-12-01") {
+            if let future = df.date(from: "2019-12-02") {
                 //let diff = dcf.string(from: Date(), to: future)
                 
 //                let tomorrow = Calendar.current.date(byAdding: .hour, value: 23, to: future)!
@@ -199,26 +214,27 @@ class PremiumTopTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     private func applyColorState(state: PremiumColorState) {
-        switch state {
-        case .black:
-            topImageView.image = #imageLiteral(resourceName: "friday- Title")
-        case .white:
-            if let appLanguage = StorageService.get(by: .APP_LANGUAGE) as? String {
-                switch appLanguage {
-                case "en":
-                    topImageView.image = #imageLiteral(resourceName: "white_Анг")
-                case "de":
-                    topImageView.image = #imageLiteral(resourceName: "white_Нем")
-                case "pt":
-                    topImageView.image = #imageLiteral(resourceName: "white_Порт")
-                case "es":
-                    topImageView.image = #imageLiteral(resourceName: "white_Исп")
-                default:
-                    topImageView.image = #imageLiteral(resourceName: "white_Рус")
-                }
-            }
-        }
-        buyButton.setTitle("       \(LS(key: .SETTINGS_PERSONAL).uppercased())       ", for: .normal)
+        topImageView.image = #imageLiteral(resourceName: "Group fffggg")
+//        switch state {
+//        case .black:
+//            topImageView.image = #imageLiteral(resourceName: "friday- Title")
+//        case .white:
+//            if let appLanguage = StorageService.get(by: .APP_LANGUAGE) as? String {
+//                switch appLanguage {
+//                case "en":
+//                    topImageView.image = #imageLiteral(resourceName: "white_Анг")
+//                case "de":
+//                    topImageView.image = #imageLiteral(resourceName: "white_Нем")
+//                case "pt":
+//                    topImageView.image = #imageLiteral(resourceName: "white_Порт")
+//                case "es":
+//                    topImageView.image = #imageLiteral(resourceName: "white_Исп")
+//                default:
+//                    topImageView.image = #imageLiteral(resourceName: "white_Рус")
+//                }
+//            }
+//        }
+        buyButton.setTitle("          \(LS(key: .LONG_PREM_FEATURES_BUY).uppercased())          ", for: .normal)
         buyButton.backgroundColor = state == .black ? #colorLiteral(red: 0.8516539931, green: 0.6581981182, blue: 0.267614007, alpha: 1) : #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
         let mutableAttrString = NSMutableAttributedString()
         let paragraphStyle = NSMutableParagraphStyle()
@@ -231,11 +247,11 @@ class PremiumTopTableViewCell: UITableViewCell, UIScrollViewDelegate {
 
     private func createSlides() -> [PremiumSlideView] {
         var items: [PremiumSlideView] = []
-        for index in 0...2 {
-            guard let item = PremiumSlideView.fromXib() else { return [] }
-            item.fillCell(index: index, state: self.state)
-            items.append(item)
-        }
+//        for index in 0...2 {
+//            guard let item = PremiumSlideView.fromXib() else { return [] }
+//            item.fillCell(index: index, state: self.state)
+//            items.append(item)
+//        }
         return items
     }
     

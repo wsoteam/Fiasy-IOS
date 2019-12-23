@@ -32,7 +32,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9A-N0-orW">
                     <rect key="frame" x="5" y="26" width="325" height="150"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4444rrrrreee" translatesAutoresizingMaskIntoConstraints="NO" id="Me9-mh-b2N">
+                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4444rrrrreee" translatesAutoresizingMaskIntoConstraints="NO" id="Me9-mh-b2N">
                             <rect key="frame" x="0.0" y="0.0" width="325" height="150"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">

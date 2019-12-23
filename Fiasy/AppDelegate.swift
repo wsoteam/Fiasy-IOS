@@ -19,10 +19,11 @@ import FirebaseDatabase
 import Amplitude_iOS
 import UserNotifications
 import Adjust
+import FirebaseDatabase
 import OneSignal
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let screensController = ScreensController()
     
@@ -30,27 +31,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         FirebaseApp.configure()       
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
-        switch Locale.current.languageCode {
+        
+        switch getPreferredLocale().languageCode {
         case "es":
             // испанский
             ES.save(by: .APP_LANGUAGE)
         case "pt":
             // португалия (бразилия)
             PT.save(by: .APP_LANGUAGE)
-        case "en":
-            // английский
-            EN.save(by: .APP_LANGUAGE)
+        case "ru":
+            RUS.save(by: .APP_LANGUAGE)
         case "de":
             // немецикий
             GER.save(by: .APP_LANGUAGE)
         default:
-            // русский
-            RUS.save(by: .APP_LANGUAGE)
+            EN.save(by: .APP_LANGUAGE)
         }
 
       //  Fabric.with([Crashlytics.self()])
-        Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
+        //Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
         
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
         
@@ -63,7 +62,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
         })
-        
+//        let ref = Database.database().reference()
+//        if let uid = Auth.auth().currentUser?.uid {
+//            
+//            ref.child("USER_LIST").child(uid).child("profilee").observeSingleEvent(of: .value, with: { (snapshot) in
+//                print(snapshot.childSnapshot(forPath: "name").value as! String)
+//                print(snapshot.childSnapshot(forPath: "any place you would like to query from").value as! String)
+//            })
+////            ref.child("USER_LIST").child(uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+////                if let snapshotValue = snapshot.value as? [String:AnyObject] {
+////                    UserDefaults.standard.set(true, forKey: "firstLoadComplete")
+////                    UserDefaults.standard.synchronize()
+////                    UserInfo.sharedInstance.currentUser = User(dictionary: snapshotValue)
+////                    UserInfo.sharedInstance.userGender = UserInfo.sharedInstance.currentUser?.female == true ? .girl : .man
+////                    //handler(false)
+////                } else {
+////                    //handler(true)
+////                    //                    fillDefaultUserInDatabase()
+////                    //                    checkFilledProfile()
+////                }
+////            }) { (error) in
+////                print(error.localizedDescription)
+////            }
+//        }
         FirebaseDBManager.checkFilledProfile { (state) in }
         Amplitude.instance()?.trackingSessionEvents = true
         Amplitude.instance()?.minTimeBetweenSessionsMillis = 5000
@@ -84,10 +105,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                             annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-        completionHandler(.noData);
+    func getPreferredLocale() -> Locale {
+        guard let preferredIdentifier = Locale.preferredLanguages.first else {
+            return Locale.current
+        }
+        return Locale(identifier: preferredIdentifier)
     }
+    
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//
+//        completionHandler(.noData);
+//    }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppEventsLogger.activate(application)

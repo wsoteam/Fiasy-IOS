@@ -21,11 +21,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="640" id="lRa-ab-1Yn" customClass="DishDescriptionCell" customModule="Fiasy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="687" id="lRa-ab-1Yn" customClass="DishDescriptionCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="687"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lRa-ab-1Yn" id="uN1-js-HMG">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="639.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="686.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIU-OZ-YnU" userLabel="1 View">
@@ -191,7 +191,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phg-3z-suj">
                                 <rect key="frame" x="90" y="0.0" width="179.5" height="44"/>
-                                <color key="backgroundColor" red="0.20495200157165527" green="0.51919573545455933" blue="0.48738569021224976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="FyN-Uk-nE7"/>
                                 </constraints>
@@ -215,19 +215,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KZh-SX-ZGI">
-                                <rect key="frame" x="15" y="44.5" width="329" height="192"/>
+                                <rect key="frame" x="15" y="44.5" width="329" height="239"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="w5r-aL-Crf">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="162"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PqB-dc-sm5">
-                                        <rect key="frame" x="0.0" y="172" width="329" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="172" width="329" height="47"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-yI-FHe">
-                                        <rect key="frame" x="0.0" y="182" width="329" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="229" width="329" height="0.0"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uPP-dV-brD">
-                                        <rect key="frame" x="0.0" y="192" width="329" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="239" width="329" height="0.0"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -264,19 +264,22 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addInDiaryButton" destination="Phg-3z-suj" id="qKq-Nu-Ohs"/>
                 <outlet property="caloriesStackView" destination="w5r-aL-Crf" id="eIK-xA-s2w"/>
                 <outlet property="carbohydrateStackView" destination="PqB-dc-sm5" id="D2n-GN-nGn"/>
                 <outlet property="cookingDifficultyLabel" destination="Jtc-yO-RCy" id="isG-P7-eAz"/>
+                <outlet property="cookingMethodButton" destination="dyd-Fp-LrX" id="Wuf-JH-tsp"/>
                 <outlet property="cookingStepsStackView" destination="rRd-c6-VFf" id="sBx-Cn-nin"/>
                 <outlet property="fatStackView" destination="bpc-yI-FHe" id="3Ku-3P-8MN"/>
                 <outlet property="ingredientsStackView" destination="5Dm-tD-5P5" id="OGh-mL-jKA"/>
+                <outlet property="ingridientLabel" destination="Nwy-3c-ZCV" id="Fa9-m3-AoN"/>
                 <outlet property="nameLabel" destination="WBL-07-vXe" id="ls6-jx-bhZ"/>
                 <outlet property="numberOfServingLabel" destination="Gqt-eW-Nvy" id="R7z-wP-Txz"/>
                 <outlet property="nutrientsLabel" destination="Z4h-er-vpb" id="YD6-Di-QEq"/>
                 <outlet property="proteinStackView" destination="uPP-dV-brD" id="LqJ-pk-8Gi"/>
                 <outlet property="timeCookingButton" destination="zzZ-pe-WJS" id="Ejh-ej-9ki"/>
             </connections>
-            <point key="canvasLocation" x="-532" y="273.4632683658171"/>
+            <point key="canvasLocation" x="-532" y="252.32383808095955"/>
         </tableViewCell>
     </objects>
     <resources>

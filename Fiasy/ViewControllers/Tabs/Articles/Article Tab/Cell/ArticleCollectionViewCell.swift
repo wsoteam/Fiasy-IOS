@@ -14,6 +14,7 @@ import VisualEffectView
 class ArticleCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlet's -
+    @IBOutlet weak var premTitleLabel: UILabel!
     @IBOutlet weak var premiumContainerView: UIView!
     @IBOutlet weak var blurView: VisualEffectView!
     @IBOutlet weak var articleImageView: UIImageView!
@@ -35,6 +36,7 @@ class ArticleCollectionViewCell: UICollectionViewCell {
         premiumContainerView.clipsToBounds = true
         premiumContainerView.layer.cornerRadius = 8
         premiumContainerView.layer.maskedCorners = [.layerMinXMaxYCorner]
+        premTitleLabel.text = LS(key: .PREMIUM_TITLE)
     }
     
     // MARK: - Interface -

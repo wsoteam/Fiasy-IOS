@@ -12,12 +12,14 @@ import ObjectMapper
 class Suggest: NSObject, Mappable {
     
     var list: [PaginationProduct] = []
+    var message: String?
     
     required convenience init?(map: Map) {
         self.init()
     }
     
     func mapping(map: Map) {
+        message <- map["message"]
         list <- map["name_suggest__completion"]
     }
 }

@@ -19,7 +19,7 @@ class MenuViewController: UITabBarController {
         }
         
         DispatchQueue.global().async {
-            FirebaseDBManager.fetchMyMeasuringInDataBase { [weak self] (list) in
+            FirebaseDBManager.fetchMyMeasuringInDataBase { (list) in
                 UserInfo.sharedInstance.measuringList = list
             }
         }
@@ -49,9 +49,14 @@ class MenuViewController: UITabBarController {
                 strongSelf.performSegue(withIdentifier: "sequeFillUserProfile", sender: nil)
             }
         }
-
         addObserver(for: self, #selector(didRecieveLogoutNotification), Constant.LOG_OUT)
     }
+//    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        performSegue(withIdentifier: "sequeNotificationScreen", sender: nil)
+//    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
