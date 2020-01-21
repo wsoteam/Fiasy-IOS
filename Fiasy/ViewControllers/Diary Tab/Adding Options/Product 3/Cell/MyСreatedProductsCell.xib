@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="87" id="vcD-ai-5BV" customClass="MyСreatedProductsCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vcD-ai-5BV" id="QLE-z6-9d0">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="86.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nhD-4f-0rN">
+                        <rect key="frame" x="16" y="12" width="336" height="62.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3D-IM-fKk">
+                                <rect key="frame" x="0.0" y="0.0" width="336" height="45"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmf-EL-Dwq">
+                                <rect key="frame" x="0.0" y="49" width="336" height="13.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="11"/>
+                                <color key="textColor" red="0.63130205869674683" green="0.63141322135925293" blue="0.63129514455795288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilt-yJ-pXT">
+                        <rect key="frame" x="0.0" y="85.5" width="414" height="1"/>
+                        <color key="backgroundColor" red="0.9410741925239563" green="0.94123548269271851" blue="0.94106411933898926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="hsY-Hb-8G4"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZf-xC-0Sw">
+                        <rect key="frame" x="199" y="0.0" width="200" height="86.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="N6o-AQ-1Ef"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM7-nu-knQ">
+                        <rect key="frame" x="352" y="0.0" width="62" height="86.5"/>
+                        <state key="normal" image="three_dot"/>
+                        <connections>
+                            <action selector="dotsClicked:" destination="vcD-ai-5BV" eventType="touchUpInside" id="atn-3I-dvp"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="nhD-4f-0rN" secondAttribute="bottom" constant="12" id="AEq-Ph-4JY"/>
+                    <constraint firstItem="nhD-4f-0rN" firstAttribute="trailing" secondItem="iM7-nu-knQ" secondAttribute="leading" id="Cph-B3-1z3"/>
+                    <constraint firstItem="sZf-xC-0Sw" firstAttribute="bottom" secondItem="iM7-nu-knQ" secondAttribute="bottom" id="GvI-gF-5aW"/>
+                    <constraint firstAttribute="trailing" secondItem="iM7-nu-knQ" secondAttribute="trailing" id="JHx-2u-jCq"/>
+                    <constraint firstAttribute="trailing" secondItem="sZf-xC-0Sw" secondAttribute="trailing" constant="15" id="OD1-9x-qtj"/>
+                    <constraint firstAttribute="bottom" secondItem="Ilt-yJ-pXT" secondAttribute="bottom" id="PSE-TS-KiT"/>
+                    <constraint firstItem="iM7-nu-knQ" firstAttribute="width" secondItem="QLE-z6-9d0" secondAttribute="width" multiplier="0.15" id="XO9-NB-pYS"/>
+                    <constraint firstItem="Ilt-yJ-pXT" firstAttribute="leading" secondItem="QLE-z6-9d0" secondAttribute="leading" id="aMs-Eh-Ku2"/>
+                    <constraint firstItem="iM7-nu-knQ" firstAttribute="top" secondItem="QLE-z6-9d0" secondAttribute="top" id="ekb-be-ies"/>
+                    <constraint firstAttribute="trailing" secondItem="Ilt-yJ-pXT" secondAttribute="trailing" id="fHo-c9-atC"/>
+                    <constraint firstItem="sZf-xC-0Sw" firstAttribute="top" secondItem="iM7-nu-knQ" secondAttribute="top" id="fOD-H7-AEL"/>
+                    <constraint firstItem="nhD-4f-0rN" firstAttribute="leading" secondItem="QLE-z6-9d0" secondAttribute="leading" constant="16" id="i8x-MW-m6W"/>
+                    <constraint firstAttribute="bottom" secondItem="iM7-nu-knQ" secondAttribute="bottom" id="iZv-TE-ofy"/>
+                    <constraint firstItem="nhD-4f-0rN" firstAttribute="top" secondItem="QLE-z6-9d0" secondAttribute="top" constant="12" id="jkB-nw-eho"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="containerView" destination="sZf-xC-0Sw" id="49D-0D-Q8S"/>
+                <outlet property="countLabel" destination="hmf-EL-Dwq" id="3cp-1K-0is"/>
+                <outlet property="nameLabel" destination="N3D-IM-fKk" id="lsO-8d-cu7"/>
+            </connections>
+            <point key="canvasLocation" x="-39.130434782608695" y="33.147321428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="three_dot" width="25" height="5"/>
+    </resources>
+</document>

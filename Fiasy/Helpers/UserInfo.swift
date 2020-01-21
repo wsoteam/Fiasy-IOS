@@ -31,6 +31,9 @@ class UserInfo {
     
     var articleExpert: [Article] = []
     
+    var templateName: String = ""
+    var templateProductList: [SecondProduct] = []
+    
     // MARK: - Measuring -
     var measuringList: [Measuring] = []
     
@@ -118,6 +121,10 @@ class UserInfo {
     // MARK: - Recipe Flow -
     var recipeFlow = AddRecipeFlow()
     var reloadRecipesScreen: Bool = false
+    
+    // MARK: - Dish Flow -
+    var dishFlow = DishFlow()
+    var reloadDishScreen: Bool = false
     
     func fillAllFields(fields: [UITextField], female: Bool) {
         let name = fields.indices.contains(0) ? (fields[0].text ?? "") : ""

@@ -13,6 +13,7 @@ class MeasuringAlertMiddleWeightView: UIView {
     // MARK: - Outlet's -
     @IBOutlet weak var alertTitleLabel: UILabel!
     
+    // MARK: - Life Cicle -
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,6 +29,14 @@ class MeasuringAlertMiddleWeightView: UIView {
     // MARK: - Interface -
     func fillView(delegate: MeasuringCellDelegate) {
         self.delegate = delegate
+    }
+    
+    func secondFillView(delegate: MeasuringCellDelegate) {
+        self.delegate = delegate
+        
+        let mutableAttrString = NSMutableAttributedString()
+        mutableAttrString.append(NSAttributedString(string: "\(LS(key: .MEASURING_TITLE14))", attributes: [.font: UIFont.sfProTextMedium(size: 13), .foregroundColor: #colorLiteral(red: 0.3685839176, green: 0.3686525226, blue: 0.3685796857, alpha: 1),  .underlineStyle : NSUnderlineStyle.single.rawValue]))
+        alertTitleLabel.attributedText = mutableAttrString
     }
     
     // MARK: - Actions -

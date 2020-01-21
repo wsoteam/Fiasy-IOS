@@ -61,7 +61,6 @@ class AddProductSecondStepViewController: UIViewController {
                     strongSelf.navigationController?.popToViewController(aViewController, animated: true)
                 }
             }
-            strongSelf.navigationController?.popViewController(animated: true)
         }))
         refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
         present(refreshAlert, animated: true)

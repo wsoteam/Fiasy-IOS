@@ -14,7 +14,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Properties -
-    static let rowHeight: CGFloat = 200.0
+    static let rowHeight: CGFloat = 180.0
     private var articles: [Article] = []
     private let isIphone5 = Display.typeIsLike == .iphone5
     
@@ -56,6 +56,6 @@ extension ArticleTableViewCell: UICollectionViewDataSource {
 extension ArticleTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width - 50, height: 200)
+        return CGSize(width: UIScreen.main.bounds.size.width - 50, height: isIphone5 ? 150 : 180)
     }
 }

@@ -145,12 +145,43 @@ class SecondProduct: Product, Mappable {
         
         id = second.id
         name = second.name
+        generalKey = second.generalKey
+        generalFindId = second.generalFindId
         self.portion = second.portion
         isLiquid = second.isLiquid
         kilojoules = second.kilojoules
         calories = second.calories
         proteins = second.proteins
         brand = second.brand
+        carbohydrates = second.carbohydrates
+        sugar = second.sugar
+        fats = second.fats
+        saturatedFats = second.saturatedFats
+        monoUnSaturatedFats = second.monoUnSaturatedFats
+        polyUnSaturatedFats = second.polyUnSaturatedFats
+        cholesterol = second.cholesterol
+        cellulose = second.cellulose
+        sodium = second.sodium
+        pottassium = second.pottassium
+        measurementUnits = second.measurementUnits
+        selectedPortion = second.selectedPortion
+        portionId = second.portionId
+        weight = nil
+    }
+    
+    required convenience init(second: Product) {
+        self.init()
+        
+        id = second.id
+        name = second.name
+        generalKey = second.generalKey
+        generalFindId = second.generalFindId
+        self.portion = second.portion
+        isLiquid = second.isLiquid
+        kilojoules = second.kilojoules
+        calories = second.calories
+        proteins = second.proteins
+        brend = second.brend
         carbohydrates = second.carbohydrates
         sugar = second.sugar
         fats = second.fats

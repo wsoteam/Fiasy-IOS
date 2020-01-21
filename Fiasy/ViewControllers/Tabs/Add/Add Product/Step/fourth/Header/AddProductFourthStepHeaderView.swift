@@ -18,7 +18,27 @@ class AddProductFourthStepHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Interface -
     func fillHeader(section: Int) {
-        titleLabel.text = section == 0 ? LS(key: .PRODUCT_INFO) : LS(key: .NUTRITIONAL_VALUE)
+        let list = UserInfo.sharedInstance.productFlow.allServingSize
+        var serving: Serving?
+        for item in list where item.selected == true {
+            serving = item
+            break
+        }
+        if let ser = serving {
+            var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+            if ser.unitMeasurement == LS(key: .CREATE_STEP_TITLE_19) {
+                nameUnit = LS(key: .SECOND_GRAM_UNIT)
+            } else if ser.unitMeasurement == LS(key: .CREATE_STEP_TITLE_20) {
+                nameUnit = LS(key: .WATER_UNIT)
+            } else if ser.unitMeasurement == LS(key: .CREATE_STEP_TITLE_21) {
+                nameUnit = LS(key: .LIG_PRODUCT)
+            } else if ser.unitMeasurement == LS(key: .CREATE_STEP_TITLE_18) {
+                nameUnit = LS(key: .WEIGHT_UNIT)
+            }
+            titleLabel.text = section == 0 ? LS(key: .PRODUCT_INFO) : "Пищевая ценность на \(ser.servingSize ?? 100) \(nameUnit)"
+        } else {
+            titleLabel.text = section == 0 ? LS(key: .PRODUCT_INFO) : LS(key: .NUTRITIONAL_VALUE)
+        }
     }
     
     func fillRecipeHeader(section: Int) {

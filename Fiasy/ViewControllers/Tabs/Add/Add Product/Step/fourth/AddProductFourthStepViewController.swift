@@ -28,11 +28,12 @@ class AddProductFourthStepViewController: UIViewController {
         setupTableView()
         finishButton.setTitle(LS(key: .DONE).uppercased(), for: .normal)
         navigationTitleLabel.text = LS(key: .VERIFICATION_OF_INFORMATION)
-//        if let _ = UserInfo.sharedInstance.productFlow.selectedFavorite {
-//           finishButton.setImage(#imageLiteral(resourceName: "Group (16)"), for: .normal)
-//        } else {
-//            finishButton.setImage(#imageLiteral(resourceName: "Group (10)"), for: .normal)
-//        }
+        
+        var servings: [Serving] = []
+        for item in flow.allServingSize where item.selected == true {
+            servings.append(item)
+        }
+        flow.allServingSize = servings
     }
     
     // MARK: - Action -
@@ -51,64 +52,24 @@ class AddProductFourthStepViewController: UIViewController {
             flow.fat = flow.fat?.replacingOccurrences(of: ",", with: ".")
             flow.carbohydrates = flow.carbohydrates?.replacingOccurrences(of: ",", with: ".")
             flow.protein = flow.protein?.replacingOccurrences(of: ",", with: ".")
-//            flow.cellulose = flow.cellulose?.replacingOccurrences(of: ",", with: ".")
-//            flow.sugar = flow.sugar?.replacingOccurrences(of: ",", with: ".")
-//            flow.saturatedFats = flow.saturatedFats?.replacingOccurrences(of: ",", with: ".")
-//            flow.monounsaturatedFats = flow.monounsaturatedFats?.replacingOccurrences(of: ",", with: ".")
-//            flow.polyunsaturatedFats = flow.polyunsaturatedFats?.replacingOccurrences(of: ",", with: ".")
-//            flow.cholesterol = flow.cholesterol?.replacingOccurrences(of: ",", with: ".")
-//            flow.sodium = flow.sodium?.replacingOccurrences(of: ",", with: ".")
-//            flow.potassium = flow.potassium?.replacingOccurrences(of: ",", with: ".")
-            
+
             var calories: Double = -1
             if let calor = flow.calories, let count = Double(calor), !calor.isEmpty {
-                calories = (count/100).displayOnly(count: 3)
+                calories = (count).displayOnly(count: 1)
             }
             var fats: Double = -1
             if let fat = flow.fat, let count = Double(fat), !fat.isEmpty {
-                fats = (count/100).displayOnly(count: 3)
+                fats = (count).displayOnly(count: 1)
             }
             var carbohydrates: Double = -1
             if let carbohydrate = flow.carbohydrates, let count = Double(carbohydrate), !carbohydrate.isEmpty {
-                carbohydrates = (count/100).displayOnly(count: 3)
+                carbohydrates = (count).displayOnly(count: 1)
             }
             var proteins: Double = -1
             if let protein = flow.protein, let count = Double(protein), !protein.isEmpty {
-                proteins = (count/100).displayOnly(count: 3)
+                proteins = (count).displayOnly(count: 1)
             }
-//            var celluloses: Double = -1
-//            if let cellulose = flow.cellulose, let count = Double(cellulose), !cellulose.isEmpty {
-//                celluloses = (count/100).displayOnly(count: 3)
-//            }
-//            var sugars: Double = -1
-//            if let sugar = flow.sugar, let count = Double(sugar), !sugar.isEmpty {
-//                sugars = (count/100).displayOnly(count: 3)
-//            }
-//            var saturatedFats: Double = -1
-//            if let saturatedFat = flow.saturatedFats, let count = Double(saturatedFat), !saturatedFat.isEmpty {
-//                saturatedFats = (count/100).displayOnly(count: 3)
-//            }
-//            var monounsaturatedFats: Double = -1
-//            if let monounsaturatedFat = flow.monounsaturatedFats, let count = Double(monounsaturatedFat), !monounsaturatedFat.isEmpty {
-//                monounsaturatedFats = (count/100).displayOnly(count: 3)
-//            }
-//            var polyunsaturatedFats: Double = -1
-//            if let polyunsaturatedFat = flow.polyunsaturatedFats, let count = Double(polyunsaturatedFat), !polyunsaturatedFat.isEmpty {
-//                polyunsaturatedFats = (count/100).displayOnly(count: 3)
-//            }
-//            var cholesterols: Double = -1
-//            if let cholesterol = flow.cholesterol, let count = Double(cholesterol), !cholesterol.isEmpty {
-//                cholesterols = (count/100).displayOnly(count: 3)
-//            }
-//            var sodiums: Double = -1
-//            if let sodium = flow.sodium, let count = Double(sodium), !sodium.isEmpty {
-//                sodiums = (count/100).displayOnly(count: 3)
-//            }
-//            var potassiums: Double = -1
-//            if let potassium = flow.potassium, let count = Double(potassium), !potassium.isEmpty {
-//                potassiums = (count/100).displayOnly(count: 3)
-//            }
-            
+
             var productName: String = ""
             let fullNameArr = (flow.name ?? "").split{$0 == " "}.map(String.init)
             for item in fullNameArr where !item.isEmpty {
@@ -168,7 +129,6 @@ class AddProductFourthStepViewController: UIViewController {
                     strongSelf.navigationController?.popToViewController(aViewController, animated: true)
                 }
             }
-            strongSelf.navigationController?.popViewController(animated: true)
         }))
         refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
         present(refreshAlert, animated: true)

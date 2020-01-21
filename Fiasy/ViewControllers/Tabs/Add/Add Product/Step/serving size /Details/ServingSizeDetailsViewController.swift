@@ -116,6 +116,7 @@ class ServingSizeDetailsViewController: UIViewController {
             return
         }
         view.endEditing(true)
+        
         if !self.isEdit {
             UserInfo.sharedInstance.productFlow.allServingSize.append(selectedServing)
         } else {

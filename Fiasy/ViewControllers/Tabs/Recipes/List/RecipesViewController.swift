@@ -16,12 +16,12 @@ protocol RecipesDelegate {
     func showMoreClicked(title: String)
 }
 
+enum RecipesViewState {
+    case list
+    case search
+}
+
 class RecipesViewController: UIViewController {
-    
-    enum RecipesViewState {
-        case list
-        case search
-    }
     
     //MARK: - Outlet -
     @IBOutlet weak var screenTitleLabel: UILabel!
@@ -36,6 +36,7 @@ class RecipesViewController: UIViewController {
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
     
     //MARK: - Properties -
+    private let isIphone5 = Display.typeIsLike == .iphone5
     private var screenState: RecipesViewState = .list
     private var allForRecipes: [SecondRecipe] = []
     private var allRecipes: [[SecondRecipe]] = []
@@ -68,7 +69,7 @@ class RecipesViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0,y: 0,width: 0, height:CGFloat.leastNormalMagnitude))
+        self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0,y: 0,width: 0, height: CGFloat.leastNormalMagnitude))
 
         tableView.sectionHeaderHeight = 0
         tableView.sectionFooterHeight = 0
@@ -230,7 +231,7 @@ extension RecipesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if screenState == .search { return 0.0001 }
-        return section == 0 ? 40.0 : RecipesHeaderView.headerHeight
+        return isIphone5 ? 50.0 : RecipesHeaderView.headerHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -246,7 +247,7 @@ extension RecipesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.0
+        return isIphone5 ? 150 : 180
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

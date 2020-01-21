@@ -13,14 +13,19 @@ class Template {
     var generalKey: String?
     
     var name: String?
-    var fields: [[String]] = []
+    var products: [SecondProduct] = []
     
     init(generalKey: String, dictionary: [String : AnyObject]) {
         self.generalKey = generalKey
         self.name = dictionary["name"] as? String
         
-        if let item = dictionary["fields"] as? [[String]] {
-            fields = item
+        if let array = dictionary["list"] as? NSArray {
+            for second in array {
+                if let dictionary = second as? [String : AnyObject] {
+                    let product = SecondProduct(secondDictionary: dictionary)
+                    self.products.append(product)
+                }
+            }
         }
     }
 }

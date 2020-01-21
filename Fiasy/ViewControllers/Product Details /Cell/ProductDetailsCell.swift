@@ -79,6 +79,12 @@ class ProductDetailsCell: UITableViewCell {
                 break
             }
         }
+        
+        if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController &&  !selectedProduct.measurementUnits.isEmpty {
+            findedPortion = selectedProduct.measurementUnits.first
+        } else if selectedProduct.isMineProduct == true && !selectedProduct.measurementUnits.isEmpty {
+            findedPortion = selectedProduct.measurementUnits.first
+        }
 
         if basketProduct {
             addButton.setTitle(LS(key: .TITLE_SAVE_PERCENT2).uppercased(), for: .normal)
@@ -170,7 +176,33 @@ class ProductDetailsCell: UITableViewCell {
             if let somePortion = findedPortion, let name = somePortion.name, !name.isEmpty {
                 var title: String = ""
                 if !somePortion.unit.isEmpty {
-                    title = "\(somePortion.name ?? "") (\(somePortion.amount) \(somePortion.unit))"
+                    if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController &&  !selectedProduct.measurementUnits.isEmpty {
+                        var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+                        if somePortion.unit == LS(key: .CREATE_STEP_TITLE_19) {
+                            nameUnit = LS(key: .SECOND_GRAM_UNIT)
+                        } else if somePortion.unit == LS(key: .CREATE_STEP_TITLE_20) {
+                            nameUnit = LS(key: .WATER_UNIT)
+                        } else if somePortion.unit == LS(key: .CREATE_STEP_TITLE_21) {
+                            nameUnit = LS(key: .LIG_PRODUCT)
+                        } else if somePortion.unit == LS(key: .CREATE_STEP_TITLE_18) {
+                            nameUnit = LS(key: .WEIGHT_UNIT)
+                        }
+                        title = "\(somePortion.name ?? "") (\(somePortion.amount) \(nameUnit))" 
+                    } else if selectedProduct.isMineProduct == true {
+                        var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+                        if somePortion.unit == LS(key: .CREATE_STEP_TITLE_19) {
+                            nameUnit = LS(key: .SECOND_GRAM_UNIT)
+                        } else if somePortion.unit == LS(key: .CREATE_STEP_TITLE_20) {
+                            nameUnit = LS(key: .WATER_UNIT)
+                        } else if somePortion.unit == LS(key: .CREATE_STEP_TITLE_21) {
+                            nameUnit = LS(key: .LIG_PRODUCT)
+                        } else if somePortion.unit == LS(key: .CREATE_STEP_TITLE_18) {
+                            nameUnit = LS(key: .WEIGHT_UNIT)
+                        }
+                        title = "\(somePortion.name ?? "") (\(somePortion.amount) \(nameUnit))"
+                    } else {
+                       title = "\(somePortion.name ?? "") (\(somePortion.amount) \(somePortion.unit))" 
+                    }
                 } else {
                     title = "\(somePortion.name ?? "") (\(somePortion.amount) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT)))"
                 }
@@ -222,7 +254,37 @@ class ProductDetailsCell: UITableViewCell {
         }
         
         if let somePortion = findedPortion, somePortion.amount > 0 {
-            nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count * somePortion.amount) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+            if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController &&  !(selectedProduct.measurementUnits.isEmpty) {
+                if let first = selectedProduct.measurementUnits.first {
+                    var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+                    if first.unit == LS(key: .CREATE_STEP_TITLE_19) {
+                        nameUnit = LS(key: .SECOND_GRAM_UNIT)
+                    } else if first.unit == LS(key: .CREATE_STEP_TITLE_20) {
+                        nameUnit = LS(key: .WATER_UNIT)
+                    } else if first.unit == LS(key: .CREATE_STEP_TITLE_21) {
+                        nameUnit = LS(key: .LIG_PRODUCT)
+                    } else if first.unit == LS(key: .CREATE_STEP_TITLE_18) {
+                        nameUnit = LS(key: .WEIGHT_UNIT)
+                    }
+                    nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count * somePortion.amount) \(nameUnit)"
+                }
+            } else if selectedProduct.isMineProduct == true {
+                if let first = selectedProduct.measurementUnits.first {
+                    var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+                    if first.unit == LS(key: .CREATE_STEP_TITLE_19) {
+                        nameUnit = LS(key: .SECOND_GRAM_UNIT)
+                    } else if first.unit == LS(key: .CREATE_STEP_TITLE_20) {
+                        nameUnit = LS(key: .WATER_UNIT)
+                    } else if first.unit == LS(key: .CREATE_STEP_TITLE_21) {
+                        nameUnit = LS(key: .LIG_PRODUCT)
+                    } else if first.unit == LS(key: .CREATE_STEP_TITLE_18) {
+                        nameUnit = LS(key: .WEIGHT_UNIT)
+                    }
+                    nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count * somePortion.amount) \(nameUnit)"
+                }
+            } else {
+                nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count * somePortion.amount) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+            }
         } else {
             if count > 0 {
                 nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
@@ -240,9 +302,29 @@ class ProductDetailsCell: UITableViewCell {
             fillFats(item, count == 0 ? 100 : count, selectedPortionId)
             fillProtein(item, count == 0 ? 100 : count, selectedPortionId)
         } else {
-            separatorView.isHidden = true
-            premiumContainerView.isHidden = false
-            insertStackView.isHidden = true
+            if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController {
+                separatorView.isHidden = false
+                premiumContainerView.isHidden = true
+                insertStackView.isHidden = false
+                guard let item = product else { return }
+                fillCarbohydrates(item, count == 0 ? 100 : count, selectedPortionId)
+                fillFats(item, count == 0 ? 100 : count, selectedPortionId)
+                fillProtein(item, count == 0 ? 100 : count, selectedPortionId)
+            } else {
+                if product?.isMineProduct == true {
+                    separatorView.isHidden = false
+                    premiumContainerView.isHidden = true
+                    insertStackView.isHidden = false
+                    guard let item = product else { return }
+                    fillCarbohydrates(item, count, selectedPortionId)
+                    fillFats(item, count, selectedPortionId)
+                    fillProtein(item, count, selectedPortionId)
+                } else {
+                    separatorView.isHidden = true
+                    premiumContainerView.isHidden = false
+                    insertStackView.isHidden = true
+                }
+            }
         }
     }
 
@@ -274,6 +356,12 @@ class ProductDetailsCell: UITableViewCell {
                 break
             }
         }
+//        if product.isMineProduct == true {
+//            if let first = product.measurementUnits.first {
+//                fl = count * first.amount
+//            }
+//        }
+        
         carbohydrateStackView.subviews.forEach { $0.removeFromSuperview() }
         if var carbohydrates = product.carbohydrates {
             carbohydrates = carbohydrates <= 0.0 ? 0.0 : carbohydrates
@@ -298,10 +386,15 @@ class ProductDetailsCell: UITableViewCell {
                 break
             }
         }
+//        if product.isMineProduct == true {
+//            if let first = product.measurementUnits.first {
+//                fl = count * first.amount
+//            }
+//        }
         fatStackView.subviews.forEach { $0.removeFromSuperview() }
         if var fats = product.fats {
             fats = fats <= 0.0 ? 0.0 : fats
-            insertViewInStackView(stackView: fatStackView, left: LS(key: .FAT), right: "\(Double(fats * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
+            insertViewInStackView(stackView: fatStackView, left: LS(key: .FAT).capitalizeFirst, right: "\(Double(fats * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
         if var saturatedFats = product.saturatedFats, saturatedFats != -1.0 && saturatedFats != 0.0 {
             saturatedFats = saturatedFats <= 0.0 ? 0.0 : saturatedFats
@@ -321,10 +414,15 @@ class ProductDetailsCell: UITableViewCell {
                 break
             }
         }
+//        if product.isMineProduct == true {
+//            if let first = product.measurementUnits.first {
+//                fl = count * first.amount
+//            }
+//        }
         proteinStackView.subviews.forEach { $0.removeFromSuperview() }
         if var proteins = product.proteins {
             proteins = proteins <= 0.0 ? 0.0 : proteins
-            insertViewInStackView(stackView: proteinStackView, left: LS(key: .PROTEIN), right: "\(Double(proteins * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
+            insertViewInStackView(stackView: proteinStackView, left: LS(key: .PROTEIN).capitalizeFirst, right: "\(Double(proteins * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         }
         if var cholesterol = product.cholesterol, cholesterol != -1.0 && cholesterol != 0.0 {
             cholesterol = cholesterol <= 0.0 ? 0.0 : cholesterol
@@ -365,50 +463,54 @@ class ProductDetailsCell: UITableViewCell {
                     self.delegate?.showSuccess()
                 }
             } else {
-                if let uid = Auth.auth().currentUser?.uid, let date = UserInfo.sharedInstance.selectedDate {                    
-                    let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
-                    let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
-                    let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
-                    
-                    let currentDay = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
-                    let currentMonth = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
-                    let currentYear = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
-                    
-                    let state = currentDay == day && currentMonth == month && currentYear == year
-                    
-                    var dayState: String = "today"
-                    if state {
-                        dayState = "today"
-                    } else if date.timeIntervalSince(Date()).sign == FloatingPointSign.minus {
-                        dayState = "past"
-                    } else {
-                        dayState = "future"
-                    }
-                    
-                    var listDictionary: [Any] = []
-
-                    if !product.measurementUnits.isEmpty {
-                        for item in product.measurementUnits where item.name != "Стандартная порция" && item.amount != 100 {
-                            if !item.unit.isEmpty {
-                                let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
-                                listDictionary.append(dictionary)
-                            } else {
-                                let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)]
-                                listDictionary.append(dictionary)
-                            }
+            if let uid = Auth.auth().currentUser?.uid, let date = UserInfo.sharedInstance.selectedDate {                    
+                let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
+                let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
+                let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
+                
+                let currentDay = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
+                let currentMonth = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
+                let currentYear = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
+                
+                let state = currentDay == day && currentMonth == month && currentYear == year
+                
+                var dayState: String = "today"
+                if state {
+                    dayState = "today"
+                } else if date.timeIntervalSince(Date()).sign == FloatingPointSign.minus {
+                    dayState = "past"
+                } else {
+                    dayState = "future"
+                }
+                
+                var listDictionary: [Any] = []
+                
+                if !product.measurementUnits.isEmpty {
+                    for item in product.measurementUnits where item.name != LS(key: .CREATE_STEP_TITLE_16) && item.amount != 100 {
+                        if !item.unit.isEmpty {
+                            let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
+                            listDictionary.append(dictionary)
+                        } else {
+                            let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)]
+                            listDictionary.append(dictionary)
                         }
                     }
-                    
-                    //isOwnRecipe ? "custom" : "base"
-                    Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
-
-                    let userData = ["product_id" : product.id, "day": day, "month": month, "year": year, "name": product.name, "weight": self.serverCount, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "brand": product.brend ?? "", "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "portionId" : selectedPortionId, "is_Liquid" : product.isLiquid ?? false, "measurement_units" : listDictionary] as [String : Any]
-                    ref.child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getTitleMealtimeForFirebase()).childByAutoId().setValue(userData)
-                    FirebaseDBManager.reloadItems()
-                    self.delegate?.showSuccess()
-//                }
-//            }
-        }
+                }
+                
+                //isOwnRecipe ? "custom" : "base"
+                Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
+                
+                var isMine: Bool = false
+                if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController {
+                    isMine = true
+                }
+                let userData = ["product_id" : product.id, "generalId" : product.generalFindId, "day": day, "month": month, "year": year, "name": product.name, "weight": self.serverCount, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "isMineProduct" : isMine, "brand": product.brend ?? "", "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "portionId" : selectedPortionId, "is_Liquid" : product.isLiquid ?? false, "measurement_units" : listDictionary] as [String : Any]
+                ref.child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getTitleMealtimeForFirebase()).childByAutoId().setValue(userData)
+                FirebaseDBManager.reloadItems()
+                self.delegate?.showSuccess()
+                //                }
+                //            }
+            }
         }
     }
 

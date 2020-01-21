@@ -102,6 +102,7 @@
 "select_your_growth" = "Choose your height";
 "growth_unit" = "cm";
 "weight_unit" = "kg";
+"second_gram_unit" = "gr";
 "mifflin_formula" = "We use the Mifflin-St Jeor equation for the purposes of the calculation, which the American Dietetic Association (ADA) confirmed to be more accurate in 2005.";
 "select_your_weight" = "Choose your weight";
 "select_your_date_of_birth" = "Choose you date of birth";
@@ -132,6 +133,7 @@
 "measuring_title_11" = "updated";
 "measuring_title_12" = "There is no data";
 "measuring_title_13" = "To add data,\nadd it to the body\nmeasurement screen.";
+"measuring_title_14" = "About proper\nproduct weighing";
 "meas_future_day" = "This day has not\ncome yet";
 "meas_title_bottom" = "Measurements (cm)";
 "diary_mes_11" = "Today updated";
@@ -168,6 +170,7 @@
 "product_details_desc" = "Choose amount of content and\nunit of measure";
 "product_changed_in_busket" = "Product changed in basket";
 "product_changed_in_diary" = "Product added to diary";
+"product_changed_in_diary2" = "Products added to diary";
 "title_save_percent" = "save";
 "title_save_percent2" = "save";
 "title_change_1" = "change";
@@ -415,7 +418,7 @@
 "create_step_title_12" = "Enter food name";
 "create_step_title_13" = "Are you sure you want to delete?";
 "create_step_title_14" = "Add Serving Size";
-"create_step_title_15" = "Choose a serving size. You can also add your own portion sizes and change them.";
+"create_step_title_15" = "Choose a serving size. You can also add your own portion sizes.";
 "create_step_title_16" = "Standard Serving";
 "create_step_title_17" = "Serving Size";
 "create_step_title_18" = "Kilogram";
@@ -439,6 +442,8 @@
 "create_step_title_36" = "Edit";
 "create_step_title_37" = "This section will store recipes and products you like or save";
 "create_step_title_38" = "To add a product to your favorites,\nclick on the product card ";
+"create_step_title_39" = "Removed from favorites";
+"create_step_title_40" = "You definitely want to delete the template?";
 
 
 

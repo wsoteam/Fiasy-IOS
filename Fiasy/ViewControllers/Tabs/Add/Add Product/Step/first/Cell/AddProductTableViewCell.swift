@@ -38,6 +38,7 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
         typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_7)
         errorLabel.text = LS(key: .CREATE_STEP_TITLE_12)
         nextButton.setTitle("\(LS(key: .UNBOARDING_NEXT)) ", for: .normal)
+        changeProductType(productType: UserInfo.sharedInstance.productFlow.productType)
     }
     
     // MARK: - Interface -
@@ -113,6 +114,25 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
         mutableAttrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, mutableAttrString.length))
         descriptionLabel.attributedText = mutableAttrString
     }
+    
+    private func changeProductType(productType: TypeProduct) {
+        switch productType {
+        case .product:
+            typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_7)
+            stateProductLabels[0].alpha = 1.0
+            stateProductLabels[1].alpha = 0.5
+            
+            stateProductImages[0].alpha = 1.0
+            stateProductImages[1].alpha = 0.5
+        default:
+            typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_8)
+            stateProductLabels[0].alpha = 0.5
+            stateProductLabels[1].alpha = 1.0
+            
+            stateProductImages[0].alpha = 0.5
+            stateProductImages[1].alpha = 1.0
+        }
+    }
 
     //MARK: - Action -
     @IBAction func nameClicked(_ sender: UIButton) {
@@ -133,21 +153,6 @@ class AddProductTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func stateProductClicked(_ sender: UIButton) {
         UserInfo.sharedInstance.productFlow.productType = TypeProduct(rawValue: sender.tag) ?? .product
-        switch UserInfo.sharedInstance.productFlow.productType {
-        case .product:
-            typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_7)
-            stateProductLabels[0].alpha = 1.0
-            stateProductLabels[1].alpha = 0.5
-            
-            stateProductImages[0].alpha = 1.0
-            stateProductImages[1].alpha = 0.5
-        default:
-            typeProductTitleLabel.text = LS(key: .CREATE_STEP_TITLE_8)
-            stateProductLabels[0].alpha = 0.5
-            stateProductLabels[1].alpha = 1.0
-            
-            stateProductImages[0].alpha = 0.5
-            stateProductImages[1].alpha = 1.0
-        }
+        changeProductType(productType: UserInfo.sharedInstance.productFlow.productType)
     }
 }

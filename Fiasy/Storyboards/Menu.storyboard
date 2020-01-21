@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,12 +20,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="XJd-jJ-0QA" kind="show" identifier="segueToAuth" customClass="ChangeRootControllerSegue" customModule="Fiasy" customModuleProvider="target" id="d6q-Cw-vDl"/>
-                        <segue destination="vfD-5q-AzF" kind="relationship" relationship="viewControllers" id="mIb-eV-sgM"/>
-                        <segue destination="yQ5-50-3G2" kind="relationship" relationship="viewControllers" id="gNi-ec-XsK"/>
-                        <segue destination="maY-OD-ZGo" kind="relationship" relationship="viewControllers" id="bsW-mb-qA0"/>
-                        <segue destination="lUe-Bp-AnC" kind="relationship" relationship="viewControllers" id="48L-Nf-hQY"/>
                         <segue destination="QKW-ee-uAy" kind="show" identifier="sequeFillUserProfile" id="cwm-PX-PNt"/>
                         <segue destination="wnQ-z4-Cig" kind="presentation" identifier="sequeNotificationScreen" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="kg3-iF-2s3"/>
+                        <segue destination="vfD-5q-AzF" kind="relationship" relationship="viewControllers" id="lm6-kl-rGg"/>
+                        <segue destination="yQ5-50-3G2" kind="relationship" relationship="viewControllers" id="RhY-bH-agx"/>
+                        <segue destination="o6n-cj-5q7" kind="relationship" relationship="viewControllers" id="uC5-mQ-WLx"/>
+                        <segue destination="maY-OD-ZGo" kind="relationship" relationship="viewControllers" id="WAy-JO-1Gn"/>
+                        <segue destination="lUe-Bp-AnC" kind="relationship" relationship="viewControllers" id="FzK-3P-afV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asZ-6i-mrz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,7 +49,17 @@
                 <viewControllerPlaceholder storyboardName="Notifications" id="wnQ-z4-Cig" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYN-aN-1o1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="189" y="-641"/>
+            <point key="canvasLocation" x="189" y="-664"/>
+        </scene>
+        <!--NutritionPlan-->
+        <scene sceneID="IzP-ws-QPA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NutritionPlan" id="o6n-cj-5q7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Gn9-7w-D0J"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0VV-mP-QrT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="187" y="-533"/>
         </scene>
         <!--Profile-->
         <scene sceneID="pCc-bS-MAy">
@@ -57,7 +69,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38x-yv-2OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="-367"/>
+            <point key="canvasLocation" x="158" y="-367"/>
         </scene>
         <!--Articles-->
         <scene sceneID="Bcx-rT-hFP">
@@ -67,7 +79,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhl-e0-m3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174" y="-537"/>
+            <point key="canvasLocation" x="165" y="-604"/>
         </scene>
         <!--Recipes-->
         <scene sceneID="kkT-xl-pTa">
@@ -77,7 +89,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zwb-pD-Mxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165" y="-454"/>
+            <point key="canvasLocation" x="162" y="-454"/>
         </scene>
         <!--NaviAuthorizationViewController-->
         <scene sceneID="aZh-55-hpO">
@@ -85,7 +97,7 @@
                 <viewControllerPlaceholder storyboardName="Authorization" referencedIdentifier="NaviAuthorizationViewController" id="XJd-jJ-0QA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bxx-3E-2OD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="285" y="-269"/>
+            <point key="canvasLocation" x="285" y="-270"/>
         </scene>
         <!--QuizViewController-->
         <scene sceneID="xCF-qS-5XP">

@@ -30,6 +30,12 @@ class AddProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let _ = self.selectedFavorite {
+            //
+        } else {
+            UserInfo.sharedInstance.productFlow = AddProductFlow()
+        }
+        
         setupTableView()
         navigationTitleLabel.text = LS(key: .CREATE_STEP_TITLE_9)
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
@@ -57,13 +63,19 @@ class AddProductViewController: UIViewController {
     }
     
     func fillEditProductFavorite(favorite: Favorite) {
-        UserInfo.sharedInstance.productFlow = AddProductFlow()
         self.selectedFavorite = favorite
+        UserInfo.sharedInstance.productFlow = AddProductFlow()
+        for item in favorite.measurementUnits {
+            let serving = Serving(name: item.name ?? "", unit: item.unit, size: item.amount)
+            serving.selected = true
+            UserInfo.sharedInstance.productFlow.allServingSize.append(serving)
+        }
         
         UserInfo.sharedInstance.productFlow.selectedFavorite = favorite
         UserInfo.sharedInstance.productFlow.name = favorite.name
         UserInfo.sharedInstance.productFlow.brend = favorite.brand
         UserInfo.sharedInstance.productFlow.barCode = favorite.barcode
+        UserInfo.sharedInstance.productFlow.productType = favorite.isLiquid == true ? .liquid : .product
         
         if favorite.fats != -1 {
             UserInfo.sharedInstance.productFlow.fat = "\(((favorite.fats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")

@@ -11,12 +11,26 @@ import UIKit
 class ServingSizeHeaderCell: UITableViewCell {
     
     // MARK: - Outlet -
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    // MARK: - Properties -
+    private var delegate: AddTemplateDelegate?
     
     // MARK: - Life cicle -
     override func awakeFromNib() {
         super.awakeFromNib()
         
         titleLabel.text = LS(key: .CREATE_STEP_TITLE_15)
+    }
+    
+    // MARK: - Interface -
+    func fillCell(delegate: AddTemplateDelegate) {
+        self.delegate = delegate
+    }
+    
+    // MARK: - Action's -
+    @IBAction func addIngreientClicked(_ sender: Any) {
+        self.delegate?.showAddPortion()
     }
 }

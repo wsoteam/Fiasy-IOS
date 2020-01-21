@@ -52,7 +52,7 @@ class AddTemplateViewController: UIViewController {
         self.selectedTemplate = template
         name = template.name ?? ""
         self.generalKey = template.generalKey
-        UserInfo.sharedInstance.templateArray = template.fields
+        //UserInfo.sharedInstance.templateArray = template.fields
     }
     
     // MARK: - Action -
@@ -74,7 +74,7 @@ class AddTemplateViewController: UIViewController {
                                                          message: "Добавьте порцию",
                                                               vc: self)
         }
-        FirebaseDBManager.saveTemplate(titleName: name, generalKey: self.generalKey)
+        //FirebaseDBManager.saveTemplate(titleName: name, generalKey: self.generalKey)
         
         Amplitude.instance()?.logEvent("custom_template_success") // +
         navigationController?.popViewController(animated: true)

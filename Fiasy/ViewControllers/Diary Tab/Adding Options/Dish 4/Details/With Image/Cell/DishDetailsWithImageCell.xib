@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="213" id="RZL-Te-3ca" customClass="DishDetailsWithImageCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="213"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RZL-Te-3ca" id="tli-fZ-KUY">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="212.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i7d-Ie-fJS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="212.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lnr-8a-Op8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                            </stackView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xl6-Mv-r3E">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf0-jj-DSi">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="pf0-jj-DSi" firstAttribute="top" secondItem="xl6-Mv-r3E" secondAttribute="top" constant="50" id="15v-eD-VYG"/>
+                                    <constraint firstAttribute="bottom" secondItem="pf0-jj-DSi" secondAttribute="bottom" constant="20" id="ADb-tF-Ent"/>
+                                    <constraint firstAttribute="trailing" secondItem="pf0-jj-DSi" secondAttribute="trailing" id="B9v-aB-FJb"/>
+                                    <constraint firstItem="pf0-jj-DSi" firstAttribute="leading" secondItem="xl6-Mv-r3E" secondAttribute="leading" id="PVT-Md-uy2"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30F-km-W7E">
+                                <rect key="frame" x="0.0" y="70" width="414" height="141.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LCv-4Z-9FK">
+                                        <rect key="frame" x="10" y="64" width="394" height="141.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="M7j-v8-20j">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hp4-iJ-0Xc">
+                                                <rect key="frame" x="0.0" y="50" width="394" height="50"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zFz-yC-D3u">
+                                                <rect key="frame" x="0.0" y="100" width="394" height="41.5"/>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="LCv-4Z-9FK" secondAttribute="bottom" id="U2j-qt-e5t"/>
+                                    <constraint firstItem="LCv-4Z-9FK" firstAttribute="top" secondItem="30F-km-W7E" secondAttribute="top" id="UTd-zH-4Q3"/>
+                                    <constraint firstAttribute="trailing" secondItem="LCv-4Z-9FK" secondAttribute="trailing" constant="10" id="kwg-P1-ZaK"/>
+                                    <constraint firstItem="LCv-4Z-9FK" firstAttribute="leading" secondItem="30F-km-W7E" secondAttribute="leading" constant="10" id="r0F-qf-klx"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-hk-52m">
+                                <rect key="frame" x="0.0" y="211.5" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.94107419250000002" green="0.94123548270000001" blue="0.9410641193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Gif-76-JNe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="i7d-Ie-fJS" secondAttribute="trailing" id="DZD-Jr-r3l"/>
+                    <constraint firstAttribute="bottom" secondItem="i7d-Ie-fJS" secondAttribute="bottom" id="WVu-PM-mpd"/>
+                    <constraint firstItem="i7d-Ie-fJS" firstAttribute="top" secondItem="tli-fZ-KUY" secondAttribute="top" id="ZsK-d7-dTc"/>
+                    <constraint firstItem="i7d-Ie-fJS" firstAttribute="leading" secondItem="tli-fZ-KUY" secondAttribute="leading" id="hOU-DI-5Px"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="carbohydrateStackView" destination="M7j-v8-20j" id="OHj-di-awX"/>
+                <outlet property="fatStackView" destination="hp4-iJ-0Xc" id="g0g-qo-9cR"/>
+                <outlet property="insertStackView" destination="LCv-4Z-9FK" id="uAL-2b-31q"/>
+                <outlet property="nutrientLabel" destination="pf0-jj-DSi" id="TV0-gm-Ynh"/>
+                <outlet property="productListStackView" destination="Lnr-8a-Op8" id="3fi-9s-xhr"/>
+                <outlet property="proteinStackView" destination="zFz-yC-D3u" id="Eze-4U-Oee"/>
+                <outlet property="separatorView" destination="1MF-hk-52m" id="Lqy-m0-GKK"/>
+            </connections>
+            <point key="canvasLocation" x="20.289855072463769" y="158.37053571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

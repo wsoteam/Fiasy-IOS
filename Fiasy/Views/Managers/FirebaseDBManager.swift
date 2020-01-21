@@ -36,6 +36,118 @@ class FirebaseDBManager {
         }
     }
     
+    static func fetchDishInDataBase(handler: @escaping (([Dish]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("customDish").observeSingleEvent(of: .value, with: { (snapshot) in
+                var allDish: [Dish] = []
+                if let snapshotValue = snapshot.value as? [String:AnyObject] {
+                    for (key, items) in snapshotValue {
+                        if let dictionary = items as? [String:AnyObject] {
+                            allDish.append(Dish(generalKey: key, dictionary: dictionary))
+                        }
+                    }
+                }
+                handler(allDish)
+            }) { (error) in
+                handler([])
+            }
+        }
+    }
+    
+    static func saveDishItemsInDataBase(handler: @escaping (() -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            var listTemplateDictionary: [Any] = []
+            for product in UserInfo.sharedInstance.dishFlow.allProduct {
+                var listDictionary: [Any] = []
+                if !product.measurementUnits.isEmpty {
+                    for item in product.measurementUnits {
+                        let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
+                        listDictionary.append(dictionary)
+                    }
+                }
+                let userData = ["id": product.id, "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                listTemplateDictionary.append(userData)
+            }
+            
+            if let edit = UserInfo.sharedInstance.dishFlow.generalKey {
+                
+                if let image = UserInfo.sharedInstance.dishFlow.dishImage, let resizeImage = resizeImage(image: image, targetSize: CGSize(width: 450, height: 450)) {
+                    let uuid = UUID().uuidString
+                    let storageRef = Storage.storage().reference().child("AVATARS/").child("\(uuid).png")
+                    if let uploadData = resizeImage.pngData() {
+                        storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                            if error != nil {
+                                print("error")
+                            } else {
+                                if let uid = Auth.auth().currentUser?.uid, let url = metadata?.downloadURL()?.absoluteString {
+                                    let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.dishFlow.dishName, "imageUrl" : url] as [String : Any]
+                                    Database.database().reference().child("USER_LIST").child(uid).child("customDish").child(edit).setValue(contentData)
+                                }
+                            }
+                            UserInfo.sharedInstance.dishFlow = DishFlow()
+                            handler()
+                        }
+                    }
+                } else {
+                    let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.dishFlow.dishName, "imageUrl" : UserInfo.sharedInstance.dishFlow.imageUrl] as [String : Any]
+                Database.database().reference().child("USER_LIST").child(uid).child("customDish").child(edit).setValue(contentData)
+                    UserInfo.sharedInstance.dishFlow = DishFlow()
+                    handler()
+                }
+            } else {
+                let ref = Database.database().reference().child("USER_LIST").child(uid).child("customDish").childByAutoId()
+
+                if let image = UserInfo.sharedInstance.dishFlow.dishImage, let resizeImage = resizeImage(image: image, targetSize: CGSize(width: 450, height: 450)) {
+                    let uuid = UUID().uuidString
+                    let storageRef = Storage.storage().reference().child("AVATARS/").child("\(uuid).png")
+                    if let uploadData = resizeImage.pngData() {
+                        storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                            if error != nil {
+                                print("error")
+                            } else {
+                                if let uid = Auth.auth().currentUser?.uid, let url = metadata?.downloadURL()?.absoluteString {
+                                    let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.dishFlow.dishName, "imageUrl" : url] as [String : Any]
+                                    ref.setValue(contentData)
+                                }
+                            }
+                            UserInfo.sharedInstance.dishFlow = DishFlow()
+                            handler()
+                        }
+                    }
+                } else {
+                    let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.dishFlow.dishName] as [String : Any]
+                    ref.setValue(contentData)
+                    UserInfo.sharedInstance.dishFlow = DishFlow()
+                    handler()
+                }
+            }
+        }
+    }
+    
+    static func saveTemplateItemsInDataBase() {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference().child("USER_LIST").child(uid).child("customTemplate").childByAutoId()
+            
+            var listTemplateDictionary: [Any] = []
+            for product in UserInfo.sharedInstance.templateProductList {
+                var listDictionary: [Any] = []
+                if !product.measurementUnits.isEmpty {
+                    for item in product.measurementUnits {
+                        let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
+                        listDictionary.append(dictionary)
+                    }
+                }
+                let userData = ["id": product.id, "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                listTemplateDictionary.append(userData)
+            }
+            let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.templateName] as [String : Any]
+            
+            ref.setValue(contentData)
+            UserInfo.sharedInstance.templateName = ""
+            UserInfo.sharedInstance.templateProductList.removeAll()
+        }
+    }
+    
     static func fetchWaterItemsInDataBase(handler: @escaping ((String?) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).child("waters").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -55,6 +167,34 @@ class FirebaseDBManager {
         }
     }
     
+    static func saveFavoriteProductInDataBase(product: SecondProduct, handler: @escaping ((String?) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference().child("USER_LIST").child(uid).child("favoriteFoods").childByAutoId()
+            
+            var listDictionary: [Any] = []
+            if !product.measurementUnits.isEmpty {
+                for item in product.measurementUnits {
+                    let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
+                    listDictionary.append(dictionary)
+                }
+            }
+            if let id = product.id {
+                let userData = ["id": id, "generalId" : "\(ref.key)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                ref.setValue(userData)
+                handler(ref.key)
+            } else if let general = product.generalFindId {
+                let userData = ["id": product.id, "generalId" : "\(general)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                let reff = Database.database().reference().child("USER_LIST").child(uid).child("favoriteFoods").child("\(general)")
+                reff.setValue(userData)
+                handler(general)
+            } else {
+                let userData = ["id": product.id, "generalId" : "\(ref.key)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                ref.setValue(userData)
+                handler(ref.key)
+            }
+        }
+    }
+    
     static func fetchExpertInfoInDataBase(handler: @escaping ((Expert?) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).child("articleSeries").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -70,6 +210,52 @@ class FirebaseDBManager {
                 handler(nil)
             }
         }
+    }
+    
+    static func saveTemplateProductInDataBase(list: [SecondProduct]) {
+        for product in list {
+            if let uid = Auth.auth().currentUser?.uid, let date = UserInfo.sharedInstance.selectedDate {                    
+                let day = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: date)!
+                let month = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: date)!
+                let year = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: date)!
+                
+                let currentDay = Calendar(identifier: .iso8601).ordinality(of: .day, in: .month, for: Date())!
+                let currentMonth = Calendar(identifier: .iso8601).ordinality(of: .month, in: .year, for: Date())!
+                let currentYear = Calendar(identifier: .iso8601).ordinality(of: .year, in: .era, for: Date())!
+                
+                let state = currentDay == day && currentMonth == month && currentYear == year
+                
+                var dayState: String = "today"
+                if state {
+                    dayState = "today"
+                } else if date.timeIntervalSince(Date()).sign == FloatingPointSign.minus {
+                    dayState = "past"
+                } else {
+                    dayState = "future"
+                }
+                
+                var listDictionary: [Any] = []
+                
+                if !product.measurementUnits.isEmpty {
+                    for item in product.measurementUnits where item.name != LS(key: .CREATE_STEP_TITLE_16) && item.amount != 100 {
+                        if !item.unit.isEmpty {
+                            let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
+                            listDictionary.append(dictionary)
+                        } else {
+                            let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)]
+                            listDictionary.append(dictionary)
+                        }
+                    }
+                }
+                
+                //isOwnRecipe ? "custom" : "base"
+                Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
+                
+                let userData = ["product_id" : product.id, "day": day, "month": month, "year": year, "name": product.name, "weight": 100, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "brand": product.brend ?? "", "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "is_Liquid" : product.isLiquid ?? false, "measurement_units" : listDictionary] as [String : Any]
+                Database.database().reference().child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getTitleMealtimeForFirebase()).childByAutoId().setValue(userData)
+            }
+        }
+
     }
     
     static func saveExpertInfoInDataBase(id: String, count: Int, milisecond: Int) {
@@ -144,6 +330,55 @@ class FirebaseDBManager {
             }) { (error) in
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    static func fetchNutritionsInDataBase(handler: @escaping (([Nutrition]) -> ())) {
+        var childLanguage: String = "PLANS"
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            childLanguage = "ES"
+        case "pt":
+            // португалия (бразилия)
+            childLanguage = "ES"
+        case "en":
+            // английский
+            childLanguage = "EN"
+        case "de":
+            // немецикий
+            childLanguage = "DE"
+        default:
+            break
+        }
+        Database.database().reference().child(childLanguage).observeSingleEvent(of: .value, with: { (snapshot) in
+            var all: [Nutrition] = []
+            if childLanguage == "PLANS" {
+                if let snapshotValue = snapshot.value as? [String: AnyObject], let list = snapshotValue["listGroups"] as? NSMutableArray {
+                    for item in list {
+                        if let dictionary = item as? [String : AnyObject], let name = dictionary["name"] as? String, name != "name" {
+                            all.append(Nutrition(dictionary: dictionary))
+                        }
+                    }
+                    handler(all)
+                } else {
+                   handler([]) 
+                }
+            } else {
+                if let snapshotValue = snapshot.value as? [String: AnyObject], let first = snapshotValue["plans"] as? [String: AnyObject], let list = first["listGroups"] as? NSMutableArray {
+                    for item in list {
+                        if let dictionary = item as? [String : AnyObject], let name = dictionary["name"] as? String, name != "name" {
+                            all.append(Nutrition(dictionary: dictionary))
+                        }
+                    }
+                    handler(all)
+                } else {
+                    handler([])
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+            handler([])
         }
     }
     
@@ -266,7 +501,7 @@ class FirebaseDBManager {
 
                     var listDictionary: [Any] = []
                     if !product.measurementUnits.isEmpty {
-                        for item in product.measurementUnits where item.name != "Стандартная порция" {
+                        for item in product.measurementUnits where item.name != LS(key: .CREATE_STEP_TITLE_16) {
                             let dictionary: [String : Any] = ["id": item.id, "name": "\(item.name ?? "")", "amount": "\(Int(item.amount))", "unit" : item.unit]
                             listDictionary.append(dictionary)
                         }
@@ -428,14 +663,27 @@ class FirebaseDBManager {
     static func removeTemplate(key: String, handler: @escaping (() -> ())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference()
-        ref.child("USER_LIST").child(uid).child("template").child(key).removeValue()
+        ref.child("USER_LIST").child(uid).child("customTemplate").child(key).removeValue()
+        handler()
+    }
+    
+    static func removeDish(key: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("USER_LIST").child(uid).child("customDish").child(key).removeValue()
+    }
+    
+    static func removeMyProduct(key: String, handler: @escaping (() -> ())) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference()
+        ref.child("USER_LIST").child(uid).child("customFoods").child(key).removeValue()
         handler()
     }
     
     static func removeFavorite(key: String, handler: @escaping (() -> ())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference()
-        ref.child("USER_LIST").child(uid).child("customFoods").child(key).removeValue()
+        ref.child("USER_LIST").child(uid).child("favoriteFoods").child(key).removeValue()
         handler()
     }
     
@@ -595,21 +843,6 @@ class FirebaseDBManager {
         }
     }
     
-    static func saveTemplate(titleName: String, generalKey: String?) {
-        if let uid = Auth.auth().currentUser?.uid {
-            let ref: DatabaseReference = Database.database().reference()
-            if let key = generalKey {
-                let userData = ["name": titleName, "fields": UserInfo.sharedInstance.templateArray] as [String : Any]
-                ref.child("USER_LIST").child(uid).child("template").child(key).setValue(userData)
-            } else {
-                let userData = ["name": titleName, "fields": UserInfo.sharedInstance.templateArray] as [String : Any]
-                ref.child("USER_LIST").child(uid).child("template").childByAutoId().setValue(userData)
-            }
-            UserInfo.sharedInstance.templateArray.removeAll()
-            UserInfo.sharedInstance.reloadTemplate = true
-        }
-    }
-    
     static func checkValidPromo(text: String, handler: @escaping ((Bool) -> ())) {
         let ref: DatabaseReference = Database.database().reference()
         let someText = text.replacingOccurrences(of: ".", with: "*").replacingOccurrences(of: "#", with: "*").replacingOccurrences(of: "$", with: "*").replacingOccurrences(of: "[", with: "*").replacingOccurrences(of: "[", with: "*").replacingOccurrences(of: "]", with: "*")
@@ -675,13 +908,14 @@ class FirebaseDBManager {
     
     static func fetchTemplateInDataBase(handler: @escaping (([Template]) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("USER_LIST").child(uid).child("template").observeSingleEvent(of: .value, with: { (snapshot) in
-                
+            Database.database().reference().child("USER_LIST").child(uid).child("customTemplate").observeSingleEvent(of: .value, with: { (snapshot) in
                 var allTemplate: [Template] = []
-                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                if let snapshotValue = snapshot.value as? [String:AnyObject] {
                     for (key, items) in snapshotValue {
-                        let item = Template(generalKey: key, dictionary: items)
-                        allTemplate.append(item)
+                        if let dictionary = items as? [String:AnyObject] {
+                            let template = Template(generalKey: key, dictionary: dictionary)
+                            allTemplate.append(template)
+                        }
                     }
                 }
                 handler(allTemplate)
@@ -691,13 +925,66 @@ class FirebaseDBManager {
         }
     }
     
-    static func fetchFavoriteInDataBase(handler: @escaping (([Favorite]) -> ())) {
+    static func fetchMyProductInDataBase(handler: @escaping (([Favorite]) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("USER_LIST").child(uid).child("customFoods").observeSingleEvent(of: .value, with: { (snapshot) in
                 var allFavorites: [Favorite] = []
                 if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
                     for (key, items) in snapshotValue {
                         let item = Favorite(dictionary: items, generalKey: key)
+                        allFavorites.append(item)
+                    }
+                }
+                handler(allFavorites)
+            }) { (error) in
+                handler([])
+            }
+        }
+    }
+    
+    static func searchFavoriteInDataBase(by id: Int, handler: @escaping ((Bool, String?) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("favoriteFoods").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue where items["id"] as? Int == id {
+                        handler(true, key)
+                        return
+                    }
+                } else {
+                    handler(false, nil)
+                }
+            }) { (error) in
+                handler(false, nil)
+            }
+        }
+    }
+    
+    static func searchFavoriteByGeneralIdInDataBase(by general: String, handler: @escaping ((Bool) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("favoriteFoods").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (_, values) in snapshotValue where values["generalId"] as? String == general {
+                        handler(true)
+                        return
+                    }
+                } else {
+                    handler(false)
+                }
+            }) { (error) in
+                handler(false)
+            }
+        }
+    }
+    
+    static func fetchFavoriteInDataBase(handler: @escaping (([SecondProduct]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("favoriteFoods").observeSingleEvent(of: .value, with: { (snapshot) in
+                var allFavorites: [SecondProduct] = []
+                if let snapshotValue = snapshot.value as? [String:[String:AnyObject]] {
+                    for (key, items) in snapshotValue {
+                        let item = SecondProduct(secondDictionary: items)
+                        item.generalKey = key
+                        item.generalFindId = key
                         allFavorites.append(item)
                     }
                 }
@@ -740,6 +1027,29 @@ class FirebaseDBManager {
                 handler([])
             }
         }
+    }
+    
+    static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 class NutrientsInsertView: UIView {
     
-    //MARK: - Outlet -
+    // MARK: - Outlet -
     @IBOutlet weak var premiumViewContainer: UIView!
     @IBOutlet weak var topSeparatorView: UIView!
     @IBOutlet weak var leftSideLabel: UILabel!

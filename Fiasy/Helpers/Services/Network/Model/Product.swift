@@ -37,6 +37,8 @@ class Product: NSObject {
     var pottassium: Double?
     var presentDay: Bool = false
     var isRecipe: Bool = false
+    var isMineProduct: Bool = false
+    
     var parentKey: String?
     var measurementUnits: [MeasurementUnits] = []
     var selectedPortion: MeasurementUnits?
@@ -49,6 +51,7 @@ class Product: NSObject {
     var percentCarbohydrates: Int?
     var percentFats: Int?
     var percentProteins: Int?
+    var generalFindId: String?
 
     required convenience init(row: Row) {
         self.init()
@@ -81,6 +84,8 @@ class Product: NSObject {
     required convenience init(favorite: Favorite) {
         self.init()
         
+        generalKey = favorite.key
+        generalFindId = favorite.key
         name = favorite.name
         brend = favorite.brand
         calories = favorite.calories
@@ -98,30 +103,10 @@ class Product: NSObject {
         measurementUnits = favorite.measurementUnits
     }
     
-//    required convenience init(second: SecondProduct, portion: MeasurementUnits) {
-//        self.init()
-//        
-//        id = second.id
-//        name = second.name
-//        brend = second.brand?.name
-//        calories = second.calories
-//        proteins = second.proteins
-//        carbohydrates = second.carbohydrates
-//        sugar = second.sugar
-//        fats = second.fats
-//        saturatedFats = second.saturatedFats
-//        monoUnSaturatedFats = second.monoUnSaturatedFats
-//        polyUnSaturatedFats = second.polyUnSaturatedFats
-//        cholesterol = second.cholesterol
-//        cellulose = second.cellulose
-//        sodium = second.sodium
-//        pottassium = second.pottassium
-//        selectedPortion = portion
-//    }
-
     required convenience init(mealtime: Mealtime) {
         self.init()
         
+        generalFindId = mealtime.generalFindId
         parentKey = mealtime.parentKey
         generalKey = mealtime.generalKey
         day = mealtime.day
@@ -136,6 +121,7 @@ class Product: NSObject {
         fats = mealtime.fat
         weight = mealtime.weight
         isRecipe = mealtime.isRecipe ?? false
+        isMineProduct = mealtime.isMineProduct ?? false
         cholesterol = mealtime.cholesterol
         polyUnSaturatedFats = mealtime.polyUnSaturatedFats
         sodium = mealtime.sodium
@@ -164,5 +150,51 @@ class Product: NSObject {
         brend = dictionary["brend"] as? String
         calories = dictionary["calories"] as? Double
         productWeightByAdd = dictionary["productWeightByAdd"] as? Int
+    }
+    
+    required convenience init(secondDictionary: [String : AnyObject]) {
+        self.init()
+        
+        id = secondDictionary["id"] as? Int
+        name = secondDictionary["name"] as? String
+        portion = secondDictionary["portion"] as? Double
+        isLiquid = secondDictionary["is_liquid"] as? Bool
+        kilojoules = secondDictionary["kilojoules"] as? Double
+        calories = secondDictionary["calories"] as? Double
+        brend = secondDictionary["brand"] as? String
+        carbohydrates = secondDictionary["carbohydrates"] as? Double
+        sugar = secondDictionary["sugar"] as? Double
+        if let fa = secondDictionary["fats"] as? Double {
+            fats = fa
+        } else {
+            fats = secondDictionary["fat"] as? Double
+        }
+        if let prot = secondDictionary["proteins"] as? Double {
+            proteins = prot
+        } else {
+            proteins = secondDictionary["protein"] as? Double
+        }
+        saturatedFats = secondDictionary["saturated_fats"] as? Double
+        monoUnSaturatedFats = secondDictionary["monoUnSaturatedFats"] as? Double
+        polyUnSaturatedFats = secondDictionary["polyunsaturated_fats"] as? Double
+        cholesterol = secondDictionary["cholesterol"] as? Double
+        cellulose = secondDictionary["cellulose"] as? Double
+        sodium = secondDictionary["sodium"] as? Double
+        pottassium = secondDictionary["pottasium"] as? Double
+        
+        if let list = secondDictionary["measurement_units"] as? [NSDictionary] {
+            for item in list {
+                let measurement: MeasurementUnits = MeasurementUnits()
+                measurement.name = item["name"] as? String
+                if let text = item["amount"] as? String, let count = Int(text) {
+                    measurement.amount = count
+                }
+                if let id = item["id"] as? Int {
+                    measurement.id = id
+                }
+                measurement.unit = item["unit"] as? String ?? ""
+                measurementUnits.append(measurement)
+            }
+        }
     }
 }

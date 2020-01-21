@@ -149,6 +149,7 @@
 "product_details_desc" = "Escolha a quantidade de conteúdo\ne a unidade de medida";
 "product_changed_in_busket" = "Produto alterado na cesta";
 "product_changed_in_diary" = "Produto adicionado ao diário";
+"product_changed_in_diary2" = "Produtos adicionados ao diário";
 "selected_products" = "Produtos seleccionados";
 "black_prem_hours" = "horas";
 "black_prem_minutes" = "minutos";
@@ -296,6 +297,7 @@
 "water_alert" = "Todos os valores da água serão definidos por padrão.";
 "lig_product" = "ml";
 "gram_unit" = "grama";
+"second_gram_unit" = "gr";
 "text_start_search" = "Comece digitando o nome de um alimento\nno campo de pesquisa";
 "barCode_title" = "Encontre um produto por código de barras";
 "patterns_title" = "Modelos";
@@ -348,6 +350,7 @@
 "measuring_title_11" = "atualizado";
 "measuring_title_12" = "Sem dados";
 "measuring_title_13" = "Para adicionar dados,\nadicione-os à tela de\nmedição do corpo.";
+"measuring_title_14" = "Sobre a pesagem\nadequada do produto";
 "add_user_activity_hint" = "Digite um nome para a Atividades";
 "minimal_calories_count" = "O número mínimo de calorias é";
 "help_meas_first_title" = "Informações sobre o cálculo do peso médio da \nsemana";
@@ -429,7 +432,7 @@
 "create_step_title_12" = "Digite o nome do alimento";
 "create_step_title_13" = "Tem certeza de que deseja excluir?";
 "create_step_title_14" = "Adicionar tamanho da porção";
-"create_step_title_15" = "Escolha um tamanho da porção. Você também pode adicionar seus próprios tamanhos de porção e alterá-los.";
+"create_step_title_15" = "Escolha um tamanho da porção. Você também pode adicionar seus próprios tamanhos de porção.";
 "create_step_title_16" = "Serviço padrão";
 "create_step_title_17" = "Tamanho da dose";
 "create_step_title_18" = "Quilograma";
@@ -453,8 +456,8 @@
 "create_step_title_36" = "Editar";
 "create_step_title_37" = "Esta seção armazenará receitas e produtos que você gosta ou salva";
 "create_step_title_38" = "Para adicionar um produto aos seus favoritos,\nclique no cartão do produto ";
-
-
+"create_step_title_39" = "Remover dos favoritos";
+"create_step_title_40" = "Você definitivamente deseja excluir o modelo?";
 
 /*    My Product List Screen    */
 "add_product" = "Adicionar alimento";

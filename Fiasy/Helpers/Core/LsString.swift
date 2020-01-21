@@ -197,6 +197,8 @@ public enum LS_STRING: String {
     case MEASURING_TITLE11 = "measuring_title_11"
     case MEASURING_TITLE12 = "measuring_title_12"
     case MEASURING_TITLE13 = "measuring_title_13"
+    case MEASURING_TITLE14 = "measuring_title_14"
+
     case MEAS_TITLE_BOTTOM = "meas_title_bottom"
     case HELP_MEAS_FIRST_TITLE = "help_meas_first_title"
     case HELP_MEAS_FIRST_TEXT = "help_meas_first_text"
@@ -332,10 +334,12 @@ public enum LS_STRING: String {
     case WATER_SETTINGS = "water_settings"
     case LIG_PRODUCT = "lig_product"
     case GRAM_UNIT = "gram_unit"
+    case SECOND_GRAM_UNIT = "second_gram_unit"
     case TITLE_CHANGE1 = "title_change_1"
     case DIARY_MES_17 = "diary_mes_17"
     case PRODUCT_CHANGED_IN_BUSKET = "product_changed_in_busket"
     case PRODUCT_ADDED_IN_DIARY = "product_changed_in_diary"
+    case PRODUCT_ADDED_IN_DIARY2 = "product_changed_in_diary2"
     
     /*    Water Screen    */
     case BENEFIT_WATER_TITLE = "benefit_water_title"
@@ -440,8 +444,8 @@ public enum LS_STRING: String {
     case CREATE_STEP_TITLE_36 = "create_step_title_36"
     case CREATE_STEP_TITLE_37 = "create_step_title_37"
     case CREATE_STEP_TITLE_38 = "create_step_title_38"
-    
-    
+    case CREATE_STEP_TITLE_39 = "create_step_title_39"
+    case CREATE_STEP_TITLE_40 = "create_step_title_40"
     
     
     

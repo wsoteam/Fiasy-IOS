@@ -35,7 +35,7 @@ class MyProductViewController: UIViewController {
         
         picker.remove = { [weak self] in
             guard let key = self?.selectedFavorite?.key else { return }
-            FirebaseDBManager.removeFavorite(key: key, handler: {
+            FirebaseDBManager.removeMyProduct(key: key, handler: {
                 self?.removeFavorite(by: key)
             })
         }
@@ -142,7 +142,7 @@ class MyProductViewController: UIViewController {
     }
     
     private func fetchItemsInDataBase() {
-        FirebaseDBManager.fetchFavoriteInDataBase { [weak self] (allFavorites) in
+        FirebaseDBManager.fetchMyProductInDataBase { [weak self] (allFavorites) in
             guard let `self` = self else { return }
             self.allFavorite = allFavorites
             self.filteredFavorites = allFavorites

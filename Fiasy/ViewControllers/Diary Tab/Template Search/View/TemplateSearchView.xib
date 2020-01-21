@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Bold.ttf">
+            <string>SFProText-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="6dc-jW-f5F" customClass="TemplateSearchView" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0f-RC-O36">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Btv-gq-CM7">
+                            <rect key="frame" x="20" y="20" width="280" height="80"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKq-ep-d9O">
+                                    <rect key="frame" x="0.0" y="0.0" width="211" height="80"/>
+                                    <color key="tintColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="knife-fork-presets"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS9-IR-h9O">
+                                    <rect key="frame" x="211" y="0.0" width="69" height="80"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
+                                    <state key="normal" title=" Добавить">
+                                        <color key="titleColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addClicked:" destination="6dc-jW-f5F" eventType="touchUpInside" id="1O5-eb-rlf"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Btv-gq-CM7" firstAttribute="leading" secondItem="S0f-RC-O36" secondAttribute="leading" constant="20" id="V5a-Ze-Fuk"/>
+                        <constraint firstItem="Btv-gq-CM7" firstAttribute="top" secondItem="S0f-RC-O36" secondAttribute="top" constant="20" id="duL-yO-bWV"/>
+                        <constraint firstAttribute="bottom" secondItem="Btv-gq-CM7" secondAttribute="bottom" constant="20" id="zhT-gm-3zp"/>
+                        <constraint firstAttribute="trailing" secondItem="Btv-gq-CM7" secondAttribute="trailing" constant="20" id="zu4-3v-Jxd"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="S0f-RC-O36" secondAttribute="trailing" id="LdO-4y-x0H"/>
+                <constraint firstItem="S0f-RC-O36" firstAttribute="leading" secondItem="6dc-jW-f5F" secondAttribute="leading" id="dBm-rM-Be5"/>
+                <constraint firstItem="S0f-RC-O36" firstAttribute="bottom" secondItem="6dc-jW-f5F" secondAttribute="bottom" id="rsG-bB-4Hh"/>
+                <constraint firstAttribute="top" secondItem="S0f-RC-O36" secondAttribute="top" id="zZL-TW-PA3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addDiaryButton" destination="eS9-IR-h9O" id="nfD-Wg-yUv"/>
+                <outlet property="basketButton" destination="PKq-ep-d9O" id="lhe-Sc-a0g"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="-193.85307346326837"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="knife-fork-presets" width="20" height="19"/>
+    </resources>
+</document>

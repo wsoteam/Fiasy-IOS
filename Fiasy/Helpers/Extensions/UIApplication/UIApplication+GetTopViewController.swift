@@ -26,3 +26,14 @@ extension UIApplication {
         return base
     }
 }
+
+extension Array where Iterator.Element == UIViewController {
+    
+    var previous: UIViewController? {
+        if self.count > 1 {
+            return self[self.count - 2]
+        }
+        return nil
+    }
+    
+}

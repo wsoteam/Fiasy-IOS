@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Завтрак" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bry-U7-2r2">
-                    <rect key="frame" x="18" y="9.5" width="70" height="20.5"/>
+                    <rect key="frame" x="18" y="7.5" width="70" height="20.5"/>
                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                     <color key="textColor" red="0.74109476804733276" green="0.74122363328933716" blue="0.74108666181564331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Az-hW-y6M">
-                    <rect key="frame" x="310" y="9.5" width="55" height="21"/>
+                    <rect key="frame" x="310" y="7.5" width="55" height="21"/>
                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                     <state key="normal" title="Все " image="article_next">
                         <color key="titleColor" red="0.95016640424728394" green="0.60138577222824097" blue="0.29108956456184387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,7 +43,7 @@
                 <constraint firstItem="1Az-hW-y6M" firstAttribute="centerY" secondItem="bry-U7-2r2" secondAttribute="centerY" id="Prt-Nz-GsG"/>
                 <constraint firstItem="bry-U7-2r2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="n5f-tQ-aRJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1Az-hW-y6M" secondAttribute="trailing" constant="10" id="n71-an-0et"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bry-U7-2r2" secondAttribute="bottom" constant="10" id="pYq-fp-rp5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bry-U7-2r2" secondAttribute="bottom" constant="12" id="pYq-fp-rp5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

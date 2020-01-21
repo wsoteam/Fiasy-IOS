@@ -24,7 +24,9 @@ class Mealtime {
     var fat: Double?
     var carbohydrates: Double?
     var presentDay: Bool = false
+    var isDish: Bool = false
     var measurementUnits: [MeasurementUnits] = []
+    var products: [SecondProduct] = []
     
     // MARK: - Second -
     var productId: Int?
@@ -42,14 +44,20 @@ class Mealtime {
     var sugar: Double?
     var secondCalories: Double?
     var isRecipe: Bool?
+    var isMineProduct: Bool?
     var isLiquid: Bool?
     var selectedUnit: String?
     var portionId: Int?
+    var generalFindId: String?
+    var imageUrl: String?
 
     init(parentKey: String, generalKey: String, dictionary: [String : AnyObject]) {
         self.parentKey = parentKey
         self.generalKey = generalKey
 
+        imageUrl = dictionary["imageUrl"] as? String
+        isDish = dictionary["isDish"] as? Bool ?? false
+        generalFindId = dictionary["generalId"] as? String
         productId = dictionary["product_id"] as? Int
         day = dictionary["day"] as? Int
         month = dictionary["month"] as? Int
@@ -60,6 +68,7 @@ class Mealtime {
         protein = dictionary["protein"] as? Double
         calories = dictionary["calories"] as? Double
         fat = dictionary["fat"] as? Double
+        isMineProduct = dictionary["isMineProduct"] as? Bool
         carbohydrates = dictionary["carbohydrates"] as? Double
         presentDay = dictionary["presentDay"] as? Bool ?? false
         isRecipe = dictionary["isRecipe"] as? Bool ?? false
@@ -92,6 +101,13 @@ class Mealtime {
                 }
                 measurement.unit = item["unit"] as? String ?? ""
                 measurementUnits.append(measurement)
+            }
+        }
+        if let listProducts = dictionary["products"] as? [NSDictionary] {
+            for item in listProducts {
+                if let dictionary = item as? [String : AnyObject] {
+                    products.append(SecondProduct(secondDictionary: dictionary))
+                }
             }
         }
     }

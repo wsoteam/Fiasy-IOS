@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="68" id="fNi-6L-QKP" customClass="TemplateSelectedProductCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fNi-6L-QKP" id="lsR-gX-T6J">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="67.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NHu-ne-Pjl">
+                        <rect key="frame" x="16" y="12" width="382" height="43.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стандартная порция" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFk-My-95M">
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="18.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 г." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-wV-9Hf">
+                                <rect key="frame" x="0.0" y="23.5" width="382" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="wyl-3F-kuI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="11"/>
+                                <color key="textColor" red="0.6313020587" green="0.6314132214" blue="0.63129514460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNv-zU-gRl">
+                        <rect key="frame" x="0.0" y="66.5" width="414" height="1"/>
+                        <color key="backgroundColor" red="0.94499534370000005" green="0.94515722989999995" blue="0.94498521089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="2vk-iB-cbC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NHu-ne-Pjl" firstAttribute="leading" secondItem="lsR-gX-T6J" secondAttribute="leading" constant="16" id="7Ha-dv-JIP"/>
+                    <constraint firstItem="kNv-zU-gRl" firstAttribute="leading" secondItem="lsR-gX-T6J" secondAttribute="leading" id="I1O-1w-sJi"/>
+                    <constraint firstAttribute="bottom" secondItem="kNv-zU-gRl" secondAttribute="bottom" id="N9i-3c-pIS"/>
+                    <constraint firstAttribute="bottom" secondItem="NHu-ne-Pjl" secondAttribute="bottom" constant="12" id="RZI-pA-OM6"/>
+                    <constraint firstAttribute="trailing" secondItem="kNv-zU-gRl" secondAttribute="trailing" id="Tsd-Fh-KwM"/>
+                    <constraint firstAttribute="trailing" secondItem="NHu-ne-Pjl" secondAttribute="trailing" constant="16" id="d0L-Ki-bk9"/>
+                    <constraint firstItem="NHu-ne-Pjl" firstAttribute="top" secondItem="lsR-gX-T6J" secondAttribute="top" constant="12" id="xJS-WU-Xiz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bottomLabel" destination="uQu-wV-9Hf" id="q6I-Fh-JcB"/>
+                <outlet property="topLabel" destination="yFk-My-95M" id="FBJ-NW-Y64"/>
+            </connections>
+            <point key="canvasLocation" x="-175.36231884057972" y="45.535714285714285"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -58,6 +58,6 @@ extension RecipesTableViewCell: UICollectionViewDataSource {
 extension RecipesTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width - 50, height: 200)
+        return CGSize(width: UIScreen.main.bounds.size.width - 50, height: isIphone5 ? 150 : 180)
     }
 }

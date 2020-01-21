@@ -142,7 +142,8 @@
 "few_mounth" = "monat";
 "many_mounth" = "monate";
 "product_changed_in_busket" = "Produkt im Warenkorb geändert";
-"product_changed_in_diary" = "Produkt zum Tagebuch hinzugefügt.";
+"product_changed_in_diary" = "Produkt zum Tagebuch hinzugefügt";
+"product_changed_in_diary2" = "Produkte zum Tagebuch hinzugefügt";
 "title_save_percent" = "speichern";
 "title_save_percent2" = "speichern";
 "title_change_1" = "ändern";
@@ -297,6 +298,7 @@
 "water_alert" = "Alle Wasserwerte werden standardmäßig eingestellt.";
 "lig_product" = "ml";
 "gram_unit" = "gramm";
+"second_gram_unit" = "gr";
 "text_start_search" = "Beginnen Sie mit der Eingabe eines\nLebensmittelnamens in das Suchfeld";
 "barCode_title" = "Finden Sie ein Produkt mit einem Barcode";
 "patterns_title" = "Vorlagen";
@@ -351,6 +353,7 @@
 "measuring_title_12" = "Keine Daten";
 "minimal_calories_count" = "Die minimale Anzahl an Kalorien beträgt";
 "measuring_title_13" = "Um Daten hinzuzufügen,\nfügen Sie sie dem\nKörpermaßbildschirm hinzu.";
+"measuring_title_14" = "Über das richtige\nProduktwiegen";
 "help_meas_first_title" = "Informationen zur Berechnung des Durchschnittsgewichts für die \nWoche";
 "help_meas_first_text" = "\n\nWenn Sie sich täglich wiegen und die Informationen in den Abschnitt Körpermaße Ihres Tagebuchs eingeben, berechnet das Programm automatisch Ihr Durchschnittsgewicht für die Woche.";
 "help_meas_second_title" = "\n\nWarum ist das wichtig?";
@@ -431,7 +434,7 @@
 "create_step_title_12" = "Geben Sie den Namen des Lebensmittels ein";
 "create_step_title_13" = "Möchten Sie wirklich löschen?";
 "create_step_title_14" = "Portionsgröße hinzufügen";
-"create_step_title_15" = "Wählen Sie eine Portionsgröße. Sie können auch Ihre eigenen Portionsgrößen hinzufügen und ändern.";
+"create_step_title_15" = "Wählen Sie eine Portionsgröße. Sie können auch Ihre eigenen Portionsgrößen hinzufügen.";
 "create_step_title_16" = "Standard-Portion";
 "create_step_title_17" = "Portionsgröße";
 "create_step_title_18" = "Kilogramm";
@@ -455,7 +458,8 @@
 "create_step_title_36" = "Bearbeiten";
 "create_step_title_37" = "In diesem Abschnitt wird gespeichert oder Lieblingsrezepte und Produkte, die Sie haben gespart";
 "create_step_title_38" = "Um ein Produkt zu Ihren Favoriten hinzuzufügen,\nklicken Sie auf die Produktkarte ";
-
+"create_step_title_39" = "Aus Favoriten entfernen";
+"create_step_title_40" = "Sie möchten die Vorlage definitiv löschen?";
 
 
 /*    My Product List Screen    */

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,11 +21,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jTH-Mf-LHa">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jTH-Mf-LHa">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="knife-fork-2 (2)23" translatesAutoresizingMaskIntoConstraints="NO" id="UnW-Wp-bCp">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Продукт не будет добавлен в дневник" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVf-Ib-a5u">
                             <rect key="frame" x="0.0" y="75" width="375" height="17"/>
@@ -46,6 +47,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="descriptionLabel" destination="AVf-Ib-a5u" id="e23-cJ-y3n"/>
+                <outlet property="titleImageView" destination="UnW-Wp-bCp" id="0VP-W5-f4B"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="-163.71814092953525"/>
         </view>

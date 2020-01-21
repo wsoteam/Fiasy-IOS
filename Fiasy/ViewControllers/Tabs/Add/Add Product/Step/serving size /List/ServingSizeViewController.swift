@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import BEMCheckBox
 
 protocol ServingSizeDelegate {
     func changeServingSize(index: Int)
+    func servingClicked(_ checkMark: BEMCheckBox, _ serving: Serving)
 }
 
 class ServingSizeViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var nextButtonBackgroundView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var titleNavigationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Properties -
     
     // MARK: - Life Cicle -
     override func viewDidLoad() {
@@ -31,6 +36,7 @@ class ServingSizeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        checkServingSize()
         tableView.reloadData()
     }
 
@@ -61,7 +67,6 @@ class ServingSizeViewController: UIViewController {
     private func setupTableView() {
         tableView.register(type: ServingSizeCell.self)
         tableView.register(type: ServingSizeHeaderCell.self)
-        tableView.register(IngredientsFooterView.nib, forHeaderFooterViewReuseIdentifier: IngredientsFooterView.reuseIdentifier)
     }
     
     private func showCloseAlert() {
@@ -74,7 +79,6 @@ class ServingSizeViewController: UIViewController {
                     strongSelf.navigationController?.popToViewController(aViewController, animated: true)
                 }
             }
-            strongSelf.navigationController?.popViewController(animated: true)
         }))
         refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_NO), style: .default, handler: nil))
         present(refreshAlert, animated: true)
@@ -94,6 +98,7 @@ class ServingSizeViewController: UIViewController {
         let removeAction = UIAlertAction(title: LS(key: .DELETE), style: .default) { [weak self] (alert) in
             guard let strongSelf = self else { return }
             UserInfo.sharedInstance.productFlow.allServingSize.remove(at: indexPath.row - 2)
+            strongSelf.checkServingSize()
             strongSelf.removeRow(indexPath)
         }
         let cancelAction = UIAlertAction(title: LS(key: .CANCEL), style: .cancel)
@@ -115,6 +120,16 @@ class ServingSizeViewController: UIViewController {
         })
         CATransaction.commit()
     }
+    
+    private func checkServingSize() {
+        var isContains: Bool = false
+        for item in UserInfo.sharedInstance.productFlow.allServingSize where item.selected == true {
+            isContains = true
+            break
+        }
+        nextButtonBackgroundView.backgroundColor = isContains ? #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)  : #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)
+        nextButton.isEnabled = isContains
+    }
 }
 
 extension ServingSizeViewController: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
@@ -127,6 +142,7 @@ extension ServingSizeViewController: UITableViewDelegate, UITableViewDataSource,
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ServingSizeHeaderCell") as? ServingSizeHeaderCell else { fatalError() }
+            cell.fillCell(delegate: self)
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ServingSizeCell") as? ServingSizeCell else { fatalError() }
@@ -150,20 +166,12 @@ extension ServingSizeViewController: UITableViewDelegate, UITableViewDataSource,
         return [deleteAction]
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: IngredientsFooterView.reuseIdentifier) as? IngredientsFooterView else {
-            return UITableViewHeaderFooterView()
-        }
-        footer.fillFooter(delegate: self, title: LS(key: .CREATE_STEP_TITLE_14))
-        return footer
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.0001
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return IngredientsFooterView.height
+        return 0.0001
     }
 }
 
@@ -178,6 +186,29 @@ extension ServingSizeViewController: AddTemplateDelegate {
 
 extension ServingSizeViewController: ServingSizeDelegate {
     
+    func servingClicked(_ checkMark: BEMCheckBox, _ serving: Serving) {
+        var isContains: Bool = false
+        for item in UserInfo.sharedInstance.productFlow.allServingSize where item.selected == true {
+            isContains = true
+            break
+        }
+        if isContains && !checkMark.on {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ServingSizeHeaderCell {
+                cell.errorLabel.isHidden = false
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
+            return
+        }
+        checkMark.setOn(!checkMark.on, animated: true)
+        let list = UserInfo.sharedInstance.productFlow.allServingSize
+        for (index, item) in list.enumerated() where item.name == serving.name && item.unitMeasurement == serving.unitMeasurement {
+            UserInfo.sharedInstance.productFlow.allServingSize[index].selected = checkMark.on
+        }
+        checkServingSize()
+    }
+
     func changeServingSize(index: Int) {
         let item = UserInfo.sharedInstance.productFlow.allServingSize[index]
         item.index = index

@@ -60,6 +60,21 @@ class ProductAddingSearchCell: UITableViewCell {
         }
     }
     
+    func fillSecondCell(_ isFirst: Bool, product: SecondProduct, delegate: ProductAddingDelegate, _ selectedProduct: [SecondProduct]) {
+        topViewHeight.constant = isFirst ? 40.0 : 0.0
+        self.delegate = delegate
+        self.product = product
+        checkMark.setOn(false, animated: false)
+        fillName(product: product)
+        if let calories = product.calories {
+            fillCalories(count: calories.displayOnly(count: 2), product: product)
+        }
+        for item in selectedProduct where item.id == product.id {
+            checkMark.setOn(true, animated: false)
+            break
+        }
+    }
+    
     // MARK: - Private -
     private func setupCheckMark() {
         checkMark.boxType = .square

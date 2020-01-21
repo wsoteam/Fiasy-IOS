@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+        <array key="SFProText-Medium.ttf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="507" id="WqF-E9-7wh" customClass="CreateDishDescriptionCell" customModule="Fiasy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="507"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WqF-E9-7wh" id="tqP-vq-2VL">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="506.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qHW-Ll-BbP">
+                        <rect key="frame" x="20" y="0.0" width="374" height="506.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="undraw_questions_75e0 1" translatesAutoresizingMaskIntoConstraints="NO" id="Ifn-th-CUI">
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="132.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132.5" id="fos-w7-2fl"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BkE-aP-YNC">
+                                <rect key="frame" x="0.0" y="162.5" width="374" height="344"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Как правильно взвешивать продукты для оптимального расчета кбжу" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bNP-2f-6aH">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                        <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Диетологи утверждают, что лучше ориентироваться на энергетическую ценность продуктов без обработки – сухих или сырых." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-Cb-pUo">
+                                        <rect key="frame" x="0.0" y="15" width="374" height="33"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                        <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="1L1-yv-0qu">
+                                        <rect key="frame" x="0.0" y="63" width="374" height="216"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdM-gZ-EZq">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="105"/>
+                                                <subviews>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ac-lb-FU5">
+                                                        <rect key="frame" x="0.0" y="5" width="10" height="10"/>
+                                                        <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="1ac-lb-FU5" secondAttribute="height" multiplier="1:1" id="a05-dz-tfK"/>
+                                                            <constraint firstAttribute="width" constant="10" id="eOd-Ua-Iae"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6e-Sl-E60">
+                                                        <rect key="frame" x="18" y="26.5" width="356" height="20.5"/>
+                                                        <string key="text">Крупы и макароны необходимо взвешивать в сухом виде, так как их калорийность в готовом виде практически не меняется.  (ориентироваться можно на данные с упаковки, но стоит учитывать, что при добавлении масла, соуса, молока и др. калорийность возрастет). </string>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                                        <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="m6e-Sl-E60" secondAttribute="bottom" id="6xg-iL-98l"/>
+                                                    <constraint firstItem="m6e-Sl-E60" firstAttribute="top" secondItem="pdM-gZ-EZq" secondAttribute="top" id="9Ps-vi-31D"/>
+                                                    <constraint firstItem="1ac-lb-FU5" firstAttribute="top" secondItem="pdM-gZ-EZq" secondAttribute="top" constant="5" id="DUc-2h-xK7"/>
+                                                    <constraint firstItem="1ac-lb-FU5" firstAttribute="leading" secondItem="pdM-gZ-EZq" secondAttribute="leading" id="SQc-5t-X73"/>
+                                                    <constraint firstItem="m6e-Sl-E60" firstAttribute="leading" secondItem="1ac-lb-FU5" secondAttribute="trailing" constant="8" id="UaI-1I-1Ji"/>
+                                                    <constraint firstAttribute="trailing" secondItem="m6e-Sl-E60" secondAttribute="trailing" id="Uw1-cE-RdA"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QE6-9u-BYd">
+                                                <rect key="frame" x="0.0" y="118" width="374" height="35"/>
+                                                <subviews>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpf-Ae-6Qp">
+                                                        <rect key="frame" x="0.0" y="5" width="10" height="10"/>
+                                                        <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="rpf-Ae-6Qp" secondAttribute="height" multiplier="1:1" id="2A8-nt-g9W"/>
+                                                            <constraint firstAttribute="width" constant="10" id="o42-Xl-rlG"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Мясо, курицу, рыбу тоже необходимо взвешивать в сыром, немытом виде. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwD-iv-fLO">
+                                                        <rect key="frame" x="18" y="26.5" width="356" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                                        <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="rpf-Ae-6Qp" firstAttribute="leading" secondItem="QE6-9u-BYd" secondAttribute="leading" id="E1w-29-cyl"/>
+                                                    <constraint firstItem="JwD-iv-fLO" firstAttribute="top" secondItem="QE6-9u-BYd" secondAttribute="top" id="Sak-MW-wl9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JwD-iv-fLO" secondAttribute="trailing" id="UBJ-0f-mJz"/>
+                                                    <constraint firstItem="JwD-iv-fLO" firstAttribute="leading" secondItem="rpf-Ae-6Qp" secondAttribute="trailing" constant="8" id="UrS-ed-CZL"/>
+                                                    <constraint firstItem="rpf-Ae-6Qp" firstAttribute="top" secondItem="QE6-9u-BYd" secondAttribute="top" constant="5" id="rq3-Cp-X6g"/>
+                                                    <constraint firstAttribute="bottom" secondItem="JwD-iv-fLO" secondAttribute="bottom" id="vhW-uk-twy"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YjT-GW-2t7">
+                                                <rect key="frame" x="0.0" y="166" width="374" height="50"/>
+                                                <subviews>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8s-c7-j5b">
+                                                        <rect key="frame" x="0.0" y="5" width="10" height="10"/>
+                                                        <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="S8s-c7-j5b" secondAttribute="height" multiplier="1:1" id="4cu-kO-HBF"/>
+                                                            <constraint firstAttribute="width" constant="10" id="kmy-ag-idk"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="IBcornerRadius">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qc-uc-drz">
+                                                        <rect key="frame" x="18" y="26.5" width="356" height="20.5"/>
+                                                        <string key="text">Овощи и фрукты необходимо сперва чистить, удалить семечки, косточки, сердцевину и только потом взвешивать. Взвешивать ровно то, что собираетесь съесть – все отходы в мусорку и не учитываются. Если едите фрукт/овощ целиком, то и взвешивать нужно целиком. </string>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                                        <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="S8s-c7-j5b" firstAttribute="top" secondItem="YjT-GW-2t7" secondAttribute="top" constant="5" id="7k8-pa-n9M"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8qc-uc-drz" secondAttribute="bottom" id="YAG-dG-pCj"/>
+                                                    <constraint firstItem="8qc-uc-drz" firstAttribute="leading" secondItem="S8s-c7-j5b" secondAttribute="trailing" constant="8" id="aV9-R2-6gz"/>
+                                                    <constraint firstItem="8qc-uc-drz" firstAttribute="top" secondItem="YjT-GW-2t7" secondAttribute="top" id="ebC-lw-HhS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8qc-uc-drz" secondAttribute="trailing" id="vqA-OK-2jP"/>
+                                                    <constraint firstItem="S8s-c7-j5b" firstAttribute="leading" secondItem="YjT-GW-2t7" secondAttribute="leading" id="zUF-3d-9Jg"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z6J-t0-n1s">
+                                        <rect key="frame" x="0.0" y="294" width="374" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UmG-4z-Jn1">
+                                                <rect key="frame" x="0.0" y="-0.5" width="374" height="0.0"/>
+                                                <string key="text">Все продукты взвешивают без упаковки. С креветок, оливок, кукурузы, горошка, фасоли и других консервов вода и рассол сливаются, если не используются в приготовлении, взвешивается только масса основного продукта, без воды.</string>
+                                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                                                <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="UmG-4z-Jn1" firstAttribute="leading" secondItem="Z6J-t0-n1s" secondAttribute="leading" id="05G-mZ-EPt"/>
+                                            <constraint firstAttribute="trailing" secondItem="UmG-4z-Jn1" secondAttribute="trailing" id="R2f-32-kfy"/>
+                                            <constraint firstItem="UmG-4z-Jn1" firstAttribute="top" secondItem="Z6J-t0-n1s" secondAttribute="top" constant="10" id="XdI-DC-V6V"/>
+                                            <constraint firstAttribute="bottom" secondItem="UmG-4z-Jn1" secondAttribute="bottom" id="pit-jA-IlB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="qHW-Ll-BbP" secondAttribute="bottom" id="0pM-eL-W0N"/>
+                    <constraint firstItem="qHW-Ll-BbP" firstAttribute="leading" secondItem="tqP-vq-2VL" secondAttribute="leading" constant="20" id="IsZ-tW-X9r"/>
+                    <constraint firstItem="qHW-Ll-BbP" firstAttribute="top" secondItem="tqP-vq-2VL" secondAttribute="top" id="UHk-3h-rAW"/>
+                    <constraint firstAttribute="trailing" secondItem="qHW-Ll-BbP" secondAttribute="trailing" constant="20" id="ZwP-OR-uCC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="69.565217391304358" y="190.51339285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="undraw_questions_75e0 1" width="546" height="453"/>
+    </resources>
+</document>

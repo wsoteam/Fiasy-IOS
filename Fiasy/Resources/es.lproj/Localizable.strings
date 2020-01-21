@@ -102,6 +102,7 @@
 "select_your_growth" = "Seleccione su altura";
 "growth_unit" = "cm";
 "weight_unit" = "kg";
+"second_gram_unit" = "gr";
 "mifflin_formula" = "Usamos la fórmula de Mifflin-St Jeor para realizar el cálculo, que la Asociación Americana de Dietética (ADA por sus siglas en inglés) confirmó como la más exacta en 2005.";
 "select_your_weight" = "Seleccione su peso";
 "select_your_date_of_birth" = "Seleccione su fecha de nacimiento";
@@ -147,6 +148,7 @@
 "product_details_desc" = "Elija la cantidad de contenido\ny la unidad de medida";
 "product_changed_in_busket" = "Producto cambiado en la cesta";
 "product_changed_in_diary" = "Producto añadido al diario";
+"product_changed_in_diary2" = "Productos agregados al diario";
 "selected_products" = "Productos seleccionados";
 "black_prem_hours" = "horas";
 "black_prem_minutes" = "minutos";
@@ -355,6 +357,7 @@
 "measuring_title_11" = "actualizado";
 "measuring_title_12" = "Sin datos";
 "measuring_title_13" = "Para agregar datos,\nagréguelos a la pantalla\nde medición del cuerpo.";
+"measuring_title_14" = "Sobre el peso\nadecuado del producto";
 "add_user_activity_hint" = "Introduzca un nombre para la actividades";
 "minimal_calories_count" = "La cantidad mínima de calorías es";
 "diary_mes_11" = "Hoy actualizado";
@@ -439,7 +442,7 @@
 "create_step_title_12" = "Introducir nombre de comida";
 "create_step_title_13" = "¿Estás seguro de que quieres eliminar?";
 "create_step_title_14" = "Agregar tamaño de porción";
-"create_step_title_15" = "Elige un tamaño de porción. También puede agregar sus propios tamaños de porción y cambiarlos.";
+"create_step_title_15" = "Elige un tamaño de porción. También puede agregar sus propios tamaños de porción.";
 "create_step_title_16" = "Porción estándar";
 "create_step_title_17" = "Tamaño de la porción";
 "create_step_title_18" = "Kilogramo";
@@ -463,6 +466,8 @@
 "create_step_title_36" = "Editar";
 "create_step_title_37" = "Esta sección almacenará recetas y productos que le gusten o guarde.";
 "create_step_title_38" = "Para agregar un producto a sus favoritos,\nhaga clic en la tarjeta del producto ";
+"create_step_title_39" = "Eliminar de favoritos";
+"create_step_title_40" = "Definitivamente quieres eliminar la plantilla?";
 
 
 /*    My Product List Screen    */

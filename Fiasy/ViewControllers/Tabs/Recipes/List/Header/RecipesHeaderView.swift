@@ -37,6 +37,13 @@ class RecipesHeaderView: UITableViewHeaderFooterView {
         }
     }
     
+    func secondFillHeader(nutrition: Nutrition, delegate: RecipesDelegate) {
+        //self.section = section
+        self.delegate = delegate
+        
+        titleLabel.text = nutrition.name
+    }
+    
     //MARK: - Actions -
     @IBAction func showMoreClicked(_ sender: Any) {
         guard let title = titleLabel.text else {

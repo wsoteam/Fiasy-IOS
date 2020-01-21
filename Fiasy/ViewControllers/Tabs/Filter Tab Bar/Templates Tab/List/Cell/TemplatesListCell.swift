@@ -22,7 +22,7 @@ class TemplatesListCell: UITableViewCell {
         self.item = item
         
         titleLabel.text = item.name
-        countLabel.text = "\(item.fields.count) \(getNameCount(item.fields.count))"
+        //countLabel.text = "\(item.fields.count) \(getNameCount(item.fields.count))"
     }
     
     func fetchTemplate() -> Template? {

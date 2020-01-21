@@ -11,6 +11,7 @@ import UIKit
 class BasketAlertView: UIView {
     
     // MARK: - Outlet -
+    @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
 }

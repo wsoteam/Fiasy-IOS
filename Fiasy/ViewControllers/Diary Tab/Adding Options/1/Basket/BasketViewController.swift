@@ -191,6 +191,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension BasketViewController: ProductAddingDelegate {
+    func likeClicked(product: SecondProduct, likeImage: UIImageView) {}
     func openPortionDetails(by product: SecondProduct) {}
     func portionClicked(portion: MeasurementUnits, product: SecondProduct, state: Bool) {}
     func showBasket() {}

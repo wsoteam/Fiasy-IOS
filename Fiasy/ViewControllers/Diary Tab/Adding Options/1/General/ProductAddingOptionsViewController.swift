@@ -35,6 +35,7 @@ protocol ProductAddingDelegate {
     func portionClicked(portion: MeasurementUnits, product: SecondProduct, state: Bool)
     func openPortionDetails(by product: SecondProduct)
     func productSelected(_ item: SecondProduct, state: Bool)
+    func likeClicked(product: SecondProduct, likeImage: UIImageView)
 }
 
 class ProductAddingOptionsViewController: UIViewController {
@@ -147,6 +148,10 @@ class ProductAddingOptionsViewController: UIViewController {
             if let vc = segue.destination as? ProductDetailsViewController, let product = sender as? SecondProduct {
                 SwiftEntryKit.dismiss()
                 vc.fillSelectedProduct(product: product, title: selectedTitle, basketProduct: false)
+            }
+        } else if segue.identifier == "showFavoriteProductScreen" {
+            if let vc = segue.destination as? FavoriteProductViewController {
+                vc.fillTitle(selectedTitle, diaryDelegate: diaryDelegate)
             }
         }
     }
@@ -262,7 +267,7 @@ extension ProductAddingOptionsViewController: UITableViewDelegate, UITableViewDa
             } else if screenState == .suggest {
                 return suggestList.count
             } else {
-               return 5
+               return 4
             }
         } else {
             return 4
@@ -315,13 +320,15 @@ extension ProductAddingOptionsViewController: UITableViewDelegate, UITableViewDa
         } else if screenState == .list {
             //showDevelopmentAlert()
             switch indexPath.row {
+//            case 0:
+//                performSegue(withIdentifier: "showBarCodeScreen", sender: nil)
             case 0:
-                performSegue(withIdentifier: "showBarCodeScreen", sender: nil)
-            case 1:
                 performSegue(withIdentifier: "showFavoriteProductScreen", sender: nil)
-            case 2,3:
-                showDevelopmentAlert()
-            case 4:
+            case 1:
+                performSegue(withIdentifier: "sequeTemplateScreen", sender: nil)
+            case 2:
+                performSegue(withIdentifier: "sequeDishScreen", sender: nil)
+            case 3:
                 performSegue(withIdentifier: "sequeMyСreatedProductsScreen", sender: nil)
             default:
                 break
@@ -492,6 +499,7 @@ extension ProductAddingOptionsViewController: ProductSearchDelegate {
 
 extension ProductAddingOptionsViewController: ProductAddingDelegate  {
     
+    func likeClicked(product: SecondProduct, likeImage: UIImageView) {}
     func openPortionDetails(by product: SecondProduct) {
         performSegue(withIdentifier: "sequeProductDetails", sender: product)
     }

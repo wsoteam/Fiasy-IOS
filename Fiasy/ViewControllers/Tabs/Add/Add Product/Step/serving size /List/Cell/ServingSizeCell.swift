@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import BEMCheckBox
 
 class ServingSizeCell: SwipeTableViewCell {
     
     // MARK: - Outlet -
-    @IBOutlet weak var changeButton: UIButton!
+    @IBOutlet weak var checkMark: BEMCheckBox!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
-    
+
     // MARK: - Properties -
+    private var serving: Serving?
     private var screenDelegate: ServingSizeDelegate?
     private var index: Int = 0
     
@@ -23,22 +25,43 @@ class ServingSizeCell: SwipeTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        changeButton.setTitle(LS(key: .CREATE_STEP_TITLE_29), for: .normal)
+        setupCheckMark()
+        //changeButton.setTitle(LS(key: .CREATE_STEP_TITLE_29), for: .normal)
     }
     
     // MARK: - Interface -
     func fillCell(serving: Serving, screenDelegate: ServingSizeDelegate, index: Int) {
         self.index = index
-        changeButton.isHidden = index == 0
+        self.serving = serving
+        //changeButton.isHidden = index == 0
         self.screenDelegate = screenDelegate
         nameLabel.text = serving.name
-        if let cher = "\(serving.unitMeasurement ?? "")".lowercased().first {
-            unitLabel.text = "\(serving.servingSize ?? 0) \(String(cher))."
+        var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+        if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_19) {
+            nameUnit = LS(key: .SECOND_GRAM_UNIT)
+        } else if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_20) {
+            nameUnit = LS(key: .WATER_UNIT)
+        } else if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_21) {
+            nameUnit = LS(key: .LIG_PRODUCT)
+        } else if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_18) {
+            nameUnit = LS(key: .WEIGHT_UNIT)
+        }
+        unitLabel.text = "\(serving.servingSize ?? 0) \(nameUnit)"
+        if serving.selected {
+            checkMark.setOn(true, animated: false)
+        } else {
+            checkMark.setOn(false, animated: false)
         }
     }
     
+    // MARK: - Private -
+    private func setupCheckMark() {
+        checkMark.boxType = .square
+    }
+    
     // MARK: - Actions -
-    @IBAction func changeClicked(_ sender: Any) {
-        self.screenDelegate?.changeServingSize(index: index)
+    @IBAction func checkMarkClicked(_ sender: Any) {
+        guard let serving = self.serving else { return }
+        screenDelegate?.servingClicked(checkMark, serving)
     }
 }

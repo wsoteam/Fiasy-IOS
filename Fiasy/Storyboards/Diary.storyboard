@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -525,6 +526,8 @@
                         <segue destination="2pd-mH-nwH" kind="show" identifier="sequeActivityEditScreen" id="7G2-b7-J8y"/>
                         <segue destination="fLF-DP-rrY" kind="show" identifier="sequeMeasuringScreen" id="hg3-8A-xh8"/>
                         <segue destination="9TG-WV-taE" kind="show" identifier="sequeEditScreen" id="fPA-nc-w4x"/>
+                        <segue destination="bCi-Wd-Kue" kind="show" identifier="sequeEditDishScreen" id="Rty-MY-fOi"/>
+                        <segue destination="jvA-Cv-zc7" kind="show" identifier="sequeEditDishWithImageScreen" id="U0o-iU-411"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KjH-PO-fHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -539,13 +542,29 @@
             </objects>
             <point key="canvasLocation" x="1374" y="193"/>
         </scene>
+        <!--DishDetailsWithImageViewController-->
+        <scene sceneID="MJs-vM-ePY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductAddingOptions" referencedIdentifier="DishDetailsWithImageViewController" id="jvA-Cv-zc7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gde-lZ-Xuy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="974" y="95"/>
+        </scene>
+        <!--DishDetailsViewController-->
+        <scene sceneID="IK9-8I-c9c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductAddingOptions" referencedIdentifier="DishDetailsViewController" id="bCi-Wd-Kue" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mro-9P-5uv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="216"/>
+        </scene>
         <!--ProductAddingOptions-->
         <scene sceneID="Dt8-2N-3tg">
             <objects>
                 <viewControllerPlaceholder storyboardName="ProductAddingOptions" id="qGV-dV-QGk" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFt-64-jQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="392"/>
+            <point key="canvasLocation" x="1034" y="409"/>
         </scene>
         <!--PremiumQuizViewController-->
         <scene sceneID="Oa4-ie-E3M">
@@ -1467,7 +1486,7 @@
                                                         </constraints>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Shape (3)" translatesAutoresizingMaskIntoConstraints="NO" id="c99-Xm-Kxk">
-                                                        <rect key="frame" x="119" y="92" width="28" height="16"/>
+                                                        <rect key="frame" x="119" y="89" width="28" height="22"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Вес удален" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGy-7L-Yed">
                                                         <rect key="frame" x="0.0" y="160" width="266" height="18"/>
@@ -1864,13 +1883,13 @@
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="cOv-ig-ldX">
-                                        <rect key="frame" x="79" y="201" width="217" height="141.5"/>
+                                        <rect key="frame" x="79" y="133.5" width="217" height="276.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 133" translatesAutoresizingMaskIntoConstraints="NO" id="pai-c6-NbE">
-                                                <rect key="frame" x="0.0" y="0.0" width="217" height="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="217" height="151"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aVk-QF-UB7">
-                                                <rect key="frame" x="0.0" y="46" width="217" height="95.5"/>
+                                                <rect key="frame" x="0.0" y="181" width="217" height="95.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71Y-sL-5tq">
                                                         <rect key="frame" x="0.0" y="0.0" width="217" height="26.5"/>
@@ -2050,12 +2069,25 @@
                                             <action selector="titleButtonClicked:" destination="9TG-WV-taE" eventType="touchUpInside" id="2z0-yS-big"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TH6-NI-nKK">
+                                        <rect key="frame" x="321" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="TH6-NI-nKK" secondAttribute="height" multiplier="1:1" id="lbh-TU-jx3"/>
+                                        </constraints>
+                                        <state key="normal" image="favorite_button_empty"/>
+                                        <connections>
+                                            <action selector="favoriteClicked:" destination="9TG-WV-taE" eventType="touchUpInside" id="eJt-W2-D3i"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="czM-mH-ajo" firstAttribute="top" secondItem="x7e-aX-1ie" secondAttribute="top" id="4A7-lT-aAw"/>
                                     <constraint firstItem="czM-mH-ajo" firstAttribute="leading" secondItem="x7e-aX-1ie" secondAttribute="leading" constant="5" id="B4s-ot-awl"/>
                                     <constraint firstItem="vLW-cG-qcW" firstAttribute="centerX" secondItem="x7e-aX-1ie" secondAttribute="centerX" id="Igu-cw-6TG"/>
+                                    <constraint firstAttribute="bottom" secondItem="TH6-NI-nKK" secondAttribute="bottom" id="UML-yv-w6k"/>
+                                    <constraint firstAttribute="trailing" secondItem="TH6-NI-nKK" secondAttribute="trailing" constant="10" id="V3F-fG-tod"/>
+                                    <constraint firstItem="TH6-NI-nKK" firstAttribute="top" secondItem="x7e-aX-1ie" secondAttribute="top" id="grd-Wr-K8U"/>
                                     <constraint firstItem="vLW-cG-qcW" firstAttribute="centerY" secondItem="x7e-aX-1ie" secondAttribute="centerY" id="hwk-Ql-xvE"/>
                                     <constraint firstAttribute="bottom" secondItem="czM-mH-ajo" secondAttribute="bottom" id="oaD-LV-Qkn"/>
                                     <constraint firstAttribute="height" constant="44" id="qlj-hd-ybA"/>
@@ -2261,6 +2293,7 @@
                     <connections>
                         <outlet property="blurView" destination="Zpd-dh-Y15" id="YO8-wF-WUp"/>
                         <outlet property="cancelButton" destination="VJJ-0U-bPn" id="oGo-Si-qqh"/>
+                        <outlet property="favoriteButton" destination="TH6-NI-nKK" id="Ymx-tI-yLj"/>
                         <outlet property="finishButton" destination="lje-4G-I4p" id="ZZI-dP-ozd"/>
                         <outlet property="listContainerView" destination="Rzo-p2-Ofl" id="Sbo-Mr-c3o"/>
                         <outlet property="menuTableView" destination="zb0-2y-4ak" id="nFS-gA-1WQ"/>
@@ -2396,6 +2429,7 @@
         <image name="Polygon (1)" width="12" height="11"/>
         <image name="Shape (3)" width="28" height="22"/>
         <image name="back_icon" width="16" height="16"/>
+        <image name="favorite_button_empty" width="42" height="24"/>
         <image name="intercom-icon-27.jpg" width="215" height="215"/>
         <image name="navigation_back_icon" width="19" height="15"/>
         <image name="plus_button" width="16" height="16"/>

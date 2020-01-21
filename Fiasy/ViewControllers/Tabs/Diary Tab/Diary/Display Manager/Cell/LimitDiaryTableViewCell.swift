@@ -76,17 +76,32 @@ class LimitDiaryTableViewCell: UITableViewCell {
                     }
                 }
                 
+                if item.isMineProduct == true && !item.measurementUnits.isEmpty {
+                    if let first = item.measurementUnits.first {
+                        portionSize = first.amount
+                    }
+                }
+                
                 if let weight = item.weight {
-                    if let mult = portionSize {
-                        fat1 += Double(weight * mult) * (item.fat ?? 0.0)
-                        protein1 += Double(weight * mult) * (item.protein ?? 0.0)
-                        calories1 += Double(weight * mult) * (item.calories ?? 0.0)
-                        carbohydrates1 += Double(weight * mult) * (item.carbohydrates ?? 0.0)
+                    if item.isDish == true {
+                        for item in item.products {
+                            fat1 += Double(weight) * (item.fats ?? 0.0)
+                            protein1 += Double(weight) * (item.proteins ?? 0.0)
+                            calories1 += Double(weight) * (item.calories ?? 0.0)
+                            carbohydrates1 += Double(weight) * (item.carbohydrates ?? 0.0)
+                        }
                     } else {
-                        fat1 += Double(weight) * (item.fat ?? 0.0)
-                        protein1 += Double(weight) * (item.protein ?? 0.0)
-                        calories1 += Double(weight) * (item.calories ?? 0.0)
-                        carbohydrates1 += Double(weight) * (item.carbohydrates ?? 0.0)
+                        if let mult = portionSize {
+                            fat1 += Double(weight * mult) * (item.fat ?? 0.0)
+                            protein1 += Double(weight * mult) * (item.protein ?? 0.0)
+                            calories1 += Double(weight * mult) * (item.calories ?? 0.0)
+                            carbohydrates1 += Double(weight * mult) * (item.carbohydrates ?? 0.0)
+                        } else {
+                            fat1 += Double(weight) * (item.fat ?? 0.0)
+                            protein1 += Double(weight) * (item.protein ?? 0.0)
+                            calories1 += Double(weight) * (item.calories ?? 0.0)
+                            carbohydrates1 += Double(weight) * (item.carbohydrates ?? 0.0)
+                        }
                     }
                 }
                 isContains = true

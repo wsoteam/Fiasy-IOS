@@ -14,6 +14,7 @@ class Serving {
     var name: String?
     var unitMeasurement: String?
     var servingSize: Int?
+    var selected: Bool = false
     
     init(name: String, unit: String, size: Int) {
         self.name = name

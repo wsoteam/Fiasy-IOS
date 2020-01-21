@@ -252,6 +252,26 @@ class DiaryViewController: UIViewController {
             if let model = sender as? Mealtime {
                 vc.fillSelectedProduct(product: Product(mealtime: model), title: fillTitleNavigation(), basketProduct: false)
             }
+        } else if let vc = segue.destination as? DishDetailsViewController, let model = sender as? Mealtime {
+            let dish = Dish()
+            dish.name = model.name
+            dish.generalKeyByEdit = model.generalKey
+            dish.parentKey = model.parentKey
+            dish.imageUrl = model.imageUrl
+            dish.products = model.products
+            dish.weight = model.weight
+            dish.createdProduct = Dish.fetchCreatedProduct(dish: dish)
+            vc.fillScreenByDish(dish: dish)
+        } else if let vc = segue.destination as? DishDetailsWithImageViewController, let model = sender as? Mealtime {
+            let dish = Dish()
+            dish.name = model.name
+            dish.generalKeyByEdit = model.generalKey
+            dish.parentKey = model.parentKey
+            dish.imageUrl = model.imageUrl
+            dish.products = model.products
+            dish.weight = model.weight
+            dish.createdProduct = Dish.fetchCreatedProduct(dish: dish)
+            vc.fillScreenByDish(dish: dish)
         }
     }
 }
@@ -314,7 +334,15 @@ extension DiaryViewController: DiaryViewDelegate {
     }
     
     func editMealTime(mealTime: Mealtime) {
-        performSegue(withIdentifier: "sequeEditScreen", sender: mealTime)
+        if mealTime.isDish == true {
+            if let _ = mealTime.imageUrl {
+                performSegue(withIdentifier: "sequeEditDishWithImageScreen", sender: mealTime)
+            } else {
+                performSegue(withIdentifier: "sequeEditDishScreen", sender: mealTime)
+            }
+        } else {
+            performSegue(withIdentifier: "sequeEditScreen", sender: mealTime)
+        }
     }
 }
 

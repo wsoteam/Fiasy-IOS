@@ -13,11 +13,11 @@ class BasketHeaderView: UITableViewHeaderFooterView {
     // MARK: - Outlet -
     @IBOutlet weak var titleLabel: UILabel!
     
+    // MARK: - Properties -
+    static let height: CGFloat = 60.0
+    
     // MARK: - Interface -
     func fillHeader(by title: String) {
         titleLabel.text = title
     }
-    
-    // MARK: - Properties -
-    static let height: CGFloat = 60.0
 }

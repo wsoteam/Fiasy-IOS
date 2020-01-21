@@ -27,6 +27,7 @@ protocol ProductDetailsDelegate {
 class ProductDetailsViewController: UIViewController {
     
     // MARK: - Outlet -
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var progressTitleLabel: UILabel!
@@ -53,6 +54,7 @@ class ProductDetailsViewController: UIViewController {
     private lazy var dropdownView: LMDropdownView = LMDropdownView()
     private let isIphone5 = Display.typeIsLike == .iphone5
     private var firstLoad: Bool = true
+    private var isFavoriteProduct: Bool = false
     override internal var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
@@ -60,6 +62,23 @@ class ProductDetailsViewController: UIViewController {
     // MARK: - Life Cicle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let id = product?.id {
+            FirebaseDBManager.searchFavoriteInDataBase(by: id) { [weak self] (state, key) in
+                guard let strongSelf = self else { return }
+                strongSelf.product?.generalKey = key
+                strongSelf.favoriteButton.setImage(state ? #imageLiteral(resourceName: "favorite_button-1") : #imageLiteral(resourceName: "favorite_button_empty"), for: .normal)
+                strongSelf.isFavoriteProduct = state
+            }
+        } else if let general = product?.generalFindId {
+            FirebaseDBManager.searchFavoriteByGeneralIdInDataBase(by: general) { [weak self] (state) in
+                guard let strongSelf = self else { return }
+                strongSelf.favoriteButton.setImage(state ? #imageLiteral(resourceName: "favorite_button-1") : #imageLiteral(resourceName: "favorite_button_empty"), for: .normal)
+                strongSelf.isFavoriteProduct = state
+            }
+        } else {
+            favoriteButton.setImage(#imageLiteral(resourceName: "favorite_button_empty"), for: .normal)
+        }
         
         cancelButton.setTitle("     \(LS(key: .CANCEL).uppercased())     ", for: .normal)
         finishButton.setTitle("     \(LS(key: .DONE).uppercased())     ", for: .normal)
@@ -69,6 +88,11 @@ class ProductDetailsViewController: UIViewController {
         setupTableView()
         setupPickerData()
         setupInitialState()
+        
+        fillTitleNavigation(index: UserInfo.sharedInstance.selectedMealtimeIndex)
+        if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController &&  !(product?.measurementUnits.isEmpty ?? true) {
+            portionCount = 1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +126,7 @@ class ProductDetailsViewController: UIViewController {
     func fillSelectedProduct(product: Product, title: String, basketProduct: Bool) {
         self.basketProduct = basketProduct
         self.selectedTitle = title
-        self.checkTitle(title: title)
+        //self.checkTitle(title: title)
         self.product = product
         if let weight = product.weight, weight > 0 {
             self.isEditState = true
@@ -212,7 +236,13 @@ class ProductDetailsViewController: UIViewController {
                 rightSide.append(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))
             }
         } else {
-            rightSide.insert(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT), at: 0)
+            if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController {
+                //
+            } else if product.isMineProduct == true && !product.measurementUnits.isEmpty {
+                //
+            } else {
+                rightSide.insert(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT), at: 0)
+            }
         }
         
         pickerData = rightSide
@@ -260,6 +290,44 @@ class ProductDetailsViewController: UIViewController {
     //MARK: - Actions -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func favoriteClicked(_ sender: Any) {
+        if isFavoriteProduct {
+            guard let key = self.product?.generalKey else { return }
+            if key != self.product?.generalFindId {
+                if let fd = self.product?.generalFindId {
+                    FirebaseDBManager.removeFavorite(key: fd) { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.isFavoriteProduct = false
+                        strongSelf.product?.generalKey = nil
+                        strongSelf.favoriteButton.setImage(#imageLiteral(resourceName: "favorite_button_empty"), for: .normal)
+                    } 
+                } else {
+                    FirebaseDBManager.removeFavorite(key: key) { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.isFavoriteProduct = false
+                        strongSelf.product?.generalKey = nil
+                        strongSelf.favoriteButton.setImage(#imageLiteral(resourceName: "favorite_button_empty"), for: .normal)
+                    }
+                }
+            } else {
+                FirebaseDBManager.removeFavorite(key: key) { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.isFavoriteProduct = false
+                    strongSelf.product?.generalKey = nil
+                    strongSelf.favoriteButton.setImage(#imageLiteral(resourceName: "favorite_button_empty"), for: .normal)
+                } 
+            }
+        } else {
+            guard let product = self.product else { return }
+            FirebaseDBManager.saveFavoriteProductInDataBase(product: SecondProduct(second: product)) { [weak self] (key) in
+                guard let strongSelf = self else { return }
+                strongSelf.product?.generalKey = key
+                strongSelf.isFavoriteProduct = true
+                strongSelf.favoriteButton.setImage(#imageLiteral(resourceName: "favorite_button-1"), for: .normal)
+            }
+        }
     }
     
     @IBAction func titleButtonClicked(_ sender: Any) {

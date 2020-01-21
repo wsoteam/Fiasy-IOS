@@ -20,8 +20,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjc-td-me5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="302.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="undraw_predictive_analytics_kf9n 1" translatesAutoresizingMaskIntoConstraints="NO" id="qTb-jH-4P5">
-                                <rect key="frame" x="87" y="87" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="undraw_predictive_analytics_kf9n 1" translatesAutoresizingMaskIntoConstraints="NO" id="qTb-jH-4P5">
+                                <rect key="frame" x="52" y="87" width="310.5" height="128"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIy-qe-aeH">
                                 <rect key="frame" x="20" y="140" width="374" height="21"/>

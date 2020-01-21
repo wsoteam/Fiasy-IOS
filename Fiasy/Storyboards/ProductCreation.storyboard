@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавление" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWu-YT-g08">
-                                        <rect key="frame" x="139" y="12" width="97.5" height="20"/>
+                                        <rect key="frame" x="134.5" y="12" width="106.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391761779785" green="0.36865252256393433" blue="0.3685796856880188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -121,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmG-t4-jcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="242"/>
+            <point key="canvasLocation" x="1054" y="242"/>
         </scene>
         <!--BarcodeViewController-->
         <scene sceneID="sNp-1J-3cb">
@@ -129,7 +130,7 @@
                 <viewControllerPlaceholder storyboardName="ProductAddingOptions" referencedIdentifier="BarcodeViewController" id="iHQ-uZ-jbs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1uN-yV-9c9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053" y="754"/>
+            <point key="canvasLocation" x="1053" y="695"/>
         </scene>
         <!--Add Product Second Step View Controller-->
         <scene sceneID="DfM-nG-hwX">
@@ -162,7 +163,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Питательные вещества" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kV-k0-WRG">
-                                        <rect key="frame" x="94" y="12" width="187" height="20"/>
+                                        <rect key="frame" x="86" y="12" width="203.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -307,7 +308,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проверка информации" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9D3-9m-JSl">
-                                        <rect key="frame" x="95" y="12" width="185.5" height="20"/>
+                                        <rect key="frame" x="86.5" y="12" width="202.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -401,7 +402,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hN4-vM-DNq">
                                 <rect key="frame" x="112.5" y="593" width="150" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQ9-QE-S71">
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQ9-QE-S71">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -414,7 +415,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.74109476804733276" green="0.74122363328933716" blue="0.74108666181564331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="LQ9-QE-S71" firstAttribute="leading" secondItem="hN4-vM-DNq" secondAttribute="leading" id="5Ob-wr-uCZ"/>
                                     <constraint firstAttribute="trailing" secondItem="LQ9-QE-S71" secondAttribute="trailing" id="QUH-Ap-XSX"/>
@@ -433,7 +434,7 @@
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="0.5998245498" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                         <real key="value" value="6"/>
@@ -455,7 +456,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размер порции" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFH-y0-GgK">
-                                        <rect key="frame" x="126.5" y="12" width="122.5" height="20"/>
+                                        <rect key="frame" x="120" y="12" width="135" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -521,6 +522,7 @@
                     </view>
                     <connections>
                         <outlet property="nextButton" destination="LQ9-QE-S71" id="4ms-mJ-pPk"/>
+                        <outlet property="nextButtonBackgroundView" destination="hN4-vM-DNq" id="vJk-49-WhJ"/>
                         <outlet property="tableView" destination="dFN-dc-ON5" id="Kf0-Vl-oGB"/>
                         <outlet property="titleNavigationLabel" destination="YFH-y0-GgK" id="35Q-cU-A0Q"/>
                         <segue destination="Nrt-94-LWQ" kind="show" identifier="sequeServingSizeScreen" id="6wa-JJ-Gyx"/>
@@ -562,13 +564,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавить порцию" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6N-7Q-IR6">
-                                        <rect key="frame" x="116" y="12" width="143.5" height="20"/>
+                                        <rect key="frame" x="109.5" y="12" width="156.5" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j2-Tn-kUL">
-                                        <rect key="frame" x="309" y="0.0" width="56" height="44"/>
+                                        <rect key="frame" x="306" y="0.0" width="59" height="44"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <state key="normal" title="Готово">
                                             <color key="titleColor" red="0.95016640419999998" green="0.6013857722" blue="0.29108956460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -233,6 +233,8 @@
 "measuring_title_11" = "обновлен";
 "measuring_title_12" = "Нет данных";
 "measuring_title_13" = "Чтобы добавить данные,\nдобавьте их на экране\nизмерения тела";
+"measuring_title_14" = "О правильном\nвзвешивании продукта";
+
 
 
 "help_meas_first_title" = "Информация о расчете среднего веса\nза неделю";
@@ -438,7 +440,7 @@
 "create_step_title_12" = "Введите название продукта";
 "create_step_title_13" = "Вы точно хотите удалить?";
 "create_step_title_14" = "Добавить размер порции";
-"create_step_title_15" = "Выберите размер порции. Вы так же можете добавлять собственные размеры порций и их изменять.";
+"create_step_title_15" = "Выберите размер порции. Вы так же можете добавлять собственные размеры порций.";
 "create_step_title_16" = "Стандартная порция";
 "create_step_title_17" = "Размер порции";
 "create_step_title_18" = "Килограмм";
@@ -447,7 +449,7 @@
 "create_step_title_21" = "Миллилитр";
 "create_step_title_22" = "Наименование порции не может состоять только из пробелов";
 "create_step_title_23" = "Наименование порции";
-"create_step_title_24" = "Введите имя порции";
+"create_step_title_24" = "Введите название порции";
 "create_step_title_25" = "Единица измерения";
 "create_step_title_26" = "Размер порции";
 "create_step_title_27" = "Введите размер порции";
@@ -462,8 +464,8 @@
 "create_step_title_36" = "Редактировать";
 "create_step_title_37" = "В этом разделе будут храниться понравившиеся или сохраненные вами рецепты и продукты";
 "create_step_title_38" = "Чтобы добавить продукт в избранное,\nнажмите на карточке продукта ";
-
-
+"create_step_title_39" = "Убранно из избранного";
+"create_step_title_40" = "Вы точно хотите удалить шаблон?";
 
 /*    My Product List Screen    */
 "add_product" = "Добавить продукт";
@@ -522,13 +524,15 @@
 "product_info" = "Информация о продукте";
 "nutritional_value" = "Пищевая ценность на 100 г.";
 "product_added_to_your_products" = "Ваш продукт добавлен в Свои продукты";
-"product_details_desc" = "Выберете количество содержимого и\nединицу измерения";
+"product_details_desc" = "Выберите количество содержимого и\nединицу измерения";
 
 /*    Product Details Screen    */
 "product_changed_in_busket" = "Продукт изменен в корзине";
 "product_changed_in_diary" = "Продукт добавлен в дневник";
+"product_changed_in_diary2" = "Продукты добавлены в дневник";
 "lig_product" = "мл";
 "gram_unit" = "грамм";
+"second_gram_unit" = "гр";
 "product_calculation" = "Расчет продукта";
 "product_weighs" = "Продукт весит";
 "product_add_nutrients" = "Питательные вещества на";

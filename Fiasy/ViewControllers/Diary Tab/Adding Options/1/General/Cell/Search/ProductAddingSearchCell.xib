@@ -39,7 +39,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="050-mb-Osa"/>
                             <constraint firstItem="VVF-iL-evt" firstAttribute="centerY" secondItem="2iZ-pk-9xu" secondAttribute="centerY" id="ARf-jN-wbO"/>
@@ -127,6 +127,7 @@
                     <constraint firstAttribute="trailing" secondItem="Anc-x7-6IO" secondAttribute="trailing" id="mxb-My-Y7c"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="caloriesLabel" destination="aWn-vO-f88" id="L5i-Do-I7i"/>
                 <outlet property="checkMark" destination="Irz-qr-9Tt" id="9QT-Pi-Hfz"/>

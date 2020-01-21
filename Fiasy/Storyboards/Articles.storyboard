@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -656,7 +657,7 @@
         <image name="heart" width="24" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jbB-qV-yPM"/>
-        <segue reference="nwW-Bm-xsO"/>
+        <segue reference="Mgv-dR-zPL"/>
+        <segue reference="Pgz-R1-tzm"/>
     </inferredMetricsTieBreakers>
 </document>

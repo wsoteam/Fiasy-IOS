@@ -166,11 +166,17 @@ class AddProductSecondStepCell: UITableViewCell, UITextFieldDelegate {
                 if flow.allServingSize.indices.contains(indexPath.row - 3) {
                     let serving = flow.allServingSize[indexPath.row - 3]
                     titleLabel.text = serving.name
-                    if let cher = "\(serving.unitMeasurement ?? "")".lowercased().first {
-                        nameTextField.text = "\(serving.servingSize ?? 0) \(String(cher))."
-                    } else {
-                        nameTextField.text = ""
+                    var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+                    if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_19) {
+                        nameUnit = LS(key: .SECOND_GRAM_UNIT)
+                    } else if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_20) {
+                        nameUnit = LS(key: .WATER_UNIT)
+                    } else if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_21) {
+                        nameUnit = LS(key: .LIG_PRODUCT)
+                    } else if serving.unitMeasurement == LS(key: .CREATE_STEP_TITLE_18) {
+                        nameUnit = LS(key: .WEIGHT_UNIT)
                     }
+                    nameTextField.text = "\(serving.servingSize ?? 0) \(nameUnit)"
                 }
             }
         } else {

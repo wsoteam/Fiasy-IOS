@@ -16,6 +16,7 @@ class RecipesRow : UITableViewCell {
     //MARK: - Properties -
     static let rowHeight: CGFloat = 180.0
     private var recipes: [Listrecipe] = []
+    private let isIphone5 = Display.typeIsLike == .iphone5
     
     //MARK: - Interface -
     func fillRow(by recipes: [Listrecipe]) {
@@ -62,6 +63,6 @@ extension RecipesRow: UICollectionViewDataSource {
 extension RecipesRow: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width/2.5, height: 180)
+        return CGSize(width: UIScreen.main.bounds.size.width/2.5, height: isIphone5 ? 150 : 180)
     }
 }

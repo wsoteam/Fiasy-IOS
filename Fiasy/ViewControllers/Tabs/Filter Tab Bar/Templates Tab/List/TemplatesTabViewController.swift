@@ -125,11 +125,11 @@ class TemplatesTabViewController: UIViewController {
     private func fetchItemsInDataBase() {
         FirebaseDBManager.fetchTemplateInDataBase { [weak self] (result) in
             guard let `self` = self else { return }
-            self.allTemplates = result
-            self.filteredTemplates = result
-            self.emptyView.isHidden = !result.isEmpty
-            self.hideActivity()
-            self.tableView.reloadData()
+//            self.allTemplates = result
+//            self.filteredTemplates = result
+//            self.emptyView.isHidden = !result.isEmpty
+//            self.hideActivity()
+//            self.tableView.reloadData()
         }
     }
     
