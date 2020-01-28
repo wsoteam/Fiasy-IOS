@@ -201,6 +201,11 @@ extension TemplateDetailsViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension TemplateDetailsViewController: ProductDetailsDelegate {
+    
+    func changeTemplateProduct(product: Product) {
+        //
+    }
+    
     func showSelectedPicker() {}
     func showWrongErrorCount() {
         let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ADD_PRODUCT_NEW), preferredStyle: .alert)

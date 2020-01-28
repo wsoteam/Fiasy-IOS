@@ -11,6 +11,8 @@ import SwiftEntryKit
 
 protocol TemplateViewDelegate {
     func moreClicked(indexPath: IndexPath)
+    func editProduct(_ indexPath: IndexPath)
+    func removeSomeProduct(_ indexPath: IndexPath)
 }
 
 class TemplateViewController: UIViewController {
@@ -83,11 +85,12 @@ class TemplateViewController: UIViewController {
         if segue.identifier == "sequeTemplateDetailsScreen" {
             if let vc = segue.destination as? TemplateDetailsViewController, let template = sender as? Template {
                 vc.fillScreenByTemplate(template)
-                //vc.fillEditProductFavorite(favorite: product)
             }
+        } else if let vc = segue.destination as? TemplateCreateFirstViewController, let template = sender as? Template {
+            vc.fillScreenByTemplate(template: template)
         }
-    }
-    
+    } 
+
     // MARK: - Action's -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -187,29 +190,7 @@ class TemplateViewController: UIViewController {
     }
     
     private func showСonfirmationOfDeletion(indexPath: IndexPath) {
-        let alertController = UIAlertController(title: "\n\n\n\n", message: nil, preferredStyle: .actionSheet)
-        guard let view = BasketAlertView.fromXib() else { return }
-        view.titleImageView.image = #imageLiteral(resourceName: "templat_4445")
-        view.descriptionLabel.text = LS(key: .CREATE_STEP_TITLE_40)
-        alertController.view.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 15).isActive = true
-        view.rightAnchor.constraint(equalTo: alertController.view.rightAnchor, constant: -10).isActive = true
-        view.leftAnchor.constraint(equalTo: alertController.view.leftAnchor, constant: 10).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        
-        let removeAction = UIAlertAction(title: LS(key: .DELETE), style: .default) { [weak self] (alert) in
-            guard let strongSelf = self else { return }
-            strongSelf.showDeleteAlert(indexPath: indexPath)
-        }
-        let cancelAction = UIAlertAction(title: LS(key: .CANCEL), style: .cancel)
-        cancelAction.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
-        removeAction.setValue(#colorLiteral(red: 0.9231546521, green: 0.3429711461, blue: 0.342156291, alpha: 1), forKey: "titleTextColor")
-        
-        alertController.addAction(removeAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
+        showDeleteAlert(indexPath: indexPath)
     }
 }
 
@@ -252,6 +233,16 @@ extension TemplateViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TemplateViewController: TemplateViewDelegate {
+
+    func removeSomeProduct(_ indexPath: IndexPath) {
+        showDeleteAlert(indexPath: indexPath)
+    }
+    
+    func editProduct(_ indexPath: IndexPath) {
+        if filteredTemplate.indices.contains(indexPath.row) {
+            performSegue(withIdentifier: "sequeEditTemplate", sender: filteredTemplate[indexPath.row])
+        }
+    }
     
     func moreClicked(indexPath: IndexPath) {
         showСonfirmationOfDeletion(indexPath: indexPath)

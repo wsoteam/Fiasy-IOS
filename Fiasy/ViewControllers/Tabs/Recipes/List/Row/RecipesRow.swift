@@ -41,9 +41,9 @@ extension RecipesRow: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipesCell", for: indexPath) as? RecipesCell else { return UICollectionViewCell() }
         
-        if recipes.indices.contains(indexPath.row) {
-            cell.fillCell(by: recipes[indexPath.row])
-        }
+//        if recipes.indices.contains(indexPath.row) {
+//            cell.fillCell(by: recipes[indexPath.row])
+//        }
         return cell
     }
     

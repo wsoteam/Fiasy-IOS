@@ -147,7 +147,7 @@ class ProductAddingOptionsViewController: UIViewController {
         } else if segue.identifier == "sequeProductDetails" {
             if let vc = segue.destination as? ProductDetailsViewController, let product = sender as? SecondProduct {
                 SwiftEntryKit.dismiss()
-                vc.fillSelectedProduct(product: product, title: selectedTitle, basketProduct: false)
+                vc.fillSelectedProduct(product: product, title: selectedTitle, basketProduct: false, delegate: nil)
             }
         } else if segue.identifier == "showFavoriteProductScreen" {
             if let vc = segue.destination as? FavoriteProductViewController {

@@ -11,11 +11,18 @@ import UIKit
 class TemplateCreateFirstCell: UITableViewCell {
     
     // MARK: - Properties -
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     private var delegate: TemplateCreateDelegate?
     
     // MARK: - Interface -
-    func fillCell(delegate: TemplateCreateDelegate) {
+    func fillCell(delegate: TemplateCreateDelegate, _ template: Template?) {
         self.delegate = delegate
+        
+        if let name = template?.name {
+            nameTextField.text = name
+        }
     }
     
     // MARK: - Actions -

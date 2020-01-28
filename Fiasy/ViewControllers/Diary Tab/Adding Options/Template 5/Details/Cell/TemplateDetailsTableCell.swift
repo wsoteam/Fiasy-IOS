@@ -74,10 +74,17 @@ class TemplateDetailsTableCell: UITableViewCell {
         var allCarbohydrates: Double = 0.0
         var allFats: Double = 0.0
         for item in template.products {
-            allCalories += Double((item.calories ?? 0.0) * 100.0).displayOnly(count: 0)
-            allProteins += Double((item.proteins ?? 0.0) * 100.0).displayOnly(count: 0)
-            allCarbohydrates += Double((item.carbohydrates ?? 0.0) * 100.0).displayOnly(count: 0)
-            allFats += Double((item.fats ?? 0.0) * 100.0).displayOnly(count: 0)
+            if let weg = item.weight {
+                allCalories += Double((item.calories ?? 0.0) * Double(weg)).displayOnly(count: 0)
+                allProteins += Double((item.proteins ?? 0.0) * Double(weg)).displayOnly(count: 0)
+                allCarbohydrates += Double((item.carbohydrates ?? 0.0) * Double(weg)).displayOnly(count: 0)
+                allFats += Double((item.fats ?? 0.0) * Double(weg)).displayOnly(count: 0)
+            } else {
+                allCalories += Double((item.calories ?? 0.0) * 100.0).displayOnly(count: 0)
+                allProteins += Double((item.proteins ?? 0.0) * 100.0).displayOnly(count: 0)
+                allCarbohydrates += Double((item.carbohydrates ?? 0.0) * 100.0).displayOnly(count: 0)
+                allFats += Double((item.fats ?? 0.0) * 100.0).displayOnly(count: 0)
+            }
         }
         
         if allCalories > 0.0 {
@@ -107,7 +114,16 @@ class TemplateDetailsTableCell: UITableViewCell {
             fillScreenServing(count: 0, unit: "", title: LS(key: .FAT), label: fatLabel)
         }
         
-        nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) 100 \(LS(key: .GRAMS_UNIT))."
+        var nutritWeg: Int = 0
+        for item in template.products {
+            if let weg = item.weight {
+                nutritWeg += weg
+            } else {
+                nutritWeg += 100
+            }
+        }
+        
+        nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(nutritWeg) \(LS(key: .GRAMS_UNIT))."
         
         if UserInfo.sharedInstance.purchaseIsValid {
             separatorView.isHidden = false
@@ -154,6 +170,7 @@ class TemplateDetailsTableCell: UITableViewCell {
     }
     
     private func fillCarbohydrates(_ template: Template) {
+        let fl: Int = 100
         carbohydrateStackView.subviews.forEach { $0.removeFromSuperview() }
         
         var carbohydrates: Double = 0.0
@@ -166,13 +183,13 @@ class TemplateDetailsTableCell: UITableViewCell {
         }
         
         carbohydrates = carbohydrates <= 0.0 ? 0.0 : carbohydrates
-        insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .CARBOHYDRATES_INTAKE), right: "\(Double(carbohydrates * Double(100.0).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
+        insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .CARBOHYDRATES_INTAKE), right: "\(Double(carbohydrates * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: true)
         
         cellulose = cellulose <= 0.0 ? 0.0 : cellulose
-        insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .СELLULOSE), right: "\(Double(cellulose * Double(100.0).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
+        insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .СELLULOSE), right: "\(Double(cellulose * Double(fl).displayOnly(count: 2)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
 
         sugar = sugar <= 0.0 ? 0.0 : sugar
-        insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .SUGAR), right: "\(Double(sugar * Double(100.0).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
+        insertViewInStackView(stackView: carbohydrateStackView, left: LS(key: .SUGAR), right: "\(Double(sugar * Double(fl).rounded(toPlaces: 1)).displayOnly(count: 2)) \(LS(key: .GRAMS_UNIT))", isTitle: false)
     }
     
     private func fillFats(_ template: Template) {

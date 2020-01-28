@@ -34,8 +34,8 @@ class DiaryTableViewCell: SwipeTableViewCell {
                 }
                 productWeight.text = "\(first.amount * (mealTime.weight ?? 1)) \(nameUnit)"
                 
-                if let weight = mealTime.weight, let calories = mealTime.calories {
-                    let size = Int(((calories * Double(first.amount)) * Double(weight)).rounded(toPlaces: 0))
+                if let calories = mealTime.calories {
+                    let size = Int(calories.rounded(toPlaces: 0)) * (mealTime.weight ?? 1)
                     caloriesCountLabel.text = "\(size) \(LS(key: .CALORIES_UNIT).capitalizeFirst)"
                 }
             }

@@ -105,7 +105,7 @@ class DishCreateFirstViewController: UIViewController {
         showCloseAlert()
     }
     
-    @IBAction func saveClicked(_ sender: Any) {
+    @IBAction func saveClicked(_ sender: UIButton) {
         if let name = UserInfo.sharedInstance.dishFlow.dishName, name.isEmpty {
             tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
             if let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? DishCreateFirstCell {
@@ -134,6 +134,7 @@ class DishCreateFirstViewController: UIViewController {
                 footer.errorLabel.isHidden = false
             }
         } else {
+            sender.isEnabled = false
             UserInfo.sharedInstance.dishFlow.dishName = productName
             FirebaseDBManager.saveDishItemsInDataBase {
                 if self.backTwice {
@@ -151,10 +152,11 @@ class DishCreateFirstViewController: UIViewController {
     }
     
     @IBAction func infoClicked(_ sender: Any) {
-        guard let view = MeasuringAlertMiddleWeightView.fromXib(), !popTip.isVisible else { return }
-        view.frame = CGRect(x: 0, y: 0, width: 220, height: 80)
-        view.secondFillView(delegate: self)
-        popTip.show(customView: view, direction: .down, in: self.view, from: frameView.frame)
+        performSegue(withIdentifier: "sequeDishDescription", sender: nil)
+//        guard let view = MeasuringAlertMiddleWeightView.fromXib(), !popTip.isVisible else { return }
+//        view.frame = CGRect(x: 0, y: 0, width: 220, height: 80)
+//        view.secondFillView(delegate: self)
+//        popTip.show(customView: view, direction: .down, in: self.view, from: frameView.frame)
     }
 
     // MARK: - Private -    

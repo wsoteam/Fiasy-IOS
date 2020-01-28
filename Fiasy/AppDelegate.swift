@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
       //  Fabric.with([Crashlytics.self()])
-        Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
+        //Bugsee.launch(token :"dca43646-372f-498e-9251-a634c61801b1")
         
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
         
@@ -63,29 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
         })
-//        let ref = Database.database().reference()
-//        if let uid = Auth.auth().currentUser?.uid {
-//            
-//            ref.child("USER_LIST").child(uid).child("profilee").observeSingleEvent(of: .value, with: { (snapshot) in
-//                print(snapshot.childSnapshot(forPath: "name").value as! String)
-//                print(snapshot.childSnapshot(forPath: "any place you would like to query from").value as! String)
-//            })
-////            ref.child("USER_LIST").child(uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
-////                if let snapshotValue = snapshot.value as? [String:AnyObject] {
-////                    UserDefaults.standard.set(true, forKey: "firstLoadComplete")
-////                    UserDefaults.standard.synchronize()
-////                    UserInfo.sharedInstance.currentUser = User(dictionary: snapshotValue)
-////                    UserInfo.sharedInstance.userGender = UserInfo.sharedInstance.currentUser?.female == true ? .girl : .man
-////                    //handler(false)
-////                } else {
-////                    //handler(true)
-////                    //                    fillDefaultUserInDatabase()
-////                    //                    checkFilledProfile()
-////                }
-////            }) { (error) in
-////                print(error.localizedDescription)
-////            }
-//        }
+
         FirebaseDBManager.checkFilledProfile { (state) in }
         Amplitude.instance()?.trackingSessionEvents = true
         Amplitude.instance()?.minTimeBetweenSessionsMillis = 5000

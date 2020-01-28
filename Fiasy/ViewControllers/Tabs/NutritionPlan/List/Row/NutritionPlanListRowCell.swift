@@ -16,11 +16,13 @@ class NutritionPlanListRowCell: UITableViewCell {
     // MARK: - Properties -
     static let rowHeight: CGFloat = 200.0
     private var nutritions: [NutritionDetail] = []
+    private var delegate: NutritionPlanDelegate?
     private let isIphone5 = Display.typeIsLike == .iphone5
     
     // MARK: - Interface -
-    func fillRow(nutritions: [NutritionDetail]) {
+    func fillRow(nutritions: [NutritionDetail], delegate: NutritionPlanDelegate) {
         self.nutritions = nutritions
+        self.delegate = delegate
         
         setupCollectionView()
     }
@@ -42,13 +44,15 @@ extension NutritionPlanListRowCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NutritionPlanListTableCell", for: indexPath) as? NutritionPlanListTableCell else { return UICollectionViewCell() }
-        cell.fillRow(nutrition: nutritions[indexPath.row])
+        cell.fillRow(nutrition: nutritions[indexPath.row], delegate: self.delegate)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let vc = UIApplication.getTopMostViewController() {
-            //vc.performSegue(withIdentifier: "sequeArticleDetailsScreen", sender: articles[indexPath.row])
+        if let vc = UIApplication.getTopMostViewController() as? NutritionPlanViewController {
+            if !vc.isEmptyRecipes() {
+                vc.performSegue(withIdentifier: "showNutritionDetails", sender: nutritions[indexPath.row])
+            }
         }
     }
 }

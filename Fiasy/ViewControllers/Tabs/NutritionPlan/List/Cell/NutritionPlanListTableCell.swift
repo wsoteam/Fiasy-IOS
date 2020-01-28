@@ -14,6 +14,7 @@ import VisualEffectView
 class NutritionPlanListTableCell: UICollectionViewCell {
 
     // MARK: - Outlet's -
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dayCountButton: UIButton!
     @IBOutlet weak var premTitleLabel: UILabel!
     @IBOutlet weak var premiumContainerView: UIView!
@@ -23,6 +24,7 @@ class NutritionPlanListTableCell: UICollectionViewCell {
     @IBOutlet weak var alphaView: UIView!
     
     //MARK: - Properties -
+    private var delegate: NutritionPlanDelegate?
     private var nutrition: NutritionDetail?
     
     // MARK: - Life Cicle -
@@ -41,15 +43,11 @@ class NutritionPlanListTableCell: UICollectionViewCell {
     }
     
     // MARK: - Interface -
-    func fillRow(nutrition: NutritionDetail) {
+    func fillRow(nutrition: NutritionDetail, delegate: NutritionPlanDelegate?) {
+        self.delegate = delegate
         self.nutrition = nutrition
-            
-//        let fullString = NSMutableAttributedString(string: "\(nutrition.name ?? "") • ")
-//        let image1Attachment = NSTextAttachment()
-//        image1Attachment.image = UIImage(named: "ic-access-time-24px")
-//        let image1String = NSAttributedString(attachment: image1Attachment)
-//        fullString.append(image1String)
-//        fullString.append(NSAttributedString(string: " \(nutrition.countDays ?? 0) дней"))
+        
+        likeButton.setImage(nutrition.isLiked ? #imageLiteral(resourceName: "someLike") : #imageLiteral(resourceName: "nutrition_favorite_empty"), for: .normal)
         nameLabel.text = nutrition.name
         dayCountButton.setTitle(" \(nutrition.countDays ?? 0) дней", for: .normal)
         if let path = nutrition.urlImage, let url = try? path.asURL() {
@@ -94,6 +92,23 @@ class NutritionPlanListTableCell: UICollectionViewCell {
             return UIColor(red: CGFloat(data[4*index])/255.0, green: CGFloat(data[4*index+1])/255.0, blue: CGFloat(data[4*index+2])/255.0, alpha: CGFloat(data[4*index+3])/255.0)
         default:
             return UIColor.clear
+        }
+    }
+    
+    // MARK: - Actions -
+    @IBAction func likeClicked(_ sender: Any) {
+        guard let nutrition = self.nutrition else { return }
+        if nutrition.isLiked {
+            self.delegate?.removeLike(nutrition: self.nutrition, self.likeButton)
+        } else {
+            FirebaseDBManager.saveLikeNutritionInDataBase(nutrition: nutrition) { (key) in
+                self.nutrition?.removeKey = key
+                self.nutrition?.isLiked = true
+                if let key1 = key {
+                    self.likeButton.setImage(#imageLiteral(resourceName: "someLike"), for: .normal)
+                    self.delegate?.fillLike(key: key1, nutrition: nutrition)
+                }
+            }
         }
     }
 }

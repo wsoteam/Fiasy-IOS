@@ -17,13 +17,13 @@ class MyСreatedProductsCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     
     private var dropDown = DropDown()
-    private var indexPath: IndexPath?
+    private var removeKey: String?
     private var delegate: MyСreatedProductsDelegate?
     
     // MARK: - Interface -
     func fillCell(_ item: Favorite, delegate: MyСreatedProductsDelegate, indexPath: IndexPath) {
         fillDropDown()
-        self.indexPath = indexPath
+        self.removeKey = item.key
         self.delegate = delegate
         nameLabel.text = item.name
         
@@ -41,7 +41,7 @@ class MyСreatedProductsCell: UITableViewCell {
                 } else if first.unit == LS(key: .CREATE_STEP_TITLE_18) {
                     nameUnit = LS(key: .WEIGHT_UNIT)
                 }
-                countLabel.text = "\(Int(Double(Double(item.calories ?? 0.0) * Double(first.amount)).displayOnly(count: 0))) \(LS(key: .CALORIES_UNIT)) • \(first.amount) \(nameUnit)"
+                countLabel.text = "\(Double(item.calories ?? 0.0).displayOnly(count: 1)) \(LS(key: .CALORIES_UNIT)) • \(first.amount) \(nameUnit)".replacingOccurrences(of: ".0", with: "")
             }
         }
     }
@@ -66,12 +66,12 @@ class MyСreatedProductsCell: UITableViewCell {
 
         dropDown.cornerRadius = 8.0
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
-            guard let strongSelf = self, let indexPath = strongSelf.indexPath else { return }
+            guard let strongSelf = self, let key = strongSelf.removeKey else { return }
             switch index {
             case 0:
-                strongSelf.delegate?.editProduct(indexPath)
+                strongSelf.delegate?.editProduct(key)
             case 1:
-                strongSelf.delegate?.removeProduct(indexPath)
+                strongSelf.delegate?.removeProduct(key)
             default:
                 break
             }

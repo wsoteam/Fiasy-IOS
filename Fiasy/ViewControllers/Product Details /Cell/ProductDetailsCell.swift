@@ -41,6 +41,7 @@ class ProductDetailsCell: UITableViewCell {
     private var selectedPortionId: Int?
     private var serverCount: Int = 0
     private var isBasketProduct: Bool = false
+    private var isEditTemplate: Bool = false
     private var delegate: ProductDetailsDelegate?
     private let ref: DatabaseReference = Database.database().reference()
     
@@ -60,10 +61,11 @@ class ProductDetailsCell: UITableViewCell {
     }
     
     // MARK: - Interface -
-    func fillCell(_ product: Product?, _ delegate: ProductDetailsDelegate, _ count: Int, _ selectedPortionId: Int?, _ isEditState: Bool, _ basketProduct: Bool) {
+    func fillCell(_ product: Product?, _ delegate: ProductDetailsDelegate, _ count: Int, _ selectedPortionId: Int?, _ isEditState: Bool, _ basketProduct: Bool, _ isEditTemplate: Bool) {
         guard let selectedProduct = product else { return }
         self.product = selectedProduct
         self.isEditState = isEditState
+        self.isEditTemplate = isEditTemplate
         self.delegate = delegate
         self.serverCount = count
         self.selectedPortionId = selectedPortionId
@@ -149,6 +151,29 @@ class ProductDetailsCell: UITableViewCell {
                 caloriesCountTextField.text = "\(count)"
                 pickerButton.setTitle(title, for: .normal)
             } else {
+                caloriesCountTextField.text = "\(count)"
+                pickerButton.setTitle("\(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))", for: .normal)
+            }
+        } else if isEditTemplate {
+            addButton.setTitle(LS(key: .TITLE_CHANGE1).uppercased(), for: .normal)
+            if let weight = selectedProduct.weight {
+                if count != weight {
+                    addButton.backgroundColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+                    addButton.isEnabled = true
+                } else {
+                    addButton.backgroundColor = #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)
+                    addButton.isEnabled = false
+                }
+                caloriesCountTextField.text = "\(count)"
+                pickerButton.setTitle("\(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))", for: .normal)
+            } else {
+                if count > 0 {
+                    addButton.backgroundColor = #colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1)
+                    addButton.isEnabled = true
+                } else {
+                    addButton.backgroundColor = #colorLiteral(red: 0.741094768, green: 0.7412236333, blue: 0.7410866618, alpha: 1)
+                    addButton.isEnabled = false
+                }
                 caloriesCountTextField.text = "\(count)"
                 pickerButton.setTitle("\(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT))", for: .normal)
             }
@@ -289,7 +314,11 @@ class ProductDetailsCell: UITableViewCell {
             if count > 0 {
                 nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
             } else {
-                nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) 100 \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+                if isEditTemplate == true {
+                    nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) \(count) \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+                } else {
+                    nutrientLabel.text = "\(LS(key: .PRODUCT_ADD_NUTRIENTS)) 100 \(selectedProduct.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+                }
             }            
         }
         
@@ -446,6 +475,11 @@ class ProductDetailsCell: UITableViewCell {
             return
         }
         
+        if self.isEditTemplate == true {
+            delegate?.changeTemplateProduct(product: product)
+            return
+        }
+        
         if isBasketProduct {
             delegate?.changeBasketProduct(product: product)
             return
@@ -500,7 +534,7 @@ class ProductDetailsCell: UITableViewCell {
                 //isOwnRecipe ? "custom" : "base"
                 Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
                 
-                var isMine: Bool = false
+                var isMine: Bool = product.isMineProduct 
                 if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController {
                     isMine = true
                 }
@@ -536,6 +570,7 @@ class ProductDetailsCell: UITableViewCell {
         
         if text.isEmpty {
             addButton.isEnabled = false
+            self.delegate?.caloriesChanged(0)
         } else {
             addButton.isEnabled = true
             self.delegate?.caloriesChanged(Int(text) ?? 1)

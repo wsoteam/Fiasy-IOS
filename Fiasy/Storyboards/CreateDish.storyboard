@@ -178,7 +178,7 @@
                                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="13"/>
                                         <state key="normal" title="СОХРАНИТЬ"/>
                                         <connections>
-                                            <action selector="saveClicked:" destination="bvW-32-9oh" eventType="touchUpInside" id="bbh-3n-SXS"/>
+                                            <action selector="saveClicked:" destination="bvW-32-9oh" eventType="touchUpInside" id="r2f-Jj-aYl"/>
                                         </connections>
                                     </button>
                                 </subviews>

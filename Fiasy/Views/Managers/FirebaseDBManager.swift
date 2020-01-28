@@ -126,8 +126,6 @@ class FirebaseDBManager {
     
     static func saveTemplateItemsInDataBase() {
         if let uid = Auth.auth().currentUser?.uid {
-            let ref = Database.database().reference().child("USER_LIST").child(uid).child("customTemplate").childByAutoId()
-            
             var listTemplateDictionary: [Any] = []
             for product in UserInfo.sharedInstance.templateProductList {
                 var listDictionary: [Any] = []
@@ -137,13 +135,21 @@ class FirebaseDBManager {
                         listDictionary.append(dictionary)
                     }
                 }
-                let userData = ["id": product.id, "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                let userData = ["id": product.id, "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "weight" : product.weight, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
                 listTemplateDictionary.append(userData)
             }
-            let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.templateName] as [String : Any]
             
-            ref.setValue(contentData)
+            if let edit = UserInfo.sharedInstance.templateEditKey {
+                let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.templateName] as [String : Any]
+                Database.database().reference().child("USER_LIST").child(uid).child("customTemplate").child(edit).setValue(contentData)
+            } else {
+                let ref = Database.database().reference().child("USER_LIST").child(uid).child("customTemplate").childByAutoId()
+                
+                let contentData = ["list": listTemplateDictionary, "name" : UserInfo.sharedInstance.templateName] as [String : Any]
+                ref.setValue(contentData)
+            }
             UserInfo.sharedInstance.templateName = ""
+            UserInfo.sharedInstance.templateEditKey = nil
             UserInfo.sharedInstance.templateProductList.removeAll()
         }
     }
@@ -167,6 +173,43 @@ class FirebaseDBManager {
         }
     }
     
+    static func fetchLikeNutritionInDataBase(handler: @escaping (([NutritionDetail]) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            Database.database().reference().child("USER_LIST").child(uid).child("favoriteNutritions").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let snapshotValue = snapshot.value as? [String: [String:AnyObject]] {
+                    var promoArray: [NutritionDetail] = []
+                    for (key, items) in snapshotValue {
+                        let item = NutritionDetail(dictionary: items)
+                        item.removeKey = key
+                        promoArray.append(item)
+                    }
+                    handler(promoArray)
+                } else {
+                    handler([])
+                }
+            }) { (error) in
+                handler([])
+            }
+        }
+    }
+    
+    static func saveDislikeNutritionInDataBase(key: String) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference().child("USER_LIST").child(uid).child("favoriteNutritions").child("\(key)")
+            ref.removeValue()
+        }
+    }
+    
+    static func saveLikeNutritionInDataBase(nutrition: NutritionDetail, handler: @escaping ((String?) -> ())) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference().child("USER_LIST").child(uid).child("favoriteNutritions").childByAutoId()
+            let userData = ["flag": nutrition.flag, "text" : nutrition.text, "name" : nutrition.name, "urlImage": nutrition.urlImage, "countDays": nutrition.countDays, "premium": nutrition.premium] as [String : Any]
+            ref.setValue(userData)
+            handler(ref.key)
+        }
+    }
+    
     static func saveFavoriteProductInDataBase(product: SecondProduct, handler: @escaping ((String?) -> ())) {
         if let uid = Auth.auth().currentUser?.uid {
             let ref = Database.database().reference().child("USER_LIST").child(uid).child("favoriteFoods").childByAutoId()
@@ -178,17 +221,30 @@ class FirebaseDBManager {
                     listDictionary.append(dictionary)
                 }
             }
+            
             if let id = product.id {
-                let userData = ["id": id, "generalId" : "\(ref.key)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                var isMine: Bool = product.isMineProduct
+                if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController {
+                    isMine = true
+                }
+                let userData = ["id": id, "generalId" : "\(ref.key)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "isMineProduct" : isMine, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
                 ref.setValue(userData)
                 handler(ref.key)
             } else if let general = product.generalFindId {
-                let userData = ["id": product.id, "generalId" : "\(general)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                var isMine: Bool = product.isMineProduct
+                if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController {
+                    isMine = true
+                }
+                let userData = ["id": product.id, "generalId" : "\(general)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "isMineProduct" : isMine, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
                 let reff = Database.database().reference().child("USER_LIST").child(uid).child("favoriteFoods").child("\(general)")
                 reff.setValue(userData)
                 handler(general)
             } else {
-                let userData = ["id": product.id, "generalId" : "\(ref.key)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
+                var isMine: Bool = product.isMineProduct
+                if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController {
+                    isMine = true
+                }
+                let userData = ["id": product.id, "generalId" : "\(ref.key)", "name" : product.name, "portion": product.portion, "is_liquid": product.isLiquid, "kilojoules" : product.kilojoules, "calories" : product.calories, "proteins" : product.proteins, "brand" : product.brand?.name, "isMineProduct" : isMine, "carbohydrates" : product.carbohydrates, "sugar": product.sugar, "fats" : product.fats, "saturated_fats" : product.saturatedFats, "monounsaturated_fats" : product.monoUnSaturatedFats, "polyunsaturated_fats" : product.polyUnSaturatedFats, "cholesterol" : product.cholesterol, "cellulose" : product.cellulose, "sodium" : product.sodium, "pottasium" : product.pottassium, "measurement_units" : listDictionary] as [String : Any]
                 ref.setValue(userData)
                 handler(ref.key)
             }
@@ -251,7 +307,7 @@ class FirebaseDBManager {
                 //isOwnRecipe ? "custom" : "base"
                 Amplitude.instance()?.logEvent("add_food_success", withEventProperties: ["food_intake" : UserInfo.sharedInstance.getSecondTitleMealtimeForFirebase(), "food_category" : "base", "food_date" : dayState, "food_item" : "\(product.name ?? "")-\(product.brend ?? "")"]) // +
                 
-                let userData = ["product_id" : product.id, "day": day, "month": month, "year": year, "name": product.name, "weight": 100, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "brand": product.brend ?? "", "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "is_Liquid" : product.isLiquid ?? false, "measurement_units" : listDictionary] as [String : Any]
+                let userData = ["product_id" : product.id, "day": day, "month": month, "year": year, "name": product.name, "weight": product.weight ?? 100, "protein": product.proteins, "fat": product.fats, "carbohydrates": product.carbohydrates, "calories": product.calories, "presentDay" : state, "isRecipe" : false, "brand": product.brend ?? "", "cholesterol" : product.cholesterol, "polyUnSaturatedFats" : product.polyUnSaturatedFats, "sodium" : product.sodium, "cellulose" : product.cellulose, "saturatedFats" : product.saturatedFats, "monoUnSaturatedFats" : product.monoUnSaturatedFats, "pottassium" : product.pottassium, "sugar" : product.sugar, "is_Liquid" : product.isLiquid ?? false, "measurement_units" : listDictionary] as [String : Any]
                 Database.database().reference().child("USER_LIST").child(uid).child(UserInfo.sharedInstance.getTitleMealtimeForFirebase()).childByAutoId().setValue(userData)
             }
         }
@@ -379,6 +435,75 @@ class FirebaseDBManager {
         }) { (error) in
             print(error.localizedDescription)
             handler([])
+        }
+    }
+    
+    static func fetchSecondNewRecipesInDataBase(handler: @escaping (([[SecondRecipe]]) -> ())) {
+        var childLanguage: String = "RECIPES_PLANS_NEW"
+        switch Locale.current.languageCode {
+        case "es":
+            // испанский
+            childLanguage = "ES"
+        case "pt":
+            // португалия (бразилия)
+            childLanguage = "ES"
+        case "en":
+            // английский
+            childLanguage = "EN"
+        case "de":
+            // немецикий
+            childLanguage = "DE"
+        default:
+            break
+        }
+        Database.database().reference().child(childLanguage).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var allRecipes: [[SecondRecipe]] = [[],[],[]]
+            if childLanguage == "RECIPES_PLANS_NEW" {
+                if let snapshotValue = snapshot.value as? [String: AnyObject], let list = snapshotValue["listrecipes"] as? NSMutableArray {
+                    for item in list {
+                        if let dictionary = item as? [String : AnyObject], let name = dictionary["name"] as? String, name != "name" {
+                            let recipe = SecondRecipe(dictionary: dictionary)
+                            if recipe.isBreakfast {
+                                allRecipes[0].append(recipe)
+                            }
+                            if recipe.isLunch {
+                                allRecipes[1].append(recipe)
+                            }
+                            if recipe.isDinner {
+                                allRecipes[2].append(recipe)
+                            }
+                        }
+                    }
+                    allRecipes[0].shuffle()
+                    allRecipes[1].shuffle()
+                    allRecipes[2].shuffle()
+                    handler(allRecipes)
+                }
+            } else {
+                if let snapshotValue = snapshot.value as? [String: AnyObject], let items = snapshotValue["recipes"] as? [String: AnyObject], let list = items["listrecipes"] as? NSMutableArray {
+                    for item in list {
+                        if let dictionary = item as? [String : AnyObject], let name = dictionary["name"] as? String, name != "name" {
+                            let recipe = SecondRecipe(dictionary: dictionary)
+                            if recipe.isBreakfast {
+                                allRecipes[0].append(recipe)
+                            }
+                            if recipe.isLunch {
+                                allRecipes[1].append(recipe)
+                            }
+                            if recipe.isDinner {
+                                allRecipes[2].append(recipe)
+                            }
+                        }
+                    }
+                    allRecipes[0].shuffle()
+                    allRecipes[1].shuffle()
+                    allRecipes[2].shuffle()
+                    handler(allRecipes)
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
     

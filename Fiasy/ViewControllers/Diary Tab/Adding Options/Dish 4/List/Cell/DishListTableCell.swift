@@ -19,13 +19,13 @@ class DishListTableCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     
     private var dropDown = DropDown()
-    private var indexPath: IndexPath?
+    private var removeKey: String?
     private var delegate: DishListDelegate?
     
     // MARK: - Interface -
     func fillCell(_ item: Dish, delegate: DishListDelegate, indexPath: IndexPath) {
         fillDropDown()
-        self.indexPath = indexPath
+        self.removeKey = item.generalKey
         self.delegate = delegate
         nameLabel.text = item.name
         
@@ -67,12 +67,12 @@ class DishListTableCell: UITableViewCell {
         
         dropDown.cornerRadius = 8.0
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
-            guard let strongSelf = self, let indexPath = strongSelf.indexPath else { return }
+            guard let strongSelf = self, let removeKey = strongSelf.removeKey else { return }
             switch index {
             case 0:
-                strongSelf.delegate?.editProduct(indexPath)
+                strongSelf.delegate?.editProduct(removeKey)
             case 1:
-                strongSelf.delegate?.removeProduct(indexPath)
+                strongSelf.delegate?.removeProduct(removeKey)
             default:
                 break
             }

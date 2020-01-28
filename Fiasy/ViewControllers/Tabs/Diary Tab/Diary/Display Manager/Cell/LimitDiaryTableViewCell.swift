@@ -76,11 +76,11 @@ class LimitDiaryTableViewCell: UITableViewCell {
                     }
                 }
                 
-                if item.isMineProduct == true && !item.measurementUnits.isEmpty {
-                    if let first = item.measurementUnits.first {
-                        portionSize = first.amount
-                    }
-                }
+//                if item.isMineProduct == true && !item.measurementUnits.isEmpty {
+//                    if let first = item.measurementUnits.first {
+//                        portionSize = first.amount
+//                    }
+//                }
                 
                 if let weight = item.weight {
                     if item.isDish == true {

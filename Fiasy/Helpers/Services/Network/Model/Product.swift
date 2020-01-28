@@ -93,6 +93,7 @@ class Product: NSObject {
         carbohydrates = favorite.carbohydrates
         sugar = favorite.sugar
         fats = favorite.fats
+        isMineProduct = favorite.isMineProduct ?? false
         saturatedFats = favorite.saturatedFats
         monoUnSaturatedFats = favorite.monoUnSaturatedFats
         polyUnSaturatedFats = favorite.polyUnSaturatedFats
@@ -164,6 +165,7 @@ class Product: NSObject {
         brend = secondDictionary["brand"] as? String
         carbohydrates = secondDictionary["carbohydrates"] as? Double
         sugar = secondDictionary["sugar"] as? Double
+        isMineProduct = secondDictionary["isMineProduct"] as? Bool ?? false
         if let fa = secondDictionary["fats"] as? Double {
             fats = fa
         } else {
@@ -181,6 +183,7 @@ class Product: NSObject {
         cellulose = secondDictionary["cellulose"] as? Double
         sodium = secondDictionary["sodium"] as? Double
         pottassium = secondDictionary["pottasium"] as? Double
+        weight = secondDictionary["weight"] as? Int
         
         if let list = secondDictionary["measurement_units"] as? [NSDictionary] {
             for item in list {

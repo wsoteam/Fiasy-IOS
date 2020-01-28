@@ -124,6 +124,10 @@
 		3B378A7C23B627E800C6CD09 /* TemplateDetailsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B378A7B23B627E800C6CD09 /* TemplateDetailsTableCell.xib */; };
 		3B3913262285DACD0027659E /* UITextField+Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3913252285DACD0027659E /* UITextField+Attribute.swift */; };
 		3B3B856A22F18CD6005E95F3 /* RegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B856922F18CD6005E95F3 /* RegistrationFlow.swift */; };
+		3B3CB1CB23DFC69B0083D3DC /* NutritionDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CB1CA23DFC69B0083D3DC /* NutritionDetailsHeaderView.swift */; };
+		3B3CB1CD23DFC6A40083D3DC /* NutritionDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3CB1CC23DFC6A40083D3DC /* NutritionDetailsHeaderView.xib */; };
+		3B3CB1D023DFD35F0083D3DC /* NutritionDetailsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CB1CF23DFD35F0083D3DC /* NutritionDetailsRow.swift */; };
+		3B3CB1D223DFD63C0083D3DC /* NutritionDetailsRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3CB1D123DFD63C0083D3DC /* NutritionDetailsRow.xib */; };
 		3B3F56702336249200262A6B /* PromotionalCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F566F2336249200262A6B /* PromotionalCodeViewController.swift */; };
 		3B3F56732336329A00262A6B /* PromotionalCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F56722336329A00262A6B /* PromotionalCodeTableViewCell.swift */; };
 		3B3F5675233632A200262A6B /* PromotionalCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3F5674233632A200262A6B /* PromotionalCodeTableViewCell.xib */; };
@@ -155,6 +159,8 @@
 		3B4DC1042327B26800452067 /* ActivityHeaderTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B4DC1032327B26800452067 /* ActivityHeaderTableView.xib */; };
 		3B4DF83623AFFB0C006BECD3 /* FavoriteProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DF83523AFFB0C006BECD3 /* FavoriteProductTableViewCell.swift */; };
 		3B4DF83823AFFB16006BECD3 /* FavoriteProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B4DF83723AFFB16006BECD3 /* FavoriteProductTableViewCell.xib */; };
+		3B4E89A823DEE0A100481FB7 /* NutritionLikeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E89A723DEE0A100481FB7 /* NutritionLikeTableCell.swift */; };
+		3B4E89AA23DEE0B800481FB7 /* NutritionLikeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B4E89A923DEE0B800481FB7 /* NutritionLikeTableCell.xib */; };
 		3B4FBFA72347517E00F128A1 /* ProductAddingOptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B4FBFA62347517E00F128A1 /* ProductAddingOptions.storyboard */; };
 		3B4FBFAB234751FA00F128A1 /* ProductAddingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4FBFAA234751FA00F128A1 /* ProductAddingOptionsViewController.swift */; };
 		3B4FBFAE23475DC200F128A1 /* ProductAddingOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4FBFAD23475DC200F128A1 /* ProductAddingOptionsCell.swift */; };
@@ -410,6 +416,8 @@
 		3BC0EC9222DE5498009795F2 /* InstructionListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0EC9122DE5498009795F2 /* InstructionListTableCell.swift */; };
 		3BC0EC9422DE54AE009795F2 /* InstructionListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0EC9322DE54AE009795F2 /* InstructionListTableCell.xib */; };
 		3BC216A022744451001D9809 /* SwiftGoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC2169F22744451001D9809 /* SwiftGoogleTranslate.swift */; };
+		3BC4BB7023DFB59B00F4B2CD /* NutritionDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4BB6F23DFB59B00F4B2CD /* NutritionDetailsTableCell.swift */; };
+		3BC4BB7223DFB60800F4B2CD /* NutritionDetailsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC4BB7123DFB60800F4B2CD /* NutritionDetailsTableCell.xib */; };
 		3BC6500A22EB59240002CE9D /* PremiumQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6500922EB59240002CE9D /* PremiumQuizViewController.swift */; };
 		3BC6500D22EB655A0002CE9D /* QuizFinishDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6500C22EB655A0002CE9D /* QuizFinishDisplayManager.swift */; };
 		3BC6501222EB66B50002CE9D /* FirstQuizFinishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6501122EB66B50002CE9D /* FirstQuizFinishCell.swift */; };
@@ -536,6 +544,7 @@
 		3BE47E5E22F0257600F0BF05 /* Unboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE47E5D22F0257600F0BF05 /* Unboarding.storyboard */; };
 		3BE47E6122F037AF00F0BF05 /* RecipeCheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE47E6022F037AF00F0BF05 /* RecipeCheckTableViewCell.swift */; };
 		3BE47E6322F037B800F0BF05 /* RecipeCheckTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE47E6222F037B800F0BF05 /* RecipeCheckTableViewCell.xib */; };
+		3BE51D2323DDEE4C00E8FB0A /* NutritionLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE51D2223DDEE4C00E8FB0A /* NutritionLikeViewController.swift */; };
 		3BE6083C226F21B700461BD7 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6083B226F21B700461BD7 /* Authorization.storyboard */; };
 		3BE6083F226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6083E226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift */; };
 		3BE75B7322F870A400226F6E /* DTRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE75B7222F870A400226F6E /* DTRuler.swift */; };
@@ -546,6 +555,7 @@
 		3BE9014A22E894D50094EE38 /* RKRangePointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014422E894D50094EE38 /* RKRangePointerView.swift */; };
 		3BE9014F22E896D60094EE38 /* GrowthSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9014E22E896D60094EE38 /* GrowthSelectionCell.swift */; };
 		3BE9015122E896E00094EE38 /* GrowthSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9015022E896E00094EE38 /* GrowthSelectionCell.xib */; };
+		3BE9C17923DF4DDF005573E2 /* NutritionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9C17823DF4DDF005573E2 /* NutritionDetailsViewController.swift */; };
 		3BE9C81C2360D1B700053D53 /* MeasuringListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9C81B2360D1B700053D53 /* MeasuringListTableViewCell.swift */; };
 		3BE9C81E2360D22500053D53 /* MeasuringListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9C81D2360D22500053D53 /* MeasuringListTableViewCell.xib */; };
 		3BEA1C6122DCC47600824098 /* AddProductVC+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEA1C6022DCC47600824098 /* AddProductVC+KeyboardExtension.swift */; };
@@ -803,6 +813,10 @@
 		3B378A7B23B627E800C6CD09 /* TemplateDetailsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateDetailsTableCell.xib; sourceTree = "<group>"; };
 		3B3913252285DACD0027659E /* UITextField+Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Attribute.swift"; sourceTree = "<group>"; };
 		3B3B856922F18CD6005E95F3 /* RegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlow.swift; sourceTree = "<group>"; };
+		3B3CB1CA23DFC69B0083D3DC /* NutritionDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDetailsHeaderView.swift; sourceTree = "<group>"; };
+		3B3CB1CC23DFC6A40083D3DC /* NutritionDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionDetailsHeaderView.xib; sourceTree = "<group>"; };
+		3B3CB1CF23DFD35F0083D3DC /* NutritionDetailsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDetailsRow.swift; sourceTree = "<group>"; };
+		3B3CB1D123DFD63C0083D3DC /* NutritionDetailsRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionDetailsRow.xib; sourceTree = "<group>"; };
 		3B3F566F2336249200262A6B /* PromotionalCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionalCodeViewController.swift; sourceTree = "<group>"; };
 		3B3F56722336329A00262A6B /* PromotionalCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionalCodeTableViewCell.swift; sourceTree = "<group>"; };
 		3B3F5674233632A200262A6B /* PromotionalCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionalCodeTableViewCell.xib; sourceTree = "<group>"; };
@@ -834,6 +848,8 @@
 		3B4DC1032327B26800452067 /* ActivityHeaderTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityHeaderTableView.xib; sourceTree = "<group>"; };
 		3B4DF83523AFFB0C006BECD3 /* FavoriteProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductTableViewCell.swift; sourceTree = "<group>"; };
 		3B4DF83723AFFB16006BECD3 /* FavoriteProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteProductTableViewCell.xib; sourceTree = "<group>"; };
+		3B4E89A723DEE0A100481FB7 /* NutritionLikeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionLikeTableCell.swift; sourceTree = "<group>"; };
+		3B4E89A923DEE0B800481FB7 /* NutritionLikeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionLikeTableCell.xib; sourceTree = "<group>"; };
 		3B4FBFA62347517E00F128A1 /* ProductAddingOptions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductAddingOptions.storyboard; sourceTree = "<group>"; };
 		3B4FBFAA234751FA00F128A1 /* ProductAddingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddingOptionsViewController.swift; sourceTree = "<group>"; };
 		3B4FBFAD23475DC200F128A1 /* ProductAddingOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddingOptionsCell.swift; sourceTree = "<group>"; };
@@ -1091,6 +1107,8 @@
 		3BC0EC9122DE5498009795F2 /* InstructionListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionListTableCell.swift; sourceTree = "<group>"; };
 		3BC0EC9322DE54AE009795F2 /* InstructionListTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionListTableCell.xib; sourceTree = "<group>"; };
 		3BC2169F22744451001D9809 /* SwiftGoogleTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGoogleTranslate.swift; sourceTree = "<group>"; };
+		3BC4BB6F23DFB59B00F4B2CD /* NutritionDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDetailsTableCell.swift; sourceTree = "<group>"; };
+		3BC4BB7123DFB60800F4B2CD /* NutritionDetailsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutritionDetailsTableCell.xib; sourceTree = "<group>"; };
 		3BC6500922EB59240002CE9D /* PremiumQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumQuizViewController.swift; sourceTree = "<group>"; };
 		3BC6500C22EB655A0002CE9D /* QuizFinishDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFinishDisplayManager.swift; sourceTree = "<group>"; };
 		3BC6501122EB66B50002CE9D /* FirstQuizFinishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQuizFinishCell.swift; sourceTree = "<group>"; };
@@ -1218,6 +1236,7 @@
 		3BE47E5D22F0257600F0BF05 /* Unboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Unboarding.storyboard; sourceTree = "<group>"; };
 		3BE47E6022F037AF00F0BF05 /* RecipeCheckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCheckTableViewCell.swift; sourceTree = "<group>"; };
 		3BE47E6222F037B800F0BF05 /* RecipeCheckTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCheckTableViewCell.xib; sourceTree = "<group>"; };
+		3BE51D2223DDEE4C00E8FB0A /* NutritionLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionLikeViewController.swift; sourceTree = "<group>"; };
 		3BE6083B226F21B700461BD7 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		3BE6083E226F857F00461BD7 /* UIButton+NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+NSMutableAttributedString.swift"; sourceTree = "<group>"; };
 		3BE75B7222F870A400226F6E /* DTRuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTRuler.swift; sourceTree = "<group>"; };
@@ -1228,6 +1247,7 @@
 		3BE9014422E894D50094EE38 /* RKRangePointerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRangePointerView.swift; sourceTree = "<group>"; };
 		3BE9014E22E896D60094EE38 /* GrowthSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthSelectionCell.swift; sourceTree = "<group>"; };
 		3BE9015022E896E00094EE38 /* GrowthSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthSelectionCell.xib; sourceTree = "<group>"; };
+		3BE9C17823DF4DDF005573E2 /* NutritionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDetailsViewController.swift; sourceTree = "<group>"; };
 		3BE9C81B2360D1B700053D53 /* MeasuringListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringListTableViewCell.swift; sourceTree = "<group>"; };
 		3BE9C81D2360D22500053D53 /* MeasuringListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeasuringListTableViewCell.xib; sourceTree = "<group>"; };
 		3BEA1C6022DCC47600824098 /* AddProductVC+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddProductVC+KeyboardExtension.swift"; sourceTree = "<group>"; };
@@ -1654,6 +1674,8 @@
 		3B127DFC23D6455B009C864C /* NutritionPlan */ = {
 			isa = PBXGroup;
 			children = (
+				3BE9C17723DF4DBB005573E2 /* Details */,
+				3BE51D2123DDEE1A00E8FB0A /* Nutrition Like */,
 				3B127DFF23D6459B009C864C /* List */,
 			);
 			path = NutritionPlan;
@@ -2018,6 +2040,24 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		3B3CB1C923DFC64C0083D3DC /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				3B3CB1CA23DFC69B0083D3DC /* NutritionDetailsHeaderView.swift */,
+				3B3CB1CC23DFC6A40083D3DC /* NutritionDetailsHeaderView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		3B3CB1CE23DFD3420083D3DC /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				3B3CB1CF23DFD35F0083D3DC /* NutritionDetailsRow.swift */,
+				3B3CB1D123DFD63C0083D3DC /* NutritionDetailsRow.xib */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
 		3B3F566E2336247500262A6B /* Promotional Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -2183,6 +2223,15 @@
 			children = (
 				3B4DF83523AFFB0C006BECD3 /* FavoriteProductTableViewCell.swift */,
 				3B4DF83723AFFB16006BECD3 /* FavoriteProductTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3B4E89A623DEE09200481FB7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3B4E89A723DEE0A100481FB7 /* NutritionLikeTableCell.swift */,
+				3B4E89A923DEE0B800481FB7 /* NutritionLikeTableCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3156,6 +3205,15 @@
 			path = SwiftGoogleTranslate;
 			sourceTree = "<group>";
 		};
+		3BC4BB6E23DFB57D00F4B2CD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BC4BB6F23DFB59B00F4B2CD /* NutritionDetailsTableCell.swift */,
+				3BC4BB7123DFB60800F4B2CD /* NutritionDetailsTableCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3BC6500822EB58CD0002CE9D /* Premium  */ = {
 			isa = PBXGroup;
 			children = (
@@ -3890,6 +3948,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3BE51D2123DDEE1A00E8FB0A /* Nutrition Like */ = {
+			isa = PBXGroup;
+			children = (
+				3B4E89A623DEE09200481FB7 /* Cell */,
+				3BE51D2223DDEE4C00E8FB0A /* NutritionLikeViewController.swift */,
+			);
+			path = "Nutrition Like";
+			sourceTree = "<group>";
+		};
 		3BE6083D226F856900461BD7 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -3917,6 +3984,17 @@
 				3BE9015022E896E00094EE38 /* GrowthSelectionCell.xib */,
 			);
 			path = Growth;
+			sourceTree = "<group>";
+		};
+		3BE9C17723DF4DBB005573E2 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				3B3CB1C923DFC64C0083D3DC /* Header */,
+				3B3CB1CE23DFD3420083D3DC /* Row */,
+				3BC4BB6E23DFB57D00F4B2CD /* Cell */,
+				3BE9C17823DF4DDF005573E2 /* NutritionDetailsViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		3BE9C81A2360D19A00053D53 /* Cell */ = {
@@ -4749,6 +4827,7 @@
 				3B325EF4226A44EF00D1A54E /* ProfileIndicatorCell.xib in Resources */,
 				3B77172722BBEEF60089C4BA /* IngredientsFooterView.xib in Resources */,
 				3B466264226CB4280031FD40 /* Diary.storyboard in Resources */,
+				3B3CB1CD23DFC6A40083D3DC /* NutritionDetailsHeaderView.xib in Resources */,
 				3B09C7DB2368783500ADFA24 /* MeasuringSecondAlertView.xib in Resources */,
 				3BA005D82358E6D5002206F6 /* InsertPremiumDescriptionView.xib in Resources */,
 				3BEBCDCA23607EBC00FA3604 /* MeasuringWeightDescriptionCell.xib in Resources */,
@@ -4762,6 +4841,7 @@
 				3B95548B23CCDE3400AA779A /* DishListTableCell.xib in Resources */,
 				3BD7086923B4DC1700CC38EC /* TemplateCreateFirstHeaderView.xib in Resources */,
 				3B9949A823B5264A00271066 /* TemplateSelectedProductCell.xib in Resources */,
+				3B4E89AA23DEE0B800481FB7 /* NutritionLikeTableCell.xib in Resources */,
 				3B10E904239F9EA500560963 /* activity_port_list.json in Resources */,
 				3BC8D06C227CB03100633AF0 /* RecipesHeaderDetailsView.xib in Resources */,
 				3B1FBF2722E790CA00243D0C /* UnboardingSlideView.xib in Resources */,
@@ -4843,6 +4923,7 @@
 				3BFB055C237D85A90055BD65 /* ProductResizeView.xib in Resources */,
 				3B16BCAE2371D8AB003DA197 /* ProductSearchHeaderView.xib in Resources */,
 				3BF83078236F229300648A49 /* ProductSearchEmptyCell.xib in Resources */,
+				3BC4BB7223DFB60800F4B2CD /* NutritionDetailsTableCell.xib in Resources */,
 				3BFB0557237D62160055BD65 /* ProductResizeSearchCell.xib in Resources */,
 				3BBA1B9D22DCA07E00D2783F /* AddProductFooterTableView.xib in Resources */,
 				3BEBCDB923603F1C00FA3604 /* MeasuringPremiumTableViewCell.xib in Resources */,
@@ -4888,6 +4969,7 @@
 				3B993BAF22DEA4A400642C00 /* SecondRecipeCheckTableVIewCell.xib in Resources */,
 				3B1DDC0B23B5677900FB5710 /* TemplateListTableCell.xib in Resources */,
 				3BB3C13923C6478F00D3CDDB /* CreateDish.storyboard in Resources */,
+				3B3CB1D223DFD63C0083D3DC /* NutritionDetailsRow.xib in Resources */,
 				F01DF1B1225E3D2200381A6D /* GoogleService-Info.plist in Resources */,
 				3B0D532A22F444D2008051BE /* Purpose.storyboard in Resources */,
 				3B1FF1FA235F62DC00C58C04 /* MeasuringInsertView.xib in Resources */,
@@ -5028,6 +5110,7 @@
 				3B4DC0FE2327AB3500452067 /* ActivityViewController.swift in Sources */,
 				3BD7085F23B4CC3F00CC38EC /* TemplateCreateFirstViewController.swift in Sources */,
 				3BBA076B22C0A7E8004BEF3B /* AddTemplateHeaderCell.swift in Sources */,
+				3BE9C17923DF4DDF005573E2 /* NutritionDetailsViewController.swift in Sources */,
 				3B77EB0622FADDC700ACD240 /* BalloonMarker.swift in Sources */,
 				3BBBC0DF22ABB9D400456DEA /* SwipeExpansionStyle.swift in Sources */,
 				3BBBC0D922ABB9D400456DEA /* SwipeCollectionViewCellDelegate.swift in Sources */,
@@ -5106,6 +5189,7 @@
 				3BDE6A0C22E86F440078E461 /* UICollectionView+ReusableCell.swift in Sources */,
 				3B6CBB45227305D50011E689 /* ChangeRootControllerSegue.swift in Sources */,
 				3B86367122FF02F900520B6B /* CVCalendarViewDelegate.swift in Sources */,
+				3B4E89A823DEE0A100481FB7 /* NutritionLikeTableCell.swift in Sources */,
 				3BEEBD6D22DE395B00721BE4 /* UIViewController+Extension.swift in Sources */,
 				3B21BD9922B808C9005ADBA8 /* GeneralTabBarViewController.swift in Sources */,
 				3B86367622FF02F900520B6B /* CVCalendarDayViewControlCoordinator.swift in Sources */,
@@ -5151,6 +5235,7 @@
 				3BF2A702236C7BFD00D249F7 /* HeaderViewController.swift in Sources */,
 				3BDC2824238C9223003071AD /* BaseViewController.swift in Sources */,
 				3B9AC21B231E953700301D47 /* WaterCollectionCell.swift in Sources */,
+				3BC4BB7023DFB59B00F4B2CD /* NutritionDetailsTableCell.swift in Sources */,
 				3BFED2C422DDE81E007E8B98 /* AddRecipeFlow.swift in Sources */,
 				3B4FBFB82347721600F128A1 /* LMDropdownView.swift in Sources */,
 				3B77171D22BBE6DB0089C4BA /* IngredientsViewController.swift in Sources */,
@@ -5279,6 +5364,7 @@
 				3BA005D62358E6CC002206F6 /* InsertPremiumDescriptionView.swift in Sources */,
 				3BF2A701236C7BFD00D249F7 /* BarcodeScannerViewController.swift in Sources */,
 				3B3FF9EC22AB9D6B002AEF7A /* DiaryTableViewCell.swift in Sources */,
+				3B3CB1CB23DFC69B0083D3DC /* NutritionDetailsHeaderView.swift in Sources */,
 				3BEBCDC823607EA300FA3604 /* MeasuringWeightDescriptionCell.swift in Sources */,
 				3B028F8923735F3200A5BBD8 /* SearchSuggestProductCell.swift in Sources */,
 				3B02F1B62375630C0047A9B1 /* Serving.swift in Sources */,
@@ -5328,6 +5414,7 @@
 				F00E6DD22251EDA50055179E /* TrainerViewController.swift in Sources */,
 				3B7F68602382111700E72388 /* LTCharacterDiffResult.swift in Sources */,
 				3B90C38B2370F1B50078E083 /* BasketViewController.swift in Sources */,
+				3BE51D2323DDEE4C00E8FB0A /* NutritionLikeViewController.swift in Sources */,
 				3B2485C523743321007D9298 /* FavoriteProductViewController.swift in Sources */,
 				3BBBC0CE22ABB9D400456DEA /* SwipeController.swift in Sources */,
 				3BA309DD2273675E00C98644 /* FirebaseDBManager.swift in Sources */,
@@ -5444,6 +5531,7 @@
 				3BBBC0CD22ABB9D400456DEA /* SwipeCollectionViewCell.swift in Sources */,
 				3BD85F572270592100109AF4 /* MealtimeViewController.swift in Sources */,
 				3B0B1B7E23C743CF0074A376 /* DishCreateFirstCell.swift in Sources */,
+				3B3CB1D023DFD35F0083D3DC /* NutritionDetailsRow.swift in Sources */,
 				3BEEBD7022DE4A5700721BE4 /* InstructionListViewController.swift in Sources */,
 				3B86368022FF02F900520B6B /* CVCalendarViewPresentationMode.swift in Sources */,
 				3B206190232E8891008154A4 /* AddActivityVC+KeyboardExtension.swift in Sources */,

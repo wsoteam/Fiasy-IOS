@@ -27,6 +27,8 @@ class Favorite {
     var pottassium: Double?
     var barcode: String?
     var isLiquid: Bool?
+    var isMineProduct: Bool?
+    
     var measurementUnits: [MeasurementUnits] = []
 
     init(dictionary: [String : AnyObject], generalKey: String) {
@@ -48,6 +50,7 @@ class Favorite {
         sodium = dictionary["sodium"] as? Double
         pottassium = dictionary["pottassium"] as? Double
         isLiquid = dictionary["is_Liquid"] as? Bool
+        isMineProduct = dictionary["isMineProduct"] as? Bool
         
         if let list = dictionary["measurement_units"] as? [NSDictionary] {
             for item in list {

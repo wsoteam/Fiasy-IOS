@@ -69,7 +69,7 @@ class BasketViewController: UIViewController {
         SwiftEntryKit.dismiss()
         if let model = sender as? Product, segue.identifier == "sequeProductDetails" && segue.destination is ProductDetailsViewController {
             let vc = segue.destination as? ProductDetailsViewController
-            vc?.fillSelectedProduct(product: model, title: model.divisionBasketTitle ?? "", basketProduct: true)
+            vc?.fillSelectedProduct(product: model, title: model.divisionBasketTitle ?? "", basketProduct: true, delegate: nil)
             vc?.delegate = self
         }
     }

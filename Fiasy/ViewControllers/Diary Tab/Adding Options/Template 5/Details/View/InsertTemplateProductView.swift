@@ -26,18 +26,33 @@ class InsertTemplateProductView: UIView {
         productCountLabel.text = "\(allCount) \(fetchCountPrefix(count: allCount))"
         
         if let calories = product.calories {
-            let size = calories * Double(100)
+            var size: Double = calories * 100.0
+            if let weg = product.weight {
+                size = calories * Double(weg)
+            }
             caloriesLabel.text = "\(Int(size.rounded(toPlaces: 0))) \(LS(key: .CALORIES_UNIT).capitalizeFirst)"
         } else {
             caloriesLabel.text = "\(product.calories ?? 0) \(LS(key: .CALORIES_UNIT).capitalizeFirst)"
         }
         if let brand = product.brend, brand != "null" && !brand.isEmpty {
-            weightLabel.text = "\(brand) • \(100) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+            var size: Int = 100
+            if let weg = product.weight {
+                size = weg
+            }
+            weightLabel.text = "\(brand) • \(size) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
         } else {
             if let brend = product.brand?.name {
-                weightLabel.text = "\(brend) • \(100) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+                var size: Int = 100
+                if let weg = product.weight {
+                    size = weg
+                }
+                weightLabel.text = "\(brend) • \(size) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
             } else {
-                weightLabel.text = "100 \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
+                var size: Int = 100
+                if let weg = product.weight {
+                    size = weg
+                }
+                weightLabel.text = "\(size) \(product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAMS_UNIT))."
             }
         }
         nameLabel.text = product.name

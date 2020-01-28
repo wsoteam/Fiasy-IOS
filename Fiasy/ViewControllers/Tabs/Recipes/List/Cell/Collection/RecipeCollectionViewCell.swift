@@ -14,6 +14,7 @@ import VisualEffectView
 class RecipeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlet's -
+    @IBOutlet weak var clickedButton: UIButton!
     @IBOutlet weak var unitTitleLabel: UILabel!
     @IBOutlet weak var premiumTitleLabel: UILabel!
     @IBOutlet weak var caloriesButton: UIButton!
@@ -68,6 +69,13 @@ class RecipeCollectionViewCell: UICollectionViewCell {
                     print("Error: \(error)")
                 }
             }
+        }
+    }
+    
+    @IBAction func buttonClicked(_ sender: Any) {
+        guard let recipe = self.recipe else { return }
+        if let vc = UIApplication.getTopMostViewController() as? NutritionDetailsViewController {
+            vc.performSegue(withIdentifier: "sequeArticleDetailsScreen", sender: recipe)
         }
     }
     

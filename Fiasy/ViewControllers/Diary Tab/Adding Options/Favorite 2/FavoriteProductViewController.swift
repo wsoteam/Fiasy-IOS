@@ -39,6 +39,7 @@ class FavoriteProductViewController: UIViewController {
     private var contentOffsetY: Int = 0
     private var searchProducts: [SecondProduct] = []
     private var allFavorites: [SecondProduct] = []
+    private var filteredFavorites: [SecondProduct] = []
     private var pagination: PaginationProduct?
     private var screenState: FavoriteProductState = .list
     private var interactor: SearchProductInteractorInput?
@@ -83,6 +84,7 @@ class FavoriteProductViewController: UIViewController {
         FirebaseDBManager.fetchFavoriteInDataBase { [weak self] (all) in
             guard let strongSelf = self else { return }
             strongSelf.allFavorites = all
+            strongSelf.filteredFavorites = all
             strongSelf.emptyContainerView.isHidden = !strongSelf.allFavorites.isEmpty
             strongSelf.separatorView.isHidden = strongSelf.allFavorites.isEmpty
             strongSelf.hideActivity()
@@ -106,7 +108,7 @@ class FavoriteProductViewController: UIViewController {
         } else if segue.identifier == "sequeProductDetails" {
             if let vc = segue.destination as? ProductDetailsViewController, let product = sender as? SecondProduct, let title = self.screenTitle {
                 SwiftEntryKit.dismiss()
-                vc.fillSelectedProduct(product: product, title: title, basketProduct: false)
+                vc.fillSelectedProduct(product: product, title: title, basketProduct: false, delegate: nil)
             }
         }
     }
@@ -125,6 +127,7 @@ class FavoriteProductViewController: UIViewController {
     @IBAction func cancelClicked(_ sender: Any) {
         view.endEditing(true)
         textField.text?.removeAll()
+        filteredFavorites = allFavorites
         cancelSearchButton.hideAnimated(in: generalStackView)
         screenState = .list
         emptyContainerView.isHidden = !allFavorites.isEmpty
@@ -133,8 +136,18 @@ class FavoriteProductViewController: UIViewController {
     
     @IBAction func searchValueChange(_ sender: Any) {
         guard let text = textField.text else { return }
-        
-        interactor?.searchProduct(search: text)
+        guard let field = textField.text, !allFavorites.isEmpty else { return }
+        if field.isEmpty {
+            filteredFavorites = allFavorites
+        } else {
+            var firstItems: [SecondProduct] = []
+            for item in allFavorites where self.isContains(pattern: field, in: "\(item.name ?? "")") {
+                firstItems.append(item)
+            }
+            filteredFavorites = firstItems
+        }
+        tableView.reloadData()
+        //interactor?.searchProduct(search: text)
     }
     
     // MARK: - Privates -
@@ -154,6 +167,19 @@ class FavoriteProductViewController: UIViewController {
             }
         }
         return []
+    }
+    
+    private func isContains(pattern: String, in text: String?) -> Bool {
+        guard let text = text else { return false }
+        let lowcasePattern = pattern.lowercased()
+        let lowcaseText = text.lowercased()
+        
+        let fullNameArr = lowcasePattern.split{$0 == " "}.map(String.init)
+        var states: [Bool] = []
+        for item in fullNameArr {
+            states.append(lowcaseText.contains(item))
+        }
+        return states.contains(true)
     }
     
     private func setupTableView() {
@@ -200,7 +226,7 @@ class FavoriteProductViewController: UIViewController {
 extension FavoriteProductViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return screenState == .list ? allFavorites.count : (searchProducts.isEmpty ? 1 : searchProducts.count)
+        return screenState == .list ? filteredFavorites.count : (searchProducts.isEmpty ? 1 : searchProducts.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -209,17 +235,17 @@ extension FavoriteProductViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteProductTableViewCell") as? FavoriteProductTableViewCell else { fatalError() }
-            let product = screenState == .list ? allFavorites[indexPath.row] : searchProducts[indexPath.row]
-            cell.fillCell(product: product, delegate: self, selectedProducts, allFavorites)
+            let product = screenState == .list ? filteredFavorites[indexPath.row] : searchProducts[indexPath.row]
+            cell.fillCell(product: product, delegate: self, selectedProducts, filteredFavorites)
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if screenState == .list {
-            if !allFavorites.isEmpty {
-                if allFavorites.indices.contains(indexPath.row) {
-                    performSegue(withIdentifier: "sequeProductDetails", sender: allFavorites[indexPath.row])
+            if !filteredFavorites.isEmpty {
+                if filteredFavorites.indices.contains(indexPath.row) {
+                    performSegue(withIdentifier: "sequeProductDetails", sender: filteredFavorites[indexPath.row])
                 }
             }
         } else {
@@ -261,9 +287,9 @@ extension FavoriteProductViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         cancelSearchButton.showAnimated(in: generalStackView)
-        emptyContainerView.isHidden = true
-        screenState = .search
-        tableView.reloadData()
+        //emptyContainerView.isHidden = true
+        //screenState = .search
+        //tableView.reloadData()
     }
 }
 
@@ -312,7 +338,7 @@ extension FavoriteProductViewController: ProductAddingDelegate {
     func likeClicked(product: SecondProduct, likeImage: UIImageView) {
         var findIndex: Int?
         var generalKey: String?
-        for (index, item) in self.allFavorites.enumerated() where item.id == product.id {
+        for (index, item) in self.filteredFavorites.enumerated() where item.id == product.id {
             findIndex = index
             generalKey = item.generalKey
             break
@@ -339,7 +365,9 @@ extension FavoriteProductViewController: ProductAddingDelegate {
                         }
                         likeImage.image = #imageLiteral(resourceName: "favorite_button_empty")
                         strongSelf.allFavorites.remove(at: index)
+                        strongSelf.filteredFavorites = strongSelf.allFavorites
                         strongSelf.emptyContainerView.isHidden = !strongSelf.allFavorites.isEmpty
+                        strongSelf.separatorView.isHidden = strongSelf.allFavorites.isEmpty
                         strongSelf.tableView.reloadData()
                     }
                 }
@@ -349,6 +377,7 @@ extension FavoriteProductViewController: ProductAddingDelegate {
             FirebaseDBManager.saveFavoriteProductInDataBase(product: product) { (key) in
                 product.generalKey = key
                 self.allFavorites.append(product)
+                self.filteredFavorites = self.allFavorites
             }
         }
         if self.screenState == .list {

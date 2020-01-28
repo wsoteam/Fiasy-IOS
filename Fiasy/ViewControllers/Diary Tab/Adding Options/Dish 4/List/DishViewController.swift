@@ -10,8 +10,8 @@ import UIKit
 import SwiftEntryKit
 
 protocol DishListDelegate {
-    func editProduct(_ indexPath: IndexPath)
-    func removeProduct(_ indexPath: IndexPath)
+    func editProduct(_ key: String)
+    func removeProduct(_ key: String)
 }
 
 class DishViewController: UIViewController {
@@ -152,29 +152,7 @@ class DishViewController: UIViewController {
     }
     
     private func showСonfirmationOfDeletion(indexPath: IndexPath) {
-        let alertController = UIAlertController(title: "\n\n\n\n", message: nil, preferredStyle: .actionSheet)
-        guard let view = BasketAlertView.fromXib() else { return }
-        view.titleImageView.image = #imageLiteral(resourceName: "Dish_234")
-        view.descriptionLabel.text = "Вы точно хотите удалить блюдо?"
-        alertController.view.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 15).isActive = true
-        view.rightAnchor.constraint(equalTo: alertController.view.rightAnchor, constant: -10).isActive = true
-        view.leftAnchor.constraint(equalTo: alertController.view.leftAnchor, constant: 10).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        
-        let removeAction = UIAlertAction(title: LS(key: .DELETE), style: .default) { [weak self] (alert) in
-            guard let strongSelf = self else { return }
-            strongSelf.showDeleteAlert(indexPath: indexPath)
-        }
-        let cancelAction = UIAlertAction(title: LS(key: .CANCEL), style: .cancel)
-        cancelAction.setValue(#colorLiteral(red: 0.9501664042, green: 0.6013857722, blue: 0.2910895646, alpha: 1), forKey: "titleTextColor")
-        removeAction.setValue(#colorLiteral(red: 0.9231546521, green: 0.3429711461, blue: 0.342156291, alpha: 1), forKey: "titleTextColor")
-        
-        alertController.addAction(removeAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
+        showDeleteAlert(indexPath: indexPath)
     }
     
     private func removeDish(by key: String) {
@@ -260,12 +238,26 @@ extension DishViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DishViewController: DishListDelegate {
     
-    func editProduct(_ indexPath: IndexPath) {
-        performSegue(withIdentifier: "editDishScreen", sender: filteredDish[indexPath.row])
+    func editProduct(_ key: String) {
+        var find: Int?
+        for (index, item) in filteredDish.enumerated() where item.generalKey == key {
+            find = index
+            break
+        }
+        if let indexPath = find {
+          performSegue(withIdentifier: "editDishScreen", sender: filteredDish[indexPath])  
+        }
     }
     
-    func removeProduct(_ indexPath: IndexPath) {
-        showСonfirmationOfDeletion(indexPath: indexPath)
+    func removeProduct(_ key: String) {
+        var find: Int?
+        for (index, item) in filteredDish.enumerated() where item.generalKey == key {
+            find = index
+            break
+        }
+        if let indexPath = find {
+          showСonfirmationOfDeletion(indexPath: IndexPath(row: indexPath, section: 0))  
+        }
     }
 }
 

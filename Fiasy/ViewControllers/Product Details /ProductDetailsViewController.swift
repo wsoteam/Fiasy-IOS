@@ -22,6 +22,7 @@ protocol ProductDetailsDelegate {
     func menuClicked(indexPath: IndexPath)
     func caloriesChanged(_ count: Int)
     func changeBasketProduct(product: Product)
+    func changeTemplateProduct(product: Product)
 }
 
 class ProductDetailsViewController: UIViewController {
@@ -44,6 +45,8 @@ class ProductDetailsViewController: UIViewController {
     
     // MARK: - Properties -
     var delegate: BasketDelegate?
+    private var editTemplateDelegate: TemplateCreateDelegate?
+    private var editTemplateProduct: Bool = false
     private var basketProduct: Bool = false
     private var portionCount: Int = 0
     private var selectedPortionId: Int?
@@ -93,6 +96,11 @@ class ProductDetailsViewController: UIViewController {
         if let vc = UIApplication.getTopMostViewController(), vc.navigationController?.viewControllers.previous is MyСreatedProductsViewController &&  !(product?.measurementUnits.isEmpty ?? true) {
             portionCount = 1
         }
+        
+        if self.editTemplateProduct == true {
+            titleButton.isUserInteractionEnabled = false
+            titleButton.setImage(nil, for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,7 +131,9 @@ class ProductDetailsViewController: UIViewController {
                                 height: min(view.bounds.height, CGFloat(200)))
     }
     
-    func fillSelectedProduct(product: Product, title: String, basketProduct: Bool) {
+    func fillSelectedProduct(product: Product, title: String, basketProduct: Bool, _ editTemplate: Bool = false, delegate: TemplateCreateDelegate?) {
+        self.editTemplateDelegate = delegate
+        self.editTemplateProduct = editTemplate
         self.basketProduct = basketProduct
         self.selectedTitle = title
         //self.checkTitle(title: title)
@@ -287,6 +297,20 @@ class ProductDetailsViewController: UIViewController {
         }
     }
     
+    private func showAlert(title: String) {
+        progressTitleLabel.text = title
+        
+        blurView.isHidden = true
+        progressView.trackColor = .clear
+        progressView.progressColor = #colorLiteral(red: 0.9344636798, green: 0.5902308822, blue: 0.1663158238, alpha: 1)
+        progressContainerView.fadeIn()
+        
+        progressView.setProgressWithAnimation(duration: 2, value: 2) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.progressContainerView.fadeOut()
+        }
+    }
+    
     //MARK: - Actions -
     @IBAction func backClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -295,6 +319,7 @@ class ProductDetailsViewController: UIViewController {
     @IBAction func favoriteClicked(_ sender: Any) {
         if isFavoriteProduct {
             guard let key = self.product?.generalKey else { return }
+            showAlert(title: "Удаление из избранных")
             if key != self.product?.generalFindId {
                 if let fd = self.product?.generalFindId {
                     FirebaseDBManager.removeFavorite(key: fd) { [weak self] in
@@ -321,6 +346,7 @@ class ProductDetailsViewController: UIViewController {
             }
         } else {
             guard let product = self.product else { return }
+            showAlert(title: "Добавленно в избранное")
             FirebaseDBManager.saveFavoriteProductInDataBase(product: SecondProduct(second: product)) { [weak self] (key) in
                 guard let strongSelf = self else { return }
                 strongSelf.product?.generalKey = key
@@ -381,7 +407,7 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailsCell") as? ProductDetailsCell else { fatalError() }
-            cell.fillCell(product, self, portionCount, selectedPortionId, isEditState, basketProduct)
+            cell.fillCell(product, self, portionCount, selectedPortionId, isEditState, basketProduct, editTemplateProduct)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as? MenuCell else { fatalError() }
@@ -393,6 +419,14 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
 
 extension ProductDetailsViewController: ProductDetailsDelegate {
     
+    func changeTemplateProduct(product: Product) {
+        guard let delegate = self.editTemplateDelegate else {
+            return
+        }
+        delegate.editProduct(count: portionCount, product: product)
+        showSuccess()
+    }
+    
     func showWrongErrorCount() {
         let alert = UIAlertController(title: LS(key: .ATTENTION), message: LS(key: .ADD_PRODUCT_NEW), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ок", style: .default))
@@ -402,7 +436,7 @@ extension ProductDetailsViewController: ProductDetailsDelegate {
     func caloriesChanged(_ count: Int) {
         self.portionCount = count
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ProductDetailsCell {
-            cell.fillCell(product, self, portionCount, selectedPortionId, isEditState, basketProduct)
+            cell.fillCell(product, self, portionCount, selectedPortionId, isEditState, basketProduct, editTemplateProduct)
         }
     }
     
@@ -428,19 +462,25 @@ extension ProductDetailsViewController: ProductDetailsDelegate {
     }
     
     func showSuccess() {
-        if isEditState {
-            if basketProduct {
+        blurView.isHidden = false
+        if self.editTemplateProduct == true {
+            progressTitleLabel.text = "Продукт изменен в шаблоне"
+        } else {
+            if isEditState {
+                if basketProduct {
+                    progressTitleLabel.text = LS(key: .PRODUCT_CHANGED_IN_BUSKET)
+                } else {
+                    reloadDiary()
+                    progressTitleLabel.text = LS(key: .PRODUCT_ADDED_IN_DIARY)
+                }
+            } else if basketProduct {
                 progressTitleLabel.text = LS(key: .PRODUCT_CHANGED_IN_BUSKET)
             } else {
                 reloadDiary()
                 progressTitleLabel.text = LS(key: .PRODUCT_ADDED_IN_DIARY)
             }
-        } else if basketProduct {
-            progressTitleLabel.text = LS(key: .PRODUCT_CHANGED_IN_BUSKET)
-        } else {
-            reloadDiary()
-            progressTitleLabel.text = LS(key: .PRODUCT_ADDED_IN_DIARY)
         }
+
         progressView.trackColor = .clear
         progressView.progressColor = #colorLiteral(red: 0.9344636798, green: 0.5902308822, blue: 0.1663158238, alpha: 1)
         progressContainerView.fadeIn(duration: 0.0)

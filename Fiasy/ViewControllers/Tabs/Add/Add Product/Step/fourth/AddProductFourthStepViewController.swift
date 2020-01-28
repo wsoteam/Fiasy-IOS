@@ -135,19 +135,13 @@ class AddProductFourthStepViewController: UIViewController {
     }
     
     private func showConfirmAlert() {
-        let refreshAlert = UIAlertController(title: LS(key: .CREATE_STEP_TITLE_35), message: "", preferredStyle: UIAlertController.Style.alert)
-        refreshAlert.addAction(UIAlertAction(title: LS(key: .ALERT_YES), style: .default, handler: { [weak self] (action: UIAlertAction!) in
-            guard let strongSelf = self else { return }
-            
-            var productName: String = ""
-            let fullNameArr = (strongSelf.flow.name ?? "").split{$0 == " "}.map(String.init)
-            for item in fullNameArr where !item.isEmpty {
-                productName = productName.isEmpty ? item : productName + " \(item)"
-            }
-            Amplitude.instance()?.logEvent("custom_product_success", withEventProperties: ["product_id" : productName, "product_from" : strongSelf.flow.productFrom]) // +
-            strongSelf.popBack(5)
-        }))
-        present(refreshAlert, animated: true)
+        var productName: String = ""
+        let fullNameArr = (flow.name ?? "").split{$0 == " "}.map(String.init)
+        for item in fullNameArr where !item.isEmpty {
+            productName = productName.isEmpty ? item : productName + " \(item)"
+        }
+        Amplitude.instance()?.logEvent("custom_product_success", withEventProperties: ["product_id" : productName, "product_from" : flow.productFrom]) // +
+        popBack(5)
     }
 }
 

@@ -70,7 +70,9 @@ class AddProductViewController: UIViewController {
             serving.selected = true
             UserInfo.sharedInstance.productFlow.allServingSize.append(serving)
         }
-        
+        if  UserInfo.sharedInstance.productFlow.allServingSize.count == 1 {
+             UserInfo.sharedInstance.productFlow.allServingSize.first?.selected = true
+        }
         UserInfo.sharedInstance.productFlow.selectedFavorite = favorite
         UserInfo.sharedInstance.productFlow.name = favorite.name
         UserInfo.sharedInstance.productFlow.brend = favorite.brand
@@ -78,40 +80,40 @@ class AddProductViewController: UIViewController {
         UserInfo.sharedInstance.productFlow.productType = favorite.isLiquid == true ? .liquid : .product
         
         if favorite.fats != -1 {
-            UserInfo.sharedInstance.productFlow.fat = "\(((favorite.fats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.fat = "\((favorite.fats ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.proteins != -1 {
-            UserInfo.sharedInstance.productFlow.protein = "\(((favorite.proteins ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.protein = "\((favorite.proteins ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.carbohydrates != -1 {
-            UserInfo.sharedInstance.productFlow.carbohydrates = "\(((favorite.carbohydrates ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.carbohydrates = "\((favorite.carbohydrates ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.calories != -1 {
-            UserInfo.sharedInstance.productFlow.calories = "\(((favorite.calories ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.calories = "\((favorite.calories ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.cellulose != -1 {
-            UserInfo.sharedInstance.productFlow.cellulose = "\(((favorite.cellulose ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.cellulose = "\((favorite.cellulose ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.sugar != -1 {
-            UserInfo.sharedInstance.productFlow.sugar = "\(((favorite.sugar ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.sugar = "\((favorite.sugar ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.saturatedFats != -1 {
-            UserInfo.sharedInstance.productFlow.saturatedFats = "\(((favorite.saturatedFats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.saturatedFats = "\((favorite.saturatedFats ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.monoUnSaturatedFats != -1 {
-            UserInfo.sharedInstance.productFlow.monounsaturatedFats = "\(((favorite.monoUnSaturatedFats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.monounsaturatedFats = "\((favorite.monoUnSaturatedFats ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.polyUnSaturatedFats != -1 {
-            UserInfo.sharedInstance.productFlow.polyunsaturatedFats = "\(((favorite.polyUnSaturatedFats ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.polyunsaturatedFats = "\((favorite.polyUnSaturatedFats ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.cholesterol != -1 {
-            UserInfo.sharedInstance.productFlow.cholesterol = "\(((favorite.cholesterol ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.cholesterol = "\((favorite.cholesterol ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.sodium != -1 {
-            UserInfo.sharedInstance.productFlow.sodium = "\(((favorite.sodium ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.sodium = "\((favorite.sodium ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
         if favorite.pottassium != -1 {
-            UserInfo.sharedInstance.productFlow.potassium = "\(((favorite.pottassium ?? 0.0) * 100).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
+            UserInfo.sharedInstance.productFlow.potassium = "\((favorite.pottassium ?? 0.0).displayOnly(count: 2))".replacingOccurrences(of: "-1.0", with: "")
         }
     }
     

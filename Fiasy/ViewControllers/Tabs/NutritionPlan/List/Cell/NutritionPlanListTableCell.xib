@@ -99,6 +99,9 @@
                                                             <constraint firstAttribute="width" secondItem="vsU-K3-rrG" secondAttribute="height" multiplier="1:1" id="M85-eK-seM"/>
                                                         </constraints>
                                                         <state key="normal" image="nutrition_favorite_empty"/>
+                                                        <connections>
+                                                            <action selector="likeClicked:" destination="GSt-xm-ntL" eventType="touchUpInside" id="s8T-RB-OEm"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -180,7 +183,7 @@
                                 <size key="value" width="0.0" height="2"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="IBshadowColor">
-                                <color key="value" red="0.72933274510000001" green="0.72923868889999999" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.72941176470588232" green="0.72941176470588232" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="10"/>
@@ -206,6 +209,7 @@
                 <outlet property="articleImageView" destination="pAY-JT-bNe" id="etK-4r-q1U"/>
                 <outlet property="blurView" destination="YvT-aH-C8N" id="RNm-Py-WKV"/>
                 <outlet property="dayCountButton" destination="veJ-b2-ZOF" id="Luw-By-Mva"/>
+                <outlet property="likeButton" destination="vsU-K3-rrG" id="8Zh-xN-mhQ"/>
                 <outlet property="nameLabel" destination="J7u-X1-IaR" id="USW-mO-JEw"/>
                 <outlet property="premTitleLabel" destination="s3e-W1-6Cf" id="5mm-Wx-65I"/>
                 <outlet property="premiumContainerView" destination="SWf-i0-3kO" id="1AQ-OZ-EzL"/>

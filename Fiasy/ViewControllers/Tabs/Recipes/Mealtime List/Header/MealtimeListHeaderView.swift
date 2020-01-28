@@ -19,6 +19,7 @@ class MealtimeListHeaderView: UITableViewHeaderFooterView, UITextFieldDelegate {
     
     // MARK: - Properties -
     static let height: CGFloat = 76.0
+    private var secondDelegate: NutritionLikeDelegate?
     private var delegate: RecipeMealtimeDelegate?
     
     //MARK: - Interface -
@@ -29,10 +30,16 @@ class MealtimeListHeaderView: UITableViewHeaderFooterView, UITextFieldDelegate {
         cancelSearchButton.setTitle(LS(key: .CANCEL), for: .normal)
     }
     
+    func fillSecondHeader(delegate: NutritionLikeDelegate) {
+        self.secondDelegate = delegate
+        textField.placeholder = "Поиск по статьям"
+    }
+    
     //MARK: - Action -
     @IBAction func valueChange(_ sender: Any) {
         guard let text = self.textField.text else { return }
         delegate?.searchRecipes(name: text)
+        self.secondDelegate?.searchRecipes(name: text)
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
@@ -46,6 +53,7 @@ class MealtimeListHeaderView: UITableViewHeaderFooterView, UITextFieldDelegate {
                 self.endEditing(true)
                 guard let text = self.textField.text else { return }
                 self.delegate?.searchRecipes(name: text)
+                self.secondDelegate?.searchRecipes(name: text)
             }
         }
     }

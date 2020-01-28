@@ -17,6 +17,10 @@ class TemplateSelectedProductCell: SwipeTableViewCell {
     // MARK: - Interface -
     func fillCell(product: SecondProduct) {
         topLabel.text = product.name
-        bottomLabel.text = "\(Int(((product.calories ?? 0.0) * 100).rounded(toPlaces: 0))) \(LS(key: .CALORIES_UNIT)) • 100 \(LS(key: .GRAMS_UNIT))"
+        if let weg = product.weight {
+            bottomLabel.text = "\(Int(((product.calories ?? 0.0) * Double(weg)).rounded(toPlaces: 0))) \(LS(key: .CALORIES_UNIT)) • \(weg) \(LS(key: .GRAMS_UNIT))"
+        } else {
+            bottomLabel.text = "\(Int(((product.calories ?? 0.0) * 100).rounded(toPlaces: 0))) \(LS(key: .CALORIES_UNIT)) • 100 \(LS(key: .GRAMS_UNIT))"
+        }
     }
 }

@@ -250,7 +250,7 @@ class DiaryViewController: UIViewController {
             vc.diaryDelegate = self
         } else if let vc = segue.destination as? ProductDetailsViewController {
             if let model = sender as? Mealtime {
-                vc.fillSelectedProduct(product: Product(mealtime: model), title: fillTitleNavigation(), basketProduct: false)
+                vc.fillSelectedProduct(product: Product(mealtime: model), title: fillTitleNavigation(), basketProduct: false, delegate: nil)
             }
         } else if let vc = segue.destination as? DishDetailsViewController, let model = sender as? Mealtime {
             let dish = Dish()

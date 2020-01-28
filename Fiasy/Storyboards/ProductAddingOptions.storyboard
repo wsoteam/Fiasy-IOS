@@ -2240,7 +2240,7 @@
                                         <rect key="frame" x="331" y="0.0" width="44" height="44"/>
                                         <state key="normal" image="plus_icon"/>
                                         <connections>
-                                            <segue destination="hQX-AY-VUQ" kind="show" id="xgX-K4-9Ru"/>
+                                            <segue destination="hQX-AY-VUQ" kind="show" identifier="sequeEditTemplate" id="xgX-K4-9Ru"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2385,6 +2385,7 @@
                         <outlet property="tableView" destination="rpQ-Q0-nlb" id="oQY-Fu-1Qz"/>
                         <outlet property="textField" destination="apN-6x-7sw" id="xhp-Nr-B9L"/>
                         <segue destination="FqI-3G-mHn" kind="show" identifier="sequeTemplateDetailsScreen" id="tXU-Vw-XSF"/>
+                        <segue destination="hQX-AY-VUQ" kind="show" id="0IO-KG-vbC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xGW-3S-9Ou" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2397,7 +2398,7 @@
                 <viewControllerPlaceholder storyboardName="CreateTemplate" id="hQX-AY-VUQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ys3-vW-mm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-548" y="2468"/>
+            <point key="canvasLocation" x="-407" y="2467"/>
         </scene>
         <!--Template Details View Controller-->
         <scene sceneID="w1v-fG-1yP">
@@ -2434,7 +2435,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHP-td-8Q8">
-                                        <rect key="frame" x="139.5" y="11.5" width="96" height="21"/>
+                                        <rect key="frame" x="141.5" y="11.5" width="92" height="21"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="2" minY="3" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Завтрак  " image="Polygon (1)">
@@ -2569,7 +2570,7 @@
                                                         </constraints>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Shape (3)" translatesAutoresizingMaskIntoConstraints="NO" id="d0f-J6-Ci1">
-                                                        <rect key="frame" x="119" y="92" width="28" height="16"/>
+                                                        <rect key="frame" x="119" y="89" width="28" height="22"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Продукт добавлен в дневник" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY3-HO-gNL">
                                                         <rect key="frame" x="0.0" y="160" width="266" height="18"/>
@@ -2838,7 +2839,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kd-ne-iqm">
-                                        <rect key="frame" x="139.5" y="11.5" width="96" height="21"/>
+                                        <rect key="frame" x="141.5" y="11.5" width="92" height="21"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="2" minY="3" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Завтрак  " image="Polygon (1)">
@@ -2987,7 +2988,7 @@
                                                         </constraints>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Shape (3)" translatesAutoresizingMaskIntoConstraints="NO" id="ZXa-HZ-3tu">
-                                                        <rect key="frame" x="119" y="92" width="28" height="16"/>
+                                                        <rect key="frame" x="119" y="89" width="28" height="22"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Продукт добавлен в дневник" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akh-nD-KXc">
                                                         <rect key="frame" x="0.0" y="160" width="266" height="18"/>
@@ -3226,7 +3227,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XVg-il-gN3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7WG-b4-AQL">
                                 <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
@@ -3250,7 +3251,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSV-3s-tDh">
-                                                <rect key="frame" x="144" y="12" width="87" height="20"/>
+                                                <rect key="frame" x="141.5" y="11.5" width="92" height="21"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="2" minY="3" maxX="0.0" maxY="0.0"/>
@@ -3285,23 +3286,23 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zN-GJ-n9P">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="144"/>
+                                        <rect key="frame" x="0.0" y="44" width="375" height="143.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Завтрак" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBX-vp-mdV">
-                                                <rect key="frame" x="5" y="10" width="365" height="43"/>
+                                                <rect key="frame" x="5" y="10" width="365" height="42.5"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBo-mu-GtG">
-                                                <rect key="frame" x="0.0" y="110.5" width="375" height="1"/>
+                                                <rect key="frame" x="0.0" y="110" width="375" height="1"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="KkH-So-4x1"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfl-2O-nYc" userLabel="cont">
-                                                <rect key="frame" x="0.0" y="78" width="375" height="66"/>
+                                                <rect key="frame" x="0.0" y="77.5" width="375" height="66"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7r-a7-hOh">
                                                         <rect key="frame" x="0.0" y="25" width="375" height="41"/>
@@ -3380,7 +3381,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uo-1c-4nH">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="429"/>
+                                        <rect key="frame" x="0.0" y="187.5" width="375" height="429.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UNP-qm-K4Q">
                                                 <rect key="frame" x="20" y="20" width="335" height="363.5"/>
@@ -3454,7 +3455,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите количество содержимого" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I3-1n-z2Y">
-                                                <rect key="frame" x="20" y="403.5" width="335" height="15.5"/>
+                                                <rect key="frame" x="20" y="403.5" width="335" height="16"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
                                                 <color key="textColor" red="0.74109476799999996" green="0.74122363329999996" blue="0.74108666180000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3577,7 +3578,7 @@
                                                         <rect key="frame" x="119" y="89" width="28" height="22"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Продукт добавлен в дневник" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKK-gg-y2o">
-                                                        <rect key="frame" x="0.0" y="160" width="266" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="160" width="266" height="18"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
                                                         <color key="textColor" red="0.36858391759999998" green="0.36865252259999998" blue="0.36857968569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -3791,7 +3792,7 @@
                 <viewControllerPlaceholder storyboardName="CreateDish" id="dGh-9m-kqe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NjY-bF-cfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2570" y="2615"/>
+            <point key="canvasLocation" x="2610" y="2615"/>
         </scene>
     </scenes>
     <resources>
@@ -3817,7 +3818,7 @@
         <image name="price-scan-scanner-bar-barcode-code-2 (3)" width="174" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BM0-Se-Pcl"/>
+        <segue reference="xgX-K4-9Ru"/>
         <segue reference="2eT-tM-9kV"/>
         <segue reference="kPY-ZM-tel"/>
         <segue reference="ipg-XQ-ewm"/>

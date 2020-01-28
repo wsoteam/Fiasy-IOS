@@ -88,9 +88,9 @@ class SubscriptionService: NSObject {
             let jsonObjectBody = ["receipt-data" : receiptString, "password" : "01ef8ea9c82046578c8e45b953c95652"]
             
             //#if DEBUG
-            let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+            //let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
 //            #else
-            //let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+            let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
             //#endif
 
             var request = URLRequest(url: url)
@@ -133,9 +133,9 @@ class SubscriptionService: NSObject {
                 if let snapshotValue = snapshot.value as? String {
                     let jsonObjectBody = ["receipt-data" : snapshotValue, "password" : "01ef8ea9c82046578c8e45b953c95652"]
                     //#if DEBUG
-                    let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+                    //let url = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
 //                    #else
-                    //let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+                    let url = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
 //                    #endif
                     
                     var request = URLRequest(url: url)

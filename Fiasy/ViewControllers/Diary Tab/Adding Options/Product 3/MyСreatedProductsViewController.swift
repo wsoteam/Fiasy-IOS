@@ -10,8 +10,8 @@ import UIKit
 import DropDown
 
 protocol MyСreatedProductsDelegate {
-    func editProduct(_ indexPath: IndexPath)
-    func removeProduct(_ indexPath: IndexPath)
+    func editProduct(_ key: String)
+    func removeProduct(_ key: String)
 }
 
 class MyСreatedProductsViewController: UIViewController {
@@ -84,7 +84,22 @@ class MyСreatedProductsViewController: UIViewController {
         } else if segue.identifier == "sequeProductDetails" {
             if let vc = segue.destination as? ProductDetailsViewController {
                 if let model = sender as? Product {
-                    vc.fillSelectedProduct(product: model, title: "Завтрак", basketProduct: false)
+                    
+                    var showTitle: String = "Завтрак"
+                    switch UserInfo.sharedInstance.selectedMealtimeIndex {
+                    case 0:
+                        showTitle = LS(key: .BREAKFAST)
+                    case 1:
+                        showTitle = LS(key: .LUNCH)
+                    case 2:
+                        showTitle = LS(key: .DINNER)
+                    case 3:
+                        showTitle = LS(key: .SNACK)
+                    default:
+                        break
+                    }
+                    
+                    vc.fillSelectedProduct(product: model, title: showTitle, basketProduct: false, delegate: nil)
                 }
             }
         }
@@ -276,13 +291,26 @@ extension MyСreatedProductsViewController: UITextFieldDelegate {
 }
 
 extension MyСreatedProductsViewController: MyСreatedProductsDelegate {
-    
-    func editProduct(_ indexPath: IndexPath) {
-        isEditSequeShow = true
-        performSegue(withIdentifier: "sequeProductCreate", sender: filteredProducts[indexPath.row])
+    func editProduct(_ key: String) {
+        var find: Int?
+        for (index, item) in filteredProducts.enumerated() where item.key == key {
+            find = index
+            break
+        }
+        if let indexPath = find {
+            isEditSequeShow = true
+            performSegue(withIdentifier: "sequeProductCreate", sender: filteredProducts[indexPath])
+        }
     }
     
-    func removeProduct(_ indexPath: IndexPath) {
-        showСonfirmationOfDeletion(indexPath: indexPath)
+    func removeProduct(_ key: String) {
+        var find: Int?
+        for (index, item) in filteredProducts.enumerated() where item.key == key {
+            find = index
+            break
+        }
+        if let indexPath = find {
+            showСonfirmationOfDeletion(indexPath: IndexPath(row: indexPath, section: 0))
+        }
     }
 }

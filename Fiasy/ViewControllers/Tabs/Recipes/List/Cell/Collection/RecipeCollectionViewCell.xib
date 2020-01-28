@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,16 +75,16 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zbl-BG-ji0">
-                                                <rect key="frame" x="263.5" y="9.5" width="69.5" height="41"/>
+                                                <rect key="frame" x="263.5" y="13" width="69.5" height="34"/>
                                                 <subviews>
                                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ck7-T1-cqV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="69.5" height="24"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="69.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title=" Button" image="norma_kalor"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ккал" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agy-99-e3c">
-                                                        <rect key="frame" x="0.0" y="24" width="69.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="17" width="69.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -132,12 +133,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RB-Et-6Hj">
+                                <rect key="frame" x="0.0" y="0.0" width="348" height="180"/>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="sx9-Xa-8Cx" eventType="touchUpInside" id="wcz-jR-GMF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0RB-Et-6Hj" firstAttribute="top" secondItem="89u-Z9-2HE" secondAttribute="top" id="0lZ-sO-6m5"/>
                             <constraint firstAttribute="trailing" secondItem="l8X-HN-HZq" secondAttribute="trailing" id="2hk-JO-Hvd"/>
+                            <constraint firstAttribute="bottom" secondItem="0RB-Et-6Hj" secondAttribute="bottom" id="3YI-EB-Seh"/>
+                            <constraint firstAttribute="trailing" secondItem="0RB-Et-6Hj" secondAttribute="trailing" id="6vJ-BD-Cnu"/>
                             <constraint firstAttribute="bottom" secondItem="l8X-HN-HZq" secondAttribute="bottom" id="IaN-El-7Q8"/>
                             <constraint firstItem="l8X-HN-HZq" firstAttribute="leading" secondItem="89u-Z9-2HE" secondAttribute="leading" id="K54-62-FGS"/>
+                            <constraint firstItem="0RB-Et-6Hj" firstAttribute="leading" secondItem="89u-Z9-2HE" secondAttribute="leading" id="Weh-XW-RCX"/>
                             <constraint firstItem="l8X-HN-HZq" firstAttribute="top" secondItem="89u-Z9-2HE" secondAttribute="top" id="kZK-by-Hos"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -180,6 +191,7 @@
                 <outlet property="articleImageView" destination="lm1-Kv-fjZ" id="Xvf-AV-aJi"/>
                 <outlet property="blurView" destination="vyC-0U-EmG" id="yBd-Zn-uoD"/>
                 <outlet property="caloriesButton" destination="ck7-T1-cqV" id="bAW-Ju-8rW"/>
+                <outlet property="clickedButton" destination="0RB-Et-6Hj" id="eKn-e4-IUu"/>
                 <outlet property="nameLabel" destination="uqQ-Cg-vIB" id="Bb6-Oy-K4h"/>
                 <outlet property="premiumContainerView" destination="QYA-dc-MnZ" id="51z-Ul-2Kf"/>
                 <outlet property="premiumTitleLabel" destination="2Ex-Lh-jIm" id="BdV-Pb-d9Z"/>

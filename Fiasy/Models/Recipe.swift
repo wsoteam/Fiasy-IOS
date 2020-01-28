@@ -42,6 +42,7 @@ class SecondRecipe {
     var isLunch: Bool = false
     var isSnack: Bool = false
     var isBreakfast: Bool = false
+    var nutritions: [String] = []
     
     init(dictionary: [String : AnyObject]) {
         potassium = dictionary["potassium"] as? Double
@@ -68,17 +69,21 @@ class SecondRecipe {
         
         if let lunch = dictionary["lunch"] as? [String], let first = lunch.first, !first.isEmpty {
             isLunch = true
+            nutritions = lunch
         }
         
         if let breakfast = dictionary["breakfast"] as? [String], let first = breakfast.first, !first.isEmpty {
             isBreakfast = true
+            nutritions = breakfast
         } 
         if let snack = dictionary["snack"] as? [String], let first = snack.first, !first.isEmpty {
             isSnack = true
+            nutritions = snack
         }
         
         if let dinner = dictionary["dinner"] as? [String], let first = dinner.first, !first.isEmpty {
             isDinner = true
+            nutritions = dinner
         }
     }
 }

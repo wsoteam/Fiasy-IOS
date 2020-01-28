@@ -14,7 +14,8 @@ class Nutrition {
     var properties: String?
     var list: [NutritionDetail] = []
     
-    init(dictionary: [String : AnyObject]) {
+    convenience init(dictionary: [String : AnyObject]) {
+        self.init()
         name = dictionary["name"] as? String
         properties = dictionary["properties"] as? String
         if let lists = dictionary["dietPlans"] as? NSMutableArray {
@@ -29,12 +30,14 @@ class Nutrition {
 
 class NutritionDetail {
     
+    var removeKey: String?
     var flag: String?
     var text: String?
     var name: String?
     var urlImage: String?
     var countDays: Int?
     var premium: Bool?
+    var isLiked: Bool = false
     
     init(dictionary: [String : AnyObject]) {
         name = dictionary["name"] as? String

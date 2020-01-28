@@ -32,6 +32,7 @@ class UserInfo {
     var articleExpert: [Article] = []
     
     var templateName: String = ""
+    var templateEditKey: String?
     var templateProductList: [SecondProduct] = []
     
     // MARK: - Measuring -

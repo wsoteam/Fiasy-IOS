@@ -61,11 +61,27 @@ class FavoriteProductTableViewCell: UITableViewCell {
     }
     
     private func fillCalories(count: Double, product: SecondProduct) { 
-        let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)
-        let mutableAttrString = NSMutableAttributedString()
-        mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "100 \(unit) • "))
-        mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(Double(count * 100).displayOnly(count: 2)) \(LS(key: .CALORIES_UNIT))"))
-        caloriesLabel.attributedText = mutableAttrString
+        if product.isMineProduct == true {
+            if let first = product.measurementUnits.first {
+                var nameUnit: String = LS(key: .SECOND_GRAM_UNIT)
+                if first.unit == LS(key: .CREATE_STEP_TITLE_19) {
+                    nameUnit = LS(key: .SECOND_GRAM_UNIT)
+                } else if first.unit == LS(key: .CREATE_STEP_TITLE_20) {
+                    nameUnit = LS(key: .WATER_UNIT)
+                } else if first.unit == LS(key: .CREATE_STEP_TITLE_21) {
+                    nameUnit = LS(key: .LIG_PRODUCT)
+                } else if first.unit == LS(key: .CREATE_STEP_TITLE_18) {
+                    nameUnit = LS(key: .WEIGHT_UNIT)
+                }
+                caloriesLabel.text = "\(Double(product.calories ?? 0.0).displayOnly(count: 1)) \(LS(key: .CALORIES_UNIT)) • \(first.amount) \(nameUnit)".replacingOccurrences(of: ".0", with: "")
+            }
+        } else {
+            let unit = product.isLiquid == true ? LS(key: .LIG_PRODUCT) : LS(key: .GRAM_UNIT)
+            let mutableAttrString = NSMutableAttributedString()
+            mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "100 \(unit) • "))
+            mutableAttrString.append(configureAttrString(by: #colorLiteral(red: 0.6313020587, green: 0.6314132214, blue: 0.6312951446, alpha: 1), text: "\(Double(count * 100).displayOnly(count: 2)) \(LS(key: .CALORIES_UNIT))"))
+            caloriesLabel.attributedText = mutableAttrString
+        }
     }
     
     private func configureAttrString(by color: UIColor, text: String) -> NSAttributedString {
